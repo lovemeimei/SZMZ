@@ -13,5 +13,13 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:background="@color/colorPrimary">
 
+        <TextView
+            android:id="@+id/mTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_normal"
+            android:text="首页"/>
     </android.support.v7.widget.Toolbar>
 </android.support.design.widget.AppBarLayout>

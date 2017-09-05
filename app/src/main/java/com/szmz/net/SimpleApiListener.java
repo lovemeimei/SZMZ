@@ -1,8 +1,8 @@
 package com.szmz.net;
 
-import com.hebccc.api.responsebean.BaseResponse;
-import com.hebccc.util.UIUtil;
 
+import com.szmz.entity.response.BaseResponse;
+import com.szmz.utils.UIUtil;
 
 /**
  * @author qieyixuan

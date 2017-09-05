@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/slt_main_home_jz"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/slt_main_search_jz"
+        android:title="@string/title_search" />
+
+
+    <item
+        android:id="@+id/navigation_job"
+        android:icon="@drawable/slt_main_job_jz"
+        android:title="@string/title_search" />
+
+    <item
+        android:id="@+id/navigation_tj"
+        android:icon="@drawable/slt_main_tj_jz"
+        android:title="@string/title_search" />
+
+    <item
+        android:id="@+id/navigation_user"
+        android:icon="@drawable/slt_main_user_jz"
+        android:title="@string/title_search" />
+
+</menu>
