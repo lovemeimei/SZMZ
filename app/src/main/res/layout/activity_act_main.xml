@@ -31,12 +31,34 @@
     <LinearLayout
         android:id="@+id/ll_pager"
         android:layout_below="@+id/iv_word"
-        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_huge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <com.dalong.library.view.LoopRotarySwitchView
+            android:id="@+id/mLoopRotarySwitchView"
+            android:layout_width="fill_parent"
+            android:gravity="center"
+            app:direction="right"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iv_jzxt"
+                android:src="@drawable/main_icon_jzxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/iv_yzsxt"
+                android:src="@drawable/main_icon_yzsxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/iv_hdxt"
+                android:src="@drawable/main_icon_hdxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
+        </com.dalong.library.view.LoopRotarySwitchView>
     </LinearLayout>
 
     <TextView

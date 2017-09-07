@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/ll_dbywtz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_small"
+        android:background="@drawable/slt_list_item">
+
+        <ImageView
+            android:id="@+id/iv_dbywtz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_icon_dbtz"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/tv_dbywtz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_light"
+            android:layout_toRightOf="@+id/iv_dbywtz"
+            android:textSize="@dimen/font_normal"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:text="代办业务通知"/>
+        <TextView
+            android:id="@+id/tv_dbywtz_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_dbywtz"
+            android:layout_alignLeft="@+id/tv_dbywtz"
+            android:layout_alignBottom="@+id/iv_dbywtz"
+            android:textSize="@dimen/font_small"
+            android:gravity="bottom"
+            android:text="aaaaaa"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+    <RelativeLayout
+        android:id="@+id/ll_spyj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_small"
+        android:background="@drawable/slt_list_item">
+
+        <ImageView
+            android:id="@+id/iv_spyj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_icon_spyj"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/tv_spyj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_light"
+            android:layout_toRightOf="@+id/iv_spyj"
+            android:textSize="@dimen/font_normal"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:text="审批意见"/>
+        <TextView
+            android:id="@+id/tv_spyj_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_spyj"
+            android:layout_alignLeft="@+id/tv_spyj"
+            android:layout_alignBottom="@+id/iv_spyj"
+            android:textSize="@dimen/font_small"
+            android:gravity="bottom"
+            android:text="aaaaaa"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+    <RelativeLayout
+        android:id="@+id/ll_fcsx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_small"
+        android:background="@drawable/slt_list_item">
+
+        <ImageView
+            android:id="@+id/iv_fcsx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_icon_fctt"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/tv_fcsx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_light"
+            android:layout_toRightOf="@+id/iv_fcsx"
+            android:textSize="@dimen/font_normal"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:text="复查事项"/>
+        <TextView
+            android:id="@+id/tv_fcsx_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_fcsx"
+            android:layout_alignLeft="@+id/tv_fcsx"
+            android:layout_alignBottom="@+id/iv_fcsx"
+            android:textSize="@dimen/font_small"
+            android:gravity="bottom"
+            android:text="aaaaaa"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+</LinearLayout>

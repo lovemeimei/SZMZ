@@ -1,0 +1,156 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_normal"
+    android:background="@color/backgrounColor">
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/ll_user_userinfo"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/spacing_normal"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:src="@drawable/slt_user_userinfo"
+                android:scaleType="centerInside"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal"
+                android:textColor="@color/black_light"
+                android:text="个人资料"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_user_pw"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/spacing_normal"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:src="@drawable/slt_user_pw"
+                android:scaleType="centerInside"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal"
+                android:textColor="@color/black_light"
+                android:text="修改密码"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/ll_user_msg"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/spacing_normal"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:src="@drawable/slt_user_msg"
+                android:scaleType="centerInside"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal"
+                android:textColor="@color/black_light"
+                android:text="消息推送"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_user_ywjd"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/spacing_normal"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:src="@drawable/slt_user_ywjd"
+                android:scaleType="centerInside"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal"
+                android:textColor="@color/black_light"
+                android:text="业务监督"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/ll_user_job"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/spacing_normal"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:src="@drawable/slt_user_job"
+                android:scaleType="centerInside"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal"
+                android:textColor="@color/black_light"
+                android:text="我的业务"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content">
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

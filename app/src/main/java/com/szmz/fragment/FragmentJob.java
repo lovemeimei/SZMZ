@@ -1,6 +1,7 @@
 package com.szmz.fragment;
 
 import com.szmz.BaseFragment;
+import com.szmz.R;
 
 /**
  * 中移全通集成公司 版本所有
@@ -9,4 +10,13 @@ import com.szmz.BaseFragment;
  */
 
 public class FragmentJob  extends BaseFragment {
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_job;
+    }
+
+    @Override
+    protected void bindDatas() {
+
+    }
 }

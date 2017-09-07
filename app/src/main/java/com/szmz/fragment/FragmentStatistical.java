@@ -1,6 +1,7 @@
 package com.szmz.fragment;
 
 import com.szmz.BaseFragment;
+import com.szmz.R;
 
 /**
  * 统计分析
@@ -10,4 +11,13 @@ import com.szmz.BaseFragment;
  */
 
 public class FragmentStatistical  extends BaseFragment {
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_tjfx;
+    }
+
+    @Override
+    protected void bindDatas() {
+
+    }
 }

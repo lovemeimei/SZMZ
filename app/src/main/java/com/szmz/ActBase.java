@@ -7,6 +7,8 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -60,5 +62,16 @@ public abstract class ActBase extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
        App.removeActivity(this);
+    }
+
+    public String getStringByUI(View view) {
+
+        if (view instanceof EditText) {
+
+            return ((EditText) view).getText().toString().trim();
+        } else if (view instanceof TextView) {
+            return ((TextView) view).getText().toString().trim();
+        }
+        return "";
     }
 }
