@@ -1,7 +1,11 @@
 package com.szmz.fragment;
 
+import android.view.View;
+
 import com.szmz.BaseFragment;
 import com.szmz.R;
+
+import butterknife.OnClick;
 
 /**
  * 中移全通集成公司 版本所有
@@ -18,5 +22,18 @@ public class FragmentSearch  extends BaseFragment {
     @Override
     protected void bindDatas() {
 
+    }
+
+    @OnClick({R.id.ll_search_sj,R.id.ll_search_dx})
+    public void doClick(View v){
+
+        switch (v.getId()){
+            case R.id.ll_search_sj:
+
+                break;
+            case R.id.ll_search_dx:
+
+                break;
+        }
     }
 }

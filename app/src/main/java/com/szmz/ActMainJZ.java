@@ -1,12 +1,15 @@
 package com.szmz;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.barcode.decoding.Intents;
 import com.szmz.fragment.FragmentHome;
 import com.szmz.fragment.FragmentJob;
 import com.szmz.fragment.FragmentSearch;
@@ -119,4 +122,14 @@ public class ActMainJZ extends ActBase implements TabHost.OnTabChangeListener {
         }
 
     }
+
+//    private static final int REQUEST_CAPTURE = 1024;
+//    try{
+//        Intent intent = new Intent(Intents.Scan.ACTION);
+//        intent.putExtra(Intents.Scan.MODE, "QR_CODE_MODE");
+//        intent.putExtra(Intents.Scan.CHARACTER_SET, "GB2312");
+//        MainActivity.this.startActivityForResult(intent, REQUEST_CAPTURE);
+//    }catch (Exception e){
+//        Toast.makeText(MainActivity.this,"打开摄像头失败",Toast.LENGTH_SHORT).show();
+//    }
 }

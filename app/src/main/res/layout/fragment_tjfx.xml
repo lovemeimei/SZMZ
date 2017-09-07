@@ -1,13 +1,70 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgrounColor"
+    android:orientation="vertical"
     tools:context="com.szmz.BaseFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/ll_tj_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:padding="@dimen/spacing_small"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="match_parent"
+            android:text="救助对象统计" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
 
-</FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_tj_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:padding="@dimen/spacing_small"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="match_parent"
+            android:text="救助数据统计" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_tj_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:padding="@dimen/spacing_small"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="match_parent"
+            android:text="各地区分布统计" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right"
+            android:scaleType="centerInside"/>
+    </LinearLayout>
+</LinearLayout>
