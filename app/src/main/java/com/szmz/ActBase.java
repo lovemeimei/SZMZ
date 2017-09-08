@@ -5,11 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,10 +30,14 @@ public abstract class ActBase extends AppCompatActivity {
     Context context;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
     @BindView(R.id.mTitle)
-    TextView tvTilte;
+    TextView tvTitle;
+    @BindView(R.id.tv_title_right)
+    protected TextView tvTitleRight;
 
     protected String TAG;
+    protected MaterialDialog dialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,8 +53,28 @@ public abstract class ActBase extends AppCompatActivity {
         }
         ButterKnife.bind(this);
         context = this;
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(" ");
+        setLeftVisible(false);
+
+        dialog = new MaterialDialog.Builder(this).
+                content("请稍后···").
+                progress(true, 100)
+                .cancelable(false)
+                .canceledOnTouchOutside(false).build();
+
+    }
+    protected void setDialogCancledable(boolean isCan){
+        if (dialog!=null){
+            dialog.setCancelable(isCan);
+        }
     }
 
+    protected void setDialogContent(String content){
+        if (dialog!=null){
+            dialog.setContent(content);
+        }
+    }
     public void trans(Class cls){
         Intent intent =new Intent(context,cls);
         startActivity(intent);
@@ -64,6 +92,32 @@ public abstract class ActBase extends AppCompatActivity {
        App.removeActivity(this);
     }
 
+    protected void setLeftVisible(boolean isShow) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(isShow);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+        }
+    }
+
+    protected void setRightVisible(boolean isShow) {
+        if (tvTitleRight != null) {
+
+            tvTitleRight.setVisibility(isShow ? View.VISIBLE : View.GONE);
+        }
+    }
+
+    protected void setRightShow(String str) {
+        if (tvTitleRight != null) {
+            tvTitleRight.setText(str);
+        }
+    }
+
     public String getStringByUI(View view) {
 
         if (view instanceof EditText) {
@@ -73,5 +127,27 @@ public abstract class ActBase extends AppCompatActivity {
             return ((TextView) view).getText().toString().trim();
         }
         return "";
+    }
+
+    protected void setTitle(String title) {
+        if (tvTitle != null && !TextUtils.isEmpty(title)) {
+            tvTitle.setText(title);
+        }
+    }
+
+    /**
+     * 包含动画的finish
+     */
+    public void myAnimFinish() {
+        this.finish();
+//        this.overridePendingTransition(0, R.anim.roll_down);
+    }
+
+    public void goHome() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("isGoHome", true);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP
+                | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

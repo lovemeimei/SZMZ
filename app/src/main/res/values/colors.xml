@@ -15,7 +15,7 @@
     <color name="red_light">#fd7650</color>
     <color name="blue">#3399cc</color>
     <color name="search_bg">#4e4e4e</color>
-
+    <color name="orange" >#f09834</color>
 
     <!--扫描-->
     <color name="contents_text">#ff000000</color>

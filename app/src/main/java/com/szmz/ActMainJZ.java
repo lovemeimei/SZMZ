@@ -107,18 +107,18 @@ public class ActMainJZ extends ActBase implements TabHost.OnTabChangeListener {
         }
 
         if (tabId.equals("tab1")) {
-            tvTilte.setText("首页");
+            tvTitle.setText("首页");
         } else if (tabId.equals("tab2")) {
-            tvTilte.setText("数据查询");
+            tvTitle.setText("数据查询");
 
         } else if (tabId.equals("tab3")) {
-            tvTilte.setText("业务办理");
+            tvTitle.setText("业务办理");
 
         } else if (tabId.equals("tab4")) {
-            tvTilte.setText("统计分析");
+            tvTitle.setText("统计分析");
 
         }else if (tabId.equals("tab5")){
-            tvTilte.setText("我的");
+            tvTitle.setText("我的");
         }
 
     }
