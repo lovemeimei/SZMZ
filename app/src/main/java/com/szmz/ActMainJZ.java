@@ -1,15 +1,11 @@
 package com.szmz;
 
-import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.barcode.decoding.Intents;
 import com.szmz.fragment.FragmentHome;
 import com.szmz.fragment.FragmentJob;
 import com.szmz.fragment.FragmentSearch;
@@ -30,10 +26,10 @@ public class ActMainJZ extends ActBase implements TabHost.OnTabChangeListener {
     @BindView(R.id.tabhost)
     FragmentTabHost mTabHost;
 
-    String mTextArray[] = {"tab1", "tab2", "tab3", "tab4","tab5"};
+    String mTextArray[] = {"tab1", "tab2", "tab3", "tab4", "tab5"};
     Class[] mfragmets = {FragmentHome.class, FragmentSearch.class, FragmentJob.class, FragmentStatistical.class, FragmentUser.class};
     int[] mDrawable = {R.drawable.slt_main_home_jz, R.drawable.slt_main_search_jz, R.drawable.slt_main_job_jz, R
-            .drawable.slt_main_tj_jz,R.drawable.slt_main_user_jz};
+            .drawable.slt_main_tj_jz, R.drawable.slt_main_user_jz};
 
     @Override
     protected void initUI() {
@@ -50,7 +46,7 @@ public class ActMainJZ extends ActBase implements TabHost.OnTabChangeListener {
     @Override
     protected void onResume() {
         super.onResume();
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initTabHost() {
@@ -117,7 +113,7 @@ public class ActMainJZ extends ActBase implements TabHost.OnTabChangeListener {
         } else if (tabId.equals("tab4")) {
             tvTitle.setText("统计分析");
 
-        }else if (tabId.equals("tab5")){
+        } else if (tabId.equals("tab5")) {
             tvTitle.setText("我的");
         }
 

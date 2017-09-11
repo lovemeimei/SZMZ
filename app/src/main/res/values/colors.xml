@@ -15,7 +15,12 @@
     <color name="red_light">#fd7650</color>
     <color name="blue">#3399cc</color>
     <color name="search_bg">#4e4e4e</color>
-    <color name="orange" >#f09834</color>
+
+    <color name="line">#dedede</color>
+    <color name="gray2">#eaeaea</color>
+    <color name="bg">#f3f3f3</color>
+
+    <color name="orange">#f09834</color>
 
     <!--扫描-->
     <color name="contents_text">#ff000000</color>
@@ -40,4 +45,5 @@
     <color name="viewfinder_frame">#84C1FF</color>
     <color name="viewfinder_laser">#ffff0000</color>
     <color name="viewfinder_mask">#60000000</color>
+
 </resources>

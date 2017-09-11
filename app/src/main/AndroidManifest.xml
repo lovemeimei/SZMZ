@@ -23,8 +23,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity
-            android:name=".ActMain"
+        <activity android:name=".ActMain">
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
@@ -54,11 +53,11 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-
-        <activity android:name=".more.ActModifyPhone"
+        <activity
+            android:name=".more.ActModifyPhone"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".more.ActModifyPW"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -69,6 +68,66 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.ActYwbl"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_xzqh"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_person"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_main"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_jtjbxx"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_jtcyxx"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_jtcyxx_detail"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_jtccxx"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_jtsrxx"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_syrsrxx"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_daza_jtzlxx"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ywbl.ActDchs" />
+        <activity android:name=".ywbl.ActMzpy" />
+        <activity android:name=".ywbl.ActShgs" />
+        <activity android:name=".ywbl.ActRhcc" />
+        <activity android:name=".ywbl.ActSpgs"></activity>
     </application>
 
 </manifest>

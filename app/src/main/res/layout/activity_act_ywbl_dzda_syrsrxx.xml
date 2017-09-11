@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.szmz.ywbl.dzda.ActYwbl_dzda_syrsrxx">
+
+    <include layout="@layout/comm_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.szmz.widget.MyLayoutView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="姓名" />
+
+            <com.szmz.widget.MyLayoutView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="家庭人口" />
+
+            <com.szmz.widget.MyLayoutView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="身份证号码" />
+
+            <com.szmz.widget.MyLayoutView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="家庭月收入（元）" />
+
+            <com.szmz.widget.MyLayoutView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="与户主关系" />
+
+            <com.szmz.widget.MyLayoutView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="被赡养人数" />
+
+            <com.szmz.widget.MyLayoutView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:titleText="赡养费支出（元）" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="备注" />
+
+            <TextView
+                android:id="@+id/bzTv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:padding="10dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

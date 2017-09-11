@@ -23,10 +23,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-/**
- * Created by bz on 2017/9/3.
- */
-
 public class App extends Application {
 
     private static App singleton = null;
@@ -118,7 +114,6 @@ public class App extends Application {
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
                 .create();
-
 //        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
 

@@ -5,35 +5,37 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/main_bg">
+    android:background="@drawable/main_bg"
+    android:orientation="vertical">
 
-    <include layout="@layout/comm_title" android:visibility="gone"/>
+    <include
+        layout="@layout/comm_title"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/iv_user"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/main_icon_user"
         android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/spacing_large"/>
+        android:layout_margin="@dimen/spacing_large"
+        android:scaleType="fitXY"
+        android:src="@drawable/main_icon_user" />
 
     <ImageView
         android:id="@+id/iv_word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/iv_user"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/spacing_small"
-        android:src="@drawable/main_word"/>
+        android:src="@drawable/main_word" />
 
     <LinearLayout
         android:id="@+id/ll_pager"
-        android:layout_below="@+id/iv_word"
-        android:layout_marginTop="@dimen/spacing_huge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_word"
+        android:layout_marginTop="@dimen/spacing_huge"
         android:orientation="horizontal">
 
         <com.dalong.library.view.LoopRotarySwitchView
@@ -66,15 +68,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ll_pager"
-        android:layout_marginTop="@dimen/spacing_tiny"
-        android:text="一站式救助"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/font_normal"
-        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:background="@drawable/shape_main_name_bg"
+        android:paddingBottom="@dimen/spacing_small"
         android:paddingLeft="@dimen/spacing_large"
         android:paddingRight="@dimen/spacing_large"
         android:paddingTop="@dimen/spacing_small"
-        android:paddingBottom="@dimen/spacing_small"
-        android:background="@drawable/shape_main_name_bg"/>
+        android:text="一站式救助"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_normal" />
 
 </RelativeLayout>

@@ -8,18 +8,18 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@color/colorPrimary">
+        android:layout_height="45dp"
+        android:background="@color/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <TextView
             android:id="@+id/mTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:text="首页"
             android:textColor="@color/white"
-            android:textSize="@dimen/font_normal"
-            android:text="首页"/>
+            android:textSize="@dimen/font_normal" />
     </android.support.v7.widget.Toolbar>
 
     <TextView
