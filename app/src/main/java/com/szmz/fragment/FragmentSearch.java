@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.search.ActHistoryList;
 
 import butterknife.OnClick;
 
@@ -29,7 +30,7 @@ public class FragmentSearch  extends BaseFragment {
 
         switch (v.getId()){
             case R.id.ll_search_sj:
-
+                trans(ActHistoryList.class);
                 break;
             case R.id.ll_search_dx:
 

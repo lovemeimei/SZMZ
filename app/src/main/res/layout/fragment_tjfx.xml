@@ -12,13 +12,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_normal"
         android:padding="@dimen/spacing_small"
-        android:background="@color/white"
+        android:background="@drawable/shape_bg_color"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1.0"
-            android:layout_height="match_parent"
-            android:text="救助对象统计" />
+            android:layout_height="wrap_content"
+            android:text="救助对象统计"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/black_light"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,19 +34,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_normal"
-        android:padding="@dimen/spacing_small"
-        android:background="@color/white"
-        android:orientation="horizontal">
+        android:background="@drawable/shape_bg_color"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_small">
+
         <TextView
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:layout_height="match_parent"
-            android:text="救助数据统计" />
+            android:text="救助数据统计"
+            android:textColor="@color/black_light"
+            android:textSize="@dimen/font_normal" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrow_right"
-            android:scaleType="centerInside"/>
+            android:scaleType="centerInside"
+            android:src="@drawable/arrow_right" />
     </LinearLayout>
 
 
@@ -54,13 +60,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_normal"
         android:padding="@dimen/spacing_small"
-        android:background="@color/white"
+        android:background="@drawable/shape_bg_color"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1.0"
-            android:layout_height="match_parent"
-            android:text="各地区分布统计" />
+            android:layout_height="wrap_content"
+            android:text="各地区分布统计"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/black_light"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

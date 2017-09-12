@@ -4,6 +4,9 @@ import android.view.View;
 
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.more.ActModifyPW;
+import com.szmz.more.ActModifyPhone;
+import com.szmz.more.ActModifyUserInfo;
 
 import butterknife.OnClick;
 
@@ -31,10 +34,10 @@ public class FragmentUser  extends BaseFragment {
     public void doClick(View v){
         switch (v.getId()){
             case R.id.ll_user_userinfo:
-
+                    trans(ActModifyUserInfo.class);
                 break;
             case R.id.ll_user_pw:
-
+                    trans(ActModifyPW.class);
                 break;
             case R.id.ll_user_msg:
 

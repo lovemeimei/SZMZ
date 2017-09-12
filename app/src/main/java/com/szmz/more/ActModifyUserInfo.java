@@ -46,6 +46,8 @@ public class ActModifyUserInfo extends ActBase{
         setRightVisible(true);
         setRightShow("编辑");
 
+        createDialog();
+
         btnSub.setVisibility(View.VISIBLE);
         etName.setEnabled(false);
         etAddress.setEnabled(false);
@@ -73,6 +75,7 @@ public class ActModifyUserInfo extends ActBase{
             case R.id.btn_submit:
                 break;
             case R.id.tv_user_sex:
+                dialog.show();
                 break;
         }
     }
@@ -81,7 +84,12 @@ public class ActModifyUserInfo extends ActBase{
         sexDialog = new MaterialDialog.Builder(this)
                 .alwaysCallSingleChoiceCallback()
                 .items("男","女")
-//                .itemsCallbackSingleChoice(1,)
-                .build();
+                .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
+                        etSex.setText(text);
+                        return true;
+                    }
+                }).build();
     }
 }

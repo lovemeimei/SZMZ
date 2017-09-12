@@ -1,6 +1,7 @@
 package com.szmz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -62,6 +63,12 @@ public abstract  class BaseFragment extends Fragment {
 
 
     }
+
+    public void trans(Class cls){
+        Intent intent =new Intent(getContext(),cls);
+        startActivity(intent);
+    }
+
     public String getStringByUI(View view) {
 
         if (view instanceof EditText) {

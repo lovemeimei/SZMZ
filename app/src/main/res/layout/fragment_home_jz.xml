@@ -49,7 +49,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="@color/gray"/>
     <RelativeLayout
         android:id="@+id/ll_spyj"
@@ -95,7 +95,7 @@
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="@color/gray"/>
     <RelativeLayout
         android:id="@+id/ll_fcsx"
@@ -141,6 +141,6 @@
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="@color/gray"/>
 </LinearLayout>
