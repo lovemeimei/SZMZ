@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_dbbd_jbxx"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:background="@drawable/shape_bg_color"
+        android:layout_width="match_parent"
+        android:drawableRight="@drawable/arrow_right"
+        android:drawableLeft="@drawable/icon_dbbd_jbzl"
+        android:text="基本信息"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black_light"
+        android:drawablePadding="@dimen/spacing_small"
+        android:padding="@dimen/spacing_normal"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray"/>
+    <TextView
+        android:id="@+id/tv_dbbd_zhxx"
+        android:background="@drawable/shape_bg_color"
+        android:layout_width="match_parent"
+        android:drawableRight="@drawable/arrow_right"
+        android:drawableLeft="@drawable/icon_dbbd_zhxx"
+        android:text="账户信息"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black_light"
+        android:drawablePadding="@dimen/spacing_small"
+        android:padding="@dimen/spacing_normal"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray"/>
+    <TextView
+        android:id="@+id/tv_dbbd_yljz"
+        android:background="@drawable/shape_bg_color"
+        android:layout_width="match_parent"
+        android:drawableRight="@drawable/arrow_right"
+        android:drawableLeft="@drawable/icon_dbbd_yljz"
+        android:text="住院医疗救助信息"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black_light"
+        android:drawablePadding="@dimen/spacing_small"
+        android:padding="@dimen/spacing_normal"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray"/>
+    <TextView
+        android:id="@+id/tv_dbbd_jzzl"
+        android:background="@drawable/shape_bg_color"
+        android:layout_width="match_parent"
+        android:drawableRight="@drawable/arrow_right"
+        android:drawableLeft="@drawable/icon_dbbd_jzzl"
+        android:text="救助资料"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black_light"
+        android:drawablePadding="@dimen/spacing_small"
+        android:padding="@dimen/spacing_normal"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray"/>
+    <TextView
+        android:id="@+id/tv_dbbd_fymx"
+        android:background="@drawable/shape_bg_color"
+        android:layout_width="match_parent"
+        android:drawableRight="@drawable/arrow_right"
+        android:drawableLeft="@drawable/icon_dbbd_fymx"
+        android:text="费用明细"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black_light"
+        android:drawablePadding="@dimen/spacing_small"
+        android:padding="@dimen/spacing_normal"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray"/>
+    <TextView
+        android:id="@+id/tv_dbbd_spqy"
+        android:background="@drawable/shape_bg_color"
+        android:layout_width="match_parent"
+        android:drawableRight="@drawable/arrow_right"
+        android:drawableLeft="@drawable/icon_dbbd_spqy"
+        android:text="审批区域"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black_light"
+        android:drawablePadding="@dimen/spacing_small"
+        android:padding="@dimen/spacing_normal"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray"/>
+</LinearLayout>

@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -28,13 +29,13 @@ public abstract class ActBase extends AppCompatActivity {
 
     protected abstract int getLayoutId();
     Context context;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
 
     @BindView(R.id.mTitle)
     TextView tvTitle;
     @BindView(R.id.tv_title_right)
     protected TextView tvTitleRight;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
 
     protected String TAG;
     protected MaterialDialog dialog;
@@ -53,8 +54,6 @@ public abstract class ActBase extends AppCompatActivity {
         }
         ButterKnife.bind(this);
         context = this;
-        setSupportActionBar(toolbar);
-        toolbar.setTitle(" ");
         setLeftVisible(false);
 
         dialog = new MaterialDialog.Builder(this).
@@ -62,6 +61,12 @@ public abstract class ActBase extends AppCompatActivity {
                 progress(true, 100)
                 .cancelable(false)
                 .canceledOnTouchOutside(false).build();
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myAnimFinish();
+            }
+        });
 
     }
     protected void setDialogCancledable(boolean isCan){
@@ -83,7 +88,6 @@ public abstract class ActBase extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -93,15 +97,10 @@ public abstract class ActBase extends AppCompatActivity {
     }
 
     protected void setLeftVisible(boolean isShow) {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(isShow);
-            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
-            });
+        if (isShow){
+            ivBack.setVisibility(View.VISIBLE);
+        }else {
+            ivBack.setVisibility(View.GONE);
         }
     }
 

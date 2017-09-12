@@ -1,36 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
     android:layout_height="?attr/actionBarSize">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@color/colorPrimary"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:visibility="gone"
+        android:src="@drawable/slt_btn_back"/>
 
-        <TextView
-            android:id="@+id/mTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="首页"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_normal" />
-    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/mTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="首页"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_normal" />
 
     <TextView
         android:id="@+id/tv_title_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|center_vertical"
+        android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_centerVertical="true"
         android:text="编辑"
         android:textColor="@color/white"
         android:textSize="@dimen/font_normal"
-        android:textStyle="bold"
-        android:visibility="gone" />
-</FrameLayout>
+        android:visibility="gone"
+        android:textStyle="bold" />
+</RelativeLayout>

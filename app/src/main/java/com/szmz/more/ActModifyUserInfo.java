@@ -45,10 +45,9 @@ public class ActModifyUserInfo extends ActBase{
         setLeftVisible(true);
         setRightVisible(true);
         setRightShow("编辑");
-
+        btnSub.setVisibility(View.GONE);
         createDialog();
 
-        btnSub.setVisibility(View.VISIBLE);
         etName.setEnabled(false);
         etAddress.setEnabled(false);
         etCard.setEnabled(false);
@@ -75,7 +74,7 @@ public class ActModifyUserInfo extends ActBase{
             case R.id.btn_submit:
                 break;
             case R.id.tv_user_sex:
-                dialog.show();
+                sexDialog.show();
                 break;
         }
     }

@@ -1,0 +1,121 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgrounColor">
+    <include layout="@layout/comm_title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/ll_user_job_db"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/spacing_normal"
+            android:background="@drawable/shape_bg_color">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:src="@drawable/slt_user_job_db"
+                android:scaleType="centerInside"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal"
+                android:textColor="@color/black_light"
+                android:text="待办业务"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_user_job_yb"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/spacing_normal"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:background="@drawable/shape_bg_color">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:src="@drawable/slt_user_ywjd"
+                android:scaleType="centerInside"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal"
+                android:textColor="@color/black_light"
+                android:text="已办业务"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/ll_user_job_zt"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/spacing_normal"
+            android:background="@drawable/shape_bg_color">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:src="@drawable/slt_user_job_zt"
+                android:scaleType="centerInside"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal"
+                android:textColor="@color/black_light"
+                android:text="在途工作"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_user_job_all"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/spacing_normal"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:background="@drawable/shape_bg_color">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:src="@drawable/slt_user_job_all"
+                android:scaleType="centerInside"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal"
+                android:textColor="@color/black_light"
+                android:text="所有业务"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
