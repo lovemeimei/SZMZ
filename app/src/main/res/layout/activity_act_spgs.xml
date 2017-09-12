@@ -1,9 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.szmz.ywbl.ActSpgs">
+    android:background="@color/backgrounColor"
+    android:orientation="vertical"
+    tools:context="com.szmz.ywbl.ActDchs">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/comm_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/icon_time" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="调查时间："
+                    android:textSize="@dimen/font_normal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/icon_person" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="调  查  人："
+                    android:textSize="@dimen/font_normal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_normal" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="调查核实情况："
+                    android:textSize="@dimen/font_normal" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/backgrounColor" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="top|left"
+                    android:hint="请输入调查核实情况"
+                    android:lines="2"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_normal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="调查核实结论："
+                    android:textSize="@dimen/font_normal" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/backgrounColor" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="@null"
+                    android:gravity="top|left"
+                    android:hint="请输入调查核实结论"
+                    android:lines="2"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_normal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.szmz.widget.ClearEditText
+                    android:id="@+id/ed_wxms"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:gravity="top|left"
+                    android:hint="请填写备注内容"
+                    android:minLines="1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_normal" />
+
+                <com.szmz.widget.GridViewInScrollView
+                    android:id="@+id/mygridview1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:horizontalSpacing="10dp"
+                    android:listSelector="@color/transparent"
+                    android:numColumns="3"
+                    android:verticalSpacing="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_time" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

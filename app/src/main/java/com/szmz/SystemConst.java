@@ -6,4 +6,5 @@ package com.szmz;
 public class SystemConst {
     public static final String DEFAULT_SERVER = "http://61.182.97.66:8013/";
     public static final String PROJECT_DIR = "SZMZ";
+    public static final int MaxPhotoNumber = 100;
 }
