@@ -60,7 +60,7 @@ public abstract class ActListBase extends ActBase{
                 return false;
             }
         });
-        doLoadData();
+//        doLoadData();
     }
 
     protected void doLoadData() {

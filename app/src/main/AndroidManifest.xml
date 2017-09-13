@@ -178,7 +178,9 @@
         <activity android:name=".user.job.ActYBBD_YLJZXX" />
         <activity android:name=".user.job.ActYBBD_JZZL" />
         <activity android:name=".user.job.ActYBBD_FYMX" />
-        <activity android:name=".user.job.ActYBBD_SPQY"></activity>
+        <activity android:name=".user.job.ActYBBD_SPQY" />
+        <activity android:name=".user.check.ActCheckList" />
+        <activity android:name=".user.check.ActCheckDetail1" />
     </application>
 
 </manifest>

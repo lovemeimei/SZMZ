@@ -7,6 +7,7 @@ import com.szmz.R;
 import com.szmz.more.ActModifyPW;
 import com.szmz.more.ActModifyPhone;
 import com.szmz.more.ActModifyUserInfo;
+import com.szmz.user.check.ActCheckList;
 import com.szmz.user.job.ActMyJob;
 
 import butterknife.OnClick;
@@ -44,7 +45,7 @@ public class FragmentUser  extends BaseFragment {
 
                 break;
             case R.id.ll_user_ywjd:
-
+                trans(ActCheckList.class);
                 break;
             case R.id.ll_user_job:
                 trans(ActMyJob.class);
