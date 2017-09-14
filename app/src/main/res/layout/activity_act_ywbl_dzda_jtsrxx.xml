@@ -21,40 +21,48 @@
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="收入类型" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="收入项目" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="收入金额（元）" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="数量或面积" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="计量单位" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:padding="10dp"
-                android:text="备注" />
+                android:text="备注"
+                android:textSize="@dimen/font_normal" />
 
             <TextView
                 android:id="@+id/bzTv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.0"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textSize="@dimen/font_normal" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

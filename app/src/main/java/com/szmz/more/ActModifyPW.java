@@ -1,7 +1,5 @@
 package com.szmz.more;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
@@ -36,8 +34,9 @@ public class ActModifyPW extends ActBase {
         super.initUI();
         setLeftVisible(true);
     }
+
     @OnClick(R.id.btn_submit)
-    public void doClick(View view){
+    public void doClick(View view) {
 
     }
 }

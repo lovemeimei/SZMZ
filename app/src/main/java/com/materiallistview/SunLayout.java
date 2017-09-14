@@ -10,9 +10,6 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 
-/**
- * Created by cjj on 2016/2/22.
- */
 public class SunLayout extends FrameLayout implements MaterialHeadListener {
 
     private final static String Tag = SunLayout.class.getSimpleName();

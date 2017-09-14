@@ -1,18 +1,16 @@
 package com.szmz.ywbl.dzda;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
+import com.szmz.ActBase;
 import com.szmz.R;
 
 /**
  * 家庭资料信息
  */
-public class ActYwbl_daza_jtzlxx extends AppCompatActivity {
+public class ActYwbl_daza_jtzlxx extends ActBase {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act_ywbl_daza_jtzlxx);
+    protected int getLayoutId() {
+        return R.layout.activity_act_ywbl_daza_jtzlxx;
     }
 }

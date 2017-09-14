@@ -33,7 +33,7 @@ public class ActModifyPhone extends ActBase {
     }
 
     @OnClick(R.id.btn_submit)
-    public void doClick(View v){
+    public void doClick(View v) {
 
     }
 }

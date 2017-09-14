@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.szmz.ywbl.dzda.ActYwbl_dzda_jtcyxx">
+    android:background="@color/backgrounColor"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/comm_title" />
+
+    <com.materiallistview.MaterialRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:overlay="false"
+        app:progress_backgroud_color="#FFFAFAFA"
+        app:progress_colors="@array/material_colors"
+        app:progress_show_arrow="true"
+        app:progress_show_circle_backgroud="true"
+        app:wave_color="#20ff2020"
+        app:wave_height_type="normal"
+        app:wave_show="true">
+
+
+        <ListView
+            android:id="@+id/lv"
+            style="@style/listStyle"
+            android:layout_weight="1.0" />
+
+    </com.materiallistview.MaterialRefreshLayout>
+</LinearLayout>

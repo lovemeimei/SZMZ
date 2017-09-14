@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgrounColor"
     android:orientation="vertical"
     tools:context="com.szmz.ywbl.dzda.ActYwbl_dzda_jtjbxx">
 
@@ -21,51 +22,61 @@
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="行政区划" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="县（区、市）" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="乡（街道、镇）" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="村居委会、社区" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="救助类别" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="家庭分类救助类别" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="主要致贫原因" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="户主姓名" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="身份证号" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="申请日期" />
         </LinearLayout>
     </ScrollView>

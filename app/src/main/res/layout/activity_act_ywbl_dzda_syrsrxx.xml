@@ -21,41 +21,49 @@
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="姓名" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="家庭人口" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="身份证号码" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="家庭月收入（元）" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="与户主关系" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="被赡养人数" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="赡养费支出（元）" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:padding="10dp"
                 android:text="备注" />
 
@@ -64,7 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.0"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textSize="@dimen/font_normal" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

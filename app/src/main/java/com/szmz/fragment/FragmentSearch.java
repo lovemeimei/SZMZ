@@ -14,7 +14,7 @@ import butterknife.OnClick;
  * 创建时间：2017/9/5 0005上午 11:35
  */
 
-public class FragmentSearch  extends BaseFragment {
+public class FragmentSearch extends BaseFragment {
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_search;
@@ -25,10 +25,10 @@ public class FragmentSearch  extends BaseFragment {
 
     }
 
-    @OnClick({R.id.ll_search_sj,R.id.ll_search_dx})
-    public void doClick(View v){
+    @OnClick({R.id.ll_search_sj, R.id.ll_search_dx})
+    public void doClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.ll_search_sj:
                 trans(ActHistoryList.class);
                 break;

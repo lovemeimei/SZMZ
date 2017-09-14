@@ -2,9 +2,6 @@ package com.szmz.entity;
 
 import java.util.List;
 
-/**
- * Created by bz on 2017/9/12.
- */
 
 public class MyNewPhoto implements IEntity {
 

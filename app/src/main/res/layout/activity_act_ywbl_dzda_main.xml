@@ -42,7 +42,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="家庭基本信息" />
+                    android:text="家庭基本信息"
+                    android:textSize="@dimen/font_normal" />
 
             </LinearLayout>
 
@@ -66,7 +67,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="家庭成员信息" />
+                    android:text="家庭成员信息"
+                    android:textSize="@dimen/font_normal" />
 
             </LinearLayout>
 
@@ -101,7 +103,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="家庭财产信息" />
+                    android:text="家庭财产信息"
+                    android:textSize="@dimen/font_normal" />
 
             </LinearLayout>
 
@@ -125,7 +128,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="家庭收入信息" />
+                    android:text="家庭收入信息"
+                    android:textSize="@dimen/font_normal" />
 
             </LinearLayout>
 
@@ -160,7 +164,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="赡（扶、抚）养人收入信息" />
+                    android:text="赡（扶、抚）养人收入信息"
+                    android:textSize="@dimen/font_normal" />
 
             </LinearLayout>
 
@@ -184,7 +189,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="家庭资料信息" />
+                    android:text="家庭资料信息"
+                    android:textSize="@dimen/font_normal" />
 
             </LinearLayout>
 

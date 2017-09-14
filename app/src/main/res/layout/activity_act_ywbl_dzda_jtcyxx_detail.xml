@@ -21,51 +21,61 @@
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="身份证号" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="姓名" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="性别" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="出生日期" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="与户主关系" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="是否保障对象" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="人员分类救助类别" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="月收入" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="民族" />
 
             <com.szmz.widget.MyLayoutView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 app:titleText="婚姻状况" />
         </LinearLayout>
     </ScrollView>

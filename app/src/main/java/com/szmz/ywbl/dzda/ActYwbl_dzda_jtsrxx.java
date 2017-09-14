@@ -1,18 +1,16 @@
 package com.szmz.ywbl.dzda;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
+import com.szmz.ActBase;
 import com.szmz.R;
 
 /**
  * 家庭收入信息
  */
-public class ActYwbl_dzda_jtsrxx extends AppCompatActivity {
+public class ActYwbl_dzda_jtsrxx extends ActBase {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_act_ywbl_dzda_jtsrxx);
+    protected int getLayoutId() {
+        return R.layout.activity_act_ywbl_dzda_jtsrxx;
     }
 }

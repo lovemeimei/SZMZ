@@ -13,9 +13,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
-/**
- * Created by cjj on 2016/2/22.
- */
+
 public class SunLineView extends View {
 
     private static final String Tag = SunLineView.class.getSimpleName();
@@ -69,19 +67,19 @@ public class SunLineView extends View {
         mouthRect = new RectF();
     }
 
-    public void setLineColor(int lineColor){
+    public void setLineColor(int lineColor) {
         mLineColor = lineColor;
         invalidate();
     }
 
-    public void setLineWidth(int lineWidth){
+    public void setLineWidth(int lineWidth) {
         mLineWidth = changeDp(lineWidth);
         invalidate();
     }
 
-    public void setLineHeight(int lineHeight){
+    public void setLineHeight(int lineHeight) {
         mLineHeight = changeDp(lineHeight);
-        mFixLineHeight = mLineHeight*2;
+        mFixLineHeight = mLineHeight * 2;
         invalidate();
     }
 
@@ -95,7 +93,7 @@ public class SunLineView extends View {
         invalidate();
     }
 
-    public void setLineLevel(int level){
+    public void setLineLevel(int level) {
         mLineLevel = level;
         invalidate();
     }
@@ -159,6 +157,7 @@ public class SunLineView extends View {
 
     /**
      * 绘制line
+     *
      * @param canvas
      */
     private void drawLines(Canvas canvas) {

@@ -12,10 +12,11 @@ import butterknife.BindView;
 
 /**
  * 有下拉list基类
+ *
  * @author qieyixuan
  * @created at 2016年05月24
  */
-public abstract class ActListBase extends ActBase{
+public abstract class ActListBase extends ActBase {
 
     @BindView(R.id.refresh)
     public MaterialRefreshLayout refresh;
@@ -25,6 +26,7 @@ public abstract class ActListBase extends ActBase{
     protected EditText searchEd;
 
     public abstract void doRefresh(MaterialRefreshLayout materialRefreshLayout);
+
     public abstract void doRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout);
 
 

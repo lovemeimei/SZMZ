@@ -8,7 +8,7 @@ import com.szmz.ActBase;
  * 创建时间：2017/9/7 0007下午 4:49
  */
 
-public class ActSetting extends ActBase{
+public class ActSetting extends ActBase {
 
     @Override
     protected int getLayoutId() {

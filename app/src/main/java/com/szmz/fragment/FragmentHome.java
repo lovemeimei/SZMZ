@@ -1,7 +1,6 @@
 package com.szmz.fragment;
 
 import android.view.View;
-import android.widget.RelativeLayout;
 
 import com.szmz.BaseFragment;
 import com.szmz.R;
@@ -15,7 +14,7 @@ import butterknife.OnClick;
  * 创建时间：2017/9/5 0005上午 11:34
  */
 
-public class FragmentHome extends BaseFragment{
+public class FragmentHome extends BaseFragment {
 
 
     @Override
@@ -28,9 +27,9 @@ public class FragmentHome extends BaseFragment{
 
     }
 
-    @OnClick({R.id.ll_dbywtz,R.id.ll_spyj,R.id.ll_fcsx})
-    public void doClick(View v){
-        switch (v.getId()){
+    @OnClick({R.id.ll_dbywtz, R.id.ll_spyj, R.id.ll_fcsx})
+    public void doClick(View v) {
+        switch (v.getId()) {
 
             case R.id.ll_dbywtz:
                 UIUtil.doToast("aa");

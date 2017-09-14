@@ -2,11 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgrounColor"
     android:orientation="vertical"
-    android:padding="@dimen/spacing_normal"
-    android:background="@color/backgrounColor">
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="15dp">
 
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,142 +17,146 @@
         <LinearLayout
             android:id="@+id/ll_user_userinfo"
             android:layout_width="0dp"
-            android:layout_weight="1.0"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/shape_bg_color"
             android:gravity="center"
-            android:padding="@dimen/spacing_normal"
-            android:background="@drawable/shape_bg_color">
+            android:padding="@dimen/spacing_normal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/spacing_small"
-                android:src="@drawable/slt_user_userinfo"
-                android:scaleType="centerInside"/>
+                android:scaleType="centerInside"
+                android:src="@drawable/slt_user_userinfo" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/font_normal"
+                android:text="个人资料"
                 android:textColor="@color/black_light"
-                android:text="个人资料"/>
+                android:textSize="@dimen/font_normal" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_user_pw"
             android:layout_width="0dp"
-            android:layout_weight="1.0"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/shape_bg_color"
             android:gravity="center"
-            android:padding="@dimen/spacing_normal"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:background="@drawable/shape_bg_color">
+            android:padding="@dimen/spacing_normal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/spacing_small"
-                android:src="@drawable/slt_user_pw"
-                android:scaleType="centerInside"/>
+                android:scaleType="centerInside"
+                android:src="@drawable/slt_user_pw" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/font_normal"
+                android:text="修改密码"
                 android:textColor="@color/black_light"
-                android:text="修改密码"/>
+                android:textSize="@dimen/font_normal" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginTop="10dp"
         android:weightSum="2">
 
         <LinearLayout
             android:id="@+id/ll_user_msg"
             android:layout_width="0dp"
-            android:layout_weight="1.0"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/shape_bg_color"
             android:gravity="center"
-            android:padding="@dimen/spacing_normal"
-            android:background="@drawable/shape_bg_color">
+            android:padding="@dimen/spacing_normal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/spacing_small"
-                android:src="@drawable/slt_user_msg"
-                android:scaleType="centerInside"/>
+                android:scaleType="centerInside"
+                android:src="@drawable/slt_user_msg" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/font_normal"
+                android:text="消息推送"
                 android:textColor="@color/black_light"
-                android:text="消息推送"/>
+                android:textSize="@dimen/font_normal" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_user_ywjd"
             android:layout_width="0dp"
-            android:layout_weight="1.0"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/shape_bg_color"
             android:gravity="center"
-            android:padding="@dimen/spacing_normal"
-            android:layout_marginLeft="@dimen/spacing_large"
-            android:background="@drawable/shape_bg_color">
+            android:padding="@dimen/spacing_normal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/spacing_small"
-                android:src="@drawable/slt_user_ywjd"
-                android:scaleType="centerInside"/>
+                android:scaleType="centerInside"
+                android:src="@drawable/slt_user_ywjd" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/font_normal"
+                android:text="业务监督"
                 android:textColor="@color/black_light"
-                android:text="业务监督"/>
+                android:textSize="@dimen/font_normal" />
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginTop="10dp"
         android:weightSum="2">
 
         <LinearLayout
             android:id="@+id/ll_user_job"
             android:layout_width="0dp"
-            android:layout_weight="1.0"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/shape_bg_color"
             android:gravity="center"
-            android:padding="@dimen/spacing_normal"
-            android:background="@drawable/shape_bg_color">
+            android:padding="@dimen/spacing_normal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/spacing_small"
-                android:src="@drawable/slt_user_job"
-                android:scaleType="centerInside"/>
+                android:scaleType="centerInside"
+                android:src="@drawable/slt_user_job" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/font_normal"
+                android:text="我的业务"
                 android:textColor="@color/black_light"
-                android:text="我的业务"/>
+                android:textSize="@dimen/font_normal" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1.0"
-            android:layout_height="wrap_content">
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1.0"></LinearLayout>
     </LinearLayout>
 </LinearLayout>
