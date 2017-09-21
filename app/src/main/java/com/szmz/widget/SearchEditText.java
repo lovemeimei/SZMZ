@@ -7,22 +7,16 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatEditText;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import android.view.animation.Animation;
-import android.view.animation.CycleInterpolator;
-import android.view.animation.TranslateAnimation;
 
 import com.szmz.R;
 
 /**
  *
  */
-public class SearchEditText extends AppCompatEditText implements OnFocusChangeListener{
+public class SearchEditText extends AppCompatEditText implements OnFocusChangeListener {
 
     float searchSize = 0;
     float textSize = 0;
@@ -59,12 +53,13 @@ public class SearchEditText extends AppCompatEditText implements OnFocusChangeLi
         super.onDraw(canvas);
         DrawSearchIcon(canvas);
     }
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         if (mDrawable == null) {
             try {
-                mDrawable = ContextCompat.getDrawable(context,R.drawable.slt_icon_search);
+                mDrawable = ContextCompat.getDrawable(context, R.drawable.slt_icon_search);
                 mDrawable.setBounds(0, 0, (int) searchSize, (int) searchSize);
             } catch (Exception e) {
 
@@ -80,6 +75,7 @@ public class SearchEditText extends AppCompatEditText implements OnFocusChangeLi
         }
         super.onDetachedFromWindow();
     }
+
     private void DrawSearchIcon(Canvas canvas) {
         if (this.getText().toString().length() == 0) {
             float textWidth = paint.measureText("搜索");
@@ -93,14 +89,16 @@ public class SearchEditText extends AppCompatEditText implements OnFocusChangeLi
             if (mDrawable != null) {
                 mDrawable.draw(canvas);
             }
-            canvas.drawText("搜索", getScaleX()+searchSize+20, getScrollY() + (getHeight() - (getHeight() - textHeight) / 2) - paint.getFontMetrics().bottom - dy, paint);
+            canvas.drawText("搜索", getScaleX() + searchSize + 20, getScrollY() + (getHeight() - (getHeight() - textHeight) / 2) - paint.getFontMetrics().bottom - dy, paint);
             canvas.restore();
         }
     }
+
     public float getFontLeading(Paint paint) {
         Paint.FontMetrics fm = paint.getFontMetrics();
         return fm.bottom - fm.top;
     }
+
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
 

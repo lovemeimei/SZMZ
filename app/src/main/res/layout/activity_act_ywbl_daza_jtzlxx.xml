@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.szmz.ywbl.dzda.ActYwbl_daza_jtzlxx">
+    tools:context="com.szmz.ywbl.dzda.ActYwbl_dzda_jtzlxx">
 
 </android.support.constraint.ConstraintLayout>

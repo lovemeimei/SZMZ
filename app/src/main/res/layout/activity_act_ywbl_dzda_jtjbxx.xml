@@ -20,60 +20,70 @@
             android:orientation="vertical">
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/xzqhView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="行政区划" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/xianView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="县（区、市）" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/xiangView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="乡（街道、镇）" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/cunView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="村居委会、社区" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/jzlbView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="救助类别" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/jtfljzlbView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="家庭分类救助类别" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/zyzpyyView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="主要致贫原因" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/hzxmView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="户主姓名" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/sfzhView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="身份证号" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/sqrqView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

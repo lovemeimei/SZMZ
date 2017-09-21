@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
-    android:layout_height="?attr/actionBarSize">
+    android:layout_height="45dp"
+    android:background="@color/colorPrimary">
 
     <ImageView
         android:id="@+id/iv_back"
@@ -13,18 +13,18 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/spacing_normal"
         android:layout_marginRight="@dimen/spacing_large"
-        android:paddingTop="@dimen/spacing_small"
         android:paddingBottom="@dimen/spacing_small"
-        android:visibility="gone"
-        android:src="@drawable/slt_btn_back"/>
+        android:paddingTop="@dimen/spacing_small"
+        android:src="@drawable/slt_btn_back"
+        android:visibility="gone" />
 
 
     <TextView
         android:id="@+id/mTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_centerInParent="true"
+        android:gravity="center"
         android:text="首页"
         android:textColor="@color/white"
         android:textSize="@dimen/font_normal" />
@@ -34,11 +34,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/spacing_normal"
         android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/spacing_normal"
         android:text="编辑"
         android:textColor="@color/white"
         android:textSize="@dimen/font_normal"
-        android:visibility="gone"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone" />
 </RelativeLayout>

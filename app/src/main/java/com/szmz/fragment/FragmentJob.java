@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.ywbl.dzda.ActYwbl_dzda_person;
 
 import butterknife.OnClick;
 
@@ -34,7 +35,7 @@ public class FragmentJob extends BaseFragment {
 
                 break;
             case R.id.dzdaLayout:
-
+                trans(ActYwbl_dzda_person.class);
                 break;
             case R.id.spgshiLayout:
 

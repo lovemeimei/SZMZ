@@ -1,9 +1,16 @@
 package com.szmz;
 
+import android.graphics.Color;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.szmz.fragment.FragmentHome;
@@ -11,7 +18,9 @@ import com.szmz.fragment.FragmentJob;
 import com.szmz.fragment.FragmentSearch;
 import com.szmz.fragment.FragmentStatistical;
 import com.szmz.fragment.FragmentUser;
-import com.szmz.utils.UIUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -21,21 +30,86 @@ import butterknife.BindView;
  * 创建时间：2017/9/5 0005上午 11:38
  */
 
-public class ActMainJZ extends ActBase implements TabHost.OnTabChangeListener {
+public class ActMainJZ extends ActBase {
 
-    @BindView(R.id.tabhost)
-    FragmentTabHost mTabHost;
 
-    String mTextArray[] = {"tab1", "tab2", "tab3", "tab4", "tab5"};
-    Class[] mfragmets = {FragmentHome.class, FragmentSearch.class, FragmentJob.class, FragmentStatistical.class, FragmentUser.class};
+    @BindView(android.R.id.tabcontent)
+    FrameLayout tabcontent;
+    @BindView(R.id.view_pager)
+    ViewPager viewPager;
+    @BindView(android.R.id.tabs)
+    TabWidget tabs;
+    @BindView(android.R.id.tabhost)
+    FragmentTabHost tabhost;
+    private List<Fragment> mFragmentList;
+    private String mTextArray[] = {"tab1", "tab2", "tab3", "tab4", "tab5"};
+    private Class[] mClass = {FragmentHome.class, FragmentSearch.class, FragmentJob.class, FragmentStatistical.class, FragmentUser.class};
+    private Fragment mFragment[] = {new FragmentHome(), new FragmentSearch(), new FragmentJob(), new FragmentStatistical(), new FragmentUser()};
     int[] mDrawable = {R.drawable.slt_main_home_jz, R.drawable.slt_main_search_jz, R.drawable.slt_main_job_jz, R
             .drawable.slt_main_tj_jz, R.drawable.slt_main_user_jz};
+    private String[] mTitles = {"首页", "查询", "办理", "统计", "我的"};
 
     @Override
     protected void initUI() {
         super.initUI();
-        UIUtil.doToast("aa");
-        initTabHost();
+        mFragmentList = new ArrayList<>();
+        setTitle(mTitles[0]);
+
+        tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
+        tabhost.getTabWidget().setDividerDrawable(null);
+
+        for (int i = 0; i < mFragment.length; i++) {
+            TabHost.TabSpec tabSpec = tabhost.newTabSpec(mTitles[i]).setIndicator(getTabView(i));
+            tabhost.addTab(tabSpec, mClass[i], null);
+            mFragmentList.add(mFragment[i]);
+            tabhost.getTabWidget().getChildAt(i).setBackgroundColor(Color.WHITE);
+        }
+
+        viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return mFragmentList.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return mFragmentList.size();
+            }
+        });
+        tabhost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                setTitle(mTitles[tabhost.getCurrentTab()]);
+                viewPager.setCurrentItem(tabhost.getCurrentTab());
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                setTitle(mTitles[position]);
+                tabhost.setCurrentTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    private View getTabView(int index) {
+        View view = LayoutInflater.from(this).inflate(R.layout.comm_tab_item, null);
+        ImageView image = (ImageView) view.findViewById(R.id.image);
+        image.setImageResource(mDrawable[index]);
+        TextView text = (TextView) view.findViewById(R.id.text);
+        text.setText(mTitles[index]);
+        return view;
     }
 
     @Override
@@ -43,81 +117,6 @@ public class ActMainJZ extends ActBase implements TabHost.OnTabChangeListener {
         return R.layout.activity_main_jz;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    private void initTabHost() {
-        mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
-
-        int count = mfragmets.length;
-        for (int i = 0; i < count; i++) {
-            TabHost.TabSpec tabSpec = mTabHost.newTabSpec(mTextArray[i])
-                    .setIndicator(getTabItemView(i));
-            mTabHost.addTab(tabSpec, mfragmets[i], null);
-        }
-        mTabHost.getTabWidget().setDividerDrawable(null);
-        mTabHost.setOnTabChangedListener(this);
-    }
-
-
-    private View getTabItemView(int index) {
-
-        View mView = getLayoutInflater().inflate(R.layout.comm_tab_item, null);
-        ImageView imageView = (ImageView) mView.findViewById(R.id.iv_tab);
-        imageView.setImageResource(mDrawable[index]);
-        TextView tvName = (TextView) mView.findViewById(R.id.tv_tab);
-        switch (index) {
-            case 0:
-                tvName.setText("首页");
-                break;
-            case 1:
-                tvName.setText("数据查询");
-                break;
-            case 2:
-                tvName.setText("业务办理");
-                break;
-            case 3:
-                tvName.setText("统计分析");
-                break;
-            case 4:
-                tvName.setText("我的");
-                break;
-        }
-
-        return mView;
-    }
-
-    @Override
-    public void onTabChanged(String tabId) {
-        final int size = mTabHost.getTabWidget().getTabCount();
-        for (int i = 0; i < size; i++) {
-            View v = mTabHost.getTabWidget().getChildAt(i);
-            if (i == mTabHost.getCurrentTab()) {
-                v.setSelected(true);
-            } else {
-                v.setSelected(false);
-            }
-        }
-
-        if (tabId.equals("tab1")) {
-            tvTitle.setText("首页");
-        } else if (tabId.equals("tab2")) {
-            tvTitle.setText("数据查询");
-
-        } else if (tabId.equals("tab3")) {
-            tvTitle.setText("业务办理");
-
-        } else if (tabId.equals("tab4")) {
-            tvTitle.setText("统计分析");
-
-        } else if (tabId.equals("tab5")) {
-            tvTitle.setText("我的");
-        }
-
-    }
 
 //    private static final int REQUEST_CAPTURE = 1024;
 //    try{
