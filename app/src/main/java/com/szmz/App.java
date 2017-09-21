@@ -75,7 +75,7 @@ public class App extends Application {
 
     public static ApiService getApiProxy() {
         if (apiProxy == null) {
-            initRetorfit();
+            apiProxy = initRetorfit();
         }
         return apiProxy;
     }
@@ -119,11 +119,11 @@ public class App extends Application {
 
             @Override
             public void log(String message) {
-                if (message.contains("{") && message.contains("}")) {
-                    Logger.json(message);
-                    Log.d("MyTag", "OKHTTP:" + message);
-                }
-
+//                if (message.contains("{") && message.contains("}")) {
+//                    Logger.json(message);
+//                    Log.d("MyTag", "OKHTTP:" + message);
+//                }
+                Log.d("MyTag", "OKHTTP:" + message);
             }
         });
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);

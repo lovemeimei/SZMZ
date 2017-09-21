@@ -25,13 +25,13 @@ public class MCallBack<T extends BaseResponse> implements Callback<T> {
         if (response != null && response.body() != null) {
             T result = response.body();
 
-            if (result.getErrorCode() == 0) {
+            if (result.error.getErrorCode() == 0) {
 
                 doSuccess(result);
 
             } else {
 
-                doBusinessError(result.getErrorMessage());
+                doBusinessError(result.error.getErrorMessage());
 
             }
 

@@ -1,35 +1,17 @@
 package com.szmz.entity.response;
 
+import com.szmz.entity.IEntity;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by bz on 2017/9/3.
  */
 
-public class BaseResponse {
-    private int ErrorCode;
-    private String ErrorMessage;
-    private int TotalNum;
+public class BaseResponse<T> implements IEntity{
 
-    public int getErrorCode() {
-        return ErrorCode;
-    }
-
-    public void setErrorCode(int errorCode) {
-        ErrorCode = errorCode;
-    }
-
-    public String getErrorMessage() {
-        return ErrorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        ErrorMessage = errorMessage;
-    }
-
-    public int getTotalNum() {
-        return TotalNum;
-    }
-
-    public void setTotalNum(int totalNum) {
-        TotalNum = totalNum;
-    }
+    public Error error;
+    public List<T> result=new ArrayList<T>();
+    public  String totalNum;
 }
