@@ -19,30 +19,35 @@
             android:orientation="vertical">
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/srlxView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="收入类型" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/srxmView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="收入项目" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/srjeView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="收入金额（元）" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/slhmjView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="数量或面积" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/jldwView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

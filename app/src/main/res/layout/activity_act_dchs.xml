@@ -22,6 +22,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -41,6 +42,7 @@
                     android:textSize="@dimen/font_normal" />
 
                 <TextView
+                    android:id="@+id/time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -72,6 +74,7 @@
                     android:textSize="@dimen/font_normal" />
 
                 <TextView
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -108,6 +111,7 @@
                     android:background="@color/backgrounColor" />
 
                 <EditText
+                    android:id="@+id/dchsqk_ed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -146,9 +150,9 @@
                     android:background="@color/backgrounColor" />
 
                 <EditText
+                    android:id="@+id/dchsjl_ed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
                     android:background="@null"
                     android:gravity="top|left"
                     android:hint="请输入调查核实结论"
@@ -167,7 +171,7 @@
                 android:padding="10dp">
 
                 <com.szmz.widget.ClearEditText
-                    android:id="@+id/ed_wxms"
+                    android:id="@+id/bz_ed"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -180,7 +184,7 @@
                     android:textSize="@dimen/font_normal" />
 
                 <com.szmz.widget.GridViewInScrollView
-                    android:id="@+id/mygridview1"
+                    android:id="@+id/mygridview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
@@ -196,7 +200,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/white"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:layout_width="wrap_content"

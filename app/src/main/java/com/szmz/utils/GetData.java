@@ -45,6 +45,28 @@ public class GetData {
                 listJtcy.add(jtcy);
 
             }
+            item.setSrbz("收入备注" + i);
+            item.setSrje("收入金额1000" + i);
+            item.setSrlx("收入类型" + i);
+            item.setSrxm("收入项目" + i);
+            item.setSlhmj("数量或面积" + i);
+            item.setJldw("计量单位" + i);
+            item.setJtrk(i + "");
+            item.setYhzgx("与户主关系" + i);
+            item.setBsyrs(i + "");
+            item.setSyfzc("222" + i);
+            item.setSybz("赡养备注");
+            item.setZllb("档案类" + i);
+            item.setWj("家庭成员低保类型.xml");
+            item.setScjd("上传节点" + i);
+            item.setCd("彩电" + i);
+            item.setXyj("洗衣机" + i);
+            item.setKt("空调" + i);
+            item.setDn("电脑" + i);
+            item.setBx("冰箱" + i);
+            item.setQt("其他" + i);
+            item.setZfxz("住房性质" + i);
+            item.setZfmj("住房面积" + i);
 
             item.setJtcyList(listJtcy);
             list.add(item);

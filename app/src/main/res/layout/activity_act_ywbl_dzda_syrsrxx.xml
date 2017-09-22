@@ -19,42 +19,49 @@
             android:orientation="vertical">
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/nameView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="姓名" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/jtrkView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="家庭人口" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/sfzhView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="身份证号码" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/jtsrView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="家庭月收入（元）" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/yhzgxView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="与户主关系" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/syrsView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="被赡养人数" />
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/syfyView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

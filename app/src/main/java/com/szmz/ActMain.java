@@ -1,22 +1,18 @@
 package com.szmz;
 
-import android.support.v4.app.FragmentTabHost;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
 import com.dalong.library.listener.OnItemClickListener;
 import com.dalong.library.listener.OnItemSelectedListener;
-import com.dalong.library.listener.OnLoopViewTouchListener;
 import com.dalong.library.view.LoopRotarySwitchView;
-import com.szmz.fragment.FragmentHome;
-import com.szmz.fragment.FragmentJob;
-import com.szmz.fragment.FragmentSearch;
-import com.szmz.fragment.FragmentStatistical;
-import com.szmz.fragment.FragmentUser;
-import com.szmz.utils.UIUtil;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
+
+import static com.szmz.utils.UIUtil.doToast;
 
 public class ActMain extends ActBase {
 
@@ -26,6 +22,7 @@ public class ActMain extends ActBase {
 
     @BindView(R.id.tv_name)
     TextView tvName;
+
     @Override
     protected void initUI() {
         super.initUI();
@@ -36,7 +33,7 @@ public class ActMain extends ActBase {
         loopRotarySwitchView.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void selected(int item, View view) {
-                switch (item){
+                switch (item) {
                     case 0:
                         tvName.setText("社会救助系统");
                         break;
@@ -52,19 +49,42 @@ public class ActMain extends ActBase {
         loopRotarySwitchView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int item, View view) {
-                switch (item){
+                switch (item) {
                     case 0:
                         trans(ActMainJZ.class);
                         break;
                     case 1:
-                        UIUtil.doToast("开发中");
+                        doToast("开发中");
                         break;
                     case 2:
-                        UIUtil.doToast("开发中");
+                        doToast("开发中");
                         break;
                 }
             }
         });
+    }
+
+    private boolean exitFlag = false;
+
+    @Override
+    public void onBackPressed() {
+        if (!exitFlag) {
+            doToast("再按一次,退出系统");
+            exitFlag = true;
+            final Timer mTimer = new Timer();
+            TimerTask mTimerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    exitFlag = false;
+                    mTimer.cancel();
+                }
+            };
+            mTimer.schedule(mTimerTask, 3000, 10000);
+        } else {
+            App.exit();
+        }
+
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.szmz.fragment;
 
+import android.content.Intent;
 import android.view.View;
 
 import com.szmz.BaseFragment;
@@ -21,24 +22,32 @@ public class FragmentJob extends BaseFragment {
             R.id.dchsLayout, R.id.mzpyLayout, R.id.shgsLayout, R.id.rhccLayout, R.id.dzdaLayout, R.id.spgshiLayout
     })
     public void doClick(View v) {
+        Intent intent = new Intent(getActivity(), ActYwbl_dzda_person.class);
+
         switch (v.getId()) {
             case R.id.dchsLayout:
-
+                intent.putExtra("Type", 1);
+                startActivity(intent);
                 break;
             case R.id.mzpyLayout:
-
+                intent.putExtra("Type", 2);
+                startActivity(intent);
                 break;
             case R.id.shgsLayout:
-
+                intent.putExtra("Type", 3);
+                startActivity(intent);
                 break;
             case R.id.rhccLayout:
-
+                intent.putExtra("Type", 4);
+                startActivity(intent);
                 break;
             case R.id.dzdaLayout:
-                trans(ActYwbl_dzda_person.class);
+                intent.putExtra("Type", 0);
+                startActivity(intent);
                 break;
             case R.id.spgshiLayout:
-
+                intent.putExtra("Type", 5);
+                startActivity(intent);
                 break;
         }
     }
