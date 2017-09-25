@@ -11,7 +11,8 @@ import java.util.List;
 
 public class BaseResponse<T> implements IEntity{
 
+
     public Error error;
     public List<T> result=new ArrayList<T>();
-    public  String totalNum;
+    public String totalNum;
 }

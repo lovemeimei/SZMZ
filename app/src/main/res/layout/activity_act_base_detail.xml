@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/comm_title"/>
+
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_light"
+        android:textSize="@dimen/font_normal"
+        android:lineSpacingExtra="@dimen/font_tiny"
+        android:text="\t\t各省、自治区、直辖市团委、民政厅（局）、卫生计生委，中央军委政治工作部组织局群团处，全国铁道团委，全国民航团委，中直机关团工委，中央国家机关团工委，中央金融团工委，中央企业团工委，新疆生产建设兵团团委、民政局、卫生局、人口计生委：
+
+为贯彻落实《中长期青年发展规划（2016—2025年）》，推动服务青年婚恋工作，特制定《关于进一步做好青年婚恋工作的指导意见》。现印发给你们，请结合实际认真贯彻执行。"/>
+
+</LinearLayout>

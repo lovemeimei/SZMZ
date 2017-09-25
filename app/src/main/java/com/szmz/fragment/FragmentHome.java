@@ -2,6 +2,7 @@ package com.szmz.fragment;
 
 import android.view.View;
 
+import com.szmz.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.utils.UIUtil;
@@ -32,13 +33,13 @@ public class FragmentHome extends BaseFragment {
         switch (v.getId()) {
 
             case R.id.ll_dbywtz:
-                UIUtil.doToast("aa");
+                trans(ActMsgList.class,"待办业务","");
                 break;
             case R.id.ll_spyj:
-                UIUtil.doToast("bb");
+                trans(ActMsgList.class,"审批意见","");
                 break;
             case R.id.ll_fcsx:
-                UIUtil.doToast("cc");
+                trans(ActMsgList.class,"复查事项","");
                 break;
         }
     }

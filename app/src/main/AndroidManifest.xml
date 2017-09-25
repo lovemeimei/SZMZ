@@ -22,11 +22,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ActLogin">
+        <activity
+            android:name=".ActLogin"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ActWelcome"
@@ -37,13 +42,7 @@
             android:name=".ActMain"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ActMainJZ"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -183,6 +182,8 @@
         <activity android:name=".user.job.ActYBBD_SPQY" />
         <activity android:name=".user.check.ActCheckList" />
         <activity android:name=".user.check.ActCheckDetail1" />
+        <activity android:name=".ActMsgDetail" />
+        <activity android:name=".ActMsgList"></activity>
     </application>
 
 </manifest>

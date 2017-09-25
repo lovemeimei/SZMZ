@@ -69,6 +69,13 @@ public abstract  class BaseFragment extends Fragment {
         startActivity(intent);
     }
 
+    public void trans(Class cls,String title,String content){
+        Intent intent =new Intent(getContext(),cls);
+        intent.putExtra("title",title);
+        intent.putExtra("content",content);
+        startActivity(intent);
+    }
+
     public String getStringByUI(View view) {
 
         if (view instanceof EditText) {

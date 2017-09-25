@@ -40,6 +40,9 @@ public abstract class ActBase extends AppCompatActivity {
     protected String TAG;
     protected MaterialDialog dialog;
 
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +87,14 @@ public abstract class ActBase extends AppCompatActivity {
         Intent intent =new Intent(context,cls);
         startActivity(intent);
     }
+
+    public void trans(Class cls,String title,String content){
+        Intent intent =new Intent(context,cls);
+        intent.putExtra("title",title);
+        intent.putExtra("content",content);
+        startActivity(intent);
+    }
+
 
     @Override
     protected void onResume() {

@@ -36,7 +36,11 @@ public class ApiUtil<T extends BaseResponse> {
             @Override
             protected void doSuccess(T result) {
                 super.doSuccess(result);
-                listener.doSuccess(result);
+
+
+                listener.doSuccess(result.result);
+
+
             }
 
             @Override

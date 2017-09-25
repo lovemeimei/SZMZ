@@ -1,6 +1,8 @@
 package com.szmz.net;
 
+import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.phoneLoginRequest;
+import com.szmz.entity.response.CommResponse;
 import com.szmz.entity.response.phoneLoginR;
 
 import retrofit2.Call;
@@ -15,11 +17,10 @@ import retrofit2.http.POST;
  */
 public interface ApiService {
 
-
+    //登录
     @POST("phoneLoginController.do?phoneLogin")
     Call<phoneLoginR>  login(@Body phoneLoginRequest request);
-
-
-    @POST("phoneLoginController.do?phoneLogin")@FormUrlEncoded
-    Call<phoneLoginR>  login2(@Field("LoginName") String name,@Field("PassWord") String pw,@Field("Md5Key") String Md5Key);
+    //修改密码
+    @POST("phoneLoginController.do?modifyPassword")
+    Call<CommResponse> modifyPW(@Body ModifyPW request);
 }

@@ -27,7 +27,7 @@
         android:gravity="center"
         android:text="首页"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_normal" />
+        android:textSize="@dimen/font_big" />
 
     <TextView
         android:id="@+id/tv_title_right"

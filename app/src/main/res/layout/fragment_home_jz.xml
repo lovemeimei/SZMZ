@@ -33,7 +33,7 @@
                 android:layout_toRightOf="@+id/iv_dbywtz"
                 android:text="代办业务通知"
                 android:textColor="@color/black_light"
-                android:textSize="@dimen/font_normal" />
+                android:textSize="@dimen/font_big" />
 
             <TextView
                 android:id="@+id/tv_dbywtz_detail"
@@ -43,7 +43,7 @@
                 android:layout_alignLeft="@+id/tv_dbywtz"
                 android:layout_below="@+id/tv_dbywtz"
                 android:gravity="bottom"
-                android:text="aaaaaa"
+                android:text="点击查看代办业务通知"
                 android:textSize="@dimen/font_small" />
 
             <ImageView
@@ -82,7 +82,7 @@
                 android:layout_toRightOf="@+id/iv_spyj"
                 android:text="审批意见"
                 android:textColor="@color/black_light"
-                android:textSize="@dimen/font_normal" />
+                android:textSize="@dimen/font_big" />
 
             <TextView
                 android:id="@+id/tv_spyj_detail"
@@ -92,7 +92,7 @@
                 android:layout_alignLeft="@+id/tv_spyj"
                 android:layout_below="@+id/tv_spyj"
                 android:gravity="bottom"
-                android:text="aaaaaa"
+                android:text="点击查看审批意见"
                 android:textSize="@dimen/font_small" />
 
             <ImageView
@@ -131,7 +131,7 @@
                 android:layout_toRightOf="@+id/iv_fcsx"
                 android:text="复查事项"
                 android:textColor="@color/black_light"
-                android:textSize="@dimen/font_normal" />
+                android:textSize="@dimen/font_big" />
 
             <TextView
                 android:id="@+id/tv_fcsx_detail"
@@ -141,7 +141,7 @@
                 android:layout_alignLeft="@+id/tv_fcsx"
                 android:layout_below="@+id/tv_fcsx"
                 android:gravity="bottom"
-                android:text="aaaaaa"
+                android:text="点击查看复查事项"
                 android:textSize="@dimen/font_small" />
 
             <ImageView

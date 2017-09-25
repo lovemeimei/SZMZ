@@ -8,7 +8,7 @@ import com.szmz.utils.UIUtil;
  * @author qieyixuan
  * @created at 2016年05月12
  */
-public class SimpleApiListener<T extends BaseResponse> implements ApiListener<T>{
+public class SimpleApiListener<T> implements ApiListener<T>{
 
     @Override
     public void doSuccess(T result) {
