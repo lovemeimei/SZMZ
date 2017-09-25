@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical" android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:background="@drawable/shape_bg_color"
+        android:layout_width="match_parent"
+        android:drawableRight="@drawable/arrow_right"
+        android:drawableLeft="@drawable/icon_listitem_left"
+        android:text="2017年1月享受国家低保政策"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black_light"
+        android:drawablePadding="@dimen/spacing_small"
+        android:padding="@dimen/spacing_normal"
+        android:layout_height="wrap_content" />
+</LinearLayout>

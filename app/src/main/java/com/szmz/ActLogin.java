@@ -11,6 +11,7 @@ import android.widget.EditText;
 import com.szmz.entity.User;
 import com.szmz.entity.request.phoneLoginRequest;
 import com.szmz.entity.response.phoneLoginR;
+import com.szmz.more.ActFindPW;
 import com.szmz.net.ApiService;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
@@ -50,15 +51,26 @@ public class ActLogin extends ActBase {
         super.initUI();
     }
 
-    @OnClick(R.id.btn_submit)
+    @OnClick({R.id.btn_submit,R.id.tv_zc,R.id.tv_wjmm})
     public void doSubmit(View v){
 
+        switch (v.getId()){
+            case R.id.tv_zc:
+                trans(ActRegist.class);
+                break;
+            case R.id.tv_wjmm:
+                trans(ActFindPW.class);
+                break;
+            case R.id.btn_submit:
+                if (!doCheck()){
+                    return;
+                }
 
-        if (!doCheck()){
-            return;
+                trans(ActMain.class);
+                break;
         }
 
-        trans(ActMain.class);
+
 
 
 //        final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(),etPW.getText().toString().trim());

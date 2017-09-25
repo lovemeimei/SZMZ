@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="45dp"
+    android:layout_height="55dp"
     android:background="@color/colorPrimary">
 
     <ImageView
@@ -36,9 +36,9 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/spacing_normal"
-        android:text="编辑"
+        android:text="+"
+        android:visibility="gone"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_normal"
-        android:textStyle="bold"
-        android:visibility="gone" />
+        android:textSize="@dimen/font_big"
+        android:textStyle="bold" />
 </RelativeLayout>

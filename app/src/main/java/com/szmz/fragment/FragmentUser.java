@@ -2,6 +2,7 @@ package com.szmz.fragment;
 
 import android.view.View;
 
+import com.szmz.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.more.ActModifyPW;
@@ -41,7 +42,7 @@ public class FragmentUser extends BaseFragment {
                 trans(ActModifyPW.class);
                 break;
             case R.id.ll_user_msg:
-
+                trans(ActMsgList.class,"我的消息","");
                 break;
             case R.id.ll_user_ywjd:
                 trans(ActCheckList.class);

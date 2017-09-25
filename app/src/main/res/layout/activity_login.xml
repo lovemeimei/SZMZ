@@ -106,7 +106,7 @@
                 android:paddingTop="2dp"
                 android:paddingRight="10dp"
                 android:text="忘记密码？"
-                android:textSize="@dimen/font_tiny"/>
+                android:textSize="@dimen/font_small"/>
             <View
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
                 android:paddingLeft="10dp"
                 android:gravity="right"
                 android:text="立即注册"
-                android:textSize="@dimen/font_tiny"/>
+                android:textSize="@dimen/font_small"/>
         </LinearLayout>
     </LinearLayout>
 

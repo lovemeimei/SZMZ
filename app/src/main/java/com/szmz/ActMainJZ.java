@@ -1,9 +1,11 @@
 package com.szmz;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +15,13 @@ import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
+import com.barcode.decoding.Intents;
 import com.szmz.fragment.FragmentHome;
 import com.szmz.fragment.FragmentJob;
 import com.szmz.fragment.FragmentSearch;
 import com.szmz.fragment.FragmentStatistical;
 import com.szmz.fragment.FragmentUser;
+import com.szmz.utils.UIUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +58,9 @@ public class ActMainJZ extends ActBase {
         super.initUI();
         mFragmentList = new ArrayList<>();
         setTitle(mTitles[0]);
+
+        tvTitleRight.setVisibility(View.VISIBLE);
+        tvTitleRight.setTextSize(30);
 
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
         tabhost.getTabWidget().setDividerDrawable(null);
@@ -94,11 +101,28 @@ public class ActMainJZ extends ActBase {
             public void onPageSelected(int position) {
                 setTitle(mTitles[position]);
                 tabhost.setCurrentTab(position);
+                if (position==0){
+
+                    tvTitleRight.setVisibility(View.VISIBLE);
+//                    tvTitleRight.setTextSize(getResources().getDimension(R.dimen.font_larger));
+                }else {
+                    tvTitleRight.setVisibility(View.GONE
+                    );
+
+
+                }
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+
+        tvTitleRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                scan();
             }
         });
     }
@@ -118,13 +142,28 @@ public class ActMainJZ extends ActBase {
     }
 
 
-//    private static final int REQUEST_CAPTURE = 1024;
-//    try{
-//        Intent intent = new Intent(Intents.Scan.ACTION);
-//        intent.putExtra(Intents.Scan.MODE, "QR_CODE_MODE");
-//        intent.putExtra(Intents.Scan.CHARACTER_SET, "GB2312");
-//        MainActivity.this.startActivityForResult(intent, REQUEST_CAPTURE);
-//    }catch (Exception e){
-//        Toast.makeText(MainActivity.this,"打开摄像头失败",Toast.LENGTH_SHORT).show();
-//    }
+
+
+    private void scan(){
+        try{
+            Intent intent = new Intent(Intents.Scan.ACTION);
+            intent.putExtra(Intents.Scan.MODE, "QR_CODE_MODE");
+            intent.putExtra(Intents.Scan.CHARACTER_SET, "GB2312");
+            this.startActivityForResult(intent, REQUEST_CAPTURE);
+        }catch (Exception e){
+            e.printStackTrace();
+            UIUtil.doToast("打开摄像头失败");
+        }
+    }
+
+    private static final int REQUEST_CAPTURE = 1024;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode==REQUEST_CAPTURE){
+            if (resultCode ==RESULT_OK){
+
+            }
+        }
+    }
 }

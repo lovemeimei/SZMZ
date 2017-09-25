@@ -34,8 +34,9 @@ public class ActMsgList extends ActListBase {
         super.initUI();
         title= getIntent().getStringExtra("title");
         setTitle(title);
+        setLeftVisible(true);
 
-        adapter = new BaseListAdapter<String, ActMsgList.MViewHolder>(this,R.layout.list_item_job_yb) {
+        adapter = new BaseListAdapter<String, ActMsgList.MViewHolder>(this,R.layout.comm_list_item) {
             @Override
             protected void refreshView(int postion, String item, ActMsgList.MViewHolder holer) {
 

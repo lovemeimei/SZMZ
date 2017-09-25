@@ -22,6 +22,8 @@ public class ActYBBDList extends ActBase {
     @Override
     protected void initUI() {
         super.initUI();
+        setLeftVisible(true);
+        setTitle("已办任务");
     }
     @OnClick({
             R.id.tv_dbbd_jbxx,R.id.tv_dbbd_fymx,R.id.tv_dbbd_jzzl,R.id.tv_dbbd_spqy,R.id.tv_dbbd_yljz,R.id.tv_dbbd_zhxx

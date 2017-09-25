@@ -36,12 +36,15 @@ public class ActRegist extends ActBase{
         super.initUI();
     }
 
-    @OnClick({R.id.btn_submit,R.id.btn_getCode})
+    @OnClick({R.id.btn_submit,R.id.btn_getCode,R.id.iv_back2})
     public void onSubmit(View view){
         switch (view.getId()){
             case R.id.btn_getCode:
                 break;
             case R.id.btn_submit:
+                break;
+            case R.id.iv_back2:
+                myAnimFinish();
                 break;
         }
     }
