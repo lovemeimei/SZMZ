@@ -11,9 +11,7 @@ import com.bm.library.PhotoView;
 import com.szmz.R;
 import com.szmz.SystemConst;
 import com.szmz.entity.MyNewPhoto;
-import com.szmz.utils.ImageUtil;
 
-import org.xutils.image.ImageOptions;
 import org.xutils.x;
 
 import java.util.ArrayList;
@@ -137,9 +135,10 @@ public class ImageGridAdapter extends BaseAdapter {
             if (isShowDelete) {
                 iv3.setVisibility(View.VISIBLE);
             }
-            x.image().bind(iv, imgPath.getFileUrl(), new ImageOptions.Builder()
-                    .setSize(ImageUtil.dip2px(context, 250), ImageUtil.dip2px(context, 250))
-                    .build());
+//            x.image().bind(iv, imgPath.getFileUrl(), new ImageOptions.Builder()
+//                    .setSize(ImageUtil.dip2px(context, 250), ImageUtil.dip2px(context, 250))
+//                    .build());
+            x.image().bind(iv, imgPath.getFileUrl());
         } else {
             iv.setImageResource(R.drawable.icon_add_image);
             iv3.setVisibility(View.GONE);

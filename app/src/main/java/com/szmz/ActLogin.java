@@ -1,29 +1,21 @@
 package com.szmz;
 
+import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
-import com.szmz.entity.User;
-import com.szmz.entity.request.phoneLoginRequest;
-import com.szmz.entity.response.phoneLoginR;
 import com.szmz.more.ActFindPW;
-import com.szmz.net.ApiService;
-import com.szmz.net.ApiUtil;
-import com.szmz.net.SimpleApiListener;
-import com.szmz.utils.UIUtil;
 
-import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import retrofit2.Call;
+
+import static com.szmz.utils.UIUtil.doToast;
 
 /**
  * 登录
@@ -51,10 +43,10 @@ public class ActLogin extends ActBase {
         super.initUI();
     }
 
-    @OnClick({R.id.btn_submit,R.id.tv_zc,R.id.tv_wjmm})
-    public void doSubmit(View v){
+    @OnClick({R.id.btn_submit, R.id.tv_zc, R.id.tv_wjmm})
+    public void doSubmit(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv_zc:
                 trans(ActRegist.class);
                 break;
@@ -62,15 +54,13 @@ public class ActLogin extends ActBase {
                 trans(ActFindPW.class);
                 break;
             case R.id.btn_submit:
-                if (!doCheck()){
+                if (!doCheck()) {
                     return;
                 }
 
                 trans(ActMain.class);
                 break;
         }
-
-
 
 
 //        final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(),etPW.getText().toString().trim());
@@ -98,15 +88,38 @@ public class ActLogin extends ActBase {
 //        apiUtil.excute();
     }
 
-    private boolean doCheck(){
-        if (TextUtils.isEmpty(etUser.getText().toString())){
-            UIUtil.doToast("请输入用户名");
+    private boolean doCheck() {
+        if (TextUtils.isEmpty(etUser.getText().toString())) {
+            doToast("请输入用户名");
             return false;
         }
-        if (TextUtils.isEmpty(etPW.getText().toString())){
-            UIUtil.doToast("请输入密码");
+        if (TextUtils.isEmpty(etPW.getText().toString())) {
+            doToast("请输入密码");
             return false;
         }
         return true;
+    }
+
+    private boolean exitFlag = false;
+
+    @Override
+    public void onBackPressed() {
+        if (!exitFlag) {
+            doToast("再按一次,退出系统");
+            exitFlag = true;
+            final Timer mTimer = new Timer();
+            TimerTask mTimerTask = new TimerTask() {
+                @Override
+                public void run() {
+                    exitFlag = false;
+                    mTimer.cancel();
+                }
+            };
+            mTimer.schedule(mTimerTask, 3000, 10000);
+        } else {
+            App.exit();
+        }
+
+
     }
 }

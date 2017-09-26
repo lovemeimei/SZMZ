@@ -45,6 +45,9 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblPerson> {
     public void initUI() {
         super.initUI();
         setLeftVisible(true);
+        setRightVisible(true);
+        setRightShow("保存");
+        type = getIntent().getIntExtra("Type", 0);
         switch (type) {
             case 0:
                 setTitle("电子档案");
@@ -64,9 +67,12 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblPerson> {
             case 5:
                 setTitle("审批公示");
                 break;
+            case 10:
+                setTitle("救助对象信息");
+                break;
         }
 
-        type = getIntent().getIntExtra("Type", 0);
+
         map = new HashMap<>();
         initOptionPicker();
         dsLayout.setOnClickListener(new View.OnClickListener() {
@@ -152,6 +158,11 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblPerson> {
                 break;
             case 5:
                 intent = new Intent(this, ActSpgs.class);
+                intent.putExtra("YwblPerson", item);
+                startActivity(intent);
+                break;
+            case 10:
+                intent = new Intent(this, ActYwbl_dzda_main.class);
                 intent.putExtra("YwblPerson", item);
                 startActivity(intent);
                 break;

@@ -28,6 +28,8 @@ import java.util.List;
 
 import butterknife.BindView;
 
+import static com.szmz.utils.UIUtil.doToast;
+
 /**
  * 调查核实页面
  */
@@ -70,6 +72,16 @@ public class ActDchs extends ActLocationBase {
         super.initUI();
         setLeftVisible(true);
         setTitle("调查核实");
+        setRightShow("保存");
+        setRightVisible(true);
+        tvTitleRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doToast("保存成功");
+                finish();
+
+            }
+        });
         in.setDuration(300);
         out.setDuration(300);
         out.setAnimationListener(new Animation.AnimationListener() {

@@ -3,8 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/comm_title"
-        android:visibility="gone"/>
+    <include
+        layout="@layout/comm_title"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,14 +14,15 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/login_topbg"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/login_topbg" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/login_ftbg"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/login_ftbg" />
 
     </RelativeLayout>
 
@@ -34,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="80dp"
-            android:src="@drawable/login_logo"/>
+            android:src="@drawable/login_logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,54 +44,60 @@
             android:layout_marginLeft="@dimen/spacing_large"
             android:layout_marginRight="@dimen/spacing_large"
             android:layout_marginTop="@dimen/spacing_huge"
-            android:padding="@dimen/spacing_small"
+            android:background="@drawable/shape_bg"
             android:gravity="center_vertical"
-            android:background="@drawable/shape_bg">
+            android:padding="@dimen/spacing_small">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/usericon"/>
+                android:src="@drawable/usericon" />
+
             <EditText
                 android:id="@+id/et_username"
                 android:layout_width="0dp"
-                android:layout_weight="1.0"
-                android:paddingLeft="@dimen/spacing_small"
                 android:layout_height="wrap_content"
-                android:background="@null"/>
+                android:layout_weight="1.0"
+                android:background="@null"
+                android:paddingLeft="@dimen/spacing_small" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/spacing_large"
             android:layout_marginRight="@dimen/spacing_large"
             android:layout_marginTop="@dimen/spacing_normal"
-            android:padding="@dimen/spacing_small"
+            android:background="@drawable/shape_bg"
             android:gravity="center_vertical"
-            android:background="@drawable/shape_bg">
+            android:padding="@dimen/spacing_small">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/pwdicon"/>
+                android:src="@drawable/pwdicon" />
+
             <EditText
                 android:id="@+id/et_pw"
                 android:layout_width="0dp"
-                android:layout_weight="1.0"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/spacing_small"
-                android:background="@null"/>
+                android:layout_weight="1.0"
+                android:background="@null"
+                android:inputType="textPassword"
+                android:paddingLeft="@dimen/spacing_small" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_login"
-            android:text="登 录"
             android:layout_marginLeft="@dimen/spacing_large"
             android:layout_marginRight="@dimen/spacing_large"
             android:layout_marginTop="@dimen/spacing_large"
-            android:textSize="@dimen/font_normal"
-            android:textColor="@color/white"/>
+            android:background="@drawable/btn_login"
+            android:text="登 录"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_normal" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -102,25 +110,27 @@
                 android:id="@+id/tv_wjmm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blue"
-                android:paddingTop="2dp"
                 android:paddingRight="10dp"
+                android:paddingTop="5dp"
                 android:text="忘记密码？"
-                android:textSize="@dimen/font_small"/>
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font_small" />
+
             <View
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.0"/>
+                android:layout_weight="1.0" />
+
             <TextView
                 android:id="@+id/tv_zc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/gray"
-                android:paddingTop="2dp"
-                android:paddingLeft="10dp"
                 android:gravity="right"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
                 android:text="立即注册"
-                android:textSize="@dimen/font_small"/>
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font_small" />
         </LinearLayout>
     </LinearLayout>
 

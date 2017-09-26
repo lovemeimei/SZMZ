@@ -1,10 +1,12 @@
 package com.szmz.fragment;
 
+import android.content.Intent;
 import android.view.View;
 
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.search.ActHistoryList;
+import com.szmz.ywbl.dzda.ActYwbl_dzda_person;
 
 import butterknife.OnClick;
 
@@ -33,6 +35,9 @@ public class FragmentSearch extends BaseFragment {
                 trans(ActHistoryList.class);
                 break;
             case R.id.ll_search_dx:
+                Intent intent = new Intent(getActivity(), ActYwbl_dzda_person.class);
+                intent.putExtra("Type", 10);
+                startActivity(intent);
 
                 break;
         }
