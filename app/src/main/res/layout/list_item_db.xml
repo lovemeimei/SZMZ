@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_bg_color"
+    android:gravity="center_vertical"
+    android:padding="@dimen/spacing_normal" >
 
+    <CheckBox
+        android:id="@+id/cb"
+        android:layout_marginRight="@dimen/spacing_small"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/iv_icon_db"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacing_small"
+        android:src="@drawable/icon_listitem_left"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_weight="1.0"
+        android:drawableRight="@drawable/arrow_right"
+        android:text="元如饭\t\t\t\t130624198906012033"
+        android:singleLine="true"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black_light"
+        android:drawablePadding="@dimen/spacing_small"
+        android:layout_height="wrap_content" />
 </LinearLayout>

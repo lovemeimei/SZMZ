@@ -19,5 +19,10 @@ public class ActDBTuihui extends ActBase {
     @Override
     protected void initUI() {
         super.initUI();
+        setRightVisible(true);
+
+        setLeftVisible(true);
+        setTitle("退回");
+        setRightShow("确定");
     }
 }

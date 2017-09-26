@@ -16,11 +16,14 @@ import retrofit2.http.POST;
  * @created at 2016年05月10
  */
 public interface ApiService {
-
+    /**************************救助系统*********************************/
     //登录
     @POST("phoneLoginController.do?phoneLogin")
     Call<phoneLoginR>  login(@Body phoneLoginRequest request);
     //修改密码
     @POST("phoneLoginController.do?modifyPassword")
     Call<CommResponse> modifyPW(@Body ModifyPW request);
+    /**************************医疗一站式*********************************/
+
+    /**************************核对系统*********************************/
 }

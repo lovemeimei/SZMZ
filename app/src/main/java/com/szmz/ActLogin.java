@@ -7,13 +7,20 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
+import com.szmz.entity.User;
+import com.szmz.entity.request.phoneLoginRequest;
+import com.szmz.entity.response.phoneLoginR;
 import com.szmz.more.ActFindPW;
+import com.szmz.net.ApiUtil;
+import com.szmz.net.SimpleApiListener;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.Call;
 
 import static com.szmz.utils.UIUtil.doToast;
 
@@ -59,33 +66,38 @@ public class ActLogin extends ActBase {
                 }
 
                 trans(ActMain.class);
+//                login();
                 break;
         }
 
 
-//        final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(),etPW.getText().toString().trim());
-//        Call<phoneLoginR> call = App.getApiProxy().login(request);
-//        ApiUtil<phoneLoginR> apiUtil = new ApiUtil<phoneLoginR>(context,call,new SimpleApiListener<List<phoneLoginR.ResultBean>>(){
-//            @Override
-//            public void doSuccess(List<phoneLoginR.ResultBean> result) {
-//                super.doSuccess(result);
+
+    }
+
+    private void  login(){
+        final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(),etPW.getText().toString().trim());
+        Call<phoneLoginR> call = App.getApiProxy().login(request);
+        ApiUtil<phoneLoginR> apiUtil = new ApiUtil<phoneLoginR>(context,call,new SimpleApiListener<List<phoneLoginR.ResultBean>>(){
+            @Override
+            public void doSuccess(List<phoneLoginR.ResultBean> result) {
+                super.doSuccess(result);
+
+//                if (result!=null && result.size()>0){
+//                    phoneLoginR.ResultBean bean = result.get(0);
 //
-//              if (result!=null && result.size()>0){
-//                  phoneLoginR.ResultBean bean = result.get(0);
-//
-//                  User user = new User();
-//                  user.setUserName(etUser.getText().toString().trim());
-//                  user.setPw(etPW.getText().toString().trim());
-//                  user.setId(bean.getSystemMsg().getSystemID());
-//                  //user.setRealName(bean.getPersonal().getRealName());
-//                  App.getInstance().login(user);
-//                  trans(ActMain.class);
-//              }
-//
-//
-//            }
-//        },true);
-//        apiUtil.excute();
+//                    User user = new User();
+//                    user.setUserName(etUser.getText().toString().trim());
+//                    user.setPw(etPW.getText().toString().trim());
+//                    user.setId(bean.getSystemMsg().getSystemID());
+//                    //user.setRealName(bean.getPersonal().getRealName());
+//                    App.getInstance().login(user);
+//                    trans(ActMain.class);
+//                }
+
+
+            }
+        },true);
+        apiUtil.excute();
     }
 
     private boolean doCheck() {

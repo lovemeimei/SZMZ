@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.szmz.user.job.ActDBButongguo">
+    android:orientation="vertical"
+    android:background="@color/backgrounColor">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/comm_title"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="结束流程（请输入不通过原因）"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/font_normal"
+        />
+
+    <EditText
+        android:id="@+id/et_bz"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        android:background="@drawable/shape2_bg_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="\t\t申请证明不全"
+        android:gravity="left"
+        android:lineSpacingExtra="@dimen/spacing_tiny"
+        android:lines="5"/>
+
+</LinearLayout>

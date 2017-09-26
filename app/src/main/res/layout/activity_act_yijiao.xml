@@ -1,9 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.szmz.user.job.ActDBYijiao">
+    android:orientation="vertical"
+    android:background="@color/backgrounColor">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/comm_title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_margin="@dimen/spacing_normal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_normal"
+            android:layout_weight="1"
+            android:textColor="@color/gray"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:text="机构"/>
+
+        <TextView
+            android:id="@+id/tv_yj_jg"
+            android:layout_width="0dp"
+            android:layout_weight="3.0"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/black_light"
+            android:drawableRight="@drawable/arrow_down"
+            android:text="攀枝花第二医院"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray2"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_margin="@dimen/spacing_normal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/gray"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:text="移交人"/>
+
+        <TextView
+            android:id="@+id/tv_yj_"
+            android:layout_width="0dp"
+            android:layout_weight="3.0"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/black_light"
+            android:drawableRight="@drawable/arrow_down"
+            android:text="肖文天"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="备注"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        android:textColor="@color/black_light"
+        android:textSize="@dimen/font_normal"
+        />
+
+    <EditText
+        android:id="@+id/et_bz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:background="@drawable/shape2_bg_color"
+        android:lineSpacingExtra="@dimen/spacing_tiny"
+        android:gravity="start"
+        android:lines="5" />
+
+</LinearLayout>
