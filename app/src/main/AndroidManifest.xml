@@ -225,7 +225,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity android:name=".more.ActFindPW" />
         <activity android:name=".search.ActSearchDetail" />
         <activity android:name=".ywbl.ActAddressList" />
@@ -239,10 +238,14 @@
         <activity android:name=".ahdxt.grcx.ActGrcx_DB" />
         <activity android:name=".ahdxt.grcx.ActGrcx_YB" />
         <activity android:name=".ahdxt.grcx.ActGrcx_ZZ" />
-        <activity android:name=".ahdxt.grcx.ActGrcx_TH"></activity>
+        <activity android:name=".ahdxt.grcx.ActGrcx_TH" />
         <activity android:name=".search.ActListSYJZE" />
-        <activity android:name=".search.ActListSYJZE_Detail"></activity>
-
+        <activity android:name=".search.ActListSYJZE_Detail" />
+        <activity android:name=".ahdxt.jg.ActJg_BGDYJG" />
+        <activity android:name=".ahdxt.tjfx.ActTjfx_HDDXZRS" />
+        <activity android:name=".ahdxt.xxtz.ActXxtz_HDDCL" />
+        <activity android:name=".ahdxt.zlgl.ActZlgl_List" />
+        <activity android:name=".ahdxt.zlgl.ActZlgl_Detial"></activity>
     </application>
 
 </manifest>
