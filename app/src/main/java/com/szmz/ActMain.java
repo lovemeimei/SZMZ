@@ -6,13 +6,12 @@ import android.widget.TextView;
 import com.dalong.library.listener.OnItemClickListener;
 import com.dalong.library.listener.OnItemSelectedListener;
 import com.dalong.library.view.LoopRotarySwitchView;
+import com.szmz.ahdxt.ActHdxtMain;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
-
-import static com.szmz.utils.UIUtil.doToast;
 
 public class ActMain extends ActBase {
 
@@ -57,7 +56,7 @@ public class ActMain extends ActBase {
                         doToast("开发中");
                         break;
                     case 2:
-                        doToast("开发中");
+                        trans(ActHdxtMain.class);
                         break;
                 }
             }

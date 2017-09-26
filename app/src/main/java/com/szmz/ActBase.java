@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.szmz.utils.UIUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +25,7 @@ import butterknife.ButterKnife;
 public abstract class ActBase extends AppCompatActivity {
 
     protected abstract int getLayoutId();
+
     Context context;
 
     @BindView(R.id.mTitle)
@@ -35,8 +37,6 @@ public abstract class ActBase extends AppCompatActivity {
 
     protected String TAG;
     protected MaterialDialog dialog;
-
-
 
 
     @Override
@@ -68,26 +68,28 @@ public abstract class ActBase extends AppCompatActivity {
         });
 
     }
-    protected void setDialogCancledable(boolean isCan){
-        if (dialog!=null){
+
+    protected void setDialogCancledable(boolean isCan) {
+        if (dialog != null) {
             dialog.setCancelable(isCan);
         }
     }
 
-    protected void setDialogContent(String content){
-        if (dialog!=null){
+    protected void setDialogContent(String content) {
+        if (dialog != null) {
             dialog.setContent(content);
         }
     }
-    public void trans(Class cls){
-        Intent intent =new Intent(context,cls);
+
+    public void trans(Class cls) {
+        Intent intent = new Intent(context, cls);
         startActivity(intent);
     }
 
-    public void trans(Class cls,String title,String content){
-        Intent intent =new Intent(context,cls);
-        intent.putExtra("title",title);
-        intent.putExtra("content",content);
+    public void trans(Class cls, String title, String content) {
+        Intent intent = new Intent(context, cls);
+        intent.putExtra("title", title);
+        intent.putExtra("content", content);
         startActivity(intent);
     }
 
@@ -100,13 +102,13 @@ public abstract class ActBase extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-       App.removeActivity(this);
+        App.removeActivity(this);
     }
 
     protected void setLeftVisible(boolean isShow) {
-        if (isShow){
+        if (isShow) {
             ivBack.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             ivBack.setVisibility(View.GONE);
         }
     }
@@ -155,5 +157,9 @@ public abstract class ActBase extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    public void doToast(String str) {
+        UIUtil.doToast(str);
     }
 }
