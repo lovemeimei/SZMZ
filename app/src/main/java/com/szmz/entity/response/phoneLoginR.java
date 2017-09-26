@@ -18,14 +18,15 @@ public class phoneLoginR extends BaseResponse<phoneLoginR.ResultBean>{
          * personal : {"orgCode":null,"realName":"管理员","mobilePhone":null,"emaile":null,"departName":null,"officePhone":null}
          */
 
-        private SystemMsgBean systemMsg;
+        private List<SystemMsgBean> systemMsg;
         private PersonalBean personal;
 
-        public SystemMsgBean getSystemMsg() {
+        public List<SystemMsgBean>  getSystemMsg() {
             return systemMsg;
         }
 
-        public void setSystemMsg(SystemMsgBean systemMsg) {
+        public void setSystemMsg(List<SystemMsgBean>
+                                         systemMsg) {
             this.systemMsg = systemMsg;
         }
 

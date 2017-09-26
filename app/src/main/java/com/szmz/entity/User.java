@@ -15,14 +15,32 @@ public class User implements IEntity {
     private String sex;
     private String adderss;
     private String idCode;
-    private String id;
+    private String idJZ;
+    private String idYZS;
+    private String idHD;
 
-    public String getId() {
-        return id;
+    public String getIdJZ() {
+        return idJZ;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdJZ(String idJZ) {
+        this.idJZ = idJZ;
+    }
+
+    public String getIdYZS() {
+        return idYZS;
+    }
+
+    public void setIdYZS(String idYZS) {
+        this.idYZS = idYZS;
+    }
+
+    public String getIdHD() {
+        return idHD;
+    }
+
+    public void setIdHD(String idHD) {
+        this.idHD = idHD;
     }
 
     public String getSex() {

@@ -61,9 +61,9 @@ public class ActLogin extends ActBase {
                 trans(ActFindPW.class);
                 break;
             case R.id.btn_submit:
-                if (!doCheck()) {
-                    return;
-                }
+//                if (!doCheck()) {
+//                    return;
+//                }
 
                 trans(ActMain.class);
 //                login();
@@ -82,17 +82,17 @@ public class ActLogin extends ActBase {
             public void doSuccess(List<phoneLoginR.ResultBean> result) {
                 super.doSuccess(result);
 
-//                if (result!=null && result.size()>0){
-//                    phoneLoginR.ResultBean bean = result.get(0);
-//
-//                    User user = new User();
-//                    user.setUserName(etUser.getText().toString().trim());
-//                    user.setPw(etPW.getText().toString().trim());
+                if (result!=null && result.size()>0){
+                    phoneLoginR.ResultBean bean = result.get(0);
+
+                    User user = new User();
+                    user.setUserName(etUser.getText().toString().trim());
+                    user.setPw(etPW.getText().toString().trim());
 //                    user.setId(bean.getSystemMsg().getSystemID());
-//                    //user.setRealName(bean.getPersonal().getRealName());
-//                    App.getInstance().login(user);
-//                    trans(ActMain.class);
-//                }
+                    //user.setRealName(bean.getPersonal().getRealName());
+                    App.getInstance().login(user);
+                    trans(ActMain.class);
+                }
 
 
             }

@@ -51,7 +51,7 @@ public class ActMain extends ActBase {
             public void onItemClick(int item, View view) {
                 switch (item) {
                     case 0:
-                        trans(ActMainJZ.class);
+                        trans(ActMainJZ2.class);
                         break;
                     case 1:
                         doToast("开发中");
