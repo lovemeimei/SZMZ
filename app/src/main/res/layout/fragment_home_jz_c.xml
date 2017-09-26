@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgrounColor"
+            android:scrollbars="none"
+    android:background="@color/backgrounColor">
+    
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
-
 
     <RelativeLayout
         android:id="@+id/ll_SPJD"
@@ -29,7 +33,7 @@
             android:layout_toRightOf="@+id/iv_spjd"
             android:text="审批进度"
             android:textColor="@color/black_light"
-            android:textSize="@dimen/font_normal" />
+            android:textSize="@dimen/font_big" />
 
         <TextView
             android:id="@+id/tv_spjd_detail"
@@ -39,7 +43,7 @@
             android:layout_alignLeft="@+id/tv_spjd"
             android:layout_below="@+id/tv_spjd"
             android:gravity="bottom"
-            android:text="aaaaaa"
+            android:text="点击查看审批进度"
             android:textSize="@dimen/font_small" />
 
         <ImageView
@@ -78,7 +82,7 @@
             android:layout_toRightOf="@+id/iv_zjff"
             android:text="资金发放"
             android:textColor="@color/black_light"
-            android:textSize="@dimen/font_normal" />
+            android:textSize="@dimen/font_big" />
 
         <TextView
             android:id="@+id/tv_zjff_detail"
@@ -88,7 +92,7 @@
             android:layout_alignLeft="@+id/tv_zjff"
             android:layout_below="@+id/tv_zjff"
             android:gravity="bottom"
-            android:text="aaaaaa"
+            android:text="点击资金发放消息"
             android:textSize="@dimen/font_small" />
 
         <ImageView
@@ -127,7 +131,7 @@
             android:layout_toRightOf="@+id/iv_fctz"
             android:text="复查通知"
             android:textColor="@color/black_light"
-            android:textSize="@dimen/font_normal" />
+            android:textSize="@dimen/font_big" />
 
         <TextView
             android:id="@+id/tv_fctz_detail"
@@ -137,7 +141,7 @@
             android:layout_alignLeft="@+id/tv_fctz"
             android:layout_below="@+id/tv_fctz"
             android:gravity="bottom"
-            android:text="aaaaaa"
+            android:text="点击查看复查通知消息"
             android:textSize="@dimen/font_small" />
 
         <ImageView
@@ -176,7 +180,7 @@
             android:layout_toRightOf="@+id/iv_hdjg"
             android:text="核对结果"
             android:textColor="@color/black_light"
-            android:textSize="@dimen/font_normal" />
+            android:textSize="@dimen/font_big" />
 
         <TextView
             android:id="@+id/tv_hdjg_detail"
@@ -186,7 +190,7 @@
             android:layout_alignLeft="@+id/tv_hdjg"
             android:layout_below="@+id/tv_hdjg"
             android:gravity="bottom"
-            android:text="aaaaaa"
+            android:text="点击查看核对结果消息"
             android:textSize="@dimen/font_small" />
 
         <ImageView
@@ -225,7 +229,7 @@
             android:layout_toRightOf="@+id/iv_spjg"
             android:text="审批结果"
             android:textColor="@color/black_light"
-            android:textSize="@dimen/font_normal" />
+            android:textSize="@dimen/font_big" />
 
         <TextView
             android:id="@+id/tv_spjg_detail"
@@ -235,7 +239,7 @@
             android:layout_alignLeft="@+id/tv_spjg"
             android:layout_below="@+id/tv_spjg"
             android:gravity="bottom"
-            android:text="aaaaaa"
+            android:text="点击查看审批结果消息"
             android:textSize="@dimen/font_small" />
 
         <ImageView
@@ -274,7 +278,7 @@
             android:layout_toRightOf="@+id/iv_yhzc"
             android:text="优惠政策"
             android:textColor="@color/black_light"
-            android:textSize="@dimen/font_normal" />
+            android:textSize="@dimen/font_big" />
 
         <TextView
             android:id="@+id/tv_yhzc_detail"
@@ -284,7 +288,7 @@
             android:layout_alignLeft="@+id/tv_yhzc"
             android:layout_below="@+id/tv_yhzc"
             android:gravity="bottom"
-            android:text="aaaaaa"
+            android:text="点击查看优惠政策消息"
             android:textSize="@dimen/font_small" />
 
         <ImageView
@@ -300,3 +304,4 @@
         android:layout_height="0.5dp"
         android:background="@color/gray" />
 </LinearLayout>
+</ScrollView>

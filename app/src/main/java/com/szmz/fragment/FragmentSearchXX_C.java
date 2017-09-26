@@ -6,6 +6,7 @@ import android.view.View;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.search.ActHistoryList;
+import com.szmz.search.ActListSYJZE;
 import com.szmz.ywbl.dzda.ActYwbl_dzda_person;
 
 import butterknife.OnClick;
@@ -39,10 +40,15 @@ public class FragmentSearchXX_C extends BaseFragment {
             case R.id.ll_search_dx:
                 //救助余额
 
-
+                Intent intent = new Intent(getContext(),ActListSYJZE.class);
+                intent.putExtra("type","1");
+                startActivity(intent);
                 break;
             case R.id.ll_search_zjffjl:
                 //资金放放记录
+                Intent intent2 = new Intent(getContext(),ActListSYJZE.class);
+                intent2.putExtra("type","2");
+                startActivity(intent2);
                 break;
         }
     }

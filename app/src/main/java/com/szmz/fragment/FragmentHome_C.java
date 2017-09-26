@@ -2,6 +2,7 @@ package com.szmz.fragment;
 
 import android.view.View;
 
+import com.szmz.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 
@@ -31,20 +32,30 @@ public class FragmentHome_C extends BaseFragment{
         switch (view.getId()){
             case R.id.ll_SPJD:
                 //审批进度
+                trans(ActMsgList.class,"审批进度","");
                 break;
             case R.id.ll_zjff:
                 //资金发放
+                trans(ActMsgList.class,"审批进度","");
                 break;
             case R.id.ll_fctz:
                 //复查通知
+                            trans(ActMsgList.class,"审批进度","");
+
                 break;
             case R.id.ll_hdjg:
                 //核对结果
+                trans(ActMsgList.class,"核对结果","");
+
                 break;
             case R.id.ll_spjg:
-                //审批i结果
+                //审批结果
+                trans(ActMsgList.class,"审批结果","");
+
                 break;
             case R.id.ll_yhzc:
+                trans(ActMsgList.class,"优惠政策","");
+
                 //优惠政策
                 break;
         }
