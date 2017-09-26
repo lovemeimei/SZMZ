@@ -6,9 +6,9 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.orhanobut.logger.Logger;
 import com.szmz.entity.User;
 import com.szmz.net.ApiService;
+import com.szmz.ywbl.LocationService;
 
 import org.xutils.DbManager;
 import org.xutils.x;
@@ -26,6 +26,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class App extends Application {
 
     private static App singleton = null;
+    public static LocationService locationService;
+
+    public static LocationService getLocationService() {
+        if (locationService == null) {
+            synchronized (LocationService.class) {
+                if (locationService == null) {
+                    locationService = new LocationService(App.getInstance());
+
+                }
+            }
+
+        }
+        return locationService;
+    }
+
     /**
      * 作为系统资源被回收的标记
      */

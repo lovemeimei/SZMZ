@@ -4,14 +4,14 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ImageView
+
+    <com.bm.library.PhotoView
         android:id="@+id/img_item"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:scaleType="centerCrop" />
-
+        android:scaleType="fitXY" />
 
     <ImageView
         android:id="@+id/img_delete"

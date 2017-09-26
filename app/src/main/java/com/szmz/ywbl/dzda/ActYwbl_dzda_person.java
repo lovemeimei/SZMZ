@@ -45,7 +45,27 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblPerson> {
     public void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("电子档案");
+        switch (type) {
+            case 0:
+                setTitle("电子档案");
+                break;
+            case 1:
+                setTitle("调查核实");
+                break;
+            case 2:
+                setTitle("民主评议");
+                break;
+            case 3:
+                setTitle("审核公示");
+                break;
+            case 4:
+                setTitle("入户抽查");
+                break;
+            case 5:
+                setTitle("审批公示");
+                break;
+        }
+
         type = getIntent().getIntExtra("Type", 0);
         map = new HashMap<>();
         initOptionPicker();

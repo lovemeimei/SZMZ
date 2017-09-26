@@ -7,10 +7,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import com.bm.library.PhotoView;
 import com.szmz.R;
 import com.szmz.SystemConst;
 import com.szmz.entity.MyNewPhoto;
+import com.szmz.utils.ImageUtil;
+
+import org.xutils.image.ImageOptions;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,13 +95,13 @@ public class ImageGridAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup arg2) {
-        ImageView iv = null;
-        ImageView iv2 = null;
+        PhotoView iv = null;
         ImageView ivDelete = null;
         if (convertView == null) {
             convertView = inflater.inflate(layoutID, null);
 
-            iv = (ImageView) convertView.findViewById(R.id.img_item);
+            iv = (PhotoView) convertView.findViewById(R.id.img_item);
+            iv.disenable();
             ivDelete = (ImageView) convertView.findViewById(R.id.img_delete);
             ViewGroup.LayoutParams params = iv.getLayoutParams();
             params.height = params.width;
@@ -106,21 +110,21 @@ public class ImageGridAdapter extends BaseAdapter {
 
         } else {
             convertView = (View) convertView.getTag();
-            iv = (ImageView) convertView.findViewById(R.id.img_item);
+            iv = (PhotoView) convertView.findViewById(R.id.img_item);
+            iv.disenable();
             ivDelete = (ImageView) convertView.findViewById(R.id.img_delete);
         }
 
-        refreshView(position, convertView, iv, iv2, ivDelete);
+        refreshView(position, convertView, iv, ivDelete);
 
         return convertView;
     }
 
 
     private void refreshView(final int position, final View view, ImageView iv,
-                             ImageView iv2, ImageView iv3) {
+                             ImageView iv3) {
         final MyNewPhoto imgPath = (MyNewPhoto) getItem(position);
 
-        iv.setTag(imgPath);
         iv3.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -130,24 +134,20 @@ public class ImageGridAdapter extends BaseAdapter {
         });
 
         if (!"TakePhoto".equals(imgPath.getFileUrl())) {
-            iv2.setVisibility(View.GONE);
             if (isShowDelete) {
-                if (imgPath.getFileUrl().contains("http")) {
-                    iv3.setVisibility(View.VISIBLE);
-                } else {
-                    iv3.setVisibility(View.GONE);
-                }
+                iv3.setVisibility(View.VISIBLE);
             }
-            Glide.with(context).load(imgPath.getFileUrl()).into(iv);
+            x.image().bind(iv, imgPath.getFileUrl(), new ImageOptions.Builder()
+                    .setSize(ImageUtil.dip2px(context, 250), ImageUtil.dip2px(context, 250))
+                    .build());
         } else {
             iv.setImageResource(R.drawable.icon_add_image);
-            iv2.setVisibility(View.VISIBLE);
             iv3.setVisibility(View.GONE);
 
         }
     }
 
-    interface OnDeleteListener {
+    public interface OnDeleteListener {
         void doDelete(int p);
     }
 }
