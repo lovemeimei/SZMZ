@@ -5,6 +5,7 @@ import android.widget.LinearLayout;
 
 import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.ahdxt.tjfx.ActTjfx_HDDXZRS;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -51,6 +52,9 @@ public class ActHdxt_TJFX extends ActBase {
                 break;
             case R.id.qyrctjLayout:
                 doToast("区域人次统计");
+                trans(
+                        ActTjfx_HDDXZRS.class
+                );
                 break;
             case R.id.gxdwhdrcLayout:
                 doToast("共享单位核对人次");

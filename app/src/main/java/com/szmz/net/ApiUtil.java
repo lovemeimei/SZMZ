@@ -38,7 +38,7 @@ public class ApiUtil<T extends BaseResponse> {
                 super.doSuccess(result);
 
 
-                listener.doSuccess(result.result);
+                listener.doSuccess(result);
 
 
             }

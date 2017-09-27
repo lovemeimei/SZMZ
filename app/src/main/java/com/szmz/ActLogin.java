@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.szmz.entity.User;
+import com.szmz.entity.request.HD_SearchDB;
 import com.szmz.entity.request.phoneLoginRequest;
+import com.szmz.entity.response.HD_SearchDB_RES;
 import com.szmz.entity.response.phoneLoginR;
 import com.szmz.more.ActFindPW;
 import com.szmz.net.ApiUtil;
@@ -60,6 +62,9 @@ public class ActLogin extends ActBase {
                 trans(ActFindPW.class);
                 break;
             case R.id.btn_submit:
+
+//                test();
+
 //                if (!doCheck()) {
 //                    return;
 //                }
@@ -79,16 +84,32 @@ public class ActLogin extends ActBase {
 
     }
 
+    private void test(){
+        HD_SearchDB reqbody = new HD_SearchDB("1");
+
+        Call<HD_SearchDB_RES> call = App.getApiProxy().test(reqbody);
+        ApiUtil<HD_SearchDB_RES> apiUtil = new ApiUtil<HD_SearchDB_RES>(context,call,new SimpleApiListener<HD_SearchDB_RES>(){
+            @Override
+            public void doSuccess(HD_SearchDB_RES result) {
+                super.doSuccess(result);
+            }
+        },true);
+        apiUtil.excute();
+
+    }
+
     private void login() {
         final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(), etPW.getText().toString().trim());
         Call<phoneLoginR> call = App.getApiProxy().login(request);
-        ApiUtil<phoneLoginR> apiUtil = new ApiUtil<phoneLoginR>(context, call, new SimpleApiListener<List<phoneLoginR.ResultBean>>() {
+        ApiUtil<phoneLoginR> apiUtil = new ApiUtil<phoneLoginR>(context, call, new SimpleApiListener<phoneLoginR>() {
             @Override
-            public void doSuccess(List<phoneLoginR.ResultBean> result) {
+            public void doSuccess(phoneLoginR result) {
                 super.doSuccess(result);
 
-                if (result != null && result.size() > 0) {
-                    phoneLoginR.ResultBean bean = result.get(0);
+                List<phoneLoginR.ResultBean> mResult = result.result;
+
+                if (mResult != null && mResult.size() > 0) {
+                    phoneLoginR.ResultBean bean = mResult.get(0);
 
                     User user = new User();
                     user.setUserName(etUser.getText().toString().trim());

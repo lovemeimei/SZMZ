@@ -1,10 +1,13 @@
 package com.szmz.net;
 
+import com.szmz.entity.request.HD_SearchDB;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.phoneLoginRequest;
 import com.szmz.entity.response.CommResponse;
+import com.szmz.entity.response.HD_SearchDB_RES;
 import com.szmz.entity.response.phoneLoginR;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -26,4 +29,6 @@ public interface ApiService {
     /**************************医疗一站式*********************************/
 
     /**************************核对系统*********************************/
+    @POST("appCheck/worker/todo.do?getBatchList")
+    Call<HD_SearchDB_RES> test(@Body HD_SearchDB body);
 }

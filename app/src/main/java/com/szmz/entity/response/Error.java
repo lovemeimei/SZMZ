@@ -6,20 +6,20 @@ package com.szmz.entity.response;
  */
 public class Error {
 
-	private Integer ErrorCode;
-	private String ErrorMessage;
+	private Integer errorCode;
+	private String errorMessage;
 	
 	public Integer getErrorCode() {
-		return ErrorCode;
+		return errorCode;
 	}
 	public void setErrorCode(Integer errorCode) {
-		this.ErrorCode = errorCode;
+		this.errorCode = errorCode;
 	}
 	public String getErrorMessage() {
-		return ErrorMessage;
+		return errorMessage;
 	}
 	public void setErrorMessage(String errorMessage) {
-		this.ErrorMessage = errorMessage;
+		this.errorMessage = errorMessage;
 	}
 }
 /**
