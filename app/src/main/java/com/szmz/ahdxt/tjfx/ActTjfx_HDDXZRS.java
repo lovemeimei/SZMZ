@@ -18,12 +18,15 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.SystemConst;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import butterknife.BindView;
 
@@ -38,7 +41,8 @@ public class ActTjfx_HDDXZRS extends ActBase implements OnChartValueSelectedList
     protected Typeface mTfRegular;
     protected Typeface mTfLight;
 
-    String[] xValues = {"石河子失","和田地区","伊利哈萨克自治州","昌吉回族自治州"};
+    String[] xValueType={"城市低保","农村低收入","农村低保"};
+    String[] xValues2 = {"石河子失","和田地区","伊利哈萨克自治州","昌吉回族自治州","aaa"};
     private List<String> xDates = new ArrayList<>();
 
 
@@ -52,6 +56,8 @@ public class ActTjfx_HDDXZRS extends ActBase implements OnChartValueSelectedList
         super.initUI();
         setLeftVisible(true);
         setTitle("核对对象总人次数");
+        initBarChart();
+        initChartData();
     }
 
     private void initBarChart(){
@@ -67,25 +73,27 @@ public class ActTjfx_HDDXZRS extends ActBase implements OnChartValueSelectedList
 
 
 
-        Legend l = mChart.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-        l.setOrientation(Legend.LegendOrientation.VERTICAL);
-        l.setDrawInside(true);
-        l.setTypeface(mTfLight);
-        l.setYOffset(0f);
-        l.setXOffset(10f);
-        l.setYEntrySpace(0f);
-        l.setTextSize(8f);
+//        Legend l = mChart.getLegend();
+//        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+//        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+//        l.setOrientation(Legend.LegendOrientation.VERTICAL);
+//        l.setDrawInside(true);
+//        l.setTypeface(mTfLight);
+//        l.setYOffset(0f);
+//        l.setXOffset(10f);
+//        l.setYEntrySpace(0f);
+//        l.setTextSize(8f);
 
         XAxis xAxis = mChart.getXAxis();
         xAxis.setTypeface(mTfLight);
         xAxis.setGranularity(1f);
         xAxis.setCenterAxisLabels(true);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                return String.valueOf((int) value);
+                System.out.print(""+value);
+                return String.valueOf((int)value);
             }
         });
 
@@ -101,50 +109,52 @@ public class ActTjfx_HDDXZRS extends ActBase implements OnChartValueSelectedList
 
 
     private void initChartData(){
-        float groupSpace = 0.08f;
-        float barSpace = 0.03f; // x4 DataSet
-        float barWidth = 0.2f; // x4 DataSet
-        // (0.2 + 0.03) * 4 + 0.08 = 1.00 -> interval per "group"
 
 
+        float barWidth = 0.4f; // x4 DataSet
 
 
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
         ArrayList<BarEntry> yVals2 = new ArrayList<BarEntry>();
         ArrayList<BarEntry> yVals3 = new ArrayList<BarEntry>();
-        ArrayList<BarEntry> yVals4 = new ArrayList<BarEntry>();
 
         float randomMultiplier =  100000f;
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 2; i++) {
             yVals1.add(new BarEntry(i, (float) (Math.random() * randomMultiplier)));
             yVals2.add(new BarEntry(i, (float) (Math.random() * randomMultiplier)));
             yVals3.add(new BarEntry(i, (float) (Math.random() * randomMultiplier)));
-            yVals4.add(new BarEntry(i, (float) (Math.random() * randomMultiplier)));
         }
 
-        BarDataSet set1, set2, set3, set4;
+        BarDataSet set1, set2, set3;
 
             // create 4 DataSets
-            set1 = new BarDataSet(yVals1, "Company A");
+            set1 = new BarDataSet(yVals1, xValueType[0]);
             set1.setColor(Color.rgb(104, 241, 175));
-            set2 = new BarDataSet(yVals2, "Company B");
+            set2 = new BarDataSet(yVals2, xValueType[1]);
             set2.setColor(Color.rgb(164, 228, 251));
-            set3 = new BarDataSet(yVals3, "Company C");
+            set3 = new BarDataSet(yVals3, xValueType[1]);
             set3.setColor(Color.rgb(242, 247, 158));
-            set4 = new BarDataSet(yVals4, "Company D");
-            set4.setColor(Color.rgb(255, 102, 0));
 
-            BarData data = new BarData(set1, set2, set3, set4);
+
+        ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
+        dataSets.add(set1);
+        dataSets.add(set2);
+        dataSets.add(set3);
+
+
+            BarData data = new BarData(dataSets);
+
+
             data.setValueFormatter(new LargeValueFormatter());
             data.setValueTypeface(mTfLight);
 
             mChart.setData(data);
 
 
-        // specify the width each bar should have
+        // s
+        // pecify the width each bar should have
         mChart.getBarData().setBarWidth(barWidth);
-
 
         mChart.invalidate();
     }
