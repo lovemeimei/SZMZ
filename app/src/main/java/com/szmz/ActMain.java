@@ -7,6 +7,7 @@ import com.dalong.library.listener.OnItemClickListener;
 import com.dalong.library.listener.OnItemSelectedListener;
 import com.dalong.library.view.LoopRotarySwitchView;
 import com.szmz.ahdxt.ActHdxtMain;
+import com.szmz.ahdxt.asqr.ActHdxtMainSQR;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -67,7 +68,7 @@ public class ActMain extends ActBase {
                         if (type == 1) {
                             trans(ActHdxtMain.class);
                         } else {
-                            trans(ActHdxtMain.class);
+                            trans(ActHdxtMainSQR.class);
                         }
 
                         break;

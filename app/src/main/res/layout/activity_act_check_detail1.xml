@@ -3,56 +3,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/backgrounColor"
     android:layout_height="match_parent"
+    android:background="@color/backgrounColor"
     android:orientation="vertical">
 
-    <include layout="@layout/comm_title"/>
+    <include layout="@layout/comm_title" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:padding="@dimen/spacing_normal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_normal">
+
         <ImageView
             android:id="@+id/iv_step"
             android:layout_width="match_parent"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:layout_marginLeft="@dimen/spacing_normal"
             android:layout_height="wrap_content"
-            android:src="@drawable/user_check_step1"
-            android:scaleType="centerInside"/>
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:scaleType="centerInside"
+            android:src="@drawable/user_check_step1" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="@dimen/spacing_tiny"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_tiny">
+
             <TextView
                 android:id="@+id/tv_jd1"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1.0"
-                android:textSize="@dimen/font_normal"
-                android:textColor="@color/red_light"
                 android:text="基本信息"
-                android:layout_height="wrap_content" />
+                android:textColor="@color/red_light"
+                android:textSize="@dimen/font_normal" />
+
             <TextView
                 android:id="@+id/tv_jd2"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1.0"
-                android:textSize="@dimen/font_normal"
-                android:textColor="@color/black_light"
                 android:gravity="center"
                 android:text="审核中"
-                android:layout_height="wrap_content" />
+                android:textColor="@color/black_light"
+                android:textSize="@dimen/font_normal" />
+
             <TextView
                 android:id="@+id/tv_jd3"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1.0"
-                android:textSize="@dimen/font_normal"
                 android:gravity="right"
-                android:textColor="@color/black_light"
                 android:text="审核完成"
-                android:layout_height="wrap_content" />
+                android:textColor="@color/black_light"
+                android:textSize="@dimen/font_normal" />
         </LinearLayout>
     </LinearLayout>
 
@@ -126,6 +131,7 @@
                 android:layout_height="0.5dp"
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:background="@color/gray2" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,6 +189,7 @@
                 android:layout_height="0.5dp"
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:background="@color/gray2" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -273,8 +280,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/spacing_normal">
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -285,9 +292,9 @@
 
                 <TextView
                     android:id="@+id/tv_check_jtnr"
-                    android:layout_marginTop="@dimen/spacing_normal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_normal"
                     android:text="\t\t本人44岁，攀枝花市人，因为疾病失业，不能自力更生，请问可以领取低保金吗？"
                     android:textColor="@color/black_light"
                     android:textSize="@dimen/font_normal" />

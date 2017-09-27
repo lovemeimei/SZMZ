@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/comm_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/xmView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="姓名" />
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/xbView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="性别" />
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/sfzhView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="身份证号" />
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/sqlbView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="申请类别" />
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/wtsjView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="委托时间" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

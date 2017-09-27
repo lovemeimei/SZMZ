@@ -16,4 +16,5 @@
         <item>@color/material_blue</item>
         <item>@color/material_yellow</item>
     </integer-array>
+    <string name="title_activity_act_grcx__jdck">ActGrcx_JDCK</string>
 </resources>
