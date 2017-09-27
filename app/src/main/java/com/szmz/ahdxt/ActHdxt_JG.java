@@ -7,6 +7,10 @@ import android.widget.LinearLayout;
 import com.szmz.ActBase;
 import com.szmz.R;
 import com.szmz.ahdxt.grcx.ActGrcx_DataList;
+import com.szmz.ahdxt.jg.ActJG_ListBGDY;
+import com.szmz.ahdxt.jg.ActJG_ListMGRY;
+import com.szmz.ahdxt.jg.ActJG_ListYCCZ;
+import com.szmz.ahdxt.jg.ActJG_Listywbl;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -41,16 +45,19 @@ public class ActHdxt_JG extends ActBase {
 
         switch (v.getId()) {
             case R.id.bgdyLayout:
-                doToast("报告打印监管");
+                trans(ActJG_ListBGDY.class);
                 break;
             case R.id.ywblLayout:
-                doToast("业务办理监管");
+//                doToast("业务办理监管");
+                trans(ActJG_Listywbl.class);
                 break;
             case R.id.yczcLayout:
-                doToast("异常操作监管");
+//                doToast("异常操作监管");
+                trans(ActJG_ListYCCZ.class);
                 break;
             case R.id.mgryLayout:
-                doToast("敏感人员监管");
+//                doToast("敏感人员监管");
+                trans(ActJG_ListMGRY.class);
                 break;
 
         }

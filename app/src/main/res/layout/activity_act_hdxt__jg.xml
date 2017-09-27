@@ -32,10 +32,11 @@
                 android:padding="15dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:duplicateParentState="true"
-                    android:src="@drawable/ywbl_dchs" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_jg_print" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -58,10 +59,11 @@
                 android:padding="15dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:duplicateParentState="true"
-                    android:src="@drawable/ywbl_dzda_jtcyxx" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_jg_ywdc" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -95,10 +97,11 @@
                 android:padding="15dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:duplicateParentState="true"
-                    android:src="@drawable/ywbl_dzda_jtccxx" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_jg_ycdc" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -121,10 +124,11 @@
                 android:padding="15dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:duplicateParentState="true"
-                    android:src="@drawable/ywbl_dzda_jtsrxx" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_jg_rydc" />
 
                 <TextView
                     android:layout_width="wrap_content"
