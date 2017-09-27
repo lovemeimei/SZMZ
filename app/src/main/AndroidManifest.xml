@@ -244,7 +244,13 @@
         <activity android:name=".ahdxt.jg.ActJg_BGDYJG" />
         <activity android:name=".ahdxt.tjfx.ActTjfx_HDDXZRS" />
         <activity android:name=".ahdxt.zlgl.ActZlgl_List" />
-        <activity android:name=".ahdxt.zlgl.ActZlgl_Detial"></activity>
+
+        <activity android:name=".ahdxt.zlgl.ActZlgl_Detial" />
+        <activity android:name=".ahdxt.xxtz.ActXxtz_List" />
+        <activity android:name=".ahdxt.xxtz.ActXxtz_Detail" />
+        <activity android:name=".ahdxt.ActHdxtMainSQR"></activity>
+
+
         <activity android:name=".ahdxt.jg.ActJG_ListBGDY" />
         <activity android:name=".ahdxt.jg.ActJG_Listywbl" />
         <activity android:name=".ahdxt.jg.ActJG_YWBL" />
@@ -252,6 +258,7 @@
         <activity android:name=".ahdxt.jg.ActJG_ListMGRY" />
         <activity android:name=".ahdxt.jg.ActJG_ListMGRY2" />
         <activity android:name=".ahdxt.jg.ActJG_YCCZ"></activity>
+        >>>>>>> .r32
     </application>
 
 </manifest>
