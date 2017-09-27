@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:duplicateParentState="true"
-                    android:src="@drawable/ywbl_dchs" />
+                    android:src="@drawable/icon_hddcl" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:duplicateParentState="true"
-                    android:src="@drawable/ywbl_dzda_jtcyxx" />
+                    android:src="@drawable/icon_fhdcl" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:duplicateParentState="true"
-                    android:src="@drawable/ywbl_dzda_jtccxx" />
+                    android:src="@drawable/icon_cstx" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -124,7 +124,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:duplicateParentState="true"
-                    android:src="@drawable/ywbl_dzda_jtsrxx" />
+                    android:src="@drawable/icon_mgmdshtx" />
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 
 import com.szmz.ActBase;
 import com.szmz.R;
-import com.szmz.ahdxt.grcx.ActGrcx_DataList;
+import com.szmz.ahdxt.zlgl.ActZlgl_List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -34,17 +34,20 @@ public class ActHdxt_ZLGL extends ActBase {
             R.id.hdzcLayout, R.id.bmzdLayout, R.id.hdywzlLayout
     })
     public void doClick(View v) {
-        Intent intent = new Intent(this, ActGrcx_DataList.class);
+        Intent intent = new Intent(this, ActZlgl_List.class);
 
         switch (v.getId()) {
             case R.id.hdzcLayout:
-                doToast("核对政策");
+                intent.putExtra("Type", 1);
+                startActivity(intent);
                 break;
             case R.id.bmzdLayout:
-                doToast("保密制度");
+                intent.putExtra("Type", 2);
+                startActivity(intent);
                 break;
             case R.id.hdywzlLayout:
-                doToast("核对业务资料");
+                intent.putExtra("Type", 3);
+                startActivity(intent);
                 break;
 
 

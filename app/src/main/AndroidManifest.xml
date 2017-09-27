@@ -243,9 +243,10 @@
         <activity android:name=".search.ActListSYJZE_Detail" />
         <activity android:name=".ahdxt.jg.ActJg_BGDYJG" />
         <activity android:name=".ahdxt.tjfx.ActTjfx_HDDXZRS" />
-        <activity android:name=".ahdxt.xxtz.ActXxtz_HDDCL" />
         <activity android:name=".ahdxt.zlgl.ActZlgl_List" />
-        <activity android:name=".ahdxt.zlgl.ActZlgl_Detial"></activity>
+        <activity android:name=".ahdxt.zlgl.ActZlgl_Detial" />
+        <activity android:name=".ahdxt.xxtz.ActXxtz_List" />
+        <activity android:name=".ahdxt.xxtz.ActXxtz_Detail"></activity>
     </application>
 
 </manifest>

@@ -22,9 +22,12 @@ public class ActMain extends ActBase {
     @BindView(R.id.tv_name)
     TextView tvName;
 
+    private int type = 0;
+
     @Override
     protected void initUI() {
         super.initUI();
+        type = getIntent().getIntExtra("Type", 0);
         loopRotarySwitchView
                 .setR(500)//设置R的大小
                 .setAutoRotation(false);
@@ -50,13 +53,23 @@ public class ActMain extends ActBase {
             public void onItemClick(int item, View view) {
                 switch (item) {
                     case 0:
-                        trans(ActMainJZ2.class);
+                        if (type == 1) {
+                            trans(ActMainJZ.class);
+                        } else {
+                            trans(ActMainJZ2.class);
+                        }
+
                         break;
                     case 1:
                         doToast("开发中");
                         break;
                     case 2:
-                        trans(ActHdxtMain.class);
+                        if (type == 1) {
+                            trans(ActHdxtMain.class);
+                        } else {
+                            trans(ActHdxtMain.class);
+                        }
+
                         break;
                 }
             }

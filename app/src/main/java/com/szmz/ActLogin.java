@@ -1,5 +1,6 @@
 package com.szmz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -21,8 +22,6 @@ import java.util.TimerTask;
 import butterknife.BindView;
 import butterknife.OnClick;
 import retrofit2.Call;
-
-import static com.szmz.utils.UIUtil.doToast;
 
 /**
  * 登录
@@ -64,25 +63,31 @@ public class ActLogin extends ActBase {
 //                if (!doCheck()) {
 //                    return;
 //                }
-
-                trans(ActMain.class);
+                if (etUser.getText().toString().equals("1")) {
+                    Intent intent = new Intent(this, ActMain.class);
+                    intent.putExtra("Type", 1);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(this, ActMain.class);
+                    intent.putExtra("Type", 0);
+                    startActivity(intent);
+                }
 //                login();
                 break;
         }
 
 
-
     }
 
-    private void  login(){
-        final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(),etPW.getText().toString().trim());
+    private void login() {
+        final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(), etPW.getText().toString().trim());
         Call<phoneLoginR> call = App.getApiProxy().login(request);
-        ApiUtil<phoneLoginR> apiUtil = new ApiUtil<phoneLoginR>(context,call,new SimpleApiListener<List<phoneLoginR.ResultBean>>(){
+        ApiUtil<phoneLoginR> apiUtil = new ApiUtil<phoneLoginR>(context, call, new SimpleApiListener<List<phoneLoginR.ResultBean>>() {
             @Override
             public void doSuccess(List<phoneLoginR.ResultBean> result) {
                 super.doSuccess(result);
 
-                if (result!=null && result.size()>0){
+                if (result != null && result.size() > 0) {
                     phoneLoginR.ResultBean bean = result.get(0);
 
                     User user = new User();
@@ -96,7 +101,7 @@ public class ActLogin extends ActBase {
 
 
             }
-        },true);
+        }, true);
         apiUtil.excute();
     }
 

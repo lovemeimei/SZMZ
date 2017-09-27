@@ -1,7 +1,8 @@
-package com.szmz.ahdxt.zlgl;
+package com.szmz.ahdxt.xxtz;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.szmz.R;
@@ -12,11 +13,7 @@ import com.szmz.ywbl.ActBaseList;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 资料管理数据列表
- */
-public class ActZlgl_List extends ActBaseList<HdxtZlglInfo> {
-
+public class ActXxtz_List extends ActBaseList<HdxtZlglInfo> {
 
     int type = 0;
 
@@ -27,13 +24,16 @@ public class ActZlgl_List extends ActBaseList<HdxtZlglInfo> {
         type = getIntent().getIntExtra("Type", 0);
         switch (type) {
             case 1:
-                setTitle("核对政策");
+                setTitle("核对待处理");
                 break;
             case 2:
-                setTitle("保密制度");
+                setTitle("复核待处理");
                 break;
             case 3:
-                setTitle("核对业务资料");
+                setTitle("超时提醒");
+                break;
+            case 4:
+                setTitle("敏感名单审核提醒");
                 break;
 
         }
@@ -41,28 +41,45 @@ public class ActZlgl_List extends ActBaseList<HdxtZlglInfo> {
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.activity_act_zlgl__list;
-    }
-
-    @Override
     protected void doListItemOnClick(HdxtZlglInfo item) {
-        super.doListItemOnClick(item);
-        Intent intent = new Intent(this, ActZlgl_Detial.class);
+        Intent intent = new Intent(this, ActXxtz_Detail.class);
         intent.putExtra("HdxtZlglInfo", item);
         startActivity(intent);
     }
 
     @Override
+    protected int getLayoutId() {
+        return R.layout.activity_act_xxtz_list;
+    }
+
+    @Override
     protected void doRefreshView(int p, HdxtZlglInfo item, View view) {
-        TextView nameTv = (TextView) view.findViewById(R.id.nameTv);
-//        nameTv.setText(item.getName());
+        TextView name = (TextView) view.findViewById(R.id.nameTv);
+        ImageView iv = (ImageView) view.findViewById(R.id.imageView);
+        TextView typeTv = (TextView) view.findViewById(R.id.typeTv);
+        ImageView dotIv = (ImageView) view.findViewById(R.id.dotIv);
+        name.setText(item.getName());
+        typeTv.setText(item.getType());
+        switch (type) {
+            case 1:
+                iv.setImageResource(R.drawable.icon_hddcl);
+                break;
+            case 2:
+                iv.setImageResource(R.drawable.icon_fhdcl);
+                break;
+            case 3:
+                iv.setImageResource(R.drawable.icon_cstx);
+                break;
+            case 4:
+                iv.setImageResource(R.drawable.icon_mgmdshtx);
+                break;
+        }
 
     }
 
     @Override
     protected int getListItemID() {
-        return R.layout.hdxt_zlgl_list_item;
+        return R.layout.hdxt_xxtz_list_item;
     }
 
     @Override

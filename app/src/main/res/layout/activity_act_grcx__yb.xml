@@ -1,9 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.szmz.ahdxt.grcx.ActGrcx_YB">
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/comm_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/pcmcView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="批次名称" />
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/ywlxView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="业务类型" />
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/wtsjView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="委托时间" />
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/cjsjView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="创建时间" />
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/ztsView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="总条数" />
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/blsjView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="办理时间" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

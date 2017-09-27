@@ -1,4 +1,4 @@
-package com.szmz.ahdxt.zlgl;
+package com.szmz.ahdxt.xxtz;
 
 import android.widget.TextView;
 
@@ -7,11 +7,7 @@ import com.szmz.R;
 
 import butterknife.BindView;
 
-/**
- * 资料管理数据详细
- */
-public class ActZlgl_Detial extends ActBase {
-
+public class ActXxtz_Detail extends ActBase {
 
     @BindView(R.id.tv_content)
     TextView tvContent;
@@ -25,8 +21,6 @@ public class ActZlgl_Detial extends ActBase {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_act_zlgl__detial;
+        return R.layout.activity_act_xxtz__detail;
     }
-
-
 }

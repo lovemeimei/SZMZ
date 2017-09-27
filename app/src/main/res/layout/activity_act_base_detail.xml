@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/backgrounColor"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgrounColor"
+    android:orientation="vertical">
 
-    <include layout="@layout/comm_title"/>
+    <include layout="@layout/comm_title" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_content"
@@ -26,10 +27,9 @@
 
 为贯彻落实《中长期青年发展规划（2016—2025年）》，推动服务青年婚恋工作，特制定《关于进一步做好青年婚恋工作的指导意见》。现印发给你们，请结合实际认真贯彻执行。"
                 android:textColor="@color/black_light"
-                android:textSize="@dimen/font_normal"/>
+                android:textSize="@dimen/font_normal" />
         </LinearLayout>
     </ScrollView>
-
 
 
 </LinearLayout>

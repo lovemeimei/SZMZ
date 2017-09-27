@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 
 import com.szmz.ActBase;
 import com.szmz.R;
-import com.szmz.ahdxt.grcx.ActGrcx_DataList;
+import com.szmz.ahdxt.xxtz.ActXxtz_List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -36,20 +36,24 @@ public class ActHdxt_XXTZ extends ActBase {
             R.id.hddclLayout, R.id.fhdclLayout, R.id.cstxLayout, R.id.mgmdshtxLayout
     })
     public void doClick(View v) {
-        Intent intent = new Intent(this, ActGrcx_DataList.class);
+        Intent intent = new Intent(this, ActXxtz_List.class);
 
         switch (v.getId()) {
             case R.id.hddclLayout:
-                doToast("核对待处理");
+                intent.putExtra("Type", 1);
+                startActivity(intent);
                 break;
             case R.id.fhdclLayout:
-                doToast("复核待处理");
+                intent.putExtra("Type", 2);
+                startActivity(intent);
                 break;
             case R.id.cstxLayout:
-                doToast("超时提醒");
+                intent.putExtra("Type", 3);
+                startActivity(intent);
                 break;
             case R.id.mgmdshtxLayout:
-                doToast("敏感名单审核提醒");
+                intent.putExtra("Type", 4);
+                startActivity(intent);
                 break;
 
         }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/nameTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_color"
+        android:drawableLeft="@drawable/icon_secrecy"
+        android:drawablePadding="@dimen/spacing_small"
+        android:drawableRight="@drawable/arrow_right"
+        android:padding="@dimen/spacing_normal"
+        android:text="2017年1月保密政策"
+        android:textColor="@color/black_light"
+        android:textSize="@dimen/font_normal" />
+</LinearLayout>
