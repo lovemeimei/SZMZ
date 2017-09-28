@@ -8,11 +8,16 @@ import com.dalong.library.listener.OnItemSelectedListener;
 import com.dalong.library.view.LoopRotarySwitchView;
 import com.szmz.ahdxt.ActHdxtMain;
 import com.szmz.ahdxt.asqr.ActHdxtMainSQR;
+import com.szmz.entity.request.JZ_Comm_Req;
+import com.szmz.entity.response.CommResponse;
+import com.szmz.net.ApiUtil;
+import com.szmz.net.SimpleApiListener;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
+import retrofit2.Call;
 
 public class ActMain extends ActBase {
 
@@ -76,6 +81,28 @@ public class ActMain extends ActBase {
             }
         });
     }
+
+    private void loginJZXT(){
+
+        JZ_Comm_Req req = new JZ_Comm_Req(App.getInstance().getLoginUser().getAccountJZ());
+
+        Call<CommResponse> call = App.getApiProxy().loginJZ(req);
+
+        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this,call,new SimpleApiListener<CommResponse>(){
+            @Override
+            public void doSuccess(CommResponse result) {
+                super.doSuccess(result);
+            }
+        },true);
+
+        apiUtil.excute();
+
+    }
+
+    private void loginHD(){
+
+    }
+
 
     private boolean exitFlag = false;
 

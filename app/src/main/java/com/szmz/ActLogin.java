@@ -63,7 +63,7 @@ public class ActLogin extends ActBase {
                 break;
             case R.id.btn_submit:
 
-//                test();
+                test();
 
 //                if (!doCheck()) {
 //                    return;
@@ -85,7 +85,7 @@ public class ActLogin extends ActBase {
     }
 
     private void test(){
-        HD_SearchDB reqbody = new HD_SearchDB("1");
+        HD_SearchDB reqbody = new HD_SearchDB("510401");
 
         Call<HD_SearchDB_RES> call = App.getApiProxy().test(reqbody);
         ApiUtil<HD_SearchDB_RES> apiUtil = new ApiUtil<HD_SearchDB_RES>(context,call,new SimpleApiListener<HD_SearchDB_RES>(){
@@ -106,16 +106,28 @@ public class ActLogin extends ActBase {
             public void doSuccess(phoneLoginR result) {
                 super.doSuccess(result);
 
-                List<phoneLoginR.ResultBean> mResult = result.result;
+                List<phoneLoginR.ResultBean> mResult = result.Result;
 
                 if (mResult != null && mResult.size() > 0) {
                     phoneLoginR.ResultBean bean = mResult.get(0);
-
                     User user = new User();
+                    List<phoneLoginR.ResultBean.SystemMsgBean> systemMsgBeens = bean.getSystemMsg();
+                    if (systemMsgBeens!=null && systemMsgBeens.size()>0){
+                        for (int i=0;i<systemMsgBeens.size();i++){
+                            phoneLoginR.ResultBean.SystemMsgBean item = systemMsgBeens.get(i);
+                            if (item.getSystemID().equals(SystemConst.SystemID_JZ)){
+                                user.setAccountJZ(item.getAccount());
+                            }
+                            if (item.getSystemID().equals(SystemConst.SystemID_YZS)){
+                                user.setAccountYZS(item.getAccount());
+                            }
+                            if (item.getSystemID().equals(SystemConst.SystemID_SH)){
+                                user.setAccountHD(item.getAccount());
+                            }
+                        }
+                    }
                     user.setUserName(etUser.getText().toString().trim());
                     user.setPw(etPW.getText().toString().trim());
-//                    user.setId(bean.getSystemMsg().getSystemID());
-                    //user.setRealName(bean.getPersonal().getRealName());
                     App.getInstance().login(user);
                     trans(ActMain.class);
                 }

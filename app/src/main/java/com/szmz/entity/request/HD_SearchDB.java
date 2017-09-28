@@ -14,7 +14,7 @@ public class HD_SearchDB extends BaseListRequest{
     public HD_SearchDB(String userId) {
         this.userId = userId;
 
-        setMd5Key(Md5Util.getMd5(userId+currentPage+pageSize));
+        setMd5Key(Md5Util.getMd5(userId+CurrentPage+PageSize));
     }
 
     /**
@@ -23,7 +23,6 @@ public class HD_SearchDB extends BaseListRequest{
      */
 
     private String userId;
-    private String md5Key;
 
     public String getUserId() {
         return userId;
@@ -33,11 +32,4 @@ public class HD_SearchDB extends BaseListRequest{
         this.userId = userId;
     }
 
-    public String getMd5Key() {
-        return md5Key;
-    }
-
-    public void setMd5Key(String md5Key) {
-        this.md5Key = md5Key;
-    }
 }

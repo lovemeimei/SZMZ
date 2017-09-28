@@ -8,8 +8,7 @@ public class BaseListRequest extends BaseRequest {
 
     public static final int size = 20;
 
-    public int pageSize = size;
-    public int currentPage = 1;
-    public boolean IS_PAGE = true;
+    public int PageSize = size;
+    public int CurrentPage = 1;
 
 }

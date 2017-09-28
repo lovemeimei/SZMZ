@@ -90,6 +90,10 @@ public class ActGrcx_DataList extends ActBaseList<HdxtGrcxInfo> {
 
     }
 
+    private void getInfo(){
+
+    }
+
     @Override
     protected int getListItemID() {
         return R.layout.hdxt_grcx_datalist_item;

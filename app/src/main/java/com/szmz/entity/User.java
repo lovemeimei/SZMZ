@@ -10,6 +10,13 @@ import org.xutils.db.annotation.Table;
 public class User implements IEntity {
 
     private String userName;
+
+    private String accountJZ;
+    private String accountYZS;
+    private String accountHD;
+
+
+
     private String pw;
     private String realName;
     private String sex;
@@ -18,6 +25,31 @@ public class User implements IEntity {
     private String idJZ;
     private String idYZS;
     private String idHD;
+
+    public String getAccountJZ() {
+        return accountJZ;
+    }
+
+    public void setAccountJZ(String accountJZ) {
+        this.accountJZ = accountJZ;
+    }
+
+    public String getAccountYZS() {
+        return accountYZS;
+    }
+
+    public void setAccountYZS(String accountYZS) {
+        this.accountYZS = accountYZS;
+    }
+
+    public String getAccountHD() {
+        return accountHD;
+    }
+
+    public void setAccountHD(String accountHD) {
+        this.accountHD = accountHD;
+    }
+
 
     public String getIdJZ() {
         return idJZ;

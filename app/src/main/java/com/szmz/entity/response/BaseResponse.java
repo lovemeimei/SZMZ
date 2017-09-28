@@ -12,7 +12,7 @@ import java.util.List;
 public class BaseResponse<T> implements IEntity{
 
 
-    public Error error;
-    public List<T> result=new ArrayList<T>();
-    public String totalNum;
+    public Error Error;
+    public List<T> Result=new ArrayList<T>();
+    public int TotalNum;
 }
