@@ -84,16 +84,16 @@ public class ActLogin extends ActBase {
 
     }
 
-    private void test(){
+    private void test() {
         HD_SearchDB reqbody = new HD_SearchDB("510401");
 
         Call<HD_SearchDB_RES> call = App.getApiProxy().test(reqbody);
-        ApiUtil<HD_SearchDB_RES> apiUtil = new ApiUtil<HD_SearchDB_RES>(context,call,new SimpleApiListener<HD_SearchDB_RES>(){
+        ApiUtil<HD_SearchDB_RES> apiUtil = new ApiUtil<HD_SearchDB_RES>(context, call, new SimpleApiListener<HD_SearchDB_RES>() {
             @Override
             public void doSuccess(HD_SearchDB_RES result) {
                 super.doSuccess(result);
             }
-        },true);
+        }, true);
         apiUtil.excute();
 
     }
