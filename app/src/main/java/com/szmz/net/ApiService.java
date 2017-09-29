@@ -6,6 +6,9 @@ import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.phoneLoginRequest;
 import com.szmz.entity.response.CommResponse;
+import com.szmz.entity.response.HD_JG_YCCL;
+import com.szmz.entity.response.HD_JG_YWBL1;
+import com.szmz.entity.response.HD_JG_YWBL2;
 import com.szmz.entity.response.HD_SearchDB_RES;
 import com.szmz.entity.response.HD_dict;
 import com.szmz.entity.response.phoneLoginR;
@@ -37,7 +40,7 @@ public interface ApiService {
 
     /**************************核对系统*********************************/
     //字典业务类型
-    @POST("appCheck/worker/todo.do?getBatchList")
+    @POST("appCheck/worker/getDict.do?getDictList")
     Call<HD_dict> getDictYWLX(@Body RequestBody body);
 
     //我的待办
@@ -57,9 +60,13 @@ public interface ApiService {
     Call<HD_JG_BGDY_RES> getJG_BGDYlist(@Body RequestBody body);
     //	查询业务办理监管主页信息
     @POST("appCheck/worker/bussiness.do?getBussinessBatchList")
-    Call<HD_JG_BGDY_RES> getJG_ywblList1(@Body RequestBody body);
+    Call<HD_JG_YWBL1> getJG_ywblList1(@Body RequestBody body);
     //查询批次对应申请信息
     @POST("appCheck/worker/applyBussiness.do?getApplyBussinessList")
-    Call<HD_JG_BGDY_RES> getJG_ywblList2(@Body RequestBody body);
+    Call<HD_JG_YWBL2> getJG_ywblList2(@Body RequestBody body);
+
+    //监管查询异常
+    @POST("appCheck/worker/operation.do?getOperationList")
+    Call<HD_JG_YCCL> getJG_ycclList(@Body RequestBody body);
 
 }

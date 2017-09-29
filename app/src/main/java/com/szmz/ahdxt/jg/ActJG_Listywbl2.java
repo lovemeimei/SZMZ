@@ -11,9 +11,8 @@ import com.szmz.ActListBase;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.ahdxt.ActDictList;
-import com.szmz.entity.TestMode;
 import com.szmz.entity.response.HD_JG_YWBL1;
-import com.szmz.net.ApiService;
+import com.szmz.entity.response.HD_JG_YWBL2;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
@@ -30,13 +29,13 @@ import retrofit2.Call;
 /**
  * 监管报告打印
  */
-public class ActJG_Listywbl extends ActListBase {
+public class ActJG_Listywbl2 extends ActListBase {
 
 
     @BindView(R.id.lv)
     ListView lv;
-    BaseListAdapter<HD_JG_YWBL1.ResultBean,MViewHolder> adapter;
-    List<HD_JG_YWBL1.ResultBean> items = new ArrayList<>();
+    BaseListAdapter<HD_JG_YWBL2.ResultBean,MViewHolder> adapter;
+    List<HD_JG_YWBL2.ResultBean> items = new ArrayList<>();
 
     @BindView(R.id.tv_jg_search1)
     TextView tvSearch1;
@@ -46,7 +45,9 @@ public class ActJG_Listywbl extends ActListBase {
     EditText etSearch1;
     @BindView(R.id.et_jg_search2)
     TextView etSearch2;
+    String name="";
     String code = "";
+    private String id;
 
     @Override
     protected int getLayoutId() {
@@ -62,34 +63,26 @@ public class ActJG_Listywbl extends ActListBase {
         setRightVisible(true);
         setRightShow("搜索");
 
-        tvSearch1.setText("批次名称");
-        tvSearch2.setText("业务类型");
+        id = getIntent().getStringExtra("id");
 
 
-        etSearch2.setOnClickListener(new View.OnClickListener() {
+
+        adapter = new BaseListAdapter<HD_JG_YWBL2.ResultBean, MViewHolder>(this,R.layout.list_item_jg_dybg) {
             @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(ActJG_Listywbl.this, ActDictList.class),0);
-            }
-        });
-
-
-        adapter = new BaseListAdapter<HD_JG_YWBL1.ResultBean, MViewHolder>(this,R.layout.list_item_jg_dybg) {
-            @Override
-            protected void refreshView(int postion, final HD_JG_YWBL1.ResultBean item, MViewHolder holer) {
+            protected void refreshView(int postion, final HD_JG_YWBL2.ResultBean item, MViewHolder holer) {
 
                 holer.tvSub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(ActJG_Listywbl.this,ActJG_Listywbl2.class);
-                        intent.putExtra("id",item.getBatchId());
+                        Intent intent = new Intent(ActJG_Listywbl2.this,ActJG_YWBL.class);
+                        intent.putExtra("item",item);
                         startActivity(intent);
                     }
                 });
 
-                holer.tvName.setText(item.getBatchName());
-                holer.tvType.setText(item.getBizCategory());
+                holer.tvName.setText(item.getApplyName());
+                holer.tvType.setText(item.getIdCardNo());
             }
 
             @Override
@@ -131,13 +124,13 @@ public class ActJG_Listywbl extends ActListBase {
         }
 
         //sysadmin 510401
-        String params = getParams("sysadmin",batchName,bizCode);
+        String params = getParams("sysadmin",id,name,code);
 
         RequestBody body =RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
 
-        Call<HD_JG_YWBL1> call = App.getApiProxy().getJG_ywblList1(body);
+        Call<HD_JG_YWBL2> call = App.getApiProxy().getJG_ywblList2(body);
 
-        ApiUtil<HD_JG_YWBL1> apiUtil = new ApiUtil<>(this,call,new SimpleApiListener<HD_JG_YWBL1>(){
+        ApiUtil<HD_JG_YWBL2> apiUtil = new ApiUtil<>(this,call,new SimpleApiListener<HD_JG_YWBL2>(){
 
             @Override
             public void doAfter() {
@@ -146,7 +139,7 @@ public class ActJG_Listywbl extends ActListBase {
             }
 
             @Override
-            public void doSuccess(HD_JG_YWBL1 result) {
+            public void doSuccess(HD_JG_YWBL2 result) {
 
                 items = result.Result;
 
@@ -193,18 +186,21 @@ public class ActJG_Listywbl extends ActListBase {
         TextView tvSub;
     }
 
-    String getParams(String userid,String batchName,String bizCategoryCode){
+    String getParams(String userid,String batchId,String applyName,String idCardNo){
 
-        String md5key = Md5Util.getMd5(userid + batchName+bizCategoryCode+currentPage + "20");
+        String md5key = Md5Util.getMd5(userid + batchId+applyName+currentPage + "20");
         StringBuilder sb = new StringBuilder();
         sb.append("userId=");
         sb.append(userid);
         sb.append("&");
-        sb.append("batchName=");
-        sb.append(batchName);
+        sb.append("batchId=");
+        sb.append(batchId);
         sb.append("&");
-        sb.append("bizCategoryCode=");
-        sb.append(bizCategoryCode);
+        sb.append("applyName=");
+        sb.append(applyName);
+        sb.append("&");
+        sb.append("idCardNo=");
+        sb.append(idCardNo);
         sb.append("&");
         sb.append("CurrentPage=");
         sb.append(currentPage);

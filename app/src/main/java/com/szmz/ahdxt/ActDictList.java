@@ -110,6 +110,8 @@ public class ActDictList extends ActListBase {
         },false);
 
 
+        apiUtil.excute();
+
 
     }
 

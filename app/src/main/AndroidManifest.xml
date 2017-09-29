@@ -250,6 +250,7 @@
         <activity android:name=".ahdxt.asqr.ActHdxtMainSQR" />
         <activity android:name=".ahdxt.jg.ActJG_ListBGDY" />
         <activity android:name=".ahdxt.jg.ActJG_Listywbl" />
+        <activity android:name=".ahdxt.jg.ActJG_Listywbl2" />
         <activity android:name=".ahdxt.jg.ActJG_YWBL" />
         <activity android:name=".ahdxt.jg.ActJG_ListYCCZ" />
         <activity android:name=".ahdxt.jg.ActJG_ListMGRY" />

@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.entity.response.HD_JG_YWBL2;
+import com.szmz.widget.MyLayoutView;
 
 import butterknife.BindView;
 
@@ -16,15 +18,18 @@ public class ActJG_YWBL extends ActBase {
 
 
     @BindView(R.id.tv_jg_ywbl_xm)
-    TextView tvXM;
+    MyLayoutView tvXM;
     @BindView(R.id.tv_jg_ywbl_xb)
-    TextView tvXB;
+    MyLayoutView tvXB;
     @BindView(R.id.tv_jg_ywbl_sfzh)
-    TextView tvSFZH;
+    MyLayoutView tvSFZH;
     @BindView(R.id.tv_jg_ywbl_ywlx)
-    TextView tvYWLX;
+    MyLayoutView tvYWLX;
     @BindView(R.id.tv_jg_ywbl_wtsj)
-    TextView tvWTSJ;
+    MyLayoutView tvWTSJ;
+
+
+    HD_JG_YWBL2.ResultBean item;
 
     @Override
     protected int getLayoutId() {
@@ -36,6 +41,14 @@ public class ActJG_YWBL extends ActBase {
         super.initUI();
         setLeftVisible(true);
         setTitle("监察详情");
+
+        item =(HD_JG_YWBL2.ResultBean) getIntent().getSerializableExtra("item");
+
+        tvXM.doSetContent(item.getApplyName());
+        tvXB.doSetContent(item.getSex());
+        tvSFZH.doSetContent(item.getIdCardNo());
+        tvYWLX.doSetContent(item.getBizCategory());
+        tvWTSJ.doSetContent(item.getEntrustTime());
     }
 
 

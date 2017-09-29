@@ -186,6 +186,9 @@ public class ActJG_ListBGDY extends ActListBase {
                     adapter.notifyDataSetChanged();
 
                 }else {
+                    adapter.clearListData();
+                    adapter.notifyDataSetChanged();
+
 
                 }
                 if (isHasNextPage(currentPage, pageSize, result.TotalNum)) {
