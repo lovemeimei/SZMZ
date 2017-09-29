@@ -11,9 +11,9 @@ import com.szmz.utils.Md5Util;
 public class HD_SearchDB extends BaseListRequest{
 
 
-    public HD_SearchDB(String userId) {
+    public HD_SearchDB(String userId,int currentPage) {
         this.userId = userId;
-
+        this.CurrentPage =currentPage;
         setMd5Key(Md5Util.getMd5(userId+CurrentPage+PageSize));
     }
 

@@ -3,6 +3,7 @@ package com.szmz.ahdxt.grcx;
 import com.szmz.ActBase;
 import com.szmz.R;
 import com.szmz.entity.HdxtGrcxInfo;
+import com.szmz.entity.response.HD_SearchDB_RES;
 import com.szmz.widget.MyLayoutView;
 
 import butterknife.BindView;
@@ -29,20 +30,20 @@ public class ActGrcx_TH extends ActBase {
         return R.layout.activity_act_grcx__th;
     }
 
-    private HdxtGrcxInfo info;
+    private HD_SearchDB_RES.ResultBean info;
 
     @Override
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
         setTitle("详细信息");
-        info = (HdxtGrcxInfo) getIntent().getSerializableExtra("HdxtGrcxInfo");
+        info = (HD_SearchDB_RES.ResultBean) getIntent().getSerializableExtra("HdxtGrcxInfo");
 
-        pcmcView.doSetContent(info.getPcmc());
-        ywlxView.doSetContent(info.getYwlx());
-        wtsjView.doSetContent(info.getWtsj());
-        hzView.doSetContent(info.getHzsj());
-        thyyView.doSetContent(info.getThyy());
 
+        pcmcView.doSetContent(info.getBatchName());
+        ywlxView.doSetContent(info.getBizCategory());
+        wtsjView.doSetContent(info.getEntrustTime());
+        hzView.doSetContent(info.getCreateTime());
+        thyyView.doSetContent(info.getReason());
     }
 }

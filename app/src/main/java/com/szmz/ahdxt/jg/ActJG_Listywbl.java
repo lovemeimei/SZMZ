@@ -1,5 +1,6 @@
 package com.szmz.ahdxt.jg;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -8,13 +9,18 @@ import android.widget.TextView;
 import com.materiallistview.MaterialRefreshLayout;
 import com.szmz.ActListBase;
 import com.szmz.R;
+import com.szmz.ahdxt.ActDictList;
 import com.szmz.entity.TestMode;
 import com.szmz.utils.BaseListAdapter;
+import com.szmz.utils.Md5Util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
 
 /**
  * 监管报告打印
@@ -34,8 +40,8 @@ public class ActJG_Listywbl extends ActListBase {
     @BindView(R.id.et_jg_search1)
     EditText etSearch1;
     @BindView(R.id.et_jg_search2)
-    EditText etSearch2;
-
+    TextView etSearch2;
+    String code = "";
 
     @Override
     protected int getLayoutId() {
@@ -53,6 +59,14 @@ public class ActJG_Listywbl extends ActListBase {
 
         tvSearch1.setText("批次名称");
         tvSearch2.setText("业务类型");
+
+
+        etSearch2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(ActJG_Listywbl.this, ActDictList.class),0);
+            }
+        });
 
 
         adapter = new BaseListAdapter<TestMode, MViewHolder>(this,R.layout.list_item_jg_dybg) {
@@ -91,16 +105,67 @@ public class ActJG_Listywbl extends ActListBase {
     @Override
     public void doRefresh(MaterialRefreshLayout materialRefreshLayout) {
 
+        loadInfo(false);
     }
 
     @Override
     public void doRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
 
+        loadInfo(true);
+    }
+
+    void loadInfo(boolean isMore){
+        String batchName = etSearch1.getText().toString().trim();
+        String bizCode = code;
+        if (isMore){
+            currentPage++;
+        }else {
+            currentPage=1;
+        }
+        String params = getParams("",batchName,bizCode);
+
+        RequestBody body =RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
+
+//        Call<HD>
+
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==0&& resultCode==RESULT_OK){
+          String name=  data.getStringExtra("name");
+             code =data.getStringExtra("code");
+            etSearch2.setText(name);
+        }
     }
 
     class MViewHolder{
         TextView tvName;
         TextView tvType;
         TextView tvSub;
+    }
+
+    String getParams(String userid,String batchName,String bizCategoryCode){
+
+        String md5key = Md5Util.getMd5(userid + batchName+bizCategoryCode+currentPage + "20");
+        StringBuilder sb = new StringBuilder();
+        sb.append("userId=");
+        sb.append(userid);
+        sb.append("&");
+        sb.append("batchName=");
+        sb.append(batchName);
+        sb.append("&");
+        sb.append("bizCategoryCode=");
+        sb.append(bizCategoryCode);
+        sb.append("&");
+        sb.append("CurrentPage=");
+        sb.append(currentPage);
+        sb.append("&");
+        sb.append("PageSize=20&");
+        sb.append("Md5Key=");
+        sb.append(md5key);
+        return sb.toString();
     }
 }

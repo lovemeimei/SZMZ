@@ -22,11 +22,17 @@ public abstract class BaseListAdapter<T, H> extends BaseAdapter {
 
     public void setItems(List<T> items) {
         if (items != null && items.size() > 0) {
-            this.items = items;
+            this.items.addAll(items) ;
         }
 
     }
 
+    /**
+     * 清空数据
+     */
+    public void clearListData() {
+        this.items = new ArrayList<T>();
+    }
     @Override
     public int getCount() {
         return items.size();

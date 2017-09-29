@@ -5,18 +5,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.szmz.App;
 import com.szmz.R;
-import com.szmz.entity.HdxtGrcxInfo;
+import com.szmz.entity.request.HD_SearchDB;
+import com.szmz.entity.response.HD_SearchDB_RES;
+import com.szmz.net.ApiUtil;
+import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.GetData;
+import com.szmz.utils.Md5Util;
 import com.szmz.ywbl.ActBaseList;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+
 /**
  * 数据列表页面
  */
-public class ActGrcx_DataList extends ActBaseList<HdxtGrcxInfo> {
+public class ActGrcx_DataList extends ActBaseList<HD_SearchDB_RES.ResultBean> {
 
     private int type = 0;
 
@@ -51,12 +60,12 @@ public class ActGrcx_DataList extends ActBaseList<HdxtGrcxInfo> {
 
 
     @Override
-    protected void doRefreshView(int p, final HdxtGrcxInfo item, View view) {
+    protected void doRefreshView(int p, final HD_SearchDB_RES.ResultBean item, View view) {
         TextView nameTv = (TextView) view.findViewById(R.id.nameTv);
         TextView sfzhTv = (TextView) view.findViewById(R.id.sfzhTv);
         Button button = (Button) view.findViewById(R.id.button);
-        nameTv.setText(item.getPcmc());
-        sfzhTv.setText(item.getYwlx());
+        nameTv.setText(item.getBatchName());
+        sfzhTv.setText(item.getBizCategory());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +99,7 @@ public class ActGrcx_DataList extends ActBaseList<HdxtGrcxInfo> {
 
     }
 
-    private void getInfo(){
+    private void getInfo() {
 
     }
 
@@ -102,21 +111,82 @@ public class ActGrcx_DataList extends ActBaseList<HdxtGrcxInfo> {
     @Override
     protected void doMore(boolean isMore) {
 
-        refresh.finishRefresh();
-        refresh.finishRefreshLoadMore();
-        List<HdxtGrcxInfo> result = GetData.getDataList();
-        if (result != null && result.size() > 0) {
 
-            adapter.clearListData();
-            adapter.setListData(result);
-            adapter.notifyDataSetChanged();
-            noDataLayout.setVisibility(View.GONE);
-
+        String params = "";
+        if (isMore) {
+            CurrentPage++;
         } else {
-            adapter.clearListData();
-            adapter.setListData(new ArrayList<HdxtGrcxInfo>());
-            adapter.notifyDataSetChanged();
-            noDataLayout.setVisibility(View.VISIBLE);
+            CurrentPage = 1;
         }
+        params = getParams("510401", CurrentPage);
+
+        final RequestBody requestBody = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
+        Call<HD_SearchDB_RES> call = null;
+        if (type == 1) {
+            call = App.getApiProxy().getDBlist3(requestBody);
+        } else if (type == 2) {
+            call = App.getApiProxy().getYBlist(requestBody);
+        } else if (type == 3) {
+            call = App.getApiProxy().getTHlist(requestBody);
+        } else if (type == 4) {
+            call = App.getApiProxy().getZZTHlist(requestBody);
+        }
+        if (call == null)
+            return;
+
+        ApiUtil<HD_SearchDB_RES> apiUtil = new ApiUtil<HD_SearchDB_RES>(this, call, new SimpleApiListener<HD_SearchDB_RES>() {
+            @Override
+            public void doSuccess(HD_SearchDB_RES result) {
+
+
+                List<HD_SearchDB_RES.ResultBean> list = result.Result;
+
+                if (list != null && list.size() > 0) {
+
+                    noDataLayout.setVisibility(View.GONE);
+                    if (CurrentPage == 1) {
+                        adapter.clearListData();
+                    }
+                    adapter.setListData(list);
+                    adapter.notifyDataSetChanged();
+
+                } else {
+                    adapter.clearListData();
+                    adapter.setListData(new ArrayList<HD_SearchDB_RES.ResultBean>());
+                    adapter.notifyDataSetChanged();
+                    noDataLayout.setVisibility(View.VISIBLE);
+                }
+                if (isHasNextPage(CurrentPage, PageSize, result.TotalNum)) {
+                    refresh.setLoadMore(true);
+                } else {
+                    refresh.setLoadMore(false);
+                }
+            }
+
+            @Override
+            public void doAfter() {
+                super.doAfter();
+                refresh.finishRefreshing();
+            }
+        }, false);
+
+        apiUtil.excute();
+
+    }
+
+    private String getParams(String userid, int currentPage) {
+        //userId=510401&CurrentPage=1&PageSize=20&Md5Key=083EB02F6F37E332F7F75789EF2D71DF
+        String md5key = Md5Util.getMd5(userid + currentPage + "20");
+        StringBuilder sb = new StringBuilder();
+        sb.append("userId=");
+        sb.append(userid);
+        sb.append("&");
+        sb.append("CurrentPage=");
+        sb.append(currentPage);
+        sb.append("&");
+        sb.append("PageSize=20&");
+        sb.append("Md5Key=");
+        sb.append(md5key);
+        return sb.toString();
     }
 }

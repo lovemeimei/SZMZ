@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.entity.HD_JG_BGDY_RES;
+import com.szmz.widget.MyLayoutView;
 
 import butterknife.BindView;
 
@@ -15,16 +17,17 @@ import butterknife.BindView;
 public class ActJg_BGDYJG extends ActBase {
 
     @BindView(R.id.tv_jg_dybg_bh)
-    TextView tvBH;
+    MyLayoutView tvBH;
     @BindView(R.id.tv_jg_dybg_cs)
-    TextView tvCS;
+    MyLayoutView tvCS;
     @BindView(R.id.tv_jg_dybg_cjsj)
-    TextView tvcjsj;
+    MyLayoutView tvcjsj;
     @BindView(R.id.tv_jg_dybg_gxsj)
-    TextView tvGXSJ;
+    MyLayoutView tvGXSJ;
 
     @BindView(R.id.tv_jg_dybg_dyr)
-    TextView tvDRY;
+    MyLayoutView tvDRY;
+    HD_JG_BGDY_RES.ResultBean item;
 
     @Override
     protected int getLayoutId() {
@@ -37,5 +40,12 @@ public class ActJg_BGDYJG extends ActBase {
         super.initUI();
         setLeftVisible(true);
         setTitle("打印报告详情");
+
+        item = (HD_JG_BGDY_RES.ResultBean)getIntent().getSerializableExtra("object");
+        tvBH.doSetContent(item.getReportCode());
+        tvCS.doSetContent(item.getPrintTimes()+"");
+        tvDRY.doSetContent(item.getPrinter());
+        tvcjsj.doSetContent(item.getCreateTime());
+        tvGXSJ.doSetContent(item.getUpdateTime());
     }
 }

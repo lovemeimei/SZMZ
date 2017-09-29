@@ -22,149 +22,42 @@
             android:background="@color/white"
             android:orientation="vertical">
 
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_jg_dybg_bh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="报告编号"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_jg_dybg_bh"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="20170123001"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
+                android:layout_marginTop="10dp"
+                app:titleText="报告编号" />
 
 
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_jg_dybg_cs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="打印次数" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="打印次数"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_jg_dybg_cs"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="20"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_jg_dybg_dyr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="打印人" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="打印人"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_jg_dybg_dyr"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="管理员"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_jg_dybg_cjsj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="创建时间" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="创建时间"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_jg_dybg_cjsj"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="2017-05-12"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_jg_dybg_gxsj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="最后更新时间" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="最后更新时间"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_jg_dybg_gxsj"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="2017-06-12"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
 
         </LinearLayout>
     </ScrollView>

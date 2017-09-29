@@ -63,7 +63,6 @@ public class ActLogin extends ActBase {
                 break;
             case R.id.btn_submit:
 
-                test();
 
 //                if (!doCheck()) {
 //                    return;
@@ -84,19 +83,7 @@ public class ActLogin extends ActBase {
 
     }
 
-    private void test() {
-        HD_SearchDB reqbody = new HD_SearchDB("510401");
 
-        Call<HD_SearchDB_RES> call = App.getApiProxy().test(reqbody);
-        ApiUtil<HD_SearchDB_RES> apiUtil = new ApiUtil<HD_SearchDB_RES>(context, call, new SimpleApiListener<HD_SearchDB_RES>() {
-            @Override
-            public void doSuccess(HD_SearchDB_RES result) {
-                super.doSuccess(result);
-            }
-        }, true);
-        apiUtil.excute();
-
-    }
 
     private void login() {
         final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(), etPW.getText().toString().trim());

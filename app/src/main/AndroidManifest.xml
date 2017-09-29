@@ -48,17 +48,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen"
             android:windowSoftInputMode="adjustPan">
-
-        </activity>
-
-
-        <activity android:name=".ahdxt.tjfx.ActTjfx_HDDXZRS" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
+        </activity>
+        <activity android:name=".ahdxt.tjfx.ActTjfx_HDDXZRS"></activity>
         <activity
             android:name=".ActWelcome"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
@@ -271,7 +267,8 @@
         <activity android:name=".ahdxt.asqr.ActGrcx_SQXXCK_List" />
         <activity android:name=".ahdxt.asqr.ActGrcx_SQXXCK_Detail" />
         <activity android:name=".ahdxt.asqr.ActHdzc_List" />
-        <activity android:name=".ahdxt.asqr.ActXXTZ_List"></activity>
+        <activity android:name=".ahdxt.asqr.ActXXTZ_List" />
+        <activity android:name=".ahdxt.ActDictList"></activity>
     </application>
 
 </manifest>

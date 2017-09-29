@@ -1,5 +1,7 @@
 package com.szmz.entity.response;
 
+import com.szmz.entity.IEntity;
+
 /**
  * 中移全通集成公司 版本所有
  * 创建人： 郄益轩
@@ -9,7 +11,7 @@ package com.szmz.entity.response;
 public class HD_SearchDB_RES extends BaseResponse<HD_SearchDB_RES.ResultBean>{
 
 
-    public static class ResultBean {
+    public static class ResultBean implements IEntity{
         /**
          * batchId : 10000001
          * batchName : 攀枝花城乡低保
@@ -29,6 +31,15 @@ public class HD_SearchDB_RES extends BaseResponse<HD_SearchDB_RES.ResultBean>{
         private String dealNode;
         private int total;
         private int handledCount;
+        private String reason;
+
+        public String getReason() {
+            return reason;
+        }
+
+        public void setReason(String reason) {
+            this.reason = reason;
+        }
 
         public String getBatchId() {
             return batchId;

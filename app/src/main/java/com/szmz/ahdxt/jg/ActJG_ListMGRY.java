@@ -35,7 +35,8 @@ public class ActJG_ListMGRY extends ActListBase {
     EditText etSearch1;
     @BindView(R.id.et_jg_search2)
     EditText etSearch2;
-
+    @BindView(R.id.et_jg_search3)
+    EditText etSearch3;
 
     @Override
     protected int getLayoutId() {
