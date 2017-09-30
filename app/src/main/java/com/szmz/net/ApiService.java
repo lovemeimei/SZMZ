@@ -6,10 +6,13 @@ import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.phoneLoginRequest;
 import com.szmz.entity.response.CommResponse;
+import com.szmz.entity.response.HD_JG_MGRY;
+import com.szmz.entity.response.HD_JG_MGRY2;
 import com.szmz.entity.response.HD_JG_YCCL;
 import com.szmz.entity.response.HD_JG_YWBL1;
 import com.szmz.entity.response.HD_JG_YWBL2;
 import com.szmz.entity.response.HD_SearchDB_RES;
+import com.szmz.entity.response.HD_TJ_HDDX;
 import com.szmz.entity.response.HD_dict;
 import com.szmz.entity.response.phoneLoginR;
 
@@ -69,4 +72,15 @@ public interface ApiService {
     @POST("appCheck/worker/operation.do?getOperationList")
     Call<HD_JG_YCCL> getJG_ycclList(@Body RequestBody body);
 
+    //监管敏感人员
+    @POST("appCheck/worker/sensitive.do?getSensitiveBatchList")
+    Call<HD_JG_MGRY> getJG_MGRY_List(@Body RequestBody body);
+    @POST("appCheck/worker/sensitiveApply.do?getSensitiveApplyList")
+    Call<HD_JG_MGRY2> getJG_MGRY_List2(@Body RequestBody body);
+    @POST("appCheck/worker/senitiveAudit.do?auditApply")
+    Call<CommResponse> getJG_MGRY_SH(@Body RequestBody body);
+
+    //统计分析
+    @POST("appCheck/worker/checkApply.do?getApplyStatistics")
+    Call<HD_TJ_HDDX> getTJ_HDDX(@Body RequestBody body);
 }

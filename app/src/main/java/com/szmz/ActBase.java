@@ -26,7 +26,7 @@ public abstract class ActBase extends AppCompatActivity {
 
     protected abstract int getLayoutId();
 
-    Context context;
+    public Context context;
 
     @BindView(R.id.mTitle)
     TextView tvTitle;
@@ -37,6 +37,16 @@ public abstract class ActBase extends AppCompatActivity {
 
     protected String TAG;
     protected MaterialDialog dialog;
+
+    public String getUserId_HD() {
+        return userId_HD;
+    }
+
+    public void setUserId_HD(String userId_HD) {
+        this.userId_HD = userId_HD;
+    }
+
+    private String userId_HD ="510401";
 
 
     @Override

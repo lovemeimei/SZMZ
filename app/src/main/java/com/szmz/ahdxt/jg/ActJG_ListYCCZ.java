@@ -51,7 +51,9 @@ public class ActJG_ListYCCZ extends ActListBase {
     TextView etSearch3;
 
 
-    private String code, startTime, endTime;
+    private String code="";
+    private String startTime = "";
+    private String  endTime="";
 
     @Override
     protected int getLayoutId() {
@@ -71,7 +73,7 @@ public class ActJG_ListYCCZ extends ActListBase {
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                loadInfo(false);
             }
         });
 
@@ -123,7 +125,7 @@ public class ActJG_ListYCCZ extends ActListBase {
     }
 
     void loadInfo(boolean isMore) {
-        code = etSearch1.getText().toString().trim();
+//        code = etSearch1.getText().toString().trim();
         startTime = etSearch2.getText().toString().trim();
         endTime = etSearch3.getText().toString().trim();
 
@@ -134,8 +136,8 @@ public class ActJG_ListYCCZ extends ActListBase {
             currentPage = 1;
         }
 
-        //sysadmin 510401
-        String params = getParams("sysadmin", code,startTime, endTime);
+        //sysadmin 510401 1001
+        String params = getParams("1001", code,startTime, endTime);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;" +
                 "charset=UTF-8"), params.getBytes());

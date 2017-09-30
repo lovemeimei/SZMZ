@@ -256,7 +256,8 @@
         <activity android:name=".ahdxt.jg.ActJG_ListMGRY" />
         <activity android:name=".ahdxt.jg.ActJG_ListMGRY2" />
         <activity android:name=".ahdxt.jg.ActJG_YCCZ" />
-        >>>>>>> .r32
+        <activity android:name=".ahdxt.jg.ActJG_MGRY" />
+
         <activity android:name=".ahdxt.asqr.ActHdxt_GRCX_SQR" />
         <activity android:name=".ahdxt.asqr.ActHdxt_XXTZ_SQR" />
         <activity android:name=".ahdxt.asqr.ActHdxt_HDZC_SQR" />
