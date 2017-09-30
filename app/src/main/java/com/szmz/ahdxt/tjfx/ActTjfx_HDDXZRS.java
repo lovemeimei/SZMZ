@@ -213,7 +213,11 @@ public class ActTjfx_HDDXZRS extends ActBase {
 
             String tmpCity = citys.get(i);
             List<HD_TJ_HDDX.ResultBean> tmpCityBean = new ArrayList<>();
+            for (HD_TJ_HDDX.ResultBean item :items){
+                if (!tmpCity.contains(item.getAreaName()))
+                   tmpCityBean.add(item);
 
+            }
 
 //            for ()
 //            yVals1.add(new BarEntry(i, (float) (Math.random() * randomMultiplier) + 100));
