@@ -12,8 +12,13 @@ import com.szmz.entity.response.HD_JG_YCCL;
 import com.szmz.entity.response.HD_JG_YWBL1;
 import com.szmz.entity.response.HD_JG_YWBL2;
 import com.szmz.entity.response.HD_SearchDB_RES;
+import com.szmz.entity.response.HD_TJ_GX;
 import com.szmz.entity.response.HD_TJ_HDDX;
+import com.szmz.entity.response.HD_TJ_QYRC;
+import com.szmz.entity.response.HD_TJ_YWQS;
+import com.szmz.entity.response.HD_XXTZ;
 import com.szmz.entity.response.HD_dict;
+import com.szmz.entity.response.HD_hdzc;
 import com.szmz.entity.response.phoneLoginR;
 
 import okhttp3.RequestBody;
@@ -83,4 +88,37 @@ public interface ApiService {
     //统计分析
     @POST("appCheck/worker/checkApply.do?getApplyStatistics")
     Call<HD_TJ_HDDX> getTJ_HDDX(@Body RequestBody body);
+    @POST("appCheck/worker/checkReport.do?getReportStatistics")
+    Call<HD_TJ_HDDX> getTJ_HDbgzs(@Body RequestBody body);
+
+    @POST("appCheck/worker/bussinessTrends.do?getBussinessTrendsStatistics")
+    Call<HD_TJ_YWQS> getTJ_HDywqs(@Body RequestBody body);
+
+    @POST("appCheck/worker/areaPersonTime.do?getAreaPersonStatistics")
+    Call<HD_TJ_QYRC> getTJ_HDqyrc(@Body RequestBody body);
+
+    @POST("appCheck/worker/sharedUnits.do?getSharedUnitsStatistics")
+    Call<HD_TJ_GX> getTJ_HDgx(@Body RequestBody body);
+
+    //核对资料
+    @POST("appCheck/worker/checkPolicyMaterial.do?getPolicyMaterialList")
+    Call<HD_hdzc> getHDZL1(@Body RequestBody body);
+    @POST("appCheck/worker/confidentialMaterial.do? getConfidentialMaterial")
+    Call<HD_hdzc> getHDZL2(@Body RequestBody body);
+    @POST("appCheck/worker/checkBussinessMaterial.do? getBussinessMaterial")
+    Call<HD_hdzc> getHDZL3(@Body RequestBody body);
+
+    //消息通知
+    @POST("appCheck/worker/todoTip.do?getTodoTipList")
+    Call<HD_XXTZ> getHD_XXTZ1(@Body RequestBody body);
+
+    @POST("appCheck/worker/reCheckTip.do?getRecheckTipList")
+    Call<HD_XXTZ> getHD_XXTZ2(@Body RequestBody body);
+
+    @POST("appCheck/worker/timeoutTip.do?getTimeoutTipList")
+    Call<HD_XXTZ> getHD_XXTZ3(@Body RequestBody body);
+
+    @POST("appCheck/worker/sensitiveTip.do?getSensitiveTipList")
+    Call<HD_XXTZ> getHD_XXTZ4(@Body RequestBody body);
+
 }

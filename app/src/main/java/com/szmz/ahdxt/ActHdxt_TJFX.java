@@ -5,6 +5,9 @@ import android.widget.LinearLayout;
 
 import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.ahdxt.tjfx.ActTJ_QYTJ;
+import com.szmz.ahdxt.tjfx.ActTJ_YEQS;
+import com.szmz.ahdxt.tjfx.ActTjfx_HDBGZS;
 import com.szmz.ahdxt.tjfx.ActTjfx_HDDXZRS;
 
 import butterknife.BindView;
@@ -42,18 +45,25 @@ public class ActHdxt_TJFX extends ActBase {
 
         switch (v.getId()) {
             case R.id.hddxzsLayout:
-                doToast("核对对象总数");
-                break;
-            case R.id.hdbgzsLayout:
-                doToast("核对报告总数");
-                break;
-            case R.id.hdywqsLayout:
-                doToast("核对业务趋势");
-                break;
-            case R.id.qyrctjLayout:
-                doToast("区域人次统计");
+//                doToast("核对对象总数");
                 trans(
                         ActTjfx_HDDXZRS.class
+                );
+                break;
+            case R.id.hdbgzsLayout:
+//                doToast("核对报告总数");
+                trans(
+                        ActTjfx_HDBGZS.class
+                );
+                break;
+            case R.id.hdywqsLayout:
+//                doToast("核对业务趋势");
+                trans(ActTJ_YEQS.class);
+                break;
+            case R.id.qyrctjLayout:
+//                doToast("区域人次统计");
+                trans(
+                        ActTJ_QYTJ.class
                 );
                 break;
             case R.id.gxdwhdrcLayout:

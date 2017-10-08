@@ -56,8 +56,6 @@ public class ActTjfx_HDDXZRS extends ActBase {
     protected Typeface mTfRegular;
     protected Typeface mTfLight;
 
-    String[] xValueType = {"城市低保", "农村低收入", "农村低保"};
-    String[] xValues2 = {"石河子失", "和田地区", "伊利哈萨克自治州", "昌吉回族自治州"};
 
     private List<String> types = new ArrayList<>();
     private List<String> citys = new ArrayList<>();
@@ -123,13 +121,9 @@ public class ActTjfx_HDDXZRS extends ActBase {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
 
-                switch ((int) value) {
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                        return xValues2[(int) value];
-                }
+
+                if (value>0 && value<=citys.size())
+                    return  citys.get((int)value);
                 return "";
             }
         });
@@ -198,35 +192,43 @@ public class ActTjfx_HDDXZRS extends ActBase {
         barWidth =(float) (0.9f/types.size()-0.05);
         // (0.25 + 0.05) * 3 + 0.1 = 1.00 -> interval per "group"
 
-        List<ArrayList<BarEntry>> YValuesList = new ArrayList<>();
+//        List<ArrayList<BarEntry>> YValuesList = new ArrayList<>();
 
+        BarData data = new BarData();
         for (int i=0;i<types.size();i++){
             ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
-            YValuesList.add(yVals);
+            for (int j=0;j<citys.size();j++){
+                yVals.add(new BarEntry(j, getValueByCity(items,citys.get(j))));
+            }
+//            YValuesList.add(yVals);
+
+            BarDataSet barDataSet =new BarDataSet(yVals, types.get(i));
+            data.addDataSet(barDataSet);
         }
 
 
 
-        float randomMultiplier = 1000f;
 
-        for (int i = 0; i < citys.size(); i++) {
-
-            String tmpCity = citys.get(i);
-            List<HD_TJ_HDDX.ResultBean> tmpCityBean = new ArrayList<>();
-            for (HD_TJ_HDDX.ResultBean item :items){
-                if (!tmpCity.contains(item.getAreaName()))
-                   tmpCityBean.add(item);
-
-            }
-
-//            for ()
+//        for (int i = 0; i < citys.size(); i++) {
+//
+//            String tmpCity = citys.get(i);
+//            List<HD_TJ_HDDX.ResultBean> tmpCityBean = new ArrayList<>();
+//            for (HD_TJ_HDDX.ResultBean item :items){
+//                if (!tmpCity.contains(item.getAreaName()))
+//                   tmpCityBean.add(item);
+//
+//            }
+//
+//
 //            yVals1.add(new BarEntry(i, (float) (Math.random() * randomMultiplier) + 100));
 //            yVals2.add(new BarEntry(i, (float) (Math.random() * randomMultiplier) + 100));
 //            yVals3.add(new BarEntry(i, (float) (Math.random() * randomMultiplier) + 100));
-            for (ArrayList<BarEntry> item:YValuesList){
+//            for (ArrayList<BarEntry> item:YValuesList){
 //                item.add(new BarEntry(i,(float) ))
-            }
-        }
+//            }
+//        }
+
+
 
 //        BarDataSet set1, set2, set3;
 //        // create 4 DataSets
@@ -239,16 +241,27 @@ public class ActTjfx_HDDXZRS extends ActBase {
 
 
 //        BarData data = new BarData(set1, set2, set3);
-//        data.setValueFormatter(new LargeValueFormatter());
-//        data.setValueTypeface(mTfLight);
-//
-//        mChart.setData(data);
+
+        data.setValueFormatter(new LargeValueFormatter());
+        data.setValueTypeface(mTfLight);
+
+        mChart.setData(data);
 
         mChart.getXAxis().setAxisMinimum(0);
         mChart.getXAxis().setAxisMaximum(4.0f);
         mChart.getBarData().setBarWidth(barWidth);
         mChart.groupBars(0, groupSpace, barSpace);
         mChart.invalidate();
+    }
+
+    private float getValueByCity(List<HD_TJ_HDDX.ResultBean> items,String city){
+        float value =0f;
+        for (int i=0;i<items.size();i++){
+            if (items.get(i).getAreaName().equals(city))
+                value=Float.valueOf(items.get(i).getBizCategory());
+
+        }
+        return value;
     }
 
     public void getInfo() {
@@ -280,7 +293,7 @@ public class ActTjfx_HDDXZRS extends ActBase {
 
                 if (items != null && items.size() > 0) {
 
-
+                            setmChartInfo(items);
                 } else {
 
                 }
