@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.TimePickerView;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -28,8 +29,10 @@ import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.Md5Util;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -69,9 +72,47 @@ public class ActTJ_GXDWHDRC extends ActBase {
         setTitle("共享单位核对人数");
         setRightVisible(true);
         setRightShow("搜索");
+        initTimePicker();
         getInfo();
 
     }
+
+    private TimePickerView pvTime;
+    private void initTimePicker() {
+        //控制时间范围(如果不设置范围，则使用默认时间1900-2100年，此段代码可注释)
+        //因为系统Calendar的月份是从0-11的,所以如果是调用Calendar的set方法来设置时间,月份的范围也要是从0-11
+        Calendar selectedDate = Calendar.getInstance();
+        Calendar startDate = Calendar.getInstance();
+        startDate.set(2013, 0, 23);
+        Calendar endDate = Calendar.getInstance();
+        endDate.set(2019, 11, 28);
+        //时间选择器
+        pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {//选中事件回调
+                // 这里回调过来的v,就是show()方法里面所添加的 View 参数，如果show的时候没有添加参数，v则为null
+                /*btn_Time.setText(getTime(date));*/
+                TextView btn = (TextView) v;
+                btn.setText(getTime(date));
+            }
+        })
+                //年月日时分秒 的显示与否，不设置则默认全部显示
+                .setType(new boolean[]{true, true, true, false, false, false})
+                .setLabel("", "", "", "", "", "")
+                .isCenterLabel(false)
+                .setDividerColor(Color.DKGRAY)
+                .setContentSize(21)
+                .setDate(selectedDate)
+                .setRangDate(startDate, endDate)
+                .setBackgroundId(0x00FFFFFF) //设置外部遮罩颜色
+                .setDecorView(null)
+                .build();
+    }
+    private String getTime(Date date) {//可根据需要自行截取数据显示
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return format.format(date);
+    }
+
 
     private void initBarChart(final List<HD_TJ_GX.ResultBean> items){
 
@@ -130,7 +171,9 @@ public class ActTJ_GXDWHDRC extends ActBase {
             entries.add(entry);
         }
         BarDataSet dataSet = new BarDataSet(entries,"共享单位");
+        dataSet.setColor(PIE_COLORS[2]);
         BarData barData = new BarData(dataSet);
+
         barChart.setData(barData);
 
     }
@@ -139,28 +182,10 @@ public class ActTJ_GXDWHDRC extends ActBase {
 
         switch (v.getId()) {
             case R.id.et_tj_time:
-                Calendar cal = Calendar.getInstance();
-
-                DatePickerDialog dialog1 = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                        tvStartTime.setText(year + "-" + (month + 1) + "-" + dayOfMonth);
-                    }
-                }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
-                dialog1.show();
+                pvTime.show(tvStartTime);
                 break;
             case R.id.et_tj_time2:
-                Calendar ca2 = Calendar.getInstance();
-
-                DatePickerDialog dialog2 = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                        tvEndTime.setText(year + "-" + (month + 1) + "-" + dayOfMonth);
-                    }
-                }, ca2.get(Calendar.YEAR), ca2.get(Calendar.MONTH), ca2.get(Calendar.DAY_OF_MONTH));
-                dialog2.show();
+                pvTime.show(tvEndTime);
                 break;
             case R.id.et_tj_xzqh:
 

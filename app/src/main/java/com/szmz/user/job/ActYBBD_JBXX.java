@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.widget.MyLayoutView;
 
 import butterknife.BindView;
 
@@ -28,24 +29,24 @@ public class ActYBBD_JBXX extends ActBase {
     }
 
     @BindView(R.id.tv_bd_jbxx_bh)
-    TextView tvBH;
+    MyLayoutView tvBH;
     @BindView(R.id.tv_bd_jbxx_cblx)
-    TextView tvCBLX;
+    MyLayoutView tvCBLX;
     @BindView(R.id.tv_bd_jbxx_xm)
-    TextView tvXM;
+    MyLayoutView tvXM;
     @BindView(R.id.tv_bd_jbxx_xb)
-    TextView tvXB;
+    MyLayoutView tvXB;
     @BindView(R.id.tv_bd_jbxx_jzlx)
-    TextView tvJZLX;
+    MyLayoutView tvJZLX;
     @BindView(R.id.tv_bd_jbxx_ryfl)
-    TextView tvRYFL;
+    MyLayoutView tvRYFL;
     @BindView(R.id.tv_bd_jbxx_sfzh)
-    TextView tvSFZH;
+    MyLayoutView tvSFZH;
     @BindView(R.id.tv_bd_jbxx_ylzh)
-    TextView tvYLZH;
+    MyLayoutView tvYLZH;
     @BindView(R.id.tv_bd_jbxx_jtzz)
-    TextView tvJTZZ;
+    MyLayoutView tvJTZZ;
     @BindView(R.id.tv_bd_jbxx_ztnd)
-    TextView tvZTND;
+    MyLayoutView tvZTND;
 
 }

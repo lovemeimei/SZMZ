@@ -21,236 +21,70 @@
             android:layout_marginRight="@dimen/spacing_normal"
             android:orientation="vertical">
 
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_bm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large">
+                android:layout_marginTop="10dp"
+                app:titleText="编码"
+                app:contentText="1843"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="编码"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_bm"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="2209"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_mc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal">
+                android:layout_marginTop="10dp"
+                app:titleText="名称"
+                app:contentText="阿莫西林"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="名称"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
 
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_mc"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="阿莫西林"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_gg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal">
+                android:layout_marginTop="10dp"
+                app:titleText="规格"
+                app:contentText="瓶装"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="规格"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_gg"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="瓶装"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_dw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal">
+                android:layout_marginTop="10dp"
+                app:titleText="单位"
+                app:contentText="民政局"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="单位"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_dw"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="民政局"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_sl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal">
+                android:layout_marginTop="10dp"
+                app:titleText="数量"
+                app:contentText="16"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="数量"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_sl"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="16"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_dj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal">
+                android:layout_marginTop="10dp"
+                app:titleText="单价(元)"
+                app:contentText="16"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="单价(元)"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_dj"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="18"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_zje"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal">
+                android:layout_marginTop="10dp"
+                app:titleText="总金额(元)"
+                app:contentText="196"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="总金额(元)"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_zje"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="183"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_yysj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="用药时间"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_yysj"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="2017-09-23"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
+                android:layout_marginTop="10dp"
+                app:titleText="用药时间"
+                app:contentText="2017-09-23"/>
 
 
         </LinearLayout>

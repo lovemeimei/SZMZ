@@ -22,121 +22,39 @@
             android:background="@color/white"
             android:orientation="vertical">
 
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_xh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large">
+                android:layout_marginTop="10dp"
+                app:titleText="序号"
+                app:contentText="1843"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="序号"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_xh"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="01"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_fjmc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="附件名称"
+                app:contentText="医疗救助.xsl"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="附件名称"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
 
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_fjmc"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="医疗救助.xsl"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_scjd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="上传节点"
+                app:contentText="完成"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="上传节点"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_scjd"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="完成"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_scrq"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="上传日期"
+                app:contentText="2017-08"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="上传日期"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_scrq"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="2017-08"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
 
         </LinearLayout>
     </ScrollView>

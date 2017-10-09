@@ -21,293 +21,92 @@
             android:layout_marginRight="@dimen/spacing_normal"
             android:orientation="vertical">
 
-            <LinearLayout
+
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_bh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="救助编号"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_bh"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="01"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
+                android:layout_marginTop="10dp"
+                app:titleText="救助编号"
+                app:contentText="01"/>
 
 
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_cblx"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="参保类型"
+                app:contentText="居民医保"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="参保类型"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_cblx"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="居民医保"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_xm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="姓名"
+                app:contentText="应丹勤"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="姓名"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
 
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_xm"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="应丹勤"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_xb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="性别"
+                app:contentText="女"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="性别"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_xb"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="女"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_jzlx"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="救助类别"
+                app:contentText="城市低保"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="救助类别"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_jzlx"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="城市低保"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_ryfl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="人员分类"
+                app:contentText="城市城市低保（全额）"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="人员分类"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
 
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_ryfl"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="城市低保（全额）"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_sfzh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="身份证号"
+                app:contentText="133876198109112078"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="身份证号"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_sfzh"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="133876198109112078"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_ylzh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="医疗证号"
+                app:contentText="8973661"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="医疗证号"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_ylzh"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="8973661"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_jtzz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="家庭住址"
+                app:contentText="攀枝花市东城区"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="家庭住址"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_jtzz"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="攀枝花市东城区"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-            <LinearLayout
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_bd_jbxx_ztnd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small">
+                android:layout_marginTop="10dp"
+                app:titleText="账套年度"
+                app:contentText="2017"/>
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="账套年度"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
 
-                <TextView
-                    android:id="@+id/tv_bd_jbxx_ztnd"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="2017"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
