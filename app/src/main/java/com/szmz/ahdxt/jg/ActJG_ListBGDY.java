@@ -202,6 +202,7 @@ public class ActJG_ListBGDY extends ActListBase {
             public void doAfter() {
 
                 refresh.finishRefreshing();
+                refresh.finishRefreshLoadMore();
             }
         },false);
 

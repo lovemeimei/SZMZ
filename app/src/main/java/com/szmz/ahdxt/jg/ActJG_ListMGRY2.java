@@ -150,6 +150,7 @@ public class ActJG_ListMGRY2 extends ActListBase {
             public void doAfter() {
                 super.doAfter();
                 refresh.finishRefreshing();
+                refresh.finishRefreshLoadMore();
             }
 
             @Override

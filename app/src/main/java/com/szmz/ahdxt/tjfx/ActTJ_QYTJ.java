@@ -1,8 +1,12 @@
 package com.szmz.ahdxt.tjfx;
 
+import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -22,6 +26,7 @@ import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.Md5Util;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -29,6 +34,7 @@ import java.util.Map;
 import java.util.Set;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -42,10 +48,8 @@ public class ActTJ_QYTJ extends ActBase {
     };
     @BindView(R.id.barchart)
     PieChart pieChart;
-
     @BindView(R.id.et_tj_xzqh)
     TextView tvXZQH;
-
 
     @Override
     protected int getLayoutId() {
@@ -57,6 +61,8 @@ public class ActTJ_QYTJ extends ActBase {
         super.initUI();
         setLeftVisible(true);
         setTitle("区域人次统计");
+        setRightVisible(true);
+        setRightShow("搜索");
         initChart();
         getInfo();
     }
@@ -117,11 +123,37 @@ public class ActTJ_QYTJ extends ActBase {
         pieChart.highlightValues(null);
         pieChart.invalidate();
     }
+    @OnClick({R.id.et_tj_xzqh,R.id.tv_title_right})
+    public void doClick(View v) {
 
+        switch (v.getId()) {
+            case R.id.et_tj_xzqh:
+                Calendar cal = Calendar.getInstance();
+
+                DatePickerDialog dialog1 = new DatePickerDialog(this, new DatePickerDialog
+                        .OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        tvXZQH.setText(year + "-" + (month + 1));
+                    }
+                }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+                dialog1.show();
+                break;
+            case R.id.tv_title_right:
+                getInfo();
+                break;
+        }
+    }
 
     public void getInfo() {
 
         String sqtime = tvXZQH.getText().toString();
+        if (TextUtils.isEmpty(sqtime)){
+            Calendar cal = Calendar.getInstance();
+
+            sqtime = cal.get(Calendar.YEAR)+"-"+ (cal.get(Calendar.MONTH)+1);
+        }
 
         //sysadmin 510401
         final String params = getParams("510401", sqtime);
@@ -156,7 +188,7 @@ public class ActTJ_QYTJ extends ActBase {
                 }
 
             }
-        }, false);
+        }, true);
         apiUtil.excute();
     }
 

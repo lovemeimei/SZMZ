@@ -8,6 +8,8 @@ import com.dalong.library.listener.OnItemSelectedListener;
 import com.dalong.library.view.LoopRotarySwitchView;
 import com.szmz.ahdxt.ActHdxtMain;
 import com.szmz.ahdxt.asqr.ActHdxtMainSQR;
+import com.szmz.ayljzxt.ActMainYLJZ;
+import com.szmz.ayljzxt.ActMainYLJZ2;
 import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.response.CommResponse;
 import com.szmz.net.ApiUtil;
@@ -67,7 +69,11 @@ public class ActMain extends ActBase {
 
                         break;
                     case 1:
-                        doToast("开发中");
+                        if (type == 1) {
+                            trans(ActMainYLJZ.class);
+                        } else {
+                            trans(ActMainYLJZ2.class);
+                        }
                         break;
                     case 2:
                         if (type == 1) {

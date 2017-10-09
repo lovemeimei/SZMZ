@@ -127,6 +127,7 @@ public class ActZlgl_List extends ActBaseList<HD_hdzc.ResultBean> {
             public void doAfter() {
                 super.doAfter();
                 refresh.finishRefreshing();
+                refresh.finishRefreshLoadMore();
             }
         }, false);
 

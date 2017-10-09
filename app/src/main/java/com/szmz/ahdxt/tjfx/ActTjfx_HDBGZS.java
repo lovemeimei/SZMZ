@@ -1,6 +1,7 @@
 package com.szmz.ahdxt.tjfx;
 
 import android.app.DatePickerDialog;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.View;
 import android.widget.DatePicker;
@@ -57,6 +58,11 @@ public class ActTjfx_HDBGZS extends ActBase {
     @BindView(R.id.et_tj_time2)
     TextView tvEndTime;
 
+    public static final int[] PIE_COLORS = {
+            Color.rgb(181, 194, 202), Color.rgb(129, 216, 200), Color.rgb(241, 214, 145),
+            Color.rgb(108, 176, 223), Color.rgb(195, 221, 155), Color.rgb(251, 215, 191),
+            Color.rgb(237, 189, 189), Color.rgb(172, 217, 243)
+    };
 
     @Override
     protected int getLayoutId() {
@@ -67,6 +73,8 @@ public class ActTjfx_HDBGZS extends ActBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
+        setRightVisible(true);
+        setRightShow("搜索");
         setTitle("核对报告总数");
         initBarChart();
         getInfo();
@@ -102,7 +110,7 @@ public class ActTjfx_HDBGZS extends ActBase {
         xAxis.setTypeface(mTfLight);
         xAxis.setGranularity(1f);
         xAxis.setTextSize(10f);
-        xAxis.setLabelRotationAngle(25f);
+//        xAxis.setLabelRotationAngle(25f);
         xAxis.setDrawGridLines(false);
         xAxis.setCenterAxisLabels(true);//标签居中显示
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -110,7 +118,7 @@ public class ActTjfx_HDBGZS extends ActBase {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
 
-                if (value>0 && value<=citys.size())
+                if (value>=0 && value<citys.size())
                     return  citys.get((int)value);
                 return "";
             }
@@ -128,7 +136,7 @@ public class ActTjfx_HDBGZS extends ActBase {
 
 
 
-    @OnClick({R.id.et_tj_time2, R.id.et_tj_time, R.id.et_tj_xzqh})
+    @OnClick({R.id.et_tj_time2, R.id.et_tj_time, R.id.et_tj_xzqh,R.id.tv_title_right})
     public void doClick(View v) {
 
         switch (v.getId()) {
@@ -159,6 +167,9 @@ public class ActTjfx_HDBGZS extends ActBase {
             case R.id.et_tj_xzqh:
 
                 break;
+            case R.id.tv_title_right:
+                getInfo();
+                break;
         }
     }
 
@@ -180,55 +191,19 @@ public class ActTjfx_HDBGZS extends ActBase {
         barWidth =(float) (0.9f/types.size()-0.05);
         // (0.25 + 0.05) * 3 + 0.1 = 1.00 -> interval per "group"
 
-//        List<ArrayList<BarEntry>> YValuesList = new ArrayList<>();
 
         BarData data = new BarData();
         for (int i=0;i<types.size();i++){
             ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
             for (int j=0;j<citys.size();j++){
-                yVals.add(new BarEntry(j, getValueByCity(items,citys.get(j))));
+                yVals.add(new BarEntry(j, getValueByCity(items,citys.get(j),types.get(i))));
             }
-//            YValuesList.add(yVals);
-
             BarDataSet barDataSet =new BarDataSet(yVals, types.get(i));
+            barDataSet.setColor(PIE_COLORS[i]);
             data.addDataSet(barDataSet);
         }
 
 
-
-
-//        for (int i = 0; i < citys.size(); i++) {
-//
-//            String tmpCity = citys.get(i);
-//            List<HD_TJ_HDDX.ResultBean> tmpCityBean = new ArrayList<>();
-//            for (HD_TJ_HDDX.ResultBean item :items){
-//                if (!tmpCity.contains(item.getAreaName()))
-//                   tmpCityBean.add(item);
-//
-//            }
-//
-//
-//            yVals1.add(new BarEntry(i, (float) (Math.random() * randomMultiplier) + 100));
-//            yVals2.add(new BarEntry(i, (float) (Math.random() * randomMultiplier) + 100));
-//            yVals3.add(new BarEntry(i, (float) (Math.random() * randomMultiplier) + 100));
-//            for (ArrayList<BarEntry> item:YValuesList){
-//                item.add(new BarEntry(i,(float) ))
-//            }
-//        }
-
-
-
-//        BarDataSet set1, set2, set3;
-//        // create 4 DataSets
-//        set1 = new BarDataSet(yVals1, xValueType[0]);
-//        set1.setColor(Color.rgb(104, 241, 175));
-//        set2 = new BarDataSet(yVals2, xValueType[1]);
-//        set2.setColor(Color.rgb(164, 228, 251));
-//        set3 = new BarDataSet(yVals3, xValueType[1]);
-//        set3.setColor(Color.rgb(242, 247, 158));
-
-
-//        BarData data = new BarData(set1, set2, set3);
 
         data.setValueFormatter(new LargeValueFormatter());
         data.setValueTypeface(mTfLight);
@@ -242,11 +217,11 @@ public class ActTjfx_HDBGZS extends ActBase {
         mChart.invalidate();
     }
 
-    private float getValueByCity(List<HD_TJ_HDDX.ResultBean> items,String city){
+    private float getValueByCity(List<HD_TJ_HDDX.ResultBean> items,String city,String type){
         float value =0f;
         for (int i=0;i<items.size();i++){
-            if (items.get(i).getAreaName().equals(city))
-                value=Float.valueOf(items.get(i).getBizCategory());
+            if (items.get(i).getAreaName().equals(city) && items.get(i).getBizCategory().equals(type))
+                value=Float.valueOf(items.get(i).getReportCount());
 
         }
         return value;
@@ -281,13 +256,13 @@ public class ActTjfx_HDBGZS extends ActBase {
 
                 if (items != null && items.size() > 0) {
 
-                            setmChartInfo(items);
+                    setmChartInfo(items);
                 } else {
 
                 }
 
             }
-        }, false);
+        }, true);
         apiUtil.excute();
     }
 

@@ -167,6 +167,7 @@ public class ActGrcx_DataList extends ActBaseList<HD_SearchDB_RES.ResultBean> {
             public void doAfter() {
                 super.doAfter();
                 refresh.finishRefreshing();
+                refresh.finishRefreshLoadMore();
             }
         }, false);
 

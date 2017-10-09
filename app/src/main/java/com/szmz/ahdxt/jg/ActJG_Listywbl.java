@@ -143,6 +143,7 @@ public class ActJG_Listywbl extends ActListBase {
             public void doAfter() {
                 super.doAfter();
                 refresh.finishRefreshing();
+                refresh.finishRefreshLoadMore();
             }
 
             @Override

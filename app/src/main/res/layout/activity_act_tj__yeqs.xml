@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/font_normal"
             android:textColor="@color/gray"
+            android:layout_marginRight="@dimen/spacing_normal"
             android:text="申报时间"/>
         <TextView
             android:id="@+id/et_tj_xzqh"

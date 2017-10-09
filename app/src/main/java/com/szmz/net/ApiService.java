@@ -103,9 +103,9 @@ public interface ApiService {
     //核对资料
     @POST("appCheck/worker/checkPolicyMaterial.do?getPolicyMaterialList")
     Call<HD_hdzc> getHDZL1(@Body RequestBody body);
-    @POST("appCheck/worker/confidentialMaterial.do? getConfidentialMaterial")
+    @POST("appCheck/worker/confidentialMaterial.do?getConfidentialMaterial")
     Call<HD_hdzc> getHDZL2(@Body RequestBody body);
-    @POST("appCheck/worker/checkBussinessMaterial.do? getBussinessMaterial")
+    @POST("appCheck/worker/checkBussinessMaterial.do?getBussinessMaterial")
     Call<HD_hdzc> getHDZL3(@Body RequestBody body);
 
     //消息通知

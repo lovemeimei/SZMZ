@@ -1,9 +1,11 @@
 package com.szmz.ahdxt.tjfx;
 
 import android.app.DatePickerDialog;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -51,8 +53,11 @@ public class ActTJ_YEQS extends ActBase {
 
     protected Typeface mTfRegular;
     protected Typeface mTfLight;
-
-
+    public static final int[] PIE_COLORS = {
+            Color.rgb(181, 194, 202), Color.rgb(129, 216, 200), Color.rgb(241, 214, 145),
+            Color.rgb(108, 176, 223), Color.rgb(195, 221, 155), Color.rgb(251, 215, 191),
+            Color.rgb(237, 189, 189), Color.rgb(172, 217, 243)
+    };
     private List<String> times = new ArrayList<>();
 
     @BindView(R.id.et_tj_xzqh)
@@ -69,6 +74,8 @@ public class ActTJ_YEQS extends ActBase {
         super.initUI();
         setLeftVisible(true);
         setTitle("核对报告趋势");
+        setRightVisible(true);
+        setRightShow("搜索");
         initBarChart();
         getInfo();
     }
@@ -85,7 +92,7 @@ public class ActTJ_YEQS extends ActBase {
         mChart.getDescription().setEnabled(false);
         mChart.setPinchZoom(false);
         mChart.setDrawBarShadow(false);
-        mChart.setHorizontalScrollBarEnabled(false);
+        mChart.setHorizontalScrollBarEnabled(true);
         mChart.setVerticalScrollBarEnabled(false);
         mChart.setDrawGridBackground(false);
         mChart.setTouchEnabled(false);
@@ -109,15 +116,16 @@ public class ActTJ_YEQS extends ActBase {
         xAxis.setTypeface(mTfLight);
         xAxis.setGranularity(1f);
         xAxis.setTextSize(10f);
-        xAxis.setLabelRotationAngle(25f);
+//        xAxis.setLabelRotationAngle(25f);
         xAxis.setDrawGridLines(false);
         xAxis.setCenterAxisLabels(true);//标签居中显示
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawLabels(true);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
 
-                if (value > 0 && value <= times.size())
+                if (value > 0 && value < times.size())
                     return times.get((int) value);
                 return "";
             }
@@ -133,7 +141,7 @@ public class ActTJ_YEQS extends ActBase {
         mChart.getAxisRight().setEnabled(false);
     }
 
-    @OnClick({R.id.et_tj_time2, R.id.et_tj_time, R.id.et_tj_xzqh})
+    @OnClick({R.id.et_tj_xzqh,R.id.tv_title_right})
     public void doClick(View v) {
 
         switch (v.getId()) {
@@ -145,12 +153,15 @@ public class ActTJ_YEQS extends ActBase {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                        tvXZQH.setText(year + "-" + (month + 1) + "-" + dayOfMonth);
+                        tvXZQH.setText(year + "-" + (month + 1));
                     }
                 }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
                 dialog1.show();
-                break;
 
+                break;
+            case R.id.tv_title_right:
+                getInfo();
+                break;
         }
     }
 
@@ -182,9 +193,11 @@ public class ActTJ_YEQS extends ActBase {
 
 
         LineDataSet lineDataSet = new LineDataSet(lineValues,"趋势");
+        lineDataSet.setColor(PIE_COLORS[4]);
         LineData lineData = new LineData(lineDataSet);
 
         BarDataSet barDataSet = new BarDataSet(yVals, "总数");
+        barDataSet.setColor(PIE_COLORS[3]);
         data.addDataSet(barDataSet);
 
 
@@ -227,6 +240,12 @@ public class ActTJ_YEQS extends ActBase {
 
         String sqtime = tvXZQH.getText().toString();
 
+        if (TextUtils.isEmpty(sqtime)){
+            Calendar cal = Calendar.getInstance();
+
+            sqtime = cal.get(Calendar.YEAR)+"-"+ (cal.get(Calendar.MONTH)+1);
+        }
+
         //sysadmin 510401
         String params = getParams("510401", sqtime);
 
@@ -256,7 +275,7 @@ public class ActTJ_YEQS extends ActBase {
                 }
 
             }
-        }, false);
+        }, true);
         apiUtil.excute();
     }
 

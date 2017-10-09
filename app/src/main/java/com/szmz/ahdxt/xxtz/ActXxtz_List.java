@@ -51,7 +51,8 @@ public class ActXxtz_List extends ActBaseList<HD_XXTZ.ReaultBean> {
     @Override
     protected void doListItemOnClick(HD_XXTZ.ReaultBean item) {
         Intent intent = new Intent(this, ActXxtz_Detail.class);
-        intent.putExtra("HD_XXTZ.ReaultBean", item);
+        intent.putExtra("item", item);
+        intent.putExtra("type",type);
         startActivity(intent);
     }
 
@@ -103,13 +104,15 @@ public class ActXxtz_List extends ActBaseList<HD_XXTZ.ReaultBean> {
         params = getParams("510401", CurrentPage);
 
         final RequestBody requestBody = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
-        Call<HD_hdzc> call = null;
+        Call<HD_XXTZ> call = null;
         if (type == 1) {
-            call = App.getApiProxy().getHDZL1(requestBody);
+            call = App.getApiProxy().getHD_XXTZ1(requestBody);
         } else if (type == 2) {
-            call = App.getApiProxy().getHDZL2(requestBody);
+            call = App.getApiProxy().getHD_XXTZ2(requestBody);
         } else if (type == 3) {
-            call = App.getApiProxy().getHDZL3(requestBody);
+            call = App.getApiProxy().getHD_XXTZ3(requestBody);
+        }else if (type ==4) {
+            call = App.getApiProxy().getHD_XXTZ4(requestBody);
         }
         if (call == null)
             return;
@@ -147,6 +150,7 @@ public class ActXxtz_List extends ActBaseList<HD_XXTZ.ReaultBean> {
             public void doAfter() {
                 super.doAfter();
                 refresh.finishRefreshing();
+                refresh.finishRefreshLoadMore();
             }
         }, false);
 

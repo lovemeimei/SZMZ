@@ -21,6 +21,16 @@ public class HD_TJ_HDDX extends BaseResponse<HD_TJ_HDDX.ResultBean>{
         private String bizCategory;
         private int checkObjectCount;
 
+        public int getReportCount() {
+            return reportCount;
+        }
+
+        public void setReportCount(int reportCount) {
+            this.reportCount = reportCount;
+        }
+
+        private int reportCount;
+
         public String getAreaName() {
             return areaName;
         }

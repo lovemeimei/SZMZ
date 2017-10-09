@@ -5,6 +5,7 @@ import android.widget.LinearLayout;
 
 import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.ahdxt.tjfx.ActTJ_GXDWHDRC;
 import com.szmz.ahdxt.tjfx.ActTJ_QYTJ;
 import com.szmz.ahdxt.tjfx.ActTJ_YEQS;
 import com.szmz.ahdxt.tjfx.ActTjfx_HDBGZS;
@@ -67,7 +68,10 @@ public class ActHdxt_TJFX extends ActBase {
                 );
                 break;
             case R.id.gxdwhdrcLayout:
-                doToast("共享单位核对人次");
+//                doToast("共享单位核对人次");
+                trans(
+                        ActTJ_GXDWHDRC.class
+                );
                 break;
 
         }
