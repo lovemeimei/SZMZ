@@ -19,6 +19,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import retrofit2.Call;
 
 public class ActMain extends ActBase {
@@ -86,6 +87,11 @@ public class ActMain extends ActBase {
                 }
             }
         });
+    }
+
+    @OnClick(R.id.iv_user)
+    public void doClick(View v){
+        trans(ActCommUser.class);
     }
 
     private void loginJZXT(){

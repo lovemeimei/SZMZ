@@ -7,6 +7,11 @@
         <attr name="textSize" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="MyImageView">
+        <attr name="imgSrc" format="reference"/>
+        <attr name="tvContent" format="string"/>
+    </declare-styleable>
+
     <declare-styleable name="LoopRotarySwitchView">
         <attr name="orientation">
             <enum name="vertical" value="0" />

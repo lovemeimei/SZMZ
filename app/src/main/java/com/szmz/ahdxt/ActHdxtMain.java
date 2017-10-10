@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.szmz.ActBase;
+import com.szmz.ActCommUser;
 import com.szmz.R;
 
 import butterknife.BindView;
@@ -71,7 +72,8 @@ public class ActHdxtMain extends ActBase {
                 startActivity(intent);
                 break;
             case R.id.person:
-                doToast("个人中心");
+//                doToast("个人中心");
+                trans(ActCommUser.class);
                 break;
         }
     }

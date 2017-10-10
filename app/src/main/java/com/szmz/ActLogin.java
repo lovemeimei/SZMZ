@@ -6,7 +6,9 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 import com.szmz.entity.User;
 import com.szmz.entity.request.HD_SearchDB;
@@ -28,12 +30,18 @@ import retrofit2.Call;
 /**
  * 登录
  */
-public class ActLogin extends ActBase {
+public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeListener {
 
     @BindView(R.id.et_username)
     EditText etUser;
     @BindView(R.id.et_pw)
     EditText etPW;
+    @BindView(R.id.rb_work)
+    RadioButton rbWoker;
+    @BindView(R.id.rb_user)
+    RadioButton rbUser;
+
+    private int type=1;
 
     @Override
     protected int getLayoutId() {
@@ -49,6 +57,7 @@ public class ActLogin extends ActBase {
     @Override
     protected void initUI() {
         super.initUI();
+        rbUser.setOnCheckedChangeListener(this);
     }
 
     @OnClick({R.id.btn_submit, R.id.tv_zc, R.id.tv_wjmm})
@@ -63,28 +72,26 @@ public class ActLogin extends ActBase {
                 break;
             case R.id.btn_submit:
 
-
 //                if (!doCheck()) {
 //                    return;
 //                }
+
                 if (etUser.getText().toString().equals("1")) {
                     Intent intent = new Intent(this, ActMain.class);
-                    intent.putExtra("Type", 1);
+                    intent.putExtra("Type", type);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(this, ActMain.class);
-                    intent.putExtra("Type", 0);
+                    intent.putExtra("Type", type);
                     startActivity(intent);
                 }
+
 //                login();
                 break;
         }
 
 
     }
-
-
-
     private void login() {
         final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(), etPW.getText().toString().trim());
         Call<phoneLoginR> call = App.getApiProxy().login(request);
@@ -99,22 +106,23 @@ public class ActLogin extends ActBase {
                     phoneLoginR.ResultBean bean = mResult.get(0);
                     User user = new User();
                     List<phoneLoginR.ResultBean.SystemMsgBean> systemMsgBeens = bean.getSystemMsg();
-                    if (systemMsgBeens!=null && systemMsgBeens.size()>0){
-                        for (int i=0;i<systemMsgBeens.size();i++){
+                    if (systemMsgBeens != null && systemMsgBeens.size() > 0) {
+                        for (int i = 0; i < systemMsgBeens.size(); i++) {
                             phoneLoginR.ResultBean.SystemMsgBean item = systemMsgBeens.get(i);
-                            if (item.getSystemID().equals(SystemConst.SystemID_JZ)){
+                            if (item.getSystemID().equals(SystemConst.SystemID_JZ)) {
                                 user.setAccountJZ(item.getAccount());
                             }
-                            if (item.getSystemID().equals(SystemConst.SystemID_YZS)){
+                            if (item.getSystemID().equals(SystemConst.SystemID_YZS)) {
                                 user.setAccountYZS(item.getAccount());
                             }
-                            if (item.getSystemID().equals(SystemConst.SystemID_SH)){
+                            if (item.getSystemID().equals(SystemConst.SystemID_SH)) {
                                 user.setAccountHD(item.getAccount());
                             }
                         }
                     }
                     user.setUserName(etUser.getText().toString().trim());
                     user.setPw(etPW.getText().toString().trim());
+                    user.setType(type);
                     App.getInstance().login(user);
                     trans(ActMain.class);
                 }
@@ -158,5 +166,17 @@ public class ActLogin extends ActBase {
         }
 
 
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        switch (buttonView.getId()){
+            case R.id.rb_work:
+                type=1;
+                break;
+            case R.id.rb_user:
+                type=0;
+                break;
+        }
     }
 }

@@ -85,6 +85,11 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".more.ActBindPhone"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".ActRegist"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
@@ -279,24 +284,27 @@
         <activity android:name=".ahdxt.asqr.ActHdzc_List_SQR" />
         <activity android:name=".ahdxt.asqr.ActXXTZ_List_SQR" />
         <activity android:name=".ahdxt.ActDictList" />
-        <activity android:name=".ahdxt.tjfx.ActTJ_YEQS"></activity>
-        <activity android:name=".ahdxt.tjfx.ActTJ_QYTJ"></activity>
-        <activity android:name=".ahdxt.tjfx.ActTJ_GXDWHDRC"></activity>
-        <activity android:name=".ahdxt.asqr.ActXXTZ_Detail_SQR"></activity>
+        <activity android:name=".ahdxt.tjfx.ActTJ_YEQS" />
+        <activity android:name=".ahdxt.tjfx.ActTJ_QYTJ" />
+        <activity android:name=".ahdxt.tjfx.ActTJ_GXDWHDRC" />
+        <activity android:name=".ahdxt.asqr.ActXXTZ_Detail_SQR" />
 
         <!-- 医疗救助 -->
         <activity
             android:name=".ayljzxt.ActMainYLJZ"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ayljzxt.ActMainYLJZ2"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".ahdxt.ActHD_User">
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ahdxt.ActHD_User"></activity>
+        <activity
+            android:name=".ActCommUser"
+            android:label="@string/title_activity_act_comm_user"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

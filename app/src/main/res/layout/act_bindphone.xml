@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgrounColor">
+
+    <include layout="@layout/comm_title"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:src="@drawable/icon_phone_num"
+        android:scaleType="centerInside"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="当前手机号"
+        android:textSize="@dimen/font_large"/>
+    <TextView
+        android:id="@+id/tv_phonenum"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:text="18633669987"
+        android:textSize="@dimen/font_large"/>
+    <TextView
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_light"
+        android:gravity="center"
+        android:text="更换手机号，下次可使用新手机号登录"
+        android:textSize="@dimen/font_big"/>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:background="@drawable/slt_orange_btn"
+        android:text="更换手机号"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_big" />
+</LinearLayout>

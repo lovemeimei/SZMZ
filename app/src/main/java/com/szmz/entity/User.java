@@ -16,7 +16,7 @@ public class User implements IEntity {
     private String accountHD;
 
 
-
+    private int type;
     private String pw;
     private String realName;
     private String sex;
@@ -25,6 +25,14 @@ public class User implements IEntity {
     private String idJZ;
     private String idYZS;
     private String idHD;
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public String getAccountJZ() {
         return accountJZ;
