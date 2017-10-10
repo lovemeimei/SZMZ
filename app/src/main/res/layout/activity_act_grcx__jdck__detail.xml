@@ -13,52 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/spacing_normal">
 
-        <ImageView
-            android:id="@+id/iv_step"
+        <com.szmz.widget.StepProgressView
+            android:id="@+id/stepView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginRight="@dimen/spacing_normal"
-            android:scaleType="centerInside"
-            android:src="@drawable/user_check_step1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_tiny">
-
-            <TextView
-                android:id="@+id/tv_jd1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:text="基本信息"
-                android:textColor="@color/red_light"
-                android:textSize="@dimen/font_normal" />
-
-            <TextView
-                android:id="@+id/tv_jd2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:gravity="center"
-                android:text="审核中"
-                android:textColor="@color/black_light"
-                android:textSize="@dimen/font_normal" />
-
-            <TextView
-                android:id="@+id/tv_jd3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:gravity="right"
-                android:text="审核完成"
-                android:textColor="@color/black_light"
-                android:textSize="@dimen/font_normal" />
-        </LinearLayout>
+            android:layout_centerHorizontal="true"
+            app:auto_adapte="true"
+            app:circle_radius="5dp" />
     </LinearLayout>
 
     <ScrollView
@@ -76,52 +41,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="姓名"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_check_xm"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="李静"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_normal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
-                    android:text="性别"
+                    android:text="申请人"
                     android:textColor="@color/black_light"
                     android:textSize="@dimen/font_normal" />
 
                 <TextView
-                    android:id="@+id/tv_check_xb"
+                    android:id="@+id/tv_sqr"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.0"
-                    android:text="女"
                     android:textColor="@color/black_light"
                     android:textSize="@dimen/font_normal" />
             </LinearLayout>
@@ -146,11 +80,10 @@
                     android:textSize="@dimen/font_normal" />
 
                 <TextView
-                    android:id="@+id/tv_check_sfzh"
+                    android:id="@+id/tv_sfzh"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.0"
-                    android:text="130832197801112033"
                     android:textColor="@color/black_light"
                     android:textSize="@dimen/font_normal" />
             </LinearLayout>
@@ -161,92 +94,6 @@
                 android:layout_marginTop="@dimen/spacing_tiny"
                 android:background="@color/gray2" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="家庭住址"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_check_jtzz"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="攀枝花市"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="联系电话"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_check_lxdh"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="18631162264"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.0"
-                    android:text="来访事由"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-
-                <TextView
-                    android:id="@+id/tv_check_lfsy"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.0"
-                    android:text="政策咨询"
-                    android:textColor="@color/black_light"
-                    android:textSize="@dimen/font_normal" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:background="@color/gray2" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -262,11 +109,10 @@
                     android:textSize="@dimen/font_normal" />
 
                 <TextView
-                    android:id="@+id/tv_check_ywlx"
+                    android:id="@+id/tv_ywlx"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2.0"
-                    android:text="城市低保"
                     android:textColor="@color/black_light"
                     android:textSize="@dimen/font_normal" />
             </LinearLayout>
@@ -280,22 +126,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_normal"
-                android:orientation="vertical">
+                android:layout_marginTop="@dimen/spacing_normal">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="具体内容"
+                    android:layout_weight="1.0"
+                    android:text="委托时间"
                     android:textColor="@color/black_light"
                     android:textSize="@dimen/font_normal" />
 
                 <TextView
-                    android:id="@+id/tv_check_jtnr"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tv_wtsj"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_normal"
-                    android:text="\t\t本人44岁，攀枝花市人，因为疾病失业，不能自力更生，请问可以领取低保金吗？"
+                    android:layout_weight="2.0"
                     android:textColor="@color/black_light"
                     android:textSize="@dimen/font_normal" />
             </LinearLayout>

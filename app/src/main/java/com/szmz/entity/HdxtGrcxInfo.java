@@ -1,89 +1,122 @@
 package com.szmz.entity;
 
+import java.util.List;
+
 /**
  * Created by bz on 2017/9/27.
  */
 
 public class HdxtGrcxInfo implements IEntity {
-    private String pcmc;//批次名称
-    private String ywlx;//业务类型
-    private String wtsj;//委托时间
-    private String hzsj;//汇总时间
-    private String cjsj;//创建时间
-    private String zts;//总条数
-    private String yclts;//已处理条数
-    private String blsj;//办理时间
-    private String thyy;//退回原因
+    private String batchId;
+    private String applyId;
+    private String applyName;
+    private String idCardNo;
+    private String bizCategory;
+    private String entrustTime;
+    private String currentNode;
+    private List<TotalNodeBean> totalNode;
+    private String filePath;
 
-    public String getHzsj() {
-        return hzsj;
+    public String getFilePath() {
+        return filePath;
     }
 
-    public void setHzsj(String hzsj) {
-        this.hzsj = hzsj;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
-    public String getYclts() {
-        return yclts;
+    /**
+     * sex : 女
+     */
+
+    private String sex;
+
+    public String getBatchId() {
+        return batchId;
     }
 
-    public void setYclts(String yclts) {
-        this.yclts = yclts;
+    public void setBatchId(String batchId) {
+        this.batchId = batchId;
     }
 
-    public String getThyy() {
-        return thyy;
+    public String getApplyId() {
+        return applyId;
     }
 
-    public void setThyy(String thyy) {
-        this.thyy = thyy;
+    public void setApplyId(String applyId) {
+        this.applyId = applyId;
     }
 
-    public String getPcmc() {
-        return pcmc;
+    public String getApplyName() {
+        return applyName;
     }
 
-    public void setPcmc(String pcmc) {
-        this.pcmc = pcmc;
+    public void setApplyName(String applyName) {
+        this.applyName = applyName;
     }
 
-    public String getYwlx() {
-        return ywlx;
+    public String getIdCardNo() {
+        return idCardNo;
     }
 
-    public void setYwlx(String ywlx) {
-        this.ywlx = ywlx;
+    public void setIdCardNo(String idCardNo) {
+        this.idCardNo = idCardNo;
     }
 
-    public String getWtsj() {
-        return wtsj;
+    public String getBizCategory() {
+        return bizCategory;
     }
 
-    public void setWtsj(String wtsj) {
-        this.wtsj = wtsj;
+    public void setBizCategory(String bizCategory) {
+        this.bizCategory = bizCategory;
     }
 
-    public String getCjsj() {
-        return cjsj;
+    public String getEntrustTime() {
+        return entrustTime;
     }
 
-    public void setCjsj(String cjsj) {
-        this.cjsj = cjsj;
+    public void setEntrustTime(String entrustTime) {
+        this.entrustTime = entrustTime;
     }
 
-    public String getZts() {
-        return zts;
+    public String getCurrentNode() {
+        return currentNode;
     }
 
-    public void setZts(String zts) {
-        this.zts = zts;
+    public void setCurrentNode(String currentNode) {
+        this.currentNode = currentNode;
     }
 
-    public String getBlsj() {
-        return blsj;
+    public List<TotalNodeBean> getTotalNode() {
+        return totalNode;
     }
 
-    public void setBlsj(String blsj) {
-        this.blsj = blsj;
+    public void setTotalNode(List<TotalNodeBean> totalNode) {
+        this.totalNode = totalNode;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+
+    public static class TotalNodeBean implements IEntity {
+        /**
+         * node : 待审核
+         */
+
+        private String node;
+
+        public String getNode() {
+            return node;
+        }
+
+        public void setNode(String node) {
+            this.node = node;
+        }
     }
 }

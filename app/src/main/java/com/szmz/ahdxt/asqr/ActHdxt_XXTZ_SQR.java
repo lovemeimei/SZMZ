@@ -38,12 +38,12 @@ public class ActHdxt_XXTZ_SQR extends ActBase {
 
         switch (v.getId()) {
             case R.id.sqztLayout:
-                intent = new Intent(this, ActXXTZ_List.class);
+                intent = new Intent(this, ActXXTZ_List_SQR.class);
                 intent.putExtra("Type", 1);
                 startActivity(intent);
                 break;
             case R.id.bgmxLayout:
-                intent = new Intent(this, ActXXTZ_List.class);
+                intent = new Intent(this, ActXXTZ_List_SQR.class);
                 intent.putExtra("Type", 2);
                 startActivity(intent);
                 break;

@@ -46,7 +46,7 @@ public abstract class ActBase extends AppCompatActivity {
         this.userId_HD = userId_HD;
     }
 
-    private String userId_HD ="510401";
+    private String userId_HD = "510401";
 
 
     @Override
@@ -171,5 +171,17 @@ public abstract class ActBase extends AppCompatActivity {
 
     public void doToast(String str) {
         UIUtil.doToast(str);
+    }
+
+    public String getExt(String url) {
+        if (url == null || "".equals(url)) {
+            return "";
+        }
+        if (url.contains(".")) {
+            String substring = url.substring(url.lastIndexOf("."), url.length() - 1);
+            return substring;
+        } else {
+            return "";
+        }
     }
 }

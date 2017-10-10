@@ -37,7 +37,7 @@ public class ActHdxt_HDZC_SQR extends ActBase {
 
         switch (v.getId()) {
             case R.id.hdzcLayout:
-                intent = new Intent(this, ActHdzc_List.class);
+                intent = new Intent(this, ActHdzc_List_SQR.class);
                 startActivity(intent);
                 break;
 

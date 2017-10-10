@@ -7,9 +7,9 @@ import com.szmz.entity.IEntity;
  * @created at 2017年10月08
  */
 
-public class HD_XXTZ extends BaseResponse<HD_XXTZ.ReaultBean>{
+public class HD_XXTZ extends BaseResponse<HD_XXTZ.ReaultBean> {
 
-    public class ReaultBean implements IEntity{
+    public class ReaultBean implements IEntity {
 
         /**
          * batchId : 10000001
@@ -26,6 +26,33 @@ public class HD_XXTZ extends BaseResponse<HD_XXTZ.ReaultBean>{
         private String entrustTime;
         private String dealNode;
         private String outTime;
+        private String applyId;
+        private String applyName;
+        private String idCardNo;
+
+        public String getApplyId() {
+            return applyId;
+        }
+
+        public void setApplyId(String applyId) {
+            this.applyId = applyId;
+        }
+
+        public String getApplyName() {
+            return applyName;
+        }
+
+        public void setApplyName(String applyName) {
+            this.applyName = applyName;
+        }
+
+        public String getIdCardNo() {
+            return idCardNo;
+        }
+
+        public void setIdCardNo(String idCardNo) {
+            this.idCardNo = idCardNo;
+        }
 
         public String getBatchId() {
             return batchId;

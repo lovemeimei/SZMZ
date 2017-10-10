@@ -60,7 +60,7 @@ public class ActZlgl_List extends ActBaseList<HD_hdzc.ResultBean> {
     @Override
     protected void doRefreshView(int p, HD_hdzc.ResultBean item, View view) {
         TextView nameTv = (TextView) view.findViewById(R.id.nameTv);
-//        nameTv.setText(item.getName());
+        nameTv.setText(item.getFileTitle());
 
     }
 
@@ -126,7 +126,8 @@ public class ActZlgl_List extends ActBaseList<HD_hdzc.ResultBean> {
             @Override
             public void doAfter() {
                 super.doAfter();
-                refresh.finishRefreshing();
+                refresh.finishRefresh();
+                refresh.finishRefreshLoadMore();
                 refresh.finishRefreshLoadMore();
             }
         }, false);

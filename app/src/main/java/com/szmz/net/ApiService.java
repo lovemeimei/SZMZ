@@ -1,7 +1,6 @@
 package com.szmz.net;
 
 import com.szmz.entity.HD_JG_BGDY_RES;
-import com.szmz.entity.request.HD_SearchDB;
 import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.phoneLoginRequest;
@@ -11,6 +10,7 @@ import com.szmz.entity.response.HD_JG_MGRY2;
 import com.szmz.entity.response.HD_JG_YCCL;
 import com.szmz.entity.response.HD_JG_YWBL1;
 import com.szmz.entity.response.HD_JG_YWBL2;
+import com.szmz.entity.response.HD_SQR_GRCX_JDCK_RES;
 import com.szmz.entity.response.HD_SearchDB_RES;
 import com.szmz.entity.response.HD_TJ_GX;
 import com.szmz.entity.response.HD_TJ_HDDX;
@@ -24,11 +24,8 @@ import com.szmz.entity.response.phoneLoginR;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
+
 
 /**
  * @author qieyixuan
@@ -37,10 +34,12 @@ import retrofit2.http.Query;
 public interface ApiService {
     //统一登录
     @POST("phoneLoginController.do?phoneLogin")
-    Call<phoneLoginR>  login(@Body phoneLoginRequest request);
+    Call<phoneLoginR> login(@Body phoneLoginRequest request);
+
     /**************************救助系统*********************************/
     @POST("api/appCommonController.do?getUserInfo")
-    Call<CommResponse>  loginJZ(@Body JZ_Comm_Req request);
+    Call<CommResponse> loginJZ(@Body JZ_Comm_Req request);
+
     //修改密码
     @POST("phoneLoginController.do?modifyPassword")
     Call<CommResponse> modifyPW(@Body ModifyPW request);
@@ -54,24 +53,61 @@ public interface ApiService {
     //我的待办
     @POST("appCheck/worker/todo.do?getBatchList")
     Call<HD_SearchDB_RES> getDBlist3(@Body RequestBody body);
+
     //我的已办
     @POST("appCheck/worker/done.do?getBatchList")
     Call<HD_SearchDB_RES> getYBlist(@Body RequestBody body);
+
     //我的退回
     @POST("appCheck/worker/back.do?getBatchList")
     Call<HD_SearchDB_RES> getTHlist(@Body RequestBody body);
+
     //终止退回
     @POST("appCheck/worker/endBack.do?getBatchList")
     Call<HD_SearchDB_RES> getZZTHlist(@Body RequestBody body);
+
     //监管 报告打印监管
     @POST("appCheck/worker/print.do?getReportPrintList")
     Call<HD_JG_BGDY_RES> getJG_BGDYlist(@Body RequestBody body);
+
     //	查询业务办理监管主页信息
     @POST("appCheck/worker/bussiness.do?getBussinessBatchList")
     Call<HD_JG_YWBL1> getJG_ywblList1(@Body RequestBody body);
+
     //查询批次对应申请信息
     @POST("appCheck/worker/applyBussiness.do?getApplyBussinessList")
     Call<HD_JG_YWBL2> getJG_ywblList2(@Body RequestBody body);
+
+
+    //申请人-个人查询-进度查看
+    @POST("appCheck/person/applyProgress.do?getApplyProgressList")
+    Call<HD_SQR_GRCX_JDCK_RES> getApplyProgressList(@Body RequestBody body);
+
+
+    //申请人-个人查询-申请信息查看
+    @POST("appCheck/person/applyInfo.do?getApplyInfoList")
+    Call<HD_SQR_GRCX_JDCK_RES> getApplyInfoList(@Body RequestBody body);
+
+    //申请人-个人查询-申请信息查看-附件下载
+    @POST("appCheck/person/downEnclosure.do?downEnclosure")
+    Call<HD_SQR_GRCX_JDCK_RES> getDownEnclosureInfo(@Body RequestBody body);
+
+    //申请人-个人查询-申请信息查看-报告下载
+    @POST("appCheck/person/downReport.do?downReport")
+    Call<HD_SQR_GRCX_JDCK_RES> getDownReport(@Body RequestBody body);
+
+    //申请人-核对政策-核对政策
+    @POST("appCheck/person/applyCheckPolityMaterial.do?getPolityMaterial")
+    Call<HD_hdzc> getHDZCList(@Body RequestBody body);
+
+    //申请人-消息通知-申请状态
+    @POST("appCheck/person/applyStateTip.do?getApplyStateTipList")
+    Call<HD_XXTZ> getXXTZList1(@Body RequestBody body);
+
+    //申请人-消息通知-报告明细
+    @POST("appCheck/person/applyReportTip.do?getApplyReportTipList")
+    Call<HD_XXTZ> getXXTZList2(@Body RequestBody body);
+
 
     //监管查询异常
     @POST("appCheck/worker/operation.do?getOperationList")
@@ -80,14 +116,17 @@ public interface ApiService {
     //监管敏感人员
     @POST("appCheck/worker/sensitive.do?getSensitiveBatchList")
     Call<HD_JG_MGRY> getJG_MGRY_List(@Body RequestBody body);
+
     @POST("appCheck/worker/sensitiveApply.do?getSensitiveApplyList")
     Call<HD_JG_MGRY2> getJG_MGRY_List2(@Body RequestBody body);
+
     @POST("appCheck/worker/senitiveAudit.do?auditApply")
     Call<CommResponse> getJG_MGRY_SH(@Body RequestBody body);
 
     //统计分析
     @POST("appCheck/worker/checkApply.do?getApplyStatistics")
     Call<HD_TJ_HDDX> getTJ_HDDX(@Body RequestBody body);
+
     @POST("appCheck/worker/checkReport.do?getReportStatistics")
     Call<HD_TJ_HDDX> getTJ_HDbgzs(@Body RequestBody body);
 
@@ -103,8 +142,11 @@ public interface ApiService {
     //核对资料
     @POST("appCheck/worker/checkPolicyMaterial.do?getPolicyMaterialList")
     Call<HD_hdzc> getHDZL1(@Body RequestBody body);
+
     @POST("appCheck/worker/confidentialMaterial.do?getConfidentialMaterial")
     Call<HD_hdzc> getHDZL2(@Body RequestBody body);
+
+
     @POST("appCheck/worker/checkBussinessMaterial.do?getBussinessMaterial")
     Call<HD_hdzc> getHDZL3(@Body RequestBody body);
 
@@ -120,5 +162,6 @@ public interface ApiService {
 
     @POST("appCheck/worker/sensitiveTip.do?getSensitiveTipList")
     Call<HD_XXTZ> getHD_XXTZ4(@Body RequestBody body);
+
 
 }

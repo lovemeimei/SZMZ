@@ -1,6 +1,5 @@
 package com.szmz.utils;
 
-import com.szmz.entity.HdxtGrcxInfo;
 import com.szmz.entity.HdxtZlglInfo;
 import com.szmz.entity.YwblJtcy;
 import com.szmz.entity.YwblPerson;
@@ -77,25 +76,7 @@ public class GetData {
         return list;
     }
 
-    public static List<HdxtGrcxInfo> getDataList() {
-        List<HdxtGrcxInfo> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            HdxtGrcxInfo item = new HdxtGrcxInfo();
-            item.setBlsj("2017-10-01");
-            item.setCjsj("2017-09-09");
-            item.setHzsj("2017-09-30");
-            item.setPcmc("攀枝花2017090900" + i);
-            item.setThyy("信息错误" + i);
-            item.setWtsj("2017-09-22");
-            item.setYclts("2000000");
-            item.setYwlx("城乡低保" + i);
-            item.setZts("3000000");
-            list.add(item);
 
-        }
-        return list;
-
-    }
 
     public static List<HdxtZlglInfo> getHdxtZlglInfoList() {
         List<HdxtZlglInfo> list = new ArrayList<>();
