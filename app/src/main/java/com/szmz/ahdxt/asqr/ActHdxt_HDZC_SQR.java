@@ -3,6 +3,7 @@ package com.szmz.ahdxt.asqr;
 import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.szmz.ActBase;
 import com.szmz.R;
@@ -14,7 +15,7 @@ public class ActHdxt_HDZC_SQR extends ActBase {
 
 
     @BindView(R.id.hdzcLayout)
-    LinearLayout hdzcLayout;
+    RelativeLayout hdzcLayout;
 
     @Override
     protected int getLayoutId() {

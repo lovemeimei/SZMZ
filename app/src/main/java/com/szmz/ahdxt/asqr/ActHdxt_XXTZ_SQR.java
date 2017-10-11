@@ -18,11 +18,14 @@ public class ActHdxt_XXTZ_SQR extends ActBase {
     @BindView(R.id.bgmxLayout)
     LinearLayout bgmxLayout;
 
+    @BindView(R.id.layout_title)
+    LinearLayout linearLayoutTitle;
     @Override
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
         setTitle("消息通知");
+        linearLayoutTitle.setVisibility(View.VISIBLE);
     }
 
     @Override
