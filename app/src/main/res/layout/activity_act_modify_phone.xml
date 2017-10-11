@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="+86"
             android:textColor="@color/orange"
-            android:textSize="@dimen/font_small" />
+            android:textSize="@dimen/font_big" />
 
         <View
             android:layout_width="0.5dp"

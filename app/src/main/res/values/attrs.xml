@@ -99,4 +99,24 @@
         <attr name="auto_adapte" format="boolean" />
         <attr name="text_sizes" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="vericationCodeInput">
+
+        <attr name="box" format="integer" />
+        <attr name="child_h_padding" format="dimension"/>
+        <attr name="child_v_padding" format="dimension"/>
+        <attr name="child_width" format="dimension"/>
+        <attr name="child_height" format="dimension"/>
+        <attr name="padding" format="dimension"/>
+        <attr name="box_bg_focus" format="reference"/>
+        <attr name="box_bg_normal" format="reference"/>
+        <attr name="inputType" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="MyImageLayoutView">
+
+        <attr name="layout_title" format="string"/>
+        <attr name="layout_content" format="string"/>
+        <attr name="layout_cionSrc" format="reference"/>
+    </declare-styleable>
 </resources>

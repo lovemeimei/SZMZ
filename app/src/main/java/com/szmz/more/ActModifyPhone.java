@@ -30,10 +30,11 @@ public class ActModifyPhone extends ActBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
+        setTitle("更改手机号码");
     }
 
     @OnClick(R.id.btn_submit)
     public void doClick(View v) {
-
+            trans(ActModifyPhone2.class);
     }
 }
