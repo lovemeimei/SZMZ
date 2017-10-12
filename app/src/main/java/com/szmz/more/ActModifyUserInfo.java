@@ -45,6 +45,7 @@ public class ActModifyUserInfo extends ActBase{
         setLeftVisible(true);
         setRightVisible(true);
         setRightShow("编辑");
+        setTitle("个人资料");
         btnSub.setVisibility(View.GONE);
         createDialog();
 

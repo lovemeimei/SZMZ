@@ -103,7 +103,7 @@ public class ActJG_ListMGRY2 extends ActListBase {
             protected MViewHolder getHolder(View v) {
 
                 MViewHolder holder = new MViewHolder();
-                holder.tvType = (TextView)v.findViewById(R.id.tv_type);
+                holder.tvType = (TextView)v.findViewById(R.id.tv_code);
                 holder.tvName = (TextView)v.findViewById(R.id.tv_name);
                 holder.tvSub = (TextView)v.findViewById(R.id.tv_submit);
                 holder.tvSHENHE = (TextView)v.findViewById(R.id.tv_shenhe);

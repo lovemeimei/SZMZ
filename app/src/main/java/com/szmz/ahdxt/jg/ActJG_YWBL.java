@@ -40,7 +40,7 @@ public class ActJG_YWBL extends ActBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("监察详情");
+        setTitle("详情信息");
 
         item =(HD_JG_YWBL2.ResultBean) getIntent().getSerializableExtra("item");
 

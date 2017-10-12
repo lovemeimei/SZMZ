@@ -75,7 +75,7 @@ public class ActJG_ListBGDY extends ActListBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("打印报告监管");
+        setTitle("报告打印详情");
         setRightVisible(true);
         setRightShow("搜索");
 

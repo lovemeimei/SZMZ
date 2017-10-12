@@ -51,7 +51,7 @@ public class ActJG_Listywbl2 extends ActListBase {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_act_jc__list;
+        return R.layout.activity_act_jc__list_ywbl;
     }
 
 
@@ -59,7 +59,7 @@ public class ActJG_Listywbl2 extends ActListBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("业务办理监管");
+        setTitle("申请信息");
         setRightVisible(true);
         setRightShow("搜索");
 
@@ -116,7 +116,7 @@ public class ActJG_Listywbl2 extends ActListBase {
 
     void loadInfo(boolean isMore){
         String batchName = etSearch1.getText().toString().trim();
-        String bizCode = code;
+        String bizCode = etSearch2.getText().toString().trim();
         if (isMore){
             currentPage++;
         }else {

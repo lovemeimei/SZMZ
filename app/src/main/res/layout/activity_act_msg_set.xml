@@ -63,7 +63,7 @@
             android:layout_height="1dp"
             android:layout_weight="1.0"/>
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/rb_sound"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
             android:layout_height="1dp"
             android:layout_weight="1.0"/>
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/radio_shake"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
             android:layout_height="1dp"
             android:layout_weight="1.0"/>
 
-        <RadioButton
+        <CheckBox
             android:id="@+id/radio_mdr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

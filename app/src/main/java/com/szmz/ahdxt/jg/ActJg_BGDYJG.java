@@ -39,7 +39,7 @@ public class ActJg_BGDYJG extends ActBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("打印报告详情");
+        setTitle("报告打印详情");
 
         item = (HD_JG_BGDY_RES.ResultBean)getIntent().getSerializableExtra("object");
         tvBH.doSetContent(item.getReportCode());
