@@ -28,14 +28,13 @@
             android:id="@+id/ml_hdzc"
             android:layout_width="match_parent"
             app:layout_title="核对政策"
-            app:layout_content="点击查看核对政策"
+            app:layout_content="点击查看核对政策消息"
             app:layout_cionSrc="@drawable/home_icon_yhzc"
             android:layout_height="wrap_content"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="@color/gray" />
-
 
     </LinearLayout>
 

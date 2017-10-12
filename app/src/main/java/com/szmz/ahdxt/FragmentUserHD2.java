@@ -4,8 +4,12 @@ import android.view.View;
 
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.ahdxt.asqr.ActHdzc_List_SQR;
+import com.szmz.more.ActBindPhone;
 import com.szmz.more.ActModifyPW;
+import com.szmz.more.ActModifyPhone;
 import com.szmz.more.ActModifyUserInfo;
+import com.szmz.more.ActMsgSet;
 
 import butterknife.OnClick;
 
@@ -19,7 +23,7 @@ public class FragmentUserHD2 extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_user_hd;
+        return R.layout.fragment_user_hd2;
     }
 
     @Override
@@ -28,7 +32,7 @@ public class FragmentUserHD2 extends BaseFragment {
     }
 
     @OnClick({
-            R.id.miv_grzl, R.id.miv_xgmm, R.id.miv_wdyw, R.id.miv_zlgl
+            R.id.miv_grzl, R.id.miv_xgmm,R.id.miv_bindphone,R.id.miv_msg,R.id.miv_hdzc
     })
     public void doClick(View v) {
         switch (v.getId()) {
@@ -38,13 +42,15 @@ public class FragmentUserHD2 extends BaseFragment {
             case R.id.miv_xgmm:
                 trans(ActModifyPW.class);
                 break;
-            case R.id.miv_wdyw:
-                trans(ActHdxt_GRCX.class);
+            case R.id.miv_bindphone:
+                trans(ActBindPhone.class);
                 break;
-            case R.id.miv_zlgl:
-                trans(ActHdxt_ZLGL.class);
+            case R.id.miv_msg:
+                trans(ActMsgSet.class);
                 break;
-
+            case R.id.miv_hdzc:
+                trans(ActHdzc_List_SQR.class);
+                break;
         }
     }
 }

@@ -5,6 +5,7 @@ import android.view.View;
 import com.szmz.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.more.ActBindPhone;
 import com.szmz.more.ActModifyPW;
 import com.szmz.more.ActModifyPhone;
 import com.szmz.more.ActModifyUserInfo;
@@ -34,18 +35,18 @@ public class FragmentUse_C extends BaseFragment {
     }
 
     @OnClick({
-            R.id.ll_user_userinfo, R.id.ll_user_pw,R.id.miv_bindphone,R.id.miv_msg
+            R.id.miv_grzl, R.id.miv_xgmm,R.id.miv_bindphone,R.id.miv_msg
     })
     public void doClick(View v) {
         switch (v.getId()) {
-            case R.id.ll_user_userinfo:
+            case R.id.miv_grzl:
                 trans(ActModifyUserInfo.class);
                 break;
-            case R.id.ll_user_pw:
+            case R.id.miv_xgmm:
                 trans(ActModifyPW.class);
                 break;
             case R.id.miv_bindphone:
-                trans(ActModifyPhone.class);
+                trans(ActBindPhone.class);
                 break;
             case R.id.miv_msg:
                 trans(ActMsgSet.class);

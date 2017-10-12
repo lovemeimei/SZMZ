@@ -7,6 +7,7 @@ import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.ahdxt.asqr.ActHdxt_HDZC_SQR;
 import com.szmz.ahdxt.asqr.ActHdxt_XXTZ_SQR;
+import com.szmz.ahdxt.asqr.ActHdzc_List_SQR;
 import com.szmz.ahdxt.xxtz.ActXxtz_List;
 
 import butterknife.OnClick;
@@ -30,8 +31,9 @@ public class FragmentHomeHD2 extends BaseFragment {
 
     }
 
-    @OnClick({R.id.ml_xxtz,R.id.ml_hdzc})
+    @OnClick({R.id.ml_xxtz, R.id.ml_hdzc})
     public void doClick(View v) {
+
 
         switch (v.getId()) {
 
@@ -39,7 +41,7 @@ public class FragmentHomeHD2 extends BaseFragment {
                 trans(ActHdxt_XXTZ_SQR.class);
                 break;
             case R.id.ml_hdzc:
-                trans(ActHdxt_HDZC_SQR.class);
+                trans(ActHdzc_List_SQR.class);
                 break;
 
         }

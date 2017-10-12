@@ -1,9 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgrounColor"
     tools:context="com.szmz.more.ActMsgSet">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/comm_title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/spacing_normal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新消息通知"
+            android:textSize="@dimen/font_big"
+            android:textColor="@color/black_light"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1.0"/>
+
+        <TextView
+            android:id="@+id/tv_msg_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已关闭"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/black_light"/>
+    </LinearLayout>
+    <TextView
+        android:layout_margin="@dimen/spacing_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_small"
+        android:text="程序运行时，可以设置是否需要声音和震动"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/spacing_normal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="声音"
+            android:textSize="@dimen/font_big"
+            android:textColor="@color/black_light"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1.0"/>
+
+        <RadioButton
+            android:id="@+id/rb_sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/slt_radio_bg"
+            android:button="@null"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/black_light"/>
+    </LinearLayout>
+    <View
+        style="@style/line"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/spacing_normal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="震动"
+            android:textSize="@dimen/font_big"
+            android:textColor="@color/black_light"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1.0"/>
+
+        <RadioButton
+            android:id="@+id/radio_shake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/slt_radio_bg"
+            android:button="@null"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/black_light"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_margin="@dimen/spacing_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_small"
+        android:text="开启后，程序运行时收到新消息，不会发出声音和震动"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="@dimen/spacing_normal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="免打扰模式"
+            android:textSize="@dimen/font_big"
+            android:textColor="@color/black_light"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1.0"/>
+
+        <RadioButton
+            android:id="@+id/radio_mdr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/slt_radio_bg"
+            android:button="@null"
+            android:checked="true"
+            android:textSize="@dimen/font_normal"
+            android:textColor="@color/black_light"/>
+    </LinearLayout>
+</LinearLayout>
