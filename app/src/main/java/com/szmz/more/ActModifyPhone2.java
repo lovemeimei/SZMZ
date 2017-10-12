@@ -42,7 +42,7 @@ public class ActModifyPhone2 extends ActBase {
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                myAnimFinish();
             }
         });
     }
