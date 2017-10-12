@@ -5,6 +5,9 @@ import android.view.View;
 
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.ahdxt.asqr.ActHdxt_HDZC_SQR;
+import com.szmz.ahdxt.asqr.ActHdxt_XXTZ_SQR;
+import com.szmz.ahdxt.asqr.ActHdzc_List_SQR;
 import com.szmz.ahdxt.xxtz.ActXxtz_List;
 
 import butterknife.OnClick;
@@ -20,7 +23,7 @@ public class FragmentHomeHD2 extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_home_hd;
+        return R.layout.fragment_home_hd2;
     }
 
     @Override
@@ -28,28 +31,19 @@ public class FragmentHomeHD2 extends BaseFragment {
 
     }
 
-    @OnClick({R.id.ml_xxtz, R.id.ml_db, R.id.ml_thwt,R.id.ml_mgryjg})
+    @OnClick({R.id.ml_xxtz, R.id.ml_hdzc})
     public void doClick(View v) {
 
-        Intent intent = new Intent(getContext(), ActXxtz_List.class);
+
         switch (v.getId()) {
 
             case R.id.ml_xxtz:
-                intent.putExtra("Type", 1);
-                startActivity(intent);
+                trans(ActHdxt_XXTZ_SQR.class);
                 break;
-            case R.id.ml_db:
-                intent.putExtra("Type", 2);
-                startActivity(intent);
+            case R.id.ml_hdzc:
+                trans(ActHdzc_List_SQR.class);
                 break;
-            case R.id.ml_thwt:
-                intent.putExtra("Type", 3);
-                startActivity(intent);
-                break;
-            case R.id.ml_mgryjg:
-                intent.putExtra("Type", 4);
-                startActivity(intent);
-                break;
+
         }
     }
 }

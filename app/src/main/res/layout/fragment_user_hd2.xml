@@ -38,24 +38,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:weightSum="2">
+
+            <com.szmz.widget.MyImageView
+                android:id="@+id/miv_bindphone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                app:imgSrc="@drawable/slt_bindphone"
+                app:tvContent="绑定手机号"/>
+
+            <com.szmz.widget.MyImageView
+                android:id="@+id/miv_msg"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                app:imgSrc="@drawable/slt_tsmsg"
+                app:tvContent="消息推送"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:weightSum="2">
 
             <com.szmz.widget.MyImageView
-                android:id="@+id/miv_wdyw"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                app:imgSrc="@drawable/slt_user_ywjd"
-                app:tvContent="我的业务" />
-
-            <com.szmz.widget.MyImageView
-                android:id="@+id/miv_zlgl"
+                android:id="@+id/miv_hdzc"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 app:imgSrc="@drawable/slt_user_job"
-                app:tvContent="资料管理" />
+                app:tvContent="核对政策" />
 
 
         </LinearLayout>

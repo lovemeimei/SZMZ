@@ -3,6 +3,7 @@ package com.szmz.ahdxt.asqr;
 import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.szmz.ActBase;
 import com.szmz.R;
@@ -18,11 +19,16 @@ public class ActHdxt_XXTZ_SQR extends ActBase {
     @BindView(R.id.bgmxLayout)
     LinearLayout bgmxLayout;
 
+    @BindView(R.id.layout_title)
+    RelativeLayout titleLayout;
+
+
     @Override
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
         setTitle("消息通知");
+        titleLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
