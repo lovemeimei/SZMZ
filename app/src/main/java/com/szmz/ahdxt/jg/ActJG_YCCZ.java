@@ -1,8 +1,5 @@
 package com.szmz.ahdxt.jg;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.szmz.ActBase;
 import com.szmz.R;
 import com.szmz.entity.response.HD_JG_YCCL;
@@ -36,10 +33,10 @@ public class ActJG_YCCZ extends ActBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("异常操作详情");
+        setTitle("详细信息");
 
 
-        item =(HD_JG_YCCL.ResultBean)getIntent().getSerializableExtra("item");
+        item = (HD_JG_YCCL.ResultBean) getIntent().getSerializableExtra("item");
 
         ycmc.doSetContent(item.getWarningName());
         ywlx.doSetContent(item.getBizCategory());
@@ -48,8 +45,6 @@ public class ActJG_YCCZ extends ActBase {
         yjsj.doSetContent(item.getWarningTime());
         yjly.doSetContent(item.getSource());
     }
-
-
 
 
 }

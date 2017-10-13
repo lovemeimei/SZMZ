@@ -3,7 +3,6 @@ package com.szmz.ahdxt.jg;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -13,14 +12,13 @@ import com.materiallistview.MaterialRefreshLayout;
 import com.szmz.ActListBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.SystemConst;
 import com.szmz.entity.response.CommResponse;
-import com.szmz.entity.response.HD_JG_MGRY2;
 import com.szmz.entity.response.HD_JG_MGRY2;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
 import com.szmz.utils.Md5Util;
-import com.szmz.utils.UIUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,9 +36,9 @@ public class ActJG_ListMGRY2 extends ActListBase {
 
     @BindView(R.id.lv)
     ListView lv;
-    BaseListAdapter<HD_JG_MGRY2.ResultBean,MViewHolder> adapter;
+    BaseListAdapter<HD_JG_MGRY2.ResultBean, MViewHolder> adapter;
     List<HD_JG_MGRY2.ResultBean> items = new ArrayList<>();
-    
+
     private String id;
 
 
@@ -54,19 +52,19 @@ public class ActJG_ListMGRY2 extends ActListBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("敏感人员");
+        setTitle("敏感申请人信息");
 
         id = getIntent().getStringExtra("id");
 
-        adapter = new BaseListAdapter<HD_JG_MGRY2.ResultBean, MViewHolder>(this,R.layout.list_item_jg_mgry) {
+        adapter = new BaseListAdapter<HD_JG_MGRY2.ResultBean, MViewHolder>(this, R.layout.list_item_jg_mgry) {
             @Override
             protected void refreshView(int postion, final HD_JG_MGRY2.ResultBean item, MViewHolder holer) {
 
                 holer.tvSub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(ActJG_ListMGRY2.this,ActJG_MGRY.class);
-                        intent.putExtra("item",item);
+                        Intent intent = new Intent(ActJG_ListMGRY2.this, ActJG_MGRY.class);
+                        intent.putExtra("item", item);
                         startActivity(intent);
                     }
                 });
@@ -85,7 +83,7 @@ public class ActJG_ListMGRY2 extends ActListBase {
                                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                                     @Override
                                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                                    doSH(item.getApplyId(),"1");
+                                        doSH(item.getApplyId(), "1");
                                     }
                                 })
                                 .negativeText("取消")
@@ -103,10 +101,11 @@ public class ActJG_ListMGRY2 extends ActListBase {
             protected MViewHolder getHolder(View v) {
 
                 MViewHolder holder = new MViewHolder();
-                holder.tvType = (TextView)v.findViewById(R.id.tv_code);
-                holder.tvName = (TextView)v.findViewById(R.id.tv_name);
-                holder.tvSub = (TextView)v.findViewById(R.id.tv_submit);
-                holder.tvSHENHE = (TextView)v.findViewById(R.id.tv_shenhe);
+                holder.tvType = (TextView) v.findViewById(R.id.tv_code);
+                holder.tvName = (TextView) v.findViewById(R.id.tv_name);
+                holder.tvSub = (TextView) v.findViewById(R.id.tv_submit);
+                holder.tvSHENHE = (TextView) v.findViewById(R.id.tv_shenhe);
+
                 return holder;
 
             }
@@ -127,6 +126,7 @@ public class ActJG_ListMGRY2 extends ActListBase {
 
         loadInfo(true);
     }
+
     void loadInfo(boolean isMore) {
 
 
@@ -137,7 +137,7 @@ public class ActJG_ListMGRY2 extends ActListBase {
         }
 
         //sysadmin 510401
-        String params = getParams("sysadmin", id);
+        String params = getParams(SystemConst.USERID, id);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;" +
                 "charset=UTF-8"), params.getBytes());
@@ -183,7 +183,7 @@ public class ActJG_ListMGRY2 extends ActListBase {
 
     }
 
-    class MViewHolder{
+    class MViewHolder {
         TextView tvName;
         TextView tvType;
         TextView tvSub;
@@ -192,7 +192,7 @@ public class ActJG_ListMGRY2 extends ActListBase {
 
     String getParams(String userid, String batchId) {
 
-        String md5key = Md5Util.getMd5(userid + batchId  + currentPage + "20");
+        String md5key = Md5Util.getMd5(userid + batchId + currentPage + "20");
         StringBuilder sb = new StringBuilder();
         sb.append("userId=");
         sb.append(userid);
@@ -208,9 +208,10 @@ public class ActJG_ListMGRY2 extends ActListBase {
         sb.append(md5key);
         return sb.toString();
     }
-    String getParamsSH(String userid, String batchId,String applyId,String approvalCode) {
 
-        String md5key = Md5Util.getMd5(userid + batchId  + applyId + approvalCode);
+    String getParamsSH(String userid, String batchId, String applyId, String approvalCode) {
+
+        String md5key = Md5Util.getMd5(userid + batchId + applyId + approvalCode);
         StringBuilder sb = new StringBuilder();
         sb.append("userId=");
         sb.append(userid);
@@ -229,9 +230,9 @@ public class ActJG_ListMGRY2 extends ActListBase {
         return sb.toString();
     }
 
-    private void doSH(String applyId,String approvalCode){
+    private void doSH(String applyId, String approvalCode) {
         //sysadmin 510401
-        String params = getParamsSH("sysadmin", id,applyId,approvalCode);
+        String params = getParamsSH("sysadmin", id, applyId, approvalCode);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;" +
                 "charset=UTF-8"), params.getBytes());
@@ -248,7 +249,7 @@ public class ActJG_ListMGRY2 extends ActListBase {
 
             @Override
             public void doSuccess(CommResponse result) {
-                        super.doSuccess(result);
+                super.doSuccess(result);
                 loadInfo(false);
             }
         }, false);

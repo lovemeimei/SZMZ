@@ -7,9 +7,9 @@ import com.szmz.entity.IEntity;
  * @created at 2017年10月08
  */
 
-public class HD_hdzc extends BaseResponse<HD_hdzc.ResultBean>{
+public class HD_hdzc extends BaseResponse<HD_hdzc.ResultBean> {
 
-    public class ResultBean implements IEntity{
+    public class ResultBean implements IEntity {
 
         /**
          * fileTitle : 核对资料
@@ -18,6 +18,24 @@ public class HD_hdzc extends BaseResponse<HD_hdzc.ResultBean>{
 
         private String fileTitle;
         private String filePath;
+        private boolean isDownLoading = false;
+        private long reference;
+
+        public long getReference() {
+            return reference;
+        }
+
+        public void setReference(long reference) {
+            this.reference = reference;
+        }
+
+        public boolean isDownLoading() {
+            return isDownLoading;
+        }
+
+        public void setDownLoading(boolean downLoading) {
+            isDownLoading = downLoading;
+        }
 
         public String getFileTitle() {
             return fileTitle;

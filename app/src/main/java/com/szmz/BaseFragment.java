@@ -2,7 +2,6 @@ package com.szmz;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,7 +16,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import butterknife.ButterKnife;
 
 
-public abstract  class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     protected MaterialDialog dialog;
 
@@ -59,20 +58,21 @@ public abstract  class BaseFragment extends Fragment {
         bindDates(view);
         bindDatas();
     }
+
     protected void bindDates(View v) {
 
 
     }
 
-    public void trans(Class cls){
-        Intent intent =new Intent(getContext(),cls);
+    public void trans(Class cls) {
+        Intent intent = new Intent(getContext(), cls);
         startActivity(intent);
     }
 
-    public void trans(Class cls,String title,String content){
-        Intent intent =new Intent(getContext(),cls);
-        intent.putExtra("title",title);
-        intent.putExtra("content",content);
+    public void trans(Class cls, String title, String content) {
+        Intent intent = new Intent(getContext(), cls);
+        intent.putExtra("title", title);
+        intent.putExtra("content", content);
         startActivity(intent);
     }
 

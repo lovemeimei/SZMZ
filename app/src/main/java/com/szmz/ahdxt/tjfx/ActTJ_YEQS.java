@@ -1,17 +1,12 @@
 package com.szmz.ahdxt.tjfx;
 
-import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -30,16 +25,13 @@ import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.response.HD_TJ_YWQS;
-import com.szmz.entity.response.HD_TJ_YWQS;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
 import com.szmz.utils.Md5Util;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,6 +40,9 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 
+/**
+ * 核对业务趋势
+ */
 public class ActTJ_YEQS extends ActBase {
 
 
@@ -77,7 +72,7 @@ public class ActTJ_YEQS extends ActBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("核对报告趋势");
+        setTitle("核对业务趋势");
         setRightVisible(true);
         setRightShow("搜索");
         initBarChart();

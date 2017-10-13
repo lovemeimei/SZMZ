@@ -17,6 +17,7 @@ import com.szmz.entity.response.HD_TJ_HDDX;
 import com.szmz.entity.response.HD_TJ_QYRC;
 import com.szmz.entity.response.HD_TJ_YWQS;
 import com.szmz.entity.response.HD_XXTZ;
+import com.szmz.entity.response.HD_XZQH_Response;
 import com.szmz.entity.response.HD_dict;
 import com.szmz.entity.response.HD_hdzc;
 import com.szmz.entity.response.phoneLoginR;
@@ -162,6 +163,10 @@ public interface ApiService {
 
     @POST("appCheck/worker/sensitiveTip.do?getSensitiveTipList")
     Call<HD_XXTZ> getHD_XXTZ4(@Body RequestBody body);
+
+    //行政区划
+    @POST("appCheck/worker/getOrgArea.do?getOrgArea")
+    Call<HD_XZQH_Response> getHD_XZQHList(@Body RequestBody body);
 
 
 }

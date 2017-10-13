@@ -48,6 +48,8 @@ dependencies {
     compile 'com.bm.photoview:library:1.4.1'
     compile 'com.jph.takephoto:takephoto_library:4.0.3'
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    compile 'com.github.bmelnychuk:atv:1.2.+'
+    compile 'com.github.johnkil.print:print:1.2.2'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

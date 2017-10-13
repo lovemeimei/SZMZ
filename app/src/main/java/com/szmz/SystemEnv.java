@@ -9,6 +9,8 @@ import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.szmz.entity.IEntity;
 import com.szmz.utils.GsonUtil;
 
@@ -37,6 +39,49 @@ public final class SystemEnv {
         et.commit();
     }
 
+    /**
+     * 保存List
+     *
+     * @param tag
+     * @param datalist
+     */
+    public static <T> void setDataList(String tag, List<T> datalist) {
+        if (null == datalist || datalist.size() <= 0)
+            return;
+        SharedPreferences.Editor et = pref.edit();
+        Gson gson = new Gson();
+        //转换成json数据，再保存
+        String strJson = gson.toJson(datalist);
+        et.clear();
+        et.putString(tag, strJson);
+        et.commit();
+
+    }
+
+    public static void deleteDataList() {
+        SharedPreferences.Editor et = pref.edit();
+        et.clear();
+        et.commit();
+    }
+
+    /**
+     * 获取List
+     *
+     * @param tag
+     * @return
+     */
+    public static <T> List<T> getDataList(String tag) {
+        List<T> datalist = new ArrayList<T>();
+        String strJson = pref.getString(tag, null);
+        if (null == strJson) {
+            return datalist;
+        }
+        Gson gson = new Gson();
+        datalist = gson.fromJson(strJson, new TypeToken<List<T>>() {
+        }.getType());
+        return datalist;
+
+    }
 
     public static <T extends IEntity> boolean save(T entity, String key) {
         String prefFileName = entity.getClass().getName();

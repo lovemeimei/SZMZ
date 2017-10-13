@@ -17,4 +17,6 @@ public class SystemConst {
     public static final String SystemID_JZ="8a8a800b5e029817015e02c96bba0012";
     public static final String SystemID_YZS="8a8a800b5e029817015e02c84ae2000e";
     public static final String SystemID_SH="8a8a800b5e029817015e02c9106d0010";
+
+    public static final String USERID="sysadmin";
 }

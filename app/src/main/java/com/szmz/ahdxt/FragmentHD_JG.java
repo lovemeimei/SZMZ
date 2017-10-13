@@ -3,7 +3,6 @@ package com.szmz.ahdxt;
 import android.content.Intent;
 import android.view.View;
 
-import com.szmz.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.ahdxt.grcx.ActGrcx_DataList;
@@ -44,15 +43,12 @@ public class FragmentHD_JG extends BaseFragment {
                 trans(ActJG_ListBGDY.class);
                 break;
             case R.id.ywblLayout:
-//                doToast("业务办理监管");
                 trans(ActJG_Listywbl.class);
                 break;
             case R.id.yczcLayout:
-//                doToast("异常操作监管");
                 trans(ActJG_ListYCCZ.class);
                 break;
             case R.id.mgryLayout:
-//                doToast("敏感人员监管");
                 trans(ActJG_ListMGRY.class);
                 break;
 

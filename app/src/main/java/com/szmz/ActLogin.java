@@ -11,9 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.szmz.entity.User;
-import com.szmz.entity.request.HD_SearchDB;
 import com.szmz.entity.request.phoneLoginRequest;
-import com.szmz.entity.response.HD_SearchDB_RES;
 import com.szmz.entity.response.phoneLoginR;
 import com.szmz.more.ActFindPW;
 import com.szmz.net.ApiUtil;
@@ -41,7 +39,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
     @BindView(R.id.rb_user)
     RadioButton rbUser;
 
-    private int type=1;
+    private int type = 1;
 
     @Override
     protected int getLayoutId() {
@@ -57,6 +55,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
     @Override
     protected void initUI() {
         super.initUI();
+        SystemEnv.deleteDataList();
         rbUser.setOnCheckedChangeListener(this);
     }
 
@@ -71,27 +70,18 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                 trans(ActFindPW.class);
                 break;
             case R.id.btn_submit:
-
-//                if (!doCheck()) {
-//                    return;
-//                }
-
-                if (etUser.getText().toString().equals("1")) {
-                    Intent intent = new Intent(this, ActMain.class);
-                    intent.putExtra("Type", type);
-                    startActivity(intent);
-                } else {
-                    Intent intent = new Intent(this, ActMain.class);
-                    intent.putExtra("Type", type);
-                    startActivity(intent);
-                }
-
-//                login();
+                User user = new User();
+                user.setAccountHD("510401");
+                App.getInstance().login(user);
+                Intent intent = new Intent(this, ActMain.class);
+                intent.putExtra("Type", type);
+                startActivity(intent);
                 break;
         }
 
 
     }
+
     private void login() {
         final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(), etPW.getText().toString().trim());
         Call<phoneLoginR> call = App.getApiProxy().login(request);
@@ -170,12 +160,12 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        switch (buttonView.getId()){
+        switch (buttonView.getId()) {
             case R.id.rb_work:
-                type=1;
+                type = 1;
                 break;
             case R.id.rb_user:
-                type=0;
+                type = 0;
                 break;
         }
     }

@@ -1,6 +1,11 @@
 package com.szmz.ahdxt.asqr;
 
+import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
@@ -15,13 +20,9 @@ import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.FileUtil;
 import com.szmz.utils.Md5Util;
-import com.szmz.utils.downloadmanager.core.DownloadManagerPro;
-import com.szmz.utils.downloadmanager.core.enums.TaskStates;
-import com.szmz.utils.downloadmanager.report.listener.DownloadManagerListener;
 import com.szmz.ywbl.ActBaseList;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,55 +32,28 @@ import retrofit2.Call;
 
 public class ActGrcx_SQXXCK_List extends ActBaseList<HdxtGrcxInfo> {
 
-    DownloadManagerPro dm;
+    BroadcastReceiver receiver;
 
     @Override
     public void initUI() {
         super.initUI();
         setLeftVisible(true);
         setTitle("个人申请");
-        dm = new DownloadManagerPro(this.getApplicationContext());
-        dm.init(FileUtil.getSDDownloadPath(), 12, new DownloadManagerListener() {
+        IntentFilter filter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+
+        BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
-            public void OnDownloadStarted(long taskId) {
+            public void onReceive(Context context, Intent intent) {
+                long reference = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+                for (HdxtGrcxInfo item : adapter.getListData()) {
+                    if (item.getReference() == reference) {
+                        item.setDownLoading(false);
+                    }
+                }
 
             }
-
-            @Override
-            public void OnDownloadPaused(long taskId) {
-
-            }
-
-            @Override
-            public void onDownloadProcess(long taskId, double percent, long downloadedLength) {
-
-            }
-
-            @Override
-            public void OnDownloadFinished(long taskId) {
-
-            }
-
-            @Override
-            public void OnDownloadRebuildStart(long taskId) {
-
-            }
-
-            @Override
-            public void OnDownloadRebuildFinished(long taskId) {
-
-            }
-
-            @Override
-            public void OnDownloadCompleted(long taskId) {
-
-            }
-
-            @Override
-            public void connectionLost(long taskId) {
-
-            }
-        });
+        };
+        registerReceiver(receiver, filter);
         refresh.setLoadMore(false);
         refresh.autoRefresh();
     }
@@ -94,7 +68,11 @@ public class ActGrcx_SQXXCK_List extends ActBaseList<HdxtGrcxInfo> {
         TextView nameTv = (TextView) view.findViewById(R.id.nameTv);
         TextView timeTv = (TextView) view.findViewById(R.id.timeTv);
         TextView typeTv = (TextView) view.findViewById(R.id.typeTv);
-        nameTv.setText(item.getApplyName());
+        if (item.isDownLoading()) {
+            nameTv.setText(item.getApplyName() + "(下载中)");
+        } else {
+            nameTv.setText(item.getApplyName());
+        }
         timeTv.setText(item.getEntrustTime());
         typeTv.setText(item.getBizCategory());
         TextView button1 = (TextView) view.findViewById(R.id.button1);
@@ -122,28 +100,6 @@ public class ActGrcx_SQXXCK_List extends ActBaseList<HdxtGrcxInfo> {
         });
     }
 
-
-    private void doShowDialog(final String fileName, final String url) {
-        final int token = dm.addTask(fileName, url, false, false);
-        if (dm.singleDownloadStatus(token).state != TaskStates.READY) {
-            return;
-        }
-        MaterialDialog dialog = new MaterialDialog.Builder(this)
-                .title("系统提示")
-                .content("是否确定下载此文件？")
-                .positiveText("确定").negativeText("取消")
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        try {
-                            dm.startDownload(token);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                })
-                .show();
-    }
 
     @Override
     protected int getListItemID() {
@@ -230,6 +186,7 @@ public class ActGrcx_SQXXCK_List extends ActBaseList<HdxtGrcxInfo> {
         sb.append("&");
         sb.append("applyId=");
         sb.append(info.getApplyId());
+        sb.append("&");
         sb.append("Md5Key=");
         sb.append(md5key);
         String params = sb.toString();
@@ -249,7 +206,7 @@ public class ActGrcx_SQXXCK_List extends ActBaseList<HdxtGrcxInfo> {
 
                         } else {
 
-                            doShowDialog(fileName, hdxtGrcxInfo.getFilePath());
+                            doShowDialog(hdxtGrcxInfo, fileName, hdxtGrcxInfo.getFilePath());
                         }
 
                     }
@@ -268,7 +225,7 @@ public class ActGrcx_SQXXCK_List extends ActBaseList<HdxtGrcxInfo> {
                         if (new File(FileUtil.getSDDownloadPath() + fileName).exists()) {
                             FileUtil.openFile(ActGrcx_SQXXCK_List.this, FileUtil.getSDDownloadPath() + fileName);
                         } else {
-                            doShowDialog(fileName, hdxtGrcxInfo.getFilePath());
+                            doShowDialog(hdxtGrcxInfo, fileName, hdxtGrcxInfo.getFilePath());
                         }
                     }
                 }
@@ -278,8 +235,35 @@ public class ActGrcx_SQXXCK_List extends ActBaseList<HdxtGrcxInfo> {
 
     }
 
+    private void doShowDialog(final HdxtGrcxInfo hdzc, final String fileName, final String url) {
 
-
+        MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title("系统提示")
+                .content("是否确定下载此文件？")
+                .positiveText("确定").negativeText("取消")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                        //设置在什么网络情况下进行下载
+//                        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
+                        //设置通知栏标题
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+                        request.setTitle(fileName);
+                        request.setDescription(fileName + "正在下载");
+                        request.setAllowedOverRoaming(false);
+                        //设置文件存放目录
+                        request.setDestinationInExternalFilesDir(ActGrcx_SQXXCK_List.this, FileUtil.getSDDownloadPath(), fileName);
+                        String serviceString = Context.DOWNLOAD_SERVICE;
+                        DownloadManager downloadManager;
+                        downloadManager = (DownloadManager) getSystemService(serviceString);
+                        long reference = downloadManager.enqueue(request);
+                        hdzc.setReference(reference);
+                        adapter.notifyDataSetChanged();
+                    }
+                })
+                .show();
+    }
 
 
 }

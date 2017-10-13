@@ -33,7 +33,6 @@ public class App extends Application {
             synchronized (LocationService.class) {
                 if (locationService == null) {
                     locationService = new LocationService(App.getInstance());
-
                 }
             }
 

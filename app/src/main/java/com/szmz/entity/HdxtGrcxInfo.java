@@ -16,6 +16,24 @@ public class HdxtGrcxInfo implements IEntity {
     private String currentNode;
     private List<TotalNodeBean> totalNode;
     private String filePath;
+    private boolean isDownLoading = false;
+    private long reference;
+
+    public boolean isDownLoading() {
+        return isDownLoading;
+    }
+
+    public void setDownLoading(boolean downLoading) {
+        isDownLoading = downLoading;
+    }
+
+    public long getReference() {
+        return reference;
+    }
+
+    public void setReference(long reference) {
+        this.reference = reference;
+    }
 
     public String getFilePath() {
         return filePath;

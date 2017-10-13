@@ -17,10 +17,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
             android:paddingLeft="@dimen/spacing_normal"
-            android:paddingRight="@dimen/spacing_normal"
-            android:background="@color/white"
-            android:orientation="vertical">
+            android:paddingRight="@dimen/spacing_normal">
 
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_jg_dybg_bh"
@@ -57,7 +57,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="最后更新时间" />
-
 
         </LinearLayout>
     </ScrollView>

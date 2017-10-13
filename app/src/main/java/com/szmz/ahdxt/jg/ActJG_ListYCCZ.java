@@ -1,10 +1,7 @@
 package com.szmz.ahdxt.jg;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,10 +18,7 @@ import com.szmz.utils.BaseListAdapter;
 import com.szmz.utils.DatePickerUtil;
 import com.szmz.utils.Md5Util;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -56,9 +50,9 @@ public class ActJG_ListYCCZ extends ActListBase {
     TextView etSearch3;
 
 
-    private String code="";
+    private String code = "";
     private String startTime = "";
-    private String  endTime="";
+    private String endTime = "";
 
     @Override
     protected int getLayoutId() {
@@ -70,7 +64,7 @@ public class ActJG_ListYCCZ extends ActListBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("异常操作预警");
+        setTitle("异常操作监管");
         setRightVisible(true);
         setRightShow("搜索");
 
@@ -90,8 +84,8 @@ public class ActJG_ListYCCZ extends ActListBase {
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(ActJG_ListYCCZ.this,ActJG_YCCZ.class);
-                        intent.putExtra("item",item);
+                        Intent intent = new Intent(ActJG_ListYCCZ.this, ActJG_YCCZ.class);
+                        intent.putExtra("item", item);
                         startActivity(intent);
                     }
                 });
@@ -120,8 +114,9 @@ public class ActJG_ListYCCZ extends ActListBase {
     }
 
     private TimePickerView pvTime;
+
     private void initTimePicker() {
-        pvTime=  DatePickerUtil.initPicker(this,DatePickerUtil.yyyyMMdd);
+        pvTime = DatePickerUtil.initPicker(this, DatePickerUtil.yyyyMMdd);
     }
 
     @Override
@@ -149,7 +144,7 @@ public class ActJG_ListYCCZ extends ActListBase {
         }
 
         //sysadmin 510401 1001
-        String params = getParams("1001", code,startTime, endTime);
+        String params = getParams("1001", code, startTime, endTime);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;" +
                 "charset=UTF-8"), params.getBytes());
@@ -195,9 +190,9 @@ public class ActJG_ListYCCZ extends ActListBase {
 
     }
 
-    String getParams(String userid, String bizCategoryCode, String startTime,String endTime) {
+    String getParams(String userid, String bizCategoryCode, String startTime, String endTime) {
 
-        String md5key = Md5Util.getMd5(userid  + bizCategoryCode+startTime + currentPage + "20");
+        String md5key = Md5Util.getMd5(userid + bizCategoryCode + startTime + currentPage + "20");
         StringBuilder sb = new StringBuilder();
         sb.append("userId=");
         sb.append(userid);

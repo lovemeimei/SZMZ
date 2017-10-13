@@ -1,9 +1,5 @@
 package com.szmz.ahdxt.jg;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.TextView;
-
 import com.szmz.ActBase;
 import com.szmz.R;
 import com.szmz.entity.response.HD_JG_YWBL2;
@@ -40,9 +36,11 @@ public class ActJG_YWBL extends ActBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("详情信息");
 
-        item =(HD_JG_YWBL2.ResultBean) getIntent().getSerializableExtra("item");
+        setTitle("详细信息");
+
+
+        item = (HD_JG_YWBL2.ResultBean) getIntent().getSerializableExtra("item");
 
         tvXM.doSetContent(item.getApplyName());
         tvXB.doSetContent(item.getSex());

@@ -10,8 +10,7 @@ import com.materiallistview.MaterialRefreshLayout;
 import com.szmz.ActListBase;
 import com.szmz.App;
 import com.szmz.R;
-import com.szmz.ahdxt.ActDictList;
-import com.szmz.entity.response.HD_JG_YWBL1;
+import com.szmz.SystemConst;
 import com.szmz.entity.response.HD_JG_YWBL2;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
@@ -34,7 +33,7 @@ public class ActJG_Listywbl2 extends ActListBase {
 
     @BindView(R.id.lv)
     ListView lv;
-    BaseListAdapter<HD_JG_YWBL2.ResultBean,MViewHolder> adapter;
+    BaseListAdapter<HD_JG_YWBL2.ResultBean, MViewHolder> adapter;
     List<HD_JG_YWBL2.ResultBean> items = new ArrayList<>();
 
     @BindView(R.id.tv_jg_search1)
@@ -45,13 +44,15 @@ public class ActJG_Listywbl2 extends ActListBase {
     EditText etSearch1;
     @BindView(R.id.et_jg_search2)
     TextView etSearch2;
-    String name="";
+    String name = "";
     String code = "";
     private String id;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_act_jc__list_ywbl;
+
+        return R.layout.activity_act_jc__list2;
+
     }
 
 
@@ -66,8 +67,7 @@ public class ActJG_Listywbl2 extends ActListBase {
         id = getIntent().getStringExtra("id");
 
 
-
-        adapter = new BaseListAdapter<HD_JG_YWBL2.ResultBean, MViewHolder>(this,R.layout.list_item_jg_dybg) {
+        adapter = new BaseListAdapter<HD_JG_YWBL2.ResultBean, MViewHolder>(this, R.layout.list_item_jg_dybg) {
             @Override
             protected void refreshView(int postion, final HD_JG_YWBL2.ResultBean item, MViewHolder holer) {
 
@@ -75,8 +75,8 @@ public class ActJG_Listywbl2 extends ActListBase {
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(ActJG_Listywbl2.this,ActJG_YWBL.class);
-                        intent.putExtra("item",item);
+                        Intent intent = new Intent(ActJG_Listywbl2.this, ActJG_YWBL.class);
+                        intent.putExtra("item", item);
                         startActivity(intent);
                     }
                 });
@@ -89,9 +89,9 @@ public class ActJG_Listywbl2 extends ActListBase {
             protected MViewHolder getHolder(View v) {
 
                 MViewHolder holder = new MViewHolder();
-                holder.tvType = (TextView)v.findViewById(R.id.tv_type);
-                holder.tvName = (TextView)v.findViewById(R.id.tv_name);
-                holder.tvSub = (TextView)v.findViewById(R.id.tv_submit);
+                holder.tvType = (TextView) v.findViewById(R.id.tv_type);
+                holder.tvName = (TextView) v.findViewById(R.id.tv_name);
+                holder.tvSub = (TextView) v.findViewById(R.id.tv_submit);
                 return holder;
 
             }
@@ -114,23 +114,25 @@ public class ActJG_Listywbl2 extends ActListBase {
         loadInfo(true);
     }
 
-    void loadInfo(boolean isMore){
-        String batchName = etSearch1.getText().toString().trim();
-        String bizCode = etSearch2.getText().toString().trim();
-        if (isMore){
+
+    void loadInfo(boolean isMore) {
+        name = etSearch1.getText().toString().trim();
+        code = etSearch2.getText().toString().trim();
+        if (isMore) {
+
             currentPage++;
-        }else {
-            currentPage=1;
+        } else {
+            currentPage = 1;
         }
 
         //sysadmin 510401
-        String params = getParams("sysadmin",id,name,code);
+        String params = getParams(SystemConst.USERID, id, name, code);
 
-        RequestBody body =RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
+        RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
 
         Call<HD_JG_YWBL2> call = App.getApiProxy().getJG_ywblList2(body);
 
-        ApiUtil<HD_JG_YWBL2> apiUtil = new ApiUtil<>(this,call,new SimpleApiListener<HD_JG_YWBL2>(){
+        ApiUtil<HD_JG_YWBL2> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<HD_JG_YWBL2>() {
 
             @Override
             public void doAfter() {
@@ -144,17 +146,16 @@ public class ActJG_Listywbl2 extends ActListBase {
 
                 items = result.Result;
 
-                if (items!=null && items.size()>0){
+                if (items != null && items.size() > 0) {
 
-                    if (currentPage==1){
+                    if (currentPage == 1) {
                         adapter.clearListData();
                     }
                     adapter.setItems(items);
                     adapter.notifyDataSetChanged();
 
 
-
-                }else {
+                } else {
                     adapter.clearListData();
                     adapter.notifyDataSetChanged();
                 }
@@ -165,31 +166,21 @@ public class ActJG_Listywbl2 extends ActListBase {
                     refresh.setLoadMore(false);
                 }
             }
-        },false);
+        }, false);
         apiUtil.excute();
 
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==0&& resultCode==RESULT_OK){
-          String name=  data.getStringExtra("name");
-             code =data.getStringExtra("code");
-            etSearch2.setText(name);
-        }
-    }
-
-    class MViewHolder{
+    class MViewHolder {
         TextView tvName;
         TextView tvType;
         TextView tvSub;
     }
 
-    String getParams(String userid,String batchId,String applyName,String idCardNo){
+    String getParams(String userid, String batchId, String applyName, String idCardNo) {
 
-        String md5key = Md5Util.getMd5(userid + batchId+applyName+currentPage + "20");
+        String md5key = Md5Util.getMd5(userid + batchId + applyName + currentPage + "20");
         StringBuilder sb = new StringBuilder();
         sb.append("userId=");
         sb.append(userid);

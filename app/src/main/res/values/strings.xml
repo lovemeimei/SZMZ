@@ -17,5 +17,12 @@
         <item>@color/material_blue</item>
     </integer-array>
     <string name="title_activity_act_grcx__jdck">ActGrcx_JDCK</string>
+
+    <string name="ic_keyboard_arrow_down">&#xe0c5;</string>
+    <string name="ic_keyboard_arrow_left">&#xe0c6;</string>
+    <string name="ic_keyboard_arrow_right">&#xe0c7;</string>
+    <string name="ic_keyboard_arrow_up">&#xe0c8;</string>
+
     <string name="title_activity_act_comm_user">ActCommUser</string>
+
 </resources>

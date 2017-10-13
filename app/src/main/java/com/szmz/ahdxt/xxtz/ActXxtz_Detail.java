@@ -1,7 +1,6 @@
 package com.szmz.ahdxt.xxtz;
 
 import android.view.View;
-import android.widget.TextView;
 
 import com.szmz.ActBase;
 import com.szmz.R;
@@ -10,6 +9,9 @@ import com.szmz.widget.MyLayoutView;
 
 import butterknife.BindView;
 
+/**
+ * 核对系统工作人员首页模块详细
+ */
 public class ActXxtz_Detail extends ActBase {
 
 
@@ -33,22 +35,18 @@ public class ActXxtz_Detail extends ActBase {
         setLeftVisible(true);
         setTitle("详细信息");
         type = getIntent().getIntExtra("Type", 0);
-        item= (HD_XXTZ.ReaultBean) getIntent().getSerializableExtra("item");
+        item = (HD_XXTZ.ReaultBean) getIntent().getSerializableExtra("item");
 
         switch (type) {
             case 1:
-                setTitle("核对待处理");
                 tvOutTime.setVisibility(View.GONE);
                 break;
             case 2:
-                setTitle("复核待处理");
                 tvOutTime.setVisibility(View.GONE);
                 break;
             case 3:
-                setTitle("超时提醒");
                 break;
             case 4:
-                setTitle("敏感名单审核提醒");
                 tvOutTime.setVisibility(View.GONE);
                 tvPoint.setVisibility(View.GONE);
                 break;

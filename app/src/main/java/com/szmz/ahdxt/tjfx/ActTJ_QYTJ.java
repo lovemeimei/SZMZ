@@ -1,12 +1,8 @@
 package com.szmz.ahdxt.tjfx;
 
-import android.app.DatePickerDialog;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
@@ -21,16 +17,13 @@ import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.response.HD_TJ_QYRC;
-import com.szmz.entity.response.HD_TJ_QYRC;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
 import com.szmz.utils.Md5Util;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -43,6 +36,9 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 
+/**
+ * 区域人次统计
+ */
 public class ActTJ_QYTJ extends ActBase {
 
     public static final int[] PIE_COLORS = {
@@ -71,9 +67,11 @@ public class ActTJ_QYTJ extends ActBase {
         initTimePicker();
         getInfo();
     }
+
     private TimePickerView pvTime;
+
     private void initTimePicker() {
-        pvTime=  DatePickerUtil.initPicker(this,DatePickerUtil.yyyyMM);
+        pvTime = DatePickerUtil.initPicker(this, DatePickerUtil.yyyyMM);
     }
 
     void initChart() {
@@ -132,7 +130,8 @@ public class ActTJ_QYTJ extends ActBase {
         pieChart.highlightValues(null);
         pieChart.invalidate();
     }
-    @OnClick({R.id.et_tj_xzqh,R.id.tv_title_right})
+
+    @OnClick({R.id.et_tj_xzqh, R.id.tv_title_right})
     public void doClick(View v) {
 
         switch (v.getId()) {
@@ -148,10 +147,10 @@ public class ActTJ_QYTJ extends ActBase {
     public void getInfo() {
 
         String sqtime = tvXZQH.getText().toString();
-        if (TextUtils.isEmpty(sqtime)){
+        if (TextUtils.isEmpty(sqtime)) {
             Calendar cal = Calendar.getInstance();
 
-            sqtime = cal.get(Calendar.YEAR)+"-"+ (cal.get(Calendar.MONTH)+1);
+            sqtime = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1);
         }
 
         //sysadmin 510401
@@ -177,11 +176,11 @@ public class ActTJ_QYTJ extends ActBase {
 
                 if (items != null && items.size() > 0) {
 
-                    Map<String,Float> maps = new HashMap<>();
-                    for (HD_TJ_QYRC.ResultBean item:items){
-                        maps.put(item.getAreaName(),(float)item.getPercent());
+                    Map<String, Float> maps = new HashMap<>();
+                    for (HD_TJ_QYRC.ResultBean item : items) {
+                        maps.put(item.getAreaName(), (float) item.getPercent());
                     }
-                    setPieChartData(pieChart,maps);
+                    setPieChartData(pieChart, maps);
                 } else {
 
                 }

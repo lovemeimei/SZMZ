@@ -1,9 +1,5 @@
 package com.szmz.ahdxt.jg;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.TextView;
-
 import com.szmz.ActBase;
 import com.szmz.R;
 import com.szmz.entity.HD_JG_BGDY_RES;
@@ -41,9 +37,9 @@ public class ActJg_BGDYJG extends ActBase {
         setLeftVisible(true);
         setTitle("报告打印详情");
 
-        item = (HD_JG_BGDY_RES.ResultBean)getIntent().getSerializableExtra("object");
+        item = (HD_JG_BGDY_RES.ResultBean) getIntent().getSerializableExtra("object");
         tvBH.doSetContent(item.getReportCode());
-        tvCS.doSetContent(item.getPrintTimes()+"");
+        tvCS.doSetContent(item.getPrintTimes() + "");
         tvDRY.doSetContent(item.getPrinter());
         tvcjsj.doSetContent(item.getCreateTime());
         tvGXSJ.doSetContent(item.getUpdateTime());

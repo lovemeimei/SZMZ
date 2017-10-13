@@ -1,12 +1,7 @@
 package com.szmz.ahdxt.jg;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,23 +11,16 @@ import com.materiallistview.MaterialRefreshLayout;
 import com.szmz.ActListBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.SystemConst;
 import com.szmz.entity.HD_JG_BGDY_RES;
-import com.szmz.entity.SearchJZYE;
 import com.szmz.entity.TestMode;
-import com.szmz.net.ApiService;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
-import com.szmz.search.ActListSYJZE;
 import com.szmz.utils.BaseListAdapter;
 import com.szmz.utils.DatePickerUtil;
 import com.szmz.utils.Md5Util;
 
-import org.w3c.dom.Text;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -49,7 +37,7 @@ public class ActJG_ListBGDY extends ActListBase {
 
     @BindView(R.id.lv)
     ListView lv;
-    BaseListAdapter<HD_JG_BGDY_RES.ResultBean,MViewHolder> adapter;
+    BaseListAdapter<HD_JG_BGDY_RES.ResultBean, MViewHolder> adapter;
     List<TestMode> items = new ArrayList<>();
 
     @BindView(R.id.tv_jg_search1)
@@ -63,7 +51,7 @@ public class ActJG_ListBGDY extends ActListBase {
 
     @BindView(R.id.et_jg_search3)
     TextView etSearch3;
-    private String code,startTime,endTime;
+    private String code, startTime, endTime;
 
     @Override
     protected int getLayoutId() {
@@ -75,11 +63,12 @@ public class ActJG_ListBGDY extends ActListBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("报告打印详情");
+        setTitle("报告打印监管");
+
         setRightVisible(true);
         setRightShow("搜索");
 
-        adapter = new BaseListAdapter<HD_JG_BGDY_RES.ResultBean, MViewHolder>(this,R.layout.list_item_jg_dybg) {
+        adapter = new BaseListAdapter<HD_JG_BGDY_RES.ResultBean, MViewHolder>(this, R.layout.list_item_jg_dybg) {
             @Override
             protected void refreshView(int postion, final HD_JG_BGDY_RES.ResultBean item, MViewHolder holer) {
 
@@ -87,8 +76,8 @@ public class ActJG_ListBGDY extends ActListBase {
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(ActJG_ListBGDY.this,ActJg_BGDYJG.class);
-                        intent.putExtra("object",item);
+                        Intent intent = new Intent(ActJG_ListBGDY.this, ActJg_BGDYJG.class);
+                        intent.putExtra("object", item);
                         startActivity(intent);
                     }
                 });
@@ -101,9 +90,9 @@ public class ActJG_ListBGDY extends ActListBase {
             protected MViewHolder getHolder(View v) {
 
                 MViewHolder holder = new MViewHolder();
-                holder.tvType = (TextView)v.findViewById(R.id.tv_type);
-                holder.tvName = (TextView)v.findViewById(R.id.tv_name);
-                holder.tvSub = (TextView)v.findViewById(R.id.tv_submit);
+                holder.tvType = (TextView) v.findViewById(R.id.tv_type);
+                holder.tvName = (TextView) v.findViewById(R.id.tv_name);
+                holder.tvSub = (TextView) v.findViewById(R.id.tv_submit);
                 return holder;
 
             }
@@ -121,13 +110,14 @@ public class ActJG_ListBGDY extends ActListBase {
     }
 
     private TimePickerView pvTime;
+
     private void initTimePicker() {
-        pvTime=  DatePickerUtil.initPicker(this,DatePickerUtil.yyyyMMdd);
+        pvTime = DatePickerUtil.initPicker(this, DatePickerUtil.yyyyMMdd);
     }
 
-    @OnClick({ R.id.et_jg_search2 , R.id.et_jg_search3 })
-    void doClick(View v){
-        switch (v.getId()){
+    @OnClick({R.id.et_jg_search2, R.id.et_jg_search3})
+    void doClick(View v) {
+        switch (v.getId()) {
             case R.id.et_jg_search2:
 
                 pvTime.show(etSearch2);
@@ -150,7 +140,7 @@ public class ActJG_ListBGDY extends ActListBase {
         loadInfo(true);
     }
 
-    private void loadInfo(final boolean isMore){
+    private void loadInfo(final boolean isMore) {
 
         code = etSearch1.getText().toString().trim();
         startTime = etSearch2.getText().toString().trim();
@@ -162,25 +152,25 @@ public class ActJG_ListBGDY extends ActListBase {
             currentPage = 1;
         }
         //sysadmin 510401
-        params = getParams("sysadmin",code,startTime,endTime, currentPage);
+        params = getParams(SystemConst.USERID, code, startTime, endTime, currentPage);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
 
         Call<HD_JG_BGDY_RES> call = App.getApiProxy().getJG_BGDYlist(body);
 
-        ApiUtil<HD_JG_BGDY_RES> apiUtil = new ApiUtil<>(this,call,new SimpleApiListener<HD_JG_BGDY_RES>(){
+        ApiUtil<HD_JG_BGDY_RES> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<HD_JG_BGDY_RES>() {
             @Override
             public void doSuccess(HD_JG_BGDY_RES result) {
 
                 List<HD_JG_BGDY_RES.ResultBean> items = result.Result;
-                if (items!=null && items.size()>0){
-                    if (currentPage==1){
+                if (items != null && items.size() > 0) {
+                    if (currentPage == 1) {
                         adapter.clearListData();
                     }
                     adapter.setItems(items);
                     adapter.notifyDataSetChanged();
 
-                }else {
+                } else {
                     adapter.clearListData();
                     adapter.notifyDataSetChanged();
 
@@ -199,14 +189,14 @@ public class ActJG_ListBGDY extends ActListBase {
                 refresh.finishRefreshing();
                 refresh.finishRefreshLoadMore();
             }
-        },false);
+        }, false);
 
         apiUtil.excute();
     }
 
-    private String getParams(String userid,String reportCode,String startTime,String endTime,  int currentPage) {
+    private String getParams(String userid, String reportCode, String startTime, String endTime, int currentPage) {
 
-        String md5key = Md5Util.getMd5(userid + reportCode+startTime+endTime+currentPage + "20");
+        String md5key = Md5Util.getMd5(userid + reportCode + startTime + endTime + currentPage + "20");
         StringBuilder sb = new StringBuilder();
         sb.append("userId=");
         sb.append(userid);
@@ -229,7 +219,7 @@ public class ActJG_ListBGDY extends ActListBase {
         return sb.toString();
     }
 
-    class MViewHolder{
+    class MViewHolder {
         TextView tvName;
         TextView tvType;
         TextView tvSub;

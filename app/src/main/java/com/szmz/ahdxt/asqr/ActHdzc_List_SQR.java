@@ -1,5 +1,11 @@
 package com.szmz.ahdxt.asqr;
 
+import android.app.DownloadManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
@@ -13,13 +19,9 @@ import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.FileUtil;
 import com.szmz.utils.Md5Util;
-import com.szmz.utils.downloadmanager.core.DownloadManagerPro;
-import com.szmz.utils.downloadmanager.core.enums.TaskStates;
-import com.szmz.utils.downloadmanager.report.listener.DownloadManagerListener;
 import com.szmz.ywbl.ActBaseList;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,57 +30,28 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 
 public class ActHdzc_List_SQR extends ActBaseList<HD_hdzc.ResultBean> {
-
-    DownloadManagerPro dm;
+    BroadcastReceiver receiver;
 
     @Override
     public void initUI() {
         super.initUI();
         setLeftVisible(true);
         setTitle("核对政策");
-        dm = new DownloadManagerPro(this.getApplicationContext());
-        dm.init(FileUtil.getSDDownloadPath(), 12, new DownloadManagerListener() {
+        IntentFilter filter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
+
+        receiver = new BroadcastReceiver() {
             @Override
-            public void OnDownloadStarted(long taskId) {
+            public void onReceive(Context context, Intent intent) {
+                long reference = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
+                for (HD_hdzc.ResultBean item : adapter.getListData()) {
+                    if (item.getReference() == reference) {
+                        item.setDownLoading(false);
+                    }
+                }
 
             }
-
-            @Override
-            public void OnDownloadPaused(long taskId) {
-
-            }
-
-            @Override
-            public void onDownloadProcess(long taskId, double percent, long downloadedLength) {
-
-            }
-
-            @Override
-            public void OnDownloadFinished(long taskId) {
-
-            }
-
-            @Override
-            public void OnDownloadRebuildStart(long taskId) {
-
-            }
-
-            @Override
-            public void OnDownloadRebuildFinished(long taskId) {
-
-            }
-
-            @Override
-            public void OnDownloadCompleted(long taskId) {
-
-            }
-
-            @Override
-            public void connectionLost(long taskId) {
-
-            }
-        });
-
+        };
+        registerReceiver(receiver, filter);
         refresh.autoRefresh();
     }
 
@@ -90,20 +63,16 @@ public class ActHdzc_List_SQR extends ActBaseList<HD_hdzc.ResultBean> {
     @Override
     protected void doListItemOnClick(HD_hdzc.ResultBean item) {
         super.doListItemOnClick(item);
-        String fileName = item.getFileTitle() + getExt(item.getFilePath());
+        String fileName = item.getFileTitle();
         if (new File(FileUtil.getSDDownloadPath() + fileName).exists()) {
             FileUtil.openFile(ActHdzc_List_SQR.this, FileUtil.getSDDownloadPath() + fileName);
-
         } else {
-            doShowDialog(fileName, item.getFilePath());
+            doShowDialog(item, fileName, item.getFilePath());
         }
     }
 
-    private void doShowDialog(final String fileName, final String url) {
-        final int token = dm.addTask(fileName, url, false, false);
-        if (dm.singleDownloadStatus(token).state != TaskStates.READY) {
-            return;
-        }
+    private void doShowDialog(final HD_hdzc.ResultBean hdzc, final String fileName, final String url) {
+
         MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title("系统提示")
                 .content("是否确定下载此文件？")
@@ -111,11 +80,22 @@ public class ActHdzc_List_SQR extends ActBaseList<HD_hdzc.ResultBean> {
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        try {
-                            dm.startDownload(token);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                        //设置在什么网络情况下进行下载
+//                        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
+                        //设置通知栏标题
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+                        request.setTitle(fileName);
+                        request.setDescription(fileName + "正在下载");
+                        request.setAllowedOverRoaming(false);
+                        //设置文件存放目录
+                        request.setDestinationInExternalFilesDir(ActHdzc_List_SQR.this, FileUtil.getSDDownloadPath(), fileName);
+                        String serviceString = Context.DOWNLOAD_SERVICE;
+                        DownloadManager downloadManager;
+                        downloadManager = (DownloadManager) getSystemService(serviceString);
+                        long reference = downloadManager.enqueue(request);
+                        hdzc.setReference(reference);
+                        adapter.notifyDataSetChanged();
                     }
                 })
                 .show();
@@ -124,7 +104,11 @@ public class ActHdzc_List_SQR extends ActBaseList<HD_hdzc.ResultBean> {
     @Override
     protected void doRefreshView(int p, HD_hdzc.ResultBean item, View view) {
         TextView nameTv = (TextView) view.findViewById(R.id.nameTv);
-        nameTv.setText(item.getFileTitle());
+        if (item.isDownLoading()) {
+            nameTv.setText(item.getFileTitle() + "(下载中)");
+        } else {
+            nameTv.setText(item.getFileTitle());
+        }
 
     }
 
@@ -197,5 +181,11 @@ public class ActHdzc_List_SQR extends ActBaseList<HD_hdzc.ResultBean> {
         sb.append("Md5Key=");
         sb.append(md5key);
         return sb.toString();
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(receiver);
+        super.onDestroy();
     }
 }

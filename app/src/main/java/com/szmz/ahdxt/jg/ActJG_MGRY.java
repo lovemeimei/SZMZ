@@ -3,7 +3,6 @@ package com.szmz.ahdxt.jg;
 import com.szmz.ActBase;
 import com.szmz.R;
 import com.szmz.entity.response.HD_JG_MGRY2;
-import com.szmz.entity.response.HD_JG_YWBL2;
 import com.szmz.widget.MyLayoutView;
 
 import butterknife.BindView;
@@ -37,9 +36,9 @@ public class ActJG_MGRY extends ActBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("敏感人员详情");
+        setTitle("详细信息");
 
-        item =(HD_JG_MGRY2.ResultBean) getIntent().getSerializableExtra("item");
+        item = (HD_JG_MGRY2.ResultBean) getIntent().getSerializableExtra("item");
 
         tvXM.doSetContent(item.getApplyName());
         tvXB.doSetContent(item.getSex());

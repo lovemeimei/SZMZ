@@ -90,28 +90,28 @@ public class ActMain extends ActBase {
     }
 
     @OnClick(R.id.iv_user)
-    public void doClick(View v){
+    public void doClick(View v) {
         trans(ActCommUser.class);
     }
 
-    private void loginJZXT(){
+    private void loginJZXT() {
 
         JZ_Comm_Req req = new JZ_Comm_Req(App.getInstance().getLoginUser().getAccountJZ());
 
         Call<CommResponse> call = App.getApiProxy().loginJZ(req);
 
-        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this,call,new SimpleApiListener<CommResponse>(){
+        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<CommResponse>() {
             @Override
             public void doSuccess(CommResponse result) {
                 super.doSuccess(result);
             }
-        },true);
+        }, true);
 
         apiUtil.excute();
 
     }
 
-    private void loginHD(){
+    private void loginHD() {
 
     }
 

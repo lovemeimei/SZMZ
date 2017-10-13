@@ -14,10 +14,10 @@
         <com.szmz.widget.MyImageLayoutView
             android:id="@+id/ml_xxtz"
             android:layout_width="match_parent"
-            app:layout_title="消息通知"
-            app:layout_content="点击查看消息通知"
+            android:layout_height="wrap_content"
             app:layout_cionSrc="@drawable/icon_hd_xxtz"
-            android:layout_height="wrap_content"/>
+            app:layout_content="点击查看核对待处理"
+            app:layout_title="核对待处理" />
 
         <View
             android:layout_width="match_parent"
@@ -27,10 +27,11 @@
         <com.szmz.widget.MyImageLayoutView
             android:id="@+id/ml_db"
             android:layout_width="match_parent"
-            app:layout_title="我的待办"
-            app:layout_content="点击查看我的待办"
+            android:layout_height="wrap_content"
             app:layout_cionSrc="@drawable/home_icon_dbtz"
-            android:layout_height="wrap_content"/>
+            app:layout_content="点击查看复核待处理"
+            app:layout_title="复核待处理" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
@@ -39,22 +40,23 @@
         <com.szmz.widget.MyImageLayoutView
             android:id="@+id/ml_thwt"
             android:layout_width="match_parent"
-            app:layout_title="退回委托"
-            app:layout_content="点击查看退回委托"
+            android:layout_height="wrap_content"
             app:layout_cionSrc="@drawable/icon_hd_thwt"
-            android:layout_height="wrap_content"/>
+            app:layout_content="点击查看超时提醒"
+            app:layout_title="超时提醒" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="@color/gray" />
+
         <com.szmz.widget.MyImageLayoutView
             android:id="@+id/ml_mgryjg"
             android:layout_width="match_parent"
-            app:layout_title="敏感人员监管"
-            app:layout_content="点击查看敏感人员监管"
+            android:layout_height="wrap_content"
             app:layout_cionSrc="@drawable/icon_hd_mgryjg"
-            android:layout_height="wrap_content"/>
+            app:layout_content="点击查看敏感名单审核提醒"
+            app:layout_title="敏感名单审核提醒" />
 
         <View
             android:layout_width="match_parent"

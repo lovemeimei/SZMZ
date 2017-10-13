@@ -10,8 +10,8 @@ import com.materiallistview.MaterialRefreshLayout;
 import com.szmz.ActListBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.SystemConst;
 import com.szmz.ahdxt.ActDictList;
-import com.szmz.entity.response.HD_JG_MGRY;
 import com.szmz.entity.response.HD_JG_MGRY;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
@@ -59,7 +59,7 @@ public class ActJG_ListMGRY extends ActListBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("敏感人员");
+        setTitle("敏感申请信息监管");
         setRightVisible(true);
         setRightShow("搜索");
 
@@ -75,8 +75,8 @@ public class ActJG_ListMGRY extends ActListBase {
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(context,ActJG_ListMGRY2.class);
-                        intent.putExtra("id",item.getBatchId());
+                        Intent intent = new Intent(context, ActJG_ListMGRY2.class);
+                        intent.putExtra("id", item.getBatchId());
                         startActivity(intent);
                     }
                 });
@@ -122,7 +122,7 @@ public class ActJG_ListMGRY extends ActListBase {
         }
 
         //sysadmin 510401
-        String params = getParams("sysadmin",  batchName,code);
+        String params = getParams(SystemConst.USERID, batchName, code);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;" +
                 "charset=UTF-8"), params.getBytes());

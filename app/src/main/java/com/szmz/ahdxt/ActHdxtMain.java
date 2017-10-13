@@ -10,32 +10,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.barcode.decoding.Intents;
 import com.szmz.ActBase;
-import com.szmz.ActCommUser;
 import com.szmz.R;
-import com.szmz.fragment.FragmentHome_C;
-import com.szmz.fragment.FragmentSearchXX_C;
-import com.szmz.fragment.FragmentSearch_C;
-import com.szmz.fragment.FragmentUse_C;
 import com.szmz.utils.UIUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * 核对系统主界面
  */
 public class ActHdxtMain extends ActBase {
-
 
     @BindView(android.R.id.tabcontent)
     FrameLayout tabcontent;
@@ -47,21 +39,18 @@ public class ActHdxtMain extends ActBase {
     FragmentTabHost tabhost;
     private List<Fragment> mFragmentList;
     private String mTextArray[] = {"tab1", "tab2", "tab3", "tab4"};
-    private Class[] mClass = {FragmentHomeHD.class, FragmentHD_JG.class, FragmentHD_TJ.class,  FragmentUserHD.class};
+    private Class[] mClass = {FragmentHomeHD.class, FragmentHD_JG.class, FragmentHD_TJ.class, FragmentUserHD.class};
     private Fragment mFragment[] = {new FragmentHomeHD(), new FragmentHD_JG(), new FragmentHD_TJ(), new FragmentUserHD()};
     int[] mDrawable = {R.drawable.slt_main_home_jz, R.drawable.slt_nav_xxcx, R.drawable.slt_main_tj_jz, R.drawable.slt_main_user_jz};
-    private String[] mTitles = {"首页", "监管", "统计",  "我的"};
+    private String[] mTitles = {"首页", "监管", "统计", "我的"};
 
     @Override
     protected void initUI() {
         super.initUI();
         setTitle("核对系统");
         mFragmentList = new ArrayList<>();
-        setTitle(mTitles[0]);
-
         tvTitleRight.setVisibility(View.VISIBLE);
         tvTitleRight.setTextSize(30);
-
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
         tabhost.getTabWidget().setDividerDrawable(null);
 
@@ -99,17 +88,16 @@ public class ActHdxtMain extends ActBase {
 
             @Override
             public void onPageSelected(int position) {
-                setTitle(mTitles[position]);
+                if (position == 0) {
+                    setTitle("核对系统");
+                } else {
+                    setTitle(mTitles[position]);
+                }
                 tabhost.setCurrentTab(position);
-                if (position==0){
-
+                if (position == 0) {
                     tvTitleRight.setVisibility(View.VISIBLE);
-//                    tvTitleRight.setTextSize(getResources().getDimension(R.dimen.font_larger));
-                }else {
-                    tvTitleRight.setVisibility(View.GONE
-                    );
-
-
+                } else {
+                    tvTitleRight.setVisibility(View.GONE);
                 }
             }
 
@@ -142,15 +130,13 @@ public class ActHdxtMain extends ActBase {
     }
 
 
-
-
-    private void scan(){
-        try{
+    private void scan() {
+        try {
             Intent intent = new Intent(Intents.Scan.ACTION);
             intent.putExtra(Intents.Scan.MODE, "QR_CODE_MODE");
             intent.putExtra(Intents.Scan.CHARACTER_SET, "GB2312");
             this.startActivityForResult(intent, REQUEST_CAPTURE);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             UIUtil.doToast("打开摄像头失败");
         }
@@ -160,8 +146,8 @@ public class ActHdxtMain extends ActBase {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode==REQUEST_CAPTURE){
-            if (resultCode ==RESULT_OK){
+        if (requestCode == REQUEST_CAPTURE) {
+            if (resultCode == RESULT_OK) {
 
             }
         }
