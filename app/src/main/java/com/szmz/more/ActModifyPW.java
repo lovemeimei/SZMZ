@@ -12,6 +12,7 @@ import com.szmz.entity.response.CommResponse;
 import com.szmz.net.ApiListener;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
+import com.szmz.utils.TextUtil;
 import com.szmz.utils.UIUtil;
 
 import butterknife.BindView;
@@ -71,8 +72,13 @@ public class ActModifyPW extends ActBase {
     }
 
     private boolean doCheck(){
+
         if (TextUtils.isEmpty(etNew.getText().toString().trim())){
             UIUtil.doToast("新密码不能为空");
+            return false;
+        }
+        if (TextUtil.isVailPw(etNew.getText().toString().trim())){
+            UIUtil.doToast("密码为6-20位数字、字母或字符，至少包括数字和字符");
             return false;
         }
         if (TextUtils.isEmpty(etNew2.getText().toString().trim())){
@@ -89,4 +95,5 @@ public class ActModifyPW extends ActBase {
         }
         return true;
     }
+
 }

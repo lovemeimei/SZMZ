@@ -75,12 +75,13 @@
                     android:inputType="number"
                     android:background="@null"/>
 
-                <Button
+                <TextView
                     android:id="@+id/btn_getCode"
                     android:layout_width="110dp"
                     android:layout_height="30dp"
                     android:text="获取验证码"
                     android:textSize="@dimen/font_normal"
+                    android:gravity="center"
                     android:textColor="@color/white"
                     android:background="@color/blue"/>
             </LinearLayout>

@@ -1,5 +1,6 @@
 package com.szmz.more;
 
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -18,6 +19,7 @@ public class ActMsgSet extends ActBase {
         super.initUI();
         setLeftVisible(true);
         setTitle("新消息通知");
+
     }
 
 }

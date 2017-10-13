@@ -3,8 +3,12 @@ package com.szmz;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.szmz.utils.CountDownUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -25,6 +29,8 @@ public class ActRegist extends ActBase{
 
     @BindView(R.id.et_pw)
     EditText etPw;
+    @BindView(R.id.btn_getCode)
+    TextView btnGetCode;
 
     @Override
     protected int getLayoutId() {
@@ -40,6 +46,8 @@ public class ActRegist extends ActBase{
     public void onSubmit(View view){
         switch (view.getId()){
             case R.id.btn_getCode:
+                CountDownUtil util = new CountDownUtil(context,btnGetCode,60*1000,1000);
+                util.start();
                 break;
             case R.id.btn_submit:
                 break;
@@ -48,4 +56,6 @@ public class ActRegist extends ActBase{
                 break;
         }
     }
+
+
 }
