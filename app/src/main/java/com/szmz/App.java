@@ -7,6 +7,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.szmz.entity.User;
+import com.szmz.entity.UserSQR;
 import com.szmz.net.ApiService;
 import com.szmz.ywbl.LocationService;
 
@@ -58,6 +59,20 @@ public class App extends Application {
     }
 
     private static User loginUser = null;
+    private static UserSQR loginUserSQR = null;
+
+
+    public final void loginSQR(UserSQR loginUserSQR){
+        this.loginUserSQR = loginUserSQR;
+    }
+
+    public final UserSQR getLoginUserSQR(){
+        return loginUserSQR;
+    }
+
+    public final void logoutSQR(){
+        loginUserSQR = null;
+    }
 
     public final void login(User loginUser) {
         App.loginUser = loginUser;

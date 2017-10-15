@@ -63,7 +63,8 @@ public class ActMain extends ActBase {
                 switch (item) {
                     case 0:
                         if (type == 1) {
-                            trans(ActMainJZ.class);
+                            loginJZ();
+//                            trans(ActMainJZ.class);
                         } else {
                             trans(ActMainJZ2.class);
                         }
@@ -142,5 +143,27 @@ public class ActMain extends ActBase {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_act_main;
+    }
+
+    /**
+     * 管理人员登录
+     */
+    private void loginJZ(){
+
+//        String loginName = App.getInstance().getLoginUser().getAccountJZ();
+        String loginName = "liuhao";
+        JZ_Comm_Req req = new JZ_Comm_Req(loginName);
+        Call<CommResponse> call = App.getApiProxy().loginJZ(req);
+
+        ApiUtil<CommResponse> apiUtil = new ApiUtil<CommResponse>(context,call,new SimpleApiListener<CommResponse>(){
+
+            @Override
+            public void doSuccess(CommResponse result) {
+                super.doSuccess(result);
+            }
+        },true);
+
+        apiUtil.excute();
+
     }
 }
