@@ -25,6 +25,24 @@ public class User implements IEntity {
     private String idJZ;
     private String idYZS;
     private String idHD;
+    private String phone;
+    private String personId;
+
+    public String getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(String personId) {
+        this.personId = personId;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public int getType() {
         return type;

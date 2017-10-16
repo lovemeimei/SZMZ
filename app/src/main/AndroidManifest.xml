@@ -311,7 +311,8 @@
             android:label="@string/title_activity_act_comm_user"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".more.ActModifyPhone2" />
-        <activity android:name=".more.ActMsgSet"></activity>
+        <activity android:name=".more.ActMsgSet" />
+        <activity android:name=".more.ActBindPhone_Worker"></activity>
     </application>
 
 </manifest>

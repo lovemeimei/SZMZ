@@ -1,5 +1,6 @@
 package com.szmz;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ import com.szmz.ayljzxt.ActMainYLJZ;
 import com.szmz.ayljzxt.ActMainYLJZ2;
 import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.response.CommResponse;
+import com.szmz.more.ActBindPhone_Worker;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 
@@ -63,7 +65,8 @@ public class ActMain extends ActBase {
                 switch (item) {
                     case 0:
                         if (type == 1) {
-                            trans(ActMainJZ.class);
+//                            trans(ActMainJZ.class);
+                            loginJZXT();
                         } else {
                             trans(ActMainJZ2.class);
                         }
@@ -87,6 +90,10 @@ public class ActMain extends ActBase {
                 }
             }
         });
+
+        if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone())){
+            trans(ActBindPhone_Worker.class);
+        }
     }
 
     @OnClick(R.id.iv_user)
@@ -96,7 +103,8 @@ public class ActMain extends ActBase {
 
     private void loginJZXT() {
 
-        JZ_Comm_Req req = new JZ_Comm_Req(App.getInstance().getLoginUser().getAccountJZ());
+//        JZ_Comm_Req req = new JZ_Comm_Req(App.getInstance().getLoginUser().getAccountJZ());
+        JZ_Comm_Req req = new JZ_Comm_Req("liuhao");
 
         Call<CommResponse> call = App.getApiProxy().loginJZ(req);
 

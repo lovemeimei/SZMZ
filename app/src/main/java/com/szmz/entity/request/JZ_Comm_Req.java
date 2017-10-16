@@ -14,8 +14,16 @@ public class JZ_Comm_Req extends BaseRequest{
 
     public JZ_Comm_Req(String username) {
 
-        this.username = username;
+        setUsername(username);
 
         setMd5Key(Md5Util.getMd5(username));
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

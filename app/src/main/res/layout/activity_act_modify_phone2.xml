@@ -39,8 +39,6 @@
         app:box="6"
         app:box_bg_normal="@drawable/verification_edit_bg_normal"
         app:box_bg_focus="@drawable/verification_edit_bg_focus"
-        app:child_h_padding="5dp"
-        app:child_v_padding="1dp"
         app:inputType="number"
         />
 </LinearLayout>

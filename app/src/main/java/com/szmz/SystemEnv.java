@@ -186,6 +186,33 @@ public final class SystemEnv {
     private static final String IMAGE_PATH = "IMAGE_PATH";// 拍照图片路径
 
     private static final String ISCRASH = "ISCRASH";
+    private static final String USER_NAME = "USER_NAME";
+    private static final String USER_PW = "USER_PW";
+
+    public static String getUserName() {
+        return pref.getString(USER_NAME,"");
+    }
+
+    public static String getUserPw() {
+        return pref.getString(USER_PW,"");
+    }
+
+    public static void saveUserName(String userName){
+
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(USER_NAME,userName);
+        editor.commit();
+
+    }
+
+
+    public static void saveUserPw(String pw){
+
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(USER_PW,pw);
+        editor.commit();
+
+    }
 
     public static boolean iscrash() {
         return pref.getBoolean(ISCRASH, false);

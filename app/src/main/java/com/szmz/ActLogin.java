@@ -16,6 +16,7 @@ import com.szmz.entity.response.phoneLoginR;
 import com.szmz.more.ActFindPW;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
+import com.szmz.utils.TextUtil;
 
 import java.util.List;
 import java.util.Timer;
@@ -57,6 +58,13 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
         super.initUI();
         SystemEnv.deleteDataList();
         rbUser.setOnCheckedChangeListener(this);
+
+        String name = SystemEnv.getUserName();
+        String pw = SystemEnv.getUserPw();
+        if (!TextUtils.isEmpty(name)){
+            etUser.setText(name);
+            etPW.setText(pw);
+        }
     }
 
     @OnClick({R.id.btn_submit, R.id.tv_zc, R.id.tv_wjmm})
@@ -70,12 +78,14 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                 trans(ActFindPW.class);
                 break;
             case R.id.btn_submit:
-                User user = new User();
-                user.setAccountHD("510401");
-                App.getInstance().login(user);
-                Intent intent = new Intent(this, ActMain.class);
-                intent.putExtra("Type", type);
-                startActivity(intent);
+//                User user = new User();
+//                user.setAccountHD("510401");
+//                App.getInstance().login(user);
+//                Intent intent = new Intent(this, ActMain.class);
+//                intent.putExtra("Type", type);
+//                startActivity(intent);
+
+                login();
                 break;
         }
 
@@ -83,6 +93,8 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
     }
 
     private void login() {
+        if (!doCheck())
+            return;
         final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(), etPW.getText().toString().trim());
         Call<phoneLoginR> call = App.getApiProxy().login(request);
         ApiUtil<phoneLoginR> apiUtil = new ApiUtil<phoneLoginR>(context, call, new SimpleApiListener<phoneLoginR>() {
@@ -113,7 +125,13 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                     user.setUserName(etUser.getText().toString().trim());
                     user.setPw(etPW.getText().toString().trim());
                     user.setType(type);
+                    user.setPersonId(bean.getPersonal().getPersonalId());
+//                    user.setPhone(bean.getPersonal().getMobilePhone());
                     App.getInstance().login(user);
+                    //保存用户名密码
+                    SystemEnv.saveUserName(etUser.getText().toString().trim());
+                    SystemEnv.saveUserPw(etPW.getText().toString().trim());
+
                     trans(ActMain.class);
                 }
 

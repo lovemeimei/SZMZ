@@ -55,7 +55,7 @@ public class CountDownUtil extends CountDownTimer{
 
     @Override
     public void onFinish() {
-        tv.setText("重新获取验证码");
+        tv.setText("获取验证码");
         tv.setClickable(true);
         tv.setBackgroundColor(ContextCompat.getColor(context,R.color.blue));
     }
