@@ -2,6 +2,7 @@ package com.szmz.net;
 
 import com.szmz.entity.HD_JG_BGDY_RES;
 import com.szmz.entity.request.JZ_Comm_Req;
+import com.szmz.entity.request.JZ_TODO_FuntionTree;
 import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.phoneLoginRequest;
@@ -51,6 +52,14 @@ public interface ApiService {
     //修改密码
     @POST("phoneLoginController.do?modifyPassword")
     Call<CommResponse> modifyPW(@Body ModifyPW request);
+
+
+    @POST("SocietySalvation/api/appTodolistController.do?appGetTodoFunctionTree")
+    Call<CommResponse> getFuntionTree(@Body JZ_TODO_FuntionTree req);
+
+    @POST("SocietySalvation/api/appTodolistController.do?appGetTodolist")
+    Call<CommResponse> getTodoList(@Body JZ_TODO_FuntionTree req);
+
     /**************************医疗一站式*********************************/
 
     /**************************核对系统*********************************/
