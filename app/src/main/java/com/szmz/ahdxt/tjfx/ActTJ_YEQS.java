@@ -78,6 +78,12 @@ public class ActTJ_YEQS extends ActBase {
         initBarChart();
         initTimePicker();
         getInfo();
+        tvTitleRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getInfo();
+            }
+        });
 
     }
     private TimePickerView pvTime;

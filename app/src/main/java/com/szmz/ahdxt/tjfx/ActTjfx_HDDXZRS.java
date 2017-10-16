@@ -91,7 +91,12 @@ public class ActTjfx_HDDXZRS extends ActBase {
         initBarChart();
         getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
         getInfo();
-
+        tvTitleRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getInfo();
+            }
+        });
 
     }
 
@@ -288,7 +293,7 @@ public class ActTjfx_HDDXZRS extends ActBase {
 
     private void getXzqhData(String userId, String areaId) {
         List<HD_XZQH> xzqhList = SystemEnv.getDataList("XZQH");
-        if (xzqhList != null) {
+        if (xzqhList != null || xzqhList.size() > 0) {
             initData(xzqhList);
             return;
         }

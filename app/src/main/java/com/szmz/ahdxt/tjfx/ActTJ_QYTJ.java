@@ -66,6 +66,12 @@ public class ActTJ_QYTJ extends ActBase {
         initChart();
         initTimePicker();
         getInfo();
+        tvTitleRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getInfo();
+            }
+        });
     }
 
     private TimePickerView pvTime;

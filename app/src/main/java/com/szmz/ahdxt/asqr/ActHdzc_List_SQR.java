@@ -46,6 +46,7 @@ public class ActHdzc_List_SQR extends ActBaseList<HD_hdzc.ResultBean> {
                 for (HD_hdzc.ResultBean item : adapter.getListData()) {
                     if (item.getReference() == reference) {
                         item.setDownLoading(false);
+                        adapter.notifyDataSetChanged();
                     }
                 }
 
@@ -64,8 +65,8 @@ public class ActHdzc_List_SQR extends ActBaseList<HD_hdzc.ResultBean> {
     protected void doListItemOnClick(HD_hdzc.ResultBean item) {
         super.doListItemOnClick(item);
         String fileName = item.getFileTitle();
-        if (new File(FileUtil.getSDDownloadPath() + fileName).exists()) {
-            FileUtil.openFile(ActHdzc_List_SQR.this, FileUtil.getSDDownloadPath() + fileName);
+        if (new File(FileUtil.getSDDownloadPath() + "/" + fileName).exists()) {
+            FileUtil.openFile(ActHdzc_List_SQR.this, FileUtil.getSDDownloadPath() + "/" + fileName);
         } else {
             doShowDialog(item, fileName, item.getFilePath());
         }
@@ -89,12 +90,13 @@ public class ActHdzc_List_SQR extends ActBaseList<HD_hdzc.ResultBean> {
                         request.setDescription(fileName + "正在下载");
                         request.setAllowedOverRoaming(false);
                         //设置文件存放目录
-                        request.setDestinationInExternalFilesDir(ActHdzc_List_SQR.this, FileUtil.getSDDownloadPath(), fileName);
+                        request.setDestinationUri(Uri.fromFile(new File(FileUtil.getSDDownloadPath() + "/" + fileName)));
                         String serviceString = Context.DOWNLOAD_SERVICE;
                         DownloadManager downloadManager;
                         downloadManager = (DownloadManager) getSystemService(serviceString);
                         long reference = downloadManager.enqueue(request);
                         hdzc.setReference(reference);
+                        hdzc.setDownLoading(true);
                         adapter.notifyDataSetChanged();
                     }
                 })
@@ -105,7 +107,7 @@ public class ActHdzc_List_SQR extends ActBaseList<HD_hdzc.ResultBean> {
     protected void doRefreshView(int p, HD_hdzc.ResultBean item, View view) {
         TextView nameTv = (TextView) view.findViewById(R.id.nameTv);
         if (item.isDownLoading()) {
-            nameTv.setText(item.getFileTitle() + "(下载中)");
+            nameTv.setText(item.getFileTitle() + "(下载中...)");
         } else {
             nameTv.setText(item.getFileTitle());
         }
