@@ -55,6 +55,7 @@ public class FragmentHD2_XXCX extends BaseListFragment<HdxtGrcxInfo> {
                 for (HdxtGrcxInfo item : adapter.getListData()) {
                     if (item.getReference() == reference) {
                         item.setDownLoading(false);
+                        adapter.notifyDataSetChanged();
                     }
                 }
 
@@ -228,9 +229,9 @@ public class FragmentHD2_XXCX extends BaseListFragment<HdxtGrcxInfo> {
                     if (result != null && result.size() > 0) {
                         HdxtGrcxInfo hdxtGrcxInfo = result.get(0);
                         String fileName = info.getApplyName() + "报告" + getExt(hdxtGrcxInfo.getFilePath());
-                        if (new File(FileUtil.getSDDownloadPath() + fileName).exists()) {
+                        if (new File(FileUtil.getSDDownloadPath() + "/" + fileName).exists()) {
                             FileUtil.openFile(getActivity()
-                                    , FileUtil.getSDDownloadPath() + fileName);
+                                    , FileUtil.getSDDownloadPath() + "/" + fileName);
                         } else {
                             doShowDialog(hdxtGrcxInfo, fileName, hdxtGrcxInfo.getFilePath());
                         }
@@ -260,12 +261,13 @@ public class FragmentHD2_XXCX extends BaseListFragment<HdxtGrcxInfo> {
                         request.setDescription(fileName + "正在下载");
                         request.setAllowedOverRoaming(false);
                         //设置文件存放目录
-                        request.setDestinationInExternalFilesDir(getActivity(), FileUtil.getSDDownloadPath(), fileName);
+                        request.setDestinationUri(Uri.fromFile(new File(FileUtil.getSDDownloadPath() + "/" + fileName)));
                         String serviceString = Context.DOWNLOAD_SERVICE;
                         DownloadManager downloadManager;
                         downloadManager = (DownloadManager) getActivity().getSystemService(serviceString);
                         long reference = downloadManager.enqueue(request);
                         hdzc.setReference(reference);
+                        hdzc.setDownLoading(true);
                         adapter.notifyDataSetChanged();
                     }
                 })
