@@ -2,8 +2,6 @@ package com.szmz.net;
 
 import com.szmz.entity.HD_JG_BGDY_RES;
 import com.szmz.entity.request.JZ_Comm_Req;
-import com.szmz.entity.request.JZ_Comm_bindphone;
-import com.szmz.entity.request.JZ_Comm_modifyPhone;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.phoneLoginRequest;
 import com.szmz.entity.response.CommResponse;
@@ -36,7 +34,7 @@ import retrofit2.http.POST;
  */
 public interface ApiService {
     //统一登录
-    @POST("SalvationPlatform/phoneLoginController.do?phoneLogin")
+    @POST("phoneLoginController.do?phoneLogin")
     Call<phoneLoginR> login(@Body phoneLoginRequest request);
 
     @POST("SalvationPlatform/phoneLoginController.do?bindingPhone")
@@ -44,13 +42,25 @@ public interface ApiService {
     @POST("SalvationPlatform/modifyPhone ")
     Call<CommResponse> modifyPhone(@Body JZ_Comm_modifyPhone request);
 
+    //登录申请人员
+    @POST("api/Login/phoneLogin")
+    Call<LoginSQR_Res> loginSQR(@Body LoginSQR_Req request);
+
     /**************************救助系统*********************************/
-    @POST("SalvationPlatform/api/appCommonController.do?getUserInfo")
+    @POST("api/appCommonController.do?getUserInfo")
     Call<CommResponse> loginJZ(@Body JZ_Comm_Req request);
 
     //修改密码
-    @POST("SalvationPlatform/phoneLoginController.do?modifyPassword")
+    @POST("phoneLoginController.do?modifyPassword")
     Call<CommResponse> modifyPW(@Body ModifyPW request);
+
+
+    @POST("SocietySalvation/api/appTodolistController.do?appGetTodoFunctionTree")
+    Call<CommResponse> getFuntionTree(@Body JZ_TODO_FuntionTree req);
+
+    @POST("SocietySalvation/api/appTodolistController.do?appGetTodolist")
+    Call<CommResponse> getTodoList(@Body JZ_TODO_FuntionTree req);
+
     /**************************医疗一站式*********************************/
 
     /**************************核对系统*********************************/

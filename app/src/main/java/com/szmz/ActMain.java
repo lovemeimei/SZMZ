@@ -1,6 +1,5 @@
 package com.szmz;
 
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,7 +12,6 @@ import com.szmz.ayljzxt.ActMainYLJZ;
 import com.szmz.ayljzxt.ActMainYLJZ2;
 import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.response.CommResponse;
-import com.szmz.more.ActBindPhone_Worker;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 

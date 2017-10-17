@@ -11,7 +11,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.szmz.entity.User;
+import com.szmz.entity.UserSQR;
+import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.phoneLoginRequest;
+import com.szmz.entity.response.LoginSQR_Res;
 import com.szmz.entity.response.phoneLoginR;
 import com.szmz.more.ActFindPW;
 import com.szmz.net.ApiUtil;
@@ -138,6 +141,22 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
             }
         }, true);
+        apiUtil.excute();
+    }
+
+
+    private void loginSQR(){
+        LoginSQR_Req sqr_req = new LoginSQR_Req(etUser.getText().toString().trim(),etPW.getText().toString().trim());
+        Call<LoginSQR_Res> call =App.getApiProxy().loginSQR(sqr_req);
+                ApiUtil<LoginSQR_Res> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<LoginSQR_Res>(){
+
+                    @Override
+                    public void doSuccess(LoginSQR_Res result) {
+                        super.doSuccess(result);
+
+                        UserSQR userSQR = result.Result.get(0);
+                    }
+                },true);
         apiUtil.excute();
     }
 
