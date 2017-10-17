@@ -3,6 +3,7 @@ package com.szmz.net;
 import com.szmz.entity.HD_JG_BGDY_RES;
 import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.request.JZ_Comm_bindphone;
+import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
 import com.szmz.entity.request.JZ_TODO_FuntionTree;
 import com.szmz.entity.request.LoginSQR_Req;
@@ -47,9 +48,12 @@ public interface ApiService {
     Call<CommResponse> bindPhone(@Body JZ_Comm_bindphone request);
     @POST("SalvationPlatform/phoneLoginController.do?modifyPhone")
     Call<CommResponse> modifyPhone(@Body JZ_Comm_modifyPhone request);
+    //修改资料
+    @POST("SalvationPlatform/phoneLoginController.do?modifyPersonalMsg")
+    Call<CommResponse> modifyPW(@Body ModifyPW request);
     //修改密码
     @POST("SalvationPlatform/phoneLoginController.do?modifyPassword")
-    Call<CommResponse> modifyPW(@Body ModifyPW request);
+    Call<CommResponse> modifyInfo(@Body JZ_Comm_modifyInfo request);
 
     /**************************救助系统工作人员*********************************/
 

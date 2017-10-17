@@ -7,10 +7,16 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.szmz.ActBase;
+import com.szmz.App;
 import com.szmz.R;
+import com.szmz.entity.request.JZ_Comm_modifyInfo;
+import com.szmz.entity.response.CommResponse;
+import com.szmz.net.ApiUtil;
+import com.szmz.net.SimpleApiListener;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.Call;
 
 /**
  * 中移全通集成公司 版本所有
@@ -91,5 +97,22 @@ public class ActModifyUserInfo extends ActBase{
                         return true;
                     }
                 }).build();
+    }
+
+    private void modifyUserInfo(){
+
+        JZ_Comm_modifyInfo req = new JZ_Comm_modifyInfo(App.getInstance().getLoginUser().getPersonId(),"emaile","officePhone");
+
+        Call<CommResponse> call = App.getApiProxyCom().modifyInfo(req);
+
+        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
+            @Override
+            public void doSuccess(CommResponse result) {
+                super.doSuccess(result);
+            }
+        },true);
+
+        apiUtil.excute();
+
     }
 }

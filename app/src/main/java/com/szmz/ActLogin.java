@@ -99,7 +99,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
         if (!doCheck())
             return;
         final phoneLoginRequest request = new phoneLoginRequest(etUser.getText().toString().trim(), etPW.getText().toString().trim());
-        Call<phoneLoginR> call = App.getApiProxy().login(request);
+        Call<phoneLoginR> call = App.getApiProxyCom().login(request);
         ApiUtil<phoneLoginR> apiUtil = new ApiUtil<phoneLoginR>(context, call, new SimpleApiListener<phoneLoginR>() {
             @Override
             public void doSuccess(phoneLoginR result) {

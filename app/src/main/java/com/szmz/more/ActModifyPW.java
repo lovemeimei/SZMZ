@@ -55,7 +55,7 @@ public class ActModifyPW extends ActBase {
         ModifyPW request = new ModifyPW(App.getInstance().getLoginUser().getUserName(),etOld.getText().toString().trim(),etNew.getText().toString().trim());
 
 
-        Call<CommResponse> commResponseCall = App.getApiProxy().modifyPW(request);
+        Call<CommResponse> commResponseCall = App.getApiProxyCom().modifyPW(request);
 
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this, commResponseCall,new SimpleApiListener<CommResponse>(){
             @Override

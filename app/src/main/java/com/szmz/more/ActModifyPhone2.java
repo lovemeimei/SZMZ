@@ -67,7 +67,7 @@ public class ActModifyPhone2 extends ActBase {
             return;
 
         JZ_Comm_modifyPhone req = new JZ_Comm_modifyPhone(App.getInstance().getLoginUser().getPhone(),phoneNum,code);
-        Call<CommResponse> call = App.getApiProxy().modifyPhone(req);
+        Call<CommResponse> call = App.getApiProxyCom().modifyPhone(req);
 
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
             @Override

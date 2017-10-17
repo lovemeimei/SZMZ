@@ -112,7 +112,7 @@ public class ActMain extends ActBase {
 //        JZ_Comm_Req req = new JZ_Comm_Req(App.getInstance().getLoginUser().getAccountJZ());
         JZ_Comm_Req req = new JZ_Comm_Req("admin");
 
-        Call<JZ_GetUserInfo> call = App.getApiProxy().loginJZ(req);
+        Call<JZ_GetUserInfo> call = App.getApiProxyJZ().loginJZ(req);
 
         ApiUtil<JZ_GetUserInfo> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<JZ_GetUserInfo>() {
             @Override

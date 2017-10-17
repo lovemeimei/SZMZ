@@ -47,6 +47,9 @@ public class App extends Application {
     public static Boolean isInit = false;
 
     private static ApiService apiProxy = null;
+    private static ApiService apiProxyCom= null;
+    private static ApiService apiProxyJZ = null;
+    private static ApiService apiProxyYZS = null;
 
     public static App getInstance() {
         if (singleton == null)
@@ -103,14 +106,47 @@ public class App extends Application {
     }
 
     public static ApiService getApiProxy() {
-        if (apiProxy == null) {
-            apiProxy = initRetorfit();
+        if (apiProxyCom == null) {
+            apiProxyCom = initRetorfit(SystemConst.DEFAULT_SERVER);
         }
-        return apiProxy;
+        return apiProxyCom;
     }
 
-    private static DbManager.DaoConfig daoConfig;
+    /**
+     * 平台
+     * @return
+     */
+    public static ApiService getApiProxyCom() {
+        if (apiProxyCom == null) {
+            apiProxyCom = initRetorfit(SystemConst.DEFAULT_SERVER_COM);
+        }
+        return apiProxyCom;
+    }
+    /**
+     * 救助
+     * @return
+     */
+    public static ApiService getApiProxyJZ() {
+        if (apiProxyJZ == null) {
+            apiProxyJZ = initRetorfit(SystemConst.DEFAULT_SERVER_JZ);
+        }
+        return apiProxyJZ;
+    }
 
+    /**
+     * 一站式
+     * @return
+     */
+    public static ApiService getApiProxyYZS() {
+
+        if (apiProxyYZS == null) {
+            apiProxyYZS = initRetorfit(SystemConst.DEFAULT_SERVER_YZS);
+        }
+        return apiProxyYZS;
+    }
+
+
+    private static DbManager.DaoConfig daoConfig;
 
     public static DbManager.DaoConfig getDaoConfig() {
         return daoConfig;
@@ -122,7 +158,7 @@ public class App extends Application {
         singleton = this;
         x.Ext.init(this);
         x.Ext.setDebug(true);
-        apiProxy = initRetorfit();
+        apiProxy = initRetorfit(SystemConst.DEFAULT_SERVER);
         daoConfig = new DbManager.DaoConfig()
                 .setDbName("szmz")//创建数据库的名称
                 .setDbVersion(1)//数据库版本号
@@ -138,20 +174,15 @@ public class App extends Application {
 
     }
 
-    private static ApiService initRetorfit() {
+    private static ApiService initRetorfit(String url) {
 
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
                 .create();
-//        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-
             @Override
             public void log(String message) {
-//                if (message.contains("{") && message.contains("}")) {
-//                    Logger.json(message);
-//                    Log.d("MyTag", "OKHTTP:" + message);
-//                }
+
                 Log.d("MyTag", "OKHTTP:" + message);
             }
         });
@@ -163,7 +194,7 @@ public class App extends Application {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(SystemConst.DEFAULT_SERVER)
+                .baseUrl(url)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
                 .build();
@@ -199,10 +230,14 @@ public class App extends Application {
                 if (activity != null)
                     activity.finish();
             }
+
         } catch (Exception e) {
+
         } finally {
+
             android.os.Process.killProcess(android.os.Process.myPid());
             System.exit(0);
+
         }
 
     }

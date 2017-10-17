@@ -83,7 +83,7 @@ public class ActBindPhone_Worker extends ActBase {
 
         JZ_Comm_bindphone req = new JZ_Comm_bindphone(App.getInstance().getLoginUser().getUserName(), App.getInstance().getLoginUser().getPw(), etPhone.getText().toString().trim());
 
-        Call<CommResponse> call = App.getApiProxy().bindPhone(req);
+        Call<CommResponse> call = App.getApiProxyCom().bindPhone(req);
 
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
             @Override
