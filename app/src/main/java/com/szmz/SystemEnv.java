@@ -52,7 +52,8 @@ public final class SystemEnv {
         Gson gson = new Gson();
         //转换成json数据，再保存
         String strJson = gson.toJson(datalist);
-        et.clear();
+//        et.clear();
+        et.remove(tag);
         et.putString(tag, strJson);
         et.commit();
 
@@ -60,7 +61,7 @@ public final class SystemEnv {
 
     public static void deleteDataList() {
         SharedPreferences.Editor et = pref.edit();
-        et.clear();
+        et.remove("XZQH");
         et.commit();
     }
 
@@ -190,6 +191,7 @@ public final class SystemEnv {
     private static final String USER_PW = "USER_PW";
 
     public static String getUserName() {
+
         return pref.getString(USER_NAME,"");
     }
 

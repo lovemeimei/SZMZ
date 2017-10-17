@@ -60,7 +60,17 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".more.ActModifyUserInfo_SQR"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".ahdxt.tjfx.ActTjfx_HDBGZS"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".home.ActMsgListNormal"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
@@ -229,7 +239,7 @@
         <activity android:name=".user.check.ActCheckList" />
         <activity android:name=".user.check.ActCheckDetail1" />
         <activity android:name=".ActMsgDetail" />
-        <activity android:name=".ActMsgList" />
+        <activity android:name=".home.ActMsgList" />
 
         <!-- 扫描条码 -->
         <activity

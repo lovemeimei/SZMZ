@@ -64,6 +64,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
         String name = SystemEnv.getUserName();
         String pw = SystemEnv.getUserPw();
+
         if (!TextUtils.isEmpty(name)){
             etUser.setText(name);
             etPW.setText(pw);
@@ -131,6 +132,9 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                     user.setPersonId(bean.getPersonal().getPersonalId());
                     user.setPhone(bean.getPersonal().getMobilePhone());
                     user.setRealName(bean.getPersonal().getRealName());
+                    user.setDepartName(bean.getPersonal().getDepartName());
+                    user.setOfficePhone(bean.getPersonal().getOfficePhone());
+                    user.setEmail(bean.getPersonal().getEmaile());
                     App.getInstance().login(user);
                     //保存用户名密码
                     SystemEnv.saveUserName(etUser.getText().toString().trim());
@@ -192,8 +196,6 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
         } else {
             App.exit();
         }
-
-
     }
 
     @Override

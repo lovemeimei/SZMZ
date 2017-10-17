@@ -1,20 +1,27 @@
-package com.szmz;
+package com.szmz.home;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.materiallistview.MaterialRefreshLayout;
-import com.szmz.user.job.ActMyJobYB;
-import com.szmz.user.job.ActYBBDList;
+import com.szmz.ActListBase;
+import com.szmz.ActMsgDetail;
+import com.szmz.App;
+import com.szmz.R;
+import com.szmz.entity.request.JZ_TODO_FuntionTree;
+import com.szmz.entity.request.JZ_TODO_List;
+import com.szmz.entity.response.JZ_Todo_MenuTree;
+import com.szmz.entity.response.JZ_Todolist;
+import com.szmz.net.ApiUtil;
+import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import retrofit2.Call;
 
 public class ActMsgList extends ActListBase {
 
@@ -23,9 +30,12 @@ public class ActMsgList extends ActListBase {
     ListView lv;
     BaseListAdapter<String,ActMsgList.MViewHolder> adapter;
 
+    int type = 0;
+    private String funtionID="";
+
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_act_msg_list;
+        return R.layout.comm_list_slt;
     }
 
 
@@ -33,6 +43,15 @@ public class ActMsgList extends ActListBase {
     protected void initUI() {
         super.initUI();
         title= getIntent().getStringExtra("title");
+
+        if (title.equals("待办业务")){
+            type=0;
+        }else if (title.equals("审批意见")){
+            type=1;
+        }else if (title.equals("复查事项")){
+            type=2;
+        }
+
         setTitle(title);
         setLeftVisible(true);
 
@@ -65,6 +84,11 @@ public class ActMsgList extends ActListBase {
             items.add(""+i);
         }
         adapter.setItems(items);
+
+        if (type==0)
+            initMenuTrer();
+
+        getTodoList();
     }
 
     @Override
@@ -80,5 +104,37 @@ public class ActMsgList extends ActListBase {
     class MViewHolder{
 
         TextView tvName;
+    }
+
+    private void getTodoList(){
+        JZ_TODO_List req = new JZ_TODO_List(getUser().getAccountJZ(),getUser().getIdJZ(),funtionID,1);
+
+        Call<JZ_Todolist> call = App.getApiProxyJZ().getJZ_TodoList(req);
+
+        ApiUtil<JZ_Todolist> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<JZ_Todolist.ResultBean>(){
+            @Override
+            public void doSuccess(JZ_Todolist.ResultBean result) {
+                super.doSuccess(result);
+            }
+        },false);
+    }
+
+
+    private void  initMenuTrer(){
+
+        JZ_TODO_FuntionTree req = new JZ_TODO_FuntionTree(App.getInstance().getLoginUser().getUserName(),App.getInstance().getLoginUser().getIdJZ());
+
+        Call<JZ_Todo_MenuTree> call = App.getApiProxyJZ().getJZ_FuntionTree(req);
+
+        ApiUtil<JZ_Todo_MenuTree> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener(){
+            @Override
+            public void doSuccess(Object result) {
+                super.doSuccess(result);
+            }
+        },true);
+
+        apiUtil.excute();
+
+
     }
 }

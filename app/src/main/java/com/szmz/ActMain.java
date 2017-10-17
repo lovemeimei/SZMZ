@@ -109,8 +109,8 @@ public class ActMain extends ActBase {
     private void loginJZXT() {
 //personalId:8a8ab0b246dc81120146dc8181950052
         //"id":"8a8ab0b246dc81120146dc8181950052"
-//        JZ_Comm_Req req = new JZ_Comm_Req(App.getInstance().getLoginUser().getAccountJZ());
-        JZ_Comm_Req req = new JZ_Comm_Req("admin");
+        JZ_Comm_Req req = new JZ_Comm_Req(App.getInstance().getLoginUser().getAccountJZ());
+//        JZ_Comm_Req req = new JZ_Comm_Req("admin");
 
         Call<JZ_GetUserInfo> call = App.getApiProxyJZ().loginJZ(req);
 
@@ -126,6 +126,8 @@ public class ActMain extends ActBase {
                 user.setIdJZ(result.Result.get(0).getId());
                 App.getInstance().login(user);
                 App.getInstance().getLoginUser().getIdJZ();
+
+                trans(ActMainJZ.class);
             }
         }, true);
 

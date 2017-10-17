@@ -46,6 +46,75 @@
         android:layout_marginTop="@dimen/spacing_tiny"
         android:background="@color/line_bg" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_large">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="left"
+            android:text="姓别"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/tv_user_sex"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.0"
+            android:background="@null"
+            android:gravity="left"
+            android:text="女"
+            android:textColor="@color/black_light"
+            android:textSize="@dimen/font_normal" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:background="@color/line_bg" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_large">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="left"
+            android:text="身份证号"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font_normal" />
+
+        <EditText
+            android:id="@+id/et_user_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.0"
+            android:background="@null"
+            android:gravity="left"
+            android:text="130626199003032033"
+            android:textColor="@color/black_light"
+            android:textSize="@dimen/font_normal" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:background="@color/line_bg" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,7 +128,43 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:gravity="left"
-            android:text="办公电话"
+            android:text="居住地址"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font_normal" />
+
+        <EditText
+            android:id="@+id/et_user_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.0"
+            android:background="@null"
+            android:gravity="left"
+            android:text="攀枝花"
+            android:textColor="@color/black_light"
+            android:textSize="@dimen/font_normal" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:background="@color/line_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_large">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="left"
+            android:text="电话"
             android:textColor="@color/gray"
             android:textSize="@dimen/font_normal" />
 
@@ -72,79 +177,6 @@
             android:gravity="left"
             android:inputType="number"
             android:text="18603116666"
-            android:textColor="@color/black_light"
-            android:textSize="@dimen/font_normal" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="@dimen/spacing_normal"
-        android:layout_marginRight="@dimen/spacing_normal"
-        android:layout_marginTop="@dimen/spacing_tiny"
-        android:background="@color/line_bg" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_normal"
-        android:layout_marginRight="@dimen/spacing_normal"
-        android:layout_marginTop="@dimen/spacing_large">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:gravity="left"
-            android:text="邮箱"
-            android:textColor="@color/gray"
-            android:textSize="@dimen/font_normal" />
-
-        <EditText
-            android:id="@+id/et_user_email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.0"
-            android:background="@null"
-            android:gravity="left"
-            android:text=""
-            android:textColor="@color/black_light"
-            android:textSize="@dimen/font_normal" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginLeft="@dimen/spacing_normal"
-        android:layout_marginRight="@dimen/spacing_normal"
-        android:layout_marginTop="@dimen/spacing_tiny"
-        android:background="@color/line_bg" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/spacing_normal"
-        android:layout_marginRight="@dimen/spacing_normal"
-        android:layout_marginTop="@dimen/spacing_large">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:gravity="left"
-            android:text="所属部门"
-            android:textColor="@color/gray"
-            android:textSize="@dimen/font_normal" />
-
-        <TextView
-            android:id="@+id/et_user_depart"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.0"
-            android:background="@null"
-            android:gravity="left"
-            android:text="档案室"
             android:textColor="@color/black_light"
             android:textSize="@dimen/font_normal" />
     </LinearLayout>

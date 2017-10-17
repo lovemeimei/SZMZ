@@ -2,7 +2,7 @@ package com.szmz.ayljzxt;
 
 import android.view.View;
 
-import com.szmz.ActMsgList;
+import com.szmz.home.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 

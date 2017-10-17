@@ -3,6 +3,7 @@ package com.szmz;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.materiallistview.MaterialRefreshLayout;
@@ -20,10 +21,16 @@ public abstract class ActListBase extends ActBase {
 
     @BindView(R.id.refresh)
     public MaterialRefreshLayout refresh;
+
     protected int currentPage = 1;
     protected int pageSize = 20;
+
     @BindView(R.id.search_ed)
     protected EditText searchEd;
+    @BindView(R.id.noDataLayout)
+    protected LinearLayout noDataLayout;
+    @BindView(R.id.textView)
+    protected TextView textView;
 
     public abstract void doRefresh(MaterialRefreshLayout materialRefreshLayout);
 

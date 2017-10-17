@@ -3,18 +3,15 @@ package com.szmz.fragment;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.szmz.ActMsgList;
 import com.szmz.App;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.more.ActBindPhone;
 import com.szmz.more.ActBindPhone_Worker;
 import com.szmz.more.ActModifyPW;
-import com.szmz.more.ActModifyPhone;
 import com.szmz.more.ActModifyUserInfo;
+import com.szmz.more.ActModifyUserInfo_SQR;
 import com.szmz.more.ActMsgSet;
-import com.szmz.user.check.ActCheckList;
-import com.szmz.user.job.ActMyJob;
 
 import butterknife.OnClick;
 
@@ -43,7 +40,11 @@ public class FragmentUse_C extends BaseFragment {
     public void doClick(View v) {
         switch (v.getId()) {
             case R.id.miv_grzl:
-                trans(ActModifyUserInfo.class);
+                if (App.getInstance().getLoginUser().getType()==1){
+                    trans(ActModifyUserInfo.class);
+                }else {
+                    trans(ActModifyUserInfo_SQR.class);
+                }
                 break;
             case R.id.miv_xgmm:
                 trans(ActModifyPW.class);

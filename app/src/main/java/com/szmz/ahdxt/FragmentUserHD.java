@@ -2,13 +2,10 @@ package com.szmz.ahdxt;
 
 import android.view.View;
 
-import com.szmz.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.more.ActModifyPW;
 import com.szmz.more.ActModifyUserInfo;
-import com.szmz.user.check.ActCheckList;
-import com.szmz.user.job.ActMyJob;
 
 import butterknife.OnClick;
 

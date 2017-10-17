@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.szmz.entity.User;
 import com.szmz.utils.UIUtil;
 
 import butterknife.BindView;
@@ -35,6 +36,8 @@ public abstract class ActBase extends AppCompatActivity {
     @BindView(R.id.iv_back)
     ImageView ivBack;
 
+    private User user;
+
     protected String TAG;
     protected MaterialDialog dialog;
 
@@ -54,7 +57,14 @@ public abstract class ActBase extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         App.addActivity(this);
         TAG = this.getClass().getName();
+        user = App.getInstance().getLoginUser();
         initUI();
+    }
+
+    protected User getUser(){
+        if (user==null)
+            user=App.getInstance().getLoginUser();
+        return user;
     }
 
     protected void initUI() {

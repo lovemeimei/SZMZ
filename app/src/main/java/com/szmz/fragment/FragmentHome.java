@@ -2,10 +2,9 @@ package com.szmz.fragment;
 
 import android.view.View;
 
-import com.szmz.ActMsgList;
+import com.szmz.home.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
-import com.szmz.utils.UIUtil;
 
 import butterknife.OnClick;
 

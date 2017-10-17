@@ -8,7 +8,7 @@
 
     <include layout="@layout/comm_title" />
 
-    <include layout="@layout/comm_search"  android:visibility="gone"/>
+    <include layout="@layout/comm_search_slt" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -54,4 +54,6 @@
                 android:textSize="15dp" />
         </LinearLayout>
     </FrameLayout>
+
+
 </LinearLayout>

@@ -28,6 +28,34 @@ public class User implements IEntity {
     private String phone;
     private String personId;
 
+    private String email;
+    private String officePhone;
+    private String departName;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getOfficePhone() {
+        return officePhone;
+    }
+
+    public void setOfficePhone(String officePhone) {
+        this.officePhone = officePhone;
+    }
+
+    public String getDepartName() {
+        return departName;
+    }
+
+    public void setDepartName(String departName) {
+        this.departName = departName;
+    }
+
     public String getPersonId() {
         return personId;
     }

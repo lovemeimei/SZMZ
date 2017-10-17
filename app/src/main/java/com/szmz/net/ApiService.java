@@ -6,6 +6,7 @@ import com.szmz.entity.request.JZ_Comm_bindphone;
 import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
 import com.szmz.entity.request.JZ_TODO_FuntionTree;
+import com.szmz.entity.request.JZ_TODO_List;
 import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.phoneLoginRequest;
@@ -26,6 +27,8 @@ import com.szmz.entity.response.HD_XZQH_Response;
 import com.szmz.entity.response.HD_dict;
 import com.szmz.entity.response.HD_hdzc;
 import com.szmz.entity.response.JZ_GetUserInfo;
+import com.szmz.entity.response.JZ_Todo_MenuTree;
+import com.szmz.entity.response.JZ_Todolist;
 import com.szmz.entity.response.LoginSQR_Res;
 import com.szmz.entity.response.phoneLoginR;
 
@@ -49,12 +52,12 @@ public interface ApiService {
     @POST("SalvationPlatform/phoneLoginController.do?modifyPhone")
     Call<CommResponse> modifyPhone(@Body JZ_Comm_modifyPhone request);
     //修改资料
-    @POST("SalvationPlatform/phoneLoginController.do?modifyPersonalMsg")
-    Call<CommResponse> modifyPW(@Body ModifyPW request);
-    //修改密码
     @POST("SalvationPlatform/phoneLoginController.do?modifyPassword")
-    Call<CommResponse> modifyInfo(@Body JZ_Comm_modifyInfo request);
+    Call<CommResponse> modifyPW(@Body ModifyPW request);
 
+    //修改密码
+    @POST("SalvationPlatform/phoneLoginController.do?modifyPersonalMsg")
+    Call<CommResponse> modifyInfo(@Body JZ_Comm_modifyInfo request);
     /**************************救助系统工作人员*********************************/
 
     @POST("SocietySalvation/api/appCommonController.do?getUserInfo")
@@ -62,10 +65,10 @@ public interface ApiService {
 
 
     @POST("SocietySalvation/api/appTodolistController.do?appGetTodoFunctionTree")
-    Call<CommResponse> getFuntionTree(@Body JZ_TODO_FuntionTree req);
+    Call<JZ_Todo_MenuTree> getJZ_FuntionTree(@Body JZ_TODO_FuntionTree req);
 
     @POST("SocietySalvation/api/appTodolistController.do?appGetTodolist")
-    Call<CommResponse> getTodoList(@Body JZ_TODO_FuntionTree req);
+    Call<JZ_Todolist> getJZ_TodoList(@Body JZ_TODO_List req);
 
     /**************************救助系统申请人员*********************************/
     //登录申请人员
