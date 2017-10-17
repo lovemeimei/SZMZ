@@ -59,7 +59,7 @@ public class TextUtil {
      */
     public static boolean isVailPw(String pw){
 
-        Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]{6,20})$");
+        Pattern pattern = Pattern.compile("^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$");
 
         Matcher matcher = pattern.matcher(pw);
 

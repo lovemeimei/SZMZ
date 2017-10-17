@@ -1,12 +1,15 @@
 package com.szmz.more;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
 import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.utils.TextUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -35,6 +38,18 @@ public class ActModifyPhone extends ActBase {
 
     @OnClick(R.id.btn_submit)
     public void doClick(View v) {
-            trans(ActModifyPhone2.class);
+
+        if (TextUtils.isEmpty(etPhone.getText().toString().trim())){
+            doToast("请输入手机号");
+            return;
+        }
+        if (!TextUtil.isMobileNumber(etPhone.getText().toString().trim())){
+            doToast("不是有效的手机号");
+            return;
+        }
+        Intent intent =new Intent(context,ActModifyPhone2.class);
+        intent.putExtra("num",etPhone.getText().toString().trim());
+        startActivity(intent);
+        myAnimFinish();
     }
 }

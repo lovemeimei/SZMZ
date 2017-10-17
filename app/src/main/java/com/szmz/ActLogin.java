@@ -129,7 +129,8 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                     user.setPw(etPW.getText().toString().trim());
                     user.setType(type);
                     user.setPersonId(bean.getPersonal().getPersonalId());
-//                    user.setPhone(bean.getPersonal().getMobilePhone());
+                    user.setPhone(bean.getPersonal().getMobilePhone());
+                    user.setRealName(bean.getPersonal().getRealName());
                     App.getInstance().login(user);
                     //保存用户名密码
                     SystemEnv.saveUserName(etUser.getText().toString().trim());

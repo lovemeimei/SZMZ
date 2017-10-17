@@ -1,5 +1,6 @@
 package com.szmz;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,8 +11,11 @@ import com.szmz.ahdxt.ActHdxtMain;
 import com.szmz.ahdxt.asqr.ActHdxtMainSQR;
 import com.szmz.ayljzxt.ActMainYLJZ;
 import com.szmz.ayljzxt.ActMainYLJZ2;
+import com.szmz.entity.User;
 import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.response.CommResponse;
+import com.szmz.entity.response.JZ_GetUserInfo;
+import com.szmz.more.ActBindPhone_Worker;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 
@@ -31,12 +35,16 @@ public class ActMain extends ActBase {
     @BindView(R.id.tv_name)
     TextView tvName;
 
-    private int type = 0;
+    private int type = 1;
 
     @Override
     protected void initUI() {
         super.initUI();
-        type = getIntent().getIntExtra("Type", 0);
+
+//        type = App.getInstance().getLoginUser().getType();
+
+        type = getIntent().getIntExtra("type",1);
+
         loopRotarySwitchView
                 .setR(500)//设置R的大小
                 .setAutoRotation(false);
@@ -63,7 +71,6 @@ public class ActMain extends ActBase {
                 switch (item) {
                     case 0:
                         if (type == 1) {
-//                            trans(ActMainJZ.class);
                             loginJZXT();
                         } else {
                             trans(ActMainJZ2.class);
@@ -100,16 +107,25 @@ public class ActMain extends ActBase {
     }
 
     private void loginJZXT() {
-
+//personalId:8a8ab0b246dc81120146dc8181950052
+        //"id":"8a8ab0b246dc81120146dc8181950052"
 //        JZ_Comm_Req req = new JZ_Comm_Req(App.getInstance().getLoginUser().getAccountJZ());
-        JZ_Comm_Req req = new JZ_Comm_Req("liuhao");
+        JZ_Comm_Req req = new JZ_Comm_Req("admin");
 
-        Call<CommResponse> call = App.getApiProxy().loginJZ(req);
+        Call<JZ_GetUserInfo> call = App.getApiProxy().loginJZ(req);
 
-        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<CommResponse>() {
+        ApiUtil<JZ_GetUserInfo> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<JZ_GetUserInfo>() {
             @Override
-            public void doSuccess(CommResponse result) {
-                super.doSuccess(result);
+            public void doSuccess(JZ_GetUserInfo result) {
+              String id=  result.Result.get(0).getId();
+                if (TextUtils.isEmpty(id)){
+                    doToast("服务器发生错误");
+                    return;
+                }
+                User user = App.getInstance().getLoginUser();
+                user.setIdJZ(result.Result.get(0).getId());
+                App.getInstance().login(user);
+                App.getInstance().getLoginUser().getIdJZ();
             }
         }, true);
 

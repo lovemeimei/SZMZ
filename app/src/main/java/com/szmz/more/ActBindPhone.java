@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.szmz.ActBase;
+import com.szmz.App;
 import com.szmz.R;
 
 import butterknife.BindView;
@@ -31,10 +32,12 @@ public class ActBindPhone extends ActBase{
         setLeftVisible(true);
         setTitle("绑定手机号");
 
+        tvPhone.setText(App.getInstance().getLoginUser().getPhone());
     }
 
     @OnClick(R.id.btn_submit)
     public void doClick(View v){
         trans(ActModifyPhone.class);
+        myAnimFinish();
     }
 }

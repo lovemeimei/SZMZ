@@ -1,11 +1,14 @@
 package com.szmz.fragment;
 
+import android.text.TextUtils;
 import android.view.View;
 
 import com.szmz.ActMsgList;
+import com.szmz.App;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.more.ActBindPhone;
+import com.szmz.more.ActBindPhone_Worker;
 import com.szmz.more.ActModifyPW;
 import com.szmz.more.ActModifyPhone;
 import com.szmz.more.ActModifyUserInfo;
@@ -46,7 +49,11 @@ public class FragmentUse_C extends BaseFragment {
                 trans(ActModifyPW.class);
                 break;
             case R.id.miv_bindphone:
-                trans(ActBindPhone.class);
+                if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone())){
+                    trans(ActBindPhone_Worker.class);
+                }else {
+                    trans(ActBindPhone.class);
+                }
                 break;
             case R.id.miv_msg:
                 trans(ActMsgSet.class);

@@ -18,6 +18,7 @@
         android:layout_marginRight="@dimen/spacing_normal"
         android:layout_marginTop="@dimen/spacing_large"
         android:hint="旧密码"
+        android:inputType="textPassword"
         android:textSize="@dimen/font_normal" />
 
     <EditText
@@ -28,6 +29,7 @@
         android:layout_marginRight="@dimen/spacing_normal"
         android:layout_marginTop="@dimen/spacing_normal"
         android:hint="新密码"
+        android:inputType="textPassword"
         android:textSize="@dimen/font_normal" />
 
     <EditText
@@ -38,6 +40,7 @@
         android:layout_marginRight="@dimen/spacing_normal"
         android:layout_marginTop="@dimen/spacing_normal"
         android:hint="确认密码"
+        android:inputType="textPassword"
         android:textSize="@dimen/font_normal" />
 
     <TextView
