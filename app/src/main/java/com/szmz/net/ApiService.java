@@ -3,6 +3,7 @@ package com.szmz.net;
 import com.szmz.entity.HD_JG_BGDY_RES;
 import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.request.JZ_Comm_bindphone;
+import com.szmz.entity.request.JZ_Comm_list_Req;
 import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
 import com.szmz.entity.request.JZ_TODO_FuntionTree;
@@ -27,6 +28,8 @@ import com.szmz.entity.response.HD_XZQH_Response;
 import com.szmz.entity.response.HD_dict;
 import com.szmz.entity.response.HD_hdzc;
 import com.szmz.entity.response.JZ_GetUserInfo;
+import com.szmz.entity.response.JZ_MSG_FC_Res;
+import com.szmz.entity.response.JZ_MSG_SP_Res;
 import com.szmz.entity.response.JZ_Todo_MenuTree;
 import com.szmz.entity.response.JZ_Todolist;
 import com.szmz.entity.response.LoginSQR_Res;
@@ -69,6 +72,13 @@ public interface ApiService {
 
     @POST("SocietySalvation/api/appTodolistController.do?appGetTodolist")
     Call<JZ_Todolist> getJZ_TodoList(@Body JZ_TODO_List req);
+
+    @POST("SocietySalvation/api/appTodolistController.do?appGetApproval")
+    Call<JZ_MSG_SP_Res> getJZ_MSG_SP_List(@Body JZ_Comm_list_Req req);
+
+    @POST("SocietySalvation/api/appTodolistController.do?appGetRecheckInfos")
+    Call<JZ_MSG_FC_Res> getJZ_MSG_FC_List(@Body JZ_Comm_list_Req req);
+
 
     /**************************救助系统申请人员*********************************/
     //登录申请人员

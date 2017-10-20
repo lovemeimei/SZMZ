@@ -5,6 +5,7 @@ import android.view.View;
 import com.szmz.home.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.home.ActMsgListNormal;
 
 import butterknife.OnClick;
 
@@ -35,10 +36,10 @@ public class FragmentHome extends BaseFragment {
                 trans(ActMsgList.class,"待办业务","");
                 break;
             case R.id.ll_spyj:
-                trans(ActMsgList.class,"审批意见","");
+                trans(ActMsgListNormal.class,"审批意见","");
                 break;
             case R.id.ll_fcsx:
-                trans(ActMsgList.class,"复查事项","");
+                trans(ActMsgListNormal.class,"复查事项","");
                 break;
         }
     }

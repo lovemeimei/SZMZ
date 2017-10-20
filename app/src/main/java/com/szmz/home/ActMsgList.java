@@ -44,14 +44,6 @@ public class ActMsgList extends ActListBase {
         super.initUI();
         title= getIntent().getStringExtra("title");
 
-        if (title.equals("待办业务")){
-            type=0;
-        }else if (title.equals("审批意见")){
-            type=1;
-        }else if (title.equals("复查事项")){
-            type=2;
-        }
-
         setTitle(title);
         setLeftVisible(true);
 
@@ -85,8 +77,7 @@ public class ActMsgList extends ActListBase {
         }
         adapter.setItems(items);
 
-        if (type==0)
-            initMenuTrer();
+        initMenuTrer();
 
         getTodoList();
     }
