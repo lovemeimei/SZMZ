@@ -5,6 +5,7 @@ package com.szmz;
  */
 public class SystemConst {
     public static final String DEFAULT_SERVER_COM = "http://222.222.49.34:8057/";//平台
+    public static final String DEFAULT_SERVER_COM_SQR = "http://222.222.49.34:8081/";//平台
     public static final String DEFAULT_SERVER_JZ= "http://222.222.49.34:9095/";//救助
     public static final String DEFAULT_SERVER_YZS= "http://222.222.49.34:9095/";//一站式
     public static final String DEFAULT_SERVER = "http://zhongkehengyun.com:8081/";

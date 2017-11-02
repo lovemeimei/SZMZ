@@ -1,5 +1,6 @@
 package com.szmz.more;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,10 +10,12 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.entity.request.Comm_modifyUserInfoSQR_Req;
 import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.response.CommResponse;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
+import com.szmz.utils.TextUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -39,6 +42,7 @@ public class ActModifyUserInfo_SQR extends ActBase{
     EditText etAddress;
     @BindView(R.id.tv_user_sex)
     TextView etSex;
+    String sex;
 
     @Override
     protected int getLayoutId() {
@@ -60,6 +64,17 @@ public class ActModifyUserInfo_SQR extends ActBase{
         etCard.setEnabled(false);
         etPhone.setEnabled(false);
         etSex.setEnabled(false);
+
+        etName.setText(getUser().getRealName());
+        etAddress.setText(getUser().getAdderss());
+        etPhone.setText(getUser().getPhone());
+        etCard.setText(getUser().getIdCode());
+        sex = getUser().getSex();
+        if (sex.equals("1")){
+            etSex.setText("男");
+        }else {
+            etSex.setText("女");
+        }
 
 
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +109,11 @@ public class ActModifyUserInfo_SQR extends ActBase{
                     @Override
                     public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
                         etSex.setText(text);
+                        if (which==0){
+                            sex="1";
+                        }else {
+                            sex="0";
+                        }
                         return true;
                     }
                 }).build();
@@ -101,9 +121,39 @@ public class ActModifyUserInfo_SQR extends ActBase{
 
     private void modifyUserInfo(){
 
-        JZ_Comm_modifyInfo req = new JZ_Comm_modifyInfo(App.getInstance().getLoginUser().getPersonId(),"emaile","officePhone");
+        String name = etName.getText().toString().trim();
+        String address = etAddress.getText().toString().trim();
+        String idCard = etCard.getText().toString().trim();
+        String phone = etPhone.getText().toString().trim();
+        if (TextUtils.isEmpty(name)){
+            doToast("请输入姓名");
+            return;
+        }
+        if (TextUtils.isEmpty(address)){
+            doToast("请输入家庭住址");
+            return;
+        }
+        if (TextUtils.isEmpty(phone)){
+            doToast("请输入手机号");
+            return;
+        }
+        if (!TextUtil.isMobileNumber(phone)){
+            doToast("请输入正确的手机号");
+            return;
+        }
 
-        Call<CommResponse> call = App.getApiProxyCom().modifyInfo(req);
+        if (TextUtils.isEmpty(idCard)){
+            doToast("请输入身份证号码");
+            return;
+        }
+        if (!TextUtil.isPersonCode(idCard)){
+            doToast("请输入正确的身份证号码");
+            return;
+        }
+
+        Comm_modifyUserInfoSQR_Req req = new Comm_modifyUserInfoSQR_Req(getUser().getUserName(),getUser().getPw(),name,sex,idCard,"",address);
+
+        Call<CommResponse> call = App.getApiProxyComSQR().modifyUserInfoSQR(req);
 
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
             @Override

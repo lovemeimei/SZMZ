@@ -152,7 +152,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
     private void loginSQR(){
         LoginSQR_Req sqr_req = new LoginSQR_Req(etUser.getText().toString().trim(),etPW.getText().toString().trim());
-        Call<LoginSQR_Res> call =App.getApiProxy().loginSQR(sqr_req);
+        Call<LoginSQR_Res> call =App.getApiProxyComSQR().loginSQR(sqr_req);
                 ApiUtil<LoginSQR_Res> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<LoginSQR_Res>(){
 
                     @Override
@@ -160,6 +160,22 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                         super.doSuccess(result);
 
                         UserSQR userSQR = result.Result.get(0);
+                        User user = new User();
+                        user.setUserName(etUser.getText().toString().trim());
+                        user.setPw(etPW.getText().toString().trim());
+                        user.setType(type);
+
+                        user.setPhone(userSQR.getMOBILE());
+                        user.setRealName(userSQR.getREALNAME());
+                        user.setEmail(userSQR.getEMAIL());
+                        user.setAdderss(userSQR.getADDRESS());
+                        user.setIdCode(userSQR.getIDCARD());
+                        App.getInstance().login(user);
+                        //保存用户名密码
+                        SystemEnv.saveUserName(etUser.getText().toString().trim());
+                        SystemEnv.saveUserPw(etPW.getText().toString().trim());
+
+                        trans(ActMain.class);
                     }
                 },true);
         apiUtil.excute();

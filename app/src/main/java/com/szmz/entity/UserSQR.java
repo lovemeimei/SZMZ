@@ -8,6 +8,8 @@ package com.szmz.entity;
 public class UserSQR implements IEntity{
     private static final long serialVersionUID = -4927183302050331159L;
 
+    private String userName;
+
     private String ID;
     private String LOGINNAME;
     private int SEX;
@@ -21,6 +23,15 @@ public class UserSQR implements IEntity{
     private int STATUS;
     private int INBLACK;
     private String REGTIME;
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public String getID() {
         return ID;

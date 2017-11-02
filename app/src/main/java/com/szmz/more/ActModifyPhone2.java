@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.entity.request.Comm_SQR_bingphone_Req;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
 import com.szmz.entity.response.CommResponse;
 import com.szmz.net.ApiUtil;
@@ -56,9 +57,32 @@ public class ActModifyPhone2 extends ActBase {
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               doSub();
+                if (getUser().getType()==1){
+
+                    doSub();
+                }else {
+                    doSubSQR();
+                }
             }
         });
+    }
+
+    private void doSubSQR(){
+        if (!doCheck())
+            return;
+
+        Comm_SQR_bingphone_Req req = new Comm_SQR_bingphone_Req(getUser().getUserName(),getUser().getPw(),phoneNum);
+        Call<CommResponse> call = App.getApiProxyComSQR().bindingPhoneSQR(req);
+
+        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
+            @Override
+            public void doSuccess(CommResponse result) {
+                doToast("修改成功");
+                myAnimFinish();
+            }
+        },true);
+
+        apiUtil.excute();
     }
 
     private void doSub(){

@@ -2,17 +2,25 @@ package com.szmz.more;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.szmz.ActBase;
+import com.szmz.App;
 import com.szmz.R;
+import com.szmz.entity.request.Comm_getCode_Req;
+import com.szmz.entity.response.CommResponse;
+import com.szmz.net.ApiUtil;
+import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.CountDownUtil;
+import com.szmz.utils.TextUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.Call;
 
 public class ActFindPW extends ActBase {
 
@@ -39,16 +47,41 @@ public class ActFindPW extends ActBase {
     public void onSubmit(View view){
         switch (view.getId()){
             case R.id.btn_getCode:
-                CountDownUtil util = new CountDownUtil(context,btnGetCode,60*1000,1000);
+                CountDownUtil util = new CountDownUtil(context,btnGetCode,30*1000,1000);
                 util.start();
                 break;
             case R.id.btn_submit:
                 trans(ActFindPW2.class);
+                doRegist();
                 myAnimFinish();
                 break;
             case R.id.iv_back2:
                 myAnimFinish();
                 break;
         }
+    }
+
+    private void doRegist(){
+        String phone = etPhoneNum.getText().toString().trim();
+        if (TextUtils.isEmpty(phone)){
+            doToast("请输入手机号");
+            return;
+        }
+        if (!TextUtil.isMobileNumber(phone)){
+            doToast("请输入正确的手机号");
+            return;
+        }
+        Comm_getCode_Req req = new Comm_getCode_Req(phone);
+
+        Call<CommResponse> call = App.getApiProxyComSQR().getCodeSQR(req);
+
+        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
+            @Override
+            public void doSuccess(CommResponse result) {
+                doToast("验证码已发送");
+            }
+        },true);
+
+        apiUtil.excute();
     }
 }

@@ -1,6 +1,12 @@
 package com.szmz.net;
 
 import com.szmz.entity.HD_JG_BGDY_RES;
+import com.szmz.entity.request.Comm_SQR_bingphone_Req;
+import com.szmz.entity.request.Comm_SQR_findPW;
+import com.szmz.entity.request.Comm_SQR_modifyPW_Req;
+import com.szmz.entity.request.Comm_checkCode_sqr_Req;
+import com.szmz.entity.request.Comm_getCode_Req;
+import com.szmz.entity.request.Comm_modifyUserInfoSQR_Req;
 import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.request.JZ_Comm_bindphone;
 import com.szmz.entity.request.JZ_Comm_list_Req;
@@ -12,6 +18,7 @@ import com.szmz.entity.request.JZ_YWBL_DZDA_FAMILY_RE;
 import com.szmz.entity.request.JZ_YWBL_DZDA_SALVATION_RE;
 import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.ModifyPW;
+import com.szmz.entity.request.Register_Req;
 import com.szmz.entity.request.phoneLoginRequest;
 import com.szmz.entity.response.CommResponse;
 import com.szmz.entity.response.HD_JG_MGRY;
@@ -78,6 +85,33 @@ public interface ApiService {
     @POST("SalvationPlatform/phoneLoginController.do?modifyPersonalMsg")
     Call<CommResponse> modifyInfo(@Body JZ_Comm_modifyInfo request);
 
+    /**************************救助系统申请人员*********************************/
+    //登录申请人员
+    @POST("SocietySalvation/api/Login/phoneLogin")
+    Call<LoginSQR_Res> loginSQR(@Body LoginSQR_Req request);
+
+    @POST("api/Register/RegisterUser")
+    Call<CommResponse> registerSQR(@Body Register_Req request);
+
+    @POST("api/Register/CheckSmsCode")
+    Call<CommResponse> getCheckCodeSQR(@Body Comm_checkCode_sqr_Req request);
+
+    @POST("api/Register/GetMobileCode")
+    Call<CommResponse> getCodeSQR(@Body Comm_getCode_Req request);
+
+    @POST("api/UserCenter/modifyUserInformethon")
+    Call<CommResponse> modifyUserInfoSQR(@Body Comm_modifyUserInfoSQR_Req request);
+
+    @POST("api/UserCenter/bindingPhone")
+    Call<CommResponse> bindingPhoneSQR(@Body Comm_SQR_bingphone_Req request);
+
+    @POST("api/UserCenter/modifyPassword")
+    Call<CommResponse> modifyPWSQR(@Body Comm_SQR_modifyPW_Req request);
+
+    @POST("api/Login/findPassword")
+    Call<CommResponse> findPWSQR(@Body Comm_SQR_findPW request);
+
+
     /**************************救助系统工作人员*********************************/
 
     @POST("SocietySalvation/api/appCommonController.do?getUserInfo")
@@ -132,11 +166,6 @@ public interface ApiService {
     @POST("SocietySalvation/api/appDataqueryController?getSupportincomeInfo")
     Call<JZ_YWBL_DZDA_SupportIncomeDetial> getJZ_SupportIncomeDetail(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
-
-    /**************************救助系统申请人员*********************************/
-    //登录申请人员
-    @POST("SocietySalvation/api/Login/phoneLogin")
-    Call<LoginSQR_Res> loginSQR(@Body LoginSQR_Req request);
 
 
     /**************************医疗一站式*********************************/

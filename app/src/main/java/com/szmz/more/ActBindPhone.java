@@ -32,6 +32,7 @@ public class ActBindPhone extends ActBase{
         setLeftVisible(true);
         setTitle("绑定手机号");
 
+
         tvPhone.setText(App.getInstance().getLoginUser().getPhone());
     }
 

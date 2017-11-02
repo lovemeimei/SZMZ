@@ -62,20 +62,7 @@ public class App extends Application {
     }
 
     private static User loginUser = null;
-    private static UserSQR loginUserSQR = null;
 
-
-    public final void loginSQR(UserSQR loginUserSQR){
-        this.loginUserSQR = loginUserSQR;
-    }
-
-    public final UserSQR getLoginUserSQR(){
-        return loginUserSQR;
-    }
-
-    public final void logoutSQR(){
-        loginUserSQR = null;
-    }
 
     public final void login(User loginUser) {
         App.loginUser = loginUser;
@@ -119,6 +106,17 @@ public class App extends Application {
     public static ApiService getApiProxyCom() {
         if (apiProxyCom == null) {
             apiProxyCom = initRetorfit(SystemConst.DEFAULT_SERVER_COM);
+        }
+        return apiProxyCom;
+    }
+
+    /**
+     * 平台申请人
+     * @return
+     */
+    public static ApiService getApiProxyComSQR() {
+        if (apiProxyCom == null) {
+            apiProxyCom = initRetorfit(SystemConst.DEFAULT_SERVER_COM_SQR);
         }
         return apiProxyCom;
     }

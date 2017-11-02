@@ -7,6 +7,7 @@ import android.widget.EditText;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.entity.request.Comm_SQR_modifyPW_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.response.CommResponse;
 import com.szmz.net.ApiListener;
@@ -52,22 +53,42 @@ public class ActModifyPW extends ActBase {
         if (!doCheck())
             return;
 
-        ModifyPW request = new ModifyPW(App.getInstance().getLoginUser().getUserName(),etOld.getText().toString().trim(),etNew.getText().toString().trim());
+        if(getUser().getType()==1){
+
+            ModifyPW request = new ModifyPW(App.getInstance().getLoginUser().getUserName(),etOld.getText().toString().trim(),etNew.getText().toString().trim());
 
 
-        Call<CommResponse> commResponseCall = App.getApiProxyCom().modifyPW(request);
+            Call<CommResponse> commResponseCall = App.getApiProxyCom().modifyPW(request);
 
-        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this, commResponseCall,new SimpleApiListener<CommResponse>(){
-            @Override
-            public void doSuccess(CommResponse result) {
-                super.doSuccess(result);
+            ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this, commResponseCall,new SimpleApiListener<CommResponse>(){
+                @Override
+                public void doSuccess(CommResponse result) {
 
-                UIUtil.doToast("操作成功！");
-                myAnimFinish();
-            }
-        },true);
+                    UIUtil.doToast("操作成功！");
+                    myAnimFinish();
+                }
+            },true);
 
-        apiUtil.excute();
+            apiUtil.excute();
+        }else {
+
+            Comm_SQR_modifyPW_Req request = new Comm_SQR_modifyPW_Req(getUser().getUserName(),etOld.getText().toString().trim(),etNew.getText().toString().trim());
+
+
+            Call<CommResponse> commResponseCall = App.getApiProxyComSQR().modifyPWSQR(request);
+
+            ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this, commResponseCall,new SimpleApiListener<CommResponse>(){
+                @Override
+                public void doSuccess(CommResponse result) {
+
+                    UIUtil.doToast("操作成功！");
+                    myAnimFinish();
+                }
+            },true);
+
+            apiUtil.excute();
+        }
+
 
     }
 
