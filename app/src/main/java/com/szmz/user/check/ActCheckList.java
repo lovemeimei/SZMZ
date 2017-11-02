@@ -27,7 +27,7 @@ public class ActCheckList extends ActListBase {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_act_check_list;
+        return R.layout.comm_list;
     }
 
     @Override
@@ -64,16 +64,18 @@ public class ActCheckList extends ActListBase {
         }
 
         adapter.setItems(items);
+
+
     }
 
     @Override
     public void doRefresh(MaterialRefreshLayout materialRefreshLayout) {
-
+        refresh.finishRefresh();
     }
 
     @Override
     public void doRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-
+refresh.finishRefreshLoadMore();
     }
 
     class MViewHolder{

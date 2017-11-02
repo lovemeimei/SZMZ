@@ -104,8 +104,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
         ApiUtil<phoneLoginR> apiUtil = new ApiUtil<phoneLoginR>(context, call, new SimpleApiListener<phoneLoginR>() {
             @Override
             public void doSuccess(phoneLoginR result) {
-                super.doSuccess(result);
-
+              doToast("登录成功");
                 List<phoneLoginR.ResultBean> mResult = result.Result;
 
                 if (mResult != null && mResult.size() > 0) {

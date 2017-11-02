@@ -71,21 +71,22 @@ public class ActHistoryList extends ActListBase{
             items.add(""+i);
         }
         adapter.setItems(items);
+
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.act_history_list;
+        return R.layout.comm_list;
     }
 
     @Override
     public void doRefresh(MaterialRefreshLayout materialRefreshLayout) {
-
+        refresh.finishRefresh();
     }
 
     @Override
     public void doRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-
+        refresh.finishRefreshLoadMore();
     }
     
     class MViewHolder{

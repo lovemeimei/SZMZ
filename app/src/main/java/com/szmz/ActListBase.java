@@ -32,6 +32,7 @@ public abstract class ActListBase extends ActBase {
     @BindView(R.id.textView)
     protected TextView textView;
 
+
     public abstract void doRefresh(MaterialRefreshLayout materialRefreshLayout);
 
     public abstract void doRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout);
