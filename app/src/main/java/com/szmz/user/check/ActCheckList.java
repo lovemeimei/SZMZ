@@ -23,7 +23,7 @@ public class ActCheckList extends ActListBase {
     @BindView(R.id.lv)
     ListView lv;
 
-    private BaseListAdapter<String ,MViewHolder> adapter;
+    private BaseListAdapter<String, MViewHolder> adapter;
 
     @Override
     protected int getLayoutId() {
@@ -35,7 +35,7 @@ public class ActCheckList extends ActListBase {
         super.initUI();
         setLeftVisible(true);
         setTitle("申请事项");
-        adapter = new BaseListAdapter<String, MViewHolder>(this,R.layout.list_item_user_check) {
+        adapter = new BaseListAdapter<String, MViewHolder>(this, R.layout.list_item_user_check) {
             @Override
             protected void refreshView(int postion, String item, MViewHolder holer) {
 
@@ -52,15 +52,15 @@ public class ActCheckList extends ActListBase {
             protected MViewHolder getHolder(View converView) {
                 MViewHolder holder = new MViewHolder();
                 holder.tvBtn = (TextView) converView.findViewById(R.id.tv_btn);
-                holder.tvName = (TextView)converView.findViewById(R.id.tv_content);
+                holder.tvName = (TextView) converView.findViewById(R.id.tv_content);
                 return holder;
             }
         };
         lv.setAdapter(adapter);
 
         List<String> items = new ArrayList<>();
-        for (int i=0;i<10;i++){
-            items.add(""+i);
+        for (int i = 0; i < 10; i++) {
+            items.add("" + i);
         }
 
         adapter.setItems(items);
@@ -75,10 +75,10 @@ public class ActCheckList extends ActListBase {
 
     @Override
     public void doRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-refresh.finishRefreshLoadMore();
+        refresh.finishRefreshLoadMore();
     }
 
-    class MViewHolder{
+    class MViewHolder {
         TextView tvName;
         TextView tvBtn;
     }

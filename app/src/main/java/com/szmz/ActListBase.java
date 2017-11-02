@@ -27,9 +27,10 @@ public abstract class ActListBase extends ActBase {
 
     @BindView(R.id.search_ed)
     protected EditText searchEd;
-    @BindView(R.id.noDataLayout)
+
     protected LinearLayout noDataLayout;
-    @BindView(R.id.textView)
+
+
     protected TextView textView;
 
 
@@ -41,18 +42,24 @@ public abstract class ActListBase extends ActBase {
     @Override
     protected void initUI() {
         super.initUI();
+
+        noDataLayout = (LinearLayout)findViewById(R.id.noDataLayout);
+        textView = (TextView)findViewById(R.id.textView);
+
         refresh.setLoadMore(false);
         refresh.finishRefreshLoadMore();
         refresh.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
                 doRefresh(materialRefreshLayout);
+                refresh.finishRefresh();
             }
 
             @Override
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
 
                 doRefreshLoadMore(materialRefreshLayout);
+                refresh.finishRefreshLoadMore();
             }
         });
         searchEd.setOnEditorActionListener(new TextView.OnEditorActionListener() {

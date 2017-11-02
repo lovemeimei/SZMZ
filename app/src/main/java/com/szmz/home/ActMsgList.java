@@ -52,7 +52,7 @@ public class ActMsgList extends ActListBase {
             protected void refreshView(int postion, String item, ActMsgList.MViewHolder holer) {
 
 
-//                holer.tvName.setText("");
+                holer.tvName.setText(item);
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -73,23 +73,24 @@ public class ActMsgList extends ActListBase {
         lv.setAdapter(adapter);
         List<String> items = new ArrayList<>();
         for (int i=0;i<10;i++){
-            items.add(""+i);
+            items.add("测试消息"+i);
         }
         adapter.setItems(items);
 
-        initMenuTrer();
 
-        getTodoList();
+//        initMenuTrer();
+//
+//        getTodoList();
     }
 
     @Override
     public void doRefresh(MaterialRefreshLayout materialRefreshLayout) {
-
+            refresh.finishRefresh();
     }
 
     @Override
     public void doRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-
+refresh.finishRefreshLoadMore();
     }
 
     class MViewHolder{

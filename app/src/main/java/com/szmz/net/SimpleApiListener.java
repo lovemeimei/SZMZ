@@ -13,7 +13,7 @@ public class SimpleApiListener<T> implements ApiListener<T>{
     @Override
     public void doSuccess(T result) {
 
-        UIUtil.doToast("操作成功");
+//        UIUtil.doToast("操作成功");
     }
 
     @Override

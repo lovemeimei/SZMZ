@@ -118,12 +118,14 @@ public class ActMsgListNormal extends ActListBase {
 
         currentPage = 1;
         getInfo();
+        refresh.finishRefresh();
     }
 
     @Override
     public void doRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
         currentPage++;
         getInfo();
+        refresh.finishRefreshLoadMore();
     }
 
     class MViewHolder {
@@ -185,9 +187,16 @@ public class ActMsgListNormal extends ActListBase {
 
         }, false);
 
-        apiUtil.excute();
+//        apiUtil.excute();
 
-
+        List<JZ_MSG_SP_Res.ResultBean> items = new ArrayList<>();
+        for (int i=0;i<10;i++){
+            JZ_MSG_SP_Res.ResultBean item = new JZ_MSG_SP_Res().new ResultBean();
+            item.setResultreason("测试消息");
+            items.add(item);
+        }
+        adapterSP.setItems(items);
+        adapterSP.notifyDataSetChanged();
     }
 
     private void getFCList() {
@@ -230,9 +239,16 @@ public class ActMsgListNormal extends ActListBase {
             }
         }, false);
 
-        apiUtil.excute();
+//        apiUtil.excute();
 
-
+        List<JZ_MSG_FC_Res.ResultBean> items = new ArrayList<>();
+        for (int i=0;i<10;i++){
+            JZ_MSG_FC_Res.ResultBean item = new JZ_MSG_FC_Res().new ResultBean();
+            item.setRemark("测试消息");
+            items.add(item);
+        }
+        adapterFC.setItems(items);
+        adapterFC.notifyDataSetChanged();
     }
 
 }
