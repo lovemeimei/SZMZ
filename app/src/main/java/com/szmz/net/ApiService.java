@@ -8,6 +8,8 @@ import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
 import com.szmz.entity.request.JZ_TODO_FuntionTree;
 import com.szmz.entity.request.JZ_TODO_List;
+import com.szmz.entity.request.JZ_YWBL_DZDA_FAMILY_RE;
+import com.szmz.entity.request.JZ_YWBL_DZDA_SALVATION_RE;
 import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.phoneLoginRequest;
@@ -32,6 +34,17 @@ import com.szmz.entity.response.JZ_MSG_FC_Res;
 import com.szmz.entity.response.JZ_MSG_SP_Res;
 import com.szmz.entity.response.JZ_Todo_MenuTree;
 import com.szmz.entity.response.JZ_Todolist;
+import com.szmz.entity.response.JZ_YWBL_DZDA_Family;
+import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyIncome;
+import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyIncomeDetail;
+import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyMaterial;
+import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyMember;
+import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyMemberDetail;
+import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyProperty;
+import com.szmz.entity.response.JZ_YWBL_DZDA_Salvation;
+import com.szmz.entity.response.JZ_YWBL_DZDA_SupportIncome;
+import com.szmz.entity.response.JZ_YWBL_DZDA_SupportIncomeDetial;
+import com.szmz.entity.response.JZ_YWBL_DZDA_XZQH;
 import com.szmz.entity.response.LoginSQR_Res;
 import com.szmz.entity.response.phoneLoginR;
 
@@ -49,11 +62,14 @@ public interface ApiService {
     //统一登录
     @POST("SalvationPlatform/phoneLoginController.do?phoneLogin")
     Call<phoneLoginR> login(@Body phoneLoginRequest request);
+
     //工作人员绑定手机号
     @POST("SalvationPlatform/phoneLoginController.do?bindingPhone")
     Call<CommResponse> bindPhone(@Body JZ_Comm_bindphone request);
+
     @POST("SalvationPlatform/phoneLoginController.do?modifyPhone")
     Call<CommResponse> modifyPhone(@Body JZ_Comm_modifyPhone request);
+
     //修改资料
     @POST("SalvationPlatform/phoneLoginController.do?modifyPassword")
     Call<CommResponse> modifyPW(@Body ModifyPW request);
@@ -61,6 +77,7 @@ public interface ApiService {
     //修改密码
     @POST("SalvationPlatform/phoneLoginController.do?modifyPersonalMsg")
     Call<CommResponse> modifyInfo(@Body JZ_Comm_modifyInfo request);
+
     /**************************救助系统工作人员*********************************/
 
     @POST("SocietySalvation/api/appCommonController.do?getUserInfo")
@@ -78,6 +95,42 @@ public interface ApiService {
 
     @POST("SocietySalvation/api/appTodolistController.do?appGetRecheckInfos")
     Call<JZ_MSG_FC_Res> getJZ_MSG_FC_List(@Body JZ_Comm_list_Req req);
+
+    @POST("SocietySalvation/api/appTodolistController.do?appGetTodolist")
+    Call<JZ_YWBL_DZDA_XZQH> getJZ_XZQHList(@Body RequestBody req);
+
+    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationList")
+    Call<JZ_YWBL_DZDA_Salvation> getJZ_SalvationList(@Body JZ_YWBL_DZDA_SALVATION_RE req);
+
+    @POST("SocietySalvation/api/appDataqueryController.do?getFamilyInfo")
+    Call<JZ_YWBL_DZDA_Family> getJZ_Family(@Body JZ_YWBL_DZDA_FAMILY_RE req);
+
+    @POST("SocietySalvation/api/appDataqueryController?getFamilyproperty")
+    Call<JZ_YWBL_DZDA_FamilyProperty> getJZ_Property(@Body JZ_YWBL_DZDA_FAMILY_RE req);
+
+    @POST("SocietySalvation/api/appDataqueryController?getFamilymember")
+    Call<JZ_YWBL_DZDA_FamilyMember> getJZ_FamilyMember(@Body JZ_YWBL_DZDA_FAMILY_RE req);
+
+    @POST("SocietySalvation/api/appDataqueryController?getFamilymemberInfo")
+    Call<JZ_YWBL_DZDA_FamilyMemberDetail> getJZ_FamilyMemberDetail(@Body JZ_YWBL_DZDA_FAMILY_RE req);
+
+
+    @POST("SocietySalvation/api/appDataqueryController?getFamilyincome")
+    Call<JZ_YWBL_DZDA_FamilyIncome> getJZ_FamilyIncome(@Body JZ_YWBL_DZDA_FAMILY_RE req);
+
+    @POST("SocietySalvation/api/appDataqueryController?getFamilyincomeInfo")
+    Call<JZ_YWBL_DZDA_FamilyIncomeDetail> getJZ_FamilyIncomeDetail(@Body JZ_YWBL_DZDA_FAMILY_RE req);
+
+
+    @POST("SocietySalvation/api/appDataqueryController?getFamilymaterialList")
+    Call<JZ_YWBL_DZDA_FamilyMaterial> getJZ_FamilyMaterial(@Body JZ_YWBL_DZDA_FAMILY_RE req);
+
+    @POST("SocietySalvation/api/appDataqueryController?getFamilymaterialList")
+    Call<JZ_YWBL_DZDA_SupportIncome> getJZ_SupportIncome(@Body JZ_YWBL_DZDA_FAMILY_RE req);
+
+
+    @POST("SocietySalvation/api/appDataqueryController?getSupportincomeInfo")
+    Call<JZ_YWBL_DZDA_SupportIncomeDetial> getJZ_SupportIncomeDetail(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
 
     /**************************救助系统申请人员*********************************/

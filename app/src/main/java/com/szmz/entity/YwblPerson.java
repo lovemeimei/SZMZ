@@ -7,8 +7,16 @@ import java.util.List;
  */
 
 public class YwblPerson implements IEntity {
-    private int id;
-    private String name;
+    private int id;//ID
+    private String name;//姓名
+    private String address;//地址
+    private String salvationType;//救助类型
+
+    /**
+     *
+     */
+
+
     private String county;
     private String time;
     private String typeName;
