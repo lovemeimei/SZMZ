@@ -1,5 +1,6 @@
 package com.szmz.more;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -31,6 +32,8 @@ public class ActFindPW extends ActBase {
     @BindView(R.id.et_code)
     EditText etCode;
 
+    String code;
+    String phone;
     @BindView(R.id.btn_getCode)
     TextView btnGetCode;
     @Override
@@ -47,12 +50,19 @@ public class ActFindPW extends ActBase {
     public void onSubmit(View view){
         switch (view.getId()){
             case R.id.btn_getCode:
-                CountDownUtil util = new CountDownUtil(context,btnGetCode,30*1000,1000);
-                util.start();
+                doRegist();
                 break;
             case R.id.btn_submit:
-                trans(ActFindPW2.class);
-                doRegist();
+
+                code = etCode.getText().toString();
+                if (TextUtils.isEmpty(code)){
+                    doToast("请输入验证码");
+                    return;
+                }
+                Intent intent = new Intent(context, ActFindPW2.class);
+                intent.putExtra("code",code);
+                intent.putExtra("phone",phone);
+                startActivity(intent);
                 myAnimFinish();
                 break;
             case R.id.iv_back2:
@@ -62,7 +72,7 @@ public class ActFindPW extends ActBase {
     }
 
     private void doRegist(){
-        String phone = etPhoneNum.getText().toString().trim();
+        phone = etPhoneNum.getText().toString().trim();
         if (TextUtils.isEmpty(phone)){
             doToast("请输入手机号");
             return;
@@ -71,6 +81,9 @@ public class ActFindPW extends ActBase {
             doToast("请输入正确的手机号");
             return;
         }
+        CountDownUtil util = new CountDownUtil(context,btnGetCode,30*1000,1000);
+        util.start();
+
         Comm_getCode_Req req = new Comm_getCode_Req(phone);
 
         Call<CommResponse> call = App.getApiProxyComSQR().getCodeSQR(req);
@@ -79,6 +92,10 @@ public class ActFindPW extends ActBase {
             @Override
             public void doSuccess(CommResponse result) {
                 doToast("验证码已发送");
+                String  msg = result.Error.getErrorMessage();
+//                发送成功！验证码为：121246
+                code = msg.split("：")[1];
+                etCode.setText(code);
             }
         },true);
 

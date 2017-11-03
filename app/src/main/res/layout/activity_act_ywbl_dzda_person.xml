@@ -31,7 +31,7 @@
                 android:layout_weight="1.0"
                 android:drawableRight="@drawable/arrow_down"
                 android:padding="5dp"
-                android:text="攀枝花"
+                android:text="行政区划"
                 android:textSize="@dimen/font_small" />
         </LinearLayout>
 

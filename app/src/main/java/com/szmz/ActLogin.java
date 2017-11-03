@@ -89,7 +89,12 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 //                intent.putExtra("Type", type);
 //                startActivity(intent);
 
-                login();
+                if (type==1){
+                    login();
+                }else {
+                    loginSQR();
+                }
+
                 break;
         }
 
@@ -134,6 +139,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                     user.setDepartName(bean.getPersonal().getDepartName());
                     user.setOfficePhone(bean.getPersonal().getOfficePhone());
                     user.setEmail(bean.getPersonal().getEmaile());
+                    user.setAccountHD("510401");
                     App.getInstance().login(user);
                     //保存用户名密码
                     SystemEnv.saveUserName(etUser.getText().toString().trim());
@@ -169,6 +175,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                         user.setEmail(userSQR.getEMAIL());
                         user.setAdderss(userSQR.getADDRESS());
                         user.setIdCode(userSQR.getIDCARD());
+                        user.setSex(userSQR.getSEX()+"");
                         App.getInstance().login(user);
                         //保存用户名密码
                         SystemEnv.saveUserName(etUser.getText().toString().trim());

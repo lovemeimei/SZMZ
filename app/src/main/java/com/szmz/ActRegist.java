@@ -41,6 +41,8 @@ public class ActRegist extends ActBase{
     @BindView(R.id.btn_getCode)
     TextView btnGetCode;
 
+    String code;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_act_regist;
@@ -55,11 +57,11 @@ public class ActRegist extends ActBase{
     public void onSubmit(View view){
         switch (view.getId()){
             case R.id.btn_getCode:
-                CountDownUtil util = new CountDownUtil(context,btnGetCode,30*1000,1000);
-                util.start();
+
                 getCode();
                 break;
             case R.id.btn_submit:
+                doRegist();
                 break;
             case R.id.iv_back2:
                 myAnimFinish();
@@ -105,6 +107,7 @@ public class ActRegist extends ActBase{
             @Override
             public void doSuccess(CommResponse result) {
                 doToast("注册成功");
+                myAnimFinish();
             }
         },true);
 
@@ -121,6 +124,10 @@ public class ActRegist extends ActBase{
             doToast("请输入正确的手机号");
             return;
         }
+
+        CountDownUtil util = new CountDownUtil(context,btnGetCode,30*1000,1000);
+        util.start();
+
         Comm_getCode_Req req = new Comm_getCode_Req(phone);
 
         Call<CommResponse> call = App.getApiProxyComSQR().getCodeSQR(req);
@@ -129,6 +136,10 @@ public class ActRegist extends ActBase{
             @Override
             public void doSuccess(CommResponse result) {
                 doToast("验证码已发送");
+               String  msg = result.Error.getErrorMessage();
+//                发送成功！验证码为：121246
+                        code = msg.split("：")[1];
+                        etCode.setText(code);
             }
         },true);
 

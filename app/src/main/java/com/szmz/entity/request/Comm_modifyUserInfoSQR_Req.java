@@ -28,6 +28,6 @@ public class Comm_modifyUserInfoSQR_Req extends BaseRequest{
         this.email = email;
         this.address = address;
 
-        setMd5Key(Md5Util.getMd5(LoginName+PassWord+ RealName+Sex+idCard+email+address));
+        setMd5Key(Md5Util.getMd5(address+email+idCard+LoginName+PassWord+ RealName+Sex));
     }
 }

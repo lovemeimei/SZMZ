@@ -10,12 +10,12 @@ import com.szmz.utils.Md5Util;
 public class LoginSQR_Req extends BaseRequest {
 
     private String LoginName;
-    private String Password;
+    private String PassWord;
 
     public LoginSQR_Req(String user,String pw) {
 
         this.LoginName = user;
-        this.Password = pw;
+        this.PassWord = pw;
 
         this.setMd5Key(Md5Util.getMd5(user+pw));
     }

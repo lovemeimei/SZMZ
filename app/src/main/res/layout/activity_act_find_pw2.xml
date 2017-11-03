@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:hint="输入密码"
                     android:textSize="@dimen/font_normal"
-                    android:inputType="number"
+                    android:inputType="textPassword"
                     android:background="@null"/>
             </LinearLayout>
             <View

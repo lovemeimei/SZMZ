@@ -18,6 +18,6 @@ public class Comm_SQR_modifyPW_Req extends BaseRequest{
         PassWord = passWord;
         this.newPassWord = newPassWord;
 
-        setMd5Key(Md5Util.getMd5(loginName+passWord+newPassWord));
+        setMd5Key(Md5Util.getMd5(loginName+newPassWord+passWord));
     }
 }

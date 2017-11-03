@@ -94,6 +94,7 @@ public class ActModifyUserInfo_SQR extends ActBase{
     public void doClick(View v){
         switch (v.getId()){
             case R.id.btn_submit:
+                modifyUserInfo();
                 break;
             case R.id.tv_user_sex:
                 sexDialog.show();
@@ -159,6 +160,8 @@ public class ActModifyUserInfo_SQR extends ActBase{
             @Override
             public void doSuccess(CommResponse result) {
                 super.doSuccess(result);
+                doToast("修改成功！");
+                myAnimFinish();
             }
         },true);
 

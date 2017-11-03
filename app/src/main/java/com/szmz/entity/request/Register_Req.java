@@ -27,6 +27,6 @@ public class Register_Req extends BaseRequest{
         this.mobileCode = mobileCode;
         this.email = email;
 
-        setMd5Key(Md5Util.getMd5(userName+realName+idCard+password+mobile+mobileCode+email));
+        setMd5Key(Md5Util.getMd5(idCard+mobile+mobileCode+password));
     }
 }

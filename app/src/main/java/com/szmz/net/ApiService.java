@@ -87,7 +87,7 @@ public interface ApiService {
 
     /**************************救助系统申请人员*********************************/
     //登录申请人员
-    @POST("SocietySalvation/api/Login/phoneLogin")
+    @POST("api/Login/phoneLogin")
     Call<LoginSQR_Res> loginSQR(@Body LoginSQR_Req request);
 
     @POST("api/Register/RegisterUser")
@@ -96,7 +96,7 @@ public interface ApiService {
     @POST("api/Register/CheckSmsCode")
     Call<CommResponse> getCheckCodeSQR(@Body Comm_checkCode_sqr_Req request);
 
-    @POST("api/Register/GetMobileCode")
+    @POST("api/Register/RequestMobileCode")
     Call<CommResponse> getCodeSQR(@Body Comm_getCode_Req request);
 
     @POST("api/UserCenter/modifyUserInformethon")

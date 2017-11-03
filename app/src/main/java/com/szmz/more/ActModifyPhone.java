@@ -45,14 +45,7 @@ public class ActModifyPhone extends ActBase {
     @OnClick(R.id.btn_submit)
     public void doClick(View v) {
 
-        if (TextUtils.isEmpty(etPhone.getText().toString().trim())){
-            doToast("请输入手机号");
-            return;
-        }
-        if (!TextUtil.isMobileNumber(etPhone.getText().toString().trim())){
-            doToast("不是有效的手机号");
-            return;
-        }
+       doRegist();
 
     }
 

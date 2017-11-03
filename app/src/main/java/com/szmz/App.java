@@ -48,6 +48,7 @@ public class App extends Application {
 
     private static ApiService apiProxy = null;
     private static ApiService apiProxyCom= null;
+    private static ApiService apiProxyComSQR= null;
     private static ApiService apiProxyJZ = null;
     private static ApiService apiProxyYZS = null;
 
@@ -93,10 +94,10 @@ public class App extends Application {
     }
 
     public static ApiService getApiProxy() {
-        if (apiProxyCom == null) {
-            apiProxyCom = initRetorfit(SystemConst.DEFAULT_SERVER);
+        if (apiProxy == null) {
+            apiProxy = initRetorfit(SystemConst.DEFAULT_SERVER);
         }
-        return apiProxyCom;
+        return apiProxy;
     }
 
     /**
@@ -115,10 +116,10 @@ public class App extends Application {
      * @return
      */
     public static ApiService getApiProxyComSQR() {
-        if (apiProxyCom == null) {
-            apiProxyCom = initRetorfit(SystemConst.DEFAULT_SERVER_COM_SQR);
+        if (apiProxyComSQR == null) {
+            apiProxyComSQR = initRetorfit(SystemConst.DEFAULT_SERVER_COM_SQR);
         }
-        return apiProxyCom;
+        return apiProxyComSQR;
     }
     /**
      * 救助

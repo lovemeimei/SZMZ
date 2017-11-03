@@ -1,5 +1,7 @@
 package com.szmz.entity.request;
 
+import com.szmz.utils.Md5Util;
+
 /**
  * 中移全通集成公司 版本所有
  * 创建人： 郄益轩
@@ -17,6 +19,6 @@ public class Comm_SQR_findPW extends BaseRequest{
         this.code = code;
         this.newPassWord = newPassWord;
 
-        setMd5Key(mobile+code+newPassWord);
+        setMd5Key(Md5Util.getMd5(code+mobile+newPassWord));
     }
 }

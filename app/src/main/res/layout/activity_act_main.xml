@@ -21,14 +21,25 @@
         android:scaleType="centerInside"
         android:src="@drawable/main_icon_user" />
 
-    <ImageView
+    <!--<ImageView-->
+        <!--android:id="@+id/iv_word"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/iv_user"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="@dimen/spacing_small"-->
+        <!--android:src="@drawable/main_word" />-->
+
+    <TextView
         android:id="@+id/iv_word"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/iv_user"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/spacing_small"
-        android:src="@drawable/main_word" />
+        android:textSize="@dimen/font_large"
+        android:textColor="@color/white"
+        android:text="智慧民政信息平台"/>
 
     <LinearLayout
         android:id="@+id/ll_pager"
