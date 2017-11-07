@@ -42,15 +42,7 @@ import com.szmz.entity.response.JZ_MSG_SP_Res;
 import com.szmz.entity.response.JZ_Todo_MenuTree;
 import com.szmz.entity.response.JZ_Todolist;
 import com.szmz.entity.response.JZ_YWBL_DZDA_Family;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyIncome;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyIncomeDetail;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyMaterial;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyMember;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyMemberDetail;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyProperty;
 import com.szmz.entity.response.JZ_YWBL_DZDA_Salvation;
-import com.szmz.entity.response.JZ_YWBL_DZDA_SupportIncome;
-import com.szmz.entity.response.JZ_YWBL_DZDA_SupportIncomeDetial;
 import com.szmz.entity.response.JZ_YWBL_DZDA_XZQH;
 import com.szmz.entity.response.LoginSQR_Res;
 import com.szmz.entity.response.phoneLoginR;
@@ -130,42 +122,17 @@ public interface ApiService {
     @POST("SocietySalvation/api/appTodolistController.do?appGetRecheckInfos")
     Call<JZ_MSG_FC_Res> getJZ_MSG_FC_List(@Body JZ_Comm_list_Req req);
 
-    @POST("SocietySalvation/api/appTodolistController.do?appGetTodolist")
+    //获取行政区划
+    @POST("SocietySalvation/api/appDataqueryController.do?getRegion")
     Call<JZ_YWBL_DZDA_XZQH> getJZ_XZQHList(@Body RequestBody req);
 
+    //获取救助人列表
     @POST("SocietySalvation/api/appDataqueryController.do?getSalvationList")
     Call<JZ_YWBL_DZDA_Salvation> getJZ_SalvationList(@Body JZ_YWBL_DZDA_SALVATION_RE req);
 
-    @POST("SocietySalvation/api/appDataqueryController.do?getFamilyInfo")
-    Call<JZ_YWBL_DZDA_Family> getJZ_Family(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
-    @POST("SocietySalvation/api/appDataqueryController?getFamilyproperty")
-    Call<JZ_YWBL_DZDA_FamilyProperty> getJZ_Property(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
-    @POST("SocietySalvation/api/appDataqueryController?getFamilymember")
-    Call<JZ_YWBL_DZDA_FamilyMember> getJZ_FamilyMember(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
-    @POST("SocietySalvation/api/appDataqueryController?getFamilymemberInfo")
-    Call<JZ_YWBL_DZDA_FamilyMemberDetail> getJZ_FamilyMemberDetail(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
-
-    @POST("SocietySalvation/api/appDataqueryController?getFamilyincome")
-    Call<JZ_YWBL_DZDA_FamilyIncome> getJZ_FamilyIncome(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
-    @POST("SocietySalvation/api/appDataqueryController?getFamilyincomeInfo")
-    Call<JZ_YWBL_DZDA_FamilyIncomeDetail> getJZ_FamilyIncomeDetail(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
-
-    @POST("SocietySalvation/api/appDataqueryController?getFamilymaterialList")
-    Call<JZ_YWBL_DZDA_FamilyMaterial> getJZ_FamilyMaterial(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
-    @POST("SocietySalvation/api/appDataqueryController?getFamilymaterialList")
-    Call<JZ_YWBL_DZDA_SupportIncome> getJZ_SupportIncome(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
-
-    @POST("SocietySalvation/api/appDataqueryController?getSupportincomeInfo")
-    Call<JZ_YWBL_DZDA_SupportIncomeDetial> getJZ_SupportIncomeDetail(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
+    //获取电子档案所有数据
+    @POST("SocietySalvation/api/appDataqueryController?getAllData")
+    Call<JZ_YWBL_DZDA_Family> getJZ_GetAllData(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
 
     /**************************医疗一站式*********************************/

@@ -1,6 +1,8 @@
 package com.szmz;
 
+import android.os.Build;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,7 +15,6 @@ import com.szmz.ayljzxt.ActMainYLJZ;
 import com.szmz.ayljzxt.ActMainYLJZ2;
 import com.szmz.entity.User;
 import com.szmz.entity.request.JZ_Comm_Req;
-import com.szmz.entity.response.CommResponse;
 import com.szmz.entity.response.JZ_GetUserInfo;
 import com.szmz.more.ActBindPhone_Worker;
 import com.szmz.net.ApiUtil;
@@ -41,6 +42,8 @@ public class ActMain extends ActBase {
     protected void initUI() {
         super.initUI();
 
+
+        Log.e("abcccccccccccc", Build.BRAND);
 //        type = App.getInstance().getLoginUser().getType();
 
         type = getIntent().getIntExtra("type",1);

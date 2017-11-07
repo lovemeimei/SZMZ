@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.szmz.ActBase;
 import com.szmz.R;
-import com.szmz.entity.YwblPerson;
+import com.szmz.entity.YwblDzdaSalvation;
 
 import butterknife.OnClick;
 
@@ -14,7 +14,7 @@ import butterknife.OnClick;
  */
 public class ActYwbl_dzda_main extends ActBase {
 
-    private YwblPerson person;
+    private YwblDzdaSalvation person;
 
     @OnClick({
             R.id.jtjbxxLayout, R.id.jtcyxxLayout, R.id.jtccxxLayout, R.id.jtsrxxLayout, R.id.syrsrLayout, R.id.jtzlxxLayout
@@ -61,13 +61,18 @@ public class ActYwbl_dzda_main extends ActBase {
         super.initUI();
         setLeftVisible(true);
         setTitle("电子档案");
-        person = (YwblPerson) getIntent().getSerializableExtra("YwblPerson");
+        person = (YwblDzdaSalvation) getIntent().getSerializableExtra("YwblPerson");
 
     }
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_act_ywbl_dzda_main;
+    }
+
+
+    private void doGetData(){
+
     }
 
 

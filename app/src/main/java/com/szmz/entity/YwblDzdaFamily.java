@@ -1,11 +1,16 @@
 package com.szmz.entity;
 
+import java.util.List;
+
 /**
- * 家庭信息
+ * 家庭信息全部数据
  * Created by bz on 2017/10/23.
  */
 
 public class YwblDzdaFamily implements IEntity {
+    /**
+     * 家庭基本信息数据
+     */
     private String regionname;//	行政区域	string
     private String cityname;//	县(区、市)	string
     private String townname;//乡(街道镇)	string
@@ -16,6 +21,72 @@ public class YwblDzdaFamily implements IEntity {
     private String name;//户主姓名	string
     private String idcard;//	身份证号	string
     private String applydate;//	申请日期	date
+
+    /**
+     * 家庭成员信息
+     */
+    private List<YwblDzdaFamilyMember> FamilyMemberInfo;
+
+    /**
+     * 家庭财产信息
+     */
+    private List<YwblDzdaFamilyProperty> FamilyPropertyInfo;
+
+    /**
+     * 家庭收入信息
+     */
+    private List<YwblDzdaFamilyIncome> FamilyIncomeInfo;
+
+    /**
+     * 赡养人收入
+     */
+    private List<YwblDzdaSupportIncome> FamilySupportInfo;
+
+    /**
+     * 家庭资料
+     */
+    private List<YwblDzdaFamilyMaterial> FamilyMaterialInfo;
+
+
+    public List<YwblDzdaFamilyMember> getFamilyMemberInfo() {
+        return FamilyMemberInfo;
+    }
+
+    public void setFamilyMemberInfo(List<YwblDzdaFamilyMember> familyMemberInfo) {
+        FamilyMemberInfo = familyMemberInfo;
+    }
+
+    public List<YwblDzdaFamilyProperty> getFamilyPropertyInfo() {
+        return FamilyPropertyInfo;
+    }
+
+    public void setFamilyPropertyInfo(List<YwblDzdaFamilyProperty> familyPropertyInfo) {
+        FamilyPropertyInfo = familyPropertyInfo;
+    }
+
+    public List<YwblDzdaFamilyIncome> getFamilyIncomeInfo() {
+        return FamilyIncomeInfo;
+    }
+
+    public void setFamilyIncomeInfo(List<YwblDzdaFamilyIncome> familyIncomeInfo) {
+        FamilyIncomeInfo = familyIncomeInfo;
+    }
+
+    public List<YwblDzdaSupportIncome> getFamilySupportInfo() {
+        return FamilySupportInfo;
+    }
+
+    public void setFamilySupportInfo(List<YwblDzdaSupportIncome> familySupportInfo) {
+        FamilySupportInfo = familySupportInfo;
+    }
+
+    public List<YwblDzdaFamilyMaterial> getFamilyMaterialInfo() {
+        return FamilyMaterialInfo;
+    }
+
+    public void setFamilyMaterialInfo(List<YwblDzdaFamilyMaterial> familyMaterialInfo) {
+        FamilyMaterialInfo = familyMaterialInfo;
+    }
 
     public String getRegionname() {
         return regionname;

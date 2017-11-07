@@ -1,17 +1,19 @@
 package com.szmz.ywbl.dzda;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bigkoo.pickerview.OptionsPickerView;
+import com.szmz.App;
 import com.szmz.R;
-import com.szmz.entity.YwblPerson;
-import com.szmz.utils.GetData;
+import com.szmz.entity.YwblDzdaSalvation;
+import com.szmz.entity.request.JZ_YWBL_DZDA_SALVATION_RE;
+import com.szmz.entity.response.JZ_YWBL_DZDA_Salvation;
+import com.szmz.net.ApiUtil;
+import com.szmz.net.SimpleApiListener;
 import com.szmz.ywbl.ActBaseList;
 import com.szmz.ywbl.ActDchs;
 import com.szmz.ywbl.ActMzpy;
@@ -25,21 +27,19 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
+import retrofit2.Call;
 
 /**
  * 救助人列表
  */
-public class ActYwbl_dzda_person extends ActBaseList<YwblPerson> {
+public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
     @BindView(R.id.dsNameTv)
     TextView dsNameTv;
     @BindView(R.id.dsLayout)
     LinearLayout dsLayout;
-    private ArrayList<String> options1Items = new ArrayList<>();
-    private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
-    private ArrayList<ArrayList<ArrayList<String>>> options3Items = new ArrayList<>();
-    private OptionsPickerView pvOptions;
     private Map<Integer, Boolean> map;
     private int type = 0;
+    private String regionId = "";//行政区划ID
 
     @Override
     public void initUI() {
@@ -74,11 +74,11 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblPerson> {
 
 
         map = new HashMap<>();
-        initOptionPicker();
+
         dsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pvOptions.show();
+
             }
         });
         refresh.autoRefresh();
@@ -91,16 +91,16 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblPerson> {
 
 
     @Override
-    protected void doRefreshView(int p, final YwblPerson item, View view) {
+    protected void doRefreshView(int p, final YwblDzdaSalvation item, View view) {
         TextView nameTv = (TextView) view.findViewById(R.id.nameTv);
         TextView timeTv = (TextView) view.findViewById(R.id.timeTv);
         TextView countyTv = (TextView) view.findViewById(R.id.countyTv);
         TextView typeTv = (TextView) view.findViewById(R.id.typeNameTv);
         CheckBox cb = (CheckBox) view.findViewById(R.id.cb);
         nameTv.setText(item.getName());
-        timeTv.setText(item.getTime());
-        countyTv.setText(item.getCounty());
-        typeTv.setText(item.getTypeName());
+        timeTv.setText("");
+        countyTv.setText(item.getAddress());
+        typeTv.setText(item.getSalvationType());
 
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -127,7 +127,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblPerson> {
     }
 
     @Override
-    protected void doListItemOnClick(YwblPerson item) {
+    protected void doListItemOnClick(YwblDzdaSalvation item) {
         super.doListItemOnClick(item);
         Intent intent;
         switch (type) {
@@ -177,124 +177,49 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblPerson> {
         } else {
             CurrentPage = 1;
         }
-        refresh.finishRefresh();
-        refresh.finishRefreshLoadMore();
-        List<YwblPerson> result = GetData.doGetPersonList();
-        if (result != null && result.size() > 0) {
-            if (CurrentPage == 1) {
-                adapter.clearListData();
-            }
-
-            adapter.setListData(result);
-            adapter.notifyDataSetChanged();
-            noDataLayout.setVisibility(View.GONE);
-            if (isHasNextPage(CurrentPage, PageSize, 40)) {
-                refresh.setLoadMore(true);
-            } else {
-                refresh.setLoadMore(false);
-            }
-        } else {
-            adapter.clearListData();
-            adapter.setListData(new ArrayList<YwblPerson>());
-            adapter.notifyDataSetChanged();
-            noDataLayout.setVisibility(View.VISIBLE);
-        }
+        doGetData(regionId, CurrentPage);
     }
 
-    private void initOptionData() {
-
-        /**
-         * 注意：如果是添加JavaBean实体数据，则实体类需要实现 IPickerViewData 接口，
-         * PickerView会通过getPickerViewText方法获取字符串显示出来。
-         */
-
-        //选项1
-        options1Items.add("广东");
-        options1Items.add("湖南");
-        options1Items.add("广西");
-
-        //选项2
-        ArrayList<String> options2Items_01 = new ArrayList<>();
-        options2Items_01.add("广州");
-        options2Items_01.add("佛山");
-        options2Items_01.add("东莞");
-        options2Items_01.add("珠海");
-        ArrayList<String> options2Items_02 = new ArrayList<>();
-        options2Items_02.add("长沙");
-        options2Items_02.add("岳阳");
-        options2Items_02.add("株洲");
-        options2Items_02.add("衡阳");
-        ArrayList<String> options2Items_03 = new ArrayList<>();
-        options2Items_03.add("桂林");
-        options2Items_03.add("玉林");
-        options2Items.add(options2Items_01);
-        options2Items.add(options2Items_02);
-        options2Items.add(options2Items_03);
-
-
-        ArrayList<ArrayList<String>> options2Items_012 = new ArrayList<>();
-        ArrayList<String> options3Items_01 = new ArrayList<>();
-        ArrayList<String> options3Items_02 = new ArrayList<>();
-        ArrayList<String> options3Items_03 = new ArrayList<>();
-        ArrayList<String> options3Items_04 = new ArrayList<>();
-        options3Items_01.add("广州01");
-        options3Items_01.add("佛山01");
-        options3Items_01.add("东莞01");
-        options3Items_01.add("珠海01");
-
-        options3Items_02.add("广州02");
-        options3Items_02.add("佛山02");
-        options3Items_02.add("东莞02");
-        options3Items_02.add("珠海02");
-
-        options3Items_03.add("广州03");
-        options3Items_03.add("佛山03");
-        options3Items_03.add("东莞03");
-        options3Items_03.add("珠海03");
-
-        options3Items_04.add("广州04");
-        options3Items_04.add("佛山04");
-        options3Items_04.add("东莞04");
-        options3Items_04.add("珠海04");
-
-        options2Items_012.add(options3Items_01);
-        options2Items_012.add(options3Items_02);
-        options2Items_012.add(options3Items_03);
-        options2Items_012.add(options3Items_04);
-
-        options3Items.add(options2Items_012);
-        options3Items.add(options2Items_012);
-        options3Items.add(options2Items_012);
-        options3Items.add(options2Items_012);
-        /*--------数据源添加完毕---------*/
-    }
-
-    private void initOptionPicker() {//条件选择器初始化
-        initOptionData();
-        /**
-         * 注意 ：如果是三级联动的数据(省市区等)，请参照 JsonDataActivity 类里面的写法。
-         */
-
-        pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+    private void doGetData(String regionId, final int CurrentPage) {
+        JZ_YWBL_DZDA_SALVATION_RE request = new JZ_YWBL_DZDA_SALVATION_RE(regionId, CurrentPage);
+        Call<JZ_YWBL_DZDA_Salvation> call = App.getApiProxyJZ().getJZ_SalvationList(request);
+        ApiUtil<JZ_YWBL_DZDA_Salvation> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<JZ_YWBL_DZDA_Salvation>() {
             @Override
-            public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                //返回的分别是三个级别的选中位置
-                String tx = options1Items.get(options1)
-                        + options2Items.get(options1).get(options2)
-                        + options3Items.get(options1).get(options2).get(options3);
-                dsNameTv.setText(options3Items.get(options1).get(options2).get(options3));
-            }
-        })
-                .setTitleText("行政区划")
-                .setDividerColor(Color.LTGRAY)//设置分割线的颜色
-                .setSelectOptions(0, 1)//默认选中项
-                .setTextColorCenter(Color.LTGRAY)
-                .isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
-                .build();
+            public void doSuccess(JZ_YWBL_DZDA_Salvation result) {
 
-        pvOptions.setPicker(options1Items, options2Items, options3Items);//三级选择器
+                List<YwblDzdaSalvation> items = result.Result;
+                if (items != null && items.size() > 0) {
+                    if (CurrentPage == 1) {
+                        adapter.clearListData();
+                    }
+                    adapter.setListData(items);
+                    adapter.notifyDataSetChanged();
+                    noDataLayout.setVisibility(View.GONE);
+                    if (isHasNextPage(CurrentPage, PageSize, result.TotalNum)) {
+                        refresh.setLoadMore(true);
+                    } else {
+                        refresh.setLoadMore(false);
+                    }
+                } else {
+                    adapter.clearListData();
+                    adapter.setListData(new ArrayList<YwblDzdaSalvation>());
+                    adapter.notifyDataSetChanged();
+                    noDataLayout.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+            @Override
+            public void doAfter() {
+
+                refresh.finishRefreshing();
+                refresh.finishRefreshLoadMore();
+            }
+        }, false);
+
+        apiUtil.excute();
+
 
     }
-
 
 }
