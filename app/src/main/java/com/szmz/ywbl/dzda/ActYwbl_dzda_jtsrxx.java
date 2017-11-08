@@ -1,32 +1,18 @@
 package com.szmz.ywbl.dzda;
 
-import android.widget.TextView;
+import android.view.View;
 
-import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.entity.YwblDzdaFamilyIncome;
 import com.szmz.entity.YwblPerson;
-import com.szmz.widget.MyLayoutView;
-
-import butterknife.BindView;
+import com.szmz.ywbl.ActBaseList;
 
 /**
  * 家庭收入信息
  */
-public class ActYwbl_dzda_jtsrxx extends ActBase {
+public class ActYwbl_dzda_jtsrxx extends ActBaseList<YwblDzdaFamilyIncome> {
 
 
-    @BindView(R.id.srlxView)
-    MyLayoutView srlxView;
-    @BindView(R.id.srxmView)
-    MyLayoutView srxmView;
-    @BindView(R.id.srjeView)
-    MyLayoutView srjeView;
-    @BindView(R.id.slhmjView)
-    MyLayoutView slhmjView;
-    @BindView(R.id.jldwView)
-    MyLayoutView jldwView;
-    @BindView(R.id.bzTv)
-    TextView bzTv;
     private YwblPerson person;
 
     @Override
@@ -35,17 +21,27 @@ public class ActYwbl_dzda_jtsrxx extends ActBase {
     }
 
     @Override
-    protected void initUI() {
+    protected void doRefreshView(int p, YwblDzdaFamilyIncome item, View view) {
+
+    }
+
+    @Override
+    protected int getListItemID() {
+        return 0;
+    }
+
+    @Override
+    protected void doMore(boolean isMore) {
+
+    }
+
+    @Override
+    public void initUI() {
         super.initUI();
         setLeftVisible(true);
         setTitle("家庭收入信息");
         person = (YwblPerson) getIntent().getSerializableExtra("YwblPerson");
-        srlxView.doSetContent(person.getSrlx());
-        srxmView.doSetContent(person.getSrxm());
-        srjeView.doSetContent(person.getSrje());
-        slhmjView.doSetContent(person.getSlhmj());
-        jldwView.doSetContent(person.getJldw());
-        bzTv.setText(person.getSrbz());
+
 
     }
 }

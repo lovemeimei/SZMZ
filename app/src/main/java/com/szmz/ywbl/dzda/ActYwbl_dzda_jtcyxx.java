@@ -6,8 +6,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.szmz.R;
-import com.szmz.entity.YwblJtcy;
-import com.szmz.entity.YwblPerson;
+import com.szmz.entity.YwblDzdaFamily;
+import com.szmz.entity.YwblDzdaFamilyMember;
 import com.szmz.ywbl.ActBaseList;
 
 import java.util.ArrayList;
@@ -16,16 +16,16 @@ import java.util.List;
 /**
  * 家庭成员信息列表
  */
-public class ActYwbl_dzda_jtcyxx extends ActBaseList<YwblJtcy> {
+public class ActYwbl_dzda_jtcyxx extends ActBaseList<YwblDzdaFamilyMember> {
 
-    private YwblPerson person;
+    private YwblDzdaFamily person;
 
     @Override
     public void initUI() {
         super.initUI();
         setLeftVisible(true);
         setTitle("家庭成员信息");
-        person = (YwblPerson) getIntent().getSerializableExtra("YwblPerson");
+        person = (YwblDzdaFamily) getIntent().getSerializableExtra("YwblPerson");
         refresh.setLoadMore(false);
         refresh.autoRefresh();
     }
@@ -36,12 +36,12 @@ public class ActYwbl_dzda_jtcyxx extends ActBaseList<YwblJtcy> {
     }
 
     @Override
-    protected void doRefreshView(int p, final YwblJtcy item, View view) {
+    protected void doRefreshView(int p, final YwblDzdaFamilyMember item, View view) {
         TextView nameTv = (TextView) view.findViewById(R.id.nameTv);
         TextView sfzhTv = (TextView) view.findViewById(R.id.sfzhTv);
         Button button = (Button) view.findViewById(R.id.button);
-        nameTv.setText(item.getName() + "," + item.getXb());
-        sfzhTv.setText(item.getSfzh());
+        nameTv.setText(item.getName() + "," + item.getSex());
+        sfzhTv.setText(item.getIdcard());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,9 +64,8 @@ public class ActYwbl_dzda_jtcyxx extends ActBaseList<YwblJtcy> {
 
         refresh.finishRefresh();
         refresh.finishRefreshLoadMore();
-        List<YwblJtcy> result = person.getJtcyList();
+        List<YwblDzdaFamilyMember> result = person.getFamilyMemberInfo();
         if (result != null && result.size() > 0) {
-
             adapter.clearListData();
             adapter.setListData(result);
             adapter.notifyDataSetChanged();
@@ -74,7 +73,7 @@ public class ActYwbl_dzda_jtcyxx extends ActBaseList<YwblJtcy> {
 
         } else {
             adapter.clearListData();
-            adapter.setListData(new ArrayList<YwblJtcy>());
+            adapter.setListData(new ArrayList<YwblDzdaFamilyMember>());
             adapter.notifyDataSetChanged();
             noDataLayout.setVisibility(View.VISIBLE);
         }

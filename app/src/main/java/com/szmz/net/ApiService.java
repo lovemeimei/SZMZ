@@ -127,7 +127,7 @@ public interface ApiService {
     Call<JZ_YWBL_DZDA_XZQH> getJZ_XZQHList(@Body RequestBody req);
 
     //获取救助人列表
-    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationList")
+    @POST("SocietySalvation/api/appTempDataqueryController.do?getSalvationListTemp")
     Call<JZ_YWBL_DZDA_Salvation> getJZ_SalvationList(@Body JZ_YWBL_DZDA_SALVATION_RE req);
 
     //获取电子档案所有数据

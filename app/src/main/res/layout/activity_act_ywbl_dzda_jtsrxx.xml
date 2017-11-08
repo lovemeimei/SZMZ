@@ -9,65 +9,47 @@
 
     <include layout="@layout/comm_title" />
 
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <com.materiallistview.MaterialRefreshLayout
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            app:overlay="false"
+            app:progress_backgroud_color="#FFFAFAFA"
+            app:progress_colors="@array/material_colors"
+            app:progress_show_arrow="true"
+            app:progress_show_circle_backgroud="true"
+            app:wave_color="#203399cc"
+            app:wave_height_type="normal"
+            app:wave_show="true">
 
-            <com.szmz.widget.MyLayoutView
-                android:id="@+id/srlxView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:titleText="收入类型" />
+            <ListView
+                android:id="@+id/listView"
+                style="@style/listStyle"
+                android:layout_weight="1.0" />
 
-            <com.szmz.widget.MyLayoutView
-                android:id="@+id/srxmView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:titleText="收入项目" />
+        </com.materiallistview.MaterialRefreshLayout>
 
-            <com.szmz.widget.MyLayoutView
-                android:id="@+id/srjeView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:titleText="收入金额（元）" />
-
-            <com.szmz.widget.MyLayoutView
-                android:id="@+id/slhmjView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:titleText="数量或面积" />
-
-            <com.szmz.widget.MyLayoutView
-                android:id="@+id/jldwView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:titleText="计量单位" />
+        <LinearLayout
+            android:id="@+id/noDataLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:text="备注"
-                android:textSize="@dimen/font_normal" />
-
-            <TextView
-                android:id="@+id/bzTv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:padding="10dp"
-                android:textSize="@dimen/font_normal" />
+                android:text="暂无数据"
+                android:textColor="#CCCCCC"
+                android:textSize="15dp" />
         </LinearLayout>
-    </ScrollView>
+    </FrameLayout>
 </LinearLayout>

@@ -2,7 +2,7 @@ package com.szmz.ywbl.dzda;
 
 import com.szmz.ActBase;
 import com.szmz.R;
-import com.szmz.entity.YwblPerson;
+import com.szmz.entity.YwblDzdaFamily;
 import com.szmz.widget.MyLayoutView;
 
 import butterknife.BindView;
@@ -32,24 +32,24 @@ public class ActYwbl_dzda_jtjbxx extends ActBase {
     MyLayoutView sfzhView;
     @BindView(R.id.sqrqView)
     MyLayoutView sqrqView;
-    private YwblPerson person;
+    private YwblDzdaFamily person;
 
     @Override
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
         setTitle("家庭基本信息");
-        person = (YwblPerson) getIntent().getSerializableExtra("YwblPerson");
-        xzqhView.doSetContent(person.getXzqh());
-        xianView.doSetContent(person.getXian());
-        xiangView.doSetContent(person.getXiang());
-        cunView.doSetContent(person.getCounty());
-        jzlbView.doSetContent(person.getTypeName());
-        jtfljzlbView.doSetContent(person.getJtfljzlb());
-        zyzpyyView.doSetContent(person.getZyzpyy());
-        hzxmView.doSetContent(person.getHzxm());
-        sfzhView.doSetContent(person.getSfzh());
-        sqrqView.doSetContent(person.getTime());
+        person = (YwblDzdaFamily) getIntent().getSerializableExtra("YwblPerson");
+        xzqhView.doSetContent(person.getRegionname());
+        xianView.doSetContent(person.getCityname());
+        xiangView.doSetContent(person.getTownname());
+        cunView.doSetContent(person.getVillagename());
+        jzlbView.doSetContent(person.getSalvationType());
+        jtfljzlbView.doSetContent(person.getFamilySalvationType());
+        zyzpyyView.doSetContent(person.getPoorreason());
+        hzxmView.doSetContent(person.getName());
+        sfzhView.doSetContent(person.getIdcard());
+        sqrqView.doSetContent(person.getApplydate());
 
     }
 
