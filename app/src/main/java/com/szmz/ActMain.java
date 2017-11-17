@@ -125,8 +125,6 @@ public class ActMain extends ActBase {
                 User user = App.getInstance().getLoginUser();
                 user.setIdJZ(result.Result.get(0).getId());
                 App.getInstance().login(user);
-                App.getInstance().getLoginUser().getIdJZ();
-
                 trans(ActMainJZ.class);
             }
         }, true);

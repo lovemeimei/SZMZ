@@ -1,6 +1,7 @@
 package com.szmz.net;
 
 import com.szmz.entity.HD_JG_BGDY_RES;
+import com.szmz.entity.request.BaseRequest;
 import com.szmz.entity.request.Comm_SQR_bingphone_Req;
 import com.szmz.entity.request.Comm_SQR_findPW;
 import com.szmz.entity.request.Comm_SQR_modifyPW_Req;
@@ -12,6 +13,10 @@ import com.szmz.entity.request.JZ_Comm_bindphone;
 import com.szmz.entity.request.JZ_Comm_list_Req;
 import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
+import com.szmz.entity.request.JZ_Login_Code_Req;
+import com.szmz.entity.request.JZ_Scan_QZ_Req;
+import com.szmz.entity.request.JZ_Search_workerDetail_Req;
+import com.szmz.entity.request.JZ_Search_worker_Req;
 import com.szmz.entity.request.JZ_TODO_FuntionTree;
 import com.szmz.entity.request.JZ_TODO_List;
 import com.szmz.entity.request.JZ_YWBL_DZDA_FAMILY_RE;
@@ -19,6 +24,7 @@ import com.szmz.entity.request.JZ_YWBL_DZDA_SALVATION_RE;
 import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.Register_Req;
+import com.szmz.entity.request.YZS_todoList_Req;
 import com.szmz.entity.request.phoneLoginRequest;
 import com.szmz.entity.response.CommResponse;
 import com.szmz.entity.response.HD_JG_MGRY;
@@ -36,9 +42,11 @@ import com.szmz.entity.response.HD_XXTZ;
 import com.szmz.entity.response.HD_XZQH_Response;
 import com.szmz.entity.response.HD_dict;
 import com.szmz.entity.response.HD_hdzc;
+import com.szmz.entity.response.JZ_Comm_JZLX_RES;
 import com.szmz.entity.response.JZ_GetUserInfo;
 import com.szmz.entity.response.JZ_MSG_FC_Res;
 import com.szmz.entity.response.JZ_MSG_SP_Res;
+import com.szmz.entity.response.JZ_Search_worker_Res;
 import com.szmz.entity.response.JZ_Todo_MenuTree;
 import com.szmz.entity.response.JZ_Todolist;
 import com.szmz.entity.response.JZ_YWBL_DZDA_Family;
@@ -53,6 +61,7 @@ import com.szmz.entity.response.JZ_YWBL_DZDA_SupportIncome;
 import com.szmz.entity.response.JZ_YWBL_DZDA_SupportIncomeDetial;
 import com.szmz.entity.response.JZ_YWBL_DZDA_XZQH;
 import com.szmz.entity.response.LoginSQR_Res;
+import com.szmz.entity.response.YZS_todoList_Res;
 import com.szmz.entity.response.phoneLoginR;
 
 import okhttp3.RequestBody;
@@ -66,6 +75,14 @@ import retrofit2.http.POST;
  * @created at 2016年05月10
  */
 public interface ApiService {
+    //扫码登录救助
+    @POST("SocietySalvation/api/appScanController.do?appGetScanResult")
+    Call<CommResponse> loginCode(@Body JZ_Login_Code_Req request);
+
+    //扫码签章
+    @POST("SocietySalvation/bsprFamTempController.do?scanSeal")
+    Call<CommResponse> scanQZ(@Body JZ_Scan_QZ_Req request);
+
     //统一登录
     @POST("SalvationPlatform/phoneLoginController.do?phoneLogin")
     Call<phoneLoginR> login(@Body phoneLoginRequest request);
@@ -114,9 +131,12 @@ public interface ApiService {
 
     /**************************救助系统工作人员*********************************/
 
+    //得到救助类型列表
+    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationType")
+    Call<JZ_Comm_JZLX_RES> getJZLX(@Body BaseRequest request);
+
     @POST("SocietySalvation/api/appCommonController.do?getUserInfo")
     Call<JZ_GetUserInfo> loginJZ(@Body JZ_Comm_Req request);
-
 
     @POST("SocietySalvation/api/appTodolistController.do?appGetTodoFunctionTree")
     Call<JZ_Todo_MenuTree> getJZ_FuntionTree(@Body JZ_TODO_FuntionTree req);
@@ -166,9 +186,24 @@ public interface ApiService {
     @POST("SocietySalvation/api/appDataqueryController?getSupportincomeInfo")
     Call<JZ_YWBL_DZDA_SupportIncomeDetial> getJZ_SupportIncomeDetail(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
+    //救助信息查询
+    @POST("SocietySalvation/api/appDataqueryController.do?getHistoryList")
+    Call<JZ_Search_worker_Res> getJZ_SearchList(@Body JZ_Search_worker_Req req);
+    //救助信息查询详细
+    @POST("SocietySalvation/api/appDataqueryController.do?getHistoryInfo")
+    Call<JZ_Search_worker_Res> getJZ_SearchList_Detail(@Body JZ_Search_workerDetail_Req req);
 
 
-    /**************************医疗一站式*********************************/
+
+    /**************************医疗一站式工作人员*********************************/
+
+    //工作人员消息查询http://222.222.49.34: 8088/ActionControler/AppTodolist.ashx
+    @POST("ActionControler/AppTodolist.ashx")
+    Call<YZS_todoList_Res> getYZS_TodoList(@Body YZS_todoList_Req req);
+
+    /**************************医疗一站式申请人*********************************/
+
+
 
     /**************************核对系统*********************************/
     //字典业务类型

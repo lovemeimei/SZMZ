@@ -322,7 +322,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".more.ActModifyPhone2" />
         <activity android:name=".more.ActMsgSet" />
-        <activity android:name=".more.ActBindPhone_Worker"></activity>
+        <activity android:name=".more.ActBindPhone_Worker" />
+        <activity android:name=".more.ActCodeLogin"></activity>
     </application>
 
 </manifest>

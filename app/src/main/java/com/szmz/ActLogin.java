@@ -61,6 +61,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
         super.initUI();
         SystemEnv.deleteDataList();
         rbUser.setOnCheckedChangeListener(this);
+        rbWoker.setOnCheckedChangeListener(this);
 
         String name = SystemEnv.getUserName();
         String pw = SystemEnv.getUserPw();
@@ -123,7 +124,8 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                                 user.setAccountJZ(item.getAccount());
                             }
                             if (item.getSystemID().equals(SystemConst.SystemID_YZS)) {
-                                user.setAccountYZS(item.getAccount());
+//                                user.setAccountYZS(item.getAccount());
+                                user.setAccountYZS("admin");
                             }
                             if (item.getSystemID().equals(SystemConst.SystemID_SH)) {
                                 user.setAccountHD(item.getAccount());

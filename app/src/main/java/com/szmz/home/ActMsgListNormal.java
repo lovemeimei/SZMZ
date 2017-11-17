@@ -187,7 +187,7 @@ public class ActMsgListNormal extends ActListBase {
 
         }, false);
 
-//        apiUtil.excute();
+        apiUtil.excute();
 
         List<JZ_MSG_SP_Res.ResultBean> items = new ArrayList<>();
         for (int i=0;i<10;i++){
@@ -239,7 +239,7 @@ public class ActMsgListNormal extends ActListBase {
             }
         }, false);
 
-//        apiUtil.excute();
+        apiUtil.excute();
 
         List<JZ_MSG_FC_Res.ResultBean> items = new ArrayList<>();
         for (int i=0;i<10;i++){

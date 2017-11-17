@@ -16,11 +16,13 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.barcode.decoding.Intents;
+import com.orhanobut.logger.Logger;
 import com.szmz.fragment.FragmentHome;
 import com.szmz.fragment.FragmentJob;
 import com.szmz.fragment.FragmentSearch;
 import com.szmz.fragment.FragmentStatistical;
 import com.szmz.fragment.FragmentUser;
+import com.szmz.more.ActCodeLogin;
 import com.szmz.utils.UIUtil;
 
 import java.util.ArrayList;
@@ -160,10 +162,31 @@ public class ActMainJZ extends ActBase {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode==REQUEST_CAPTURE){
-            if (resultCode ==RESULT_OK){
 
+        Logger.d("aa");
+        if (requestCode==REQUEST_CAPTURE){
+            Logger.d("bb");
+            if (resultCode ==RESULT_OK){
+                Logger.d("cc");
+//                http://10.10.0.169:8080/jeecg/loginController.do?appQuest&uuid=75823&type=A001&SystemId=emRzaGJ6MTUwNzk2MTQyNjE1Nw==
+                String resultStr = data.getStringExtra(Intents.Scan.RESULT);
+
+                String[] ress = resultStr.split("&");
+
+                String uuid = ress[1].split("=")[1];
+                String type = ress[2].split("=")[1];
+                String systemID = ress[3].split("=")[1];
+                Intent intent = new Intent(context, ActCodeLogin.class);
+                intent.putExtra("uuid",uuid);
+                intent.putExtra("type",type);
+                intent.putExtra("systemID",systemID);
+                intent.putExtra("msg",resultStr);
+                startActivity(intent);
             }
         }
+
+        super.onActivityResult(requestCode,resultCode,data);
+
+
     }
 }

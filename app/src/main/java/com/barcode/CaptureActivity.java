@@ -171,6 +171,7 @@ public class CaptureActivity extends AppCompatActivity implements Callback{
 		playBeepSoundAndVibrate();
 		resultView.setText(obj.getBarcodeFormat().toString() + ":"
 		        + obj.getText());
+		System.out.println(obj.toString());
 		Intent intent = new Intent(getIntent().getAction());
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 		intent.putExtra(Intents.Scan.RESULT, obj.toString());

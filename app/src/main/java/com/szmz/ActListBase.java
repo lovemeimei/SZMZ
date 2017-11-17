@@ -52,14 +52,12 @@ public abstract class ActListBase extends ActBase {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
                 doRefresh(materialRefreshLayout);
-                refresh.finishRefresh();
             }
 
             @Override
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
 
                 doRefreshLoadMore(materialRefreshLayout);
-                refresh.finishRefreshLoadMore();
             }
         });
         searchEd.setOnEditorActionListener(new TextView.OnEditorActionListener() {

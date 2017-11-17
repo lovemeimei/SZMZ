@@ -71,7 +71,7 @@ public class TreeItemHolder extends TreeNode.BaseNodeViewHolder<TreeItemHolder.T
         }
     }
 
-    interface OnClickChildListener {
+    public interface OnClickChildListener {
         void doClick(HD_XZQH item);
     }
 }
