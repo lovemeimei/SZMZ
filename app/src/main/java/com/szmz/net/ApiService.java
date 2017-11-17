@@ -13,10 +13,6 @@ import com.szmz.entity.request.JZ_Comm_bindphone;
 import com.szmz.entity.request.JZ_Comm_list_Req;
 import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
-import com.szmz.entity.request.JZ_Login_Code_Req;
-import com.szmz.entity.request.JZ_Scan_QZ_Req;
-import com.szmz.entity.request.JZ_Search_workerDetail_Req;
-import com.szmz.entity.request.JZ_Search_worker_Req;
 import com.szmz.entity.request.JZ_TODO_FuntionTree;
 import com.szmz.entity.request.JZ_TODO_List;
 import com.szmz.entity.request.JZ_YWBL_DZDA_FAMILY_RE;
@@ -50,15 +46,7 @@ import com.szmz.entity.response.JZ_Search_worker_Res;
 import com.szmz.entity.response.JZ_Todo_MenuTree;
 import com.szmz.entity.response.JZ_Todolist;
 import com.szmz.entity.response.JZ_YWBL_DZDA_Family;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyIncome;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyIncomeDetail;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyMaterial;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyMember;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyMemberDetail;
-import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyProperty;
 import com.szmz.entity.response.JZ_YWBL_DZDA_Salvation;
-import com.szmz.entity.response.JZ_YWBL_DZDA_SupportIncome;
-import com.szmz.entity.response.JZ_YWBL_DZDA_SupportIncomeDetial;
 import com.szmz.entity.response.JZ_YWBL_DZDA_XZQH;
 import com.szmz.entity.response.LoginSQR_Res;
 import com.szmz.entity.response.YZS_todoList_Res;
@@ -131,10 +119,6 @@ public interface ApiService {
 
     /**************************救助系统工作人员*********************************/
 
-    //得到救助类型列表
-    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationType")
-    Call<JZ_Comm_JZLX_RES> getJZLX(@Body BaseRequest request);
-
     @POST("SocietySalvation/api/appCommonController.do?getUserInfo")
     Call<JZ_GetUserInfo> loginJZ(@Body JZ_Comm_Req request);
 
@@ -150,10 +134,12 @@ public interface ApiService {
     @POST("SocietySalvation/api/appTodolistController.do?appGetRecheckInfos")
     Call<JZ_MSG_FC_Res> getJZ_MSG_FC_List(@Body JZ_Comm_list_Req req);
 
-    @POST("SocietySalvation/api/appTodolistController.do?appGetTodolist")
+    //获取行政区划
+    @POST("SocietySalvation/api/appDataqueryController.do?getRegion")
     Call<JZ_YWBL_DZDA_XZQH> getJZ_XZQHList(@Body RequestBody req);
 
-    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationList")
+    //获取救助人列表
+    @POST("SocietySalvation/api/appTempDataqueryController.do?getSalvationListTemp")
     Call<JZ_YWBL_DZDA_Salvation> getJZ_SalvationList(@Body JZ_YWBL_DZDA_SALVATION_RE req);
 
     @POST("SocietySalvation/api/appDataqueryController.do?getFamilyInfo")
@@ -192,6 +178,9 @@ public interface ApiService {
     //救助信息查询详细
     @POST("SocietySalvation/api/appDataqueryController.do?getHistoryInfo")
     Call<JZ_Search_worker_Res> getJZ_SearchList_Detail(@Body JZ_Search_workerDetail_Req req);
+    //获取电子档案所有数据
+    @POST("SocietySalvation/api/appDataqueryController?getAllData")
+    Call<JZ_YWBL_DZDA_Family> getJZ_GetAllData(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
 
 

@@ -2,7 +2,7 @@ package com.szmz.ywbl.dzda;
 
 import com.szmz.ActBase;
 import com.szmz.R;
-import com.szmz.entity.YwblJtcy;
+import com.szmz.entity.YwblDzdaFamilyMember;
 import com.szmz.widget.MyLayoutView;
 
 import butterknife.BindView;
@@ -33,7 +33,7 @@ public class ActYwbl_dzda_jtcyxx_detail extends ActBase {
     MyLayoutView mzView;
     @BindView(R.id.hyzkView)
     MyLayoutView hyzkView;
-    private YwblJtcy jtcy;
+    private YwblDzdaFamilyMember jtcy;
 
     @Override
     protected int getLayoutId() {
@@ -45,16 +45,16 @@ public class ActYwbl_dzda_jtcyxx_detail extends ActBase {
         super.initUI();
         setLeftVisible(true);
         setTitle("家庭成员详细信息");
-        jtcy = (YwblJtcy) getIntent().getSerializableExtra("YwblJtcy");
-        sfzhView.doSetContent(jtcy.getSfzh());
+        jtcy = (YwblDzdaFamilyMember) getIntent().getSerializableExtra("YwblJtcy");
+        sfzhView.doSetContent(jtcy.getIdcard());
         nameView.doSetContent(jtcy.getName());
-        xbView.doSetContent(jtcy.getXb());
-        csrqView.doSetContent(jtcy.getCsrq());
-        yhzgxView.doSetContent(jtcy.getYhzgx());
-        sfbzdxView.doSetContent(jtcy.getSfbzdx());
-        ryfljzlbView.doSetContent(jtcy.getRyfljzlb());
-        ysrView.doSetContent(jtcy.getYsr());
-        mzView.doSetContent(jtcy.getMz());
-        hyzkView.doSetContent(jtcy.getHyzk());
+        xbView.doSetContent(jtcy.getSex());
+        csrqView.doSetContent(jtcy.getBirthday());
+        yhzgxView.doSetContent(jtcy.getRelationship());
+        sfbzdxView.doSetContent("1".equals(jtcy.getIssafe()) ? "是" : "否");
+        ryfljzlbView.doSetContent(jtcy.getPersonSalvationType());
+        ysrView.doSetContent(jtcy.getIncome());
+        mzView.doSetContent(jtcy.getNation());
+        hyzkView.doSetContent("1".equals(jtcy.getIsmarry()) ? "已婚" : "未婚");
     }
 }

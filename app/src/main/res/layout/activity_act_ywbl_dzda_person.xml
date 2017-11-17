@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgrounColor"
-    android:orientation="vertical"
-    tools:context="com.szmz.ywbl.dzda.ActYwbl_dzda_xzqh">
+    android:orientation="vertical">
 
     <include layout="@layout/comm_title" />
 
@@ -59,7 +58,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <com.materiallistview.MaterialRefreshLayout
             android:id="@+id/refresh"

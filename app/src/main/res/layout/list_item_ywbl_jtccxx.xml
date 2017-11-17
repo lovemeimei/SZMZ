@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_bg"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <com.szmz.widget.MyLayoutView
+            android:id="@+id/cclxView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="财产类型" />
+
+        <com.szmz.widget.MyLayoutView
+            android:id="@+id/slView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="数量" />
+
+        <com.szmz.widget.MyLayoutView
+            android:id="@+id/jzView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="价值" />
+
+        <com.szmz.widget.MyLayoutView
+            android:id="@+id/fwxzView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="房屋性质" />
+
+        <com.szmz.widget.MyLayoutView
+            android:id="@+id/fwmjView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="房屋面积" />
+
+    </LinearLayout>
+
+</LinearLayout>
