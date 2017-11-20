@@ -9,6 +9,15 @@ public class YwblDzdaXzqh implements IEntity {
     private String regioncode;//地区编码
     private String regionname;//地区名称
     private String regionlevel;//地区等级
+    private String parentId;
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
 
     public String getId() {
         return id;

@@ -12,6 +12,7 @@ import com.szmz.entity.request.JZ_YWBL_DZDA_FAMILY_RE;
 import com.szmz.entity.response.JZ_YWBL_DZDA_Family;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
+import com.szmz.utils.GsonUtil;
 
 import java.util.List;
 
@@ -73,7 +74,11 @@ public class ActYwbl_dzda_main extends ActBase {
         setTitle("电子档案");
         person = (YwblDzdaSalvation) getIntent().getSerializableExtra("YwblPerson");
         if (person != null) {
-            doGetData(person.getId() + "");
+            if (isOnline) {
+                doGetData(person.getId() + "");
+            } else {
+                myFamily = GsonUtil.deser(person.getJsonStr(), YwblDzdaFamily.class);
+            }
         }
 
     }

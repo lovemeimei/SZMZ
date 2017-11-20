@@ -17,6 +17,7 @@ import com.szmz.entity.request.JZ_TODO_FuntionTree;
 import com.szmz.entity.request.JZ_TODO_List;
 import com.szmz.entity.request.JZ_YWBL_DZDA_FAMILY_RE;
 import com.szmz.entity.request.JZ_YWBL_DZDA_SALVATION_RE;
+import com.szmz.entity.request.JZ_YWBL_DZDA_XZQH_RE;
 import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.Register_Req;
@@ -136,10 +137,10 @@ public interface ApiService {
 
     //获取行政区划
     @POST("SocietySalvation/api/appDataqueryController.do?getRegion")
-    Call<JZ_YWBL_DZDA_XZQH> getJZ_XZQHList(@Body RequestBody req);
+    Call<JZ_YWBL_DZDA_XZQH> getJZ_XZQHList(@Body JZ_YWBL_DZDA_XZQH_RE req);
 
     //获取救助人列表
-    @POST("SocietySalvation/api/appTempDataqueryController.do?getSalvationListTemp")
+    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationList")
     Call<JZ_YWBL_DZDA_Salvation> getJZ_SalvationList(@Body JZ_YWBL_DZDA_SALVATION_RE req);
 
     @POST("SocietySalvation/api/appDataqueryController.do?getFamilyInfo")
