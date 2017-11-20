@@ -9,10 +9,12 @@ import com.szmz.utils.Md5Util;
 public class JZ_YWBL_DZDA_SALVATION_RE extends BaseListRequest {
 
     private String regionId;
+    private String keyWords;
 
 
-    public JZ_YWBL_DZDA_SALVATION_RE(String regionId,int CurrentPage) {
+    public JZ_YWBL_DZDA_SALVATION_RE(String regionId, String keyWords, int CurrentPage) {
         this.regionId = regionId;
-        setMd5Key(Md5Util.getMd5(regionId+CurrentPage+PageSize));
+        this.keyWords = keyWords;
+        setMd5Key(Md5Util.getMd5(regionId + keyWords + CurrentPage + PageSize));
     }
 }

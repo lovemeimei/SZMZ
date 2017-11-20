@@ -37,6 +37,7 @@ public abstract class ActBase extends AppCompatActivity {
     ImageView ivBack;
 
     private User user;
+    protected boolean isOnline = true;
 
     protected String TAG;
     protected MaterialDialog dialog;
@@ -61,9 +62,9 @@ public abstract class ActBase extends AppCompatActivity {
         initUI();
     }
 
-    protected User getUser(){
-        if (user==null)
-            user=App.getInstance().getLoginUser();
+    protected User getUser() {
+        if (user == null)
+            user = App.getInstance().getLoginUser();
         return user;
     }
 

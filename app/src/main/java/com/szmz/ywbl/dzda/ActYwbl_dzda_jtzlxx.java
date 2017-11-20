@@ -5,6 +5,7 @@ import android.view.View;
 import com.szmz.R;
 import com.szmz.entity.YwblDzdaFamily;
 import com.szmz.entity.YwblDzdaFamilyMaterial;
+import com.szmz.widget.MyLayoutView;
 import com.szmz.ywbl.ActBaseList;
 
 import java.util.ArrayList;
@@ -25,7 +26,12 @@ public class ActYwbl_dzda_jtzlxx extends ActBaseList<YwblDzdaFamilyMaterial> {
 
     @Override
     protected void doRefreshView(int p, YwblDzdaFamilyMaterial item, View view) {
-
+        MyLayoutView zlmView = (MyLayoutView) view.findViewById(R.id.zlmView);
+        MyLayoutView zllbView = (MyLayoutView) view.findViewById(R.id.zllbView);
+        MyLayoutView zldzView = (MyLayoutView) view.findViewById(R.id.zldzView);
+        zlmView.doSetContent(item.getFilename());
+        zllbView.doSetContent(item.getMaterialType());
+        zldzView.doSetContent(item.getFileurl());
     }
 
     @Override
