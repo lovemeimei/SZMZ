@@ -16,19 +16,33 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.barcode.decoding.Intents;
+import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
+import com.szmz.entity.CommMsgSave;
+import com.szmz.entity.ScanCode;
+import com.szmz.entity.User;
+import com.szmz.entity.request.Comm_msg_req;
+import com.szmz.entity.response.Comm_msg_Res;
 import com.szmz.fragment.FragmentHome;
 import com.szmz.fragment.FragmentJob;
 import com.szmz.fragment.FragmentSearch;
 import com.szmz.fragment.FragmentStatistical;
 import com.szmz.fragment.FragmentUser;
 import com.szmz.more.ActCodeLogin;
+import com.szmz.net.ApiUtil;
+import com.szmz.net.SimpleApiListener;
+import com.szmz.utils.GsonUtil;
 import com.szmz.utils.UIUtil;
+
+import org.xutils.DbManager;
+import org.xutils.ex.DbException;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import retrofit2.Call;
 
 /**
  * 中移全通集成公司 版本所有
@@ -107,6 +121,8 @@ public class ActMainJZ extends ActBase {
 
                     tvTitleRight.setVisibility(View.VISIBLE);
 //                    tvTitleRight.setTextSize(getResources().getDimension(R.dimen.font_larger));
+
+                    getList();
                 }else {
                     tvTitleRight.setVisibility(View.GONE
                     );
@@ -129,6 +145,39 @@ public class ActMainJZ extends ActBase {
         });
     }
 
+    private void getList(){
+
+        User user = App.getInstance().getLoginUser();
+        String idCard =user.getIdCode();
+        if (idCard==null)
+            idCard="";
+        final Comm_msg_req req = new Comm_msg_req(user.getUserName(),user.getPhone(),"","2");
+
+        Call<Comm_msg_Res> call = App.getApiProxyJZ().getMsg(req);
+
+        ApiUtil<Comm_msg_Res> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<Comm_msg_Res>(){
+            @Override
+            public void doSuccess(Comm_msg_Res result) {
+                super.doSuccess(result);
+                 List<CommMsgSave> items = new ArrayList<>();
+                items =result.Result;
+                if (items!=null && items.size()>0){
+                  DbManager dbManager = x.getDb(App.getDaoConfig());
+                  for (CommMsgSave item:items){
+                      try {
+                          dbManager.save(item);
+                      } catch (DbException e) {
+                          e.printStackTrace();
+                      }
+                  }
+                }
+            }
+        },false);
+
+        apiUtil.excute();
+
+    }
+
     private View getTabView(int index) {
         View view = LayoutInflater.from(this).inflate(R.layout.comm_tab_item, null);
         ImageView image = (ImageView) view.findViewById(R.id.image);
@@ -142,8 +191,6 @@ public class ActMainJZ extends ActBase {
     protected int getLayoutId() {
         return R.layout.activity_main_jz;
     }
-
-
 
 
     private void scan(){
@@ -171,15 +218,25 @@ public class ActMainJZ extends ActBase {
 //                http://10.10.0.169:8080/jeecg/loginController.do?appQuest&uuid=75823&type=A001&SystemId=emRzaGJ6MTUwNzk2MTQyNjE1Nw==
                 String resultStr = data.getStringExtra(Intents.Scan.RESULT);
 
-                String[] ress = resultStr.split("&");
+                ScanCode code = GsonUtil.deser(resultStr,ScanCode.class);
 
-                String uuid = ress[1].split("=")[1];
-                String type = ress[2].split("=")[1];
-                String systemID = ress[3].split("=")[1];
+                String account="";
+                if (code.getSystemId().equals(SystemConst.SystemID_JZ)) {
+                    account = getUser().getAccountJZ();
+                }
+                if (code.getSystemId().equals(SystemConst.SystemID_YZS)) {
+                    account = getUser().getAccountYZS();
+
+                }
+                if (code.getSystemId().equals(SystemConst.SystemID_SH)) {
+                    account = getUser().getAccountHD();
+
+                }
+
                 Intent intent = new Intent(context, ActCodeLogin.class);
-                intent.putExtra("uuid",uuid);
-                intent.putExtra("type",type);
-                intent.putExtra("systemID",systemID);
+//                intent.putExtra("uuid",code.getUuid());
+                intent.putExtra("type","A001");
+//                intent.putExtra("account",account);
                 intent.putExtra("msg",resultStr);
                 startActivity(intent);
             }

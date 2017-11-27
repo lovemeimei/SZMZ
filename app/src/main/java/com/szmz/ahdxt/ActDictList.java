@@ -84,7 +84,7 @@ public class ActDictList extends ActListBase {
     @Override
     public void doRefresh(MaterialRefreshLayout materialRefreshLayout) {
 
-        String params = getParams("510401","bussinessType");
+        String params = getParams(App.getInstance().getLoginUser().getAccountHD(),"bussinessType");
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
 

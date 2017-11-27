@@ -13,12 +13,14 @@ public class JZ_Login_Code_Req extends BaseRequest{
     private String uuid;
     private String account;
     private String SystemId;
+    private String type;
 
     public JZ_Login_Code_Req(String uuid, String account, String systemId) {
 
         this.uuid = uuid;
         this.account = account;
         SystemId = systemId;
+        type="A001";
 
         setMd5Key(Md5Util.getMd5(uuid+account+systemId));
     }

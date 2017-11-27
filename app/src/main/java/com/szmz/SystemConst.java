@@ -8,7 +8,7 @@ public class SystemConst {
     public static final String DEFAULT_SERVER_COM_SQR = "http://222.222.49.34:8081/";//平台
     public static final String DEFAULT_SERVER_JZ= "http://222.222.49.34:9095/";//救助
     public static final String DEFAULT_SERVER_YZS= "http://222.222.49.34:8088/";//一站式
-    public static final String DEFAULT_SERVER = "http://zhongkehengyun.com:8081/";
+    public static final String DEFAULT_SERVER = "http://222.222.49.34:8099/";//核对
     public static final String PROJECT_DIR = "SZMZ";
     public static final int MaxPhotoNumber = 9;
 
@@ -17,9 +17,9 @@ public class SystemConst {
     //8a8a800b5e029817015e02c9106d0010:攀枝花医疗补助一站式信息管理系统
 
 
-    public static final String SystemID_JZ="8a8a800b5e029817015e02c96bba0012";
-    public static final String SystemID_YZS="8a8a800b5e029817015e02c84ae2000e";
-    public static final String SystemID_SH="8a8a800b5e029817015e02c9106d0010";
+    public static  String SystemID_JZ="8a8a800b5e029817015e02c96bba0012";
+    public static  String SystemID_YZS="8a8a800b5e029817015e02c84ae2000e";
+    public static  String SystemID_SH="8a8a800b5e029817015e02c9106d0010";
 
     public static final String USERID="sysadmin";
 }

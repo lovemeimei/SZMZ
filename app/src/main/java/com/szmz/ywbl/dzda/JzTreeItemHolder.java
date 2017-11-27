@@ -71,7 +71,7 @@ public class JzTreeItemHolder extends TreeNode.BaseNodeViewHolder<JzTreeItemHold
         }
     }
 
-    interface OnClickChildListener {
+    public interface OnClickChildListener {
         void doClick(YwblDzdaXzqh item);
     }
 }

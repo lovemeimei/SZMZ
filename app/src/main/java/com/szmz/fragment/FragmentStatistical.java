@@ -1,7 +1,15 @@
 package com.szmz.fragment;
 
+import android.view.View;
+import android.widget.LinearLayout;
+
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.tjfx.ActJZ_1;
+import com.szmz.tjfx.ActJZ_3;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 统计分析
@@ -11,6 +19,12 @@ import com.szmz.R;
  */
 
 public class FragmentStatistical  extends BaseFragment {
+
+    @BindView(R.id.ll_tj_1)
+    LinearLayout ll1;
+    @BindView(R.id.ll_tj_3)
+    LinearLayout ll3;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_tjfx;
@@ -19,5 +33,17 @@ public class FragmentStatistical  extends BaseFragment {
     @Override
     protected void bindDatas() {
 
+    }
+
+    @OnClick({R.id.ll_tj_1,R.id.ll_tj_3})
+    void doClick(View v){
+        switch (v.getId()){
+            case R.id.ll_tj_1:
+                trans(ActJZ_1.class);
+                break;
+            case R.id.ll_tj_3:
+                trans(ActJZ_3.class);
+                break;
+        }
     }
 }

@@ -42,6 +42,7 @@ public class ActHistoryList extends ActListBase {
     TextView tvSearchView;
 
     private String typeID="";
+
     BaseListAdapter<JZ_Search_worker_Res.ResultBean, ActHistoryList.MViewHolder> adapter;
 
     private List<JZ_Search_worker_Res.ResultBean> items = new ArrayList<>();
@@ -132,7 +133,7 @@ public class ActHistoryList extends ActListBase {
                     adapter.setItems(items);
                     adapter.notifyDataSetChanged();
                 }else {
-                    noDataLayout.setVerticalGravity(View.VISIBLE);
+                    noDataLayout.setVisibility(View.VISIBLE);
                     adapter.clearListData();
                     adapter.notifyDataSetChanged();
                 }

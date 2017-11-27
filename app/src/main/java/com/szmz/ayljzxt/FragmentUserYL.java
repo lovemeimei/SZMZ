@@ -22,7 +22,7 @@ public class FragmentUserYL extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_user;
+        return R.layout.fragment_user_yzs;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class FragmentUserYL extends BaseFragment {
     }
 
     @OnClick({
-            R.id.ll_user_userinfo, R.id.ll_user_pw, R.id.ll_user_msg, R.id.ll_user_ywjd, R.id.ll_user_job
+            R.id.ll_user_userinfo, R.id.ll_user_pw, R.id.ll_user_msg
     })
     public void doClick(View v) {
         switch (v.getId()) {
@@ -42,14 +42,9 @@ public class FragmentUserYL extends BaseFragment {
                 trans(ActModifyPW.class);
                 break;
             case R.id.ll_user_msg:
-                trans(ActMsgList.class,"我的消息","");
+                trans(ActUserMsg.class);
                 break;
-            case R.id.ll_user_ywjd:
-                trans(ActCheckList.class);
-                break;
-            case R.id.ll_user_job:
-                trans(ActMyJob.class);
-                break;
+
         }
     }
 }

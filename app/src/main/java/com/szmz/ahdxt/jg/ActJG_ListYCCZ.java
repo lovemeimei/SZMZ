@@ -144,7 +144,7 @@ public class ActJG_ListYCCZ extends ActListBase {
         }
 
         //sysadmin 510401 1001
-        String params = getParams("1001", code, startTime, endTime);
+        String params = getParams(App.getInstance().getLoginUser().getAccountHD(), code, startTime, endTime);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;" +
                 "charset=UTF-8"), params.getBytes());

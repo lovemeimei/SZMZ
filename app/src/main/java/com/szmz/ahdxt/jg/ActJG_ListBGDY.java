@@ -152,7 +152,7 @@ public class ActJG_ListBGDY extends ActListBase {
             currentPage = 1;
         }
         //sysadmin 510401
-        params = getParams(SystemConst.USERID, code, startTime, endTime, currentPage);
+        params = getParams(App.getInstance().getLoginUser().getAccountHD(), code, startTime, endTime, currentPage);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
 

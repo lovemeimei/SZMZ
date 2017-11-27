@@ -30,7 +30,11 @@
         <attr name="titleText" format="string" />
         <attr name="contentText" format="string" />
     </declare-styleable>
-
+    <declare-styleable name="MyLayoutView2">
+        <attr name="title" format="string" />
+        <attr name="content" format="string" />
+        <attr name="content2" format="string" />
+    </declare-styleable>
 
     <declare-styleable name="CustomLableView">
         <attr name="mLeftSrc" format="reference" />

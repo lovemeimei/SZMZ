@@ -122,7 +122,7 @@ public class ActJG_ListMGRY extends ActListBase {
         }
 
         //sysadmin 510401
-        String params = getParams(SystemConst.USERID, batchName, code);
+        String params = getParams(App.getInstance().getLoginUser().getAccountHD(), batchName, code);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;" +
                 "charset=UTF-8"), params.getBytes());

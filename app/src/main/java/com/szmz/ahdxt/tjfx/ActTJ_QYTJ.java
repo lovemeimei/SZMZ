@@ -16,6 +16,8 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.SystemConst;
+import com.szmz.SystemEnv;
 import com.szmz.entity.response.HD_TJ_QYRC;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
@@ -160,7 +162,7 @@ public class ActTJ_QYTJ extends ActBase {
         }
 
         //sysadmin 510401
-        final String params = getParams("510401", sqtime);
+        final String params = getParams(App.getInstance().getLoginUser().getAccountHD(), sqtime);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;" +
                 "charset=UTF-8"), params.getBytes());

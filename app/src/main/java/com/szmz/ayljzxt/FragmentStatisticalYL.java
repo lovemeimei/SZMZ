@@ -1,7 +1,12 @@
 package com.szmz.ayljzxt;
 
+import android.view.View;
+
 import com.szmz.BaseFragment;
 import com.szmz.R;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 统计分析
@@ -13,11 +18,27 @@ import com.szmz.R;
 public class FragmentStatisticalYL extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tjfx;
+        return R.layout.fragment_tjfx_yzs;
     }
 
     @Override
     protected void bindDatas() {
 
+    }
+
+    @OnClick({R.id.ll_tj_1,R.id.ll_tj_2,R.id.ll_tj_3})
+    public void doClick(View v){
+
+        switch (v.getId()){
+            case R.id.ll_tj_1:
+                trans(ActYZS_tj1.class);
+                break;
+            case R.id.ll_tj_2:
+                trans(ActYZS_tj2.class);
+                break;
+            case R.id.ll_tj_3:
+                trans(ActYZS_tj3.class);
+                break;
+        }
     }
 }

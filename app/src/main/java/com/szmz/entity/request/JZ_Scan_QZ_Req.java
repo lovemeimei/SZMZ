@@ -15,6 +15,7 @@ public class JZ_Scan_QZ_Req extends BaseRequest{
     private String SystemId;
     private String instanceId;
     private String SealId;
+    private String type;
 
 
     public JZ_Scan_QZ_Req(String uuid, String account, String systemId, String instanceId, String sealId) {
@@ -23,6 +24,7 @@ public class JZ_Scan_QZ_Req extends BaseRequest{
         SystemId = systemId;
         this.instanceId = instanceId;
         SealId = sealId;
+        type="A003";
     }
 
     public String getUuid() {

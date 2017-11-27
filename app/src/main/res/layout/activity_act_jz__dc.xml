@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgrounColor"
+    tools:context="com.szmz.user.check.ActJZ_DC">
+
+    <include layout="@layout/comm_title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_jg_search2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:padding="5dp"
+            android:text="开始日期"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/et_tj_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@null"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/arrow_right"
+            android:padding="5dp"
+            android:textColor="@color/black_light"
+            android:textSize="@dimen/font_normal" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:background="@color/gray2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_jg_search3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:padding="5dp"
+            android:text="终止日期"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:id="@+id/et_tj_time2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@null"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/arrow_right"
+            android:padding="5dp"
+            android:textColor="@color/black_light"
+            android:textSize="@dimen/font_normal" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:background="@color/gray2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/shape_bg_color"
+        android:layout_margin="@dimen/spacing_normal">
+        <com.szmz.widget.MyLayoutView2
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:title="业务类型"
+            app:content="数量（人）"
+            app:content2="百分比（%）"/>
+        <com.szmz.widget.MyLayoutView2
+            android:id="@+id/tv_jz_dc_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:title="入户调查"/>
+        <com.szmz.widget.MyLayoutView2
+            android:id="@+id/tv_jz_dc_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:title="民主评议"/>
+        <com.szmz.widget.MyLayoutView2
+            android:id="@+id/tv_jz_dc_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:title="审核公示"/>
+        <com.szmz.widget.MyLayoutView2
+            android:id="@+id/tv_jz_dc_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:title="入户抽查"/>
+        <com.szmz.widget.MyLayoutView2
+            android:id="@+id/tv_jz_dc_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:title="审批公示"/>
+
+    </LinearLayout>
+</android.support.v7.widget.LinearLayoutCompat>

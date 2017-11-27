@@ -36,7 +36,7 @@ public class FragmentHome extends BaseFragment {
                 trans(ActMsgList.class,"待办业务","");
                 break;
             case R.id.ll_spyj:
-                trans(ActMsgListNormal.class,"审批意见","");
+                trans(ActMsgListNormal.class,"信访提醒","");
                 break;
             case R.id.ll_fcsx:
                 trans(ActMsgListNormal.class,"复查事项","");

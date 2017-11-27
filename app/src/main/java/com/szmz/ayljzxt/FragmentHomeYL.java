@@ -1,5 +1,6 @@
 package com.szmz.ayljzxt;
 
+import android.content.Intent;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -22,6 +23,9 @@ import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
 import com.szmz.utils.MyBaseListAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import retrofit2.Call;
@@ -39,6 +43,8 @@ public class FragmentHomeYL extends BaseFragment {
     protected int currentPage = 1;
     @BindView(R.id.lv)
     ListView lv;
+
+    private List<YZS_todoList_Res.ResultBean> items = new ArrayList<>();
 
     protected LinearLayout noDataLayout;
     protected TextView textView;
@@ -60,7 +66,6 @@ public class FragmentHomeYL extends BaseFragment {
         getList();
     };
 
-
     private void getList(){
 
         YZS_todoList_Req req = new YZS_todoList_Req("admin",currentPage);
@@ -71,8 +76,32 @@ public class FragmentHomeYL extends BaseFragment {
 
             @Override
             public void doSuccess(YZS_todoList_Res result) {
-                super.doSuccess(result);
 
+                items = result.Result;
+                if (items!=null && items.size()>0){
+                    if (currentPage==1){
+                        adapter.clearListData();
+                    }
+                    adapter.setItems(items);
+                    adapter.notifyDataSetChanged();
+                }else {
+                    adapter.clearListData();
+                    noDataLayout.setVisibility(View.VISIBLE);
+                    adapter.notifyDataSetChanged();
+                }
+
+                if (isHasNextPage(currentPage,20,result.TotalNum)){
+                    refresh.setLoadMore(true);
+                }else {
+                    refresh.setLoadMore(false);
+                }
+            }
+
+            @Override
+            public void doAfter() {
+                super.doAfter();
+                refresh.finishRefresh();
+                refresh.finishRefreshLoadMore();
             }
         },false);
 
@@ -114,15 +143,17 @@ public class FragmentHomeYL extends BaseFragment {
 
         adapter = new BaseListAdapter<YZS_todoList_Res.ResultBean, MViewHolder>(getContext(),R.layout.comm_list_item) {
             @Override
-            protected void refreshView(int postion, YZS_todoList_Res.ResultBean item, MViewHolder holer) {
+            protected void refreshView(int postion, final YZS_todoList_Res.ResultBean item, MViewHolder holer) {
 
-//                holer.tvName.setText(item.ge);
-//                holer.tvName.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        trans(ActMsgDetail.class, "", "");
-//                    }
-//                });
+                holer.tvName.setText(item.getTitle());
+                holer.tvName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getContext(),ActHomeDetail.class);
+                        intent.putExtra("item",item);
+                        startActivity(intent);
+                    }
+                });
 
             }
 
@@ -135,9 +166,8 @@ public class FragmentHomeYL extends BaseFragment {
                 return holder;
             }
         };
-
-
-//        doLoadData();
+        lv.setAdapter(adapter);
+        doLoadData();
     }
 
     protected void doLoadData() {

@@ -47,12 +47,12 @@ public class ActMainYLJZ extends ActBase {
     @BindView(android.R.id.tabhost)
     FragmentTabHost tabhost;
     private List<Fragment> mFragmentList;
-    private String mTextArray[] = {"tab1", "tab2", "tab3", "tab4", "tab5"};
-    private Class[] mClass = {FragmentHomeYL.class, FragmentSearchYL.class, FragmentJobYL.class, FragmentStatisticalYL.class, FragmentUserYL.class};
-    private Fragment mFragment[] = {new FragmentHomeYL(), new FragmentSearchYL(), new FragmentJobYL(), new FragmentStatisticalYL(), new FragmentUserYL()};
-    int[] mDrawable = {R.drawable.slt_main_home_jz, R.drawable.slt_main_search_jz, R.drawable.slt_main_job_jz, R
+    private String mTextArray[] = {"tab1", "tab2",  "tab4", "tab5"};
+    private Class[] mClass = {FragmentHomeYL.class, FragmentSearchYL.class,  FragmentStatisticalYL.class, FragmentUserYL.class};
+    private Fragment mFragment[] = {new FragmentHomeYL(), new FragmentSearchYL(),  new FragmentStatisticalYL(), new FragmentUserYL()};
+    int[] mDrawable = {R.drawable.slt_main_home_jz, R.drawable.slt_main_search_jz,  R
             .drawable.slt_main_tj_jz, R.drawable.slt_main_user_jz};
-    private String[] mTitles = {"首页", "查询", "办理", "统计", "我的"};
+    private String[] mTitles = {"首页", "查询", "统计", "我的"};
 
     @Override
     protected void initUI() {

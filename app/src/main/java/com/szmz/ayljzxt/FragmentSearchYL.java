@@ -2,12 +2,14 @@ package com.szmz.ayljzxt;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ListView;
 
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.search.ActHistoryList;
 import com.szmz.ywbl.dzda.ActYwbl_dzda_person;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -17,6 +19,7 @@ import butterknife.OnClick;
  */
 
 public class FragmentSearchYL extends BaseFragment {
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_search;
@@ -32,13 +35,11 @@ public class FragmentSearchYL extends BaseFragment {
 
         switch (v.getId()) {
             case R.id.ll_search_sj:
-                trans(ActHistoryList.class);
+                trans(ActYZS_HistroyList.class);
                 break;
             case R.id.ll_search_dx:
-                Intent intent = new Intent(getActivity(), ActYwbl_dzda_person.class);
-                intent.putExtra("Type", 10);
-                startActivity(intent);
 
+                trans(ActYzs_people_List.class);
                 break;
         }
     }

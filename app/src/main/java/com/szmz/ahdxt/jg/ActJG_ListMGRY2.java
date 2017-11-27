@@ -137,7 +137,7 @@ public class ActJG_ListMGRY2 extends ActListBase {
         }
 
         //sysadmin 510401
-        String params = getParams(SystemConst.USERID, id);
+        String params = getParams(App.getInstance().getLoginUser().getAccountHD(), id);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;" +
                 "charset=UTF-8"), params.getBytes());

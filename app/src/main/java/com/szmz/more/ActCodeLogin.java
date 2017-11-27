@@ -9,6 +9,7 @@ import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.SystemConst;
+import com.szmz.entity.ScanCode;
 import com.szmz.entity.request.JZ_Login_Code_Req;
 import com.szmz.entity.request.JZ_Scan_QZ_Req;
 import com.szmz.entity.response.CommResponse;
@@ -23,13 +24,10 @@ import retrofit2.Call;
 
 public class ActCodeLogin extends ActBase {
 
-    private String uuid;
-    private String type;
-    private String systemID;
     private String account;
     private String msg;
-    JZ_Login_Code_Req logReq;
-    JZ_Scan_QZ_Req QZreq;
+
+    ScanCode code;
 
     @Override
     protected int getLayoutId() {
@@ -39,19 +37,19 @@ public class ActCodeLogin extends ActBase {
     @Override
     protected void initUI() {
         super.initUI();
-        uuid = getIntent().getStringExtra("uuid");
-        type = getIntent().getStringExtra("type");
-        systemID = getIntent().getStringExtra("systemID");
+//        uuid = getIntent().getStringExtra("uuid");
+//        systemID = getIntent().getStringExtra("systemID");
 
         msg = getIntent().getStringExtra("msg");
 
 //        {"instanceId":"927862","SealId":"8a8a80235f0e590e015f0e6ad6010024","systemId":"c2hqenh4Z2x4dDE1MDk1MjU1OTM2Mzg=","url":"http://10.10.0.169:8080/jeecg/loginController.do?appQuest"}
     //{"uuid":"33905","systemId":"c2hqenh4Z2x4dDE1MDk1MjU1OTM2Mzg=","url":"http://10.10.0.169:8080/jeecg/loginController.do?appQuest"}
 
-        if (msg.contains("uuid")){
-           logReq = GsonUtil.deser(msg,JZ_Login_Code_Req.class);
-        }else if (msg.contains("instanceId")){
-            QZreq =GsonUtil.deser(msg,JZ_Scan_QZ_Req.class);
+        code = GsonUtil.deser(msg,ScanCode.class);
+        if (SystemConst.SystemID_JZ.equals(code.getSystemId())){
+            account=App.getInstance().getLoginUser().getAccountJZ();
+        }else if (SystemConst.SystemID_YZS.equals(code.getSystemId())){
+            account=App.getInstance().getLoginUser().getAccountYZS();
         }
     }
 
@@ -69,12 +67,11 @@ public class ActCodeLogin extends ActBase {
 
     private void doLogin(){
 
-        if (SystemConst.SystemID_JZ.equals(logReq.getSystemId())){
-            logReq.setAccount(App.getInstance().getLoginUser().getAccountJZ());
-        }else if (SystemConst.SystemID_YZS.equals(logReq.getSystemId())){
-            logReq.setAccount(App.getInstance().getLoginUser().getAccountYZS());
-        }
+        account="admin";
 
+        JZ_Login_Code_Req logReq;
+
+        logReq = new JZ_Login_Code_Req(code.getUuid(),account,code.getSystemId());
 
         Call<CommResponse> call = App.getApiProxyJZ().loginCode(logReq);
 
@@ -90,12 +87,8 @@ public class ActCodeLogin extends ActBase {
 
     private void doLogin2(){
 
-        if (SystemConst.SystemID_JZ.equals(QZreq.getSystemId())){
-            QZreq.setAccount(App.getInstance().getLoginUser().getAccountJZ());
-        }else if (SystemConst.SystemID_YZS.equals(QZreq.getSystemId())){
-            QZreq.setAccount(App.getInstance().getLoginUser().getAccountYZS());
-        }
-
+        JZ_Scan_QZ_Req QZreq;
+        QZreq = new JZ_Scan_QZ_Req(code.getUuid(),account,code.getSystemId(),code.getInstanceId(),code.getSealId());
         Call<CommResponse> call = App.getApiProxyJZ().scanQZ(QZreq);
 
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){

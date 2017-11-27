@@ -48,6 +48,15 @@ public class phoneLoginR extends BaseResponse<phoneLoginR.ResultBean>{
             private String realName;
             private String account;
             private String systemID;
+            private String identification;
+
+            public String getIdentification() {
+                return identification;
+            }
+
+            public void setIdentification(String identification) {
+                this.identification = identification;
+            }
 
             public String getRealName() {
                 return realName;

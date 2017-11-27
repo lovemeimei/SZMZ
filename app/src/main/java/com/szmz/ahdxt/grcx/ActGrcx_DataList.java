@@ -118,7 +118,7 @@ public class ActGrcx_DataList extends ActBaseList<HD_SearchDB_RES.ResultBean> {
         } else {
             CurrentPage = 1;
         }
-        params = getParams("510401", CurrentPage);
+        params = getParams(App.getInstance().getLoginUser().getAccountHD(), CurrentPage);
 
         final RequestBody requestBody = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
         Call<HD_SearchDB_RES> call = null;

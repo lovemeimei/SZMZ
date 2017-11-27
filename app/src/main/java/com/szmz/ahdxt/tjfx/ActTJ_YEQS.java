@@ -24,6 +24,7 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.SystemConst;
 import com.szmz.entity.response.HD_TJ_YWQS;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
@@ -248,7 +249,7 @@ public class ActTJ_YEQS extends ActBase {
         }
 
         //sysadmin 510401
-        String params = getParams("510401", sqtime);
+        String params = getParams(App.getInstance().getLoginUser().getAccountHD(), sqtime);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;" +
                 "charset=UTF-8"), params.getBytes());

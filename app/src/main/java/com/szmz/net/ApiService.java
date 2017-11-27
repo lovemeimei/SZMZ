@@ -7,23 +7,38 @@ import com.szmz.entity.request.Comm_SQR_findPW;
 import com.szmz.entity.request.Comm_SQR_modifyPW_Req;
 import com.szmz.entity.request.Comm_checkCode_sqr_Req;
 import com.szmz.entity.request.Comm_getCode_Req;
+import com.szmz.entity.request.Comm_ipid_req;
 import com.szmz.entity.request.Comm_modifyUserInfoSQR_Req;
+import com.szmz.entity.request.Comm_msg_req;
 import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.request.JZ_Comm_bindphone;
 import com.szmz.entity.request.JZ_Comm_list_Req;
 import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
+import com.szmz.entity.request.JZ_DC_req;
+import com.szmz.entity.request.JZ_Login_Code_Req;
+import com.szmz.entity.request.JZ_Scan_QZ_Req;
+import com.szmz.entity.request.JZ_Search_workerDetail_Req;
+import com.szmz.entity.request.JZ_Search_worker_Req;
 import com.szmz.entity.request.JZ_TODO_FuntionTree;
 import com.szmz.entity.request.JZ_TODO_List;
+import com.szmz.entity.request.JZ_Tj1_Req;
 import com.szmz.entity.request.JZ_YWBL_DZDA_FAMILY_RE;
 import com.szmz.entity.request.JZ_YWBL_DZDA_SALVATION_RE;
 import com.szmz.entity.request.JZ_YWBL_DZDA_XZQH_RE;
 import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.Register_Req;
+import com.szmz.entity.request.YZS_History_Detail_Req;
+import com.szmz.entity.request.YZS_History_List_Req;
+import com.szmz.entity.request.YZS_TJ1_Req;
+import com.szmz.entity.request.YZS_people_list_Req;
+import com.szmz.entity.request.YZS_qh_req;
 import com.szmz.entity.request.YZS_todoList_Req;
 import com.szmz.entity.request.phoneLoginRequest;
 import com.szmz.entity.response.CommResponse;
+import com.szmz.entity.response.Comm_ipid_res;
+import com.szmz.entity.response.Comm_msg_Res;
 import com.szmz.entity.response.HD_JG_MGRY;
 import com.szmz.entity.response.HD_JG_MGRY2;
 import com.szmz.entity.response.HD_JG_YCCL;
@@ -40,6 +55,7 @@ import com.szmz.entity.response.HD_XZQH_Response;
 import com.szmz.entity.response.HD_dict;
 import com.szmz.entity.response.HD_hdzc;
 import com.szmz.entity.response.JZ_Comm_JZLX_RES;
+import com.szmz.entity.response.JZ_DC_Res;
 import com.szmz.entity.response.JZ_GetUserInfo;
 import com.szmz.entity.response.JZ_MSG_FC_Res;
 import com.szmz.entity.response.JZ_MSG_SP_Res;
@@ -47,9 +63,21 @@ import com.szmz.entity.response.JZ_Search_worker_Res;
 import com.szmz.entity.response.JZ_Todo_MenuTree;
 import com.szmz.entity.response.JZ_Todolist;
 import com.szmz.entity.response.JZ_YWBL_DZDA_Family;
+import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyIncome;
+import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyMaterial;
+import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyMember;
+import com.szmz.entity.response.JZ_YWBL_DZDA_FamilyProperty;
 import com.szmz.entity.response.JZ_YWBL_DZDA_Salvation;
+import com.szmz.entity.response.JZ_YWBL_DZDA_SupportIncome;
 import com.szmz.entity.response.JZ_YWBL_DZDA_XZQH;
+import com.szmz.entity.response.JZ_tj1;
 import com.szmz.entity.response.LoginSQR_Res;
+import com.szmz.entity.response.YZS_TJ1_Res;
+import com.szmz.entity.response.YZS_TJ3_Res;
+import com.szmz.entity.response.YZS_history_Res;
+import com.szmz.entity.response.YZS_people_Res;
+import com.szmz.entity.response.YZS_qh_res;
+import com.szmz.entity.response.YZS_tj2_Res;
 import com.szmz.entity.response.YZS_todoList_Res;
 import com.szmz.entity.response.phoneLoginR;
 
@@ -65,7 +93,7 @@ import retrofit2.http.POST;
  */
 public interface ApiService {
     //扫码登录救助
-    @POST("SocietySalvation/api/appScanController.do?appGetScanResult")
+    @POST("SocietySalvation/loginController.do?appQuest")
     Call<CommResponse> loginCode(@Body JZ_Login_Code_Req request);
 
     //扫码签章
@@ -75,6 +103,14 @@ public interface ApiService {
     //统一登录
     @POST("SalvationPlatform/phoneLoginController.do?phoneLogin")
     Call<phoneLoginR> login(@Body phoneLoginRequest request);
+
+    // http://222.222.49.34:8057/SalvationPlatform/phoneLoginController.do?getSystemIdentifyAll
+    @POST("SalvationPlatform/phoneLoginController.do?getSystemIdentifyAll")
+    Call<Comm_ipid_res> getIPSID(@Body Comm_ipid_req body);
+//    http://222.222.49.34:9095/SocietySalvation/api/appMessageController.do?appNotelist&LoginName=孔以丹&Phone=13233333333&IDCard=41022319730502258X&UserType=1&Md5Key=E393C8C925F5C0435D61A0ED232BE8B2
+    //获取新消息
+    @POST("SocietySalvation/api/appMessageController.do?appNotelist")
+    Call<Comm_msg_Res> getMsg(@Body Comm_msg_req body);
 
     //工作人员绑定手机号
     @POST("SalvationPlatform/phoneLoginController.do?bindingPhone")
@@ -119,6 +155,9 @@ public interface ApiService {
 
 
     /**************************救助系统工作人员*********************************/
+    //得到救助类型列表
+    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationType")
+    Call<JZ_Comm_JZLX_RES> getJZLX(@Body BaseRequest request);
 
     @POST("SocietySalvation/api/appCommonController.do?getUserInfo")
     Call<JZ_GetUserInfo> loginJZ(@Body JZ_Comm_Req request);
@@ -152,15 +191,8 @@ public interface ApiService {
     @POST("SocietySalvation/api/appDataqueryController?getFamilymember")
     Call<JZ_YWBL_DZDA_FamilyMember> getJZ_FamilyMember(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
-    @POST("SocietySalvation/api/appDataqueryController?getFamilymemberInfo")
-    Call<JZ_YWBL_DZDA_FamilyMemberDetail> getJZ_FamilyMemberDetail(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
-
     @POST("SocietySalvation/api/appDataqueryController?getFamilyincome")
     Call<JZ_YWBL_DZDA_FamilyIncome> getJZ_FamilyIncome(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
-    @POST("SocietySalvation/api/appDataqueryController?getFamilyincomeInfo")
-    Call<JZ_YWBL_DZDA_FamilyIncomeDetail> getJZ_FamilyIncomeDetail(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
 
     @POST("SocietySalvation/api/appDataqueryController?getFamilymaterialList")
@@ -170,19 +202,28 @@ public interface ApiService {
     Call<JZ_YWBL_DZDA_SupportIncome> getJZ_SupportIncome(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
 
-    @POST("SocietySalvation/api/appDataqueryController?getSupportincomeInfo")
-    Call<JZ_YWBL_DZDA_SupportIncomeDetial> getJZ_SupportIncomeDetail(@Body JZ_YWBL_DZDA_FAMILY_RE req);
-
     //救助信息查询
     @POST("SocietySalvation/api/appDataqueryController.do?getHistoryList")
     Call<JZ_Search_worker_Res> getJZ_SearchList(@Body JZ_Search_worker_Req req);
+
     //救助信息查询详细
     @POST("SocietySalvation/api/appDataqueryController.do?getHistoryInfo")
     Call<JZ_Search_worker_Res> getJZ_SearchList_Detail(@Body JZ_Search_workerDetail_Req req);
+
     //获取电子档案所有数据
     @POST("SocietySalvation/api/appDataqueryController?getAllData")
     Call<JZ_YWBL_DZDA_Family> getJZ_GetAllData(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
+    //http://222.222.49.34:9095/SocietySalvation/api/appDataqueryController?getSalvationPernum
+    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationPernum")
+    Call<JZ_tj1> getJZ_tj1(@Body JZ_Tj1_Req body);
+
+    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationPernumByDisId")
+    Call<JZ_tj1> getJZ_tj3(@Body JZ_Tj1_Req body);
+
+    //    http://222.222.49.34:9095/SocietySalvation/api/appBusinessSuperviseController.do?appBusinessProgress
+    @POST("SocietySalvation/api/appBusinessSuperviseController.do?appBusinessProgress")
+    Call<JZ_DC_Res> getJZ_dc(@Body JZ_DC_req body);
 
 
     /**************************医疗一站式工作人员*********************************/
@@ -191,8 +232,32 @@ public interface ApiService {
     @POST("ActionControler/AppTodolist.ashx")
     Call<YZS_todoList_Res> getYZS_TodoList(@Body YZS_todoList_Req req);
 
-    /**************************医疗一站式申请人*********************************/
+    //http://222.222.49.34:8088/ActionControler/AppSalvationHistoryList.ashx
+    @POST("ActionControler/AppSalvationHistoryList.ashx")
+    Call<YZS_history_Res> getYZS_History_list(@Body YZS_History_List_Req req);
 
+    @POST("ActionControler/appSalvationHistoryInfo.ashx")
+    Call<YZS_history_Res> getYZS_History_detail(@Body YZS_History_Detail_Req req);
+
+    @POST("ActionControler/appSalvationList.ashx")
+    Call<YZS_people_Res> getYZS_people_list(@Body YZS_people_list_Req req);
+
+    @POST("ActionControler/appSalvationInfo.ashx")
+    Call<YZS_people_Res> getYZS_people_detail(@Body YZS_History_Detail_Req req);
+    //
+    @POST("ActionControler/AppRegionInfo.ashx")
+    Call<YZS_qh_res> getYZS_xzqh(@Body YZS_qh_req req);
+
+    //统计分析
+    @POST("ActionControler/AppRescueStaticByFamily.ashx")
+    Call<YZS_TJ1_Res> getYZS_tj1(@Body YZS_TJ1_Req req);
+    @POST("ActionControler/AppInHospitalRescueByMoneyAndNum.ashx")
+    Call<YZS_tj2_Res> getYZS_tj2(@Body YZS_TJ1_Req req);
+    @POST("ActionControler/AppRescueMoneyByTime.ashx")
+    Call<YZS_TJ3_Res> getYZS_tj3(@Body YZS_TJ1_Req req);
+
+
+    /**************************医疗一站式申请人*********************************/
 
 
     /**************************核对系统*********************************/

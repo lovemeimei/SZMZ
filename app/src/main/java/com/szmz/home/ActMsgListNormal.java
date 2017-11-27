@@ -9,6 +9,7 @@ import com.szmz.ActListBase;
 import com.szmz.ActMsgDetail;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.entity.CommMsgSave;
 import com.szmz.entity.request.JZ_Comm_list_Req;
 import com.szmz.entity.request.JZ_TODO_FuntionTree;
 import com.szmz.entity.response.JZ_MSG_FC_Res;
@@ -17,6 +18,10 @@ import com.szmz.entity.response.JZ_Todo_MenuTree;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
+
+import org.xutils.DbManager;
+import org.xutils.ex.DbException;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +34,10 @@ public class ActMsgListNormal extends ActListBase {
     private String title;
     @BindView(R.id.lv)
     ListView lv;
-    BaseListAdapter<JZ_MSG_SP_Res.ResultBean, ActMsgListNormal.MViewHolder> adapterSP;
-    BaseListAdapter<JZ_MSG_FC_Res.ResultBean, ActMsgListNormal.MViewHolder> adapterFC;
+    BaseListAdapter<CommMsgSave, ActMsgListNormal.MViewHolder> adapterSP;
+    BaseListAdapter<CommMsgSave, ActMsgListNormal.MViewHolder> adapterFC;
 
+    List<CommMsgSave> items = new ArrayList<>();
     int type = 0;
 
 
@@ -46,7 +52,7 @@ public class ActMsgListNormal extends ActListBase {
         super.initUI();
         title = getIntent().getStringExtra("title");
 
-        if (title.equals("审批意见")) {
+        if (title.equals("信访提醒")) {
             type = 1;
             initSP();
         } else if (title.equals("复查事项")) {
@@ -59,12 +65,12 @@ public class ActMsgListNormal extends ActListBase {
     }
 
     private void initSP() {
-        adapterSP = new BaseListAdapter<JZ_MSG_SP_Res.ResultBean, MViewHolder>(this, R.layout.comm_list_item) {
+        adapterSP = new BaseListAdapter<CommMsgSave, MViewHolder>(this, R.layout.comm_list_item) {
             @Override
-            protected void refreshView(int postion, JZ_MSG_SP_Res.ResultBean item, ActMsgListNormal.MViewHolder holer) {
+            protected void refreshView(int postion, CommMsgSave item, ActMsgListNormal.MViewHolder holer) {
 
 
-                holer.tvName.setText(item.getResultreason());
+                holer.tvName.setText(item.getTitle());
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -86,12 +92,12 @@ public class ActMsgListNormal extends ActListBase {
     }
 
     private void initFC() {
-        adapterFC = new BaseListAdapter<JZ_MSG_FC_Res.ResultBean, MViewHolder>(this, R.layout.comm_list_item) {
+        adapterFC = new BaseListAdapter<CommMsgSave, MViewHolder>(this, R.layout.comm_list_item) {
             @Override
-            protected void refreshView(int postion, JZ_MSG_FC_Res.ResultBean item, ActMsgListNormal.MViewHolder holer) {
+            protected void refreshView(int postion, CommMsgSave item, ActMsgListNormal.MViewHolder holer) {
 
 
-                holer.tvName.setText(item.getRemark());
+                holer.tvName.setText(item.getTitle());
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -135,120 +141,27 @@ public class ActMsgListNormal extends ActListBase {
 
 
     private void getInfo() {
+        DbManager dbManager = x.getDb(App.getDaoConfig());
         if (type == 1) {
-            getSPList();
+            try {
+//                List<User> users = db.selector(User.class)
+//                        .where("name","like","%kevin%")
+//                        .and("email", "=", "caolbmail@gmail.com")
+//                        .orderBy("regTime",true)
+//                        .limit(2) //只查询两条记录
+//                        .offset(2) //偏移两个,从第三个记录开始返回,limit配合offset达到sqlite的limit m,n的查询
+//                        .findAll();
+                items =dbManager.findAll(CommMsgSave.class);
+
+            } catch (DbException e) {
+                e.printStackTrace();
+            }
         } else {
-            getFCList();
+
         }
     }
 
 
-    private void getSPList() {
 
-
-        JZ_Comm_list_Req req = new JZ_Comm_list_Req(App.getInstance().getLoginUser().getAccountJZ(), App.getInstance().getLoginUser().getIdJZ(), currentPage);
-
-        Call<JZ_MSG_SP_Res> call = App.getApiProxyJZ().getJZ_MSG_SP_List(req);
-
-        ApiUtil<JZ_MSG_SP_Res> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<JZ_MSG_SP_Res>() {
-
-            @Override
-            public void doAfter() {
-                super.doAfter();
-                refresh.finishRefreshing();
-                refresh.finishRefreshLoadMore();
-            }
-
-            @Override
-            public void doSuccess(JZ_MSG_SP_Res result) {
-
-                List<JZ_MSG_SP_Res.ResultBean> items = new ArrayList<>();
-                items = result.Result;
-                if (items != null && items.size() > 0) {
-                    noDataLayout.setVisibility(View.GONE);
-                    if (currentPage == 1) {
-                        adapterSP.clearListData();
-                    }
-                    adapterSP.setItems(items);
-                    adapterSP.notifyDataSetChanged();
-
-                } else {
-                    adapterSP.clearListData();
-                    adapterSP.notifyDataSetChanged();
-                    noDataLayout.setVisibility(View.VISIBLE);
-                }
-
-                if (isHasNextPage(currentPage, pageSize, result.TotalNum)) {
-                    refresh.setLoadMore(true);
-                } else {
-                    refresh.setLoadMore(false);
-                }
-            }
-
-        }, false);
-
-        apiUtil.excute();
-
-        List<JZ_MSG_SP_Res.ResultBean> items = new ArrayList<>();
-        for (int i=0;i<10;i++){
-            JZ_MSG_SP_Res.ResultBean item = new JZ_MSG_SP_Res().new ResultBean();
-            item.setResultreason("测试消息");
-            items.add(item);
-        }
-        adapterSP.setItems(items);
-        adapterSP.notifyDataSetChanged();
-    }
-
-    private void getFCList() {
-
-        JZ_Comm_list_Req req = new JZ_Comm_list_Req(App.getInstance().getLoginUser().getAccountJZ(), App.getInstance().getLoginUser().getIdJZ(), currentPage);
-
-        Call<JZ_MSG_FC_Res> call = App.getApiProxyJZ().getJZ_MSG_FC_List(req);
-
-        ApiUtil<JZ_MSG_FC_Res> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<JZ_MSG_FC_Res>() {
-            @Override
-            public void doSuccess(JZ_MSG_FC_Res result) {
-                List<JZ_MSG_FC_Res.ResultBean> items = new ArrayList<>();
-                items = result.Result;
-                if (items != null && items.size() > 0) {
-                    noDataLayout.setVisibility(View.GONE);
-                    if (currentPage == 1) {
-                        adapterSP.clearListData();
-                    }
-                    adapterFC.setItems(items);
-                    adapterFC.notifyDataSetChanged();
-
-                } else {
-                    adapterFC.clearListData();
-                    adapterFC.notifyDataSetChanged();
-                    noDataLayout.setVisibility(View.VISIBLE);
-                }
-
-                if (isHasNextPage(currentPage, pageSize, result.TotalNum)) {
-                    refresh.setLoadMore(true);
-                } else {
-                    refresh.setLoadMore(false);
-                }
-            }
-
-            @Override
-            public void doAfter() {
-                super.doAfter();
-                refresh.finishRefreshing();
-                refresh.finishRefreshLoadMore();
-            }
-        }, false);
-
-        apiUtil.excute();
-
-        List<JZ_MSG_FC_Res.ResultBean> items = new ArrayList<>();
-        for (int i=0;i<10;i++){
-            JZ_MSG_FC_Res.ResultBean item = new JZ_MSG_FC_Res().new ResultBean();
-            item.setRemark("测试消息");
-            items.add(item);
-        }
-        adapterFC.setItems(items);
-        adapterFC.notifyDataSetChanged();
-    }
 
 }

@@ -12,8 +12,10 @@ import android.widget.RadioButton;
 
 import com.szmz.entity.User;
 import com.szmz.entity.UserSQR;
+import com.szmz.entity.request.Comm_ipid_req;
 import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.phoneLoginRequest;
+import com.szmz.entity.response.Comm_ipid_res;
 import com.szmz.entity.response.LoginSQR_Res;
 import com.szmz.entity.response.phoneLoginR;
 import com.szmz.more.ActFindPW;
@@ -21,9 +23,11 @@ import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.TextUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Logger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -70,6 +74,8 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
             etUser.setText(name);
             etPW.setText(pw);
         }
+
+        getIPID();
     }
 
     @OnClick({R.id.btn_submit, R.id.tv_zc, R.id.tv_wjmm})
@@ -83,12 +89,6 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                 trans(ActFindPW.class);
                 break;
             case R.id.btn_submit:
-//                User user = new User();
-//                user.setAccountHD("510401");
-//                App.getInstance().login(user);
-//                Intent intent = new Intent(this, ActMain.class);
-//                intent.putExtra("Type", type);
-//                startActivity(intent);
 
                 if (type==1){
                     login();
@@ -110,28 +110,32 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
         ApiUtil<phoneLoginR> apiUtil = new ApiUtil<phoneLoginR>(context, call, new SimpleApiListener<phoneLoginR>() {
             @Override
             public void doSuccess(phoneLoginR result) {
-              doToast("登录成功");
+
                 List<phoneLoginR.ResultBean> mResult = result.Result;
 
                 if (mResult != null && mResult.size() > 0) {
                     phoneLoginR.ResultBean bean = mResult.get(0);
                     User user = new User();
                     List<phoneLoginR.ResultBean.SystemMsgBean> systemMsgBeens = bean.getSystemMsg();
+
                     if (systemMsgBeens != null && systemMsgBeens.size() > 0) {
+
                         for (int i = 0; i < systemMsgBeens.size(); i++) {
                             phoneLoginR.ResultBean.SystemMsgBean item = systemMsgBeens.get(i);
-                            if (item.getSystemID().equals(SystemConst.SystemID_JZ)) {
+                            if (item.getIdentification().equals(SystemConst.SystemID_JZ)) {
                                 user.setAccountJZ(item.getAccount());
                             }
-                            if (item.getSystemID().equals(SystemConst.SystemID_YZS)) {
-//                                user.setAccountYZS(item.getAccount());
-                                user.setAccountYZS("admin");
+                            if (item.getIdentification().equals(SystemConst.SystemID_YZS)) {
+                                user.setAccountYZS(item.getAccount());
                             }
-                            if (item.getSystemID().equals(SystemConst.SystemID_SH)) {
+                            if (item.getIdentification().equals(SystemConst.SystemID_SH)) {
                                 user.setAccountHD(item.getAccount());
                             }
                         }
                     }
+
+//                    user.setAccountYZS("admin");
+//                    user.setAccountJZ("admin");
                     user.setUserName(etUser.getText().toString().trim());
                     user.setPw(etPW.getText().toString().trim());
                     user.setType(type);
@@ -224,13 +228,51 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        switch (buttonView.getId()) {
-            case R.id.rb_work:
-                type = 1;
-                break;
-            case R.id.rb_user:
-                type = 0;
-                break;
+        if (rbWoker.isChecked()){
+            type = 1;
+        }else {
+            type = 0;
         }
+
+    }
+
+    private void getIPID(){
+        final String ipJZ="222.222.49.34:9095";
+        final String ipYZS="222.222.49.34:8088";
+        final String ipHD="222.222.49.34:8099";
+        String ips=ipJZ+","+ipYZS+","+ipHD;
+        final Comm_ipid_req req = new Comm_ipid_req(ips);
+
+        Call<Comm_ipid_res> call = App.getApiProxyCom().getIPSID(req);
+
+        ApiUtil<Comm_ipid_res> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<Comm_ipid_res>(){
+            @Override
+            public void doSuccess(Comm_ipid_res result) {
+                super.doSuccess(result);
+                List<Comm_ipid_res.ResultBean> items = new ArrayList<>();
+
+                if (result!=null )
+                    items = result.Result;
+
+                if (items!=null && items.size()>0){
+                    for (int i=0;i<items.size();i++){
+                        Comm_ipid_res.ResultBean item = items.get(i);
+                        if (item.getIp().equals(ipJZ)){
+                            SystemConst.SystemID_JZ = item.getResult();
+                        }else if (item.getIp().equals(ipYZS)){
+                            SystemConst.SystemID_YZS = item.getResult();
+                        }else if (item.getIp().equals(ipHD)){
+                            SystemConst.SystemID_SH = item.getResult();
+                        }
+                    }
+                }
+                //{"Result":[{"result":"emRzaGJ6MTUwNzk2MTQyNjE1Nw==","ip":"222.222.49.34:9095"},{"result":"eWxienl6czE1MDgyMjQyMzc2MzE=","ip":"222.222.49.34:8088"},{"result":"","ip":"zhongkehengyun.com:8081"}],"TotalNum":0,"Error":{"ErrorMessage":"信息获取成功","ErrorCode":0}}
+
+
+            }
+        },true);
+
+        apiUtil.excute();
+
     }
 }

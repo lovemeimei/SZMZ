@@ -129,7 +129,7 @@ public class ActJG_Listywbl extends ActListBase {
             currentPage = 1;
         }
 
-        String params = getParams(SystemConst.USERID, batchName, bizCode);
+        String params = getParams(App.getInstance().getLoginUser().getAccountHD(), batchName, bizCode);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
 
