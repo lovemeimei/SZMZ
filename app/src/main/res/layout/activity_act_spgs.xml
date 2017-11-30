@@ -29,11 +29,47 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/sqrLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:background="@color/white"
                         android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_person" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="申  请  人："
+                            android:textSize="@dimen/font_normal" />
+
+                        <TextView
+                            android:id="@+id/sqrTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:drawableRight="@drawable/arrow_right"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/timeStartLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:padding="10dp">
 
@@ -47,10 +83,44 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="调查时间："
+                            android:text="公示起始日期："
                             android:textSize="@dimen/font_normal" />
 
                         <TextView
+                            android:id="@+id/timeStartTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_normal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/timeEndLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_time" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="公示截止日期："
+                            android:textSize="@dimen/font_normal" />
+
+                        <TextView
+                            android:id="@+id/timeEndTv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -78,10 +148,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="调  查  人："
+                            android:text="公示记录人："
                             android:textSize="@dimen/font_normal" />
 
-                        <TextView
+                        <EditText
+                            android:id="@+id/gsjlrEd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -105,10 +176,9 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:text="调查核实情况："
+                            android:text="公示结果："
                             android:textSize="@dimen/font_normal" />
 
                         <View
@@ -119,11 +189,12 @@
                             android:background="@color/backgrounColor" />
 
                         <EditText
+                            android:id="@+id/gsjgEd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:gravity="top|left"
-                            android:hint="请输入调查核实情况"
+                            android:hint="请输入公示结果"
                             android:lines="2"
                             android:padding="10dp"
                             android:textColor="@color/black"
@@ -146,7 +217,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:text="调查核实结论："
+                            android:text="公示异议内容："
                             android:textSize="@dimen/font_normal" />
 
                         <View
@@ -157,11 +228,12 @@
                             android:background="@color/backgrounColor" />
 
                         <EditText
+                            android:id="@+id/gsyynrEd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:gravity="top|left"
-                            android:hint="请输入调查核实结论"
+                            android:hint="请输入公示异议内容"
                             android:lines="2"
                             android:padding="10dp"
                             android:textColor="@color/black"
@@ -172,8 +244,8 @@
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
                         android:layout_marginTop="10dp"
+                        android:background="@color/white"
                         android:orientation="vertical"
                         android:padding="10dp">
 
@@ -188,7 +260,8 @@
                             android:hint="请填写备注内容"
                             android:minLines="1"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/font_normal" />
+                            android:textSize="@dimen/font_normal"
+                            android:visibility="gone" />
 
                         <com.szmz.widget.GridViewInScrollView
                             android:id="@+id/mygridview"
@@ -207,8 +280,8 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:visibility="gone"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <ImageView
                             android:layout_width="wrap_content"

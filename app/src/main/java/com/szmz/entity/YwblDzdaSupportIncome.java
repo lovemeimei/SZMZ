@@ -7,30 +7,46 @@ package com.szmz.entity;
 
 public class YwblDzdaSupportIncome implements IEntity {
     private String id;//id
-    private String name;//姓名
-    private String sex;//性别
-    private String idcard;//身份证号
-    private String population;//	家庭人口
-    private String totalincome;//月总收入
+    private String sname;//姓名
+    private String ssex;//性别
+    private String sidcard;//身份证号
     private String relationship;//与户主关系
-    private String supportnum;//被赡养人数
-    private String output;//赡养费支出（元）
-    private String remark;//备注
+    private String monthAimoney;//月负担赡养费用
+    private String yearAlimony;//年负担赡养费用
+    private String needsupportReasonDictId;//无赡扶抚养能力原因
+    private String remark;//赡养备注备注
 
-    public String getPopulation() {
-        return population;
+
+    public String getId() {
+        return id;
     }
 
-    public void setPopulation(String population) {
-        this.population = population;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getTotalincome() {
-        return totalincome;
+    public String getSname() {
+        return sname;
     }
 
-    public void setTotalincome(String totalincome) {
-        this.totalincome = totalincome;
+    public void setSname(String sname) {
+        this.sname = sname;
+    }
+
+    public String getSsex() {
+        return ssex;
+    }
+
+    public void setSsex(String ssex) {
+        this.ssex = ssex;
+    }
+
+    public String getSidcard() {
+        return sidcard;
+    }
+
+    public void setSidcard(String sidcard) {
+        this.sidcard = sidcard;
     }
 
     public String getRelationship() {
@@ -41,20 +57,28 @@ public class YwblDzdaSupportIncome implements IEntity {
         this.relationship = relationship;
     }
 
-    public String getSupportnum() {
-        return supportnum;
+    public String getMonthAimoney() {
+        return monthAimoney;
     }
 
-    public void setSupportnum(String supportnum) {
-        this.supportnum = supportnum;
+    public void setMonthAimoney(String monthAimoney) {
+        this.monthAimoney = monthAimoney;
     }
 
-    public String getOutput() {
-        return output;
+    public String getYearAlimony() {
+        return yearAlimony;
     }
 
-    public void setOutput(String output) {
-        this.output = output;
+    public void setYearAlimony(String yearAlimony) {
+        this.yearAlimony = yearAlimony;
+    }
+
+    public String getNeedsupportReasonDictId() {
+        return needsupportReasonDictId;
+    }
+
+    public void setNeedsupportReasonDictId(String needsupportReasonDictId) {
+        this.needsupportReasonDictId = needsupportReasonDictId;
     }
 
     public String getRemark() {
@@ -63,37 +87,5 @@ public class YwblDzdaSupportIncome implements IEntity {
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getIdcard() {
-        return idcard;
-    }
-
-    public void setIdcard(String idcard) {
-        this.idcard = idcard;
     }
 }

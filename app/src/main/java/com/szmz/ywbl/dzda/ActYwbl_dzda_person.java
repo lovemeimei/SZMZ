@@ -37,6 +37,7 @@ import org.xutils.DbManager;
 import org.xutils.ex.DbException;
 import org.xutils.x;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -54,8 +55,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
     TextView dsNameTv;
     @BindView(R.id.dsLayout)
     LinearLayout dsLayout;
-    private Map<String, YwblDzdaSalvation> map;
-    private int type = 0;
+    private int type = -1;
     private String regionId = "";//行政区划ID
     private YwblDzdaXzqh xzqh;
     private MaterialDialog dialog;
@@ -64,52 +64,107 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
     private DbManager db;
     private String keyWords = "";
 
+    private YwblDzdaSalvation checkSalvation;
+    private List<YwblDzdaSalvation> itemSeleted;
+    private boolean isMore = true;//是否多选
+    private boolean isChose = false;
+    private Map<String, YwblDzdaSalvation> maps;
+
+    private boolean isFromJZXX = false;//是否从救助对象信息模块跳转过来的
+
     @Override
     public void initUI() {
         super.initUI();
         setLeftVisible(true);
         setRightVisible(true);
-        setRightShow("保存");
-        tvTitleRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (map != null && map.size() > 0) {
-                    doSaveData(map);
-                }
+        isFromJZXX = getIntent().getBooleanExtra("isFromJZXX", false);
+        type = getIntent().getIntExtra("Type", -1);
+        isChose = getIntent().getBooleanExtra("isChose", false);
+        isMore = getIntent().getBooleanExtra("isMore", false);
+        if (isFromJZXX) {
+            setTitle("救助对象信息列表");
+            setRightVisible(false);
+        } else {
+            setTitle("电子档案");
+            if (!isChose) {
+                setRightShow("保存");
+                tvTitleRight.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (maps != null && maps.size() > 0) {
+                            doSaveData(maps);
+                        }
+                    }
+                });
+            } else {
+                setRightShow("确定");
+                tvTitleRight.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (isMore) {
+                            if (itemSeleted != null && itemSeleted.size() > 0) {
+                                Intent intent;
+                                switch (type) {
+                                    case 1:
+                                        intent = new Intent(ActYwbl_dzda_person.this, ActMzpy.class);
+                                        intent.putExtra("YwblDzdaSalvations", (Serializable) itemSeleted);
+                                        setResult(1111, intent);
+                                        finish();
+                                        break;
+                                    case 2:
+                                        intent = new Intent(ActYwbl_dzda_person.this, ActShgs.class);
+                                        intent.putExtra("YwblDzdaSalvations", (Serializable) itemSeleted);
+                                        setResult(1221, intent);
+                                        finish();
+                                        break;
+                                    case 4:
+                                        intent = new Intent(ActYwbl_dzda_person.this, ActSpgs.class);
+                                        intent.putExtra("YwblDzdaSalvations", (Serializable) itemSeleted);
+                                        setResult(1441, intent);
+                                        finish();
+                                        break;
+                                }
+
+                            } else {
+                                doToast("请选择申请人");
+                            }
+                        } else {
+                            if (checkSalvation != null) {
+                                Intent intent = new Intent();
+                                switch (type) {
+                                    case 0:
+                                        intent.setClass(ActYwbl_dzda_person.this, ActDchs.class);
+                                        intent.putExtra("YwblDzdaSalvation", checkSalvation);
+                                        setResult(1001, intent);
+                                        finish();
+                                        break;
+                                    case 3:
+                                        intent.setClass(ActYwbl_dzda_person.this, ActRhcc.class);
+                                        intent.putExtra("YwblDzdaSalvation", checkSalvation);
+                                        setResult(1331, intent);
+                                        finish();
+                                        break;
+                                }
+
+                            } else {
+                                doToast("请选择申请人");
+                            }
+                        }
+                    }
+                });
             }
-        });
-        type = getIntent().getIntExtra("Type", 0);
-        switch (type) {
-            case 0:
-                setTitle("电子档案");
-                break;
-            case 1:
-                setTitle("调查核实");
-                break;
-            case 2:
-                setTitle("民主评议");
-                break;
-            case 3:
-                setTitle("审核公示");
-                break;
-            case 4:
-                setTitle("入户抽查");
-                break;
-            case 5:
-                setTitle("审批公示");
-                break;
-            case 10:
-                setTitle("救助对象信息");
-                break;
         }
 
 
-        map = new HashMap<>();
+        maps = new HashMap<>();
 
         if (isOnline) {
             doGetXzqh();
             refresh.autoRefresh();
         } else {
+            if (isFromJZXX) {
+                return;
+            }
             db = x.getDb(App.getDaoConfig());
             try {
                 List<YwblDzdaSalvation> items = db.selector(YwblDzdaSalvation.class).findAll();
@@ -130,6 +185,25 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
             }
         }
 
+
+        if (isMore) {
+            itemSeleted = (List<YwblDzdaSalvation>) getIntent().getSerializableExtra(
+                    "YwblDzdaSalvations");
+            if (itemSeleted != null && itemSeleted.size() > 0) {
+                maps.clear();
+                for (YwblDzdaSalvation item : itemSeleted) {
+                    maps.put(item.getFamilyId(), item);
+                }
+            } else {
+                itemSeleted = new ArrayList<YwblDzdaSalvation>();
+            }
+        } else {
+            checkSalvation = (YwblDzdaSalvation) getIntent().getSerializableExtra("YwblDzdaSalvation");
+            if (checkSalvation != null) {
+                maps.clear();
+                maps.put(checkSalvation.getFamilyId(), checkSalvation);
+            }
+        }
     }
 
     @Override
@@ -144,28 +218,82 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         TextView timeTv = (TextView) view.findViewById(R.id.timeTv);
         TextView countyTv = (TextView) view.findViewById(R.id.countyTv);
         TextView typeTv = (TextView) view.findViewById(R.id.typeNameTv);
-        CheckBox cb = (CheckBox) view.findViewById(R.id.cb);
+
         nameTv.setText(item.getName());
         timeTv.setText("");
         countyTv.setText(item.getAddress());
         typeTv.setText(item.getSalvationType());
 
+        CheckBox cb = (CheckBox) view.findViewById(R.id.cb);
+        if (isFromJZXX) {
+            cb.setVisibility(View.GONE);
+        } else {
+            cb.setVisibility(View.VISIBLE);
+        }
+        cb.setTag(item);
+        cb.setVisibility(View.VISIBLE);
+        cb.setFocusable(true);
+        cb.setClickable(true);
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                YwblDzdaSalvation item = (YwblDzdaSalvation) buttonView.getTag();
+                if (isMore) {
+                    if (isChecked) {
+                        if (!maps.containsKey(item.getFamilyId())) {
+                            maps.put(item.getFamilyId(), item);
+                            itemSeleted.add(item);
+                        }
 
-                if (isChecked) {
-                    map.put(item.getId(), item);
+                    } else {
+                        if (maps.containsKey(item.getFamilyId())) {
+                            maps.remove(item.getFamilyId());
+                            removeById(item.getFamilyId());
+
+                        }
+
+                    }
                 } else {
-                    map.remove(item.getId());
+                    if (isChecked) {
+                        buttonView.setEnabled(false);
+                        maps.clear();
+                        maps.put(item.getFamilyId(), item);
+                        checkSalvation = item;
+                        adapter.notifyDataSetChanged();
+                    } else {
+                        buttonView.setEnabled(true);
+                    }
                 }
+
+
             }
         });
-
-        if (map != null && map.containsKey(item.getId())) {
+        if (maps != null && maps.containsKey(item.getFamilyId())) {
             cb.setChecked(true);
+            if (!isMore) {
+                cb.setEnabled(false);
+            }
+
         } else {
             cb.setChecked(false);
+            if (!isMore) {
+                cb.setEnabled(true);
+            }
+        }
+
+    }
+
+    protected void removeById(String id) {
+        if (id == null) {
+            return;
+        }
+        if (itemSeleted == null) {
+            return;
+        }
+        for (int i = itemSeleted.size() - 1; i >= 0; i--) {
+            if (id.equals(itemSeleted.get(i).getFamilyId())) {
+                itemSeleted.remove(i);
+            }
         }
     }
 
@@ -177,45 +305,10 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
     @Override
     protected void doListItemOnClick(YwblDzdaSalvation item) {
         super.doListItemOnClick(item);
-        Intent intent;
-        switch (type) {
-            case 0:
-                intent = new Intent(this, ActYwbl_dzda_main.class);
-                intent.putExtra("YwblPerson", item);
-                startActivity(intent);
-                break;
-            case 1:
-                intent = new Intent(this, ActDchs.class);
-                intent.putExtra("YwblPerson", item);
-                startActivity(intent);
-                break;
-            case 2:
-                intent = new Intent(this, ActMzpy.class);
-                intent.putExtra("YwblPerson", item);
-                startActivity(intent);
-                break;
-            case 3:
-                intent = new Intent(this, ActShgs.class);
-                intent.putExtra("YwblPerson", item);
-                startActivity(intent);
-                break;
-            case 4:
-                intent = new Intent(this, ActRhcc.class);
-                intent.putExtra("YwblPerson", item);
-                startActivity(intent);
-                break;
-            case 5:
-                intent = new Intent(this, ActSpgs.class);
-                intent.putExtra("YwblPerson", item);
-                startActivity(intent);
-                break;
-            case 10:
-                intent = new Intent(this, ActYwbl_dzda_main.class);
-                intent.putExtra("YwblPerson", item);
-                startActivity(intent);
-                break;
-        }
-
+        Intent intent = new Intent(this, ActYwbl_dzda_main.class);
+        intent.putExtra("YwblPerson", item);
+        intent.putExtra("isFromJZXX", isFromJZXX);
+        startActivity(intent);
     }
 
     @Override
@@ -226,7 +319,8 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
             CurrentPage = 1;
         }
         keyWords = searchEd.getText().toString().trim();
-        doGetData(regionId, keyWords, CurrentPage);
+//        doGetData("510421100001", keyWords, CurrentPage);
+        doGetData(xzqh != null ? xzqh.getId() : "", keyWords, CurrentPage);
     }
 
     private void doGetXzqh() {
@@ -250,8 +344,40 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
     }
 
     private void doGetData(String regionId, String keyWords, final int CurrentPage) {
-        JZ_YWBL_DZDA_SALVATION_RE request = new JZ_YWBL_DZDA_SALVATION_RE(regionId, keyWords, CurrentPage);
-        Call<JZ_YWBL_DZDA_Salvation> call = App.getApiProxyJZ().getJZ_SalvationList(request);
+        JZ_YWBL_DZDA_SALVATION_RE request;
+        switch (type) {
+            case 0:
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203028", regionId, keyWords, CurrentPage);
+                break;
+            case 1:
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203029", regionId, keyWords, CurrentPage);
+                break;
+            case 2:
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203030", regionId, keyWords, CurrentPage);
+                break;
+            case 3:
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203031", regionId, keyWords, CurrentPage);
+                break;
+            case 4:
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203032", regionId, keyWords, CurrentPage);
+                break;
+            case -1:
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203028", regionId, keyWords, CurrentPage);
+                break;
+            default:
+                request = new JZ_YWBL_DZDA_SALVATION_RE("", regionId, keyWords, CurrentPage);
+                break;
+
+
+        }
+
+        Call<JZ_YWBL_DZDA_Salvation> call;
+        if (isFromJZXX) {
+            call = App.getApiProxyJZ().getJZ_SalvationList(request);
+        } else {
+            call = App.getApiProxyJZ().getJZ_SalvationTempList(request);
+        }
+
         ApiUtil<JZ_YWBL_DZDA_Salvation> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<JZ_YWBL_DZDA_Salvation>() {
             @Override
             public void doSuccess(JZ_YWBL_DZDA_Salvation result) {
@@ -315,6 +441,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                     }
                     xzqh = item;
                     dsNameTv.setText(item.getRegionname());
+                    refresh.autoRefresh();
                 }
             }));
             node = addChildNode(node, list);
@@ -355,6 +482,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                         }
                         xzqh = item;
                         dsNameTv.setText(item.getRegionname());
+                        refresh.autoRefresh();
 
                     }
                 })), list));

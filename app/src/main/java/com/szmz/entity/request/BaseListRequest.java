@@ -10,5 +10,4 @@ public class BaseListRequest extends BaseRequest {
 
     public int PageSize = size;
     public int CurrentPage = 1;
-
 }

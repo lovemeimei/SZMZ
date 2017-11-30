@@ -40,8 +40,8 @@ public class ActYwbl_dzda_jtcyxx extends ActBaseList<YwblDzdaFamilyMember> {
         TextView nameTv = (TextView) view.findViewById(R.id.nameTv);
         TextView sfzhTv = (TextView) view.findViewById(R.id.sfzhTv);
         Button button = (Button) view.findViewById(R.id.button);
-        nameTv.setText(item.getName() + "," + item.getSex());
-        sfzhTv.setText(item.getIdcard());
+        nameTv.setText(item.getPname() + "," + item.getPsex());
+        sfzhTv.setText(item.getPidcard());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

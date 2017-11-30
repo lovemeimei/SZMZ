@@ -23,9 +23,15 @@ import com.szmz.entity.request.JZ_Search_worker_Req;
 import com.szmz.entity.request.JZ_TODO_FuntionTree;
 import com.szmz.entity.request.JZ_TODO_List;
 import com.szmz.entity.request.JZ_Tj1_Req;
+import com.szmz.entity.request.JZ_YWBL_ADDDATA_RE;
+import com.szmz.entity.request.JZ_YWBL_DCHS_RE;
 import com.szmz.entity.request.JZ_YWBL_DZDA_FAMILY_RE;
 import com.szmz.entity.request.JZ_YWBL_DZDA_SALVATION_RE;
 import com.szmz.entity.request.JZ_YWBL_DZDA_XZQH_RE;
+import com.szmz.entity.request.JZ_YWBL_MZPY_RE;
+import com.szmz.entity.request.JZ_YWBL_RHCC_RE;
+import com.szmz.entity.request.JZ_YWBL_SHGS_RE;
+import com.szmz.entity.request.JZ_YWBL_SPGS_RE;
 import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.Register_Req;
@@ -107,7 +113,8 @@ public interface ApiService {
     // http://222.222.49.34:8057/SalvationPlatform/phoneLoginController.do?getSystemIdentifyAll
     @POST("SalvationPlatform/phoneLoginController.do?getSystemIdentifyAll")
     Call<Comm_ipid_res> getIPSID(@Body Comm_ipid_req body);
-//    http://222.222.49.34:9095/SocietySalvation/api/appMessageController.do?appNotelist&LoginName=孔以丹&Phone=13233333333&IDCard=41022319730502258X&UserType=1&Md5Key=E393C8C925F5C0435D61A0ED232BE8B2
+
+    //    http://222.222.49.34:9095/SocietySalvation/api/appMessageController.do?appNotelist&LoginName=孔以丹&Phone=13233333333&IDCard=41022319730502258X&UserType=1&Md5Key=E393C8C925F5C0435D61A0ED232BE8B2
     //获取新消息
     @POST("SocietySalvation/api/appMessageController.do?appNotelist")
     Call<Comm_msg_Res> getMsg(@Body Comm_msg_req body);
@@ -174,13 +181,6 @@ public interface ApiService {
     @POST("SocietySalvation/api/appTodolistController.do?appGetRecheckInfos")
     Call<JZ_MSG_FC_Res> getJZ_MSG_FC_List(@Body JZ_Comm_list_Req req);
 
-    //获取行政区划
-    @POST("SocietySalvation/api/appDataqueryController.do?getRegion")
-    Call<JZ_YWBL_DZDA_XZQH> getJZ_XZQHList(@Body JZ_YWBL_DZDA_XZQH_RE req);
-
-    //获取救助人列表
-    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationList")
-    Call<JZ_YWBL_DZDA_Salvation> getJZ_SalvationList(@Body JZ_YWBL_DZDA_SALVATION_RE req);
 
     @POST("SocietySalvation/api/appDataqueryController.do?getFamilyInfo")
     Call<JZ_YWBL_DZDA_Family> getJZ_Family(@Body JZ_YWBL_DZDA_FAMILY_RE req);
@@ -210,14 +210,57 @@ public interface ApiService {
     @POST("SocietySalvation/api/appDataqueryController.do?getHistoryInfo")
     Call<JZ_Search_worker_Res> getJZ_SearchList_Detail(@Body JZ_Search_workerDetail_Req req);
 
-    //获取电子档案所有数据
+    //获取行政区划
+    @POST("SocietySalvation/api/appDataqueryController.do?getRegion")
+    Call<JZ_YWBL_DZDA_XZQH> getJZ_XZQHList(@Body JZ_YWBL_DZDA_XZQH_RE req);
+
+    //救助对象信息-获取救助人列表
+    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationList")
+    Call<JZ_YWBL_DZDA_Salvation> getJZ_SalvationList(@Body JZ_YWBL_DZDA_SALVATION_RE req);
+
+    //救助对象信息-获取电子档案所有数据
     @POST("SocietySalvation/api/appDataqueryController?getAllData")
     Call<JZ_YWBL_DZDA_Family> getJZ_GetAllData(@Body JZ_YWBL_DZDA_FAMILY_RE req);
+
+    //获取救助人列表
+    @POST("SocietySalvation/api/appTempDataqueryController.do?getSalvationListTemp")
+    Call<JZ_YWBL_DZDA_Salvation> getJZ_SalvationTempList(@Body JZ_YWBL_DZDA_SALVATION_RE req);
+
+    //获取电子档案所有数据
+    @POST("SocietySalvation/api/appTempDataqueryController.do?getAllTempData")
+    Call<JZ_YWBL_DZDA_Family> getJZ_GetAllDataTemp(@Body JZ_YWBL_DZDA_FAMILY_RE req);
+
+    //调查核实上报
+    @POST("SocietySalvation/api/appCommentController.do?appAddStreetCheck")
+    Call<CommResponse> getJZ_AddStreetCheck(@Body JZ_YWBL_DCHS_RE req);
+
+    //民主评议
+    @POST("SocietySalvation/api/appCommentController.do?appAddStreetComment")
+    Call<CommResponse> getJZ_AddStreetComment(@Body JZ_YWBL_MZPY_RE req);
+
+    //审核公示
+    @POST("SocietySalvation/api/appCommentController.do?appAddStreetPublic")
+    Call<CommResponse> getJZ_AddStreetPublic(@Body JZ_YWBL_SHGS_RE req);
+
+    //入户抽查
+    @POST("SocietySalvation/api/appCommentController.do?appAddCountySpot")
+    Call<CommResponse> getJZ_AddCountySpot(@Body JZ_YWBL_RHCC_RE req);
+
+    //审批公示
+    @POST("SocietySalvation/api/appCommentController.do?appAddCountyPublic")
+    Call<CommResponse> getJZ_AddCountyPublic(@Body JZ_YWBL_SPGS_RE req);
+
+    //图片上传接口
+    @POST("SocietySalvation/api/appCommentController.do?appAddData")
+    Call<CommResponse> getJZ_AddData(@Body JZ_YWBL_ADDDATA_RE req);
+
 
     //http://222.222.49.34:9095/SocietySalvation/api/appDataqueryController?getSalvationPernum
     @POST("SocietySalvation/api/appDataqueryController.do?getSalvationPernum")
     Call<JZ_tj1> getJZ_tj1(@Body JZ_Tj1_Req body);
 
+
+    /**************************医疗一站式*********************************/
     @POST("SocietySalvation/api/appDataqueryController.do?getSalvationPernumByDisId")
     Call<JZ_tj1> getJZ_tj3(@Body JZ_Tj1_Req body);
 
@@ -244,6 +287,7 @@ public interface ApiService {
 
     @POST("ActionControler/appSalvationInfo.ashx")
     Call<YZS_people_Res> getYZS_people_detail(@Body YZS_History_Detail_Req req);
+
     //
     @POST("ActionControler/AppRegionInfo.ashx")
     Call<YZS_qh_res> getYZS_xzqh(@Body YZS_qh_req req);
@@ -251,8 +295,10 @@ public interface ApiService {
     //统计分析
     @POST("ActionControler/AppRescueStaticByFamily.ashx")
     Call<YZS_TJ1_Res> getYZS_tj1(@Body YZS_TJ1_Req req);
+
     @POST("ActionControler/AppInHospitalRescueByMoneyAndNum.ashx")
     Call<YZS_tj2_Res> getYZS_tj2(@Body YZS_TJ1_Req req);
+
     @POST("ActionControler/AppRescueMoneyByTime.ashx")
     Call<YZS_TJ3_Res> getYZS_tj3(@Body YZS_TJ1_Req req);
 

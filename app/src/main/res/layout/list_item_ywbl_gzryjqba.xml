@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.szmz.widget.MyLayoutView
+            android:id="@+id/nameView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="亲属姓名" />
+
+        <com.szmz.widget.MyLayoutView
+            android:id="@+id/idcardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="亲属身份证号" />
+
+        <com.szmz.widget.MyLayoutView
+            android:id="@+id/gxView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="与工作人员关系" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

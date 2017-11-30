@@ -88,7 +88,7 @@ public class ActXXTZ_List_SQR extends ActBaseList<HD_XXTZ.ReaultBean> {
         } else {
             CurrentPage = 1;
         }
-        params = getParams("340223199412235063", CurrentPage);
+        params = getParams(App.getInstance().getLoginUser().getIdCode(), CurrentPage);
 
         final RequestBody requestBody = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
         Call<HD_XXTZ> call = null;

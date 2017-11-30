@@ -17,18 +17,18 @@ public class ActYwbl_dzda_syrsrxx extends ActBase {
 
     @BindView(R.id.nameView)
     MyLayoutView nameView;
-    @BindView(R.id.jtrkView)
-    MyLayoutView jtrkView;
+    @BindView(R.id.xbView)
+    MyLayoutView xbView;
     @BindView(R.id.sfzhView)
     MyLayoutView sfzhView;
-    @BindView(R.id.jtsrView)
-    MyLayoutView jtsrView;
     @BindView(R.id.yhzgxView)
     MyLayoutView yhzgxView;
-    @BindView(R.id.syrsView)
-    MyLayoutView syrsView;
-    @BindView(R.id.syfyView)
-    MyLayoutView syfyView;
+    @BindView(R.id.yfdsyfyView)
+    MyLayoutView yfdsyfyView;
+    @BindView(R.id.nfdsyfyView)
+    MyLayoutView nfdsyfyView;
+    @BindView(R.id.wsffynlyyView)
+    MyLayoutView wsffynlyyView;
     @BindView(R.id.bzTv)
     TextView bzTv;
     private YwblDzdaSupportIncome person;
@@ -45,13 +45,15 @@ public class ActYwbl_dzda_syrsrxx extends ActBase {
         setTitle("赡（扶、抚）养人收入信息");
         person = (YwblDzdaSupportIncome) getIntent().getSerializableExtra("YwblDzdaSupportIncome");
 
-        nameView.doSetContent(person.getName());
-        jtrkView.doSetContent(person.getPopulation());
-        sfzhView.doSetContent(person.getIdcard());
-        jtsrView.doSetContent(person.getTotalincome());
+        nameView.doSetContent(person.getSname());
+        xbView.doSetContent(person.getSsex());
+        sfzhView.doSetContent(person.getSidcard());
         yhzgxView.doSetContent(person.getRelationship());
-        syrsView.doSetContent(person.getSupportnum());
-        syfyView.doSetContent(person.getOutput());
+        yfdsyfyView.doSetContent(person.getMonthAimoney());
+        nfdsyfyView.doSetContent(person.getYearAlimony());
+        wsffynlyyView.doSetContent(person.getNeedsupportReasonDictId());
         bzTv.setText(person.getRemark());
     }
+
+    
 }

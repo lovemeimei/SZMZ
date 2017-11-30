@@ -112,7 +112,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/jtsrxxLayout"
+                android:id="@+id/jtfcxxLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -132,7 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="家庭收入信息"
+                    android:text="家庭房产信息"
                     android:textSize="@dimen/font_normal" />
 
             </LinearLayout>
@@ -196,6 +196,70 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="家庭资料信息"
+                    android:textSize="@dimen/font_normal" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/gzryjqbaLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/shape_bg_color"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:duplicateParentState="true"
+                    android:src="@drawable/ywbl_dzda_syrsrxx" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="工作人员近亲备案"
+                    android:textSize="@dimen/font_normal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/daspxxLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1.0"
+                android:background="@drawable/shape_bg_color"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="15dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:duplicateParentState="true"
+                    android:src="@drawable/ywbl_dzda_jtzlxx" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="档案审批信息"
                     android:textSize="@dimen/font_normal" />
 
             </LinearLayout>

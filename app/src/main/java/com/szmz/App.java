@@ -7,7 +7,6 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.szmz.entity.User;
-import com.szmz.entity.UserSQR;
 import com.szmz.net.ApiService;
 import com.szmz.ywbl.LocationService;
 
@@ -189,7 +188,7 @@ public class App extends Application {
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(logging)
-                .connectTimeout(600, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()

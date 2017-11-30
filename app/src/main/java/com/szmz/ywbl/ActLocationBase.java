@@ -13,8 +13,6 @@ import com.szmz.utils.FileUtil;
 import java.io.File;
 import java.util.UUID;
 
-import static com.szmz.utils.UIUtil.doToast;
-
 public abstract class ActLocationBase extends ActTakePhotoBase {
 
     protected LocationService locationService;
@@ -34,6 +32,7 @@ public abstract class ActLocationBase extends ActTakePhotoBase {
     protected void onResume() {
         super.onResume();
         locationService.start();
+        locationService.refreshLocation();
     }
 
     private BDLocationListener mListener = new BDLocationListener() {
@@ -97,5 +96,6 @@ public abstract class ActLocationBase extends ActTakePhotoBase {
         File out = new File(strImgPath);
         Uri uri = Uri.fromFile(out);
         getTakePhoto().onPickFromCapture(uri);
+
     }
 }

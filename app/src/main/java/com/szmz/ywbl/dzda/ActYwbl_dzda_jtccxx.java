@@ -24,13 +24,10 @@ public class ActYwbl_dzda_jtccxx extends ActBaseList<YwblDzdaFamilyProperty> {
         MyLayoutView cclxView = (MyLayoutView) view.findViewById(R.id.cclxView);
         MyLayoutView slView = (MyLayoutView) view.findViewById(R.id.slView);
         MyLayoutView jzView = (MyLayoutView) view.findViewById(R.id.jzView);
-        MyLayoutView fwxzView = (MyLayoutView) view.findViewById(R.id.fwxzView);
-        MyLayoutView fwmjView = (MyLayoutView) view.findViewById(R.id.fwmjView);
         cclxView.doSetContent(item.getPropertyType());
         slView.doSetContent(item.getCount());
         jzView.doSetContent(item.getValue());
-        fwxzView.doSetContent(item.getHousetype());
-        fwmjView.doSetContent(item.getHousesize());
+
 
     }
 

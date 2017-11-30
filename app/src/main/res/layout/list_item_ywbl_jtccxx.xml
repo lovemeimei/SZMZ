@@ -31,17 +31,6 @@
             android:layout_height="wrap_content"
             app:titleText="价值" />
 
-        <com.szmz.widget.MyLayoutView
-            android:id="@+id/fwxzView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleText="房屋性质" />
-
-        <com.szmz.widget.MyLayoutView
-            android:id="@+id/fwmjView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:titleText="房屋面积" />
 
     </LinearLayout>
 

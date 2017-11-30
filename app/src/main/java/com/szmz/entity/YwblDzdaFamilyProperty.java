@@ -8,9 +8,15 @@ package com.szmz.entity;
 public class YwblDzdaFamilyProperty implements IEntity {
     private String propertyType;//财产类型
     private String count;//数量
-    private String value;//价值
-    private String housetype;//	房屋性质
-    private String housesize;//房屋面积
+    private String value;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 
     public String getPropertyType() {
         return propertyType;
@@ -28,27 +34,4 @@ public class YwblDzdaFamilyProperty implements IEntity {
         this.count = count;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public String getHousetype() {
-        return housetype;
-    }
-
-    public void setHousetype(String housetype) {
-        this.housetype = housetype;
-    }
-
-    public String getHousesize() {
-        return housesize;
-    }
-
-    public void setHousesize(String housesize) {
-        this.housesize = housesize;
-    }
 }

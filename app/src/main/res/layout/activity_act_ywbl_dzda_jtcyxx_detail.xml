@@ -87,6 +87,84 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="婚姻状况" />
+
+            <LinearLayout
+                android:id="@+id/cysrxxLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray"
+                    android:padding="10dp"
+                    android:text="成员收入信息" />
+
+                <com.szmz.widget.ListViewInScrollView
+                    android:id="@+id/cysrxxListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cydyxxLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray"
+                    android:padding="10dp"
+                    android:text="成员待遇信息" />
+
+                <com.szmz.widget.ListViewInScrollView
+                    android:id="@+id/cydyxxListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cycjxxLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray"
+                    android:padding="10dp"
+                    android:text="成员残疾信息" />
+
+                <com.szmz.widget.ListViewInScrollView
+                    android:id="@+id/cycjxxListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cycbxxLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray"
+                    android:padding="10dp"
+                    android:text="成员参保信息" />
+
+                <com.szmz.widget.ListViewInScrollView
+                    android:id="@+id/cycbxxListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

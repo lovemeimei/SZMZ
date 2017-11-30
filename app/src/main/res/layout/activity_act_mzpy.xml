@@ -29,6 +29,42 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/sqrLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_person" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="申  请  人："
+                            android:textSize="@dimen/font_normal" />
+
+                        <TextView
+                            android:id="@+id/sqrTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:drawableRight="@drawable/arrow_right"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/timeLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -152,6 +188,7 @@
                             android:background="@color/backgrounColor" />
 
                         <EditText
+                            android:id="@+id/pyjlEd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
@@ -184,7 +221,8 @@
                             android:hint="请填写备注内容"
                             android:minLines="1"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/font_normal" />
+                            android:textSize="@dimen/font_normal"
+                            android:visibility="gone" />
 
                         <com.szmz.widget.GridViewInScrollView
                             android:id="@+id/mygridview"

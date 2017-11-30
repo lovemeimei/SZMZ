@@ -70,10 +70,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:src="@drawable/arrow_right" />
+                                android:src="@drawable/arrow_right"
+                                android:visibility="gone" />
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/refreshAddressLayout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
@@ -101,6 +103,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/sqrLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -119,10 +122,114 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="调  查  人："
+                            android:text="申  请  人："
                             android:textSize="@dimen/font_normal" />
 
                         <TextView
+                            android:id="@+id/sqrTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:drawableRight="@drawable/arrow_right"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/timeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_time" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="入户抽查日期："
+                            android:textSize="@dimen/font_normal" />
+
+                        <TextView
+                            android:id="@+id/time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:drawableRight="@drawable/arrow_right"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_normal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/dcrLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_person" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="入户抽查人员："
+                            android:textSize="@dimen/font_normal" />
+
+                        <EditText
+                            android:id="@+id/dcrTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fzrLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_person" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="入户抽查负责人："
+                            android:textSize="@dimen/font_normal" />
+
+                        <EditText
+                            android:id="@+id/fzrTv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -146,10 +253,9 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:text="调查核实情况："
+                            android:text="入户抽查结果："
                             android:textSize="@dimen/font_normal" />
 
                         <View
@@ -160,11 +266,12 @@
                             android:background="@color/backgrounColor" />
 
                         <EditText
+                            android:id="@+id/rhccjgEd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:gravity="top|left"
-                            android:hint="请输入调查核实情况"
+                            android:hint="请输入入户抽查结果"
                             android:lines="2"
                             android:padding="10dp"
                             android:textColor="@color/black"
@@ -172,43 +279,6 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/white"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:padding="10dp">
-
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:text="调查核实结论："
-                            android:textSize="@dimen/font_normal" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@color/backgrounColor" />
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:gravity="top|left"
-                            android:hint="请输入调查核实结论"
-                            android:lines="2"
-                            android:padding="10dp"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/font_normal" />
-
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -229,7 +299,8 @@
                             android:hint="请填写备注内容"
                             android:minLines="1"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/font_normal" />
+                            android:textSize="@dimen/font_normal"
+                            android:visibility="gone" />
 
                         <com.szmz.widget.GridViewInScrollView
                             android:id="@+id/mygridview"

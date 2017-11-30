@@ -56,6 +56,7 @@ public abstract class ActBase extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UIUtil.hideInputMethod(this);
         App.addActivity(this);
         TAG = this.getClass().getName();
         user = App.getInstance().getLoginUser();

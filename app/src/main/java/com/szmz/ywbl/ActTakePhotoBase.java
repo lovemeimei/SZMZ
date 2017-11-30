@@ -64,6 +64,8 @@ public abstract class ActTakePhotoBase extends ActBase implements TakePhoto.Take
         return takePhoto;
     }
 
+
+
     @Override
     public void takeSuccess(TResult result) {
         Log.i(TAG, "takeSuccess：" + result.getImage().getCompressPath());

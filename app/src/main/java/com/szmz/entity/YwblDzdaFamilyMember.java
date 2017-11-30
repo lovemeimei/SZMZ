@@ -1,5 +1,7 @@
 package com.szmz.entity;
 
+import java.util.List;
+
 /**
  * 家庭成员信息
  * Created by bz on 2017/10/23.
@@ -8,40 +10,75 @@ package com.szmz.entity;
 public class YwblDzdaFamilyMember implements IEntity {
 
     private String id;//id
-    private String idcard;//身份证号
-    private String name;//姓名
-    private String sex;//性别
-    private String birthday;//	出生日期
-    private String relationship;//	与户主关系
-    private String issafe;//是否是保障对象
+    private String pidcard;//身份证号
+    private String pname;//姓名
+    private String psex;//性别
+    private String pbirthday;//	出生日期
+    private String prelationship;//	与户主关系
+    private String pissafe;//是否是保障对象
     private String personSalvationType;//	人员分类救助类型
-    private String income;//月收入
-    private String nation;//民族
-    private String ismarry;//婚姻状况
+    private String pincome;//月收入
+    private String pnation;//民族
+    private String pismarry;//婚姻状况
+    private List<YwblDzdaMemberDeformityInfo> PerDeformityInfo;//成员残疾信息
+    private List<YwblDzdaMemberIncomeInfo> PerIncomeInfo;//成员收入信息
+    private List<YwblDzdaMemberInsureInfo> PerInsureInfo;//成员参保信息
+    private List<YwblDzdaMemberSalaryInfo> PerSalaryInfo;//成员待遇信息
 
-
-    public String getBirthday() {
-        return birthday;
+    public String getId() {
+        return id;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getRelationship() {
-        return relationship;
+    public String getPidcard() {
+        return pidcard;
     }
 
-    public void setRelationship(String relationship) {
-        this.relationship = relationship;
+    public void setPidcard(String pidcard) {
+        this.pidcard = pidcard;
     }
 
-    public String getIssafe() {
-        return issafe;
+    public String getPname() {
+        return pname;
     }
 
-    public void setIssafe(String issafe) {
-        this.issafe = issafe;
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
+    public String getPsex() {
+        return psex;
+    }
+
+    public void setPsex(String psex) {
+        this.psex = psex;
+    }
+
+    public String getPbirthday() {
+        return pbirthday;
+    }
+
+    public void setPbirthday(String pbirthday) {
+        this.pbirthday = pbirthday;
+    }
+
+    public String getPrelationship() {
+        return prelationship;
+    }
+
+    public void setPrelationship(String prelationship) {
+        this.prelationship = prelationship;
+    }
+
+    public String getPissafe() {
+        return pissafe;
+    }
+
+    public void setPissafe(String pissafe) {
+        this.pissafe = pissafe;
     }
 
     public String getPersonSalvationType() {
@@ -52,59 +89,59 @@ public class YwblDzdaFamilyMember implements IEntity {
         this.personSalvationType = personSalvationType;
     }
 
-    public String getIncome() {
-        return income;
+    public String getPincome() {
+        return pincome;
     }
 
-    public void setIncome(String income) {
-        this.income = income;
+    public void setPincome(String pincome) {
+        this.pincome = pincome;
     }
 
-    public String getNation() {
-        return nation;
+    public String getPnation() {
+        return pnation;
     }
 
-    public void setNation(String nation) {
-        this.nation = nation;
+    public void setPnation(String pnation) {
+        this.pnation = pnation;
     }
 
-    public String getIsmarry() {
-        return ismarry;
+    public String getPismarry() {
+        return pismarry;
     }
 
-    public void setIsmarry(String ismarry) {
-        this.ismarry = ismarry;
+    public void setPismarry(String pismarry) {
+        this.pismarry = pismarry;
     }
 
-    public String getId() {
-        return id;
+    public List<YwblDzdaMemberDeformityInfo> getPerDeformityInfo() {
+        return PerDeformityInfo;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPerDeformityInfo(List<YwblDzdaMemberDeformityInfo> perDeformityInfo) {
+        PerDeformityInfo = perDeformityInfo;
     }
 
-    public String getName() {
-        return name;
+    public List<YwblDzdaMemberIncomeInfo> getPerIncomeInfo() {
+        return PerIncomeInfo;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPerIncomeInfo(List<YwblDzdaMemberIncomeInfo> perIncomeInfo) {
+        PerIncomeInfo = perIncomeInfo;
     }
 
-    public String getSex() {
-        return sex;
+    public List<YwblDzdaMemberInsureInfo> getPerInsureInfo() {
+        return PerInsureInfo;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setPerInsureInfo(List<YwblDzdaMemberInsureInfo> perInsureInfo) {
+        PerInsureInfo = perInsureInfo;
     }
 
-    public String getIdcard() {
-        return idcard;
+    public List<YwblDzdaMemberSalaryInfo> getPerSalaryInfo() {
+        return PerSalaryInfo;
     }
 
-    public void setIdcard(String idcard) {
-        this.idcard = idcard;
+    public void setPerSalaryInfo(List<YwblDzdaMemberSalaryInfo> perSalaryInfo) {
+        PerSalaryInfo = perSalaryInfo;
     }
 }

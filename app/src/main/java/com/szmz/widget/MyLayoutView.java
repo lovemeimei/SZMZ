@@ -42,6 +42,9 @@ public class MyLayoutView extends LinearLayout {
     }
 
     public void doSetContent(String str) {
+        if (str == null) {
+            str = "";
+        }
         contentTv.setText(str);
     }
 

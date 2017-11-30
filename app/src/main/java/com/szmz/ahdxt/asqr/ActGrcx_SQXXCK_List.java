@@ -119,7 +119,7 @@ public class ActGrcx_SQXXCK_List extends ActBaseList<HdxtGrcxInfo> {
     }
 
     private void doGetData() {
-        String params = getParams("340223199412235063", CurrentPage);
+        String params = getParams(App.getInstance().getLoginUser().getIdCode(), CurrentPage);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/x-www-form-urlencoded;charset=UTF-8"), params.getBytes());
         Call<HD_SQR_GRCX_JDCK_RES> call = App.getApiProxy().getApplyInfoList(requestBody);
         ApiUtil<HD_SQR_GRCX_JDCK_RES> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<HD_SQR_GRCX_JDCK_RES>() {

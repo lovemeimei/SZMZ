@@ -13,6 +13,6 @@ public class JZ_YWBL_DZDA_FAMILY_RE extends BaseListRequest {
 
     public JZ_YWBL_DZDA_FAMILY_RE(String id) {
         this.id = id;
-        setMd5Key(Md5Util.getMd5(id));
+        setMd5Key(Md5Util.getMd5(id + CurrentPage + PageSize));
     }
 }

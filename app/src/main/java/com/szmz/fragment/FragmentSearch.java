@@ -36,7 +36,7 @@ public class FragmentSearch extends BaseFragment {
                 break;
             case R.id.ll_search_dx:
                 Intent intent = new Intent(getActivity(), ActYwbl_dzda_person.class);
-                intent.putExtra("Type", 10);
+                intent.putExtra("isFromJZXX",true);
                 startActivity(intent);
 
                 break;

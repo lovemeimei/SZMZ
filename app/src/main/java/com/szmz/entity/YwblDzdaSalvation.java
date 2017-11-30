@@ -8,8 +8,8 @@ import org.xutils.db.annotation.Table;
  */
 @Table(name = "YwblDzdaSalvation")
 public class YwblDzdaSalvation implements IEntity {
-    @Column(name = "id", isId = true)
-    private String id;//ID
+    @Column(name = "familyId", isId = true)
+    private String familyId;//ID
     @Column(name = "jsonStr")
     private String jsonStr;
     @Column(name = "disName")
@@ -22,6 +22,8 @@ public class YwblDzdaSalvation implements IEntity {
     private String salvationType;//救助类型
     @Column(name = "famSalvationType")
     private String famSalvationType;//一档
+    @Column(name = "spId")
+    private String spId;//审批ID
 
     public YwblDzdaSalvation() {
 
@@ -51,12 +53,20 @@ public class YwblDzdaSalvation implements IEntity {
         this.famSalvationType = famSalvationType;
     }
 
-    public String getId() {
-        return id;
+    public String getFamilyId() {
+        return familyId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFamilyId(String familyId) {
+        this.familyId = familyId;
+    }
+
+    public String getSpId() {
+        return spId;
+    }
+
+    public void setSpId(String spId) {
+        this.spId = spId;
     }
 
     public String getName() {

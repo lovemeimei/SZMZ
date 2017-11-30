@@ -5,6 +5,11 @@ import android.view.View;
 
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.ywbl.ActDchs;
+import com.szmz.ywbl.ActMzpy;
+import com.szmz.ywbl.ActRhcc;
+import com.szmz.ywbl.ActShgs;
+import com.szmz.ywbl.ActSpgs;
 import com.szmz.ywbl.dzda.ActYwbl_dzda_person;
 
 import butterknife.OnClick;
@@ -22,31 +27,31 @@ public class FragmentJob extends BaseFragment {
             R.id.dchsLayout, R.id.mzpyLayout, R.id.shgsLayout, R.id.rhccLayout, R.id.dzdaLayout, R.id.spgshiLayout
     })
     public void doClick(View v) {
-        Intent intent = new Intent(getActivity(), ActYwbl_dzda_person.class);
+        Intent intent;
 
         switch (v.getId()) {
             case R.id.dchsLayout:
-                intent.putExtra("Type", 1);
+                intent = new Intent(getActivity(), ActDchs.class);
                 startActivity(intent);
                 break;
             case R.id.mzpyLayout:
-                intent.putExtra("Type", 2);
+                intent = new Intent(getActivity(), ActMzpy.class);
                 startActivity(intent);
                 break;
             case R.id.shgsLayout:
-                intent.putExtra("Type", 3);
+                intent = new Intent(getActivity(), ActShgs.class);
                 startActivity(intent);
                 break;
             case R.id.rhccLayout:
-                intent.putExtra("Type", 4);
+                intent = new Intent(getActivity(), ActRhcc.class);
                 startActivity(intent);
                 break;
             case R.id.dzdaLayout:
-                intent.putExtra("Type", 0);
+                intent = new Intent(getActivity(), ActYwbl_dzda_person.class);
                 startActivity(intent);
                 break;
             case R.id.spgshiLayout:
-                intent.putExtra("Type", 5);
+                intent = new Intent(getActivity(), ActSpgs.class);
                 startActivity(intent);
                 break;
         }
