@@ -80,7 +80,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         isFromJZXX = getIntent().getBooleanExtra("isFromJZXX", false);
         type = getIntent().getIntExtra("Type", -1);
         isChose = getIntent().getBooleanExtra("isChose", false);
-        isMore = getIntent().getBooleanExtra("isMore", false);
+        isMore = getIntent().getBooleanExtra("isMore", true);
         if (isFromJZXX) {
             setTitle("救助对象信息列表");
             setRightVisible(false);
@@ -441,7 +441,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                     }
                     xzqh = item;
                     dsNameTv.setText(item.getRegionname());
-                    refresh.autoRefresh();
+                    doMore(false);
                 }
             }));
             node = addChildNode(node, list);
@@ -482,7 +482,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                         }
                         xzqh = item;
                         dsNameTv.setText(item.getRegionname());
-                        refresh.autoRefresh();
+                        doMore(false);
 
                     }
                 })), list));
