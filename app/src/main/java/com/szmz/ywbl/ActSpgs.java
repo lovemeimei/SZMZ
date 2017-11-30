@@ -77,6 +77,14 @@ public class ActSpgs extends ActLocationBase {
     EditText gsjgEd;
     @BindView(R.id.gsyynrEd)
     EditText gsyynrEd;
+    @BindView(R.id.spjdrqTv)
+    TextView spjdrqTv;
+    @BindView(R.id.spryEd)
+    EditText spryEd;
+    @BindView(R.id.spfzrEd)
+    EditText spfzrEd;
+    @BindView(R.id.spjdrqLayout)
+    LinearLayout spjdrqLayout;
     private ImageGridAdapter adapter;
     private List<MyNewPhoto> paths = new ArrayList<MyNewPhoto>();
     private List<MyNewPhoto> path = new ArrayList<MyNewPhoto>();
@@ -196,6 +204,12 @@ public class ActSpgs extends ActLocationBase {
                 pvTime.show(timeEndTv);
             }
         });
+        spjdrqLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pvTime.show(spjdrqTv);
+            }
+        });
         sqrLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -309,7 +323,21 @@ public class ActSpgs extends ActLocationBase {
             doToast("请填写公示记录人!");
             return;
         }
-
+        String spjdrq = spjdrqTv.getText().toString().trim();
+        if (TextUtils.isEmpty(timeEndStr)) {
+            doToast("审批决定日期不能为空!");
+            return;
+        }
+        String spry = spryEd.getText().toString().trim();
+        if (TextUtils.isEmpty(timeEndStr)) {
+            doToast("请输入审批人员!");
+            return;
+        }
+        String spfzr = spfzrEd.getText().toString().trim();
+        if (TextUtils.isEmpty(timeEndStr)) {
+            doToast("请输入审批负责人!");
+            return;
+        }
         String gsjg = gsjgEd.getText().toString().trim();
         if (TextUtils.isEmpty(gsjg)) {
             doToast("请输入公示结果!");
@@ -326,7 +354,7 @@ public class ActSpgs extends ActLocationBase {
             return;
         }
 
-        JZ_YWBL_SPGS_RE request = new JZ_YWBL_SPGS_RE(getIDS(listSalvation), timeStartStr, timeEndStr, gsjg, jlr, gsyynr, location.getAddrStr());
+        JZ_YWBL_SPGS_RE request = new JZ_YWBL_SPGS_RE(getIDS(listSalvation), timeStartStr, timeEndStr, gsjg, jlr, gsyynr, location.getAddrStr(), spjdrq, spry, spfzr);
         Call<CommResponse> call = App.getApiProxyJZ().getJZ_AddCountyPublic(request);
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<CommResponse>() {
             @Override

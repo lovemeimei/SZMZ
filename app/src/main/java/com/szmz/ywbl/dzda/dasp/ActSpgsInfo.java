@@ -45,6 +45,14 @@ public class ActSpgsInfo extends ActBase {
     PhotoView img;
     @BindView(R.id.parent)
     FrameLayout parent;
+    @BindView(R.id.spjdrqTv)
+    TextView spjdrqTv;
+    @BindView(R.id.spjdrqLayout)
+    LinearLayout spjdrqLayout;
+    @BindView(R.id.spryEd)
+    EditText spryEd;
+    @BindView(R.id.spfzrEd)
+    EditText spfzrEd;
     private YwblDzdaFamilyApproveInfo info;
 
     @Override
@@ -59,6 +67,9 @@ public class ActSpgsInfo extends ActBase {
         gsjlrEd.setText(info.getCountyPublicUser());
         gsjgEd.setText(info.getCountyPublicResult());
         gsyynrEd.setText(info.getCountyPublicObjectionInfo());
+        spjdrqTv.setText(info.getCountyApproveTime());
+        spryEd.setText(info.getCountyApproveUser());
+        spfzrEd.setText(info.getCountyApproveChargeUser());
 
 
     }

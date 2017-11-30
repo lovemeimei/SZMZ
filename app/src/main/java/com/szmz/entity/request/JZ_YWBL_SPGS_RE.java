@@ -15,10 +15,14 @@ public class JZ_YWBL_SPGS_RE extends BaseListRequest {
     private String countyPublicUser;//区县入户抽查负责人
     private String countyPublicObjectionInfo;
     private String coordinate;//地址
+    private String countyApproveTime;
+    private String countyApproveUser;
+    private String countyApproveChargeUser;
 
 
     public JZ_YWBL_SPGS_RE(String familyIds, String countyPublicStartTime, String countyPublicEndTime,
-                           String countyPublicResult, String countyPublicUser, String countyPublicObjectionInfo, String coordinate) {
+                           String countyPublicResult, String countyPublicUser,
+                           String countyPublicObjectionInfo, String coordinate, String countyApproveTime, String countyApproveUser, String countyApproveChargeUser) {
         this.familyIds = familyIds;
         this.countyPublicStartTime = countyPublicStartTime;
         this.countyPublicEndTime = countyPublicEndTime;
@@ -26,6 +30,10 @@ public class JZ_YWBL_SPGS_RE extends BaseListRequest {
         this.countyPublicUser = countyPublicUser;
         this.countyPublicObjectionInfo = countyPublicObjectionInfo;
         this.coordinate = coordinate;
-        setMd5Key(Md5Util.getMd5(familyIds + countyPublicStartTime + countyPublicEndTime + countyPublicResult + countyPublicUser + countyPublicObjectionInfo + coordinate));
+        this.countyApproveTime = countyApproveTime;
+        this.countyApproveUser = countyApproveUser;
+        this.countyApproveChargeUser = countyApproveChargeUser;
+        setMd5Key(Md5Util.getMd5(familyIds + countyPublicStartTime + countyPublicEndTime + countyPublicResult + countyPublicUser +
+                countyPublicObjectionInfo + coordinate + countyApproveTime + countyApproveUser + countyApproveChargeUser));
     }
 }

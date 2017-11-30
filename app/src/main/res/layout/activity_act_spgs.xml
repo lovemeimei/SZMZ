@@ -162,6 +162,104 @@
 
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/spjdrqLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_time" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="审批决定日期："
+                            android:textSize="@dimen/font_normal" />
+
+                        <TextView
+                            android:id="@+id/spjdrqTv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_normal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_person" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="审批人员："
+                            android:textSize="@dimen/font_normal" />
+
+                        <EditText
+                            android:id="@+id/spryEd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/icon_person" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="审批负责人："
+                            android:textSize="@dimen/font_normal" />
+
+                        <EditText
+                            android:id="@+id/spfzrEd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_normal" />
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
