@@ -157,7 +157,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
 
 
         maps = new HashMap<>();
-
+        db = x.getDb(App.getDaoConfig());
         if (isOnline) {
             doGetXzqh();
             refresh.autoRefresh();
@@ -165,7 +165,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
             if (isFromJZXX) {
                 return;
             }
-            db = x.getDb(App.getDaoConfig());
+
             try {
                 List<YwblDzdaSalvation> items = db.selector(YwblDzdaSalvation.class).findAll();
                 if (items != null && items.size() > 0) {
@@ -499,7 +499,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
             final Map.Entry<String, YwblDzdaSalvation> next = iterator.next();
 
             JZ_YWBL_DZDA_FAMILY_RE request = new JZ_YWBL_DZDA_FAMILY_RE(next.getKey());
-            Call<JZ_YWBL_DZDA_Family> call = App.getApiProxyJZ().getJZ_GetAllData(request);
+            Call<JZ_YWBL_DZDA_Family> call = App.getApiProxyJZ().getJZ_GetAllDataTemp(request);
             ApiUtil<JZ_YWBL_DZDA_Family> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<JZ_YWBL_DZDA_Family>() {
                 @Override
                 public void doSuccess(JZ_YWBL_DZDA_Family result) {
