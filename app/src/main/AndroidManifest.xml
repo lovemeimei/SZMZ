@@ -3,6 +3,8 @@
     package="com.szmz">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -323,9 +325,6 @@
         <activity android:name=".more.ActModifyPhone2" />
         <activity android:name=".more.ActMsgSet" />
         <activity android:name=".more.ActBindPhone_Worker" />
-        <activity android:name=".ywbl.dzda.ActYwbl_dzda_jtfcxx" />
-        <activity android:name=".ywbl.dzda.ActYwbl_dzda_gzryjqba" />
-        <activity android:name=".ywbl.dzda.ActYwbl_dzda_dasp_main" />
         <activity android:name=".more.ActCodeLogin" />
         <activity android:name=".tjfx.ActJZ_1" />
         <activity android:name=".tjfx.ActJZ_3" />
@@ -370,7 +369,42 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ayljzxt.ActUserMsg" />
+        <activity android:name=".ayljzxt.ActUserMsg"></activity>
+
+        <activity
+            android:name=".ayljzxt.ActYZS_JDList"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ayljzxt.ActYZS_JDDetail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ayljzxt.ActYZSSQR_HistroyList"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ayljzxt.ActYZSSQR_Histroy_Detail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ayljzxt.ActYZSSQR_SYJZEList"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".ayljzxt.ActYZSSQR_SYJZE_Detail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ywbl.dzda.dasp.ActDchsInfo" />
         <activity android:name=".ywbl.dzda.dasp.ActMzpyInfo" />
         <activity android:name=".ywbl.dzda.dasp.ActShgsInfo" />

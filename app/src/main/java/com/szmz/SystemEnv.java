@@ -189,6 +189,16 @@ public final class SystemEnv {
     private static final String ISCRASH = "ISCRASH";
     private static final String USER_NAME = "USER_NAME";
     private static final String USER_PW = "USER_PW";
+    private static final String LOGIN_TYPE = "LOGIN_TYPE";
+
+    public static int getLoginType(){
+        return pref.getInt(LOGIN_TYPE,1);
+    }
+    public static void saveLoginType(int type){
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt(LOGIN_TYPE,type);
+        editor.commit();
+    }
 
     public static String getUserName() {
 

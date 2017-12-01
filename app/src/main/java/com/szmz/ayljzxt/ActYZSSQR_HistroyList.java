@@ -6,17 +6,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.materiallistview.MaterialRefreshLayout;
-import com.szmz.ActBase;
 import com.szmz.ActListBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.entity.request.YZSSQR_history_req;
 import com.szmz.entity.request.YZS_History_List_Req;
-import com.szmz.entity.response.JZ_Search_worker_Res;
 import com.szmz.entity.response.YZS_history_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
-import com.szmz.search.ActHistoryList;
-import com.szmz.search.ActSearchDetail;
 import com.szmz.utils.BaseListAdapter;
 
 import java.util.ArrayList;
@@ -31,12 +28,12 @@ import retrofit2.Call;
  * 创建时间：2017/11/24 0024上午 9:38
  */
 
-public class ActYZS_HistroyList extends ActListBase {
+public class ActYZSSQR_HistroyList extends ActListBase {
 
     @BindView(R.id.lv)
     ListView lv;
 
-    BaseListAdapter<YZS_history_Res.ResultBean, ActYZS_HistroyList.MViewHolder> adapter;
+    BaseListAdapter<YZS_history_Res.ResultBean, ActYZSSQR_HistroyList.MViewHolder> adapter;
 
     private List<YZS_history_Res.ResultBean> items = new ArrayList<>();
 
@@ -68,14 +65,13 @@ public class ActYZS_HistroyList extends ActListBase {
             @Override
             protected void refreshView(int postion, final YZS_history_Res.ResultBean item, MViewHolder holer) {
 
-                holer.tvName.setText(item.getNAME() + "\t\t\t" + item.getIDCARD());
-
+                holer.tvName.setText(item.getNAME() + "\t\t\t" + item.getCardID());
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 //                        trans(ActYZS_Histroy_Detail.class);
-                        Intent intent = new Intent(context, ActYZS_Histroy_Detail.class);
-                        intent.putExtra("id", item.getId());
+                        Intent intent = new Intent(context, ActYZSSQR_Histroy_Detail.class);
+                        intent.putExtra("id", item.getID());
                         startActivity(intent);
                     }
                 });
@@ -83,8 +79,7 @@ public class ActYZS_HistroyList extends ActListBase {
 
             @Override
             protected MViewHolder getHolder(View converView) {
-
-                ActYZS_HistroyList.MViewHolder holder = new ActYZS_HistroyList.MViewHolder();
+                ActYZSSQR_HistroyList.MViewHolder holder = new ActYZSSQR_HistroyList.MViewHolder();
                 holder.tvName = (TextView) converView.findViewById(R.id.tv_name);
 
                 return holder;
@@ -100,9 +95,9 @@ public class ActYZS_HistroyList extends ActListBase {
 
     private void getList() {
 
-        YZS_History_List_Req req = new YZS_History_List_Req(getUser().getAccountYZS(), currentPage);
+        YZSSQR_history_req req = new YZSSQR_history_req(getUser().getIdCode(),currentPage);
 
-        Call<YZS_history_Res> call = App.getApiProxyYZS().getYZS_History_list(req);
+        Call<YZS_history_Res> call = App.getApiProxyYZS().getYZS_History_list_SQR(req);
 
         ApiUtil<YZS_history_Res> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<YZS_history_Res>() {
 

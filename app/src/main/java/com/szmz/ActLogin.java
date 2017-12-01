@@ -68,8 +68,15 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
         rbWoker.setOnCheckedChangeListener(this);
 
         String name = SystemEnv.getUserName();
+
         String pw = SystemEnv.getUserPw();
 
+        type = SystemEnv.getLoginType();
+        if (type==1){
+            rbWoker.setChecked(true);
+        }else {
+           rbUser.setChecked(true);
+        }
         if (!TextUtils.isEmpty(name)){
             etUser.setText(name);
             etPW.setText(pw);
@@ -145,11 +152,11 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                     user.setDepartName(bean.getPersonal().getDepartName());
                     user.setOfficePhone(bean.getPersonal().getOfficePhone());
                     user.setEmail(bean.getPersonal().getEmaile());
-                    user.setAccountHD("510401");
                     App.getInstance().login(user);
                     //保存用户名密码
                     SystemEnv.saveUserName(etUser.getText().toString().trim());
                     SystemEnv.saveUserPw(etPW.getText().toString().trim());
+                    SystemEnv.saveLoginType(type);
 
                     trans(ActMain.class);
                 }
@@ -186,6 +193,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                         //保存用户名密码
                         SystemEnv.saveUserName(etUser.getText().toString().trim());
                         SystemEnv.saveUserPw(etPW.getText().toString().trim());
+                        SystemEnv.saveLoginType(type);
 
                         trans(ActMain.class);
                     }

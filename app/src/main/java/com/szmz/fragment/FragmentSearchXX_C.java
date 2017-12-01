@@ -30,7 +30,7 @@ public class FragmentSearchXX_C extends BaseFragment {
 
     }
 
-    @OnClick({R.id.ll_search_sj, R.id.ll_search_dx,R.id.ll_search_zjffjl})
+    @OnClick({R.id.ll_search_sj, R.id.ll_search_dx})
     public void doClick(View v) {
 
         switch (v.getId()) {
@@ -44,12 +44,7 @@ public class FragmentSearchXX_C extends BaseFragment {
                 intent.putExtra("type","1");
                 startActivity(intent);
                 break;
-            case R.id.ll_search_zjffjl:
-                //资金放放记录
-                Intent intent2 = new Intent(getContext(),ActListSYJZE.class);
-                intent2.putExtra("type","2");
-                startActivity(intent2);
-                break;
+
         }
     }
 }

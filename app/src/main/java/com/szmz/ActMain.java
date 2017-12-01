@@ -46,7 +46,7 @@ public class ActMain extends ActBase {
         Log.e("abcccccccccccc", Build.BRAND);
 //        type = App.getInstance().getLoginUser().getType();
 
-        type = getIntent().getIntExtra("type",1);
+        type = getUser().getType();
 
         loopRotarySwitchView
                 .setR(500)//设置R的大小

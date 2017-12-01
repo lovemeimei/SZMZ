@@ -16,9 +16,29 @@ public class YZS_history_Res extends BaseResponse<YZS_history_Res.ResultBean>{
         private String NAME;
         private String SEX_NAME;
         private String CARDID;//列表
+
+        public String getCardID() {
+            return CardID;
+        }
+
+        public void setCardID(String cardID) {
+            CardID = cardID;
+        }
+
+        private String CardID;//列表sqr
         private String IDCARD;//详细
         private String RESCUE_CATEGORY_NAME;
         private String id;
+
+        public String getID() {
+            return ID;
+        }
+
+        public void setID(String ID) {
+            this.ID = ID;
+        }
+
+        private String ID;
         private String ADDRESS;
         private String TREATMENT_NAME;
         private String DESEASE_NAME;

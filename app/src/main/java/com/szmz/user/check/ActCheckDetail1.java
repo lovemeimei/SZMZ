@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.widget.StepProgressView;
 
 import org.w3c.dom.Text;
 
@@ -14,14 +15,8 @@ import butterknife.BindView;
 
 public class ActCheckDetail1 extends ActBase {
 
-    @BindView(R.id.iv_step)
-    ImageView ivStep;
-    @BindView(R.id.tv_jd1)
-    TextView tvStep1;
-    @BindView(R.id.tv_jd2)
-    TextView tvStep2;
-    @BindView(R.id.tv_jd3)
-    TextView tvStep3;
+    @BindView(R.id.stepView)
+    StepProgressView stepView;
 
     @BindView(R.id.tv_check_xm)
     TextView tvXM;

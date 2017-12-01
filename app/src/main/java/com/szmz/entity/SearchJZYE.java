@@ -10,4 +10,5 @@ public class SearchJZYE implements IEntity{
     private static final long serialVersionUID = -1781488240331073365L;
 
 
+
 }
