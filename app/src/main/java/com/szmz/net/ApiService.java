@@ -17,6 +17,9 @@ import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
 import com.szmz.entity.request.JZ_DC_req;
 import com.szmz.entity.request.JZ_Login_Code_Req;
+import com.szmz.entity.request.JZ_SQR_JD_DETAIL_RE;
+import com.szmz.entity.request.JZ_SQR_JD_RE;
+import com.szmz.entity.request.JZ_SQR_JD_XF_DETAIL_RE;
 import com.szmz.entity.request.JZ_Scan_QZ_Req;
 import com.szmz.entity.request.JZ_Search_workerDetail_Req;
 import com.szmz.entity.request.JZ_Search_worker_Req;
@@ -68,6 +71,9 @@ import com.szmz.entity.response.JZ_DC_Res;
 import com.szmz.entity.response.JZ_GetUserInfo;
 import com.szmz.entity.response.JZ_MSG_FC_Res;
 import com.szmz.entity.response.JZ_MSG_SP_Res;
+import com.szmz.entity.response.JZ_SQR_JD_DETAIL_RES;
+import com.szmz.entity.response.JZ_SQR_JD_RES;
+import com.szmz.entity.response.JZ_SQR_JD_XF_DETAIL_RES;
 import com.szmz.entity.response.JZ_Search_worker_Res;
 import com.szmz.entity.response.JZ_Todo_MenuTree;
 import com.szmz.entity.response.JZ_Todolist;
@@ -260,6 +266,19 @@ public interface ApiService {
     Call<CommResponse> getJZ_AddData(@Body JZ_YWBL_ADDDATA_RE req);
 
 
+    //申请人获取申请进度列表
+    @POST("SocietySalvation/api/appTempDataqueryController.do?getApplicationList")
+    Call<JZ_SQR_JD_RES> get_JZ_SQR_JD_LIST(@Body JZ_SQR_JD_RE req);
+
+    //申请人获取申请进度详细
+    @POST("SocietySalvation/api/appTempDataqueryController.do?getApplicationInfo")
+    Call<JZ_SQR_JD_DETAIL_RES> get_JZ_SQR_JD_DETAIL(@Body JZ_SQR_JD_DETAIL_RE req);
+
+    //申请人获取信访详细
+    @POST("SocietySalvation/api/appDataqueryController.do?getVisitInfo")
+    Call<JZ_SQR_JD_XF_DETAIL_RES> get_JZ_SQR_JD_XF_DETAIL(@Body JZ_SQR_JD_XF_DETAIL_RE req);
+
+
     //http://222.222.49.34:9095/SocietySalvation/api/appDataqueryController?getSalvationPernum
     @POST("SocietySalvation/api/appDataqueryController.do?getSalvationPernum")
     Call<JZ_tj1> getJZ_tj1(@Body JZ_Tj1_Req body);
@@ -319,6 +338,7 @@ public interface ApiService {
 
     @POST("ActionControler/AppUserSalvationHistoryList.ashx")
     Call<YZS_history_Res> getYZS_History_list_SQR(@Body YZSSQR_history_req req);
+
     @POST("ActionControler/appSalvationHistoryInfo.ashx")
     Call<YZS_history_Res> getYZS_History_detail_SQR(@Body YZS_History_Detail_Req req);
 

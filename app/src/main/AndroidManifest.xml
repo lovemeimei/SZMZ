@@ -369,8 +369,7 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ayljzxt.ActUserMsg"></activity>
-
+        <activity android:name=".ayljzxt.ActUserMsg" />
         <activity
             android:name=".ayljzxt.ActYZS_JDList"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
@@ -381,25 +380,21 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-
         <activity
             android:name=".ayljzxt.ActYZSSQR_HistroyList"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-
         <activity
             android:name=".ayljzxt.ActYZSSQR_Histroy_Detail"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-
         <activity
             android:name=".ayljzxt.ActYZSSQR_SYJZEList"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-
         <activity
             android:name=".ayljzxt.ActYZSSQR_SYJZE_Detail"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
@@ -409,7 +404,8 @@
         <activity android:name=".ywbl.dzda.dasp.ActMzpyInfo" />
         <activity android:name=".ywbl.dzda.dasp.ActShgsInfo" />
         <activity android:name=".ywbl.dzda.dasp.ActSpgsInfo" />
-        <activity android:name=".ywbl.dzda.dasp.ActRhccInfo"></activity>
+        <activity android:name=".ywbl.dzda.dasp.ActRhccInfo" />
+        <activity android:name=".ActJZ_SQR_JD_Detail"></activity>
     </application>
 
 </manifest>
