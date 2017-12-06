@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             android:src="@drawable/login_logo" />
 
         <LinearLayout
@@ -107,17 +107,46 @@
                 android:text="社会人员"/>
         </RadioGroup>
 
-        <Button
-            android:id="@+id/btn_submit"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/spacing_large"
             android:layout_marginRight="@dimen/spacing_large"
-            android:layout_marginTop="@dimen/spacing_large"
-            android:background="@drawable/btn_login"
-            android:text="登 录"
-            android:textColor="@color/white"
-            android:textSize="@dimen/font_normal" />
+            android:layout_marginTop="@dimen/spacing_large">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_left"
+                    android:text="在 线 登 录"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="@dimen/spacing_tiny"
+                    android:textSize="@dimen/font_normal" />
+                <Button
+                    android:id="@+id/btn_submit_outline"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.0"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_right"
+                    android:text="离 线 登 录"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_normal" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="O R"
+                android:textSize="@dimen/font_normal"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/blue"/>
+        </FrameLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

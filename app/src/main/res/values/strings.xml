@@ -8,7 +8,7 @@
     <string name="title_search">数据查询</string>
     <string name="title_job">业务办理</string>
     <string name="title_tj">统计分析</string>
-    <string name="title_user">我的</string>
+    <string name="title_user">我的</string>.
 
     <integer-array name="material_colors">
         <item>@color/material_blue</item>

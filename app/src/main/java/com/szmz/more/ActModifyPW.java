@@ -98,10 +98,10 @@ public class ActModifyPW extends ActBase {
             UIUtil.doToast("新密码不能为空");
             return false;
         }
-//        if (TextUtil.isVailPw(etNew.getText().toString().trim())){
-//            UIUtil.doToast("密码为6-20位数字、字母或字符，至少包括数字和字符");
-//            return false;
-//        }
+        if (!TextUtil.isVailPw(etNew.getText().toString().trim())){
+            UIUtil.doToast("密码为6-20位数字、字母或字符，至少包括数字和字符");
+            return false;
+        }
         if (TextUtils.isEmpty(etNew2.getText().toString().trim())){
             UIUtil.doToast("确认密码不能为空");
             return false;

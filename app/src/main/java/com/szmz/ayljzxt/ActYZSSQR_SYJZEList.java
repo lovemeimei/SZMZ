@@ -71,6 +71,7 @@ public class ActYZSSQR_SYJZEList extends ActListBase {
                 holder.tvMoney = (TextView)v.findViewById(R.id.tv_money);
                 holder.tvName = (TextView)v.findViewById(R.id.tv_name);
                 holder.tvSub = (TextView)v.findViewById(R.id.tv_submit);
+//                holder.tvSub.setVisibility(View.GONE);
                 return holder;
             }
         };

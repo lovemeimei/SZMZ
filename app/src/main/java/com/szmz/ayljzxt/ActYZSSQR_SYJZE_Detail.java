@@ -47,7 +47,7 @@ public class ActYZSSQR_SYJZE_Detail extends ActBase {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_act_yzs__jzye__detail;
+        return R.layout.activity_act_yzs__jzye__detail2;
     }
 
 

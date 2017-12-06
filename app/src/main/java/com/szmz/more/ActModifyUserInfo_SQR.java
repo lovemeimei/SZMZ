@@ -10,6 +10,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.entity.User;
 import com.szmz.entity.request.Comm_modifyUserInfoSQR_Req;
 import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.response.CommResponse;
@@ -123,9 +124,9 @@ public class ActModifyUserInfo_SQR extends ActBase{
     private void modifyUserInfo(){
 
         String name = etName.getText().toString().trim();
-        String address = etAddress.getText().toString().trim();
-        String idCard = etCard.getText().toString().trim();
-        String phone = etPhone.getText().toString().trim();
+        final String address = etAddress.getText().toString().trim();
+        final String idCard = etCard.getText().toString().trim();
+        final String phone = etPhone.getText().toString().trim();
         if (TextUtils.isEmpty(name)){
             doToast("请输入姓名");
             return;
@@ -161,6 +162,13 @@ public class ActModifyUserInfo_SQR extends ActBase{
             public void doSuccess(CommResponse result) {
                 super.doSuccess(result);
                 doToast("修改成功！");
+                User user = App.getInstance().getLoginUser();
+                user.setRealName(etName.getText().toString());
+                user.setSex(sex);
+                user.setIdCode(idCard);
+                user.setAdderss(address);
+                user.setPhone(phone);
+                App.getInstance().login(user);
                 myAnimFinish();
             }
         },true);

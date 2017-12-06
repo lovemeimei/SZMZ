@@ -58,5 +58,5 @@
         android:background="@drawable/slt_orange_btn"
         android:text="下一步"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_normal" />
+        android:textSize="@dimen/font_big" />
 </LinearLayout>

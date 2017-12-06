@@ -10,6 +10,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_bg_color"
         android:drawablePadding="@dimen/spacing_small"
+        android:ellipsize="end"
+        android:lines="1"
         android:drawableRight="@drawable/arrow_right"
         android:padding="@dimen/spacing_normal"
         android:text="消息，请尽快处理您的消息"

@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/spacing_small"
                 android:layout_toRightOf="@+id/iv_dbywtz"
-                android:text="代办业务通知"
+                android:text="待办业务通知"
                 android:textColor="@color/black_light"
                 android:textSize="@dimen/font_big" />
 
@@ -43,7 +43,7 @@
                 android:layout_alignLeft="@+id/tv_dbywtz"
                 android:layout_below="@+id/tv_dbywtz"
                 android:gravity="bottom"
-                android:text="点击查看代办业务通知"
+                android:text="点击查看待办业务通知"
                 android:textSize="@dimen/font_small" />
 
             <ImageView

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgrounColor"
+    android:orientation="vertical">
+
+    <include layout="@layout/comm_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:orientation="vertical">
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="姓名"
+                app:contentText=""/>
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="性别"
+                app:contentText=""/>
+
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="身份证号"
+                app:contentText=""/>
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="地址"
+                app:contentText=""/>
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="救助类型"
+                app:contentText=""/>
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="主要贫困原因"
+                app:contentText=""/>
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="申请日期"
+                app:contentText=""/>
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="家庭人口"
+                app:contentText=""/>
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="救助金额"
+                app:contentText=""/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

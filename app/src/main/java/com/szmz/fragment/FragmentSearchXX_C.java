@@ -7,6 +7,8 @@ import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.search.ActHistoryList;
 import com.szmz.search.ActListSYJZE;
+import com.szmz.search.ActSQRHistoryList;
+import com.szmz.search.ActSQR_zjff_List;
 import com.szmz.ywbl.dzda.ActYwbl_dzda_person;
 
 import butterknife.OnClick;
@@ -35,14 +37,11 @@ public class FragmentSearchXX_C extends BaseFragment {
 
         switch (v.getId()) {
             case R.id.ll_search_sj:
-                trans(ActHistoryList.class);
+                trans(ActSQRHistoryList.class);
                 break;
             case R.id.ll_search_dx:
                 //救助余额
-
-                Intent intent = new Intent(getContext(),ActListSYJZE.class);
-                intent.putExtra("type","1");
-                startActivity(intent);
+                trans(ActSQR_zjff_List.class);
                 break;
 
         }

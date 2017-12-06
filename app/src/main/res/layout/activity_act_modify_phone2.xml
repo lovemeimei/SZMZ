@@ -27,7 +27,7 @@
         android:textSize="@dimen/font_big"
         android:gravity="center"
         android:layout_marginTop="@dimen/spacing_normal"
-        android:text="18631166696"/>
+        android:text=""/>
 
 
     <com.szmz.widget.VerificationCodeInput
