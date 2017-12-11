@@ -71,7 +71,7 @@ public class ActYZSSQR_HistroyList extends ActListBase {
                     public void onClick(View v) {
 //                        trans(ActYZS_Histroy_Detail.class);
                         Intent intent = new Intent(context, ActYZSSQR_Histroy_Detail.class);
-                        intent.putExtra("id", item.getID());
+                        intent.putExtra("id", item.getId());
                         startActivity(intent);
                     }
                 });

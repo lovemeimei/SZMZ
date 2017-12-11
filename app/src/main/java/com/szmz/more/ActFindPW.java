@@ -81,7 +81,7 @@ public class ActFindPW extends ActBase {
             doToast("请输入正确的手机号");
             return;
         }
-        CountDownUtil util = new CountDownUtil(context,btnGetCode,30*1000,1000);
+        CountDownUtil util = new CountDownUtil(context,btnGetCode,60*1000,1000);
         util.start();
 
         Comm_getCode_Req req = new Comm_getCode_Req(phone);

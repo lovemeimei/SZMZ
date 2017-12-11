@@ -122,12 +122,9 @@ public class ActMainJZ extends ActBase {
                     tvTitleRight.setVisibility(View.VISIBLE);
 //                    tvTitleRight.setTextSize(getResources().getDimension(R.dimen.font_larger));
 
-                    getList();
                 }else {
                     tvTitleRight.setVisibility(View.GONE
                     );
-
-
                 }
             }
 
@@ -145,38 +142,7 @@ public class ActMainJZ extends ActBase {
         });
     }
 
-    private void getList(){
 
-        User user = App.getInstance().getLoginUser();
-        String idCard =user.getIdCode();
-        if (idCard==null)
-            idCard="";
-        final Comm_msg_req req = new Comm_msg_req(user.getUserName(),user.getPhone(),"","2");
-
-        Call<Comm_msg_Res> call = App.getApiProxyJZ().getMsg(req);
-
-        ApiUtil<Comm_msg_Res> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<Comm_msg_Res>(){
-            @Override
-            public void doSuccess(Comm_msg_Res result) {
-                super.doSuccess(result);
-                 List<CommMsgSave> items = new ArrayList<>();
-                items =result.Result;
-                if (items!=null && items.size()>0){
-                  DbManager dbManager = x.getDb(App.getDaoConfig());
-                  for (CommMsgSave item:items){
-                      try {
-                          dbManager.save(item);
-                      } catch (DbException e) {
-                          e.printStackTrace();
-                      }
-                  }
-                }
-            }
-        },false);
-
-        apiUtil.excute();
-
-    }
 
     private View getTabView(int index) {
         View view = LayoutInflater.from(this).inflate(R.layout.comm_tab_item, null);

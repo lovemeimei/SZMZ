@@ -48,7 +48,13 @@ public class CountDownUtil extends CountDownTimer{
         tv.setBackgroundColor(ContextCompat.getColor(context,R.color.gray2));
 
         SpannableString spannableString = new SpannableString(tv.getText().toString());
-        spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context,R.color.blue)), 5, 7, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        if (tv.getText().toString().length()==8){
+            spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context,R.color.blue)), 5, 7, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        }else {
+            spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context,R.color.blue)), 5, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        }
         tv.setText(spannableString);
 
     }

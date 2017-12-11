@@ -55,9 +55,10 @@ public class ActBindPhone_Worker extends ActBase {
                 }
                 break;
             case R.id.btn_getCode:
-
-                CountDownUtil util = new CountDownUtil(context, btnGetCode, 60 * 1000, 1000);
-                util.start();
+                if (doCheck()){
+                    CountDownUtil util = new CountDownUtil(context, btnGetCode, 60 * 1000, 1000);
+                    util.start();
+                }
                 break;
             case R.id.tv_nobind:
                 myAnimFinish();

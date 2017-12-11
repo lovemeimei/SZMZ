@@ -47,8 +47,8 @@ public class ActMainYLJZ2 extends ActBase {
     FragmentTabHost tabhost;
     private List<Fragment> mFragmentList;
     private String mTextArray[] = {"tab1", "tab2", "tab3", "tab4"};
-    private Class[] mClass = {FragmentHomeYL_C.class, FragmentSearchXXYL_C.class, FragmentSearchYL_C.class,  FragmentUse_C.class};
-    private Fragment mFragment[] = {new FragmentHomeYL_C(), new FragmentSearchXXYL_C(), new FragmentSearchYL_C(), new FragmentUse_C()};
+    private Class[] mClass = {FragmentHomeYL_C2.class, FragmentSearchXXYL_C.class, FragmentSearchYL_C.class,  FragmentUse_C.class};
+    private Fragment mFragment[] = {new FragmentHomeYL_C2(), new FragmentSearchXXYL_C(), new FragmentSearchYL_C(), new FragmentUse_C()};
     int[] mDrawable = {R.drawable.slt_main_home_jz, R.drawable.slt_nav_xxcx, R.drawable.slt_main_search_jz, R.drawable.slt_main_user_jz};
     private String[] mTitles = {"首页", "信息查询", "进度查询",  "我的"};
 

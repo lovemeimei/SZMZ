@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="入院日期"
-                app:contentText="3"/>
+                app:contentText=""/>
 
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_9"
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="出院日期"
-                app:contentText="3"/>
+                app:contentText=""/>
 
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_10"
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="总费用"
-                app:contentText="3"/>
+                app:contentText=""/>
 
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_11"
@@ -108,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:titleText="保内金额"
-                app:contentText="3"/>
+                app:contentText=""/>
 
         </LinearLayout>
     </ScrollView>

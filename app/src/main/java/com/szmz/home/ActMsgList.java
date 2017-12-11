@@ -86,7 +86,7 @@ public class ActMsgList extends ActListBase {
 
 
         initMenuTrer();
-//        getTodoList();
+        getTodoList();
     }
 
     @Override

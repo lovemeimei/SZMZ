@@ -191,6 +191,11 @@ public final class SystemEnv {
     private static final String USER_PW = "USER_PW";
     private static final String LOGIN_TYPE = "LOGIN_TYPE";
 
+    private static final String SET_NEW_MSG = "SET_NEW_MSG";
+    private static final String SET_SOUND = "SET_SOUND";
+    private static final String SET_SHAKE = "SET_SHAKE";
+    private static final String SET_MDR = "SET_MDR";
+
     public static int getLoginType(){
         return pref.getInt(LOGIN_TYPE,1);
     }

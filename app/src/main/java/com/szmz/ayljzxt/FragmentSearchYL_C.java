@@ -1,5 +1,6 @@
 package com.szmz.ayljzxt;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -90,7 +91,10 @@ public class FragmentSearchYL_C extends BaseFragment {
                 holer.tvBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        trans(ActYZS_JDDetail.class);
+
+                        Intent intent = new Intent(getContext(),ActYZS_JDDetail.class);
+                        intent.putExtra("id",item.getId());
+                        startActivity(intent);
                     }
                 });
             }
@@ -105,6 +109,7 @@ public class FragmentSearchYL_C extends BaseFragment {
         };
         lv.setAdapter(adapter);
 
+        refresh.autoRefresh();
     }
     protected void doLoadData() {
         refresh.autoRefresh();

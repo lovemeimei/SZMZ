@@ -77,6 +77,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         super.initUI();
         setLeftVisible(true);
         setRightVisible(true);
+        setTitle("数据查询");
         isFromJZXX = getIntent().getBooleanExtra("isFromJZXX", false);
         type = getIntent().getIntExtra("Type", -1);
         isChose = getIntent().getBooleanExtra("isChose", false);

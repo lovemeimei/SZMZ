@@ -17,6 +17,35 @@ public class YZSSQR_jd_Res extends BaseResponse<YZSSQR_jd_Res.ResultBean>{
         private String FLOW_RESULT;
         private String FLOW_RESULT_NAME;
         private String id;
+
+        private String CardID;
+        private String currentNode;
+        private String allNode;
+
+        public String getCardID() {
+            return CardID;
+        }
+
+        public void setCardID(String cardID) {
+            CardID = cardID;
+        }
+
+        public String getCurrentNode() {
+            return currentNode;
+        }
+
+        public void setCurrentNode(String currentNode) {
+            this.currentNode = currentNode;
+        }
+
+        public String getAllNode() {
+            return allNode;
+        }
+
+        public void setAllNode(String allNode) {
+            this.allNode = allNode;
+        }
+
         public String getNAME() {
             return NAME;
         }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgrounColor"
+    android:orientation="vertical">
+
+    <include layout="@layout/comm_title" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_stepview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_normal">
+
+            <com.szmz.widget.StepProgressView
+                android:id="@+id/stepView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:auto_adapte="true"
+                app:step_counts="4"
+                app:circle_radius="5dp" />
+        </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:orientation="vertical">
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="姓名"
+                app:contentText=""/>
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="身份证号"
+                app:contentText=""/>
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="救助类型"
+                app:contentText=""/>
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="审批结果"
+                app:contentText=""/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

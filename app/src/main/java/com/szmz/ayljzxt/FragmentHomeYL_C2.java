@@ -1,33 +1,29 @@
 package com.szmz.ayljzxt;
 
 import android.content.Intent;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.materiallistview.MaterialRefreshLayout;
 import com.materiallistview.MaterialRefreshListener;
-import com.szmz.ActMsgDetail;
 import com.szmz.App;
-import com.szmz.entity.request.YZS_todoList_Req;
-import com.szmz.entity.response.YZS_todoList_Res;
-import com.szmz.home.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.entity.request.YZSSQR_history_req;
+import com.szmz.entity.request.YZS_SQR_jdlist_req;
+import com.szmz.entity.request.YZS_todoList_Req;
+import com.szmz.entity.response.YZSSQR_HomeList_Res;
+import com.szmz.entity.response.YZSSQR_HomeList_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
-import com.szmz.utils.MyBaseListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import retrofit2.Call;
 
 /**
@@ -36,7 +32,7 @@ import retrofit2.Call;
  * 创建时间：2017/9/5 0005上午 11:34
  */
 
-public class FragmentHomeYL extends BaseFragment {
+public class FragmentHomeYL_C2 extends BaseFragment {
 
     @BindView(R.id.refresh)
     public MaterialRefreshLayout refresh;
@@ -44,12 +40,12 @@ public class FragmentHomeYL extends BaseFragment {
     @BindView(R.id.lv)
     ListView lv;
 
-    private List<YZS_todoList_Res.ResultBean> items = new ArrayList<>();
+    private List<YZSSQR_HomeList_Res.ResultBean> items = new ArrayList<>();
 
     protected LinearLayout noDataLayout;
     protected TextView textView;
 
-    private BaseListAdapter<YZS_todoList_Res.ResultBean,MViewHolder> adapter;
+    private BaseListAdapter<YZSSQR_HomeList_Res.ResultBean,MViewHolder> adapter;
 
     class MViewHolder {
 
@@ -68,14 +64,14 @@ public class FragmentHomeYL extends BaseFragment {
 
     private void getList(){
 
-        YZS_todoList_Req req = new YZS_todoList_Req(App.getInstance().getLoginUser().getAccountYZS(),currentPage);
+        YZS_SQR_jdlist_req req = new YZS_SQR_jdlist_req(App.getInstance().getLoginUser().getIdCode(),currentPage);
 
-        Call<YZS_todoList_Res> call = App.getApiProxyYZS().getYZS_TodoList(req);
+        Call<YZSSQR_HomeList_Res> call = App.getApiProxyYZS().getYZS_homelist_SQR(req);
 
-        ApiUtil<YZS_todoList_Res> apiUtil = new ApiUtil<>(getContext(),call,new SimpleApiListener<YZS_todoList_Res>(){
+        ApiUtil<YZSSQR_HomeList_Res> apiUtil = new ApiUtil<>(getContext(),call,new SimpleApiListener<YZSSQR_HomeList_Res>(){
 
             @Override
-            public void doSuccess(YZS_todoList_Res result) {
+            public void doSuccess(YZSSQR_HomeList_Res result) {
 
                 items = result.Result;
                 if (items!=null && items.size()>0){
@@ -141,11 +137,11 @@ public class FragmentHomeYL extends BaseFragment {
         });
 
 
-        adapter = new BaseListAdapter<YZS_todoList_Res.ResultBean, MViewHolder>(getContext(),R.layout.comm_list_item) {
+        adapter = new BaseListAdapter<YZSSQR_HomeList_Res.ResultBean, MViewHolder>(getContext(),R.layout.comm_list_item) {
             @Override
-            protected void refreshView(int postion, final YZS_todoList_Res.ResultBean item, MViewHolder holer) {
+            protected void refreshView(int postion, final YZSSQR_HomeList_Res.ResultBean item, MViewHolder holer) {
 
-                holer.tvName.setText(item.getTitle());
+                holer.tvName.setText(item.getNOTE_TITLE());
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

@@ -1,9 +1,16 @@
 package com.szmz.home;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.baoyz.swipemenulistview.SwipeMenu;
+import com.baoyz.swipemenulistview.SwipeMenuCreator;
+import com.baoyz.swipemenulistview.SwipeMenuItem;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.materiallistview.MaterialRefreshLayout;
 import com.szmz.ActListBase;
 import com.szmz.ActMsgDetail;
@@ -18,6 +25,8 @@ import com.szmz.entity.response.JZ_Todo_MenuTree;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
+import com.szmz.utils.TextUtil;
+import com.szmz.utils.UIUtil;
 
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;
@@ -33,17 +42,16 @@ public class ActMsgListNormal extends ActListBase {
 
     private String title;
     @BindView(R.id.lv)
-    ListView lv;
-    BaseListAdapter<CommMsgSave, ActMsgListNormal.MViewHolder> adapterSP;
-    BaseListAdapter<CommMsgSave, ActMsgListNormal.MViewHolder> adapterFC;
+    SwipeMenuListView lv;
+    BaseListAdapter<CommMsgSave, ActMsgListNormal.MViewHolder> adapter;
 
     List<CommMsgSave> items = new ArrayList<>();
-    int type = 0;
-
+    String type = "";
+    DbManager dbManager;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.comm_list;
+        return R.layout.comm_menulist;
     }
 
 
@@ -51,21 +59,76 @@ public class ActMsgListNormal extends ActListBase {
     protected void initUI() {
         super.initUI();
         title = getIntent().getStringExtra("title");
-
+        initAdapter();
+        dbManager = x.getDb(App.getDaoConfig());
         if (title.equals("信访提醒")) {
-            type = 1;
-            initSP();
+
         } else if (title.equals("复查事项")) {
-            type = 2;
-            initFC();
+
+        }else if (title.equals("审批进度")){
+            type="10204030";
+        }else if (title.equals("资金发放")){
+            type="10204040";
+        }else if (title.equals("复查提醒")){
+            type="10204050";
+        }else if (title.equals("信访通知")){
+            type="10204060";
+        }else if (title.equals("系统通知")){
+            type="10204070";
+        }
+        if (TextUtils.isEmpty(title)){
+
         }
         setTitle(title);
         setLeftVisible(true);
 
     }
 
-    private void initSP() {
-        adapterSP = new BaseListAdapter<CommMsgSave, MViewHolder>(this, R.layout.comm_list_item) {
+    private void initAdapter() {
+
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+
+                // create "delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(
+                        getApplicationContext());
+                // set item background
+                deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
+                        0x3F, 0x25)));
+                // set item width
+                deleteItem.setWidth(UIUtil.dip2px(context,90));
+                // set a icon
+//                deleteItem.setIcon(R.drawable.ic_delete);
+                deleteItem.setTitle("删除");
+                // add to menu
+                menu.addMenuItem(deleteItem);
+            }
+        };
+
+        lv.setMenuCreator(creator);
+
+        lv.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                switch (index) {
+                    case 0:
+
+                        try {
+                            dbManager.delete(items.get(position));
+                            items.remove(position);
+                            adapter.notifyDataSetChanged();
+                        } catch (DbException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                }
+                // false : close the menu; true : not close the menu
+                return false;
+            }
+        });
+        adapter = new BaseListAdapter<CommMsgSave, MViewHolder>(this, R.layout.comm_list_item) {
             @Override
             protected void refreshView(int postion, CommMsgSave item, ActMsgListNormal.MViewHolder holer) {
 
@@ -88,35 +151,10 @@ public class ActMsgListNormal extends ActListBase {
                 return holder;
             }
         };
-        lv.setAdapter(adapterSP);
+        lv.setAdapter(adapter);
     }
 
-    private void initFC() {
-        adapterFC = new BaseListAdapter<CommMsgSave, MViewHolder>(this, R.layout.comm_list_item) {
-            @Override
-            protected void refreshView(int postion, CommMsgSave item, ActMsgListNormal.MViewHolder holer) {
 
-
-                holer.tvName.setText(item.getTitle());
-                holer.tvName.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        trans(ActMsgDetail.class, title, "");
-                    }
-                });
-            }
-
-            @Override
-            protected ActMsgListNormal.MViewHolder getHolder(View converView) {
-
-                ActMsgListNormal.MViewHolder holder = new ActMsgListNormal.MViewHolder();
-                holder.tvName = (TextView) converView.findViewById(R.id.tv_name);
-
-                return holder;
-            }
-        };
-        lv.setAdapter(adapterFC);
-    }
 
 
     @Override
@@ -141,8 +179,7 @@ public class ActMsgListNormal extends ActListBase {
 
 
     private void getInfo() {
-        DbManager dbManager = x.getDb(App.getDaoConfig());
-        if (type == 1) {
+
             try {
 //                List<User> users = db.selector(User.class)
 //                        .where("name","like","%kevin%")
@@ -156,12 +193,8 @@ public class ActMsgListNormal extends ActListBase {
             } catch (DbException e) {
                 e.printStackTrace();
             }
-        } else {
 
         }
-    }
-
-
 
 
 }

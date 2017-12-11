@@ -124,14 +124,15 @@ public class FragmentSearch_C extends BaseFragment {
                 doMore(true);
             }
         });
-        getJZtype();
-        jslbTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (pvOptions != null)
-                    pvOptions.show();
-            }
-        });
+//        getJZtype();
+//        jslbTv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (pvOptions != null)
+//                    pvOptions.show();
+//            }
+//        });
+        doLoadData();
     }
 
 

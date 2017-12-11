@@ -5,6 +5,7 @@ import android.view.View;
 import com.szmz.home.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.home.ActMsgListNormal;
 
 import butterknife.OnClick;
 
@@ -38,25 +39,25 @@ public class FragmentHome_C extends BaseFragment {
         switch (view.getId()) {
             case R.id.ll_SPJD:
                 //审批进度
-                trans(ActMsgList.class, "审批进度", "");
+                trans(ActMsgListNormal.class, "审批进度", "");
                 break;
             case R.id.ll_zjff:
                 //资金发放
-                trans(ActMsgList.class, "资金发放", "");
+                trans(ActMsgListNormal.class, "资金发放", "");
                 break;
             case R.id.ll_fctz:
                 //复查通知
-                trans(ActMsgList.class, "复查提醒", "");
+                trans(ActMsgListNormal.class, "复查提醒", "");
 
                 break;
             case R.id.ll_hdjg:
                 //核对结果
-                trans(ActMsgList.class, "信访通知", "");
+                trans(ActMsgListNormal.class, "信访通知", "");
 
                 break;
 
             case R.id.ll_yhzc:
-                trans(ActMsgList.class, "系统通知", "");
+                trans(ActMsgListNormal.class, "系统通知", "");
 
                 //优惠政策
                 break;

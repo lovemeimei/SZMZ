@@ -25,6 +25,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class App extends Application {
 
+    private static GetMsgTask msgTask =null;
+
     private static App singleton = null;
     public static LocationService locationService;
 
@@ -63,6 +65,13 @@ public class App extends Application {
 
     private static User loginUser = null;
 
+    public static GetMsgTask getGetMsgTask() {
+
+        if (msgTask == null)
+            msgTask = new GetMsgTask();
+        return msgTask;
+
+    }
 
     public final void login(User loginUser) {
         App.loginUser = loginUser;
@@ -229,12 +238,30 @@ public class App extends Application {
                     activity.finish();
             }
 
+            getGetMsgTask().cancle();
         } catch (Exception e) {
 
         } finally {
 
             android.os.Process.killProcess(android.os.Process.myPid());
             System.exit(0);
+
+        }
+
+    }
+    /**
+     * 系统退出时调用
+     */
+    public static void exit2() {
+
+        try {
+
+            for (Activity activity : activityList) {
+                if (activity != null)
+                    activity.finish();
+            }
+            getGetMsgTask().cancle();
+        } catch (Exception e) {
 
         }
 

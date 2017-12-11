@@ -39,10 +39,10 @@ public class VerificationCodeInput extends ViewGroup {
 
     private static final String TAG = "VerificationCodeInput";
     private int box = 4;
-    private int boxWidth = 140;
-    private int boxHeight = 140;
-    private int childHPadding = 14;
-    private int childVPadding = 14;
+    private int boxWidth = 120;
+    private int boxHeight = 120;
+    private int childHPadding = 12;
+    private int childVPadding = 12;
     private String inputType = TYPE_PASSWORD;
     private Drawable boxBgFocus = null;
     private Drawable boxBgNormal = null;

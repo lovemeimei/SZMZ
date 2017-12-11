@@ -76,6 +76,7 @@ public class ActMain extends ActBase {
                         if (type == 1) {
                             loginJZXT();
                         } else {
+                            App.getGetMsgTask().excute();
                             trans(ActMainJZ2.class);
                         }
 

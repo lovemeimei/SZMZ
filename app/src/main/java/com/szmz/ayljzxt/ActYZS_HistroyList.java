@@ -68,7 +68,7 @@ public class ActYZS_HistroyList extends ActListBase {
             @Override
             protected void refreshView(int postion, final YZS_history_Res.ResultBean item, MViewHolder holer) {
 
-                holer.tvName.setText(item.getNAME() + "\t\t\t" + item.getIDCARD());
+                holer.tvName.setText(item.getNAME() + "\t\t\t" + item.getCARDID());
 
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             app:imgSrc="@drawable/slt_tsmsg"
-            app:tvContent="消息推送"/>
+            app:tvContent="设置"/>
     </LinearLayout>
 
     </LinearLayout>
