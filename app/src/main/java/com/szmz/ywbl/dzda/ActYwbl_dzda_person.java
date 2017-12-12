@@ -168,7 +168,8 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
             }
 
             try {
-                List<YwblDzdaSalvation> items = db.selector(YwblDzdaSalvation.class).findAll();
+
+                List<YwblDzdaSalvation> items = db.selector(YwblDzdaSalvation.class).where("type", "=", type).findAll();
                 if (items != null && items.size() > 0) {
                     adapter.clearListData();
                     adapter.setListData(items);
@@ -314,6 +315,9 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
 
     @Override
     protected void doMore(boolean isMore) {
+        if (!isOnline) {
+            return;
+        }
         if (isMore) {
             CurrentPage++;
         } else {
@@ -384,7 +388,11 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
             public void doSuccess(JZ_YWBL_DZDA_Salvation result) {
 
                 List<YwblDzdaSalvation> items = result.Result;
+
                 if (items != null && items.size() > 0) {
+                    for (YwblDzdaSalvation item : items) {
+                        item.setType(type);
+                    }
                     if (CurrentPage == 1) {
                         adapter.clearListData();
                     }

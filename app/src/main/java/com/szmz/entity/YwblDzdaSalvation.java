@@ -24,6 +24,17 @@ public class YwblDzdaSalvation implements IEntity {
     private String famSalvationType;//一档
     @Column(name = "spId")
     private String spId;//审批ID
+    @Column(name = "type")
+    private int type;
+
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     public YwblDzdaSalvation() {
 
