@@ -21,6 +21,7 @@ import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.MyNewPhoto;
 import com.szmz.entity.YwblDzdaSalvation;
+import com.szmz.entity.YwblSaveDataRequest;
 import com.szmz.entity.request.JZ_YWBL_ADDDATA_RE;
 import com.szmz.entity.request.JZ_YWBL_DCHS_RE;
 import com.szmz.entity.response.CommResponse;
@@ -28,12 +29,14 @@ import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
 import com.szmz.utils.FileUtil;
+import com.szmz.utils.GsonUtil;
 import com.szmz.utils.ImageUtil;
 import com.szmz.widget.ClearEditText;
 import com.szmz.widget.GridViewInScrollView;
 import com.szmz.widget.ImageGridAdapter;
 import com.szmz.ywbl.dzda.ActYwbl_dzda_person;
 
+import org.xutils.ex.DbException;
 import org.xutils.x;
 
 import java.util.ArrayList;
@@ -136,11 +139,9 @@ public class ActDchs extends ActLocationBase {
             @Override
             public void onClick(View v) {
                 if (isOnline) {
-
-                    doSubmit();
+                    doSubmit(false);
                 } else {
-                    doToast("保存成功");
-                    finish();
+                    doSubmit(true);
                 }
 
             }
@@ -262,7 +263,7 @@ public class ActDchs extends ActLocationBase {
     }
 
 
-    private void doSubmit() {
+    private void doSubmit(boolean isSave) {
         if (checkSalvation == null) {
             doToast("请选择申请人!");
             return;
@@ -297,25 +298,43 @@ public class ActDchs extends ActLocationBase {
             doToast("未获取到地址信息!");
             return;
         }
-
         JZ_YWBL_DCHS_RE request = new JZ_YWBL_DCHS_RE(checkSalvation.getFamilyId(), App.getInstance().getLoginUser().getIdJZ(), timeStr, dchsqk, dchsjl, dcry, fzry, location.getAddrStr());
-        Call<CommResponse> call = App.getApiProxyJZ().getJZ_AddStreetCheck(request);
-        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<CommResponse>() {
-            @Override
-            public void doSuccess(CommResponse result) {
-
-                for (MyNewPhoto photo : path) {
-                    doUpLoadImage(checkSalvation.getFamilyId(), ImageUtil.getThumbImagePath(photo.getFileUrl(), null), location.getAddrStr());
-                }
-                doToast("上报成功!");
+        if (isSave) {
+            YwblSaveDataRequest saveData = new YwblSaveDataRequest();
+            saveData.setId("DCHS" + checkSalvation.getFamilyId());
+            saveData.setJsonStr(GsonUtil.ser(request));
+            saveData.setImageJsonStr(GsonUtil.ser(path));
+            saveData.setName(checkSalvation.getName());
+            saveData.setAddress(location.getAddrStr());
+            saveData.setType(1);
+            try {
+                dbManager.saveOrUpdate(saveData);
+                doToast("保存成功!");
                 finish();
-
+            } catch (DbException e) {
+                e.printStackTrace();
+                doToast("保存失败!");
             }
 
+        } else {
+            Call<CommResponse> call = App.getApiProxyJZ().getJZ_AddStreetCheck(request);
+            ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<CommResponse>() {
+                @Override
+                public void doSuccess(CommResponse result) {
 
-        }, true);
+                    for (MyNewPhoto photo : path) {
+                        doUpLoadImage(checkSalvation.getFamilyId(), ImageUtil.getThumbImagePath(photo.getFileUrl(), null), location.getAddrStr());
+                    }
+                    doToast("上报成功!");
+                    finish();
 
-        apiUtil.excute();
+                }
+
+
+            }, true);
+
+            apiUtil.excute();
+        }
 
 
     }

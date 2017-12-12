@@ -8,14 +8,12 @@ import com.szmz.utils.Md5Util;
 
 public class JZ_SQR_JD_RE extends BaseListRequest {
 
-    private String typeCode;//
-    private String keyWords;//
+    private String idCard;//
 
 
-    public JZ_SQR_JD_RE(String typeCode, String keyWords, int currentPage) {
-        this.typeCode = typeCode;
-        this.keyWords = keyWords;
+    public JZ_SQR_JD_RE(String idCard, int currentPage) {
+        this.idCard = idCard;
         this.CurrentPage = currentPage;
-        setMd5Key(Md5Util.getMd5(typeCode + keyWords + CurrentPage + PageSize));
+        setMd5Key(Md5Util.getMd5(idCard + CurrentPage + PageSize));
     }
 }

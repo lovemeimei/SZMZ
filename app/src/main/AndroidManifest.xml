@@ -410,11 +410,12 @@
         <activity android:name=".ywbl.dzda.dasp.ActMzpyInfo" />
         <activity android:name=".ywbl.dzda.dasp.ActShgsInfo" />
         <activity android:name=".ywbl.dzda.dasp.ActSpgsInfo" />
-        <activity android:name=".ywbl.dzda.dasp.ActRhccInfo"></activity>
-        <activity android:name=".search.ActSQRHistoryList"></activity>
-        <activity android:name=".search.ActSQRHistroyDetail"></activity>
-        <activity android:name=".search.ActSQR_zjff_List"></activity>
-        <activity android:name=".ActJZ_SQR_JD_Detail"></activity>
+        <activity android:name=".ywbl.dzda.dasp.ActRhccInfo" />
+        <activity android:name=".search.ActSQRHistoryList" />
+        <activity android:name=".search.ActSQRHistroyDetail" />
+        <activity android:name=".search.ActSQR_zjff_List" />
+        <activity android:name=".ActJZ_SQR_JD_Detail" />
+        <activity android:name=".ywbl.ActLxsj"></activity>
     </application>
 
 </manifest>

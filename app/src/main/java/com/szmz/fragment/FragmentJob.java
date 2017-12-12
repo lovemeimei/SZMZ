@@ -6,6 +6,7 @@ import android.view.View;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.ywbl.ActDchs;
+import com.szmz.ywbl.ActLxsj;
 import com.szmz.ywbl.ActMzpy;
 import com.szmz.ywbl.ActRhcc;
 import com.szmz.ywbl.ActShgs;
@@ -24,7 +25,8 @@ public class FragmentJob extends BaseFragment {
 
 
     @OnClick({
-            R.id.dchsLayout, R.id.mzpyLayout, R.id.shgsLayout, R.id.rhccLayout, R.id.dzdaLayout, R.id.spgshiLayout
+            R.id.dchsLayout, R.id.mzpyLayout, R.id.shgsLayout, R.id.rhccLayout,
+            R.id.dzdaLayout, R.id.spgshiLayout, R.id.lxsjhiLayout
     })
     public void doClick(View v) {
         Intent intent;
@@ -52,6 +54,10 @@ public class FragmentJob extends BaseFragment {
                 break;
             case R.id.spgshiLayout:
                 intent = new Intent(getActivity(), ActSpgs.class);
+                startActivity(intent);
+                break;
+            case R.id.lxsjhiLayout:
+                intent = new Intent(getActivity(), ActLxsj.class);
                 startActivity(intent);
                 break;
         }

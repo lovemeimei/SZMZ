@@ -14,6 +14,9 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.szmz.entity.User;
 import com.szmz.utils.UIUtil;
 
+import org.xutils.DbManager;
+import org.xutils.x;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -37,7 +40,7 @@ public abstract class ActBase extends AppCompatActivity {
     ImageView ivBack;
 
     private User user;
-    protected boolean isOnline = true;
+    protected boolean isOnline = false;
 
     protected String TAG;
     protected MaterialDialog dialog;
@@ -52,6 +55,7 @@ public abstract class ActBase extends AppCompatActivity {
 
     private String userId_HD = "510401";
 
+    protected DbManager dbManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ public abstract class ActBase extends AppCompatActivity {
         App.addActivity(this);
         TAG = this.getClass().getName();
         user = App.getInstance().getLoginUser();
+        dbManager = x.getDb(App.getDaoConfig());
         initUI();
     }
 

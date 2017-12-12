@@ -125,13 +125,13 @@ public class FragmentSearch_C extends BaseFragment {
             }
         });
 //        getJZtype();
-//        jslbTv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (pvOptions != null)
-//                    pvOptions.show();
-//            }
-//        });
+        jslbTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (pvOptions != null)
+                    pvOptions.show();
+            }
+        });
         doLoadData();
     }
 
@@ -153,15 +153,15 @@ public class FragmentSearch_C extends BaseFragment {
         } else {
             CurrentPage = 1;
         }
-        keyWords = searchEd.getText().toString().trim();
-        doGetData(typecode, keyWords, CurrentPage);
+//        keyWords = searchEd.getText().toString().trim();
+        doGetData(App.getInstance().getLoginUser().getIdCode(), CurrentPage);
     }
 
 
-    private void doGetData(String typecode, String keyWords, final int CurrentPage) {
+    private void doGetData(String idCard, final int CurrentPage) {
 
 
-        JZ_SQR_JD_RE request = new JZ_SQR_JD_RE(typecode, keyWords, CurrentPage);
+        JZ_SQR_JD_RE request = new JZ_SQR_JD_RE(idCard, CurrentPage);
 
 
         Call<JZ_SQR_JD_RES> call = App.getApiProxyJZ().get_JZ_SQR_JD_LIST(request);
