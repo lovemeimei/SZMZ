@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.github.johnkil.print.PrintView;
 import com.szmz.R;
 import com.szmz.entity.YZS_xzqh;
-import com.szmz.entity.YZS_xzqh;
 import com.szmz.utils.ImageUtil;
 import com.unnamed.b.atv.model.TreeNode;
 
@@ -40,6 +39,15 @@ public class YZSTreeItemHolder extends TreeNode.BaseNodeViewHolder<YZSTreeItemHo
         tvValue.setText(value.text);
         arrowView = (PrintView) view.findViewById(R.id.arrow_icon);
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.rootView);
+        TextView button = (TextView) view.findViewById(R.id.chose);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.doClick(value.item);
+                }
+            }
+        });
         layout.setPadding(node.getLevel() * ImageUtil.dip2px(context, 10) + ImageUtil.dip2px(context, 10), 0, 0, 0);
         List<TreeNode> children = node.getChildren();
         if (children == null || children.size() < 1) {
