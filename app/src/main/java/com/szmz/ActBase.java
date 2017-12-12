@@ -40,7 +40,7 @@ public abstract class ActBase extends AppCompatActivity {
     ImageView ivBack;
 
     private User user;
-    protected boolean isOnline = false;
+    protected boolean isOnline = true;
 
     protected String TAG;
     protected MaterialDialog dialog;
