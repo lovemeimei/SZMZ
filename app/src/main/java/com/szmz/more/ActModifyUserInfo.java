@@ -27,9 +27,9 @@ import retrofit2.Call;
  * 创建时间：2017/9/8 0008上午 9:46
  */
 
-public class ActModifyUserInfo extends ActBase{
+public class ActModifyUserInfo extends ActBase {
 
-    MaterialDialog sexDialog=null;
+    MaterialDialog sexDialog = null;
     @BindView(R.id.btn_submit)
     Button btnSub;
 
@@ -76,9 +76,10 @@ public class ActModifyUserInfo extends ActBase{
             }
         });
     }
+
     @OnClick({R.id.btn_submit})
-    public void doClick(View v){
-        switch (v.getId()){
+    public void doClick(View v) {
+        switch (v.getId()) {
             case R.id.btn_submit:
                 modifyUserInfo();
                 break;
@@ -88,10 +89,10 @@ public class ActModifyUserInfo extends ActBase{
         }
     }
 
-    private void createDialog(){
+    private void createDialog() {
         sexDialog = new MaterialDialog.Builder(this)
                 .alwaysCallSingleChoiceCallback()
-                .items("男","女")
+                .items("男", "女")
                 .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
                     @Override
                     public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
@@ -101,40 +102,40 @@ public class ActModifyUserInfo extends ActBase{
                 }).build();
     }
 
-    private void modifyUserInfo(){
+    private void modifyUserInfo() {
 
         String email = etEmail.getText().toString().trim();
         String officePhone = etPhone.getText().toString().trim();
 
-        if (TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             doToast("邮箱不能为空");
             return;
         }
 
-        if (!TextUtil.isEMailAddress(email)){
+        if (!TextUtil.isEMailAddress(email)) {
             doToast("请输入正确的邮箱格式");
             return;
         }
-        if (TextUtils.isEmpty(officePhone)){
+        if (TextUtils.isEmpty(officePhone)) {
             doToast("电话不能为空");
             return;
         }
 
-        JZ_Comm_modifyInfo req = new JZ_Comm_modifyInfo(App.getInstance().getLoginUser().getPersonId(),email,officePhone);
+        JZ_Comm_modifyInfo req = new JZ_Comm_modifyInfo(App.getInstance().getLoginUser().getPersonId(), email, officePhone);
 
         Call<CommResponse> call = App.getApiProxyCom().modifyInfo(req);
 
-        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
+        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<CommResponse>() {
             @Override
             public void doSuccess(CommResponse result) {
-               doToast("修改成功");
+                doToast("修改成功");
                 User user = App.getInstance().getLoginUser();
                 user.setEmail(etEmail.getText().toString().trim());
                 user.setOfficePhone(etPhone.getText().toString().trim());
                 App.getInstance().login(user);
                 myAnimFinish();
             }
-        },true);
+        }, true);
 
         apiUtil.excute();
 

@@ -40,7 +40,9 @@ import com.szmz.ywbl.dzda.ActYwbl_dzda_person;
 import org.xutils.ex.DbException;
 import org.xutils.x;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -85,6 +87,8 @@ public class ActRhcc extends ActLocationBase {
     LinearLayout fzrLayout;
     @BindView(R.id.rhccjgEd)
     EditText rhccjgEd;
+    @BindView(R.id.timeTv)
+    TextView timeTv;
     private ImageGridAdapter adapter;
     private List<MyNewPhoto> paths = new ArrayList<MyNewPhoto>();
     private List<MyNewPhoto> path = new ArrayList<MyNewPhoto>();
@@ -200,7 +204,7 @@ public class ActRhcc extends ActLocationBase {
                 }
             }
         });
-
+        timeTv.setText(new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss").format(new Date()));
         img.enable();
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -217,6 +221,7 @@ public class ActRhcc extends ActLocationBase {
         refreshAddressLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                timeTv.setText(new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss").format(new Date()));
                 refreshLocation();
             }
         });

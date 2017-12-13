@@ -17,6 +17,13 @@
             android:orientation="vertical">
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/sqpcView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="申请批次" />
+
+            <com.szmz.widget.MyLayoutView
                 android:id="@+id/sqrView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

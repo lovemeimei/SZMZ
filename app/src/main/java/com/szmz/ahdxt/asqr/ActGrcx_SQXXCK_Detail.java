@@ -21,6 +21,8 @@ public class ActGrcx_SQXXCK_Detail extends ActBase {
     HdxtGrcxInfo info;
     @BindView(R.id.xbView)
     MyLayoutView xbView;
+    @BindView(R.id.sqpcView)
+    MyLayoutView sqpcView;
 
 
     @Override
@@ -34,6 +36,7 @@ public class ActGrcx_SQXXCK_Detail extends ActBase {
         setLeftVisible(true);
         setTitle("详细信息");
         info = (HdxtGrcxInfo) getIntent().getSerializableExtra("HdxtGrcxInfo");
+        sqpcView.doSetContent(info.getBatchName());
         xmView.doSetContent(info.getApplyName());
         sfzhView.doSetContent(info.getIdCardNo());
         sqlbView.doSetContent(info.getBizCategory());

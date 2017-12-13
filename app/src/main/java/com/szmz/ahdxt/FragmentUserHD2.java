@@ -7,8 +7,7 @@ import com.szmz.R;
 import com.szmz.ahdxt.asqr.ActHdzc_List_SQR;
 import com.szmz.more.ActBindPhone;
 import com.szmz.more.ActModifyPW;
-import com.szmz.more.ActModifyPhone;
-import com.szmz.more.ActModifyUserInfo;
+import com.szmz.more.ActModifyUserInfo_SQR;
 import com.szmz.more.ActMsgSet;
 
 import butterknife.OnClick;
@@ -32,12 +31,12 @@ public class FragmentUserHD2 extends BaseFragment {
     }
 
     @OnClick({
-            R.id.miv_grzl, R.id.miv_xgmm,R.id.miv_bindphone,R.id.miv_msg,R.id.miv_hdzc
+            R.id.miv_grzl, R.id.miv_xgmm, R.id.miv_bindphone, R.id.miv_msg, R.id.miv_hdzc
     })
     public void doClick(View v) {
         switch (v.getId()) {
             case R.id.miv_grzl:
-                trans(ActModifyUserInfo.class);
+                trans(ActModifyUserInfo_SQR.class);
                 break;
             case R.id.miv_xgmm:
                 trans(ActModifyPW.class);

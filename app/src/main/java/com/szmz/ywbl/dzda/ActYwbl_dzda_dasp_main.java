@@ -22,6 +22,8 @@ public class ActYwbl_dzda_dasp_main extends ActBase {
     @Override
     protected void initUI() {
         super.initUI();
+        setLeftVisible(true);
+        setTitle("档案审批信息");
         person = (YwblDzdaFamily) getIntent().getSerializableExtra("YwblPerson");
         if (person.getFamilyApproveInfo() != null && person.getFamilyApproveInfo().size() > 0) {
             info = person.getFamilyApproveInfo().get(0);

@@ -11,6 +11,7 @@ import android.telephony.TelephonyManager;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.szmz.entity.HD_XZQH;
 import com.szmz.entity.IEntity;
 import com.szmz.utils.GsonUtil;
 
@@ -32,6 +33,36 @@ public final class SystemEnv {
     private static Context context = App.getInstance().getApplicationContext();
     private static SharedPreferences pref = PreferenceManager
             .getDefaultSharedPreferences(context);
+
+    public static void setMDR(boolean isMDR) {
+        SharedPreferences.Editor et = pref.edit();
+        et.putBoolean("isMDR", isMDR);
+        et.commit();
+    }
+
+    public static boolean getMDR() {
+        return pref.getBoolean("isMDR", false);
+    }
+
+    public static void setSound(boolean isSound) {
+        SharedPreferences.Editor et = pref.edit();
+        et.putBoolean("isSound", isSound);
+        et.commit();
+    }
+
+    public static boolean getSound() {
+        return pref.getBoolean("isSound", false);
+    }
+
+    public static void setShake(boolean isShake) {
+        SharedPreferences.Editor et = pref.edit();
+        et.putBoolean("isShake", isShake);
+        et.commit();
+    }
+
+    public static boolean getShake() {
+        return pref.getBoolean("isShake", false);
+    }
 
     public static void saveImagePath(String path) {
         SharedPreferences.Editor et = pref.edit();
@@ -56,6 +87,33 @@ public final class SystemEnv {
         et.remove(tag);
         et.putString(tag, strJson);
         et.commit();
+
+    }
+
+
+    public static void setXZQHList(String tag, List<HD_XZQH> datalist) {
+        if (null == datalist || datalist.size() <= 0)
+            return;
+        SharedPreferences.Editor et = pref.edit();
+        Gson gson = new Gson();
+        //转换成json数据，再保存
+        String strJson = gson.toJson(datalist);
+        et.remove(tag);
+        et.putString(tag, strJson);
+        et.commit();
+
+    }
+
+    public static List<HD_XZQH> getXZQHList(String tag) {
+        List<HD_XZQH> datalist = new ArrayList<HD_XZQH>();
+        String strJson = pref.getString(tag, null);
+        if (null == strJson) {
+            return datalist;
+        }
+        Gson gson = new Gson();
+        datalist = gson.fromJson(strJson, new TypeToken<List<HD_XZQH>>() {
+        }.getType());
+        return datalist;
 
     }
 
@@ -196,37 +254,38 @@ public final class SystemEnv {
     private static final String SET_SHAKE = "SET_SHAKE";
     private static final String SET_MDR = "SET_MDR";
 
-    public static int getLoginType(){
-        return pref.getInt(LOGIN_TYPE,1);
+    public static int getLoginType() {
+        return pref.getInt(LOGIN_TYPE, 1);
     }
-    public static void saveLoginType(int type){
+
+    public static void saveLoginType(int type) {
         SharedPreferences.Editor editor = pref.edit();
-        editor.putInt(LOGIN_TYPE,type);
+        editor.putInt(LOGIN_TYPE, type);
         editor.commit();
     }
 
     public static String getUserName() {
 
-        return pref.getString(USER_NAME,"");
+        return pref.getString(USER_NAME, "");
     }
 
     public static String getUserPw() {
-        return pref.getString(USER_PW,"");
+        return pref.getString(USER_PW, "");
     }
 
-    public static void saveUserName(String userName){
+    public static void saveUserName(String userName) {
 
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString(USER_NAME,userName);
+        editor.putString(USER_NAME, userName);
         editor.commit();
 
     }
 
 
-    public static void saveUserPw(String pw){
+    public static void saveUserPw(String pw) {
 
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString(USER_PW,pw);
+        editor.putString(USER_PW, pw);
         editor.commit();
 
     }

@@ -245,7 +245,7 @@ public class ActTJ_GXDWHDRC extends ActBase {
     }
 
     private void getXzqhData(String userId, String areaId) {
-        List<HD_XZQH> xzqhList = SystemEnv.getDataList("XZQH");
+        List<HD_XZQH> xzqhList = SystemEnv.getXZQHList("XZQH");
         if (xzqhList != null || xzqhList.size() > 0) {
             initData(xzqhList);
             return;
@@ -278,7 +278,7 @@ public class ActTJ_GXDWHDRC extends ActBase {
                 List<HD_XZQH> items = result.Result;
 
                 if (items != null && items.size() > 0) {
-                    SystemEnv.setDataList("XZQH", items);
+                    SystemEnv.setXZQHList("XZQH", items);
                     initData(items);
                 } else {
                 }

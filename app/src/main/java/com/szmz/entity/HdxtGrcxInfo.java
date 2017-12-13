@@ -7,6 +7,7 @@ import java.util.List;
  */
 
 public class HdxtGrcxInfo implements IEntity {
+    private String batchName;
     private String batchId;
     private String applyId;
     private String applyName;
@@ -18,6 +19,14 @@ public class HdxtGrcxInfo implements IEntity {
     private String filePath;
     private boolean isDownLoading = false;
     private long reference;
+
+    public String getBatchName() {
+        return batchName;
+    }
+
+    public void setBatchName(String batchName) {
+        this.batchName = batchName;
+    }
 
     public boolean isDownLoading() {
         return isDownLoading;

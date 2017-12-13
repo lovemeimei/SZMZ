@@ -24,6 +24,8 @@ public class ActXXTZ_Detail_SQR extends ActBase {
     MyLayoutView wtsjView;
     @BindView(R.id.jbjdmcView)
     MyLayoutView jbjdmcView;
+    @BindView(R.id.sqpcView)
+    MyLayoutView sqpcView;
 
     @Override
     protected void initUI() {
@@ -32,6 +34,7 @@ public class ActXXTZ_Detail_SQR extends ActBase {
         setTitle("详细信息");
         info = (HD_XXTZ.ReaultBean) getIntent().getSerializableExtra("HD_XXTZ");
         type = getIntent().getIntExtra("Type", 0);
+        sqpcView.doSetContent(info.getBatchName());
         sqrView.doSetContent(info.getApplyName());
         sfzhView.doSetContent(info.getIdCardNo());
         ywlxView.doSetContent(info.getBizCategory());

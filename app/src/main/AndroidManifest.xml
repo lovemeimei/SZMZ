@@ -177,6 +177,16 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_gzryjqba"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_jtfcxx"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".ywbl.dzda.ActYwbl_dzda_jtsrxx"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
@@ -193,6 +203,11 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ywbl.dzda.ActYwbl_dzda_jtzlxx"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.ActYwbl_dzda_dasp_main"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
@@ -231,23 +246,91 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".user.job.ActDBTuihui" />
-        <activity android:name=".user.job.ActDBYijiao" />
-        <activity android:name=".user.job.ActDBButongguo" />
-        <activity android:name=".user.job.ActMyJobYB" />
-        <activity android:name=".user.job.ActYBDetail" />
-        <activity android:name=".user.job.ActYBBDList" />
-        <activity android:name=".user.job.ActYBBD_JBXX" />
-        <activity android:name=".user.job.ActYBBD_ZHXX" />
-        <activity android:name=".user.job.ActYBBD_YLJZXX" />
-        <activity android:name=".user.job.ActYBBD_JZZL" />
-        <activity android:name=".user.job.ActYBBD_FYMX" />
-        <activity android:name=".user.job.ActYBBD_SPQY" />
-        <activity android:name=".user.check.ActCheckList" />
-        <activity android:name=".user.check.ActCheckDetail1" />
-        <activity android:name=".ActMsgDetail" />
-        <activity android:name=".home.ActMsgList" />
-        <activity android:name=".ayljzxt.ActHomeDetail_sqr" />
+        <activity
+            android:name=".user.job.ActDBTuihui"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.job.ActDBYijiao"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.job.ActDBButongguo"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.job.ActMyJobYB"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.job.ActYBDetail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.job.ActYBBDList"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.job.ActYBBD_JBXX"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.job.ActYBBD_ZHXX"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.job.ActYBBD_YLJZXX"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.job.ActYBBD_JZZL"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.job.ActYBBD_FYMX"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.job.ActYBBD_SPQY"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.check.ActCheckList"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.check.ActCheckDetail1"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ActMsgDetail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".home.ActMsgList"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ayljzxt.ActHomeDetail_sqr"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
 
         <!-- 扫描条码 -->
         <activity
@@ -263,54 +346,233 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".more.ActFindPW" />
-        <activity android:name=".search.ActSearchDetail" />
-        <activity android:name=".ywbl.ActAddressList" />
-        <activity android:name=".ahdxt.ActHdxtMain" />
-        <activity android:name=".ahdxt.ActHdxt_GRCX" />
-        <activity android:name=".ahdxt.ActHdxt_JG" />
-        <activity android:name=".ahdxt.ActHdxt_TJFX" />
-        <activity android:name=".ahdxt.ActHdxt_XXTZ" />
-        <activity android:name=".ahdxt.ActHdxt_ZLGL" />
-        <activity android:name=".ahdxt.grcx.ActGrcx_DataList" />
-        <activity android:name=".ahdxt.grcx.ActGrcx_DB" />
-        <activity android:name=".ahdxt.grcx.ActGrcx_YB" />
-        <activity android:name=".ahdxt.grcx.ActGrcx_ZZ" />
-        <activity android:name=".ahdxt.grcx.ActGrcx_TH" />
-        <activity android:name=".search.ActListSYJZE" />
-        <activity android:name=".search.ActListSYJZE_Detail" />
-        <activity android:name=".ahdxt.jg.ActJg_BGDYJG" />
-        <activity android:name=".ahdxt.zlgl.ActZlgl_List" />
-        <activity android:name=".ahdxt.zlgl.ActZlgl_Detial" />
-        <activity android:name=".ahdxt.xxtz.ActXxtz_List" />
-        <activity android:name=".ahdxt.xxtz.ActXxtz_Detail" />
-        <activity android:name=".ahdxt.asqr.ActHdxtMainSQR" />
-        <activity android:name=".ahdxt.jg.ActJG_ListBGDY" />
-        <activity android:name=".ahdxt.jg.ActJG_Listywbl" />
-        <activity android:name=".ahdxt.jg.ActJG_Listywbl2" />
-        <activity android:name=".ahdxt.jg.ActJG_YWBL" />
-        <activity android:name=".ahdxt.jg.ActJG_ListYCCZ" />
-        <activity android:name=".ahdxt.jg.ActJG_ListMGRY" />
-        <activity android:name=".ahdxt.jg.ActJG_ListMGRY2" />
-        <activity android:name=".ahdxt.jg.ActJG_YCCZ" />
-        <activity android:name=".ahdxt.jg.ActJG_MGRY" />
-        <activity android:name=".ahdxt.asqr.ActHdxt_GRCX_SQR" />
-        <activity android:name=".ahdxt.asqr.ActHdxt_XXTZ_SQR" />
-        <activity android:name=".ahdxt.asqr.ActHdxt_HDZC_SQR" />
+        <activity
+            android:name=".more.ActFindPW"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".search.ActSearchDetail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.ActAddressList"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.ActHdxtMain"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.ActHdxt_GRCX"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.ActHdxt_JG"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.ActHdxt_TJFX"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.ActHdxt_XXTZ"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.ActHdxt_ZLGL"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.grcx.ActGrcx_DataList"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.grcx.ActGrcx_DB"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.grcx.ActGrcx_YB"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.grcx.ActGrcx_ZZ"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.grcx.ActGrcx_TH"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".search.ActListSYJZE"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".search.ActListSYJZE_Detail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.jg.ActJg_BGDYJG"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.zlgl.ActZlgl_List"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.zlgl.ActZlgl_Detial"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.xxtz.ActXxtz_List"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.xxtz.ActXxtz_Detail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.asqr.ActHdxtMainSQR"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.jg.ActJG_ListBGDY"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.jg.ActJG_Listywbl"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.jg.ActJG_Listywbl2"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.jg.ActJG_YWBL"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.jg.ActJG_ListYCCZ"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.jg.ActJG_ListMGRY"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.jg.ActJG_ListMGRY2"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.jg.ActJG_YCCZ"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.jg.ActJG_MGRY"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.asqr.ActHdxt_GRCX_SQR"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.asqr.ActHdxt_XXTZ_SQR"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.asqr.ActHdxt_HDZC_SQR"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ahdxt.asqr.ActGrcx_JDCK_List"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:label="@string/title_activity_act_grcx__jdck"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ahdxt.asqr.ActGrcx_JDCK_Detail" />
-        <activity android:name=".ahdxt.asqr.ActGrcx_SQXXCK_List" />
-        <activity android:name=".ahdxt.asqr.ActGrcx_SQXXCK_Detail" />
-        <activity android:name=".ahdxt.asqr.ActHdzc_List_SQR" />
-        <activity android:name=".ahdxt.asqr.ActXXTZ_List_SQR" />
-        <activity android:name=".ahdxt.ActDictList" />
-        <activity android:name=".ahdxt.tjfx.ActTJ_YEQS" />
-        <activity android:name=".ahdxt.tjfx.ActTJ_QYTJ" />
-        <activity android:name=".ahdxt.tjfx.ActTJ_GXDWHDRC" />
-        <activity android:name=".ahdxt.asqr.ActXXTZ_Detail_SQR" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.asqr.ActGrcx_JDCK_Detail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.asqr.ActGrcx_SQXXCK_List"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.asqr.ActGrcx_SQXXCK_Detail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.asqr.ActHdzc_List_SQR"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.asqr.ActXXTZ_List_SQR"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.ActDictList"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.tjfx.ActTJ_YEQS"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.tjfx.ActTJ_QYTJ"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.tjfx.ActTJ_GXDWHDRC"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ahdxt.asqr.ActXXTZ_Detail_SQR"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
 
         <!-- 医疗救助 -->
         <activity
@@ -323,18 +585,53 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ahdxt.ActHD_User" />
+        <activity
+            android:name=".ahdxt.ActHD_User"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ActCommUser"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:label="@string/title_activity_act_comm_user"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".more.ActModifyPhone2" />
-        <activity android:name=".more.ActMsgSet" />
-        <activity android:name=".more.ActBindPhone_Worker" />
-        <activity android:name=".more.ActCodeLogin" />
-        <activity android:name=".tjfx.ActJZ_1" />
-        <activity android:name=".tjfx.ActJZ_3" />
-        <activity android:name=".user.check.ActJZ_DC" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".more.ActModifyPhone2"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".more.ActMsgSet"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".more.ActBindPhone_Worker"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".more.ActCodeLogin"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".tjfx.ActJZ_1"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".tjfx.ActJZ_3"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.check.ActJZ_DC"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ayljzxt.ActHomeDetail"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
@@ -406,16 +703,57 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ywbl.dzda.dasp.ActDchsInfo" />
-        <activity android:name=".ywbl.dzda.dasp.ActMzpyInfo" />
-        <activity android:name=".ywbl.dzda.dasp.ActShgsInfo" />
-        <activity android:name=".ywbl.dzda.dasp.ActSpgsInfo" />
-        <activity android:name=".ywbl.dzda.dasp.ActRhccInfo" />
-        <activity android:name=".search.ActSQRHistoryList" />
-        <activity android:name=".search.ActSQRHistroyDetail" />
-        <activity android:name=".search.ActSQR_zjff_List" />
-        <activity android:name=".ActJZ_SQR_JD_Detail" />
-        <activity android:name=".ywbl.ActLxsj"></activity>
+
+        <activity
+            android:name=".ywbl.dzda.dasp.ActDchsInfo"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.dasp.ActMzpyInfo"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.dasp.ActShgsInfo"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.dasp.ActSpgsInfo"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.dzda.dasp.ActRhccInfo"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".search.ActSQRHistoryList"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".search.ActSQRHistroyDetail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".search.ActSQR_zjff_List"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ActJZ_SQR_JD_Detail"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ywbl.ActLxsj"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

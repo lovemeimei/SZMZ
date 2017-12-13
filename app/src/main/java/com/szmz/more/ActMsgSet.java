@@ -1,11 +1,9 @@
 package com.szmz.more;
 
-import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -14,13 +12,14 @@ import com.szmz.ActBase;
 import com.szmz.ActLogin;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.SystemEnv;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class ActMsgSet extends ActBase {
 
-    MaterialDialog dialog=null;
+    MaterialDialog dialog = null;
 
     @BindView(R.id.tv_msg_type)
     TextView tvMsgType;
@@ -41,28 +40,49 @@ public class ActMsgSet extends ActBase {
         super.initUI();
         setLeftVisible(true);
         setTitle("设置");
+        cbSound.setChecked(SystemEnv.getSound());
+        cbShake.setChecked(SystemEnv.getShake());
+        cbMDR.setChecked(SystemEnv.getMDR());
+        cbSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SystemEnv.setSound(isChecked);
+            }
+        });
+        cbShake.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SystemEnv.setShake(isChecked);
+            }
+        });
+        cbMDR.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SystemEnv.setMDR(isChecked);
+            }
+        });
 
     }
 
     @OnClick({R.id.tv_exit})
-    public void doClick(View v){
-        switch (v.getId()){
+    public void doClick(View v) {
+        switch (v.getId()) {
             case R.id.tv_exit:
 
-                 dialog = new MaterialDialog.Builder(context)
-                         .title("提示")
-                         .content("确定要退出登录吗？")
-                         .positiveText("确定")
-                         .negativeText("取消")
-                         .onPositive(new MaterialDialog.SingleButtonCallback() {
-                             @Override
-                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                 App.exit2();
-                                 trans(ActLogin.class);
-                             }
-                         })
-                         .build();
-                 dialog.show();
+                dialog = new MaterialDialog.Builder(context)
+                        .title("提示")
+                        .content("确定要退出登录吗？")
+                        .positiveText("确定")
+                        .negativeText("取消")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                App.exit2();
+                                trans(ActLogin.class);
+                            }
+                        })
+                        .build();
+                dialog.show();
                 break;
         }
     }
