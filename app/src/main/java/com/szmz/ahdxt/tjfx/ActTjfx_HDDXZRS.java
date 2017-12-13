@@ -293,7 +293,7 @@ public class ActTjfx_HDDXZRS extends ActBase {
 
     private void getXzqhData(String userId, String areaId) {
         List<HD_XZQH> xzqhList = SystemEnv.getXZQHList("XZQH");
-        if (xzqhList != null || xzqhList.size() > 0) {
+        if (xzqhList != null && xzqhList.size() > 0) {
             initData(xzqhList);
             return;
         }
