@@ -13,6 +13,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.YwblDzdaFamily;
+import com.szmz.entity.YwblDzdaFamilyApproveInfo;
 import com.szmz.entity.YwblDzdaSalvation;
 import com.szmz.entity.YwblDzdaXzqh;
 import com.szmz.entity.request.JZ_YWBL_DZDA_FAMILY_RE;
@@ -516,6 +517,23 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                     if (family != null && family.size() > 0) {
                         YwblDzdaFamily myFamily = family.get(0);
                         YwblDzdaSalvation value = next.getValue();
+                        if (value.getType() == -1) {
+                            List<YwblDzdaFamilyApproveInfo> familyApproveInfo = myFamily.getFamilyApproveInfo();
+                            if (familyApproveInfo != null && familyApproveInfo.size() > 0) {
+                                YwblDzdaFamilyApproveInfo ywblDzdaFamilyApproveInfo = familyApproveInfo.get(0);
+                                if (ywblDzdaFamilyApproveInfo.getStreetCheckUser() == null || ywblDzdaFamilyApproveInfo.getStreetCheckUser().equals("")) {
+                                    value.setType(1);
+                                } else if (ywblDzdaFamilyApproveInfo.getStreetCommentUser() == null || ywblDzdaFamilyApproveInfo.getStreetCommentUser().equals("")) {
+                                    value.setType(2);
+                                } else if (ywblDzdaFamilyApproveInfo.getStreetSubmitUser() == null || ywblDzdaFamilyApproveInfo.getStreetSubmitUser().equals("")) {
+                                    value.setType(4);
+                                } else if (ywblDzdaFamilyApproveInfo.getCountySpotCheckUser() == null || ywblDzdaFamilyApproveInfo.getCountySpotCheckUser().equals("")) {
+                                    value.setType(3);
+                                } else if (ywblDzdaFamilyApproveInfo.getCountyPublicUser() == null || ywblDzdaFamilyApproveInfo.getCountyPublicUser().equals("")) {
+                                    value.setType(5);
+                                }
+                            }
+                        }
                         value.setJsonStr(GsonUtil.ser(myFamily));
                         try {
                             db.save(value);
