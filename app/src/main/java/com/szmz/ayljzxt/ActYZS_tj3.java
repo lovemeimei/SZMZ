@@ -2,6 +2,7 @@ package com.szmz.ayljzxt;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.view.View;
 import android.widget.TextView;
@@ -25,13 +26,18 @@ import com.szmz.entity.request.YZS_qh_req;
 import com.szmz.entity.response.HD_TJ_QYRC;
 import com.szmz.entity.response.YZS_TJ3_Res;
 import com.szmz.entity.response.YZS_qh_res;
+import com.szmz.entity.response.YZS_tj2_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -108,12 +114,39 @@ public class ActYZS_tj3 extends ActBase{
     }
 
     private void getInfo(){
-        String areaId = "51";
+        String areaId = "";
         if (xzqh != null) {
             areaId = xzqh.getCode();
         }
+        if (TextUtils.isEmpty(areaId)){
+            doToast("请选择区划");
+            return;
+        }
         String startTime = tvStartTime.getText().toString();
         String endTime = tvEndTime.getText().toString();
+
+        if (TextUtils.isEmpty(startTime)){
+            doToast("请选择开始时间");
+            return;
+        }
+
+        if (TextUtils.isEmpty(endTime)){
+            doToast("请选择截至时间");
+            return;
+        }
+        if (!TextUtils.isEmpty(startTime) && !TextUtils.isEmpty(endTime)){
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date date1 =format.parse(startTime);
+                Date date2 =format.parse(endTime);
+                if (date1.after(date2)){
+                    doToast("截至日期不能早于起始日期");
+                    return;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
 
         YZS_TJ1_Req req = new YZS_TJ1_Req(areaId,startTime,endTime);
 
@@ -125,20 +158,29 @@ public class ActYZS_tj3 extends ActBase{
                 super.doSuccess(result);
 
                 List<YZS_TJ3_Res.ResultBean> items = result.Result;
-                if (items!=null && items.size()>0)
+                if (items!=null && items.size()>0){
+
                     setInfo(items);
+                }else {
+                    pieChart.removeAllViews();
+                    pieChart.invalidate();
+                }
             }
         },true);
 
         apiUtil.excute();
     }
-
+    float allcount = 0.0f;
     private void setInfo(List<YZS_TJ3_Res.ResultBean> items){
 
 //        {"Result":[{"type":"常规民政救助","money":"2057.70"},{"type":"大病保险救助","money":"158.00"}],"Error":{"ErrorCode":"0","ErrorMessage":"success"},"TotalNum":"2"}
         Map<String, Float> maps = new HashMap<>();
         for (YZS_TJ3_Res.ResultBean item : items) {
-            maps.put(item.getType(), Float.valueOf(item.getMoney()) );
+
+            allcount=allcount+Float.valueOf(item.getMoney());
+        }
+        for (YZS_TJ3_Res.ResultBean item : items) {
+            maps.put(item.getType()+"\n"+item.getMoney()+"元", Float.valueOf(item.getMoney())*100/allcount );
         }
         setPieChartData(pieChart,maps);
 
@@ -166,8 +208,8 @@ public class ActYZS_tj3 extends ActBase{
         dataSet.setValueLinePart1Length(0.3f);
         dataSet.setValueLinePart2Length(0.4f);
 
-//        dataSet.setValueLineColor(Color.BLUE);//设置连接线的颜色
-//        dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+        dataSet.setValueLineColor(Color.BLUE);//设置连接线的颜色
+        dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
 
         PieData pieData = new PieData(dataSet);
         pieData.setValueFormatter(new PercentFormatter());
@@ -246,6 +288,10 @@ public class ActYZS_tj3 extends ActBase{
             if (!isHaveParent) {
                 myList.add(list.get(i));
             }
+        }
+        if (myList!=null && myList.size()>0){
+            xzqh = myList.get(0);
+            tvXZQH.setText(xzqh.getName());
         }
         for (YZS_xzqh item : myList) {
             TreeNode node = new TreeNode(new YZSTreeItemHolder.TreeItem(item)).setViewHolder(new YZSTreeItemHolder(this, new YZSTreeItemHolder.OnClickChildListener() {

@@ -34,36 +34,6 @@ public final class SystemEnv {
     private static SharedPreferences pref = PreferenceManager
             .getDefaultSharedPreferences(context);
 
-    public static void setMDR(boolean isMDR) {
-        SharedPreferences.Editor et = pref.edit();
-        et.putBoolean("isMDR", isMDR);
-        et.commit();
-    }
-
-    public static boolean getMDR() {
-        return pref.getBoolean("isMDR", false);
-    }
-
-    public static void setSound(boolean isSound) {
-        SharedPreferences.Editor et = pref.edit();
-        et.putBoolean("isSound", isSound);
-        et.commit();
-    }
-
-    public static boolean getSound() {
-        return pref.getBoolean("isSound", false);
-    }
-
-    public static void setShake(boolean isShake) {
-        SharedPreferences.Editor et = pref.edit();
-        et.putBoolean("isShake", isShake);
-        et.commit();
-    }
-
-    public static boolean getShake() {
-        return pref.getBoolean("isShake", false);
-    }
-
     public static void saveImagePath(String path) {
         SharedPreferences.Editor et = pref.edit();
         et.putString(IMAGE_PATH, path);
@@ -90,6 +60,30 @@ public final class SystemEnv {
 
     }
 
+    public static void deleteDataList() {
+        SharedPreferences.Editor et = pref.edit();
+        et.remove("XZQH");
+        et.commit();
+    }
+
+    /**
+     * 获取List
+     *
+     * @param tag
+     * @return
+     */
+    public static <T> List<T> getDataList(String tag, String crashFilePath) {
+        List<T> datalist = new ArrayList<T>();
+        String strJson = pref.getString(tag, null);
+        if (null == strJson) {
+            return datalist;
+        }
+        Gson gson = new Gson();
+        datalist = gson.fromJson(strJson, new TypeToken<List<T>>() {
+        }.getType());
+        return datalist;
+
+    }
 
     public static void setXZQHList(String tag, List<HD_XZQH> datalist) {
         if (null == datalist || datalist.size() <= 0)
@@ -115,12 +109,6 @@ public final class SystemEnv {
         }.getType());
         return datalist;
 
-    }
-
-    public static void deleteDataList() {
-        SharedPreferences.Editor et = pref.edit();
-        et.remove("XZQH");
-        et.commit();
     }
 
     /**
@@ -254,6 +242,45 @@ public final class SystemEnv {
     private static final String SET_SHAKE = "SET_SHAKE";
     private static final String SET_MDR = "SET_MDR";
 
+
+    public static void saveSetMsg(boolean msg){
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean(SET_NEW_MSG,msg);
+        editor.commit();
+    }
+
+    public static boolean getSetNewMsg() {
+        return pref.getBoolean(SET_NEW_MSG,true);
+    }
+
+    public static void saveSetSound(boolean sound){
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean(SET_SOUND,sound);
+        editor.commit();
+    }
+
+    public static boolean getSetSound() {
+        return pref.getBoolean(SET_SOUND,true);
+    }
+    public static void saveSetShake(boolean shake){
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean(SET_SHAKE,shake);
+        editor.commit();
+    }
+
+
+    public static boolean getSetShake() {
+        return pref.getBoolean(SET_SHAKE,true);
+    }
+    public static void saveSetMDR(boolean mdr){
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean(SET_MDR,mdr);
+        editor.commit();
+    }
+    public static boolean getSetMdr() {
+        return pref.getBoolean(SET_MDR,true);
+    }
+
     public static int getLoginType() {
         return pref.getInt(LOGIN_TYPE, 1);
     }
@@ -266,26 +293,26 @@ public final class SystemEnv {
 
     public static String getUserName() {
 
-        return pref.getString(USER_NAME, "");
+        return pref.getString(USER_NAME,"");
     }
 
     public static String getUserPw() {
-        return pref.getString(USER_PW, "");
+        return pref.getString(USER_PW,"");
     }
 
-    public static void saveUserName(String userName) {
+    public static void saveUserName(String userName){
 
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString(USER_NAME, userName);
+        editor.putString(USER_NAME,userName);
         editor.commit();
 
     }
 
 
-    public static void saveUserPw(String pw) {
+    public static void saveUserPw(String pw){
 
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString(USER_PW, pw);
+        editor.putString(USER_PW,pw);
         editor.commit();
 
     }

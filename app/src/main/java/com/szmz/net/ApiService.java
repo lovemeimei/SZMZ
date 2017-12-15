@@ -143,11 +143,11 @@ public interface ApiService {
     @POST("SalvationPlatform/phoneLoginController.do?modifyPhone")
     Call<CommResponse> modifyPhone(@Body JZ_Comm_modifyPhone request);
 
-    //修改资料
+    //修改密码
     @POST("SalvationPlatform/phoneLoginController.do?modifyPassword")
     Call<CommResponse> modifyPW(@Body ModifyPW request);
 
-    //修改密码
+    //修改资料
     @POST("SalvationPlatform/phoneLoginController.do?modifyPersonalMsg")
     Call<CommResponse> modifyInfo(@Body JZ_Comm_modifyInfo request);
 

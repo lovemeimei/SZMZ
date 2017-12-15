@@ -2,10 +2,13 @@ package com.szmz.ahdxt.tjfx;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.bigkoo.pickerview.TimePickerView;
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -20,16 +23,23 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.SystemConst;
+import com.szmz.SystemEnv;
+import com.szmz.entity.HD_XZQH;
 import com.szmz.entity.response.HD_TJ_YWQS;
+import com.szmz.entity.response.HD_XZQH_Response;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
 import com.szmz.utils.Md5Util;
+import com.unnamed.b.atv.model.TreeNode;
+import com.unnamed.b.atv.view.AndroidTreeView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -105,9 +115,11 @@ public class ActTJ_YEQS extends ActBase {
         mChart.setPinchZoom(false);
         mChart.setDrawBarShadow(false);
         mChart.setHorizontalScrollBarEnabled(true);
-        mChart.setVerticalScrollBarEnabled(false);
+//        mChart.setHorizontalFadingEdgeEnabled(true);
+//        mChart.setVerticalScrollBarEnabled(false);
+        mChart.setScaleEnabled(true);
         mChart.setDrawGridBackground(false);
-        mChart.setTouchEnabled(false);
+        mChart.setTouchEnabled(true);
         mChart.animateY(1500);
         mChart.animateX(1500);
         mChart.setExtraBottomOffset(20f);
@@ -126,11 +138,9 @@ public class ActTJ_YEQS extends ActBase {
 
         XAxis xAxis = mChart.getXAxis();
         xAxis.setTypeface(mTfLight);
-        xAxis.setGranularity(1f);
+//        xAxis.setGranularity(1f);
         xAxis.setTextSize(10f);
-//        xAxis.setLabelRotationAngle(25f);
         xAxis.setDrawGridLines(false);
-        xAxis.setCenterAxisLabels(true);//标签居中显示
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawLabels(true);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
@@ -148,7 +158,7 @@ public class ActTJ_YEQS extends ActBase {
         leftAxis.setValueFormatter(new LargeValueFormatter());
         leftAxis.setDrawGridLines(false);
         leftAxis.setSpaceTop(35f);
-        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+//        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
         mChart.getAxisRight().setEnabled(false);
     }
@@ -168,6 +178,8 @@ public class ActTJ_YEQS extends ActBase {
     }
 
     void setmChartInfo(List<HD_TJ_YWQS.ResultBean> items) {
+
+        times = new ArrayList<>();
 
         if (items == null || items.size() == 0)
             return;
@@ -203,7 +215,14 @@ public class ActTJ_YEQS extends ActBase {
         data.addDataSet(barDataSet);
 
 
-        data.setValueFormatter(new LargeValueFormatter());
+        data.setValueFormatter(new IValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+
+                int mvalue = (int)value;
+                return mvalue+"";
+            }
+        });
         data.setValueTypeface(mTfLight);
 
         CombinedData combinedData = new CombinedData();
@@ -269,11 +288,11 @@ public class ActTJ_YEQS extends ActBase {
 
                 List<HD_TJ_YWQS.ResultBean> items = result.Result;
 
+                mChart.setData(null);
+                mChart.invalidate();
                 if (items != null && items.size() > 0) {
 
                     setmChartInfo(items);
-                } else {
-
                 }
 
             }
@@ -295,4 +314,5 @@ public class ActTJ_YEQS extends ActBase {
         sb.append(md5key);
         return sb.toString();
     }
+
 }

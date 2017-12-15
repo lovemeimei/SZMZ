@@ -42,8 +42,8 @@ public class ActGrcx_DB extends ActBase {
 
         pcmcView.doSetContent(info.getBatchName());
         ywlxView.doSetContent(info.getBizCategory());
-        wtsjView.doSetContent(info.getCreateTime());
-        hzsjView.doSetContent(info.getEntrustTime());
+        hzsjView.doSetContent(info.getCreateTime());
+        wtsjView.doSetContent(info.getEntrustTime());
         ztsView.doSetContent(info.getTotal()+"");
         ycltsView.doSetContent(info.getHandledCount()+"");
 

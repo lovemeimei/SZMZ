@@ -3,6 +3,7 @@ package com.szmz.tjfx;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -40,7 +41,11 @@ import com.szmz.ywbl.dzda.JzTreeItemHolder;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -98,7 +103,7 @@ public class ActJZ_3 extends ActBase{
         setLeftVisible(true);
         setRightVisible(true);
         setRightShow("搜索");
-        setTitle("救助对象人次");
+        setTitle("地区分布统计");
         initTimePicker();
         initBarChart();
         doGetXzqh();
@@ -248,11 +253,28 @@ public class ActJZ_3 extends ActBase{
         }
         String time1 = tvStartTime.getText().toString().trim();
         String time2 = tvEndTime.getText().toString().trim();
-        if (time1==null)
-            time1="";
-        if (time2==null)
-            time2="";
+        if (TextUtils.isEmpty(time1)){
+            doToast("请选择开始时间");
+            return;
+        }
 
+        if (TextUtils.isEmpty(time2)){
+            doToast("请选择截至时间");
+            return;
+        }
+        if (!TextUtils.isEmpty(time1) && !TextUtils.isEmpty(time2)){
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date date1 =format.parse(time1);
+                Date date2 =format.parse(time2);
+                if (date1.after(date2)){
+                    doToast("截至日期不能早于起始日期");
+                    return;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         JZ_Tj1_Req req =new JZ_Tj1_Req(areaId,time1,time2);
 
         Call<JZ_tj1> call = App.getApiProxyJZ().getJZ_tj3(req);
@@ -317,6 +339,10 @@ public class ActJZ_3 extends ActBase{
             if (!isHaveParent) {
                 myList.add(list.get(i));
             }
+        }
+        if (myList!=null && myList.size()>0){
+            xzqh = myList.get(0);
+            tvXZQH.setText(xzqh.getRegionname());
         }
         for (YwblDzdaXzqh item : myList) {
             TreeNode node = new TreeNode(new JzTreeItemHolder.TreeItem(item)).setViewHolder(new JzTreeItemHolder(this, new JzTreeItemHolder.OnClickChildListener() {

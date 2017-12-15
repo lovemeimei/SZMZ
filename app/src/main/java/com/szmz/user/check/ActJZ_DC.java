@@ -3,6 +3,7 @@ package com.szmz.user.check;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,6 +19,10 @@ import com.szmz.utils.DatePickerUtil;
 import com.szmz.widget.MyLayoutView;
 import com.szmz.widget.MyLayoutView2;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -89,10 +94,23 @@ public class ActJZ_DC extends ActBase {
         time1 = tvTime1.getText().toString().trim();
         time2 = tvTime2.getText().toString().trim();
 
-       if (TextUtils.isEmpty(time1)||TextUtils.isEmpty(time2)){
-           doToast("请输入起止日期");
-           return;
+
+
+
+        if (TextUtils.isEmpty(time1)||TextUtils.isEmpty(time2)){
+
        }
+        DateFormat format = new SimpleDateFormat("yyyy-MM");
+       try {
+            Date date1 = format.parse(time1);
+            Date date2 = format.parse(time2);
+            if (date1.after(date2)){
+                doToast("起始月份不能大于终止月份");
+                return;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         final JZ_DC_req req = new JZ_DC_req(getUser().getIdJZ(),time1,time2);
 

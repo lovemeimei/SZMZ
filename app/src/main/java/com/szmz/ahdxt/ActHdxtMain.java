@@ -15,8 +15,13 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.barcode.decoding.Intents;
+import com.orhanobut.logger.Logger;
 import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.SystemConst;
+import com.szmz.entity.ScanCode;
+import com.szmz.more.ActCodeLogin;
+import com.szmz.utils.GsonUtil;
 import com.szmz.utils.UIUtil;
 
 import java.util.ArrayList;
@@ -146,10 +151,38 @@ public class ActHdxtMain extends ActBase {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CAPTURE) {
-            if (resultCode == RESULT_OK) {
 
+        if (requestCode==REQUEST_CAPTURE){
+            if (resultCode ==RESULT_OK){
+//                http://10.10.0.169:8080/jeecg/loginController.do?appQuest&uuid=75823&type=A001&SystemId=emRzaGJ6MTUwNzk2MTQyNjE1Nw==
+                String resultStr = data.getStringExtra(Intents.Scan.RESULT);
+
+                ScanCode code = GsonUtil.deser(resultStr,ScanCode.class);
+
+                String account="";
+                if (code.getSystemId().equals(SystemConst.SystemID_JZ)) {
+                    account = getUser().getAccountJZ();
+                }
+                if (code.getSystemId().equals(SystemConst.SystemID_YZS)) {
+                    account = getUser().getAccountYZS();
+
+                }
+                if (code.getSystemId().equals(SystemConst.SystemID_SH)) {
+                    account = getUser().getAccountHD();
+
+                }
+
+                Intent intent = new Intent(context, ActCodeLogin.class);
+//                intent.putExtra("uuid",code.getUuid());
+                intent.putExtra("type","A001");
+//                intent.putExtra("account",account);
+                intent.putExtra("msg",resultStr);
+                startActivity(intent);
             }
         }
+
+        super.onActivityResult(requestCode,resultCode,data);
+
+
     }
 }

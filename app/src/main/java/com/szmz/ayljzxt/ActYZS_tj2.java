@@ -2,6 +2,7 @@ package com.szmz.ayljzxt;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,7 +31,11 @@ import com.szmz.utils.DatePickerUtil;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -107,13 +112,38 @@ public class ActYZS_tj2 extends ActBase{
     }
 
     private void getInfo(){
-        String areaId = "51";
+        String areaId = "";
         if (xzqh != null) {
             areaId = xzqh.getCode();
         }
+        if (TextUtils.isEmpty(areaId)){
+            doToast("请选择区划");
+            return;
+        }
         String startTime = tvStartTime.getText().toString();
         String endTime = tvEndTime.getText().toString();
+        if (TextUtils.isEmpty(startTime)){
+            doToast("请选择开始时间");
+            return;
+        }
 
+        if (TextUtils.isEmpty(endTime)){
+            doToast("请选择截至时间");
+            return;
+        }
+        if (!TextUtils.isEmpty(startTime) && !TextUtils.isEmpty(endTime)){
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date date1 =format.parse(startTime);
+                Date date2 =format.parse(endTime);
+                if (date1.after(date2)){
+                    doToast("截至日期不能早于起始日期");
+                    return;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         YZS_TJ1_Req req = new YZS_TJ1_Req(areaId,startTime,endTime);
 
         Call<YZS_tj2_Res> call = App.getApiProxyYZS().getYZS_tj2(req);
@@ -124,20 +154,32 @@ public class ActYZS_tj2 extends ActBase{
                 super.doSuccess(result);
 
                 List<YZS_tj2_Res.ResultBean> items = result.Result;
-                if (items!=null && items.size()>0)
+
+                if (items!=null && items.size()>0){
+
                     setInfo(items);
+                }else {
+                    pieChart.removeAllViews();
+                    pieChart.invalidate();
+                }
             }
         },true);
 
         apiUtil.excute();
     }
+    float allcount = 0.0f;
 
     private void setInfo(List<YZS_tj2_Res.ResultBean> items){
 //        {"Result":[{"INPATIENT_TYPE_NAME":"常见疾病","REAL_RESCUE_MONEY":"867.00","Num":"4"},{"INPATIENT_TYPE_NAME":"重大疾病","REAL_RESCUE_MONEY":"450.00","Num":"1"}],"Error":{"ErrorCode":"0","ErrorMessage":"success"},"TotalNum":"2"}
 
         Map<String, Float> maps = new HashMap<>();
+
         for (YZS_tj2_Res.ResultBean item : items) {
-            maps.put(item.getINPATIENT_TYPE_NAME(), Float.valueOf(item.getREAL_RESCUE_MONEY()) );
+
+            allcount=allcount+Float.valueOf(item.getREAL_RESCUE_MONEY());
+        }
+        for (YZS_tj2_Res.ResultBean item : items) {
+            maps.put(item.getINPATIENT_TYPE_NAME()+"\n"+item.getREAL_RESCUE_MONEY()+"元", Float.valueOf(item.getREAL_RESCUE_MONEY())*100/allcount );
         }
         setPieChartData(pieChart,maps);
     }
@@ -163,8 +205,8 @@ public class ActYZS_tj2 extends ActBase{
         dataSet.setValueLinePart1Length(0.3f);
         dataSet.setValueLinePart2Length(0.4f);
 
-//        dataSet.setValueLineColor(Color.BLUE);//设置连接线的颜色
-//        dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+        dataSet.setValueLineColor(Color.BLUE);//设置连接线的颜色
+        dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
 
         PieData pieData = new PieData(dataSet);
         pieData.setValueFormatter(new PercentFormatter());
@@ -188,6 +230,12 @@ public class ActYZS_tj2 extends ActBase{
 //        pieChart.setCenterTextColor(R.color.black);
 //        pieChart.setDrawCenterText(true);//设置绘制环中文字
 //        pieChart.setRotationAngle(120f);//设置旋转角度
+
+        // 设置 pieChart 图表Item文本属性
+        pieChart.setDrawEntryLabels(true);              //设置pieChart是否只显示饼图上百分比不显示文字（true：下面属性才有效果）
+        pieChart.setEntryLabelColor(Color.WHITE);       //设置pieChart图表文本字体颜色
+//        mChart.setEntryLabelTypeface(mTfRegular);     //设置pieChart图表文本字体样式
+        pieChart.setEntryLabelTextSize(10f);
 
         //图例设置
         Legend legend = pieChart.getLegend();
@@ -244,6 +292,10 @@ public class ActYZS_tj2 extends ActBase{
             if (!isHaveParent) {
                 myList.add(list.get(i));
             }
+        }
+        if (myList!=null && myList.size()>0){
+            xzqh = myList.get(0);
+            tvXZQH.setText(xzqh.getName());
         }
         for (YZS_xzqh item : myList) {
             TreeNode node = new TreeNode(new YZSTreeItemHolder.TreeItem(item)).setViewHolder(new YZSTreeItemHolder(this, new YZSTreeItemHolder.OnClickChildListener() {

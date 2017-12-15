@@ -2,6 +2,7 @@ package com.szmz.ahdxt.tjfx;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.szmz.ActBase;
 import com.szmz.App;
@@ -32,7 +34,11 @@ import com.szmz.utils.Md5Util;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -117,7 +123,7 @@ public class ActTJ_GXDWHDRC extends ActBase {
         XAxis xAxis = barChart.getXAxis();//获取x轴
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);//设置X轴标签显示位置
         xAxis.setDrawGridLines(false);//不绘制格网线
-        xAxis.setCenterAxisLabels(true);//标签居中显示
+        xAxis.setCenterAxisLabels(false);//标签居中显示
         xAxis.setGranularity(1f);//设置最小间隔，防止当放大时，出现重复标签。
         xAxis.setValueFormatter(new IAxisValueFormatter() {//设置自定义的x轴值格式化器
             @Override
@@ -132,7 +138,7 @@ public class ActTJ_GXDWHDRC extends ActBase {
         xAxis.setLabelCount(items.size());//设置标签显示的个数
 
         YAxis leftAxis = barChart.getAxisLeft();
-        leftAxis.setValueFormatter(new LargeValueFormatter());
+        leftAxis.setValueFormatter(new IndexAxisValueFormatter());
         leftAxis.setDrawGridLines(false);
         leftAxis.setSpaceTop(35f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
@@ -190,6 +196,29 @@ public class ActTJ_GXDWHDRC extends ActBase {
         String startTime = tvStartTime.getText().toString();
         String endTime = tvEndTime.getText().toString();
 
+        if (TextUtils.isEmpty(startTime)){
+            doToast("请选择开始时间");
+            return;
+        }
+
+        if (TextUtils.isEmpty(endTime)){
+            doToast("请选择截至时间");
+            return;
+        }
+        if (!TextUtils.isEmpty(startTime) && !TextUtils.isEmpty(endTime)){
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date date1 =format.parse(startTime);
+                Date date2 =format.parse(endTime);
+                if (date1.after(date2)){
+                    doToast("截至日期不能早于起始日期");
+                    return;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
         //sysadmin 510401
         String params = getParams(App.getInstance().getLoginUser().getAccountHD(), areaId, startTime, endTime);
 
@@ -211,6 +240,8 @@ public class ActTJ_GXDWHDRC extends ActBase {
 
                 List<HD_TJ_GX.ResultBean> items = result.Result;
 
+                barChart.setData(null);
+                barChart.invalidate();
                 if (items != null && items.size() > 0) {
 
                     initBarChart(items);
@@ -302,6 +333,10 @@ public class ActTJ_GXDWHDRC extends ActBase {
             if (!isHaveParent) {
                 myList.add(list.get(i));
             }
+        }
+        if (myList!=null && myList.size()>0){
+            hd_xzqh = myList.get(0);
+            tvXZQH.setText(hd_xzqh.getAreaName());
         }
         for (HD_XZQH item : myList) {
             TreeNode node = new TreeNode(new TreeItemHolder.TreeItem(item)).setViewHolder(new TreeItemHolder(this, new TreeItemHolder.OnClickChildListener() {

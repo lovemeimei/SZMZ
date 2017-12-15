@@ -62,7 +62,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="剩余救助额"
+                    android:text="资金发放"
                     android:textColor="@color/black_light"
                     android:textSize="@dimen/font_normal" />
             </LinearLayout>

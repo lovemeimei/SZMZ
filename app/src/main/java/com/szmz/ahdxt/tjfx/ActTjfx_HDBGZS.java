@@ -3,6 +3,7 @@ package com.szmz.ahdxt.tjfx;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,8 +18,11 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
@@ -33,7 +37,11 @@ import com.szmz.utils.Md5Util;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -137,7 +145,7 @@ public class ActTjfx_HDBGZS extends ActBase {
         xAxis.setTextSize(10f);
 //        xAxis.setLabelRotationAngle(25f);
         xAxis.setDrawGridLines(false);
-        xAxis.setCenterAxisLabels(true);//标签居中显示
+//        xAxis.setCenterAxisLabels(true);//标签居中显示
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
@@ -153,8 +161,8 @@ public class ActTjfx_HDBGZS extends ActBase {
         leftAxis.setTypeface(mTfLight);
         leftAxis.setValueFormatter(new LargeValueFormatter());
         leftAxis.setDrawGridLines(false);
-        leftAxis.setSpaceTop(35f);
-        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+//        leftAxis.setSpaceTop(35f);
+//        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
         mChart.getAxisRight().setEnabled(false);
     }
@@ -198,28 +206,52 @@ public class ActTjfx_HDBGZS extends ActBase {
         // (0.25 + 0.05) * 3 + 0.1 = 1.00 -> interval per "group"
 
 
-        BarData data = new BarData();
-        for (int i = 0; i < types.size(); i++) {
-            ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
-            for (int j = 0; j < citys.size(); j++) {
-                yVals.add(new BarEntry(j, getValueByCity(items, citys.get(j), types.get(i))));
+        BarData data = null;
+        if (types.size()==1){
+
+            List<BarEntry> entries = new ArrayList<>();
+            for (int i = 0; i < citys.size(); i++) {
+                BarEntry entry = new BarEntry(i,getValueByCity(items, citys.get(i),types.get(0)));
+                entries.add(entry);
             }
-            BarDataSet barDataSet = new BarDataSet(yVals, types.get(i));
-            barDataSet.setColor(PIE_COLORS[i]);
-            data.addDataSet(barDataSet);
+            BarDataSet dataSet = new BarDataSet(entries, "共享单位");
+            dataSet.setColor(PIE_COLORS[2]);
+            data = new BarData(dataSet);
+            mChart.setData(data);
+
+            mChart.invalidate();
+        }else {
+            data = new BarData();
+            for (int i = 0; i < types.size(); i++) {
+                ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
+                for (int j = 0; j < citys.size(); j++) {
+                    yVals.add(new BarEntry(j, getValueByCity(items, citys.get(j), types.get(i))));
+                }
+                BarDataSet barDataSet = new BarDataSet(yVals, types.get(i));
+                barDataSet.setColor(PIE_COLORS[i]);
+                data.addDataSet(barDataSet);
+            }
+            data.setValueFormatter(new IValueFormatter() {
+                @Override
+                public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+
+                    int mvalue = (int)value;
+                    return mvalue+"";
+                }
+            });
+            data.setValueTypeface(mTfLight);
+            mChart.setData(data);
+
+            mChart.getXAxis().setAxisMinimum(0);
+            mChart.getXAxis().setAxisMaximum(4.0f);
+            mChart.getBarData().setBarWidth(barWidth);
+            mChart.groupBars(0, groupSpace, barSpace);
+            mChart.invalidate();
         }
 
 
-        data.setValueFormatter(new LargeValueFormatter());
-        data.setValueTypeface(mTfLight);
 
-        mChart.setData(data);
 
-        mChart.getXAxis().setAxisMinimum(0);
-        mChart.getXAxis().setAxisMaximum(4.0f);
-        mChart.getBarData().setBarWidth(barWidth);
-        mChart.groupBars(0, groupSpace, barSpace);
-        mChart.invalidate();
     }
 
     private float getValueByCity(List<HD_TJ_HDDX.ResultBean> items, String city, String type) {
@@ -241,6 +273,28 @@ public class ActTjfx_HDBGZS extends ActBase {
         String startTime = tvStartTime.getText().toString();
         String endTime = tvEndTime.getText().toString();
 
+        if (TextUtils.isEmpty(startTime)){
+            doToast("请选择开始时间");
+            return;
+        }
+
+        if (TextUtils.isEmpty(endTime)){
+            doToast("请选择截至时间");
+            return;
+        }
+        if (!TextUtils.isEmpty(startTime) && !TextUtils.isEmpty(endTime)){
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date date1 =format.parse(startTime);
+                Date date2 =format.parse(endTime);
+                if (date1.after(date2)){
+                    doToast("截至日期不能早于起始日期");
+                    return;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         //sysadmin 510401
         String params = getParams(App.getInstance().getLoginUser().getAccountHD(), areaId, startTime, endTime);
 
@@ -262,6 +316,8 @@ public class ActTjfx_HDBGZS extends ActBase {
 
                 List<HD_TJ_HDDX.ResultBean> items = result.Result;
 
+                mChart.setData(null);
+                mChart.invalidate();
                 if (items != null && items.size() > 0) {
 
                     setmChartInfo(items);
@@ -297,7 +353,7 @@ public class ActTjfx_HDBGZS extends ActBase {
 
     private void getXzqhData(String userId, String areaId) {
         List<HD_XZQH> xzqhList = SystemEnv.getXZQHList("XZQH");
-        if (xzqhList != null && xzqhList.size() > 0) {
+        if (xzqhList != null  && xzqhList.size() > 0) {
             initData(xzqhList);
             return;
         }
@@ -329,7 +385,7 @@ public class ActTjfx_HDBGZS extends ActBase {
                 List<HD_XZQH> items = result.Result;
 
                 if (items != null && items.size() > 0) {
-                    SystemEnv.setXZQHList("XZQH", items);
+                    SystemEnv.setDataList("XZQH",items);
                     initData(items);
                 } else {
                 }
@@ -353,6 +409,10 @@ public class ActTjfx_HDBGZS extends ActBase {
             if (!isHaveParent) {
                 myList.add(list.get(i));
             }
+        }
+        if (myList!=null && myList.size()>0){
+            hd_xzqh = myList.get(0);
+            tvXZQH.setText(hd_xzqh.getAreaName());
         }
         for (HD_XZQH item : myList) {
             TreeNode node = new TreeNode(new TreeItemHolder.TreeItem(item)).setViewHolder(new TreeItemHolder(this, new TreeItemHolder.OnClickChildListener() {

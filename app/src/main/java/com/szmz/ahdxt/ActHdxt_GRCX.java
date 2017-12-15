@@ -29,7 +29,7 @@ public class ActHdxt_GRCX extends ActBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("个人查询");
+        setTitle("我的业务");
     }
 
     @OnClick({

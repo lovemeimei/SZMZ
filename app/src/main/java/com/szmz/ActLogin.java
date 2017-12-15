@@ -251,7 +251,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
     private void getIPID() {
         final String ipJZ = "222.222.49.34:9095";
-        final String ipYZS = "222.222.49.34:8088";
+        final String ipYZS = "222.222.49.34:8189";
         final String ipHD = "222.222.49.34:8099";
         String ips = ipJZ + "," + ipYZS + "," + ipHD;
         final Comm_ipid_req req = new Comm_ipid_req(ips);

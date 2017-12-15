@@ -63,9 +63,11 @@ public class ActGrcx_DataList extends ActBaseList<HD_SearchDB_RES.ResultBean> {
     protected void doRefreshView(int p, final HD_SearchDB_RES.ResultBean item, View view) {
         TextView nameTv = (TextView) view.findViewById(R.id.nameTv);
         TextView sfzhTv = (TextView) view.findViewById(R.id.sfzhTv);
+        TextView sfzhTv_status = (TextView) view.findViewById(R.id.sfzhTv_status);
         Button button = (Button) view.findViewById(R.id.button);
         nameTv.setText(item.getBatchName());
         sfzhTv.setText(item.getBizCategory());
+        sfzhTv_status.setText(item.getDealNode());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

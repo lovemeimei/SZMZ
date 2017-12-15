@@ -44,8 +44,8 @@ public class ActGrcx_YB extends ActBase {
 
         pcmcView.doSetContent(info.getBatchName());
         ywlxView.doSetContent(info.getBizCategory());
-        wtsjView.doSetContent(info.getCreateTime());
-        cjsjView.doSetContent(info.getEntrustTime());
+        cjsjView.doSetContent(info.getCreateTime());
+        wtsjView.doSetContent(info.getEntrustTime());
         ztsView.doSetContent(info.getTotal()+"");
         blsjView.doSetContent("");
     }

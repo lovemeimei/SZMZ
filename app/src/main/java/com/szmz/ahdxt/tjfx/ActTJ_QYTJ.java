@@ -1,10 +1,13 @@
 package com.szmz.ahdxt.tjfx;
 
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.bigkoo.pickerview.TimePickerView;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -18,11 +21,15 @@ import com.szmz.App;
 import com.szmz.R;
 import com.szmz.SystemConst;
 import com.szmz.SystemEnv;
+import com.szmz.entity.HD_XZQH;
 import com.szmz.entity.response.HD_TJ_QYRC;
+import com.szmz.entity.response.HD_XZQH_Response;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
 import com.szmz.utils.Md5Util;
+import com.unnamed.b.atv.model.TreeNode;
+import com.unnamed.b.atv.view.AndroidTreeView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -182,6 +189,9 @@ public class ActTJ_QYTJ extends ActBase {
 
                 List<HD_TJ_QYRC.ResultBean> items = result.Result;
 
+                pieChart.setData(null);
+                pieChart.invalidate();
+
                 if (items != null && items.size() > 0) {
 
                     Map<String, Float> maps = new HashMap<>();
@@ -212,4 +222,6 @@ public class ActTJ_QYTJ extends ActBase {
         sb.append(md5key);
         return sb.toString();
     }
+
+
 }

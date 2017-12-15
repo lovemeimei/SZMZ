@@ -136,6 +136,7 @@
                 android:layout_weight="1.0"
                 android:background="@drawable/shape_bg_color"
                 android:gravity="center"
+                android:visibility="gone"
                 android:padding="@dimen/spacing_normal">
 
                 <ImageView

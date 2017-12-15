@@ -1,5 +1,7 @@
 package com.szmz.entity.request;
 
+import com.szmz.utils.Md5Util;
+
 /**
  * 中移全通集成公司 版本所有
  * 创建人： 郄益轩
@@ -14,7 +16,7 @@ public class ModifyPW extends BaseRequest{
         PassWord = passWord;
         this.newPassWord = newPassWord;
 
-        setMd5Key(loginName+passWord+newPassWord);
+        setMd5Key(Md5Util.getMd5(loginName+passWord+newPassWord));
     }
 
     public String LoginName;

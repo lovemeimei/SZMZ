@@ -95,7 +95,7 @@ public class ActModifyPW extends ActBase {
     private boolean doCheck(){
 
         if (TextUtils.isEmpty(etNew.getText().toString().trim())){
-            UIUtil.doToast("新密码不能为空");
+            UIUtil.doToast("请输入新密码");
             return false;
         }
         if (!TextUtil.isVailPw(etNew.getText().toString().trim())){
@@ -103,11 +103,11 @@ public class ActModifyPW extends ActBase {
             return false;
         }
         if (TextUtils.isEmpty(etNew2.getText().toString().trim())){
-            UIUtil.doToast("确认密码不能为空");
+            UIUtil.doToast("请输入确认密码");
             return false;
         }
         if (TextUtils.isEmpty(etOld.getText().toString().trim())){
-            UIUtil.doToast("旧密码不能为空");
+            UIUtil.doToast("请输入旧密码");
             return false;
         }
         if (etNew.getText().toString().trim().equals(TextUtils.isEmpty(etNew2.getText().toString().trim()))){

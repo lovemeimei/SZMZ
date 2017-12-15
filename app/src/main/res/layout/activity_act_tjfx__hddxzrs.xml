@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/spacing_normal"
             android:padding="5dp"
-            android:text="开始时间"
+            android:text="开始日期"
             android:textColor="@color/gray"
             android:textSize="@dimen/font_normal" />
 
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/spacing_normal"
             android:padding="5dp"
-            android:text="终止时间"
+            android:text="终止日期"
             android:textColor="@color/gray"
             android:textSize="@dimen/font_normal" />
 

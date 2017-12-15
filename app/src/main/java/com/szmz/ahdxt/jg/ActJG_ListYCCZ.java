@@ -1,6 +1,7 @@
 package com.szmz.ahdxt.jg;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,7 +19,11 @@ import com.szmz.utils.BaseListAdapter;
 import com.szmz.utils.DatePickerUtil;
 import com.szmz.utils.Md5Util;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -91,7 +96,7 @@ public class ActJG_ListYCCZ extends ActListBase {
                 });
 
                 holer.tvName.setText(item.getWarningName());
-                holer.tvType.setText(item.getWarningName());
+                holer.tvType.setText(item.getWarningTime());
             }
 
             @Override
@@ -136,7 +141,23 @@ public class ActJG_ListYCCZ extends ActListBase {
         startTime = etSearch2.getText().toString().trim();
         endTime = etSearch3.getText().toString().trim();
 
-
+        if (startTime==null)
+            startTime="";
+        if (endTime==null)
+            endTime="";
+        if (!TextUtils.isEmpty(startTime) && !TextUtils.isEmpty(endTime)){
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date date1 =format.parse(startTime);
+                Date date2 =format.parse(endTime);
+                if (date1.after(date2)){
+                    doToast("截至日期不能早于起始日期");
+                    return;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         if (isMore) {
             currentPage++;
         } else {
@@ -192,7 +213,7 @@ public class ActJG_ListYCCZ extends ActListBase {
 
     String getParams(String userid, String bizCategoryCode, String startTime, String endTime) {
 
-        String md5key = Md5Util.getMd5(userid + bizCategoryCode + startTime + currentPage + "20");
+        String md5key = Md5Util.getMd5(userid + bizCategoryCode + startTime+endTime + currentPage + "20");
         StringBuilder sb = new StringBuilder();
         sb.append("userId=");
         sb.append(userid);

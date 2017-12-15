@@ -3,6 +3,7 @@ package com.szmz.ahdxt.tjfx;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,8 +18,11 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
@@ -33,7 +37,11 @@ import com.szmz.utils.Md5Util;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -206,7 +214,14 @@ public class ActTjfx_HDDXZRS extends ActBase {
             data.addDataSet(barDataSet);
         }
 
-        data.setValueFormatter(new LargeValueFormatter());
+        data.setValueFormatter(new IValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+
+                int mvalue = (int)value;
+                return mvalue+"";
+            }
+        });
         data.setValueTypeface(mTfLight);
 
         mChart.setData(data);
@@ -236,6 +251,28 @@ public class ActTjfx_HDDXZRS extends ActBase {
         }
         String startTime = tvStartTime.getText().toString();
         String endTime = tvEndTime.getText().toString();
+        if (TextUtils.isEmpty(startTime)){
+            doToast("请选择开始时间");
+            return;
+        }
+
+        if (TextUtils.isEmpty(endTime)){
+            doToast("请选择截至时间");
+            return;
+        }
+        if (!TextUtils.isEmpty(startTime) && !TextUtils.isEmpty(endTime)){
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date date1 =format.parse(startTime);
+                Date date2 =format.parse(endTime);
+                if (date1.after(date2)){
+                    doToast("截至日期不能早于起始日期");
+                    return;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
 
         //sysadmin 510401
         String params = getParams(App.getInstance().getLoginUser().getAccountHD(), areaId, startTime, endTime);
@@ -257,6 +294,9 @@ public class ActTjfx_HDDXZRS extends ActBase {
 
 
                 List<HD_TJ_HDDX.ResultBean> items = result.Result;
+
+                mChart.setData(null);
+                mChart.invalidate();
 
                 if (items != null && items.size() > 0) {
 
@@ -325,7 +365,7 @@ public class ActTjfx_HDDXZRS extends ActBase {
                 List<HD_XZQH> items = result.Result;
 
                 if (items != null && items.size() > 0) {
-                    SystemEnv.setXZQHList("XZQH", items);
+                    SystemEnv.setDataList("XZQH",items);
                     initData(items);
                 } else {
                 }
@@ -349,6 +389,10 @@ public class ActTjfx_HDDXZRS extends ActBase {
             if (!isHaveParent) {
                 myList.add(list.get(i));
             }
+        }
+        if (myList!=null && myList.size()>0){
+            hd_xzqh = myList.get(0);
+            tvXZQH.setText(hd_xzqh.getAreaName());
         }
         for (HD_XZQH item : myList) {
             TreeNode node = new TreeNode(new TreeItemHolder.TreeItem(item)).setViewHolder(new TreeItemHolder(this, new TreeItemHolder.OnClickChildListener() {

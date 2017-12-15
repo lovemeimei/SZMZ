@@ -64,6 +64,12 @@ public class ActJG_Listywbl extends ActListBase {
         tvSearch1.setText("批次名称");
         tvSearch2.setText("业务类型");
 
+        tvTitleRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadInfo(false);
+            }
+        });
 
         etSearch2.setOnClickListener(new View.OnClickListener() {
             @Override

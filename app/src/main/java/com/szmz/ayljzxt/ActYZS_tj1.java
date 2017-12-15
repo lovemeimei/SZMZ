@@ -3,6 +3,7 @@ package com.szmz.ayljzxt;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,9 +18,12 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
@@ -34,7 +38,11 @@ import com.szmz.utils.DatePickerUtil;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -109,13 +117,40 @@ getInfo();
 
 
     private void getInfo(){
-        String areaId = "51";
+        String areaId = "";
         if (xzqh != null) {
             areaId = xzqh.getCode();
+        }
+        if (TextUtils.isEmpty(areaId)){
+            doToast("请选择区划");
+            return;
         }
         String startTime = tvStartTime.getText().toString();
         String endTime = tvEndTime.getText().toString();
 
+        if (TextUtils.isEmpty(startTime)){
+            doToast("请选择开始时间");
+            return;
+        }
+
+        if (TextUtils.isEmpty(endTime)){
+            doToast("请选择截至时间");
+            return;
+        }
+
+        if (!TextUtils.isEmpty(startTime) && !TextUtils.isEmpty(endTime)){
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                Date date1 =format.parse(startTime);
+                Date date2 =format.parse(endTime);
+                if (date1.after(date2)){
+                    doToast("截至日期不能早于起始日期");
+                    return;
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         YZS_TJ1_Req req = new YZS_TJ1_Req(areaId,startTime,endTime);
 
         Call<YZS_TJ1_Res> call = App.getApiProxyYZS().getYZS_tj1(req);
@@ -126,8 +161,13 @@ getInfo();
                 super.doSuccess(result);
 
                 List<YZS_TJ1_Res.ResultBean> items = result.Result;
-                if (items!=null && items.size()>0)
+                mChart.setData(null);
+                mChart.invalidate();
+
+                if (items!=null && items.size()>0){
+
                     setInfo(items);
+                }
             }
         },true);
 
@@ -149,6 +189,8 @@ getInfo();
         for (String x:xValues){
             float[] yValueitem =new float[2];
             for (YZS_TJ1_Res.ResultBean item:items){
+                if (item.getFAMILY_NUM().equals("0"))
+                    continue;
                 if (x.equals(item.getFAMILY_RESCUE_CATEGORY_NAME())&&item.getRescueType().equals(yValueType[0])){
                     yValueitem[0] = Float.valueOf(item.getFAMILY_NUM());
                 }
@@ -166,6 +208,14 @@ getInfo();
             barEntries.add(barEntry);
         }
         BarDataSet barDataSet = new BarDataSet(barEntries,"医疗救助分类");
+        barDataSet.setValueFormatter(new IValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+                int n = (int) value;
+                return n+"";
+            }
+        });
+
         barDataSet.setDrawIcons(false);
         barDataSet.setColors(getColors());
         barDataSet.setStackLabels(yValueType);
@@ -292,6 +342,10 @@ getInfo();
             if (!isHaveParent) {
                 myList.add(list.get(i));
             }
+        }
+        if (myList!=null && myList.size()>0){
+            xzqh = myList.get(0);
+            tvXZQH.setText(xzqh.getName());
         }
         for (YZS_xzqh item : myList) {
             TreeNode node = new TreeNode(new YZSTreeItemHolder.TreeItem(item)).setViewHolder(new YZSTreeItemHolder(this, new YZSTreeItemHolder.OnClickChildListener() {

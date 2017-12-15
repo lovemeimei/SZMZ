@@ -14,7 +14,7 @@
         android:padding="10dp">
 
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
@@ -28,11 +28,21 @@
 
             <TextView
                 android:id="@+id/sfzhTv"
-                android:layout_width="match_parent"
+                android:layout_below="@+id/nameTv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="@dimen/font_normal" />
-        </LinearLayout>
+            <TextView
+                android:id="@+id/sfzhTv_status"
+                android:layout_below="@+id/nameTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/sfzhTv"
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:textSize="@dimen/font_normal" />
+        </RelativeLayout>
 
 
         <Button
