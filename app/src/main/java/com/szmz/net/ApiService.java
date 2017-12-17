@@ -41,6 +41,7 @@ import com.szmz.entity.request.JZ_YWBL_SPGS_RE;
 import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.Register_Req;
+import com.szmz.entity.request.YZSSQR_JD_Detail_Req;
 import com.szmz.entity.request.YZSSQR_JZYE_Req;
 import com.szmz.entity.request.YZSSQR_history_req;
 import com.szmz.entity.request.YZS_History_Detail_Req;
@@ -342,15 +343,15 @@ public interface ApiService {
 
 
     /**************************医疗一站式申请人*********************************/
-    @POST("ActionControler/AppSalvationProgressList.ashx")
+    @POST("ActionControler/AppMessageList.ashx")
     Call<YZSSQR_HomeList_Res> getYZS_homelist_SQR(@Body YZS_SQR_jdlist_req req);
 
 
     //进度查询
     @POST("ActionControler/AppSalvationProgressList.ashx")
     Call<YZSSQR_jd_Res> getYZS_jdlist_SQR(@Body YZS_SQR_jdlist_req req);
-    @POST("ActionControler/AppSalvationProgressList.ashx")
-    Call<YZSSQR_jd_Res> getYZS_jdDetail_SQR(@Body YZS_History_Detail_Req req);
+    @POST("ActionControler/AppSalvationProgressInfo.ashx")
+    Call<YZSSQR_jd_Res> getYZS_jdDetail_SQR(@Body YZSSQR_JD_Detail_Req req);
 
     @POST("ActionControler/AppSpareSalvageMoney.ashx")
     Call<YZSSQR_JZYE_Res> getYZS_jzye(@Body YZSSQR_JZYE_Req req);

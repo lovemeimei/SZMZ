@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.entity.request.YZSSQR_JD_Detail_Req;
 import com.szmz.entity.request.YZS_History_Detail_Req;
 import com.szmz.entity.response.YZSSQR_jd_Res;
 import com.szmz.net.ApiUtil;
@@ -42,6 +43,7 @@ public class ActYZS_JDDetail extends ActBase{
     MyLayoutView view4;
 
     private String id;
+    private String type;
     private YZSSQR_jd_Res.ResultBean item;
 
     private String[] stepString = {"审批中"};
@@ -54,15 +56,17 @@ public class ActYZS_JDDetail extends ActBase{
     protected void initUI() {
         super.initUI();
         id = getIntent().getStringExtra("id");
+        type = getIntent().getStringExtra("type");
 //        stepView.setStepDesc(new String[]{"审批中"})
         setLeftVisible(true);
         setTitle("进度信息");;
 //        view1.doSetContent();
+        getInfo();
     }
 
     private void getInfo(){
 
-        YZS_History_Detail_Req req = new YZS_History_Detail_Req(id);
+        YZSSQR_JD_Detail_Req req = new YZSSQR_JD_Detail_Req(id,type);
 
         Call<YZSSQR_jd_Res> call = App.getApiProxyYZS().getYZS_jdDetail_SQR(req);
 
@@ -87,7 +91,9 @@ public class ActYZS_JDDetail extends ActBase{
             llStepView.setVisibility(View.GONE);
         }else {
             stepString = all.split(",");
+            stepView.setStepCounts(stepString.length);
             stepView.setStepDesc(stepString);
+          
             String c = item.getCurrentNode();
             for (int i=0;i<stepString.length;i++){
                 if (stepString[i].equals(c)){

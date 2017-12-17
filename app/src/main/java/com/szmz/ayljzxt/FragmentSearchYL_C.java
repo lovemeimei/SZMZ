@@ -94,6 +94,7 @@ public class FragmentSearchYL_C extends BaseFragment {
 
                         Intent intent = new Intent(getContext(),ActYZS_JDDetail.class);
                         intent.putExtra("id",item.getId());
+                        intent.putExtra("type",item.getType());
                         startActivity(intent);
                     }
                 });

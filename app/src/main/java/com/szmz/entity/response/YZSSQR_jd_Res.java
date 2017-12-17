@@ -16,7 +16,7 @@ public class YZSSQR_jd_Res extends BaseResponse<YZSSQR_jd_Res.ResultBean>{
         private String typeName;
         private String FLOW_RESULT;
         private String FLOW_RESULT_NAME;
-        private String id;
+        private String ID;
 
         private String CardID;
         private String currentNode;
@@ -87,11 +87,11 @@ public class YZSSQR_jd_Res extends BaseResponse<YZSSQR_jd_Res.ResultBean>{
         }
 
         public String getId() {
-            return id;
+            return ID;
         }
 
         public void setId(String id) {
-            this.id = id;
+            this.ID = id;
         }
 
 
