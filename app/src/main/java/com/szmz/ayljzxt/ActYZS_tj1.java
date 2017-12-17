@@ -185,8 +185,8 @@ public class ActYZS_tj1 extends ActBase {
         List<float[]> yValues = new ArrayList<>();
 
         for (YZS_TJ1_Res.ResultBean item : items) {
-            if (!(xValues.contains(item.getFAMILY_RESCUE_NAME()))) {
-                xValues.add(item.getFAMILY_RESCUE_NAME());
+            if (!(xValues.contains(item.getRESCUE_CATEGORY_NAME()))) {
+                xValues.add(item.getRESCUE_CATEGORY_NAME());
             }
         }
 
@@ -198,10 +198,10 @@ public class ActYZS_tj1 extends ActBase {
             for (YZS_TJ1_Res.ResultBean item : items) {
                 if (item.getFAMILY_NUM().equals("0"))
                     continue;
-                if (x.equals(item.getFAMILY_RESCUE_NAME()) && item.getRescueType().equals(yValueType[0])) {
+                if (x.equals(item.getRESCUE_CATEGORY_NAME()) && item.getRescueType().equals(yValueType[0])) {
                     yValueitem[0] = Float.valueOf(item.getFAMILY_NUM());
                 }
-                if (x.equals(item.getFAMILY_RESCUE_NAME()) && item.getRescueType().equals(yValueType[1])) {
+                if (x.equals(item.getRESCUE_CATEGORY_NAME()) && item.getRescueType().equals(yValueType[1])) {
                     yValueitem[1] = Float.valueOf(item.getFAMILY_NUM());
                 }
             }
