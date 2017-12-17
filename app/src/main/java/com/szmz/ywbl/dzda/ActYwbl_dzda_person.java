@@ -326,7 +326,10 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         }
         keyWords = searchEd.getText().toString().trim();
 //        doGetData("510421100001", keyWords, CurrentPage);
-        doGetData(xzqh != null ? xzqh.getId() : "", keyWords, CurrentPage);
+
+
+//        doGetData("620102001004", keyWords, CurrentPage);
+        doGetData(xzqh != null ? xzqh.getRegioncode() : "", keyWords, CurrentPage);
     }
 
     private void doGetXzqh() {
@@ -353,25 +356,25 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         JZ_YWBL_DZDA_SALVATION_RE request;
         switch (type) {
             case 0:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203028", regionId, keyWords, CurrentPage);
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203028", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case 1:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203029", regionId, keyWords, CurrentPage);
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203029", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case 2:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203030", regionId, keyWords, CurrentPage);
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203030", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case 3:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203031", regionId, keyWords, CurrentPage);
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203031", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case 4:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203032", regionId, keyWords, CurrentPage);
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203032", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case -1:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203028", regionId, keyWords, CurrentPage);
+                request = new JZ_YWBL_DZDA_SALVATION_RE("20203028", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             default:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("", regionId, keyWords, CurrentPage);
+                request = new JZ_YWBL_DZDA_SALVATION_RE("", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
 
 
@@ -442,36 +445,41 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                 myList.add(list.get(i));
             }
         }
-        for (YwblDzdaXzqh item : myList) {
-            TreeNode node = new TreeNode(new JzTreeItemHolder.TreeItem(item)).setViewHolder(new JzTreeItemHolder(this, new JzTreeItemHolder.OnClickChildListener() {
-                @Override
-                public void doClick(YwblDzdaXzqh item) {
-                    if (dialog != null) {
-                        dialog.dismiss();
-                    }
-                    xzqh = item;
-                    dsNameTv.setText(item.getRegionname());
-                    doMore(false);
-                }
-            }));
-            node = addChildNode(node, list);
-            root.addChild(node);
-        }
-        tView = new AndroidTreeView(this, root);
-        tView.setDefaultAnimation(false);
-        dsLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doShowDialog();
-            }
-        });
-        builder = new MaterialDialog.Builder(context)
-                .customView(tView.getView(), true).negativeText("取消").onNegative(new MaterialDialog.SingleButtonCallback() {
+        if (myList != null && myList.size() > 0) {
+            xzqh = myList.get(0);
+            dsNameTv.setText(xzqh.getRegionname());
+            for (YwblDzdaXzqh item : myList) {
+                TreeNode node = new TreeNode(new JzTreeItemHolder.TreeItem(item)).setViewHolder(new JzTreeItemHolder(this, new JzTreeItemHolder.OnClickChildListener() {
                     @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        dialog.dismiss();
+                    public void doClick(YwblDzdaXzqh item) {
+                        if (dialog != null) {
+                            dialog.dismiss();
+                        }
+                        xzqh = item;
+                        dsNameTv.setText(item.getRegionname());
+                        doMore(false);
                     }
-                });
+                }));
+                node = addChildNode(node, list);
+                root.addChild(node);
+            }
+            tView = new AndroidTreeView(this, root);
+            tView.setDefaultAnimation(false);
+            dsLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    doShowDialog();
+                }
+            });
+            builder = new MaterialDialog.Builder(context)
+                    .customView(tView.getView(), true).negativeText("取消").onNegative(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            dialog.dismiss();
+                        }
+                    });
+        }
+
     }
 
     private void doShowDialog() {

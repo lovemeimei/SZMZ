@@ -10,7 +10,7 @@ public class JZ_YWBL_DZDA_SALVATION_RE extends BaseListRequest {
 
     private String regionId;
     private String keyWords;
-    private String type;
+    private String type = "";
     //20203028: 查询可入户调查的人员，
     //20203029：查询可民主评议的人员，
     //20203030：查看可审核公示的人员，
@@ -18,10 +18,15 @@ public class JZ_YWBL_DZDA_SALVATION_RE extends BaseListRequest {
     //20203032：查看可审批公示的人员
 
 
-    public JZ_YWBL_DZDA_SALVATION_RE(String type, String regionId, String keyWords, int CurrentPage) {
+    public JZ_YWBL_DZDA_SALVATION_RE(String type, String regionId, String keyWords, int CurrentPage, boolean isFromJZXX) {
         this.regionId = regionId;
         this.keyWords = keyWords;
-        this.type = type;
-        setMd5Key(Md5Util.getMd5(regionId + keyWords + type + CurrentPage + PageSize));
+        if (!isFromJZXX) {
+            this.type = type;
+            setMd5Key(Md5Util.getMd5(regionId + keyWords + type + CurrentPage + PageSize));
+        } else {
+            setMd5Key(Md5Util.getMd5(regionId + keyWords + CurrentPage + PageSize));
+        }
     }
+
 }
