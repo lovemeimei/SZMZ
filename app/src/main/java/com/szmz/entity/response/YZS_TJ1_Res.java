@@ -6,12 +6,12 @@ package com.szmz.entity.response;
  * 创建时间：2017/11/24 0024下午 3:51
  */
 
-public class YZS_TJ1_Res extends BaseResponse<YZS_TJ1_Res.ResultBean>{
+public class YZS_TJ1_Res extends BaseResponse<YZS_TJ1_Res.ResultBean> {
 
-    public class ResultBean{
+    public class ResultBean {
 
         private String rescueType;
-        private String FAMILY_RESCUE_CATEGORY_NAME;
+        private String FAMILY_RESCUE_NAME;
         private String FAMILY_NUM;
 
         public String getRescueType() {
@@ -22,12 +22,12 @@ public class YZS_TJ1_Res extends BaseResponse<YZS_TJ1_Res.ResultBean>{
             this.rescueType = rescueType;
         }
 
-        public String getFAMILY_RESCUE_CATEGORY_NAME() {
-            return FAMILY_RESCUE_CATEGORY_NAME;
+        public String getFAMILY_RESCUE_NAME() {
+            return FAMILY_RESCUE_NAME;
         }
 
-        public void setFAMILY_RESCUE_CATEGORY_NAME(String FAMILY_RESCUE_CATEGORY_NAME) {
-            this.FAMILY_RESCUE_CATEGORY_NAME = FAMILY_RESCUE_CATEGORY_NAME;
+        public void setFAMILY_RESCUE_NAME(String FAMILY_RESCUE_NAME) {
+            this.FAMILY_RESCUE_NAME = FAMILY_RESCUE_NAME;
         }
 
         public String getFAMILY_NUM() {

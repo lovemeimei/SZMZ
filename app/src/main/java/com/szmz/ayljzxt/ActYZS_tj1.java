@@ -55,7 +55,7 @@ import retrofit2.Call;
  * 创建时间：2017/11/24 0024下午 3:44
  */
 
-public class ActYZS_tj1 extends ActBase{
+public class ActYZS_tj1 extends ActBase {
 
     @BindView(R.id.et_tj_xzqh)
     TextView tvXZQH;
@@ -69,6 +69,7 @@ public class ActYZS_tj1 extends ActBase{
             Color.rgb(108, 176, 223), Color.rgb(195, 221, 155), Color.rgb(251, 215, 191),
             Color.rgb(237, 189, 189), Color.rgb(172, 217, 243)
     };
+
     @Override
     protected int getLayoutId() {
         return R.layout.act_yzs_tj;
@@ -84,18 +85,20 @@ public class ActYZS_tj1 extends ActBase{
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-getInfo();
+                getInfo();
             }
         });
         getQHlist();
         initTimePicker();
         initChart();
     }
+
     private TimePickerView pvTime;
 
     private void initTimePicker() {
         pvTime = DatePickerUtil.initPicker(this, DatePickerUtil.yyyyMMdd);
     }
+
     @OnClick({R.id.et_tj_time2, R.id.et_tj_time, R.id.et_tj_xzqh, R.id.tv_title_right})
     public void doClick(View v) {
 
@@ -116,34 +119,34 @@ getInfo();
     }
 
 
-    private void getInfo(){
+    private void getInfo() {
         String areaId = "";
         if (xzqh != null) {
             areaId = xzqh.getCode();
         }
-        if (TextUtils.isEmpty(areaId)){
+        if (TextUtils.isEmpty(areaId)) {
             doToast("请选择区划");
             return;
         }
         String startTime = tvStartTime.getText().toString();
         String endTime = tvEndTime.getText().toString();
 
-        if (TextUtils.isEmpty(startTime)){
+        if (TextUtils.isEmpty(startTime)) {
             doToast("请选择开始时间");
             return;
         }
 
-        if (TextUtils.isEmpty(endTime)){
+        if (TextUtils.isEmpty(endTime)) {
             doToast("请选择截至时间");
             return;
         }
 
-        if (!TextUtils.isEmpty(startTime) && !TextUtils.isEmpty(endTime)){
+        if (!TextUtils.isEmpty(startTime) && !TextUtils.isEmpty(endTime)) {
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             try {
-                Date date1 =format.parse(startTime);
-                Date date2 =format.parse(endTime);
-                if (date1.after(date2)){
+                Date date1 = format.parse(startTime);
+                Date date2 = format.parse(endTime);
+                if (date1.after(date2)) {
                     doToast("截至日期不能早于起始日期");
                     return;
                 }
@@ -151,11 +154,11 @@ getInfo();
                 e.printStackTrace();
             }
         }
-        YZS_TJ1_Req req = new YZS_TJ1_Req(areaId,startTime,endTime);
+        YZS_TJ1_Req req = new YZS_TJ1_Req(areaId, startTime, endTime);
 
         Call<YZS_TJ1_Res> call = App.getApiProxyYZS().getYZS_tj1(req);
 
-        ApiUtil<YZS_TJ1_Res>  apiUtil  = new ApiUtil<>(context,call,new SimpleApiListener<YZS_TJ1_Res>(){
+        ApiUtil<YZS_TJ1_Res> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<YZS_TJ1_Res>() {
             @Override
             public void doSuccess(YZS_TJ1_Res result) {
                 super.doSuccess(result);
@@ -164,37 +167,41 @@ getInfo();
                 mChart.setData(null);
                 mChart.invalidate();
 
-                if (items!=null && items.size()>0){
+                if (items != null && items.size() > 0) {
 
                     setInfo(items);
                 }
             }
-        },true);
+        }, true);
 
         apiUtil.excute();
     }
 
-    private void setInfo(List<YZS_TJ1_Res.ResultBean> items){
+    private void setInfo(List<YZS_TJ1_Res.ResultBean> items) {
 
 
-        String[] yValueType ={"住院救助","门诊救助"};
+        String[] yValueType = {"住院救助", "门诊救助"};
 
         List<float[]> yValues = new ArrayList<>();
 
-        for (YZS_TJ1_Res.ResultBean item:items){
-            if (!xValues.contains(item.getFAMILY_RESCUE_CATEGORY_NAME()))
-                xValues.add(item.getFAMILY_RESCUE_CATEGORY_NAME());
+        for (YZS_TJ1_Res.ResultBean item : items) {
+            if (!(xValues.contains(item.getFAMILY_RESCUE_NAME()))) {
+                xValues.add(item.getFAMILY_RESCUE_NAME());
+            }
         }
 
-        for (String x:xValues){
-            float[] yValueitem =new float[2];
-            for (YZS_TJ1_Res.ResultBean item:items){
+        for (String x : xValues) {
+            if (x == null) {
+                return;
+            }
+            float[] yValueitem = new float[2];
+            for (YZS_TJ1_Res.ResultBean item : items) {
                 if (item.getFAMILY_NUM().equals("0"))
                     continue;
-                if (x.equals(item.getFAMILY_RESCUE_CATEGORY_NAME())&&item.getRescueType().equals(yValueType[0])){
+                if (x.equals(item.getFAMILY_RESCUE_NAME()) && item.getRescueType().equals(yValueType[0])) {
                     yValueitem[0] = Float.valueOf(item.getFAMILY_NUM());
                 }
-                if (x.equals(item.getFAMILY_RESCUE_CATEGORY_NAME())&&item.getRescueType().equals(yValueType[1])){
+                if (x.equals(item.getFAMILY_RESCUE_NAME()) && item.getRescueType().equals(yValueType[1])) {
                     yValueitem[1] = Float.valueOf(item.getFAMILY_NUM());
                 }
             }
@@ -202,17 +209,17 @@ getInfo();
         }
 
         List<BarEntry> barEntries = new ArrayList<>();
-        for (int i=0;i<xValues.size();i++){
+        for (int i = 0; i < xValues.size(); i++) {
 
-            BarEntry barEntry = new BarEntry(i,yValues.get(i));
+            BarEntry barEntry = new BarEntry(i, yValues.get(i));
             barEntries.add(barEntry);
         }
-        BarDataSet barDataSet = new BarDataSet(barEntries,"医疗救助分类");
+        BarDataSet barDataSet = new BarDataSet(barEntries, "医疗救助分类");
         barDataSet.setValueFormatter(new IValueFormatter() {
             @Override
             public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
                 int n = (int) value;
-                return n+"";
+                return n + "";
             }
         });
 
@@ -227,6 +234,7 @@ getInfo();
         mChart.animateXY(3000, 3000);
         mChart.invalidate();
     }
+
     private int[] getColors() {
 
         int stacksize = 2;
@@ -240,12 +248,14 @@ getInfo();
 
         return colors;
     }
+
     @BindView(R.id.barchart)
     BarChart mChart;
-    List<String> xValues= new ArrayList<>();
+    List<String> xValues = new ArrayList<>();
     protected Typeface mTfRegular;
     protected Typeface mTfLight;
-    private void initChart(){
+
+    private void initChart() {
         mTfRegular = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
         mTfLight = Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf");
 
@@ -283,8 +293,8 @@ getInfo();
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
 
-                if (value >= 0 && value<xValues.size())
-                    return xValues.get((int)value);
+                if (value >= 0 && value < xValues.size())
+                    return xValues.get((int) value);
 
                 return "";
             }
@@ -306,23 +316,23 @@ getInfo();
     private AndroidTreeView tView;
     private MaterialDialog.Builder builder;
 
-    private void getQHlist(){
+    private void getQHlist() {
 
         YZS_qh_req req = new YZS_qh_req(getUser().getAccountYZS());
 
 
         Call<YZS_qh_res> call = App.getApiProxyYZS().getYZS_xzqh(req);
 
-        ApiUtil<YZS_qh_res> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<YZS_qh_res>(){
+        ApiUtil<YZS_qh_res> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<YZS_qh_res>() {
             @Override
             public void doSuccess(YZS_qh_res result) {
                 super.doSuccess(result);
 
                 List<YZS_xzqh> xzqhs = result.Result;
-                if (xzqhs!=null && xzqhs.size()>0)
+                if (xzqhs != null && xzqhs.size() > 0)
                     initData(xzqhs);
             }
-        },false);
+        }, false);
 
         apiUtil.excute();
 
@@ -343,7 +353,7 @@ getInfo();
                 myList.add(list.get(i));
             }
         }
-        if (myList!=null && myList.size()>0){
+        if (myList != null && myList.size() > 0) {
             xzqh = myList.get(0);
             tvXZQH.setText(xzqh.getName());
         }
