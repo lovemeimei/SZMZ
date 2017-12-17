@@ -162,7 +162,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         db = x.getDb(App.getDaoConfig());
         if (isOnline) {
             doGetXzqh();
-            refresh.autoRefresh();
+
         } else {
             if (isFromJZXX) {
                 return;
@@ -326,8 +326,6 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         }
         keyWords = searchEd.getText().toString().trim();
 //        doGetData("510421100001", keyWords, CurrentPage);
-
-
 //        doGetData("620102001004", keyWords, CurrentPage);
         doGetData(xzqh != null ? xzqh.getRegioncode() : "", keyWords, CurrentPage);
     }
@@ -479,7 +477,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                         }
                     });
         }
-
+        refresh.autoRefresh();
     }
 
     private void doShowDialog() {
