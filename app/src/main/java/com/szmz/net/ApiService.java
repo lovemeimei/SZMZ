@@ -10,7 +10,6 @@ import com.szmz.entity.request.Comm_getCode_Req;
 import com.szmz.entity.request.Comm_ipid_req;
 import com.szmz.entity.request.Comm_modifyUserInfoSQR_Req;
 import com.szmz.entity.request.Comm_msg_req;
-import com.szmz.entity.request.JZSQR_historyDetail_Req;
 import com.szmz.entity.request.JZSQR_zjfflist_req;
 import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.request.JZ_Comm_bindphone;
@@ -19,10 +18,10 @@ import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
 import com.szmz.entity.request.JZ_DC_req;
 import com.szmz.entity.request.JZ_Login_Code_Req;
-import com.szmz.entity.request.JZ_SQR_historyList_req;
 import com.szmz.entity.request.JZ_SQR_JD_DETAIL_RE;
 import com.szmz.entity.request.JZ_SQR_JD_RE;
 import com.szmz.entity.request.JZ_SQR_JD_XF_DETAIL_RE;
+import com.szmz.entity.request.JZ_SQR_historyList_req;
 import com.szmz.entity.request.JZ_Scan_QZ_Req;
 import com.szmz.entity.request.JZ_Search_workerDetail_Req;
 import com.szmz.entity.request.JZ_Search_worker_Req;
@@ -76,10 +75,10 @@ import com.szmz.entity.response.JZ_DC_Res;
 import com.szmz.entity.response.JZ_GetUserInfo;
 import com.szmz.entity.response.JZ_MSG_FC_Res;
 import com.szmz.entity.response.JZ_MSG_SP_Res;
-import com.szmz.entity.response.JZ_SQR_histroy_res;
 import com.szmz.entity.response.JZ_SQR_JD_DETAIL_RES;
 import com.szmz.entity.response.JZ_SQR_JD_RES;
 import com.szmz.entity.response.JZ_SQR_JD_XF_DETAIL_RES;
+import com.szmz.entity.response.JZ_SQR_histroy_res;
 import com.szmz.entity.response.JZ_Search_worker_Res;
 import com.szmz.entity.response.JZ_Todo_MenuTree;
 import com.szmz.entity.response.JZ_Todolist;
@@ -185,7 +184,7 @@ public interface ApiService {
     @POST("SocietySalvation/api/appDataqueryController.do?getHistoryInfoByUser")
     Call<JZ_SQR_histroy_res> JZSQR_historyDetail(@Body JZ_SQR_historyList_req request);
 
-    @POST("SocietySalvation/api/appDataqueryController?getGrantMoneyList")
+    @POST("SocietySalvation/api/appDataqueryController.do?getGrantMoneyList")
     Call<JZSQR_zjff_res> JZSQR_zjff(@Body JZSQR_zjfflist_req request);
     /**************************救助系统工作人员*********************************/
     //得到救助类型列表
