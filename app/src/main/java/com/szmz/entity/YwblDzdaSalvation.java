@@ -8,6 +8,7 @@ import org.xutils.db.annotation.Table;
  */
 @Table(name = "YwblDzdaSalvation")
 public class YwblDzdaSalvation implements IEntity {
+    private String id;
     @Column(name = "familyId", isId = true)
     private String familyId;//ID
     @Column(name = "jsonStr")
@@ -27,6 +28,14 @@ public class YwblDzdaSalvation implements IEntity {
     @Column(name = "type")
     private int type;
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public int getType() {
         return type;

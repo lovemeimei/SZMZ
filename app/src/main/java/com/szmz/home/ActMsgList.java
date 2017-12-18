@@ -39,7 +39,7 @@ public class ActMsgList extends ActListBase {
     BaseListAdapter<JZ_Todolist.ResultBean, ActMsgList.MViewHolder> adapter;
 
     int type = 0;
-    private String funtionID = "";
+    private String funtionID = "245A8F94567E4368ADFD680824851F27";
 
     @BindView(R.id.tv_search_title)
     TextView tvSearchView;
@@ -84,7 +84,6 @@ public class ActMsgList extends ActListBase {
         lv.setAdapter(adapter);
 
 
-
         initMenuTrer();
         getTodoList();
     }
@@ -113,6 +112,26 @@ public class ActMsgList extends ActListBase {
             @Override
             public void doSuccess(JZ_Todolist result) {
                 super.doSuccess(result);
+                List<JZ_Todolist.ResultBean> items = result.Result;
+                if (items != null && items.size() > 0) {
+                    noDataLayout.setVerticalGravity(View.GONE);
+                    if (currentPage == 1) {
+                        adapter.clearListData();
+                    }
+                    adapter.setItems(items);
+                    adapter.notifyDataSetChanged();
+                } else {
+                    noDataLayout.setVisibility(View.VISIBLE);
+                    adapter.clearListData();
+                    adapter.notifyDataSetChanged();
+                }
+                if (isHasNextPage(currentPage, pageSize, result.TotalNum)) {
+                    refresh.setLoadMore(true);
+                } else {
+                    refresh.setLoadMore(false);
+                }
+
+
             }
         }, false);
 
@@ -177,6 +196,8 @@ public class ActMsgList extends ActListBase {
                     }
                     hd_xzqh = item;
                     tvSearchView.setText(item.getAreaName());
+                    funtionID = hd_xzqh.getAreaId();
+                    getTodoList();
                 }
             }));
             node = addChildNode(node, list);

@@ -8,9 +8,19 @@ import com.szmz.entity.IEntity;
  * 创建时间：2017/10/17 0017下午 3:34
  */
 
-public class JZ_Todolist extends BaseResponse<JZ_Todolist.ResultBean>{
+public class JZ_Todolist extends BaseResponse<JZ_Todolist.ResultBean> {
 
-    public class ResultBean implements IEntity{
+    public class ResultBean implements IEntity {
+        {
+            String id;
+            String taskId;
+            String title;
+            String description;
+            String processDefinitionName;
+            String taskCreateTime;
+            String processDefinitionId;
+            String taskName;
 
+        }
     }
 }
