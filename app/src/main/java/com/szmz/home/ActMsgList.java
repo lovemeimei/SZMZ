@@ -1,5 +1,6 @@
 package com.szmz.home;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
@@ -60,14 +61,16 @@ public class ActMsgList extends ActListBase {
 
         adapter = new BaseListAdapter<JZ_Todolist.ResultBean, ActMsgList.MViewHolder>(this, R.layout.comm_list_item) {
             @Override
-            protected void refreshView(int postion, JZ_Todolist.ResultBean item, ActMsgList.MViewHolder holer) {
+            protected void refreshView(int postion, final JZ_Todolist.ResultBean item, ActMsgList.MViewHolder holer) {
 
 
-//                holer.tvName.setText(item.ge);
+                holer.tvName.setText(item.getTitle());
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        trans(ActMsgDetail.class, title, "");
+                        Intent intent = new Intent(context,ActMsgDetail_JZ.class);
+                        intent.putExtra("item",item);
+                        startActivity(intent);
                     }
                 });
             }

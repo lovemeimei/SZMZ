@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgrounColor"
+    android:orientation="vertical">
+
+    <include layout="@layout/comm_title" />
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:orientation="vertical">
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_home_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="标题"
+                app:contentText=""/>
+
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_home_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="流程编号"
+                app:contentText=""/>
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_home_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="流程名称"
+                app:contentText=""/>
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_home_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="开始时间"
+                app:contentText=""/>
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_home_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="结束时间"
+                android:visibility="gone"
+                app:contentText=""/>
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_home_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="状态"
+                app:contentText=""/>
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_home_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="当前环节"
+                app:contentText=""/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
