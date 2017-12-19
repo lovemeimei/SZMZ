@@ -14,14 +14,16 @@ public class JZ_Search_worker_Req extends BaseListRequest {
     private String beginDate;
     private String endDate;
     private String typeCode;
+    private String keyWords;
 
-    public JZ_Search_worker_Req(String userId, String beginDate, String endDate, String typeCode, int CurrentPage) {
+    public JZ_Search_worker_Req(String keyWords, String userId, String beginDate, String endDate, String typeCode, int CurrentPage) {
+        this.keyWords = keyWords;
         this.userId = userId;
         this.beginDate = beginDate;
         this.endDate = endDate;
         this.typeCode = typeCode;
         this.CurrentPage = CurrentPage;
 
-        setMd5Key(Md5Util.getMd5("" + userId + beginDate + endDate + typeCode + CurrentPage + PageSize));
+        setMd5Key(Md5Util.getMd5(keyWords + userId + beginDate + endDate + typeCode + CurrentPage + PageSize));
     }
 }

@@ -25,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class App extends Application {
 
-    private static GetMsgTask msgTask =null;
+    private static GetMsgTask msgTask = null;
 
     private static App singleton = null;
     public static LocationService locationService;
@@ -48,8 +48,8 @@ public class App extends Application {
     public static Boolean isInit = false;
 
     private static ApiService apiProxy = null;
-    private static ApiService apiProxyCom= null;
-    private static ApiService apiProxyComSQR= null;
+    private static ApiService apiProxyCom = null;
+    private static ApiService apiProxyComSQR = null;
     private static ApiService apiProxyJZ = null;
     private static ApiService apiProxyYZS = null;
 
@@ -67,8 +67,7 @@ public class App extends Application {
 
     public static GetMsgTask getGetMsgTask() {
 
-        if (msgTask == null)
-            msgTask = new GetMsgTask();
+        msgTask = new GetMsgTask();
         return msgTask;
 
     }
@@ -110,6 +109,7 @@ public class App extends Application {
 
     /**
      * 平台
+     *
      * @return
      */
     public static ApiService getApiProxyCom() {
@@ -121,6 +121,7 @@ public class App extends Application {
 
     /**
      * 平台申请人
+     *
      * @return
      */
     public static ApiService getApiProxyComSQR() {
@@ -129,8 +130,10 @@ public class App extends Application {
         }
         return apiProxyComSQR;
     }
+
     /**
      * 救助
+     *
      * @return
      */
     public static ApiService getApiProxyJZ() {
@@ -142,6 +145,7 @@ public class App extends Application {
 
     /**
      * 一站式
+     *
      * @return
      */
     public static ApiService getApiProxyYZS() {
@@ -249,6 +253,7 @@ public class App extends Application {
         }
 
     }
+
     /**
      * 系统退出时调用
      */

@@ -1,5 +1,6 @@
 package com.szmz.search;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.ListView;
@@ -11,7 +12,6 @@ import com.szmz.ActListBase;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.request.BaseRequest;
-import com.szmz.entity.request.JZ_Login_Code_Req;
 import com.szmz.entity.request.JZ_Search_worker_Req;
 import com.szmz.entity.response.JZ_Comm_JZLX_RES;
 import com.szmz.entity.response.JZ_Search_worker_Res;
@@ -19,7 +19,6 @@ import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
 import com.szmz.utils.UIUtil;
-import com.szmz.widget.SearchEditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +40,7 @@ public class ActHistoryList extends ActListBase {
     @BindView(R.id.tv_search_title)
     TextView tvSearchView;
 
-    private String typeID="";
+    private String typeID = "";
 
     BaseListAdapter<JZ_Search_worker_Res.ResultBean, ActHistoryList.MViewHolder> adapter;
 
@@ -58,14 +57,17 @@ public class ActHistoryList extends ActListBase {
 
         adapter = new BaseListAdapter<JZ_Search_worker_Res.ResultBean, ActHistoryList.MViewHolder>(this, R.layout.list_item_history) {
             @Override
-            protected void refreshView(int postion, JZ_Search_worker_Res.ResultBean item, ActHistoryList.MViewHolder holer) {
+            protected void refreshView(int postion, final JZ_Search_worker_Res.ResultBean item, ActHistoryList.MViewHolder holer) {
 
 
-//                holer.tvName.setText(item.);
+                holer.tvName.setText(item.name + "_" + item.type);
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        trans(ActSearchDetail.class);
+//                        trans(ActSearchDetail.class);
+                        Intent intent = new Intent(ActHistoryList.this, ActSearchDetail.class);
+                        intent.putExtra("ResultBean", item);
+                        startActivity(intent);
                     }
                 });
             }
@@ -86,7 +88,7 @@ public class ActHistoryList extends ActListBase {
         tvSearchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pvOptions!=null)
+                if (pvOptions != null)
                     pvOptions.show();
             }
         });
@@ -100,7 +102,7 @@ public class ActHistoryList extends ActListBase {
     @Override
     public void doRefresh(MaterialRefreshLayout materialRefreshLayout) {
 
-        currentPage=1;
+        currentPage = 1;
         getList();
     }
 
@@ -114,25 +116,25 @@ public class ActHistoryList extends ActListBase {
         TextView tvName;
     }
 
-    private void getList(){
+    private void getList() {
 
-        final JZ_Search_worker_Req req = new JZ_Search_worker_Req(getUser().getIdJZ(),"","",typeID,currentPage);
+        final JZ_Search_worker_Req req = new JZ_Search_worker_Req("", getUser().getIdJZ(), "", "", typeID, currentPage);
 
         Call<JZ_Search_worker_Res> call = App.getApiProxyJZ().getJZ_SearchList(req);
 
-        ApiUtil<JZ_Search_worker_Res> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<JZ_Search_worker_Res>(){
+        ApiUtil<JZ_Search_worker_Res> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<JZ_Search_worker_Res>() {
             @Override
             public void doSuccess(JZ_Search_worker_Res result) {
 
                 items = result.Result;
-                if (items!=null && items.size()>0){
+                if (items != null && items.size() > 0) {
                     noDataLayout.setVerticalGravity(View.GONE);
-                    if (currentPage==1){
+                    if (currentPage == 1) {
                         adapter.clearListData();
                     }
                     adapter.setItems(items);
                     adapter.notifyDataSetChanged();
-                }else {
+                } else {
                     noDataLayout.setVisibility(View.VISIBLE);
                     adapter.clearListData();
                     adapter.notifyDataSetChanged();
@@ -150,7 +152,7 @@ public class ActHistoryList extends ActListBase {
                 refresh.finishRefresh();
                 refresh.finishRefreshLoadMore();
             }
-        },false);
+        }, false);
 
         apiUtil.excute();
     }
