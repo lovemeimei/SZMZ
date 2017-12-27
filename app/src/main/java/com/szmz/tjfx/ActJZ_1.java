@@ -112,7 +112,7 @@ public class ActJZ_1 extends ActBase {
         initTimePicker();
         initBarChart();
         doGetXzqh();
-        getInfo();
+//        getInfo();
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -289,6 +289,8 @@ public class ActJZ_1 extends ActBase {
 
                  items = result.Result;
 
+                mChart.setData(null);
+                mChart.invalidate();
                 if (items != null && items.size() > 0) {
 
                     setmChartInfo(items);

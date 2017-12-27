@@ -88,7 +88,7 @@ public class ActMsgList extends ActListBase {
 
 
         initMenuTrer();
-        getTodoList();
+//        getTodoList();
     }
 
     @Override
@@ -200,6 +200,7 @@ public class ActMsgList extends ActListBase {
                     hd_xzqh = item;
                     tvSearchView.setText(item.getAreaName());
                     funtionID = hd_xzqh.getAreaId();
+//                    doToast(funtionID);
                     getTodoList();
                 }
             }));
@@ -243,6 +244,7 @@ public class ActMsgList extends ActListBase {
 
                         //
                         funtionID = hd_xzqh.getAreaId();
+//                        doToast(funtionID);
                         getTodoList();
                     }
                 })), list));

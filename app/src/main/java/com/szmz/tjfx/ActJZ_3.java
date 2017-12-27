@@ -292,6 +292,9 @@ public class ActJZ_3 extends ActBase{
 
                 List<JZ_tj1.ResultBean> items = result.Result;
 
+                mChart.setData(null);
+                mChart.invalidate();
+
                 if (items != null && items.size() > 0) {
 
                     setmChartInfo(items);
