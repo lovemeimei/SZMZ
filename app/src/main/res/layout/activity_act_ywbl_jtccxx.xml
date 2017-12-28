@@ -29,7 +29,8 @@
             <ListView
                 android:id="@+id/listView"
                 style="@style/listStyle"
-                android:layout_weight="1.0" />
+                android:layout_weight="1.0"
+                android:divider="@null" />
 
         </com.materiallistview.MaterialRefreshLayout>
 

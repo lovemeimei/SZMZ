@@ -28,7 +28,7 @@ public class ActYwbl_dzda_jtfcxx extends ActBaseList<YwblDzdaFamilyFcxx> {
         MyLayoutView fwxzView = (MyLayoutView) view.findViewById(R.id.fwxzView);
         MyLayoutView fwlxView = (MyLayoutView) view.findViewById(R.id.fwlxView);
         fwdzView.doSetContent(item.getAddress());
-        fwmjView.doSetContent(item.getHousesize());
+        fwmjView.doSetContent(item.getArea());
         fwtsView.doSetContent(item.getEcount());
         fwxzView.doSetContent(item.getPropertyName());
         fwlxView.doSetContent(item.getType());
@@ -45,7 +45,7 @@ public class ActYwbl_dzda_jtfcxx extends ActBaseList<YwblDzdaFamilyFcxx> {
     protected void doMore(boolean isMore) {
         refresh.finishRefresh();
         refresh.finishRefreshLoadMore();
-        List<YwblDzdaFamilyFcxx> result = person.getFamilyFcxx();
+        List<YwblDzdaFamilyFcxx> result = person.getFamilyEstateInfo();
         if (result != null && result.size() > 0) {
             adapter.clearListData();
             adapter.setListData(result);

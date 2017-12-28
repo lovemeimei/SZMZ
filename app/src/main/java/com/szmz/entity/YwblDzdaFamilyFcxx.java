@@ -7,7 +7,7 @@ package com.szmz.entity;
 
 public class YwblDzdaFamilyFcxx implements IEntity {
     private String address;//	房屋地址
-    private String housesize;//房屋面积
+    private String area;//房屋面积
     private String ecount;//房屋套数
     private String propertyName;//房屋性质
     private String type;//房屋类型
@@ -20,12 +20,12 @@ public class YwblDzdaFamilyFcxx implements IEntity {
         this.address = address;
     }
 
-    public String getHousesize() {
-        return housesize;
+    public String getArea() {
+        return area;
     }
 
-    public void setHousesize(String housesize) {
-        this.housesize = housesize;
+    public void setArea(String area) {
+        this.area = area;
     }
 
     public String getEcount() {

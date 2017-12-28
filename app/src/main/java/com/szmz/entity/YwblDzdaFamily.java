@@ -54,7 +54,7 @@ public class YwblDzdaFamily implements IEntity {
      * 家庭房产信息
      */
 
-    private List<YwblDzdaFamilyFcxx> FamilyFcxx;
+    private List<YwblDzdaFamilyFcxx> FamilyEstateInfo;
     /**
      * 家庭收入信息
      */
@@ -204,12 +204,12 @@ public class YwblDzdaFamily implements IEntity {
         FamilyShipPerInfo = familyShipPerInfo;
     }
 
-    public List<YwblDzdaFamilyFcxx> getFamilyFcxx() {
-        return FamilyFcxx;
+    public List<YwblDzdaFamilyFcxx> getFamilyEstateInfo() {
+        return FamilyEstateInfo;
     }
 
-    public void setFamilyFcxx(List<YwblDzdaFamilyFcxx> familyFcxx) {
-        FamilyFcxx = familyFcxx;
+    public void setFamilyEstateInfo(List<YwblDzdaFamilyFcxx> familyEstateInfo) {
+        FamilyEstateInfo = familyEstateInfo;
     }
 
     public List<YwblDzdaFamilyApproveInfo> getFamilyApproveInfo() {
