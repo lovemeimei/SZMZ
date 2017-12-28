@@ -53,6 +53,16 @@ public class App extends Application {
     private static ApiService apiProxyJZ = null;
     private static ApiService apiProxyYZS = null;
 
+    public static boolean isOnline = true;
+
+    public static boolean isIsOnline() {
+        return isOnline;
+    }
+
+    public static void setIsOnline(boolean isOnline) {
+        App.isOnline = isOnline;
+    }
+
     public static App getInstance() {
         if (singleton == null)
             singleton = new App();

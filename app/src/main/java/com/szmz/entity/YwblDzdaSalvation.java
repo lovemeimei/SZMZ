@@ -28,6 +28,15 @@ public class YwblDzdaSalvation implements IEntity {
     @Column(name = "type")
     private int type;
 
+    private boolean isSave = false;
+
+    public boolean isSave() {
+        return isSave;
+    }
+
+    public void setSave(boolean save) {
+        isSave = save;
+    }
 
     public String getId() {
         return id;

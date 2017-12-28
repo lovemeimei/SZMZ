@@ -17,6 +17,8 @@ import com.baidu.location.BDLocation;
 import com.bigkoo.pickerview.TimePickerView;
 import com.bm.library.Info;
 import com.bm.library.PhotoView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jph.takephoto.model.TResult;
 import com.szmz.App;
 import com.szmz.R;
@@ -225,6 +227,25 @@ public class ActRhcc extends ActLocationBase {
                 refreshLocation();
             }
         });
+
+        YwblSaveDataRequest ywblSaveDataRequest = (YwblSaveDataRequest) getIntent().getSerializableExtra("YwblSaveDataRequest");
+        if (ywblSaveDataRequest != null) {
+            JZ_YWBL_RHCC_RE request = GsonUtil.deser(ywblSaveDataRequest.getJsonStr(), JZ_YWBL_RHCC_RE.class);
+            path = new Gson().fromJson(ywblSaveDataRequest.getImageJsonStr(), new TypeToken<List<MyNewPhoto>>() {
+            }.getType());
+            paths.addAll(path);
+            adapter.setImgPaths(paths);
+            adapter.notifyDataSetChanged();
+            checkSalvation = new YwblDzdaSalvation();
+            checkSalvation.setId(ywblSaveDataRequest.getId().replace("RHCC", ""));
+            checkSalvation.setName(ywblSaveDataRequest.getName());
+            time.setText(request.countySpotCheckTime);
+            dcrTv.setText(request.countySpotCheckUser);
+            fzrTv.setText(request.countySpotCheckChargeUser);
+            rhccjgEd.setText(request.countySpotCheckResult);
+            location = new BDLocation();
+            location.setAddrStr(request.coordinate);
+        }
     }
 
     @Override

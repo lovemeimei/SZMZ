@@ -8,12 +8,12 @@ import com.szmz.utils.Md5Util;
 
 public class JZ_YWBL_MZPY_RE extends BaseListRequest {
 
-    private String familyIds;//家庭ID
-    private String streetCommentTime;//民主评议时间
-    private String streetCommentResult;//民主评议结果
-    private String streetCommentUser;//民主评议人员
-    private String streetCommentChargeUser;//民主评议负责人
-    private String coordinate;//地址
+    public String familyIds;//家庭ID
+    public String streetCommentTime;//民主评议时间
+    public String streetCommentResult;//民主评议结果
+    public String streetCommentUser;//民主评议人员
+    public String streetCommentChargeUser;//民主评议负责人
+    public String coordinate;//地址
 
 
     public JZ_YWBL_MZPY_RE(String familyIds, String streetCommentTime, String streetCommentResult,

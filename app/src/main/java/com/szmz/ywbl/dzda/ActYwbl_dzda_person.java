@@ -35,6 +35,7 @@ import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
 import org.xutils.DbManager;
+import org.xutils.db.sqlite.WhereBuilder;
 import org.xutils.ex.DbException;
 import org.xutils.x;
 
@@ -168,24 +169,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                 return;
             }
 
-            try {
-
-                List<YwblDzdaSalvation> items = db.selector(YwblDzdaSalvation.class).where("type", "=", type).findAll();
-                if (items != null && items.size() > 0) {
-                    adapter.clearListData();
-                    adapter.setListData(items);
-                    adapter.notifyDataSetChanged();
-                    noDataLayout.setVisibility(View.GONE);
-                    refresh.setLoadMore(false);
-                } else {
-                    adapter.clearListData();
-                    adapter.setListData(new ArrayList<YwblDzdaSalvation>());
-                    adapter.notifyDataSetChanged();
-                    noDataLayout.setVisibility(View.VISIBLE);
-                }
-            } catch (DbException e) {
-                e.printStackTrace();
-            }
+            doGetOutlineData("");
         }
 
 
@@ -215,14 +199,71 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
     }
 
 
+    private void doGetOutlineData(String keyword) {
+        try {
+
+            List<YwblDzdaSalvation> items = db.selector(YwblDzdaSalvation.class).where("type", "=", type).
+                    and(WhereBuilder.b("name", "like", "%" + keyword + "%").
+                            or(WhereBuilder.b("disName", "like", "%" + keyword + "%").
+                                    or(WhereBuilder.b("address", "like", "%" + keyword + "%"))))
+                    .findAll();
+            if (items != null && items.size() > 0) {
+                adapter.clearListData();
+                adapter.setListData(items);
+                adapter.notifyDataSetChanged();
+                noDataLayout.setVisibility(View.GONE);
+                refresh.setLoadMore(false);
+            } else {
+                adapter.clearListData();
+                adapter.setListData(new ArrayList<YwblDzdaSalvation>());
+                adapter.notifyDataSetChanged();
+                noDataLayout.setVisibility(View.VISIBLE);
+            }
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void doRefreshView(int p, final YwblDzdaSalvation item, View view) {
         TextView nameTv = (TextView) view.findViewById(R.id.nameTv);
         TextView timeTv = (TextView) view.findViewById(R.id.timeTv);
         TextView countyTv = (TextView) view.findViewById(R.id.countyTv);
         TextView typeTv = (TextView) view.findViewById(R.id.typeNameTv);
+        TextView btn_delete = (TextView) view.findViewById(R.id.btn_delete);
+        if (item.isSave()) {
+            btn_delete.setVisibility(View.VISIBLE);
+            btn_delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new MaterialDialog.Builder(ActYwbl_dzda_person.this).title("系统提示").content("是否确定删除该条本地数据？").positiveText("确定").negativeText("取消").onPositive(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            try {
+                                db.deleteById(YwblDzdaSalvation.class, item.getFamilyId());
+                                doToast("删除成功!");
+                            } catch (DbException e) {
+                                doToast("删除失败!");
+                                e.printStackTrace();
+                            }
+                        }
+                    }).onNegative(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
 
-        nameTv.setText(item.getName());
+                            dialog.dismiss();
+                            ;
+                        }
+                    }).show();
+
+                }
+            });
+        } else {
+            btn_delete.setVisibility(View.GONE);
+        }
+
+
+        nameTv.setText(item.getName() + (item.isSave() ? "（已保存）" : ""));
         timeTv.setText("");
         countyTv.setText(item.getAddress());
         typeTv.setText(item.getSalvationType());
@@ -316,7 +357,9 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
 
     @Override
     protected void doMore(boolean isMore) {
+        keyWords = searchEd.getText().toString().trim();
         if (!isOnline) {
+            doGetOutlineData(keyWords);
             return;
         }
         if (isMore) {
@@ -324,7 +367,6 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         } else {
             CurrentPage = 1;
         }
-        keyWords = searchEd.getText().toString().trim();
 //        doGetData("510421100001", keyWords, CurrentPage);
 //        doGetData("620102001004", keyWords, CurrentPage);
         doGetData(xzqh != null ? xzqh.getRegioncode() : "", keyWords, CurrentPage);
@@ -393,6 +435,15 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
 
                 if (items != null && items.size() > 0) {
                     for (YwblDzdaSalvation item : items) {
+                        YwblDzdaSalvation byId = null;
+                        try {
+                            byId = db.findById(YwblDzdaSalvation.class, item.getFamilyId());
+                        } catch (DbException e) {
+                            e.printStackTrace();
+                        }
+                        if (byId != null) {
+                            item.setSave(true);
+                        }
                         item.setType(type);
                     }
                     if (CurrentPage == 1) {

@@ -13,9 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.baidu.location.BDLocation;
 import com.bigkoo.pickerview.TimePickerView;
 import com.bm.library.Info;
 import com.bm.library.PhotoView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jph.takephoto.model.TResult;
 import com.szmz.App;
 import com.szmz.R;
@@ -199,6 +202,32 @@ public class ActMzpy extends ActLocationBase {
                 startActivityForResult(intent, 1110);
             }
         });
+        YwblSaveDataRequest ywblSaveDataRequest = (YwblSaveDataRequest) getIntent().getSerializableExtra("YwblSaveDataRequest");
+        if (ywblSaveDataRequest != null) {
+            JZ_YWBL_MZPY_RE request = GsonUtil.deser(ywblSaveDataRequest.getJsonStr(), JZ_YWBL_MZPY_RE.class);
+            path = new Gson().fromJson(ywblSaveDataRequest.getImageJsonStr(), new TypeToken<List<MyNewPhoto>>() {
+            }.getType());
+            paths.addAll(path);
+            adapter.setImgPaths(paths);
+            adapter.notifyDataSetChanged();
+            listSalvation = new ArrayList<>();
+            String ids = request.familyIds.replace("MZPY", "");
+            String[] split = ids.split(",");
+            String names = ywblSaveDataRequest.getName();
+            String[] splitName = names.split(",");
+            for (int i = 0; i < split.length; i++) {
+                YwblDzdaSalvation checkSalvation = new YwblDzdaSalvation();
+                checkSalvation.setId(split[i]);
+                checkSalvation.setName(splitName[i]);
+            }
+
+            pysjTv.setText(request.streetCommentTime);
+            jlrTv.setText(request.streetCommentUser);
+            fzrTv.setText(request.streetCommentChargeUser);
+            pyjlEd.setText(request.streetCommentResult);
+            location = new BDLocation();
+            location.setAddrStr(request.coordinate);
+        }
     }
 
     @Override

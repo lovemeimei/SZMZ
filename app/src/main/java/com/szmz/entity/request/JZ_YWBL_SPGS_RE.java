@@ -8,16 +8,16 @@ import com.szmz.utils.Md5Util;
 
 public class JZ_YWBL_SPGS_RE extends BaseListRequest {
 
-    private String familyIds;//家庭ID
-    private String countyPublicStartTime;//区县入户抽查日期
-    private String countyPublicEndTime;//区县入户抽查人员
-    private String countyPublicResult;//区县入户抽查结果
-    private String countyPublicUser;//区县入户抽查负责人
-    private String countyPublicObjectionInfo;
-    private String coordinate;//地址
-    private String countyApproveTime;
-    private String countyApproveUser;
-    private String countyApproveChargeUser;
+    public String familyIds;//家庭ID
+    public String countyPublicStartTime;//区县入户抽查日期
+    public String countyPublicEndTime;//区县入户抽查人员
+    public String countyPublicResult;//区县入户抽查结果
+    public String countyPublicUser;//区县入户抽查负责人
+    public String countyPublicObjectionInfo;
+    public String coordinate;//地址
+    public String countyApproveTime;
+    public String countyApproveUser;
+    public String countyApproveChargeUser;
 
 
     public JZ_YWBL_SPGS_RE(String familyIds, String countyPublicStartTime, String countyPublicEndTime,

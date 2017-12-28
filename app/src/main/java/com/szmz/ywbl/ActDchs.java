@@ -13,9 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.baidu.location.BDLocation;
 import com.bigkoo.pickerview.TimePickerView;
 import com.bm.library.Info;
 import com.bm.library.PhotoView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jph.takephoto.model.TResult;
 import com.szmz.App;
 import com.szmz.R;
@@ -101,9 +104,11 @@ public class ActDchs extends ActLocationBase {
         pvTime = DatePickerUtil.initPicker(this, DatePickerUtil.yyyyMMdd);
     }
 
+
     @Override
     protected void initUI() {
         super.initUI();
+
         initTimePicker();
         timeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,6 +215,25 @@ public class ActDchs extends ActLocationBase {
                 });
             }
         });
+        YwblSaveDataRequest ywblSaveDataRequest = (YwblSaveDataRequest) getIntent().getSerializableExtra("YwblSaveDataRequest");
+        if (ywblSaveDataRequest != null) {
+            JZ_YWBL_DCHS_RE request = GsonUtil.deser(ywblSaveDataRequest.getJsonStr(), JZ_YWBL_DCHS_RE.class);
+            path = new Gson().fromJson(ywblSaveDataRequest.getImageJsonStr(), new TypeToken<List<MyNewPhoto>>() {
+            }.getType());
+            paths.addAll(path);
+            adapter.setImgPaths(paths);
+            adapter.notifyDataSetChanged();
+            checkSalvation = new YwblDzdaSalvation();
+            checkSalvation.setId(ywblSaveDataRequest.getId().replace("DCHS", ""));
+            checkSalvation.setName(ywblSaveDataRequest.getName());
+            time.setText(request.streetCheckTime);
+            dcrTv.setText(request.streetCheckUser);
+            fzrTv.setText(request.streetCheckChargeUser);
+            dchsqkEd.setText(request.streetCheckInfo);
+            dchsjlEd.setText(request.streetCheckResult);
+            location = new BDLocation();
+            location.setAddrStr(request.coordinate);
+        }
     }
 
 

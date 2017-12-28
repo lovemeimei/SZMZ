@@ -82,7 +82,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
         getIPID();
     }
 
-    @OnClick({R.id.btn_submit, R.id.tv_zc, R.id.tv_wjmm})
+    @OnClick({R.id.btn_submit, R.id.tv_zc, R.id.tv_wjmm, R.id.btn_submit_outline})
     public void doSubmit(View v) {
 
         switch (v.getId()) {
@@ -104,6 +104,8 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                     loginSQR();
                 }
 
+                break;
+            case R.id.btn_submit_outline:
                 break;
         }
 

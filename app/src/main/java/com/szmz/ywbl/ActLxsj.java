@@ -1,9 +1,12 @@
 package com.szmz.ywbl;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.szmz.App;
@@ -40,13 +43,43 @@ public class ActLxsj extends ActBaseList<YwblSaveDataRequest> {
         return R.layout.activity_act_lxsj;
     }
 
+    @Override
+    protected void doListItemOnClick(YwblSaveDataRequest item) {
+        super.doListItemOnClick(item);
+        Intent intent = null;
+        switch (item.getType()) {
+
+            case 1:
+                intent = new Intent(ActLxsj.this, ActDchs.class);
+                break;
+            case 2:
+                intent = new Intent(ActLxsj.this, ActMzpy.class);
+                break;
+            case 3:
+                intent = new Intent(ActLxsj.this, ActRhcc.class);
+                break;
+            case 4:
+                intent = new Intent(ActLxsj.this, ActShgs.class);
+                break;
+            case 5:
+                intent = new Intent(ActLxsj.this, ActSpgs.class);
+                break;
+            default:
+                intent = new Intent(ActLxsj.this, ActDchs.class);
+                break;
+        }
+        intent.putExtra("YwblSaveDataRequest", item);
+        startActivity(intent);
+
+    }
 
     @Override
     protected void doRefreshView(int p, final YwblSaveDataRequest item, View view) {
         TextView name = (TextView) view.findViewById(R.id.name);
         TextView type = (TextView) view.findViewById(R.id.type);
-        Button submit = (Button) view.findViewById(R.id.submit);
+        TextView submit = (TextView) view.findViewById(R.id.submit);
         name.setText(item.getName());
+        TextView delete = (TextView) view.findViewById(R.id.delete);
         switch (item.getType()) {
             case 1:
                 type.setText("调查核实");
@@ -73,6 +106,32 @@ public class ActLxsj extends ActBaseList<YwblSaveDataRequest> {
             public void onClick(View v) {
 
                 doSubmit(item.getType(), item);
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(ActLxsj.this).title("系统提示").content("该条数据并未上传，是否确定删除该条数据？").positiveText("确定")
+                        .negativeText("取消").onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        dialog.dismiss();
+                    }
+                }).onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        try {
+                            dbManager.delete(item);
+                            doToast("删除成功!");
+                        } catch (DbException e) {
+                            e.printStackTrace();
+                            doToast("删除失败!");
+                        }
+                        refresh.autoRefresh();
+                    }
+                }).show();
+
             }
         });
 
@@ -244,4 +303,6 @@ public class ActLxsj extends ActBaseList<YwblSaveDataRequest> {
         setTitle("离线数据");
         refresh.autoRefresh();
     }
+
+
 }
