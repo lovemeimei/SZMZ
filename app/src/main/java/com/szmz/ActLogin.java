@@ -108,7 +108,11 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
                 break;
             case R.id.btn_submit_outline:
-                doOutLineLogin();
+                if (type == 1) {
+                    doOutLineLogin();
+                } else {
+                    doToast("该功能不对社会人员开放!");
+                }
                 break;
         }
 
