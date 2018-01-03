@@ -40,7 +40,7 @@ public class FragmentSearchXX_C extends BaseFragment {
                 trans(ActSQRHistoryList.class);
                 break;
             case R.id.ll_search_dx:
-                //救助余额
+               //资金发放
                 trans(ActSQR_zjff_List.class);
                 break;
 

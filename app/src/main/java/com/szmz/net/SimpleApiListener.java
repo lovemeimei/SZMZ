@@ -18,11 +18,13 @@ public class SimpleApiListener<T> implements ApiListener<T>{
 
     @Override
     public void doBusinessError(String msg) {
+//        UIUtil.doToast("服务器出错误了");
         UIUtil.doToast(msg == null ? "" : msg);
     }
 
     @Override
     public void doServerError() {
+
         UIUtil.doToast("服务器发生错误");
     }
 

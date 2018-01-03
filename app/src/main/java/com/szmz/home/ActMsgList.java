@@ -3,7 +3,9 @@ package com.szmz.home;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ import com.szmz.entity.response.JZ_Todolist;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
+import com.szmz.utils.UIUtil;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
@@ -35,6 +38,7 @@ import retrofit2.Call;
 public class ActMsgList extends ActListBase {
 
     private String title;
+    private String keyWords="";
     @BindView(R.id.lv)
     ListView lv;
     BaseListAdapter<JZ_Todolist.ResultBean, ActMsgList.MViewHolder> adapter;
@@ -88,17 +92,42 @@ public class ActMsgList extends ActListBase {
 
 
         initMenuTrer();
-//        getTodoList();
+        searchEd.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId,
+                                          KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH
+                        || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+
+                    String str = searchEd.getText().toString();
+                    if (TextUtils.isEmpty(str)){
+                        UIUtil.doToast("请输入查询内容");
+                    }else {
+                        keyWords = searchEd.getText().toString();
+                        refresh.autoRefresh();
+                    }
+                    //doSearch(searchEd.getText().toString());
+
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
     public void doRefresh(MaterialRefreshLayout materialRefreshLayout) {
-        refresh.finishRefresh();
+
+        currentPage=1;
+        getTodoList();
     }
 
     @Override
     public void doRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-        refresh.finishRefreshLoadMore();
+
+        currentPage++;
+        getTodoList();
     }
 
     class MViewHolder {
@@ -107,11 +136,19 @@ public class ActMsgList extends ActListBase {
     }
 
     private void getTodoList() {
-        JZ_TODO_List req = new JZ_TODO_List(getUser().getAccountJZ(), getUser().getIdJZ(), funtionID, 1);
+        JZ_TODO_List req = new JZ_TODO_List(getUser().getAccountJZ(), getUser().getIdJZ(), funtionID,keyWords, 1);
 
         Call<JZ_Todolist> call = App.getApiProxyJZ().getJZ_TodoList(req);
 
         ApiUtil<JZ_Todolist> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<JZ_Todolist>() {
+
+            @Override
+            public void doAfter() {
+                super.doAfter();
+                refresh.finishRefresh();
+                refresh.finishRefreshLoadMore();
+            }
+
             @Override
             public void doSuccess(JZ_Todolist result) {
                 super.doSuccess(result);

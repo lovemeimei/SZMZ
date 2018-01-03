@@ -87,7 +87,7 @@ public class ActYZS_JDDetail extends ActBase{
 
     private void  setInfo(){
         String all = item.getAllNode();
-        if (TextUtils.isEmpty(all)){
+        if (TextUtils.isEmpty(all)||"null".equals(all)){
             llStepView.setVisibility(View.GONE);
         }else {
             stepString = all.split(",");

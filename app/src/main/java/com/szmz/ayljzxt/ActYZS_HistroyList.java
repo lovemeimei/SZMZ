@@ -62,7 +62,7 @@ public class ActYZS_HistroyList extends ActListBase {
         super.initUI();
 
         setLeftVisible(true);
-        setTitle("救助信息");
+        setTitle("历史救助信息");
 
         adapter = new BaseListAdapter<YZS_history_Res.ResultBean, MViewHolder>(context, R.layout.list_item_history) {
             @Override
@@ -92,6 +92,7 @@ public class ActYZS_HistroyList extends ActListBase {
         };
         lv.setAdapter(adapter);
 
+        doLoadData();
     }
 
     class MViewHolder {

@@ -117,8 +117,9 @@ public class ActMsgListNormal extends ActListBase {
 
                         try {
                             dbManager.delete(items.get(position));
-                            items.remove(position);
-                            adapter.notifyDataSetChanged();
+//                            items.remove(position);
+//                            adapter.notifyDataSetChanged();
+                            getInfo();
                         } catch (DbException e) {
                             e.printStackTrace();
                         }
@@ -152,10 +153,14 @@ public class ActMsgListNormal extends ActListBase {
             }
         };
         lv.setAdapter(adapter);
+
     }
 
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     @Override
     public void doRefresh(MaterialRefreshLayout materialRefreshLayout) {
@@ -190,6 +195,11 @@ public class ActMsgListNormal extends ActListBase {
 //                        .findAll();
                 items =dbManager.findAll(CommMsgSave.class);
 
+                if (items==null || items.size()==0){
+                    noDataLayout.setVisibility(View.VISIBLE);
+                    adapter.clearListData();
+                    adapter.notifyDataSetChanged();
+                }
             } catch (DbException e) {
                 e.printStackTrace();
             }

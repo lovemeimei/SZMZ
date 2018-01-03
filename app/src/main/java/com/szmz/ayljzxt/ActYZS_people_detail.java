@@ -75,7 +75,14 @@ public class ActYZS_people_detail extends ActBase {
         view1.doSetContent(item.getNAME());
         view2.doSetContent(item.getREGIONALISM_NAME());
         view3.doSetContent(item.getIDCARD());
-        view4.doSetContent(item.getAPPLY_DATE());
+
+        try{
+            String[] time = item.getAPPLY_DATE().split(" ");
+            view4.doSetContent(time[0]);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         view5.doSetContent(item.getID());
         view6.doSetContent(item.getADDRESS());
     }

@@ -17,6 +17,6 @@ public class YZS_people_list_Req extends BaseListRequest{
         this.userName = userName;
         AreaCode = areaCode;
         this.CurrentPage = currentPage;
-        setMd5Key(Md5Util.getMd5(userName+areaCode+currentPage+PageSize));
+        setMd5Key(Md5Util.getMd5(areaCode+userName+currentPage+PageSize));
     }
 }

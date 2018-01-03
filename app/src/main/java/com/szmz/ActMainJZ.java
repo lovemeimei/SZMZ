@@ -75,8 +75,7 @@ public class ActMainJZ extends ActBase {
         mFragmentList = new ArrayList<>();
         setTitle(mTitles[0]);
 
-        tvTitleRight.setVisibility(View.VISIBLE);
-        tvTitleRight.setTextSize(30);
+        tvTitleRightScan.setVisibility(View.VISIBLE);
 
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
         tabhost.getTabWidget().setDividerDrawable(null);
@@ -119,11 +118,11 @@ public class ActMainJZ extends ActBase {
                 tabhost.setCurrentTab(position);
                 if (position==0){
 
-                    tvTitleRight.setVisibility(View.VISIBLE);
+                    tvTitleRightScan.setVisibility(View.VISIBLE);
 //                    tvTitleRight.setTextSize(getResources().getDimension(R.dimen.font_larger));
 
                 }else {
-                    tvTitleRight.setVisibility(View.GONE
+                    tvTitleRightScan.setVisibility(View.GONE
                     );
                 }
             }
@@ -134,7 +133,7 @@ public class ActMainJZ extends ActBase {
             }
         });
 
-        tvTitleRight.setOnClickListener(new View.OnClickListener() {
+        tvTitleRightScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 scan();

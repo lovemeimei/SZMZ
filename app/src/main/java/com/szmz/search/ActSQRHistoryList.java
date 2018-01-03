@@ -60,12 +60,12 @@ public class ActSQRHistoryList extends ActListBase {
             protected void refreshView(int postion, final JZ_SQR_histroy_res.ResultBean item, ActSQRHistoryList.MViewHolder holer) {
 
 
-                holer.tvName.setText(item.getName());
+                holer.tvName.setText(item.getName()+"\t\t\t"+item.getDealTime());
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(context,ActSearchDetail.class);
+                        Intent intent = new Intent(context,ActSQR_SearchDetail.class);
                         intent.putExtra("item",item);
                         startActivity(intent);
 

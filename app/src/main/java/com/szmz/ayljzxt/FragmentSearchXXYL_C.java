@@ -21,7 +21,7 @@ import butterknife.OnClick;
 public class FragmentSearchXXYL_C extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_search_c_xxcx;
+        return R.layout.fragment_search_c_xxcx_yzs;
     }
 
     @Override

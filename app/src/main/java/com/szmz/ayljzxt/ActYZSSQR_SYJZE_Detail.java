@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.materiallistview.MaterialRefreshLayout;
 import com.szmz.ActBase;
 import com.szmz.ActListBase;
+import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.SearchJZYE_Detal;
 import com.szmz.entity.response.YZSSQR_JZYE_Res;
@@ -69,7 +70,7 @@ public class ActYZSSQR_SYJZE_Detail extends ActBase {
 
         view3.doSetContent(item.getNAME());
         view4.doSetContent(item.getPERSON_ASSORT_NAME());
-        view5.doSetContent(item.getIDCARD());
+        view5.doSetContent(App.getInstance().getLoginUser().getIdCode());
         view6.doSetContent(item.getANNUAL());
         view7.doSetContent(item.getCATEGORY_NAME());
         view8.doSetContent(item.getTHIS_YEAR_BALANCE());

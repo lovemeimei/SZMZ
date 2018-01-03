@@ -18,6 +18,7 @@ import com.szmz.entity.request.JZ_Comm_modifyInfo;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
 import com.szmz.entity.request.JZ_DC_req;
 import com.szmz.entity.request.JZ_Login_Code_Req;
+import com.szmz.entity.request.JZ_SQR_HistoryDetailReq;
 import com.szmz.entity.request.JZ_SQR_JD_DETAIL_RE;
 import com.szmz.entity.request.JZ_SQR_JD_RE;
 import com.szmz.entity.request.JZ_SQR_JD_XF_DETAIL_RE;
@@ -182,7 +183,7 @@ public interface ApiService {
     @POST("SocietySalvation/api/appDataqueryController.do?getHistoryListByUser")
     Call<JZ_SQR_histroy_res> JZSQR_historyList(@Body JZ_SQR_historyList_req request);
     @POST("SocietySalvation/api/appDataqueryController.do?getHistoryInfoByUser")
-    Call<JZ_SQR_histroy_res> JZSQR_historyDetail(@Body JZ_SQR_historyList_req request);
+    Call<JZ_SQR_histroy_res> JZSQR_historyDetail(@Body JZ_SQR_HistoryDetailReq request);
 
     @POST("SocietySalvation/api/appDataqueryController.do?getGrantMoneyList")
     Call<JZSQR_zjff_res> JZSQR_zjff(@Body JZSQR_zjfflist_req request);

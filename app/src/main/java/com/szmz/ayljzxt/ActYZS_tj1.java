@@ -180,6 +180,7 @@ public class ActYZS_tj1 extends ActBase {
     private void setInfo(List<YZS_TJ1_Res.ResultBean> items) {
 
 
+        xValues = new ArrayList<>();
         String[] yValueType = {"住院救助", "门诊救助"};
 
         List<float[]> yValues = new ArrayList<>();

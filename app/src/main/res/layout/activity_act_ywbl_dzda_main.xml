@@ -227,7 +227,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:duplicateParentState="true"
-                    android:src="@drawable/ywbl_dzda_syrsrxx" />
+                    android:src="@drawable/slt_icon_jqba" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -253,7 +253,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:duplicateParentState="true"
-                    android:src="@drawable/ywbl_dzda_jtzlxx" />
+                    android:src="@drawable/slt_icon_dasp" />
 
                 <TextView
                     android:layout_width="wrap_content"

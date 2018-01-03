@@ -26,7 +26,8 @@ public class JZ_SQR_histroy_res extends BaseResponse<JZ_SQR_histroy_res.ResultBe
         private String poorReason;
         private String applyDate;
         private String population;
-        private String ensuremoney;
+//        private String ensuremoney;
+        private String ensureMoney;
 
         public String getName() {
             return name;
@@ -117,11 +118,11 @@ public class JZ_SQR_histroy_res extends BaseResponse<JZ_SQR_histroy_res.ResultBe
         }
 
         public String getEnsuremoney() {
-            return ensuremoney;
+            return ensureMoney;
         }
 
         public void setEnsuremoney(String ensuremoney) {
-            this.ensuremoney = ensuremoney;
+            this.ensureMoney = ensuremoney;
         }
     }
 }

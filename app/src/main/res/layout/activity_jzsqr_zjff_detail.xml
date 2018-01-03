@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="人员所属区划"
+                app:titleText="发放类型"
                 app:contentText=""/>
 
             <com.szmz.widget.MyLayoutView
@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="账套所属区划"
+                app:titleText="发放日期"
                 app:contentText=""/>
 
 
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="姓名"
+                app:titleText="发放方式"
                 app:contentText=""/>
 
             <com.szmz.widget.MyLayoutView
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="人员分类"
+                app:titleText="救助类型"
                 app:contentText=""/>
 
             <com.szmz.widget.MyLayoutView
@@ -59,7 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="身份证号"
+                app:titleText="是否残疾"
                 app:contentText=""/>
 
             <com.szmz.widget.MyLayoutView
@@ -67,33 +67,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="账套年度"
+                app:titleText="保障人数"
                 app:contentText=""/>
-
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="账户类型"
+                app:titleText="发放金额"
                 app:contentText=""/>
-
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="本年余额（元）"
-                app:contentText="3"/>
-
+                app:titleText="发放状态"
+                app:contentText=""/>
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="编号"
-                android:visibility="gone"
-                app:contentText="3"/>
+                app:titleText="失败原因"
+                app:contentText=""/>
 
         </LinearLayout>
     </ScrollView>

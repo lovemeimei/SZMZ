@@ -37,7 +37,7 @@ public class ActYZSSQR_SYJZEList extends ActListBase {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_act_list_syjze;
+        return R.layout.comm_list;
     }
 
 

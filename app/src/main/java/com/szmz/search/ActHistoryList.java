@@ -2,7 +2,10 @@ package com.szmz.search;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,6 +21,7 @@ import com.szmz.entity.response.JZ_Search_worker_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
+import com.szmz.utils.TextUtil;
 import com.szmz.utils.UIUtil;
 
 import java.util.ArrayList;
@@ -41,6 +45,7 @@ public class ActHistoryList extends ActListBase {
     TextView tvSearchView;
 
     private String typeID = "";
+    private String keyWords ="";
 
     BaseListAdapter<JZ_Search_worker_Res.ResultBean, ActHistoryList.MViewHolder> adapter;
 
@@ -92,6 +97,29 @@ public class ActHistoryList extends ActListBase {
                     pvOptions.show();
             }
         });
+
+        searchEd.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId,
+                                          KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH
+                        || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+
+                    String str = searchEd.getText().toString();
+                   if (TextUtils.isEmpty(str)){
+                        UIUtil.doToast("请输入姓名或者身份证号");
+                       return true;
+                   }else {
+                       keyWords = str;
+                       doLoadData();
+                   }
+
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -117,8 +145,7 @@ public class ActHistoryList extends ActListBase {
     }
 
     private void getList() {
-
-        final JZ_Search_worker_Req req = new JZ_Search_worker_Req("", getUser().getIdJZ(), "", "", typeID, currentPage);
+        final JZ_Search_worker_Req req = new JZ_Search_worker_Req(keyWords, getUser().getIdJZ(), "", "", typeID, currentPage);
 
         Call<JZ_Search_worker_Res> call = App.getApiProxyJZ().getJZ_SearchList(req);
 

@@ -36,6 +36,8 @@ public abstract class ActBase extends AppCompatActivity {
     TextView tvTitle;
     @BindView(R.id.tv_title_right)
     protected TextView tvTitleRight;
+    @BindView(R.id.tv_title_right_scan)
+    protected ImageView tvTitleRightScan;
     @BindView(R.id.iv_back)
     ImageView ivBack;
 
@@ -45,15 +47,15 @@ public abstract class ActBase extends AppCompatActivity {
     protected String TAG;
     protected MaterialDialog dialog;
 
-    public String getUserId_HD() {
-        return userId_HD;
-    }
+//    public String getUserId_HD() {
+//        return userId_HD;
+//    }
+//
+//    public void setUserId_HD(String userId_HD) {
+//        this.userId_HD = userId_HD;
+//    }
 
-    public void setUserId_HD(String userId_HD) {
-        this.userId_HD = userId_HD;
-    }
-
-    private String userId_HD = "510401";
+//    private String userId_HD = "510401";
 
     protected DbManager dbManager;
 

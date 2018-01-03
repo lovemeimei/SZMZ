@@ -54,8 +54,8 @@ public class ActHdxtMain extends ActBase {
         super.initUI();
         setTitle("核对系统");
         mFragmentList = new ArrayList<>();
-        tvTitleRight.setVisibility(View.VISIBLE);
-        tvTitleRight.setTextSize(30);
+        tvTitleRightScan.setVisibility(View.VISIBLE);
+        
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
         tabhost.getTabWidget().setDividerDrawable(null);
 
@@ -100,9 +100,9 @@ public class ActHdxtMain extends ActBase {
                 }
                 tabhost.setCurrentTab(position);
                 if (position == 0) {
-                    tvTitleRight.setVisibility(View.VISIBLE);
+                    tvTitleRightScan.setVisibility(View.VISIBLE);
                 } else {
-                    tvTitleRight.setVisibility(View.GONE);
+                    tvTitleRightScan.setVisibility(View.GONE);
                 }
             }
 
@@ -112,7 +112,7 @@ public class ActHdxtMain extends ActBase {
             }
         });
 
-        tvTitleRight.setOnClickListener(new View.OnClickListener() {
+        tvTitleRightScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 scan();

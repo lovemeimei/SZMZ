@@ -2,7 +2,9 @@ package com.szmz.ayljzxt;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -69,6 +71,7 @@ public class ActYzs_people_List extends ActListBase{
     @Override
     protected void initUI() {
         super.initUI();
+        setTitle("救助对象信息");
         adapter = new BaseListAdapter<YZS_people_Res.ResultBean, MViewHolder>(this, R.layout.list_item_history) {
             @Override
             protected void refreshView(int postion, final YZS_people_Res.ResultBean item, MViewHolder holer) {
@@ -99,8 +102,23 @@ public class ActYzs_people_List extends ActListBase{
         lv.setAdapter(adapter);
         adapter.setItems(items);
 
+                searchEd.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId,
+                                          KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH
+                        || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+
+                   doLoadData();
+
+                    return true;
+                }
+                return false;
+            }
+        });
+
         getQHlist();
-//        doLoadData();
     }
 
     @Override
@@ -117,7 +135,12 @@ public class ActYzs_people_List extends ActListBase{
 
     private void getList(){
 
-        YZS_people_list_Req req = new YZS_people_list_Req(getUser().getAccountYZS(),"",currentPage);
+        if (xzqh!=null){
+            areCode = xzqh.getCode();
+        }else {
+            areCode="";
+        }
+        YZS_people_list_Req req = new YZS_people_list_Req(getUser().getAccountYZS(),areCode,currentPage);
 
         Call<YZS_people_Res> call = App.getApiProxyYZS().getYZS_people_list(req);
 
@@ -208,6 +231,7 @@ public class ActYzs_people_List extends ActListBase{
                     }
                     xzqh = item;
                     tvSearchView.setText(item.getName());
+                    doLoadData();
                 }
             }));
             node = addChildNode(node, list);
@@ -248,7 +272,7 @@ public class ActYzs_people_List extends ActListBase{
                         }
                         xzqh = item;
                         tvSearchView.setText(item.getName());
-
+                        doLoadData();
                     }
                 })), list));
             }

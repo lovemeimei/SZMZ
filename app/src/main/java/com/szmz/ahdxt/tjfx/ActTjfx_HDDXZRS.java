@@ -187,6 +187,9 @@ public class ActTjfx_HDDXZRS extends ActBase {
 
     void setmChartInfo(List<HD_TJ_HDDX.ResultBean> items) {
 
+        types = new ArrayList<>();
+        citys = new ArrayList<>();
+
         if (items == null || items.size() == 0)
             return;
 

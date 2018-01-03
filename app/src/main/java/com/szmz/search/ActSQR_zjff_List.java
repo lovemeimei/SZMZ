@@ -49,24 +49,24 @@ public class ActSQR_zjff_List extends ActListBase {
         UIUtil.hideInputMethod(this);
 
         setLeftVisible(true);
-        setTitle("历史记录");
+        setTitle("资金发放");
 
         adapter = new BaseListAdapter<JZSQR_zjff_res.ResultBean, ActSQR_zjff_List.MViewHolder>(this, R.layout.list_item_history) {
             @Override
             protected void refreshView(int postion, final JZSQR_zjff_res.ResultBean item, ActSQR_zjff_List.MViewHolder holer) {
 
 
-                holer.tvName.setText(item.getBpmBizTitle());
-//                holer.tvName.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//
-//                        Intent intent = new Intent(context,ActSearchDetail.class);
-//                        intent.putExtra("item",item);
-//                        startActivity(intent);
-//
-//                    }
-//                });
+                holer.tvName.setText(item.getGrantDate()+"\t\t\t"+item.getEnsureMoney()+"元");
+                holer.tvName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(context,ActSQR_ZJFFDetail.class);
+                        intent.putExtra("item",item);
+                        startActivity(intent);
+
+                    }
+                });
             }
 
             @Override

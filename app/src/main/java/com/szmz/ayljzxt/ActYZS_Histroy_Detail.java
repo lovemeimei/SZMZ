@@ -53,7 +53,7 @@ public class ActYZS_Histroy_Detail extends ActBase {
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
-        setTitle("救助信息");
+        setTitle("历史救助信息");
         id = getIntent().getStringExtra("id");
         getInfo();
     }
