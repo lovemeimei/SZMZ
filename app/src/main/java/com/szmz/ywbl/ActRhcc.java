@@ -339,6 +339,7 @@ public class ActRhcc extends ActLocationBase {
             saveData.setName(checkSalvation.getName());
             saveData.setAddress(location.getAddrStr());
             saveData.setType(3);
+            saveData.setUserID(App.getInstance().getLoginUser().getIdJZ());
             try {
                 dbManager.saveOrUpdate(saveData);
                 doToast("保存成功!");

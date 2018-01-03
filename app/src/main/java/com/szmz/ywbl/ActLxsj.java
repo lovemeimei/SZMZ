@@ -278,7 +278,7 @@ public class ActLxsj extends ActBaseList<YwblSaveDataRequest> {
         refresh.finishRefreshLoadMore();
         List<YwblSaveDataRequest> result = null;
         try {
-            result = dbManager.findAll(YwblSaveDataRequest.class);
+            result = dbManager.selector(YwblSaveDataRequest.class).where("userID", "=", App.getInstance().getLoginUser().getIdJZ()).findAll();
         } catch (DbException e) {
             e.printStackTrace();
         }

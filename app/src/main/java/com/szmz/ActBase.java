@@ -65,6 +65,7 @@ public abstract class ActBase extends AppCompatActivity {
         TAG = this.getClass().getName();
         user = App.getInstance().getLoginUser();
         dbManager = x.getDb(App.getDaoConfig());
+        isOnline = App.isIsOnline();
         initUI();
     }
 

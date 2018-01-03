@@ -7,29 +7,44 @@ import org.xutils.db.annotation.Table;
  * @author qieyixuan
  * @created at 2016年04月24
  */
+@Table(name = "User")
 public class User implements IEntity {
 
-    private String userName;
-
+    @Column(name = "accountJZ", isId = true)
     private String accountJZ;
+    @Column(name = "accountYZS")
     private String accountYZS;
+    @Column(name = "accountHD")
     private String accountHD;
-
-
+    @Column(name = "userName")
+    private String userName;
+    @Column(name = "type")
     private int type;
+    @Column(name = "pw")
     private String pw;
+    @Column(name = "realName")
     private String realName;
+    @Column(name = "sex")
     private String sex;
+    @Column(name = "adderss")
     private String adderss;
+    @Column(name = "idCode")
     private String idCode;
+    @Column(name = "idJZ")
     private String idJZ;
+    @Column(name = "idYZS")
     private String idYZS;
+    @Column(name = "idHD")
     private String idHD;
+    @Column(name = "phone")
     private String phone;
+    @Column(name = "personId")
     private String personId;
-
+    @Column(name = "email")
     private String email;
+    @Column(name = "officePhone")
     private String officePhone;
+    @Column(name = "departName")
     private String departName;
 
     public String getEmail() {

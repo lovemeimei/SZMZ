@@ -22,6 +22,16 @@ public class YwblSaveDataRequest implements IEntity {
     private String name;
     @Column(name = "address")
     private String address;
+    @Column(name = "userID")
+    private String userID;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 
     public String getAddress() {
         return address;

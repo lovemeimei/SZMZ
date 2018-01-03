@@ -20,6 +20,8 @@ import com.szmz.more.ActBindPhone_Worker;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 
+import org.xutils.ex.DbException;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -128,6 +130,11 @@ public class ActMain extends ActBase {
                 }
                 User user = App.getInstance().getLoginUser();
                 user.setIdJZ(result.Result.get(0).getId());
+                try {
+                    dbManager.saveOrUpdate(user);
+                } catch (DbException e) {
+                    e.printStackTrace();
+                }
                 App.getInstance().login(user);
                 trans(ActMainJZ.class);
             }

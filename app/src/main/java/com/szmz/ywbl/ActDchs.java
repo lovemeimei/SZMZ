@@ -331,6 +331,7 @@ public class ActDchs extends ActLocationBase {
             saveData.setName(checkSalvation.getName());
             saveData.setAddress(location.getAddrStr());
             saveData.setType(1);
+            saveData.setUserID(App.getInstance().getLoginUser().getIdJZ());
             try {
                 dbManager.saveOrUpdate(saveData);
                 doToast("保存成功!");

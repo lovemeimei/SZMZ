@@ -399,6 +399,7 @@ public class ActSpgs extends ActLocationBase {
             saveData.setName(getNames(listSalvation));
             saveData.setAddress(location.getAddrStr());
             saveData.setType(5);
+            saveData.setUserID(App.getInstance().getLoginUser().getIdJZ());
             try {
                 dbManager.saveOrUpdate(saveData);
                 doToast("保存成功!");

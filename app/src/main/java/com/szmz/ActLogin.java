@@ -21,6 +21,8 @@ import com.szmz.more.ActFindPW;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 
+import org.xutils.ex.DbException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -106,10 +108,38 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
                 break;
             case R.id.btn_submit_outline:
+                doOutLineLogin();
                 break;
         }
 
 
+    }
+
+    private void doOutLineLogin() {
+        if (!doCheck()) {
+            return;
+        }
+        try {
+            List<User> all = dbManager.selector(User.class).where
+                    ("userName", "=", etUser.getText().toString().trim()).findAll();
+            if (all != null && all.size() > 0) {
+                if (etPW.getText().toString().trim().equals(all.get(0).getPw())) {
+                    doToast("登录成功!");
+                    App.getInstance().login(all.get(0));
+                    App.setIsOnline(false);
+                    trans(ActMainOutLine.class);
+                } else {
+                    doToast("请输入正确的用户名密码!");
+                    return;
+                }
+
+            } else {
+                doToast("请输入正确的用户名密码!");
+                return;
+            }
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
     }
 
     private void login() {
@@ -144,8 +174,6 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                         }
                     }
 
-//                    user.setAccountYZS("admin");
-//                    user.setAccountJZ("admin");
                     user.setUserName(etUser.getText().toString().trim());
                     user.setPw(etPW.getText().toString().trim());
                     user.setType(type);
@@ -160,6 +188,11 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                     SystemEnv.saveUserName(etUser.getText().toString().trim());
                     SystemEnv.saveUserPw(etPW.getText().toString().trim());
                     SystemEnv.saveLoginType(type);
+                    try {
+                        dbManager.saveOrUpdate(user);
+                    } catch (DbException e) {
+                        e.printStackTrace();
+                    }
 
                     trans(ActMain.class);
                 }

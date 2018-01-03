@@ -202,11 +202,28 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
     private void doGetOutlineData(String keyword) {
         try {
 
-            List<YwblDzdaSalvation> items = db.selector(YwblDzdaSalvation.class).where("type", "=", type).
-                    and(WhereBuilder.b("name", "like", "%" + keyword + "%").
-                            or(WhereBuilder.b("disName", "like", "%" + keyword + "%").
-                                    or(WhereBuilder.b("address", "like", "%" + keyword + "%"))))
-                    .findAll();
+            List<YwblDzdaSalvation> items = null;
+            if(type!=-1) {
+                if (keyword == null || keyword.equals("")) {
+                    items = db.selector(YwblDzdaSalvation.class).where("type", "=", type).findAll();
+                } else {
+                    items = db.selector(YwblDzdaSalvation.class).where("type", "=", type).
+                            and(WhereBuilder.b("name", "like", "%" + keyword + "%").
+                                    or(WhereBuilder.b("disName", "like", "%" + keyword + "%").
+                                            or(WhereBuilder.b("address", "like", "%" + keyword + "%"))))
+                            .findAll();
+                }
+            }else{
+                if (keyword == null || keyword.equals("")) {
+                    items = db.selector(YwblDzdaSalvation.class).findAll();
+                } else {
+                    items = db.selector(YwblDzdaSalvation.class).
+                            where(WhereBuilder.b("name", "like", "%" + keyword + "%").
+                                    or(WhereBuilder.b("disName", "like", "%" + keyword + "%").
+                                            or(WhereBuilder.b("address", "like", "%" + keyword + "%"))))
+                            .findAll();
+                }
+            }
             if (items != null && items.size() > 0) {
                 adapter.clearListData();
                 adapter.setListData(items);
@@ -219,9 +236,14 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                 adapter.notifyDataSetChanged();
                 noDataLayout.setVisibility(View.VISIBLE);
             }
+            refresh.finishRefreshing();
+            refresh.finishRefreshLoadMore();
         } catch (DbException e) {
             e.printStackTrace();
+            refresh.finishRefreshing();
+            refresh.finishRefreshLoadMore();
         }
+
     }
 
     @Override

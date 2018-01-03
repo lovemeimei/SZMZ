@@ -393,6 +393,7 @@ public class ActShgs extends ActLocationBase {
             saveData.setName(getNames(listSalvation));
             saveData.setAddress(location.getAddrStr());
             saveData.setType(4);
+            saveData.setUserID(App.getInstance().getLoginUser().getIdJZ());
             try {
                 dbManager.saveOrUpdate(saveData);
                 doToast("保存成功!");
