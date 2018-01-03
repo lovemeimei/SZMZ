@@ -108,19 +108,19 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                             if (itemSeleted != null && itemSeleted.size() > 0) {
                                 Intent intent;
                                 switch (type) {
-                                    case 1:
+                                    case 2:
                                         intent = new Intent(ActYwbl_dzda_person.this, ActMzpy.class);
                                         intent.putExtra("YwblDzdaSalvations", (Serializable) itemSeleted);
                                         setResult(1111, intent);
                                         finish();
                                         break;
-                                    case 2:
+                                    case 4:
                                         intent = new Intent(ActYwbl_dzda_person.this, ActShgs.class);
                                         intent.putExtra("YwblDzdaSalvations", (Serializable) itemSeleted);
                                         setResult(1221, intent);
                                         finish();
                                         break;
-                                    case 4:
+                                    case 5:
                                         intent = new Intent(ActYwbl_dzda_person.this, ActSpgs.class);
                                         intent.putExtra("YwblDzdaSalvations", (Serializable) itemSeleted);
                                         setResult(1441, intent);
@@ -135,7 +135,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                             if (checkSalvation != null) {
                                 Intent intent = new Intent();
                                 switch (type) {
-                                    case 0:
+                                    case 1:
                                         intent.setClass(ActYwbl_dzda_person.this, ActDchs.class);
                                         intent.putExtra("YwblDzdaSalvation", checkSalvation);
                                         setResult(1001, intent);
@@ -203,7 +203,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         try {
 
             List<YwblDzdaSalvation> items = null;
-            if(type!=-1) {
+            if (type != -1) {
                 if (keyword == null || keyword.equals("")) {
                     items = db.selector(YwblDzdaSalvation.class).where("type", "=", type).findAll();
                 } else {
@@ -213,7 +213,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                                             or(WhereBuilder.b("address", "like", "%" + keyword + "%"))))
                             .findAll();
                 }
-            }else{
+            } else {
                 if (keyword == null || keyword.equals("")) {
                     items = db.selector(YwblDzdaSalvation.class).findAll();
                 } else {
@@ -417,23 +417,23 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
     private void doGetData(String regionId, String keyWords, final int CurrentPage) {
         JZ_YWBL_DZDA_SALVATION_RE request;
         switch (type) {
-            case 0:
+            case 1:
                 request = new JZ_YWBL_DZDA_SALVATION_RE("20203028", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
-            case 1:
+            case 2:
                 request = new JZ_YWBL_DZDA_SALVATION_RE("20203029", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
-            case 2:
+            case 4:
                 request = new JZ_YWBL_DZDA_SALVATION_RE("20203030", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case 3:
                 request = new JZ_YWBL_DZDA_SALVATION_RE("20203031", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
-            case 4:
+            case 5:
                 request = new JZ_YWBL_DZDA_SALVATION_RE("20203032", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case -1:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203028", regionId, keyWords, CurrentPage, isFromJZXX);
+                request = new JZ_YWBL_DZDA_SALVATION_RE("", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             default:
                 request = new JZ_YWBL_DZDA_SALVATION_RE("", regionId, keyWords, CurrentPage, isFromJZXX);
@@ -619,6 +619,8 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                             myMap.remove(next.getKey());
                             if (myMap != null && myMap.size() > 0) {
                                 doSaveData(myMap);
+                            } else {
+                                adapter.notifyDataSetChanged();
                             }
 
                         } catch (DbException e) {

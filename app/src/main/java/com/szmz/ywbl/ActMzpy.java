@@ -196,7 +196,7 @@ public class ActMzpy extends ActLocationBase {
                 Intent intent = new Intent();
                 intent.setClass(ActMzpy.this, ActYwbl_dzda_person.class);
                 intent.putExtra("YwblDzdaSalvations", (Serializable) listSalvation);
-                intent.putExtra("Type", 1);
+                intent.putExtra("Type", 2);
                 intent.putExtra("isMore", true);
                 intent.putExtra("isChose", true);
                 startActivityForResult(intent, 1110);

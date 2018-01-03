@@ -122,7 +122,7 @@ public class ActDchs extends ActLocationBase {
                 Intent intent = new Intent();
                 intent.setClass(ActDchs.this, ActYwbl_dzda_person.class);
                 intent.putExtra("YwblDzdaSalvation", checkSalvation);
-                intent.putExtra("Type", 0);
+                intent.putExtra("Type", 1);
                 intent.putExtra("isMore", false);
                 intent.putExtra("isChose", true);
                 startActivityForResult(intent, 1000);

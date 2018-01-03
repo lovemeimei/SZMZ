@@ -218,7 +218,7 @@ public class ActShgs extends ActLocationBase {
                 Intent intent = new Intent();
                 intent.setClass(ActShgs.this, ActYwbl_dzda_person.class);
                 intent.putExtra("YwblDzdaSalvations", (Serializable) listSalvation);
-                intent.putExtra("Type", 2);
+                intent.putExtra("Type", 4);
                 intent.putExtra("isMore", true);
                 intent.putExtra("isChose", true);
                 startActivityForResult(intent, 1220);
