@@ -93,7 +93,7 @@ public class ActYZS_JDDetail extends ActBase{
             stepString = all.split(",");
             stepView.setStepCounts(stepString.length);
             stepView.setStepDesc(stepString);
-          
+
             String c = item.getCurrentNode();
             for (int i=0;i<stepString.length;i++){
                 if (stepString[i].equals(c)){
