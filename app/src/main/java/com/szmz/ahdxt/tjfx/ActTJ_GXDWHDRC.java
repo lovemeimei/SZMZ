@@ -30,6 +30,7 @@ import com.szmz.entity.response.HD_XZQH_Response;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
+import com.szmz.utils.DateUtil;
 import com.szmz.utils.Md5Util;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
@@ -94,6 +95,9 @@ public class ActTJ_GXDWHDRC extends ActBase {
             }
         });
 
+        tvEndTime.setText(DateUtil.getCurrentDay());
+        tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
+        getInfo();
     }
 
 

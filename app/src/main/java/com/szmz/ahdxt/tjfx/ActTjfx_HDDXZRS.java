@@ -33,6 +33,7 @@ import com.szmz.entity.response.HD_XZQH_Response;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
+import com.szmz.utils.DateUtil;
 import com.szmz.utils.Md5Util;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
@@ -99,6 +100,8 @@ public class ActTjfx_HDDXZRS extends ActBase {
         initBarChart();
         getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
         getInfo();
+        tvEndTime.setText(DateUtil.getCurrentDay());
+        tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

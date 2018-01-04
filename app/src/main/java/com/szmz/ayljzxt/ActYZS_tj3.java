@@ -30,6 +30,7 @@ import com.szmz.entity.response.YZS_tj2_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
+import com.szmz.utils.DateUtil;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
@@ -88,6 +89,9 @@ public class ActYZS_tj3 extends ActBase{
         getQHlist();
         initTimePicker();
         initChart();
+        tvEndTime.setText(DateUtil.getCurrentDay());
+        tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
+        getInfo();
     }
     private TimePickerView pvTime;
 

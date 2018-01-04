@@ -38,6 +38,7 @@ import com.szmz.entity.response.JZ_tj1;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
+import com.szmz.utils.DateUtil;
 import com.szmz.utils.Md5Util;
 import com.szmz.ywbl.dzda.JzTreeItemHolder;
 import com.unnamed.b.atv.model.TreeNode;
@@ -112,7 +113,10 @@ public class ActJZ_1 extends ActBase {
         initTimePicker();
         initBarChart();
         doGetXzqh();
-//        getInfo();
+
+        tvEndTime.setText(DateUtil.getCurrentDay());
+        tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
+        getInfo();
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
