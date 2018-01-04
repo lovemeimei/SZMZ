@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.TimePickerView;
 import com.materiallistview.MaterialRefreshLayout;
 import com.szmz.ActBase;
 import com.szmz.ActListBase;
@@ -18,11 +19,13 @@ import com.szmz.net.SimpleApiListener;
 import com.szmz.search.ActHistoryList;
 import com.szmz.search.ActSearchDetail;
 import com.szmz.utils.BaseListAdapter;
+import com.szmz.utils.DatePickerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import retrofit2.Call;
 
 /**
@@ -46,7 +49,7 @@ public class ActYZS_HistroyList extends ActListBase {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.comm_list;
+        return R.layout.comm_list_yzs_history;
     }
 
     @Override
@@ -68,6 +71,7 @@ public class ActYZS_HistroyList extends ActListBase {
         setLeftVisible(true);
         setTitle("历史救助信息");
 
+        initTimePicker();
         adapter = new BaseListAdapter<YZS_history_Res.ResultBean, MViewHolder>(context, R.layout.list_item_history) {
             @Override
             protected void refreshView(int postion, final YZS_history_Res.ResultBean item, MViewHolder holer) {
@@ -98,7 +102,24 @@ public class ActYZS_HistroyList extends ActListBase {
 
         doLoadData();
     }
+    private TimePickerView pvTime;
+    private void initTimePicker() {
+        pvTime = DatePickerUtil.initPicker(this, DatePickerUtil.yyyyMMdd);
+    }
 
+    @OnClick({R.id.et_tj_time2, R.id.et_tj_time})
+    public void doClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.et_tj_time:
+                pvTime.show(tvStartTime);
+                break;
+            case R.id.et_tj_time2:
+                pvTime.show(tvEndTime);
+                break;
+
+        }
+    }
     class MViewHolder {
         TextView tvName;
     }
