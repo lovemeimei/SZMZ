@@ -35,7 +35,11 @@ public class ActYZS_HistroyList extends ActListBase {
 
     @BindView(R.id.lv)
     ListView lv;
-
+    @BindView(R.id.et_tj_time)
+    TextView tvStartTime;
+    @BindView(R.id.et_tj_time2)
+    TextView tvEndTime;
+    
     BaseListAdapter<YZS_history_Res.ResultBean, ActYZS_HistroyList.MViewHolder> adapter;
 
     private List<YZS_history_Res.ResultBean> items = new ArrayList<>();
