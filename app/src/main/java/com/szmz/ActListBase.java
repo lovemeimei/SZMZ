@@ -60,25 +60,26 @@ public abstract class ActListBase extends ActBase {
                 doRefreshLoadMore(materialRefreshLayout);
             }
         });
-//        searchEd.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//
-//            @Override
-//            public boolean onEditorAction(TextView v, int actionId,
-//                                          KeyEvent event) {
-//                if (actionId == EditorInfo.IME_ACTION_SEARCH
-//                        || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-//
-//                    //doSearch(searchEd.getText().toString());
-//
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
+        searchEd.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId,
+                                          KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH
+                        || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+
+                   doLoadData();
+
+                    return true;
+                }
+                return false;
+            }
+        });
         doLoadData();
     }
 
     protected void doLoadData() {
+        refresh.finishRefreshing();
         refresh.autoRefresh();
     }
 

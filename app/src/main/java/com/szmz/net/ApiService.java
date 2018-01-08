@@ -41,6 +41,7 @@ import com.szmz.entity.request.JZ_YWBL_SPGS_RE;
 import com.szmz.entity.request.LoginSQR_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.request.Register_Req;
+import com.szmz.entity.request.YZSSQR_HomeList_Req;
 import com.szmz.entity.request.YZSSQR_JD_Detail_Req;
 import com.szmz.entity.request.YZSSQR_JZYE_Req;
 import com.szmz.entity.request.YZSSQR_history_req;
@@ -344,7 +345,7 @@ public interface ApiService {
 
     /**************************医疗一站式申请人*********************************/
     @POST("ActionControler/AppMessageList.ashx")
-    Call<YZSSQR_HomeList_Res> getYZS_homelist_SQR(@Body YZS_SQR_jdlist_req req);
+    Call<YZSSQR_HomeList_Res> getYZS_homelist_SQR(@Body YZSSQR_HomeList_Req req);
 
 
     //进度查询

@@ -11,12 +11,14 @@ import com.szmz.utils.Md5Util;
 public class YZS_SQR_jdlist_req extends BaseListRequest{
 
     private String CardID;
+    private String ApplicationNo;
 
-    public YZS_SQR_jdlist_req(String cardID,int currentPage) {
+    public YZS_SQR_jdlist_req(String cardID,String ApplicationNo,int currentPage) {
 
         CardID = cardID;
+       this.ApplicationNo = ApplicationNo;
         this.CurrentPage = currentPage;
 
-        setMd5Key(Md5Util.getMd5(cardID+currentPage+PageSize));
+        setMd5Key(Md5Util.getMd5(cardID+ApplicationNo+currentPage+PageSize));
     }
 }

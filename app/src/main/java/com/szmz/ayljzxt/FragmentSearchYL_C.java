@@ -1,7 +1,9 @@
 package com.szmz.ayljzxt;
 
 import android.content.Intent;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.user.check.ActCheckDetail1;
 import com.szmz.utils.BaseListAdapter;
+import com.szmz.widget.SearchEditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +40,12 @@ public class FragmentSearchYL_C extends BaseFragment {
     public MaterialRefreshLayout refresh;
     @BindView(R.id.lv)
     ListView lv;
+    @BindView(R.id.search_ed)
+    SearchEditText searchEditText;
     protected int currentPage = 1;
     protected LinearLayout noDataLayout;
     protected TextView textView;
+    private String ApplicationNo ="";
 
     private BaseListAdapter<YZSSQR_jd_Res.ResultBean,FragmentSearchYL_C.MViewHolder> adapter;
 
@@ -55,7 +61,7 @@ public class FragmentSearchYL_C extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_comm_list;
+        return R.layout.fragment_comm_list_slt;
     }
 
     @Override
@@ -64,6 +70,21 @@ public class FragmentSearchYL_C extends BaseFragment {
         noDataLayout = (LinearLayout)v.findViewById(R.id.noDataLayout);
         textView = (TextView)v.findViewById(R.id.textView);
 
+        searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId,
+                                          KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH
+                        || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+
+                   doLoadData();
+
+                    return true;
+                }
+                return false;
+            }
+        });
     }
     @Override
     protected void bindDatas() {
@@ -122,7 +143,12 @@ public class FragmentSearchYL_C extends BaseFragment {
     }
 
     private void getList(){
-        YZS_SQR_jdlist_req req = new YZS_SQR_jdlist_req(App.getInstance().getLoginUser().getIdCode(),currentPage);
+
+        ApplicationNo = searchEditText.getText().toString().trim();
+        if (ApplicationNo==null)
+            ApplicationNo ="";
+
+        YZS_SQR_jdlist_req req = new YZS_SQR_jdlist_req(App.getInstance().getLoginUser().getIdCode(),ApplicationNo,currentPage);
 
         Call<YZSSQR_jd_Res> call = App.getApiProxyYZS().getYZS_jdlist_SQR(req);
 

@@ -12,11 +12,13 @@ public class YZS_people_list_Req extends BaseListRequest{
 
     private String userName;
     private String AreaCode;
+    private String searchStr;
 
-    public YZS_people_list_Req(String userName, String areaCode,int currentPage) {
+    public YZS_people_list_Req(String userName, String areaCode,String searchStr,int currentPage) {
         this.userName = userName;
         AreaCode = areaCode;
+        this.searchStr =searchStr;
         this.CurrentPage = currentPage;
-        setMd5Key(Md5Util.getMd5(areaCode+userName+currentPage+PageSize));
+        setMd5Key(Md5Util.getMd5(userName+areaCode+searchStr+currentPage+PageSize));
     }
 }

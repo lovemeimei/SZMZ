@@ -116,7 +116,7 @@ public class ActJZ_1 extends ActBase {
 
         tvEndTime.setText(DateUtil.getCurrentDay());
         tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
-        getInfo();
+
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -311,12 +311,14 @@ public class ActJZ_1 extends ActBase {
         JZ_YWBL_DZDA_XZQH_RE request = new JZ_YWBL_DZDA_XZQH_RE(App.getInstance().getLoginUser().getIdJZ());
         Call<JZ_YWBL_DZDA_XZQH> call = App.getApiProxyJZ().getJZ_XZQHList(request);
         ApiUtil<JZ_YWBL_DZDA_XZQH> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<JZ_YWBL_DZDA_XZQH>() {
+
             @Override
             public void doSuccess(JZ_YWBL_DZDA_XZQH result) {
 
                 if (result != null) {
                     List<YwblDzdaXzqh> listDatas = result.Result;
                     initData(listDatas);
+                    getInfo();
                 }
 
             }

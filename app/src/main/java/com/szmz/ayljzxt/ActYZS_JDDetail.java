@@ -41,6 +41,10 @@ public class ActYZS_JDDetail extends ActBase{
     MyLayoutView view3;
     @BindView(R.id.tv_yzs_history_4)
     MyLayoutView view4;
+    @BindView(R.id.tv_yzs_history_5)
+    MyLayoutView view5;
+    @BindView(R.id.tv_yzs_history_6)
+    MyLayoutView view6;
 
     private String id;
     private String type;
@@ -107,6 +111,8 @@ public class ActYZS_JDDetail extends ActBase{
         view2.doSetContent(item.getCardID());
         view3.doSetContent(item.getTypeName());
         view4.doSetContent(item.getFLOW_RESULT_NAME());
+        view5.doSetContent(item.getApprovalOpinion());
+        view6.doSetContent(item.getApplicationNo());
     }
 
 }

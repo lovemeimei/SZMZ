@@ -17,6 +17,24 @@ public class YZSSQR_jd_Res extends BaseResponse<YZSSQR_jd_Res.ResultBean>{
         private String FLOW_RESULT;
         private String FLOW_RESULT_NAME;
         private String ID;
+        private String ApplicationNo;
+        private String approvalOpinion;
+
+        public String getApprovalOpinion() {
+            return approvalOpinion;
+        }
+
+        public void setApprovalOpinion(String approvalOpinion) {
+            this.approvalOpinion = approvalOpinion;
+        }
+
+        public String getApplicationNo() {
+            return ApplicationNo;
+        }
+
+        public void setApplicationNo(String applicationNo) {
+            ApplicationNo = applicationNo;
+        }
 
         private String CardID;
         private String currentNode;

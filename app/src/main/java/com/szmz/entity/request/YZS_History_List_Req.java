@@ -13,10 +13,12 @@ public class YZS_History_List_Req extends BaseListRequest{
     private String beginTime="";
     private String endTime="";
 
-    public YZS_History_List_Req(String userName, int currentPage) {
+    public YZS_History_List_Req(String userName, String startTime,String endTime,int currentPage) {
         this.userName = userName;
+        this.beginTime = startTime;
+        this.endTime = endTime;
         this.CurrentPage = currentPage;
 
-        setMd5Key(Md5Util.getMd5(userName+currentPage+PageSize));
+        setMd5Key(Md5Util.getMd5(userName+startTime+endTime+currentPage+PageSize));
     }
 }

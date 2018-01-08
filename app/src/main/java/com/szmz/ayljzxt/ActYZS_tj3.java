@@ -91,7 +91,7 @@ public class ActYZS_tj3 extends ActBase{
         initChart();
         tvEndTime.setText(DateUtil.getCurrentDay());
         tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
-        getInfo();
+
     }
     private TimePickerView pvTime;
 
@@ -264,6 +264,7 @@ public class ActYZS_tj3 extends ActBase{
         Call<YZS_qh_res> call = App.getApiProxyYZS().getYZS_xzqh(req);
 
         ApiUtil<YZS_qh_res> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<YZS_qh_res>(){
+
             @Override
             public void doSuccess(YZS_qh_res result) {
                 super.doSuccess(result);
@@ -271,6 +272,7 @@ public class ActYZS_tj3 extends ActBase{
                 List<YZS_xzqh> xzqhs = result.Result;
                 if (xzqhs!=null && xzqhs.size()>0)
                     initData(xzqhs);
+                getInfo();
             }
         },false);
 

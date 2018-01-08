@@ -42,7 +42,7 @@ public class ActYZS_HistroyList extends ActListBase {
     TextView tvStartTime;
     @BindView(R.id.et_tj_time2)
     TextView tvEndTime;
-    
+
     BaseListAdapter<YZS_history_Res.ResultBean, ActYZS_HistroyList.MViewHolder> adapter;
 
     private List<YZS_history_Res.ResultBean> items = new ArrayList<>();
@@ -100,6 +100,14 @@ public class ActYZS_HistroyList extends ActListBase {
         };
         lv.setAdapter(adapter);
 
+        tvTitleRight.setVisibility(View.VISIBLE);
+        tvTitleRight.setText("搜索");
+        tvTitleRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doLoadData();
+            }
+        });
         doLoadData();
     }
     private TimePickerView pvTime;
@@ -126,7 +134,15 @@ public class ActYZS_HistroyList extends ActListBase {
 
     private void getList() {
 
-        YZS_History_List_Req req = new YZS_History_List_Req(getUser().getAccountYZS(), currentPage);
+        String statTime = tvStartTime.getText().toString();
+        String endTime =tvEndTime.getText().toString().trim();
+        if (statTime==null)
+            statTime="";
+
+        if (endTime==null)
+            endTime = "";
+
+        YZS_History_List_Req req = new YZS_History_List_Req(getUser().getAccountYZS(), statTime,endTime,currentPage);
 
         Call<YZS_history_Res> call = App.getApiProxyYZS().getYZS_History_list(req);
 

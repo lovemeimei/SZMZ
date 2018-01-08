@@ -11,6 +11,7 @@ import com.materiallistview.MaterialRefreshListener;
 import com.szmz.App;
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.entity.request.YZSSQR_HomeList_Req;
 import com.szmz.entity.request.YZSSQR_history_req;
 import com.szmz.entity.request.YZS_SQR_jdlist_req;
 import com.szmz.entity.request.YZS_todoList_Req;
@@ -64,7 +65,7 @@ public class FragmentHomeYL_C2 extends BaseFragment {
 
     private void getList(){
 
-        YZS_SQR_jdlist_req req = new YZS_SQR_jdlist_req(App.getInstance().getLoginUser().getIdCode(),currentPage);
+        YZSSQR_HomeList_Req req = new YZSSQR_HomeList_Req(App.getInstance().getLoginUser().getIdCode(),currentPage);
 
         Call<YZSSQR_HomeList_Res> call = App.getApiProxyYZS().getYZS_homelist_SQR(req);
 
