@@ -131,7 +131,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                     doToast("登录成功!");
                     App.getInstance().login(all.get(0));
                     App.setIsOnline(false);
-                    trans(ActMainOutLine.class);
+                    trans(ActMainJZ.class);
                 } else {
                     doToast("请输入正确的用户名密码!");
                     return;

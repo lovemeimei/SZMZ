@@ -3,6 +3,9 @@ package com.szmz.ywbl;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -25,17 +28,24 @@ import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.GsonUtil;
 import com.szmz.utils.ImageUtil;
 
+import org.xutils.db.sqlite.WhereBuilder;
 import org.xutils.ex.DbException;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import retrofit2.Call;
 
 /**
  * 离线数据
  */
 public class ActLxsj extends ActBaseList<YwblSaveDataRequest> {
+
+    @BindView(R.id.spinner)
+    Spinner spinner;
+    private List<String> listStr = new ArrayList<>();
+    private int type = 0;
 
 
     @Override
@@ -278,7 +288,11 @@ public class ActLxsj extends ActBaseList<YwblSaveDataRequest> {
         refresh.finishRefreshLoadMore();
         List<YwblSaveDataRequest> result = null;
         try {
-            result = dbManager.selector(YwblSaveDataRequest.class).where("userID", "=", App.getInstance().getLoginUser().getIdJZ()).findAll();
+            if (type == 0) {
+                result = dbManager.selector(YwblSaveDataRequest.class).where("userID", "=", App.getInstance().getLoginUser().getIdJZ()).and(WhereBuilder.b("type", "=", type)).findAll();
+            } else {
+                result = dbManager.selector(YwblSaveDataRequest.class).where("userID", "=", App.getInstance().getLoginUser().getIdJZ()).findAll();
+            }
         } catch (DbException e) {
             e.printStackTrace();
         }
@@ -301,7 +315,30 @@ public class ActLxsj extends ActBaseList<YwblSaveDataRequest> {
         super.initUI();
         setLeftVisible(true);
         setTitle("离线数据");
+        listStr.add("全部");
+        listStr.add("调查核实");
+        listStr.add("民主评议");
+        listStr.add("入户抽查");
+        listStr.add("审核公示");
+        listStr.add("审批公示");
         refresh.autoRefresh();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listStr);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                type = position;
+                doMore(false);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
 
