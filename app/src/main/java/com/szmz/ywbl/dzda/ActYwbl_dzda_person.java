@@ -297,7 +297,6 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
             cb.setVisibility(View.VISIBLE);
         }
         cb.setTag(item);
-        cb.setVisibility(View.VISIBLE);
         cb.setFocusable(true);
         cb.setClickable(true);
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
