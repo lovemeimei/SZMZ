@@ -8,7 +8,7 @@ import com.szmz.utils.Md5Util;
 
 public class JZ_YWBL_DCHS_RE extends BaseListRequest {
 
-    public String id;//家庭ID
+    public String familyId;//家庭ID
     public String userId;//用户编号
     public String streetCheckTime;//调查核实日期
     public String streetCheckInfo;//调查核实情况
@@ -19,7 +19,7 @@ public class JZ_YWBL_DCHS_RE extends BaseListRequest {
 
 
     public JZ_YWBL_DCHS_RE(String id, String userID, String time, String info, String result, String checkUser, String chargeUser, String address) {
-        this.id = id;
+        this.familyId = id;
         this.userId = userID;
         this.streetCheckInfo = info;
         this.streetCheckResult = result;

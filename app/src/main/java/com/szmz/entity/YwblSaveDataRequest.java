@@ -8,7 +8,7 @@ import org.xutils.db.annotation.Table;
  * Created by bz on 2017/11/7.
  */
 
-@Table(name = "YwblSageData")
+@Table(name = "YwblSaveDataRequest")
 public class YwblSaveDataRequest implements IEntity {
     @Column(name = "id", isId = true)
     private String id;
