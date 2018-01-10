@@ -44,7 +44,8 @@ public class ActMsgList extends ActListBase {
     BaseListAdapter<JZ_Todolist.ResultBean, ActMsgList.MViewHolder> adapter;
 
     int type = 0;
-    private String funtionID = "245A8F94567E4368ADFD680824851F27";
+//    private String funtionID = "245A8F94567E4368ADFD680824851F27";
+    private String funtionID = "0";//默认传0
 
     @BindView(R.id.tv_search_title)
     TextView tvSearchView;
@@ -104,14 +105,13 @@ public class ActMsgList extends ActListBase {
                     if (TextUtils.isEmpty(str)){
                         UIUtil.doToast("请输入查询内容");
                     }else {
-                        keyWords = searchEd.getText().toString();
-                        refresh.autoRefresh();
+
+                        doLoadData();
                     }
-                    //doSearch(searchEd.getText().toString());
 
                     return true;
                 }
-                return false;
+                return true;
             }
         });
     }
@@ -136,7 +136,12 @@ public class ActMsgList extends ActListBase {
     }
 
     private void getTodoList() {
-        JZ_TODO_List req = new JZ_TODO_List(getUser().getAccountJZ(), getUser().getIdJZ(), funtionID,keyWords, 1);
+        keyWords = searchEd.getText().toString();
+        if (TextUtils.isEmpty(keyWords))
+            keyWords ="";
+        if (TextUtils.isEmpty(funtionID))
+            funtionID ="";
+        JZ_TODO_List req = new JZ_TODO_List(getUser().getAccountJZ(), funtionID,keyWords, currentPage);
 
         Call<JZ_Todolist> call = App.getApiProxyJZ().getJZ_TodoList(req);
 
@@ -237,8 +242,7 @@ public class ActMsgList extends ActListBase {
                     hd_xzqh = item;
                     tvSearchView.setText(item.getAreaName());
                     funtionID = hd_xzqh.getAreaId();
-//                    doToast(funtionID);
-                    getTodoList();
+                    doLoadData();
                 }
             }));
             node = addChildNode(node, list);
@@ -281,8 +285,7 @@ public class ActMsgList extends ActListBase {
 
                         //
                         funtionID = hd_xzqh.getAreaId();
-//                        doToast(funtionID);
-                        getTodoList();
+                      doLoadData();
                     }
                 })), list));
             }

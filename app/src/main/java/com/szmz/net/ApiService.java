@@ -52,6 +52,7 @@ import com.szmz.entity.request.YZS_TJ1_Req;
 import com.szmz.entity.request.YZS_people_list_Req;
 import com.szmz.entity.request.YZS_qh_req;
 import com.szmz.entity.request.YZS_todoList_Req;
+import com.szmz.entity.request.YZSgzry_History_Detail_Req;
 import com.szmz.entity.request.phoneLoginRequest;
 import com.szmz.entity.response.CommResponse;
 import com.szmz.entity.response.Comm_ipid_res;
@@ -320,7 +321,7 @@ public interface ApiService {
     Call<YZS_history_Res> getYZS_History_list(@Body YZS_History_List_Req req);
 
     @POST("ActionControler/appSalvationHistoryInfo.ashx")
-    Call<YZS_history_Res> getYZS_History_detail(@Body YZS_History_Detail_Req req);
+    Call<YZS_history_Res> getYZS_History_detail(@Body YZSgzry_History_Detail_Req req);
 
     @POST("ActionControler/appSalvationList.ashx")
     Call<YZS_people_Res> getYZS_people_list(@Body YZS_people_list_Req req);
@@ -362,7 +363,7 @@ public interface ApiService {
     Call<YZS_history_Res> getYZS_History_list_SQR(@Body YZSSQR_history_req req);
 
     @POST("ActionControler/appSalvationHistoryInfo.ashx")
-    Call<YZS_history_Res> getYZS_History_detail_SQR(@Body YZS_History_Detail_Req req);
+    Call<YZS_history_Res> getYZS_History_detail_SQR(@Body YZSgzry_History_Detail_Req req);
 
     /**************************核对系统*********************************/
     //字典业务类型

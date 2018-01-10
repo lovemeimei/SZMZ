@@ -98,10 +98,11 @@ public class ActTjfx_HDDXZRS extends ActBase {
         setTitle("核对对象总人次数");
         initTimePicker();
         initBarChart();
-        getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
-        getInfo();
         tvEndTime.setText(DateUtil.getCurrentDay());
         tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
+        getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
+
+
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -210,33 +211,49 @@ public class ActTjfx_HDDXZRS extends ActBase {
         // (0.25 + 0.05) * 3 + 0.1 = 1.00 -> interval per "group"
 
         BarData data = new BarData();
-        for (int i = 0; i < types.size(); i++) {
-            ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
-            for (int j = 0; j < citys.size(); j++) {
-                yVals.add(new BarEntry(j, getValueByCity(items, citys.get(j), types.get(i))));
+        if (types.size()==1){
+
+            List<BarEntry> entries = new ArrayList<>();
+            for (int i = 0; i < citys.size(); i++) {
+                BarEntry entry = new BarEntry(i,getValueByCity(items, citys.get(i),types.get(0)));
+                entries.add(entry);
             }
-            BarDataSet barDataSet = new BarDataSet(yVals, types.get(i));
-            barDataSet.setColor(PIE_COLORS[i]);
-            data.addDataSet(barDataSet);
+            BarDataSet dataSet = new BarDataSet(entries, "共享单位");
+            dataSet.setColor(PIE_COLORS[2]);
+            data = new BarData(dataSet);
+            mChart.setData(data);
+
+            mChart.invalidate();
+        }else {
+            for (int i = 0; i < types.size(); i++) {
+                ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
+                for (int j = 0; j < citys.size(); j++) {
+                    yVals.add(new BarEntry(j, getValueByCity(items, citys.get(j), types.get(i))));
+                }
+                BarDataSet barDataSet = new BarDataSet(yVals, types.get(i));
+                barDataSet.setColor(PIE_COLORS[i]);
+                data.addDataSet(barDataSet);
+            }
+
+            data.setValueFormatter(new IValueFormatter() {
+                @Override
+                public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+
+                    int mvalue = (int)value;
+                    return mvalue+"";
+                }
+            });
+            data.setValueTypeface(mTfLight);
+
+            mChart.setData(data);
+
+            mChart.getXAxis().setAxisMinimum(0);
+            mChart.getXAxis().setAxisMaximum(items.size());
+            mChart.getBarData().setBarWidth(barWidth);
+            mChart.groupBars(0, groupSpace, barSpace);
+            mChart.invalidate();
         }
 
-        data.setValueFormatter(new IValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
-
-                int mvalue = (int)value;
-                return mvalue+"";
-            }
-        });
-        data.setValueTypeface(mTfLight);
-
-        mChart.setData(data);
-
-        mChart.getXAxis().setAxisMinimum(0);
-        mChart.getXAxis().setAxisMaximum(items.size());
-        mChart.getBarData().setBarWidth(barWidth);
-        mChart.groupBars(0, groupSpace, barSpace);
-        mChart.invalidate();
     }
 
     private float getValueByCity(List<HD_TJ_HDDX.ResultBean> items, String city, String type) {
@@ -341,6 +358,7 @@ public class ActTjfx_HDDXZRS extends ActBase {
         List<HD_XZQH> xzqhList = SystemEnv.getXZQHList("XZQH");
         if (xzqhList != null && xzqhList.size() > 0) {
             initData(xzqhList);
+            getInfo();
             return;
         }
 
@@ -373,6 +391,7 @@ public class ActTjfx_HDDXZRS extends ActBase {
                 if (items != null && items.size() > 0) {
                     SystemEnv.setDataList("XZQH",items);
                     initData(items);
+                    getInfo();
                 } else {
                 }
 

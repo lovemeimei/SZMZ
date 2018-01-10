@@ -4,6 +4,7 @@ import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.request.YZS_History_Detail_Req;
+import com.szmz.entity.request.YZSgzry_History_Detail_Req;
 import com.szmz.entity.response.YZS_history_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
@@ -15,6 +16,7 @@ import retrofit2.Call;
 public class ActYZSSQR_Histroy_Detail extends ActBase {
 
     String id="";
+    String type="";
     YZS_history_Res.ResultBean item = null;
 
     @BindView(R.id.tv_yzs_history_1)
@@ -52,11 +54,13 @@ public class ActYZSSQR_Histroy_Detail extends ActBase {
         setLeftVisible(true);
         setTitle("救助信息");
         id = getIntent().getStringExtra("id");
+        type = getIntent().getStringExtra("type");
         getInfo();
     }
 
     private void  getInfo(){
-        YZS_History_Detail_Req req = new YZS_History_Detail_Req(id);
+//        YZS_History_Detail_Req req = new YZS_History_Detail_Req(id);
+        YZSgzry_History_Detail_Req req = new YZSgzry_History_Detail_Req(id,type);
 
         Call<YZS_history_Res> call= App.getApiProxyYZS().getYZS_History_detail_SQR(req);
 

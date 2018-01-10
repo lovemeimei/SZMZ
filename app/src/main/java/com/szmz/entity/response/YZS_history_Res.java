@@ -16,6 +16,7 @@ public class YZS_history_Res extends BaseResponse<YZS_history_Res.ResultBean>{
         private String NAME;
         private String SEX_NAME;
         private String CARDID;//列表
+        private String TYPE;
 
         public String getCardID() {
             return CardID;
@@ -48,6 +49,14 @@ public class YZS_history_Res extends BaseResponse<YZS_history_Res.ResultBean>{
         private String IN_HOSPITAL_DATE;
         private String LEAVE_HOSPITAL_DATE;
 
+
+        public String getTYPE() {
+            return TYPE;
+        }
+
+        public void setTYPE(String TYPE) {
+            this.TYPE = TYPE;
+        }
 
         public String getADD_TIME() {
             return ADD_TIME;

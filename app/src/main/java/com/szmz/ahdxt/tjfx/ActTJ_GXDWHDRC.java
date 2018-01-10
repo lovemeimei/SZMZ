@@ -86,8 +86,9 @@ public class ActTJ_GXDWHDRC extends ActBase {
         setRightVisible(true);
         setRightShow("搜索");
         initTimePicker();
+        tvEndTime.setText(DateUtil.getCurrentDay());
+        tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
         getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
-        getInfo();
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,9 +96,7 @@ public class ActTJ_GXDWHDRC extends ActBase {
             }
         });
 
-        tvEndTime.setText(DateUtil.getCurrentDay());
-        tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
-        getInfo();
+
     }
 
 
@@ -283,6 +282,7 @@ public class ActTJ_GXDWHDRC extends ActBase {
         List<HD_XZQH> xzqhList = SystemEnv.getXZQHList("XZQH");
         if (xzqhList != null && xzqhList.size() > 0) {
             initData(xzqhList);
+            getInfo();
             return;
         }
 
@@ -315,6 +315,7 @@ public class ActTJ_GXDWHDRC extends ActBase {
                 if (items != null && items.size() > 0) {
                     SystemEnv.setXZQHList("XZQH", items);
                     initData(items);
+                    getInfo();
                 } else {
                 }
 

@@ -52,7 +52,7 @@ public class ActJZ_DC extends ActBase {
      MyLayoutView2 myLayoutView5;
 
     private void initTimePicker() {
-        pvTime = DatePickerUtil.initPicker(this, DatePickerUtil.yyyyMM);
+        pvTime = DatePickerUtil.initPicker(this, DatePickerUtil.yyyyMMdd);
     }
 
     @Override
@@ -134,15 +134,22 @@ public class ActJZ_DC extends ActBase {
 
     private void initInfo(JZ_DC_Res.ResultBean item){
         myLayoutView1.doSetContent(item.getCountHousehold());
-        myLayoutView1.doSetContent2(item.getGradeHousehold());
-        myLayoutView2.doSetContent2(item.getGradeDemocratic());
+        myLayoutView1.doSetContent2(getValue(item.getGradeHousehold()));
+        myLayoutView2.doSetContent2(getValue(item.getGradeDemocratic()));
         myLayoutView2.doSetContent(item.getCountDemocratic());
-        myLayoutView3.doSetContent2(item.getGradeCheckPublic());
+        myLayoutView3.doSetContent2(getValue(item.getGradeCheckPublic()));
         myLayoutView3.doSetContent(item.getCountCheckPublic());
 
-        myLayoutView4.doSetContent2(item.getGradeHouseholdRandom());
+        myLayoutView4.doSetContent2(getValue(item.getGradeHouseholdRandom()));
         myLayoutView4.doSetContent(item.getCountHouseholdRandom());
-        myLayoutView5.doSetContent2(item.getGradeApprovalPublic());
+        myLayoutView5.doSetContent2(getValue(item.getGradeApprovalPublic()));
         myLayoutView5.doSetContent(item.getCountApprovalPublic());
     }
+
+    public String getValue(String val){
+        double temValue = Double.valueOf(val);
+        double aa =Math.round(temValue * 100*100) * 0.01d;
+        return aa+"";
+    }
+
 }

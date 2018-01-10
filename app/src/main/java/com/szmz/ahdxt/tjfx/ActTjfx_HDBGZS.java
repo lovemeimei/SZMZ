@@ -97,10 +97,11 @@ public class ActTjfx_HDBGZS extends ActBase {
         setTitle("核对报告总数");
         initBarChart();
         initTimePicker();
-        getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
-        getInfo();
         tvEndTime.setText(DateUtil.getCurrentDay());
         tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
+        getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
+
+
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -360,6 +361,7 @@ public class ActTjfx_HDBGZS extends ActBase {
         List<HD_XZQH> xzqhList = SystemEnv.getXZQHList("XZQH");
         if (xzqhList != null  && xzqhList.size() > 0) {
             initData(xzqhList);
+            getInfo();
             return;
         }
 
@@ -392,6 +394,7 @@ public class ActTjfx_HDBGZS extends ActBase {
                 if (items != null && items.size() > 0) {
                     SystemEnv.setDataList("XZQH",items);
                     initData(items);
+                    getInfo();
                 } else {
                 }
 
