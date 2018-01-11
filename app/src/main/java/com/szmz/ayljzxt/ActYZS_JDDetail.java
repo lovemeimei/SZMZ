@@ -94,6 +94,7 @@ public class ActYZS_JDDetail extends ActBase{
         if (TextUtils.isEmpty(all)||"null".equals(all)){
             llStepView.setVisibility(View.GONE);
         }else {
+            llStepView.setVisibility(View.VISIBLE);
             stepString = all.split(",");
             stepView.setStepCounts(stepString.length);
             stepView.setStepDesc(stepString);
@@ -101,7 +102,7 @@ public class ActYZS_JDDetail extends ActBase{
             String c = item.getCurrentNode();
             for (int i=0;i<stepString.length;i++){
                 if (stepString[i].equals(c)){
-
+//                    stepView.setCurStepIndex(0);
                     stepView.setCurStepIndex(i);
                 }
             }

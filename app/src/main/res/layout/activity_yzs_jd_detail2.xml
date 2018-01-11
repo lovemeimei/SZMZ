@@ -17,6 +17,7 @@
             android:background="@color/white"
             android:gravity="center"
             android:orientation="vertical"
+            android:visibility="gone"
             android:padding="@dimen/spacing_normal">
 
             <com.szmz.widget.StepProgressView
@@ -26,6 +27,8 @@
                 android:layout_centerHorizontal="true"
                 app:auto_adapte="true"
                 app:step_counts="4"
+                app:reached_color="@color/red"
+                app:cur_color="@color/blue"
                 app:circle_radius="5dp" />
         </LinearLayout>
 
