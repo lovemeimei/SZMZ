@@ -23,7 +23,7 @@ public class JZ_Search_worker_Res extends BaseResponse<JZ_Search_worker_Res.Resu
         public String address;//	地址	String
         public String salvationType;//	救助类型	String
         public String poorReason;//	主要贫困原因	String
-        public String applyDate;//申请日期	String
+        public String applydate;//申请日期	String
         public String population;//家庭人口	String
         public String ensuremoney;//	救助金额	double
 

@@ -100,7 +100,7 @@ public class ActSearchDetail extends ActBase {
         tvAdress.setText(info.address);
         tvType.setText(info.salvationType);
         tvReason.setText(info.poorReason);
-        tvTime.setText(info.applyDate);
+        tvTime.setText(info.applydate);
         tvMoney.setText(info.ensuremoney);
         tvPeopleNum.setText(info.population);
     }
