@@ -17,33 +17,9 @@
         android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
+        android:visibility="gone"
         android:padding="@dimen/spacing_normal">
 
-        <com.szmz.widget.StepProgressView
-            android:id="@+id/stepView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-<<<<<<< .mine
-            android:layout_centerHorizontal="true"
-            app:auto_adapte="true"
-            app:circle_radius="5dp"
-            app:step_counts="2" />
-    </LinearLayout>
-||||||| .r120
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="@dimen/spacing_normal">
-=======
-            android:background="@color/white"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone"
-            android:padding="@dimen/spacing_normal">
->>>>>>> .r123
-
-<<<<<<< .mine
-||||||| .r120
             <com.szmz.widget.StepProgressView
                 android:id="@+id/stepView"
                 android:layout_width="match_parent"
@@ -51,23 +27,10 @@
                 android:layout_centerHorizontal="true"
                 app:auto_adapte="true"
                 app:step_counts="4"
+                app:cur_color="@color/red"
                 app:circle_radius="5dp" />
         </LinearLayout>
 
-=======
-            <com.szmz.widget.StepProgressView
-                android:id="@+id/stepView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                app:auto_adapte="true"
-                app:step_counts="4"
-                app:reached_color="@color/red"
-                app:cur_color="@color/blue"
-                app:circle_radius="5dp" />
-        </LinearLayout>
-
->>>>>>> .r123
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
