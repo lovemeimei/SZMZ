@@ -88,7 +88,6 @@ public class ActTJ_YEQS extends ActBase {
         setRightVisible(true);
         setRightShow("搜索");
         initBarChart();
-        initTimePicker();
         getInfo();
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,6 +168,7 @@ public class ActTJ_YEQS extends ActBase {
 
         switch (v.getId()) {
             case R.id.et_tj_xzqh:
+                initTimePicker();
                 pvTime.show(tvXZQH);
 
                 break;

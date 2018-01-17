@@ -167,7 +167,7 @@ public class FragmentSearchYL_C extends BaseFragment {
                             adapter.clearListData();
                         adapter.setItems(items);
                         adapter.notifyDataSetChanged();
-
+                        noDataLayout.setVisibility(View.GONE);
                     }else {
                         adapter.clearListData();
                         noDataLayout.setVisibility(View.VISIBLE);

@@ -105,7 +105,7 @@ public class ActJZ_3 extends ActBase{
         setRightVisible(true);
         setRightShow("搜索");
         setTitle("地区分布统计");
-        initTimePicker();
+
         initBarChart();
         doGetXzqh();
 
@@ -184,9 +184,11 @@ public class ActJZ_3 extends ActBase{
 
         switch (v.getId()) {
             case R.id.et_tj_time:
+                initTimePicker();
                 pvTime.show(tvStartTime);
                 break;
             case R.id.et_tj_time2:
+                initTimePicker();
                 pvTime.show(tvEndTime);
                 break;
             case R.id.et_tj_xzqh:
@@ -234,7 +236,7 @@ public class ActJZ_3 extends ActBase{
 
         mChart.getXAxis().setAxisMinimum(0);
         mChart.getXAxis().setAxisMaximum(items.size());
-        mChart.getBarData().setBarWidth(barWidth);
+//        mChart.getBarData().setBarWidth(barWidth);
         mChart.groupBars(0, groupSpace, barSpace);
         mChart.invalidate();
     }

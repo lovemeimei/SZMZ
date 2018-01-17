@@ -73,7 +73,6 @@ public class ActTJ_QYTJ extends ActBase {
         setRightVisible(true);
         setRightShow("搜索");
         initChart();
-        initTimePicker();
         getInfo();
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,6 +150,7 @@ public class ActTJ_QYTJ extends ActBase {
 
         switch (v.getId()) {
             case R.id.et_tj_xzqh:
+                initTimePicker();
                 pvTime.show(tvXZQH);
                 break;
             case R.id.tv_title_right:

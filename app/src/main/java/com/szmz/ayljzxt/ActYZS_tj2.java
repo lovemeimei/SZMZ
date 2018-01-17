@@ -85,7 +85,6 @@ public class ActYZS_tj2 extends ActBase{
             }
         });
         getQHlist();
-        initTimePicker();
         initChart();
         tvEndTime.setText(DateUtil.getCurrentDay());
         tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
@@ -101,9 +100,11 @@ public class ActYZS_tj2 extends ActBase{
 
         switch (v.getId()) {
             case R.id.et_tj_time:
+                initTimePicker();
                 pvTime.show(tvStartTime);
                 break;
             case R.id.et_tj_time2:
+                initTimePicker();
                 pvTime.show(tvEndTime);
                 break;
             case R.id.et_tj_xzqh:
@@ -158,23 +159,27 @@ public class ActYZS_tj2 extends ActBase{
                 super.doSuccess(result);
 
                 List<YZS_tj2_Res.ResultBean> items = result.Result;
+                setInfo(items);
 
-                if (items!=null && items.size()>0){
-
-                    setInfo(items);
-                }else {
-                    pieChart.removeAllViews();
-                    pieChart.invalidate();
-                }
+//                if (items!=null && items.size()>0){
+//
+//                    setInfo(items);
+//                }else {
+//                    pieChart.removeAllViews();
+//                    pieChart.removeAllViewsInLayout();
+//                    pieChart.invalidate();
+//                }
             }
         },true);
 
         apiUtil.excute();
     }
-    float allcount = 0.0f;
+
 
     private void setInfo(List<YZS_tj2_Res.ResultBean> items){
 //        {"Result":[{"INPATIENT_TYPE_NAME":"常见疾病","REAL_RESCUE_MONEY":"867.00","Num":"4"},{"INPATIENT_TYPE_NAME":"重大疾病","REAL_RESCUE_MONEY":"450.00","Num":"1"}],"Error":{"ErrorCode":"0","ErrorMessage":"success"},"TotalNum":"2"}
+
+        float allcount = 0.0f;
 
         Map<String, Float> maps = new HashMap<>();
 

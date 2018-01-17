@@ -87,7 +87,6 @@ public class ActYZS_tj3 extends ActBase{
             }
         });
         getQHlist();
-        initTimePicker();
         initChart();
         tvEndTime.setText(DateUtil.getCurrentDay());
         tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
@@ -103,9 +102,11 @@ public class ActYZS_tj3 extends ActBase{
 
         switch (v.getId()) {
             case R.id.et_tj_time:
+                initTimePicker();
                 pvTime.show(tvStartTime);
                 break;
             case R.id.et_tj_time2:
+                initTimePicker();
                 pvTime.show(tvEndTime);
                 break;
             case R.id.et_tj_xzqh:
@@ -162,13 +163,15 @@ public class ActYZS_tj3 extends ActBase{
                 super.doSuccess(result);
 
                 List<YZS_TJ3_Res.ResultBean> items = result.Result;
-                if (items!=null && items.size()>0){
+                setInfo(items);
 
-                    setInfo(items);
-                }else {
-                    pieChart.removeAllViews();
-                    pieChart.invalidate();
-                }
+//                if (items!=null && items.size()>0){
+//
+//                    setInfo(items);
+//                }else {
+//                    pieChart.removeAllViews();
+//                    pieChart.invalidate();
+//                }
             }
         },true);
 

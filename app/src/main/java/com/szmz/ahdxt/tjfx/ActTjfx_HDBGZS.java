@@ -96,7 +96,6 @@ public class ActTjfx_HDBGZS extends ActBase {
         setRightShow("搜索");
         setTitle("核对报告总数");
         initBarChart();
-        initTimePicker();
         tvEndTime.setText(DateUtil.getCurrentDay());
         tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
         getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
@@ -177,9 +176,11 @@ public class ActTjfx_HDBGZS extends ActBase {
 
         switch (v.getId()) {
             case R.id.et_tj_time:
+                initTimePicker();
                 pvTime.show(tvStartTime);
                 break;
             case R.id.et_tj_time2:
+                initTimePicker();
                 pvTime.show(tvEndTime);
                 break;
             case R.id.et_tj_xzqh:

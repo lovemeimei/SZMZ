@@ -164,7 +164,7 @@ public class ActYZS_HistroyList extends ActListBase {
                         adapter.clearListData();
                     adapter.setItems(items);
                     adapter.notifyDataSetChanged();
-
+                    noDataLayout.setVisibility(View.GONE);
 
                 } else {
                     noDataLayout.setVisibility(View.VISIBLE);

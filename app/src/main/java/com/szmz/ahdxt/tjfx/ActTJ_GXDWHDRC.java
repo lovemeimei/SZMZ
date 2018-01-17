@@ -85,7 +85,6 @@ public class ActTJ_GXDWHDRC extends ActBase {
         setTitle("共享单位核对人数");
         setRightVisible(true);
         setRightShow("搜索");
-        initTimePicker();
         tvEndTime.setText(DateUtil.getCurrentDay());
         tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
         getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
@@ -176,9 +175,11 @@ public class ActTJ_GXDWHDRC extends ActBase {
 
         switch (v.getId()) {
             case R.id.et_tj_time:
+                initTimePicker();
                 pvTime.show(tvStartTime);
                 break;
             case R.id.et_tj_time2:
+                initTimePicker();
                 pvTime.show(tvEndTime);
                 break;
             case R.id.et_tj_xzqh:

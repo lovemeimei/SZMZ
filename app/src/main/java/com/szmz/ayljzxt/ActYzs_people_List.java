@@ -161,6 +161,7 @@ public class ActYzs_people_List extends ActListBase{
                         adapter.clearListData();
                     adapter.setItems(items);
                     adapter.notifyDataSetChanged();
+                    noDataLayout.setVisibility(View.GONE);
                 }else {
                     adapter.clearListData();
                     adapter.notifyDataSetChanged();

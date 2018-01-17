@@ -106,13 +106,16 @@ public class ActHistoryList extends ActListBase {
                         || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
 
                     String str = searchEd.getText().toString();
-                    if (TextUtils.isEmpty(str)) {
-                        UIUtil.doToast("请输入姓名或者身份证号");
-                        return true;
-                    } else {
-                        keyWords = str;
-                        doLoadData();
-                    }
+                    keyWords = str;
+                    doLoadData();
+//
+//                    if (TextUtils.isEmpty(str)) {
+//                        UIUtil.doToast("请输入姓名或者身份证号");
+//                        return true;
+//                    } else {
+//                        keyWords = str;
+//                        doLoadData();
+//                    }
 
                     return true;
                 }
@@ -160,6 +163,7 @@ public class ActHistoryList extends ActListBase {
                     }
                     adapter.setItems(items);
                     adapter.notifyDataSetChanged();
+                    lv.setSelection(0);
                 } else {
                     noDataLayout.setVisibility(View.VISIBLE);
                     adapter.clearListData();

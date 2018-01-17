@@ -90,7 +90,7 @@ public class ActYZS_tj1 extends ActBase {
             }
         });
         getQHlist();
-        initTimePicker();
+
         initChart();
         tvEndTime.setText(DateUtil.getCurrentDay());
         tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
@@ -108,9 +108,11 @@ public class ActYZS_tj1 extends ActBase {
 
         switch (v.getId()) {
             case R.id.et_tj_time:
+                initTimePicker();
                 pvTime.show(tvStartTime);
                 break;
             case R.id.et_tj_time2:
+                initTimePicker();
                 pvTime.show(tvEndTime);
                 break;
             case R.id.et_tj_xzqh:

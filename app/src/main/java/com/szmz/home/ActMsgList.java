@@ -101,13 +101,13 @@ public class ActMsgList extends ActListBase {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH
                         || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
 
-                    String str = searchEd.getText().toString();
-                    if (TextUtils.isEmpty(str)){
-                        UIUtil.doToast("请输入查询内容");
-                    }else {
-
-                        doLoadData();
-                    }
+                    doLoadData();
+//                    if (TextUtils.isEmpty(str)){
+//                        UIUtil.doToast("请输入查询内容");
+//                    }else {
+//
+//                        doLoadData();
+//                    }
 
                     return true;
                 }

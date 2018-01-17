@@ -110,7 +110,7 @@ public class ActJZ_1 extends ActBase {
         setRightVisible(true);
         setRightShow("搜索");
         setTitle("救助对象统计");
-        initTimePicker();
+
         initBarChart();
         doGetXzqh();
 
@@ -189,9 +189,11 @@ public class ActJZ_1 extends ActBase {
 
         switch (v.getId()) {
             case R.id.et_tj_time:
+                initTimePicker();
                 pvTime.show(tvStartTime);
                 break;
             case R.id.et_tj_time2:
+                initTimePicker();
                 pvTime.show(tvEndTime);
                 break;
             case R.id.et_tj_xzqh:

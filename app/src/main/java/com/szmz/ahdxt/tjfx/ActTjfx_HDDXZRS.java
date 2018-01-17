@@ -96,7 +96,6 @@ public class ActTjfx_HDDXZRS extends ActBase {
         setRightVisible(true);
         setRightShow("搜索");
         setTitle("核对对象总人次数");
-        initTimePicker();
         initBarChart();
         tvEndTime.setText(DateUtil.getCurrentDay());
         tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
@@ -175,9 +174,11 @@ public class ActTjfx_HDDXZRS extends ActBase {
 
         switch (v.getId()) {
             case R.id.et_tj_time:
+                initTimePicker();
                 pvTime.show(tvStartTime);
                 break;
             case R.id.et_tj_time2:
+                initTimePicker();
                 pvTime.show(tvEndTime);
                 break;
             case R.id.et_tj_xzqh:
