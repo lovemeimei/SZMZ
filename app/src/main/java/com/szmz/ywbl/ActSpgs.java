@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.baidu.location.BDLocation;
 import com.bigkoo.pickerview.TimePickerView;
 import com.bm.library.Info;
@@ -23,6 +24,7 @@ import com.jph.takephoto.model.TResult;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.MyNewPhoto;
+import com.szmz.entity.YwblDict;
 import com.szmz.entity.YwblDzdaSalvation;
 import com.szmz.entity.YwblSaveDataRequest;
 import com.szmz.entity.request.JZ_YWBL_ADDDATA_RE;
@@ -80,7 +82,7 @@ public class ActSpgs extends ActLocationBase {
     @BindView(R.id.gsjlrEd)
     EditText gsjlrEd;
     @BindView(R.id.gsjgEd)
-    EditText gsjgEd;
+    TextView gsjgEd;
     @BindView(R.id.gsyynrEd)
     EditText gsyynrEd;
     @BindView(R.id.spjdrqTv)
@@ -103,6 +105,8 @@ public class ActSpgs extends ActLocationBase {
     Info mInfo;
     private TimePickerView pvTime;
     private List<YwblDzdaSalvation> listSalvation;
+    private YwblDict gsjgDict = null;
+    private List<YwblDict> listGsjgDict = new ArrayList<>();
 
     private void initTimePicker() {
         pvTime = DatePickerUtil.initPicker(this, DatePickerUtil.yyyyMMdd);
@@ -111,6 +115,22 @@ public class ActSpgs extends ActLocationBase {
     @Override
     protected void initUI() {
         super.initUI();
+        listGsjgDict.add(new YwblDict("30600401", "无异议"));
+        listGsjgDict.add(new YwblDict("30600402", "有异议"));
+        gsjgEd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(ActSpgs.this).title("请选择").items(listGsjgDict).itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+
+                        gsjgDict = listGsjgDict.get(position);
+                        gsjgEd.setText(gsjgDict.getName());
+
+                    }
+                }).show();
+            }
+        });
         setLeftVisible(true);
         setTitle("审批公示");
         if (isOnline) {
@@ -250,8 +270,13 @@ public class ActSpgs extends ActLocationBase {
             timeEndTv.setText(request.countyPublicEndTime);
             gsjlrEd.setText(request.countyPublicUser);
             spjdrqTv.setText(request.countyApproveTime);
+            for (int i = 0; i < listGsjgDict.size(); i++) {
+                if (listGsjgDict.get(i).getCode().equals(request.countyPublicResult)) {
+                    gsjgDict = listGsjgDict.get(i);
+                    gsjgEd.setText(gsjgDict.getName());
+                }
+            }
 
-            gsjgEd.setText(request.countyPublicResult);
             gsyynrEd.setText(request.countyPublicObjectionInfo);
             spryEd.setText(request.countyApproveUser);
             spfzrEd.setText(request.countyApproveChargeUser);
@@ -374,9 +399,8 @@ public class ActSpgs extends ActLocationBase {
             doToast("请输入审批负责人!");
             return;
         }
-        String gsjg = gsjgEd.getText().toString().trim();
-        if (TextUtils.isEmpty(gsjg)) {
-            doToast("请输入公示结果!");
+        if (gsjgDict == null) {
+            doToast("请选择公示结果!");
             return;
         }
         String gsyynr = gsyynrEd.getText().toString().trim();
@@ -390,7 +414,7 @@ public class ActSpgs extends ActLocationBase {
             return;
         }
 
-        JZ_YWBL_SPGS_RE request = new JZ_YWBL_SPGS_RE(getIDS(listSalvation), timeStartStr, timeEndStr, gsjg, jlr, gsyynr, location.getAddrStr(), spjdrq, spry, spfzr);
+        JZ_YWBL_SPGS_RE request = new JZ_YWBL_SPGS_RE(getIDS(listSalvation), timeStartStr, timeEndStr, gsjgDict.getCode(), jlr, gsyynr, location.getAddrStr(), spjdrq, spry, spfzr);
         if (isSave) {
             YwblSaveDataRequest saveData = new YwblSaveDataRequest();
             saveData.setId("SPGS" + getIDS(listSalvation));

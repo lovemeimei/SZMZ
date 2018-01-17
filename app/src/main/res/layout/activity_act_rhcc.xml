@@ -247,7 +247,9 @@
                         android:background="@color/white"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp">
 
 
                         <TextView
@@ -261,18 +263,16 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginBottom="5dp"
                             android:layout_marginTop="5dp"
                             android:background="@color/backgrounColor" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/rhccjgEd"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:gravity="top|left"
-                            android:hint="请输入入户抽查结果"
-                            android:lines="2"
+                            android:drawableRight="@drawable/arrow_right"
+                            android:hint="请选择入户抽查结果"
                             android:padding="10dp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/font_normal" />

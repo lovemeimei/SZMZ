@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="visible">
 
 
             <LinearLayout
@@ -23,7 +23,8 @@
                 android:layout_margin="10dp"
                 android:layout_weight="2.0"
                 android:background="@drawable/tzgg_search_shape_bg"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/jslbTv"
@@ -51,6 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
+                    android:hint="输入受理号查询"
                     android:imeOptions="actionSearch"
                     android:padding="5dp"
                     android:textSize="@dimen/font_small" />

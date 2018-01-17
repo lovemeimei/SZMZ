@@ -21,7 +21,6 @@ import com.szmz.entity.response.JZ_Search_worker_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
-import com.szmz.utils.TextUtil;
 import com.szmz.utils.UIUtil;
 
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class ActHistoryList extends ActListBase {
     TextView tvSearchView;
 
     private String typeID = "";
-    private String keyWords ="";
+    private String keyWords = "";
 
     BaseListAdapter<JZ_Search_worker_Res.ResultBean, ActHistoryList.MViewHolder> adapter;
 
@@ -107,13 +106,13 @@ public class ActHistoryList extends ActListBase {
                         || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
 
                     String str = searchEd.getText().toString();
-                   if (TextUtils.isEmpty(str)){
+                    if (TextUtils.isEmpty(str)) {
                         UIUtil.doToast("请输入姓名或者身份证号");
-                       return true;
-                   }else {
-                       keyWords = str;
-                       doLoadData();
-                   }
+                        return true;
+                    } else {
+                        keyWords = str;
+                        doLoadData();
+                    }
 
                     return true;
                 }
@@ -227,6 +226,7 @@ public class ActHistoryList extends ActListBase {
                 String tx = options1Items.get(options1).getType();
                 tvSearchView.setText(tx);
                 typeID = options1Items.get(options1).getId();
+                currentPage = 1;
                 getList();
             }
 

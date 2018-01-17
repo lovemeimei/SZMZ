@@ -9,7 +9,6 @@ import com.szmz.utils.Md5Util;
 public class JZ_YWBL_DCHS_RE extends BaseListRequest {
 
     public String familyId;//家庭ID
-    public String userId;//用户编号
     public String streetCheckTime;//调查核实日期
     public String streetCheckInfo;//调查核实情况
     public String streetCheckResult;//调查核实结果
@@ -18,15 +17,14 @@ public class JZ_YWBL_DCHS_RE extends BaseListRequest {
     public String coordinate;//地址
 
 
-    public JZ_YWBL_DCHS_RE(String id, String userID, String time, String info, String result, String checkUser, String chargeUser, String address) {
+    public JZ_YWBL_DCHS_RE(String id, String time, String info, String result, String checkUser, String chargeUser, String address) {
         this.familyId = id;
-        this.userId = userID;
         this.streetCheckInfo = info;
         this.streetCheckResult = result;
         this.streetCheckChargeUser = chargeUser;
         this.streetCheckTime = time;
         this.streetCheckUser = checkUser;
         this.coordinate = address;
-        setMd5Key(Md5Util.getMd5(userID + id + streetCheckTime + streetCheckInfo + streetCheckResult + streetCheckUser + streetCheckChargeUser + coordinate));
+        setMd5Key(Md5Util.getMd5(id + streetCheckTime + streetCheckInfo + streetCheckResult + streetCheckUser + streetCheckChargeUser + coordinate));
     }
 }

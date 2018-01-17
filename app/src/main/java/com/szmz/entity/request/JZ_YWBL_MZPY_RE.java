@@ -24,6 +24,6 @@ public class JZ_YWBL_MZPY_RE extends BaseListRequest {
         this.streetCommentChargeUser = streetCommentChargeUser;
         this.streetCommentUser = streetCommentUser;
         this.coordinate = coordinate;
-        setMd5Key(Md5Util.getMd5(familyIds + streetCommentTime + streetCommentResult + streetCommentChargeUser + streetCommentUser + coordinate));
+        setMd5Key(Md5Util.getMd5(familyIds + streetCommentTime + streetCommentResult + streetCommentUser + streetCommentChargeUser + coordinate));
     }
 }

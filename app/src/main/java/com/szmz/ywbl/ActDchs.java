@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.baidu.location.BDLocation;
 import com.bigkoo.pickerview.TimePickerView;
 import com.bm.library.Info;
@@ -23,6 +24,7 @@ import com.jph.takephoto.model.TResult;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.MyNewPhoto;
+import com.szmz.entity.YwblDict;
 import com.szmz.entity.YwblDzdaSalvation;
 import com.szmz.entity.YwblSaveDataRequest;
 import com.szmz.entity.request.JZ_YWBL_ADDDATA_RE;
@@ -57,9 +59,9 @@ public class ActDchs extends ActLocationBase {
     @BindView(R.id.time)
     TextView time;
     @BindView(R.id.dchsqk_ed)
-    EditText dchsqkEd;
+    TextView dchsqkEd;
     @BindView(R.id.dchsjl_ed)
-    EditText dchsjlEd;
+    TextView dchsjlEd;
     @BindView(R.id.bz_ed)
     ClearEditText bzEd;
     @BindView(R.id.mygridview)
@@ -99,17 +101,54 @@ public class ActDchs extends ActLocationBase {
     Info mInfo;
     private YwblDzdaSalvation checkSalvation;
     private TimePickerView pvTime;
+    private YwblDict dchsqkDict = null;
+    private YwblDict dchsjlDict = null;
+    private List<YwblDict> listDchsqkDict = new ArrayList<>();
+    private List<YwblDict> listDchsjlDict = new ArrayList<>();
+
 
     private void initTimePicker() {
         pvTime = DatePickerUtil.initPicker(this, DatePickerUtil.yyyyMMdd);
     }
 
+    private void doShowDialog(final List<YwblDict> list, final boolean isDchsqk) {
+
+        new MaterialDialog.Builder(this).title("请选择").items(list).itemsCallback(new MaterialDialog.ListCallback() {
+            @Override
+            public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+                if (isDchsqk) {
+                    dchsqkDict = list.get(position);
+                    dchsqkEd.setText(dchsqkDict.getName());
+                } else {
+                    dchsjlDict = list.get(position);
+                    dchsjlEd.setText(dchsjlDict.getName());
+                }
+
+            }
+        }).show();
+    }
 
     @Override
     protected void initUI() {
         super.initUI();
-
+        listDchsqkDict.add(new YwblDict("30600201", "情况属实"));
+        listDchsqkDict.add(new YwblDict("30600202", "情况不属实"));
+        listDchsjlDict.add(new YwblDict("30900201", "同意救助"));
+        listDchsjlDict.add(new YwblDict("30900202", "不同意救助"));
         initTimePicker();
+        dchsjlEd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doShowDialog(listDchsjlDict, false);
+            }
+        });
+        dchsqkEd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                doShowDialog(listDchsqkDict, true);
+            }
+        });
         timeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -229,8 +268,22 @@ public class ActDchs extends ActLocationBase {
             time.setText(request.streetCheckTime);
             dcrTv.setText(request.streetCheckUser);
             fzrTv.setText(request.streetCheckChargeUser);
-            dchsqkEd.setText(request.streetCheckInfo);
-            dchsjlEd.setText(request.streetCheckResult);
+
+            for (int i = 0; i < listDchsqkDict.size(); i++) {
+                if (listDchsqkDict.get(i).getCode().equals(request.streetCheckInfo)) {
+                    dchsqkDict = new YwblDict(listDchsqkDict.get(i).getCode(), listDchsqkDict.get(i).getName());
+                    dchsqkEd.setText(dchsqkDict.getName());
+                }
+            }
+
+
+            for (int i = 0; i < listDchsjlDict.size(); i++) {
+                if (listDchsjlDict.get(i).getCode().equals(request.streetCheckResult)) {
+                    dchsjlDict = new YwblDict(listDchsjlDict.get(i).getCode(), listDchsjlDict.get(i).getName());
+                    dchsjlEd.setText(dchsjlDict.getName());
+                }
+            }
+
             location = new BDLocation();
             location.setAddrStr(request.coordinate);
         }
@@ -307,22 +360,21 @@ public class ActDchs extends ActLocationBase {
             doToast("请填写负责人!");
             return;
         }
-        String dchsqk = dchsqkEd.getText().toString().trim();
-        if (TextUtils.isEmpty(dchsqk)) {
-            doToast("请输入调查核实情况!");
+
+        if (dchsqkDict == null) {
+            doToast("请选择调查核实情况!");
             return;
         }
 
-        String dchsjl = dchsjlEd.getText().toString().trim();
-        if (TextUtils.isEmpty(dchsjl)) {
-            doToast("请输入调查核实结论!");
+        if (dchsjlDict == null) {
+            doToast("请选择调查核实结论!");
             return;
         }
         if (location == null) {
             doToast("未获取到地址信息!");
             return;
         }
-        JZ_YWBL_DCHS_RE request = new JZ_YWBL_DCHS_RE(checkSalvation.getFamilyId(), App.getInstance().getLoginUser().getIdJZ(), timeStr, dchsqk, dchsjl, dcry, fzry, location.getAddrStr());
+        JZ_YWBL_DCHS_RE request = new JZ_YWBL_DCHS_RE(checkSalvation.getFamilyId(), timeStr, dchsqkDict.getCode(), dchsjlDict.getCode(), dcry, fzry, location.getAddrStr());
         if (isSave) {
             YwblSaveDataRequest saveData = new YwblSaveDataRequest();
             saveData.setId("DCHS" + checkSalvation.getFamilyId());

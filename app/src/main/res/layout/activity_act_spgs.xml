@@ -92,6 +92,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
+                            android:drawableRight="@drawable/arrow_right"
                             android:textColor="@color/black"
                             android:textSize="@dimen/font_normal" />
                     </LinearLayout>
@@ -125,6 +126,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
+                            android:drawableRight="@drawable/arrow_right"
                             android:textColor="@color/black"
                             android:textSize="@dimen/font_normal" />
                     </LinearLayout>
@@ -191,6 +193,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
+                            android:drawableRight="@drawable/arrow_right"
                             android:textColor="@color/black"
                             android:textSize="@dimen/font_normal" />
                     </LinearLayout>
@@ -268,7 +271,9 @@
                         android:background="@color/white"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp">
 
 
                         <TextView
@@ -282,7 +287,6 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginBottom="5dp"
                             android:layout_marginTop="5dp"
                             android:background="@color/backgrounColor" />
 
@@ -291,9 +295,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:gravity="top|left"
-                            android:hint="请输入公示结果"
-                            android:lines="2"
+                            android:drawableRight="@drawable/arrow_right"
+                            android:hint="请选择公示结果"
                             android:padding="10dp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/font_normal" />

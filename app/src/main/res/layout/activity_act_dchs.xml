@@ -174,7 +174,9 @@
                         android:background="@color/white"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp">
 
 
                         <TextView
@@ -188,18 +190,16 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginBottom="5dp"
                             android:layout_marginTop="5dp"
                             android:background="@color/backgrounColor" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/dchsqk_ed"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:gravity="top|left"
-                            android:hint="请输入调查核实情况"
-                            android:lines="2"
+                            android:drawableRight="@drawable/arrow_right"
+                            android:hint="请选择调查核实情况"
                             android:padding="10dp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/font_normal" />
@@ -213,7 +213,9 @@
                         android:background="@color/white"
                         android:gravity="center_vertical"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp">
 
 
                         <TextView
@@ -227,18 +229,16 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginBottom="5dp"
                             android:layout_marginTop="5dp"
                             android:background="@color/backgrounColor" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/dchsjl_ed"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
-                            android:gravity="top|left"
-                            android:hint="请输入调查核实结论"
-                            android:lines="2"
+                            android:drawableRight="@drawable/arrow_right"
+                            android:hint="请选择调查核实结论"
                             android:padding="10dp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/font_normal" />

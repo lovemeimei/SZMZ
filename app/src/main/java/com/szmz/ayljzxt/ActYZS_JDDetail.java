@@ -3,17 +3,14 @@ package com.szmz.ayljzxt;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.request.YZSSQR_JD_Detail_Req;
-import com.szmz.entity.request.YZS_History_Detail_Req;
 import com.szmz.entity.response.YZSSQR_jd_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
-import com.szmz.utils.TextUtil;
 import com.szmz.widget.MyLayoutView;
 import com.szmz.widget.StepProgressView;
 
@@ -26,7 +23,7 @@ import retrofit2.Call;
  * 创建时间：2017/11/29 0029下午 3:30
  */
 
-public class ActYZS_JDDetail extends ActBase{
+public class ActYZS_JDDetail extends ActBase {
 
     @BindView(R.id.stepView)
     StepProgressView stepView;
@@ -51,6 +48,7 @@ public class ActYZS_JDDetail extends ActBase{
     private YZSSQR_jd_Res.ResultBean item;
 
     private String[] stepString = {"审批中"};
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_yzs_jd_detail2;
@@ -63,51 +61,52 @@ public class ActYZS_JDDetail extends ActBase{
         type = getIntent().getStringExtra("type");
 //        stepView.setStepDesc(new String[]{"审批中"})
         setLeftVisible(true);
-        setTitle("进度信息");;
+        setTitle("进度信息");
+        ;
 //        view1.doSetContent();
         getInfo();
     }
 
-    private void getInfo(){
+    private void getInfo() {
 
-        YZSSQR_JD_Detail_Req req = new YZSSQR_JD_Detail_Req(id,type);
+        YZSSQR_JD_Detail_Req req = new YZSSQR_JD_Detail_Req(id, type);
 
         Call<YZSSQR_jd_Res> call = App.getApiProxyYZS().getYZS_jdDetail_SQR(req);
 
-        ApiUtil<YZSSQR_jd_Res> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<YZSSQR_jd_Res>(){
+        ApiUtil<YZSSQR_jd_Res> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<YZSSQR_jd_Res>() {
             @Override
             public void doSuccess(YZSSQR_jd_Res result) {
                 super.doSuccess(result);
-                if (result!=null)
+                if (result != null)
                     item = result.Result.get(0);
-                if (item!=null)
+                if (item != null)
                     setInfo();
             }
-        },true);
+        }, true);
 
         apiUtil.excute();
 
     }
 
-    private void  setInfo(){
+    private void setInfo() {
         String all = item.getAllNode();
-        if (TextUtils.isEmpty(all)||"null".equals(all)){
+        if (TextUtils.isEmpty(all) || all == null) {
             llStepView.setVisibility(View.GONE);
-        }else {
+        } else {
             llStepView.setVisibility(View.VISIBLE);
             stepString = all.split(",");
             stepView.setStepCounts(stepString.length);
             stepView.setStepDesc(stepString);
 
             String c = item.getCurrentNode();
-            for (int i=0;i<stepString.length;i++){
-                if (stepString[i].equals(c)){
+            for (int i = 0; i < stepString.length; i++) {
+                if (stepString[i].equals(c)) {
 //                    stepView.setCurStepIndex(0);
                     stepView.setCurStepIndex(i);
                 }
             }
         }
-
+        stepView.invalidate();
         view1.doSetContent(item.getNAME());
         view2.doSetContent(item.getCardID());
         view3.doSetContent(item.getTypeName());

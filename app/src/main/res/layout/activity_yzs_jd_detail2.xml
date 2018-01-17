@@ -10,16 +10,51 @@
     <include layout="@layout/comm_title" />
 
 
-        <LinearLayout
-            android:id="@+id/ll_stepview"
+    <LinearLayout
+        android:id="@+id/ll_stepview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_normal">
+
+        <com.szmz.widget.StepProgressView
+            android:id="@+id/stepView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< .mine
+            android:layout_centerHorizontal="true"
+            app:auto_adapte="true"
+            app:circle_radius="5dp"
+            app:step_counts="2" />
+    </LinearLayout>
+||||||| .r120
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_normal">
+=======
             android:background="@color/white"
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="gone"
             android:padding="@dimen/spacing_normal">
+>>>>>>> .r123
 
+<<<<<<< .mine
+||||||| .r120
+            <com.szmz.widget.StepProgressView
+                android:id="@+id/stepView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:auto_adapte="true"
+                app:step_counts="4"
+                app:circle_radius="5dp" />
+        </LinearLayout>
+
+=======
             <com.szmz.widget.StepProgressView
                 android:id="@+id/stepView"
                 android:layout_width="match_parent"
@@ -32,6 +67,7 @@
                 app:circle_radius="5dp" />
         </LinearLayout>
 
+>>>>>>> .r123
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -49,44 +85,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="姓名"
-                app:contentText=""/>
+                app:contentText=""
+                app:titleText="姓名" />
 
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="身份证号"
-                app:contentText=""/>
+                app:contentText=""
+                app:titleText="身份证号" />
+
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="救助类型"
-                app:contentText=""/>
+                app:contentText=""
+                app:titleText="救助类型" />
+
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="审批结果"
-                app:contentText=""/>
+                app:contentText=""
+                app:titleText="审批结果" />
+
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="审批意见"
-                app:contentText=""/>
+                app:contentText=""
+                app:titleText="审批意见" />
+
             <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:titleText="申请编号"
-                app:contentText=""/>
+                app:contentText=""
+                app:titleText="申请编号" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

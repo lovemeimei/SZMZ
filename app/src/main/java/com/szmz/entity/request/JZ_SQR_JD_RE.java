@@ -9,11 +9,13 @@ import com.szmz.utils.Md5Util;
 public class JZ_SQR_JD_RE extends BaseListRequest {
 
     private String idCard;//
+    private String keyWords;//
 
 
-    public JZ_SQR_JD_RE(String idCard, int currentPage) {
+    public JZ_SQR_JD_RE(String idCard, String keyWords, int currentPage) {
         this.idCard = idCard;
+        this.keyWords = keyWords;
         this.CurrentPage = currentPage;
-        setMd5Key(Md5Util.getMd5(idCard + CurrentPage + PageSize));
+        setMd5Key(Md5Util.getMd5(idCard + keyWords + CurrentPage + PageSize));
     }
 }

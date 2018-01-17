@@ -34,6 +34,6 @@ public class JZ_YWBL_SPGS_RE extends BaseListRequest {
         this.countyApproveUser = countyApproveUser;
         this.countyApproveChargeUser = countyApproveChargeUser;
         setMd5Key(Md5Util.getMd5(familyIds + countyPublicStartTime + countyPublicEndTime + countyPublicResult + countyPublicUser +
-                countyPublicObjectionInfo + coordinate + countyApproveTime + countyApproveUser + countyApproveChargeUser));
+                countyPublicObjectionInfo + countyApproveTime + countyApproveUser + countyApproveChargeUser + coordinate));
     }
 }

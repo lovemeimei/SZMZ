@@ -124,6 +124,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
             return;
         }
         try {
+            List<User> all1 = dbManager.selector(User.class).findAll();
             List<User> all = dbManager.selector(User.class).where
                     ("userName", "=", etUser.getText().toString().trim()).findAll();
             if (all != null && all.size() > 0) {

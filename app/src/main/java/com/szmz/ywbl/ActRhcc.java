@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.baidu.location.BDLocation;
 import com.bigkoo.pickerview.TimePickerView;
 import com.bm.library.Info;
@@ -23,6 +24,7 @@ import com.jph.takephoto.model.TResult;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.MyNewPhoto;
+import com.szmz.entity.YwblDict;
 import com.szmz.entity.YwblDzdaSalvation;
 import com.szmz.entity.YwblSaveDataRequest;
 import com.szmz.entity.request.JZ_YWBL_ADDDATA_RE;
@@ -88,9 +90,11 @@ public class ActRhcc extends ActLocationBase {
     @BindView(R.id.fzrLayout)
     LinearLayout fzrLayout;
     @BindView(R.id.rhccjgEd)
-    EditText rhccjgEd;
+    TextView rhccjgEd;
     @BindView(R.id.timeTv)
     TextView timeTv;
+    private YwblDict rhccjgDict = null;
+    private List<YwblDict> listRhccjg = new ArrayList<>();
     private ImageGridAdapter adapter;
     private List<MyNewPhoto> paths = new ArrayList<MyNewPhoto>();
     private List<MyNewPhoto> path = new ArrayList<MyNewPhoto>();
@@ -116,6 +120,22 @@ public class ActRhcc extends ActLocationBase {
     @Override
     protected void initUI() {
         super.initUI();
+        listRhccjg.add(new YwblDict("30600201", "情况属实"));
+        listRhccjg.add(new YwblDict("30600202", "情况不属实"));
+        rhccjgEd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(ActRhcc.this).title("请选择").items(listRhccjg).itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+
+                        rhccjgDict = listRhccjg.get(position);
+                        rhccjgEd.setText(rhccjgDict.getName());
+
+                    }
+                }).show();
+            }
+        });
         initTimePicker();
         timeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -242,7 +262,13 @@ public class ActRhcc extends ActLocationBase {
             time.setText(request.countySpotCheckTime);
             dcrTv.setText(request.countySpotCheckUser);
             fzrTv.setText(request.countySpotCheckChargeUser);
-            rhccjgEd.setText(request.countySpotCheckResult);
+            for (int i = 0; i < listRhccjg.size(); i++) {
+                if (listRhccjg.get(i).getCode().equals(request.countySpotCheckResult)) {
+                    rhccjgDict = listRhccjg.get(i);
+                    rhccjgEd.setText(rhccjgDict.getName());
+                }
+            }
+
             location = new BDLocation();
             location.setAddrStr(request.coordinate);
         }
@@ -319,9 +345,8 @@ public class ActRhcc extends ActLocationBase {
             doToast("请填写入户抽查负责人!");
             return;
         }
-        String rhccjg = rhccjgEd.getText().toString().trim();
-        if (TextUtils.isEmpty(rhccjg)) {
-            doToast("请输入入户抽查结果!");
+        if (rhccjgDict == null) {
+            doToast("请选择入户抽查结果!");
             return;
         }
 
@@ -330,7 +355,7 @@ public class ActRhcc extends ActLocationBase {
             return;
         }
 
-        JZ_YWBL_RHCC_RE request = new JZ_YWBL_RHCC_RE(checkSalvation.getFamilyId(), timeStr, dcry, rhccjg, fzry, location.getAddrStr());
+        JZ_YWBL_RHCC_RE request = new JZ_YWBL_RHCC_RE(checkSalvation.getFamilyId(), timeStr, dcry, rhccjgDict.getCode(), fzry, location.getAddrStr());
         if (isSave) {
             YwblSaveDataRequest saveData = new YwblSaveDataRequest();
             saveData.setId("RHCC" + checkSalvation.getFamilyId());

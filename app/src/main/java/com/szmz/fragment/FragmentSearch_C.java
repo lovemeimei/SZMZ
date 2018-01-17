@@ -153,15 +153,15 @@ public class FragmentSearch_C extends BaseFragment {
         } else {
             CurrentPage = 1;
         }
-//        keyWords = searchEd.getText().toString().trim();
-        doGetData(App.getInstance().getLoginUser().getIdCode(), CurrentPage);
+        keyWords = searchEd.getText().toString().trim();
+        doGetData(App.getInstance().getLoginUser().getIdCode(), keyWords, CurrentPage);
     }
 
 
-    private void doGetData(String idCard, final int CurrentPage) {
+    private void doGetData(String idCard, String keyWords, final int CurrentPage) {
 
 
-        JZ_SQR_JD_RE request = new JZ_SQR_JD_RE(idCard, CurrentPage);
+        JZ_SQR_JD_RE request = new JZ_SQR_JD_RE(idCard, keyWords, CurrentPage);
 
 
         Call<JZ_SQR_JD_RES> call = App.getApiProxyJZ().get_JZ_SQR_JD_LIST(request);

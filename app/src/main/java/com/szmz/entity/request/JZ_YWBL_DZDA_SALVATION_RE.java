@@ -21,6 +21,7 @@ public class JZ_YWBL_DZDA_SALVATION_RE extends BaseListRequest {
     public JZ_YWBL_DZDA_SALVATION_RE(String type, String regionId, String keyWords, int CurrentPage, boolean isFromJZXX) {
         this.regionId = regionId;
         this.keyWords = keyWords;
+        this.CurrentPage=CurrentPage;
         if (!isFromJZXX) {
             this.type = type;
             setMd5Key(Md5Util.getMd5(regionId + keyWords + type + CurrentPage + PageSize));

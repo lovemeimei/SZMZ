@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.baidu.location.BDLocation;
 import com.bigkoo.pickerview.TimePickerView;
 import com.bm.library.Info;
@@ -23,6 +24,7 @@ import com.jph.takephoto.model.TResult;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.MyNewPhoto;
+import com.szmz.entity.YwblDict;
 import com.szmz.entity.YwblDzdaSalvation;
 import com.szmz.entity.YwblSaveDataRequest;
 import com.szmz.entity.request.JZ_YWBL_ADDDATA_RE;
@@ -78,14 +80,15 @@ public class ActMzpy extends ActLocationBase {
     @BindView(R.id.timeLayout)
     LinearLayout timeLayout;
     @BindView(R.id.pyjlEd)
-    EditText pyjlEd;
+    TextView pyjlEd;
+    private List<YwblDict> listPyjl = new ArrayList<>();
+    private YwblDict pyjlDict = null;
     private ImageGridAdapter adapter;
     private List<MyNewPhoto> paths = new ArrayList<MyNewPhoto>();
     private List<MyNewPhoto> path = new ArrayList<MyNewPhoto>();
     private String imagePath;
     private double lat1 = 0.0;
     private double lng1 = 0.0;
-    private String waterword = "";
     AlphaAnimation in = new AlphaAnimation(0, 1);
     AlphaAnimation out = new AlphaAnimation(1, 0);
     Info mInfo;
@@ -99,6 +102,23 @@ public class ActMzpy extends ActLocationBase {
     @Override
     protected void initUI() {
         super.initUI();
+        listPyjl.add(new YwblDict("30600501", "符合"));
+        listPyjl.add(new YwblDict("30600502", "不符合"));
+        pyjlEd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new MaterialDialog.Builder(ActMzpy.this).title("请选择").items(listPyjl).itemsCallback(new MaterialDialog.ListCallback() {
+                    @Override
+                    public void onSelection(MaterialDialog dialog, View itemView, int position, CharSequence text) {
+
+                        pyjlDict = listPyjl.get(position);
+                        pyjlEd.setText(pyjlDict.getName());
+
+
+                    }
+                }).show();
+            }
+        });
         setLeftVisible(true);
         setTitle("民主评议");
         if (isOnline) {
@@ -224,7 +244,13 @@ public class ActMzpy extends ActLocationBase {
             pysjTv.setText(request.streetCommentTime);
             jlrTv.setText(request.streetCommentUser);
             fzrTv.setText(request.streetCommentChargeUser);
-            pyjlEd.setText(request.streetCommentResult);
+            for (int i = 0; i < listPyjl.size(); i++) {
+                if (listPyjl.get(i).getCode().equals(request.streetCommentResult)) {
+                    pyjlDict = listPyjl.get(i);
+                    pyjlEd.setText(pyjlDict.getName());
+                }
+            }
+
             location = new BDLocation();
             location.setAddrStr(request.coordinate);
         }
@@ -327,9 +353,8 @@ public class ActMzpy extends ActLocationBase {
             doToast("请填写记录人!");
             return;
         }
-        String pyjl = pyjlEd.getText().toString().trim();
-        if (TextUtils.isEmpty(pyjl)) {
-            doToast("请输入民主评议结论!");
+        if (pyjlDict == null) {
+            doToast("请选择民主评议结论!");
             return;
         }
 
@@ -338,7 +363,7 @@ public class ActMzpy extends ActLocationBase {
             return;
         }
 
-        JZ_YWBL_MZPY_RE request = new JZ_YWBL_MZPY_RE(getIDS(listSalvation), timeStr, pyjl, fzr, jlr, location.getAddrStr());
+        JZ_YWBL_MZPY_RE request = new JZ_YWBL_MZPY_RE(getIDS(listSalvation), timeStr, pyjlDict.getCode(), fzr, jlr, location.getAddrStr());
         if (isSave) {
             YwblSaveDataRequest saveData = new YwblSaveDataRequest();
             saveData.setId("MZPY" + getIDS(listSalvation));
