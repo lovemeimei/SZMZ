@@ -287,14 +287,16 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
 
         nameTv.setText(item.getName() + (item.isSave() ? "（已保存）" : ""));
         timeTv.setText("");
-        countyTv.setText(item.getAddress());
+
         typeTv.setText(item.getSalvationType());
 
         CheckBox cb = (CheckBox) view.findViewById(R.id.cb);
         if (isFromJZXX) {
             cb.setVisibility(View.GONE);
+            countyTv.setText(item.getDisName());
         } else {
             cb.setVisibility(View.VISIBLE);
+            countyTv.setText(item.getAddress());
         }
         cb.setTag(item);
         cb.setFocusable(true);
