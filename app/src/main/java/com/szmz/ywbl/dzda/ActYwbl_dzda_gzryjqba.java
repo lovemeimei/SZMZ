@@ -39,9 +39,13 @@ public class ActYwbl_dzda_gzryjqba extends ActBaseList<YwblDzdaFamilyShipPer> {
         MyLayoutView nameView = (MyLayoutView) view.findViewById(R.id.nameView);
         MyLayoutView idcardView = (MyLayoutView) view.findViewById(R.id.idcardView);
         MyLayoutView gxView = (MyLayoutView) view.findViewById(R.id.gxView);
+        MyLayoutView gzryxmView = (MyLayoutView) view.findViewById(R.id.gzryxmView);
+        MyLayoutView gzrysfzhView = (MyLayoutView) view.findViewById(R.id.gzrysfzhView);
         nameView.doSetContent(item.getMemberName());
         idcardView.doSetContent(item.getMemberIdcard());
         gxView.doSetContent(item.getRelation());
+        gzrysfzhView.doSetContent(item.getWorkIdcard());
+        gzryxmView.doSetContent(item.getWorkName());
 
 
     }

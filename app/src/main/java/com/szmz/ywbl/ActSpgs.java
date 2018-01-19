@@ -384,6 +384,10 @@ public class ActSpgs extends ActLocationBase {
             doToast("请填写公示记录人!");
             return;
         }
+        if (jlr.length() > 10) {
+            doToast("公示记录人填写数据过长，不能超过10个字符!");
+            return;
+        }
         String spjdrq = spjdrqTv.getText().toString().trim();
         if (TextUtils.isEmpty(timeEndStr)) {
             doToast("审批决定日期不能为空!");
@@ -394,9 +398,17 @@ public class ActSpgs extends ActLocationBase {
             doToast("请输入审批人员!");
             return;
         }
+        if (spry.length() > 10) {
+            doToast("审批人员填写数据过长，不能超过10个字符!");
+            return;
+        }
         String spfzr = spfzrEd.getText().toString().trim();
         if (TextUtils.isEmpty(timeEndStr)) {
             doToast("请输入审批负责人!");
+            return;
+        }
+        if (spfzr.length() > 10) {
+            doToast("审批负责人填写数据过长，不能超过10个字符!");
             return;
         }
         if (gsjgDict == null) {
@@ -408,7 +420,10 @@ public class ActSpgs extends ActLocationBase {
             doToast("请输入异议内容!");
             return;
         }
-
+        if (gsyynr.length() > 200) {
+            doToast("异议内容填写数据过长，不能超过200个字符!");
+            return;
+        }
         if (location == null) {
             doToast("未获取到地址信息!");
             return;

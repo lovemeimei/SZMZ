@@ -22,6 +22,18 @@
             app:titleText="亲属身份证号" />
 
         <com.szmz.widget.MyLayoutView
+            android:id="@+id/gzryxmView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="工作人员姓名" />
+
+        <com.szmz.widget.MyLayoutView
+            android:id="@+id/gzrysfzhView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="工作人员身份证号" />
+
+        <com.szmz.widget.MyLayoutView
             android:id="@+id/gxView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -32,7 +32,7 @@ public class YwblDzdaFamilyApproveInfo implements IEntity {
     private String streetSubmitUser;//街道上报人员
     private String streetApproveReason;//街道审核结果原因
     private String streetApproveChargeUser;//街道审核负责人
-    private String streetApproveInfo;//街道审核原因
+    private String streetApproveReult;//街道审核原因
 
     private String countyCheckMaterialResult;//区县材料审查结果
     private String countyCheckMaterialTime;//区县材料审查日期
@@ -56,12 +56,12 @@ public class YwblDzdaFamilyApproveInfo implements IEntity {
     private String countyPublicObjectionInfo;//区县审批公示异议内容
 
 
-    public String getStreetApproveInfo() {
-        return streetApproveInfo;
+    public String getStreetApproveReult() {
+        return streetApproveReult;
     }
 
-    public void setStreetApproveInfo(String streetApproveInfo) {
-        this.streetApproveInfo = streetApproveInfo;
+    public void setStreetApproveReult(String streetApproveReult) {
+        this.streetApproveReult = streetApproveReult;
     }
 
     public String getCountySpotCheckChargeUser() {

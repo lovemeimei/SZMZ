@@ -68,7 +68,7 @@ public class ActShgsInfo extends ActBase {
         shfzrEd.setText(info.getStreetApproveChargeUser());
         gsjgEd.setText(info.getStreetPublicResult());
         gsyynrEd.setText(info.getStreetPublicObjectionInfo());
-        shyjEd.setText(info.getStreetApproveInfo());
+        shyjEd.setText(info.getStreetApproveReult());
         shyjyyEd.setText(info.getStreetApproveReason());
 
 

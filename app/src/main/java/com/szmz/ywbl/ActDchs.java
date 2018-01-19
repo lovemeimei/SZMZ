@@ -263,8 +263,9 @@ public class ActDchs extends ActLocationBase {
             adapter.setImgPaths(paths);
             adapter.notifyDataSetChanged();
             checkSalvation = new YwblDzdaSalvation();
-            checkSalvation.setId(ywblSaveDataRequest.getId().replace("DCHS", ""));
+            checkSalvation.setFamilyId(ywblSaveDataRequest.getId().replace("DCHS", ""));
             checkSalvation.setName(ywblSaveDataRequest.getName());
+            sqrTv.setText(checkSalvation.getName());
             time.setText(request.streetCheckTime);
             dcrTv.setText(request.streetCheckUser);
             fzrTv.setText(request.streetCheckChargeUser);
@@ -355,9 +356,17 @@ public class ActDchs extends ActLocationBase {
             doToast("请填写调查人!");
             return;
         }
+        if (dcry.length() > 10) {
+            doToast("调查人填写数据过长，不能超过10个字符!");
+            return;
+        }
         String fzry = fzrTv.getText().toString().trim();
         if (TextUtils.isEmpty(fzry)) {
             doToast("请填写负责人!");
+            return;
+        }
+        if (fzry.length() > 10) {
+            doToast("负责人填写数据过长，不能超过10个字符!");
             return;
         }
 

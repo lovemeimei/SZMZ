@@ -348,9 +348,17 @@ public class ActMzpy extends ActLocationBase {
             doToast("请填写负责人!");
             return;
         }
+        if (fzr.length() > 10) {
+            doToast("负责人填写数据过长，不能超过10个字符!");
+            return;
+        }
         String jlr = jlrTv.getText().toString().trim();
         if (TextUtils.isEmpty(jlr)) {
             doToast("请填写记录人!");
+            return;
+        }
+        if (jlr.length() > 10) {
+            doToast("记录人填写数据过长，不能超过10个字符!");
             return;
         }
         if (pyjlDict == null) {

@@ -26,7 +26,7 @@
             android:id="@+id/cbsjView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:titleText="参保时间" />
+            app:titleText="参保周期" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -400,9 +400,17 @@ public class ActShgs extends ActLocationBase {
             doToast("请填写公示记录人!");
             return;
         }
+        if (jlr.length() > 10) {
+            doToast("公示记录人填写数据过长，不能超过10个字符!");
+            return;
+        }
         String fzr = shfzrEd.getText().toString().trim();
         if (TextUtils.isEmpty(jlr)) {
             doToast("请填写审核负责人!");
+            return;
+        }
+        if (fzr.length() > 10) {
+            doToast("审核负责人填写数据过长，不能超过10个字符!");
             return;
         }
         if (gsjgDict == null) {
@@ -414,6 +422,10 @@ public class ActShgs extends ActLocationBase {
             doToast("请输入异议内容!");
             return;
         }
+        if (gsyynr.length() > 200) {
+            doToast("异议内容填写数据过长，不能超过200个字符!");
+            return;
+        }
         if (shyjDict == null) {
             doToast("请选择审核意见!");
             return;
@@ -421,6 +433,10 @@ public class ActShgs extends ActLocationBase {
         String shyjyy = shyjyyEd.getText().toString().trim();
         if (TextUtils.isEmpty(shyjyy)) {
             doToast("请输入审核意见原因!");
+            return;
+        }
+        if (shyjyy.length() > 200) {
+            doToast("审核意见原因填写数据过长，不能超过200个字符!");
             return;
         }
         if (location == null) {

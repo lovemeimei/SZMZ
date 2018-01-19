@@ -340,9 +340,17 @@ public class ActRhcc extends ActLocationBase {
             doToast("请填写入户抽查人员!");
             return;
         }
+        if (dcry.length() > 10) {
+            doToast("入户抽查人员填写数据过长，不能超过10个字符!");
+            return;
+        }
         String fzry = fzrTv.getText().toString().trim();
         if (TextUtils.isEmpty(fzry)) {
             doToast("请填写入户抽查负责人!");
+            return;
+        }
+        if (fzry.length() > 10) {
+            doToast("入户抽查负责人填写数据过长，不能超过10个字符!");
             return;
         }
         if (rhccjgDict == null) {

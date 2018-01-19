@@ -80,11 +80,11 @@ public class ActYwbl_dzda_jtcyxx_detail extends ActBase {
         xbView.doSetContent(jtcy.getPsex());
         csrqView.doSetContent(jtcy.getPbirthday());
         yhzgxView.doSetContent(jtcy.getPrelationship());
-        sfbzdxView.doSetContent("1".equals(jtcy.getPissafe()) ? "是" : "否");
+        sfbzdxView.doSetContent(jtcy.getPissafe());
         ryfljzlbView.doSetContent(jtcy.getPersonSalvationType());
         ysrView.doSetContent(jtcy.getPincome());
         mzView.doSetContent(jtcy.getPnation());
-        hyzkView.doSetContent("1".equals(jtcy.getPismarry()) ? "已婚" : "未婚");
+        hyzkView.doSetContent(jtcy.getPismarry());
         if (jtcy.getPerIncomeInfo() != null && jtcy.getPerIncomeInfo().size() > 0) {
             cysrxxLayout.setVisibility(View.VISIBLE);
             adapterIncomeInfo = new MyListPageAdapter<YwblDzdaMemberIncomeInfo>(this, R.layout.list_item_ywbl_cysrxx) {
