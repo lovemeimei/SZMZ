@@ -1,6 +1,7 @@
 package com.szmz.ayljzxt;
 
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -238,7 +239,7 @@ public class ActYZS_tj1 extends ActBase {
         mChart.setData(data);
 
         mChart.setFitBars(true);
-        mChart.animateXY(3000, 3000);
+        mChart.animateXY(1500, 1500);
         mChart.invalidate();
     }
 
@@ -272,9 +273,14 @@ public class ActYZS_tj1 extends ActBase {
         mChart.setHorizontalScrollBarEnabled(false);
         mChart.setVerticalScrollBarEnabled(false);
         mChart.setDrawGridBackground(false);
-        mChart.setTouchEnabled(false);
+//        mChart.setTouchEnabled(false);
         mChart.animateY(1500);
         mChart.setExtraBottomOffset(20f);
+
+        Matrix m=new Matrix();
+        m.postScale(1.1f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+        mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+        mChart.animateX(1000); // 立即执行的动画,x轴
 
 
         Legend l = mChart.getLegend();
@@ -294,6 +300,8 @@ public class ActYZS_tj1 extends ActBase {
         xAxis.setTextSize(10f);
 //        xAxis.setLabelRotationAngle(25f);
         xAxis.setDrawGridLines(false);
+        xAxis.setAxisMaximum(6);
+
 //        xAxis.setCenterAxisLabels(true);//标签居中显示
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
@@ -309,7 +317,15 @@ public class ActYZS_tj1 extends ActBase {
 
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTypeface(mTfLight);
-        leftAxis.setValueFormatter(new LargeValueFormatter());
+//        leftAxis.setValueFormatter(new LargeValueFormatter());
+//        leftAxis.setValueFormatter(new IAxisValueFormatter() {
+//            @Override
+//            public String getFormattedValue(float value, AxisBase axis) {
+//                if (value==(int)value)
+//                    return (int)value+"";
+//                return "";
+//            }
+//        });
         leftAxis.setDrawGridLines(false);
         leftAxis.setSpaceTop(35f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)

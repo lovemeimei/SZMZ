@@ -1,6 +1,7 @@
 package com.szmz.tjfx;
 
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -18,8 +19,12 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
@@ -140,10 +145,16 @@ public class ActJZ_1 extends ActBase {
         mChart.setHorizontalScrollBarEnabled(false);
         mChart.setVerticalScrollBarEnabled(false);
         mChart.setDrawGridBackground(false);
-        mChart.setTouchEnabled(false);
+//        mChart.setTouchEnabled(false);
         mChart.animateY(1500);
         mChart.setExtraBottomOffset(20f);
+//        mChart.setExtraRightOffset(20f);
+//        mChart.setClickable(false);
 
+        Matrix m=new Matrix();
+        m.postScale(1.1f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+        mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+        mChart.animateX(1000); // 立即执行的动画,x轴
 
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
@@ -160,8 +171,11 @@ public class ActJZ_1 extends ActBase {
         xAxis.setTypeface(mTfLight);
         xAxis.setGranularity(1f);
         xAxis.setTextSize(10f);
+//        xAxis.setXOffset(20f);
 //        xAxis.setLabelRotationAngle(25f);
         xAxis.setDrawGridLines(false);
+//        xAxis.setAxisMinimum(2);
+        xAxis.setAxisMaximum(6);
 //        xAxis.setCenterAxisLabels(true);//标签居中显示
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
@@ -176,7 +190,15 @@ public class ActJZ_1 extends ActBase {
 
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTypeface(mTfLight);
-        leftAxis.setValueFormatter(new LargeValueFormatter());
+//        leftAxis.setValueFormatter(new IndexAxisValueFormatter());
+        leftAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                if (value==(int)value)
+                    return (int)value+"";
+                return "";
+            }
+        });
         leftAxis.setDrawGridLines(false);
         leftAxis.setSpaceTop(35f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
@@ -210,18 +232,6 @@ public class ActJZ_1 extends ActBase {
         if (items == null || items.size() == 0)
             return;
 
-//        for (JZ_tj1.ResultBean item : items) {
-//            if (!types.contains(item.getRescueCategoryName()))
-//                types.add(item.getRescueCategoryName());
-//
-//        }
-
-        float groupSpace = 0.1f;
-        float barSpace = 0.05f; // x3 DataSet
-        float barWidth = 0.25f; // x3 DataSet
-        barWidth = (float) (0.9f / 1 - 0.05);
-        // (0.25 + 0.05) * 3 + 0.1 = 1.00 -> interval per "group"
-
 
         ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
 
@@ -230,19 +240,20 @@ public class ActJZ_1 extends ActBase {
         }
         BarDataSet barDataSet = new BarDataSet(yVals, "救助对象人次");
         barDataSet.setColor(PIE_COLORS[1]);
+        barDataSet.setValueFormatter(new IValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+                int n = (int) value;
+                return n + "";
+            }
+        });
         BarData data = new BarData();
         data.addDataSet(barDataSet);
 
 
-        data.setValueFormatter(new LargeValueFormatter());
-        data.setValueTypeface(mTfLight);
 
         mChart.setData(data);
 
-//        mChart.getXAxis().setAxisMinimum(0);
-//        mChart.getXAxis().setAxisMaximum(items.size());
-//        mChart.getBarData().setBarWidth(barWidth);
-//        mChart.groupBars(0, groupSpace, barSpace);
         mChart.invalidate();
     }
 

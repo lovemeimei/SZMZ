@@ -1,6 +1,7 @@
 package com.szmz.ahdxt.tjfx;
 
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
@@ -117,15 +118,24 @@ public class ActTJ_GXDWHDRC extends ActBase {
         barChart.setHorizontalScrollBarEnabled(false);
         barChart.setVerticalScrollBarEnabled(false);
         barChart.setDrawGridBackground(false);
-        barChart.setTouchEnabled(false);
+//        barChart.setTouchEnabled(false);
         barChart.animateY(1500);
         barChart.setExtraBottomOffset(20f);
+        Matrix m=new Matrix();
+        m.postScale(1.1f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+        barChart.getViewPortHandler().refresh(m, barChart, false);//将图表动画显示之前进行缩放
+        barChart.animateX(1000); // 立即执行的动画,x轴
 
         //x坐标轴设置
         XAxis xAxis = barChart.getXAxis();//获取x轴
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);//设置X轴标签显示位置
         xAxis.setDrawGridLines(false);//不绘制格网线
         xAxis.setCenterAxisLabels(false);//标签居中显示
+
+
+        xAxis.setAxisMaximum(6);
+//        xAxis.setLabelCount(4);//设置标签显示的个数
+        xAxis.setLabelRotationAngle(20f);
         xAxis.setGranularity(1f);//设置最小间隔，防止当放大时，出现重复标签。
         xAxis.setValueFormatter(new IAxisValueFormatter() {//设置自定义的x轴值格式化器
             @Override
@@ -137,10 +147,17 @@ public class ActTJ_GXDWHDRC extends ActBase {
             }
         });
         xAxis.setTextSize(10f);//设置标签字体大小
-        xAxis.setLabelCount(items.size());//设置标签显示的个数
+
 
         YAxis leftAxis = barChart.getAxisLeft();
-        leftAxis.setValueFormatter(new IndexAxisValueFormatter());
+        leftAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                if (value==(int)value)
+                    return (int)value+"";
+                return "";
+            }
+        });
         leftAxis.setDrawGridLines(false);
         leftAxis.setSpaceTop(35f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)

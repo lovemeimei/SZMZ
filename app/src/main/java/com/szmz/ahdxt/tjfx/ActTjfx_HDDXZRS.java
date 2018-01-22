@@ -1,6 +1,7 @@
 package com.szmz.ahdxt.tjfx;
 
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -125,10 +126,14 @@ public class ActTjfx_HDDXZRS extends ActBase {
         mChart.setHorizontalScrollBarEnabled(false);
         mChart.setVerticalScrollBarEnabled(false);
         mChart.setDrawGridBackground(false);
-        mChart.setTouchEnabled(false);
+//        mChart.setTouchEnabled(false);
         mChart.animateY(1500);
         mChart.setExtraBottomOffset(20f);
 
+        Matrix m=new Matrix();
+        m.postScale(1.1f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+        mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+        mChart.animateX(1000); // 立即执行的动画,x轴
 
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
@@ -146,8 +151,10 @@ public class ActTjfx_HDDXZRS extends ActBase {
         xAxis.setGranularity(1f);
         xAxis.setTextSize(10f);
 //        xAxis.setLabelRotationAngle(25f);
+
+        xAxis.setAxisMaximum(6);
         xAxis.setDrawGridLines(false);
-        xAxis.setCenterAxisLabels(true);//标签居中显示
+        xAxis.setCenterAxisLabels(false);//标签居中显示
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
@@ -161,8 +168,15 @@ public class ActTjfx_HDDXZRS extends ActBase {
 
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTypeface(mTfLight);
-        leftAxis.setValueFormatter(new LargeValueFormatter());
         leftAxis.setDrawGridLines(false);
+        leftAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                if (value==(int)value)
+                    return (int)value+"";
+                return "";
+            }
+        });
         leftAxis.setSpaceTop(35f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
@@ -214,6 +228,11 @@ public class ActTjfx_HDDXZRS extends ActBase {
         BarData data = new BarData();
         if (types.size()==1){
 
+            Matrix m=new Matrix();
+            m.postScale(1.1f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
             List<BarEntry> entries = new ArrayList<>();
             for (int i = 0; i < citys.size(); i++) {
                 BarEntry entry = new BarEntry(i,getValueByCity(items, citys.get(i),types.get(0)));
@@ -221,22 +240,7 @@ public class ActTjfx_HDDXZRS extends ActBase {
             }
             BarDataSet dataSet = new BarDataSet(entries, "共享单位");
             dataSet.setColor(PIE_COLORS[2]);
-            data = new BarData(dataSet);
-            mChart.setData(data);
-
-            mChart.invalidate();
-        }else {
-            for (int i = 0; i < types.size(); i++) {
-                ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
-                for (int j = 0; j < citys.size(); j++) {
-                    yVals.add(new BarEntry(j, getValueByCity(items, citys.get(j), types.get(i))));
-                }
-                BarDataSet barDataSet = new BarDataSet(yVals, types.get(i));
-                barDataSet.setColor(PIE_COLORS[i]);
-                data.addDataSet(barDataSet);
-            }
-
-            data.setValueFormatter(new IValueFormatter() {
+            dataSet.setValueFormatter(new IValueFormatter() {
                 @Override
                 public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
 
@@ -244,12 +248,41 @@ public class ActTjfx_HDDXZRS extends ActBase {
                     return mvalue+"";
                 }
             });
-            data.setValueTypeface(mTfLight);
-
+            data = new BarData(dataSet);
             mChart.setData(data);
 
-            mChart.getXAxis().setAxisMinimum(0);
-            mChart.getXAxis().setAxisMaximum(items.size());
+            mChart.invalidate();
+        }else {
+            Matrix m=new Matrix();
+            m.postScale(2.1f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
+            for (int i = 0; i < types.size(); i++) {
+                ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
+                for (int j = 0; j < citys.size(); j++) {
+                    yVals.add(new BarEntry(j, getValueByCity(items, citys.get(j), types.get(i))));
+                }
+                BarDataSet barDataSet = new BarDataSet(yVals, types.get(i));
+                barDataSet.setColor(PIE_COLORS[i]);
+                barDataSet.setValueFormatter(new IValueFormatter() {
+                    @Override
+                    public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+
+                        int mvalue = (int)value;
+                        return mvalue+"";
+                    }
+                });
+                data.addDataSet(barDataSet);
+
+            }
+
+
+            data.setValueTypeface(mTfLight);
+
+            mChart.getXAxis().setCenterAxisLabels(true);
+            mChart.setData(data);
+
             mChart.getBarData().setBarWidth(barWidth);
             mChart.groupBars(0, groupSpace, barSpace);
             mChart.invalidate();

@@ -1,6 +1,7 @@
 package com.szmz.ahdxt.tjfx;
 
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -124,6 +125,11 @@ public class ActTJ_YEQS extends ActBase {
         mChart.animateX(1500);
         mChart.setExtraBottomOffset(20f);
 
+        Matrix m=new Matrix();
+        m.postScale(1.2f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+        mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+        mChart.animateX(1000); // 立即执行的动画,x轴
+
 
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
@@ -141,8 +147,16 @@ public class ActTJ_YEQS extends ActBase {
 //        xAxis.setGranularity(1f);
         xAxis.setTextSize(10f);
         xAxis.setDrawGridLines(false);
+        xAxis.setAxisMaximum(6);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawLabels(true);
+//        if (times.size()>3){
+//            xAxis.setAxisMaximum(times.size());
+//            xAxis.setLabelCount(times.size());//设置标签显示的个数
+//        }else {
+//            xAxis.setAxisMaximum(4);
+//            xAxis.setLabelCount(4);//设置标签显示的个数
+//        }
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
@@ -155,9 +169,16 @@ public class ActTJ_YEQS extends ActBase {
 
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTypeface(mTfLight);
-        leftAxis.setValueFormatter(new LargeValueFormatter());
         leftAxis.setDrawGridLines(false);
         leftAxis.setSpaceTop(35f);
+        leftAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                if (value==(int)value)
+                    return (int)value+"";
+                return "";
+            }
+        });
 //        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
         mChart.getAxisRight().setEnabled(false);
@@ -231,8 +252,6 @@ public class ActTJ_YEQS extends ActBase {
         combinedData.setData(lineData);
         mChart.setData(combinedData);
 
-//        mChart.getXAxis().setAxisMinimum(0);
-//        mChart.getXAxis().setAxisMaximum(4.0f);
         mChart.getBarData().setBarWidth(barWidth);
         mChart.invalidate();
 
