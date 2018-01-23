@@ -46,6 +46,26 @@ public class User implements IEntity {
     private String officePhone;
     @Column(name = "departName")
     private String departName;
+    @Column(name = "disCode")
+    private String disCode;
+    @Column(name = "regionLevel")
+    private String regionLevel;
+
+    public String getDisCode() {
+        return disCode;
+    }
+
+    public void setDisCode(String disCode) {
+        this.disCode = disCode;
+    }
+
+    public String getRegionLevel() {
+        return regionLevel;
+    }
+
+    public void setRegionLevel(String regionLevel) {
+        this.regionLevel = regionLevel;
+    }
 
     public String getEmail() {
         return email;
