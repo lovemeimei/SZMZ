@@ -19,7 +19,7 @@ public class FragmentJobYL extends BaseFragment {
 
 
     @OnClick({
-            R.id.dchsLayout, R.id.mzpyLayout, R.id.shgsLayout, R.id.rhccLayout, R.id.dzdaLayout, R.id.spgshiLayout
+            R.id.dchsLayout, R.id.mzpyLayout, R.id.shgsLayout, R.id.rhccLayout, R.id.dzdaLayout1, R.id.spgshiLayout
     })
     public void doClick(View v) {
         Intent intent = new Intent(getActivity(), ActYwbl_dzda_person.class);
@@ -41,7 +41,7 @@ public class FragmentJobYL extends BaseFragment {
                 intent.putExtra("Type", 4);
                 startActivity(intent);
                 break;
-            case R.id.dzdaLayout:
+            case R.id.dzdaLayout1:
                 intent.putExtra("Type", 0);
                 startActivity(intent);
                 break;

@@ -102,7 +102,7 @@ public class ActMain extends ActBase {
             }
         });
 
-        if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone())){
+        if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone())) {
             trans(ActBindPhone_Worker.class);
         }
     }
@@ -123,13 +123,15 @@ public class ActMain extends ActBase {
         ApiUtil<JZ_GetUserInfo> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<JZ_GetUserInfo>() {
             @Override
             public void doSuccess(JZ_GetUserInfo result) {
-              String id=  result.Result.get(0).getId();
-                if (TextUtils.isEmpty(id)){
+                String id = result.Result.get(0).getId();
+                if (TextUtils.isEmpty(id)) {
                     doToast("服务器发生错误");
                     return;
                 }
                 User user = App.getInstance().getLoginUser();
                 user.setIdJZ(result.Result.get(0).getId());
+                user.setRegionLevel(result.Result.get(0).getRegionLevel());
+                user.setDisCode(result.Result.get(0).getDisCode());
                 try {
                     dbManager.saveOrUpdate(user);
                 } catch (DbException e) {

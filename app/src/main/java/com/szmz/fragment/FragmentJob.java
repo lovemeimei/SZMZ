@@ -2,9 +2,12 @@ package com.szmz.fragment;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.LinearLayout;
 
+import com.szmz.App;
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.entity.User;
 import com.szmz.ywbl.ActDchs;
 import com.szmz.ywbl.ActLxsj;
 import com.szmz.ywbl.ActMzpy;
@@ -13,6 +16,7 @@ import com.szmz.ywbl.ActShgs;
 import com.szmz.ywbl.ActSpgs;
 import com.szmz.ywbl.dzda.ActYwbl_dzda_person;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -24,9 +28,38 @@ import butterknife.OnClick;
 public class FragmentJob extends BaseFragment {
 
 
+    @BindView(R.id.xzLayout)
+    LinearLayout xzLayout;//乡镇权限布局
+    @BindView(R.id.qxLayout)
+    LinearLayout qxLayout;//区县权限布局
+    @BindView(R.id.qtLayout)
+    LinearLayout qtLayout;//其他权限布局
+
+
+    @Override
+    protected void bindDates(View v) {
+        super.bindDates(v);
+        User loginUser = App.getInstance().getLoginUser();
+        if ("10101005".equals(loginUser.getRegionLevel())) {
+            xzLayout.setVisibility(View.VISIBLE);
+            qxLayout.setVisibility(View.GONE);
+            qtLayout.setVisibility(View.GONE);
+        } else if ("10101004".equals(loginUser.getRegionLevel())) {
+            xzLayout.setVisibility(View.GONE);
+            qxLayout.setVisibility(View.VISIBLE);
+            qtLayout.setVisibility(View.GONE);
+        } else {
+            xzLayout.setVisibility(View.GONE);
+            qxLayout.setVisibility(View.GONE);
+            qtLayout.setVisibility(View.VISIBLE);
+        }
+
+    }
+
     @OnClick({
-            R.id.dchsLayout, R.id.mzpyLayout, R.id.shgsLayout, R.id.rhccLayout,
-            R.id.dzdaLayout, R.id.spgshiLayout, R.id.lxsjhiLayout
+            R.id.dchsLayout, R.id.mzpyLayout, R.id.shgsLayout, R.id.lxsjhiLayout1, R.id.dzdaLayout1,
+            R.id.rhccLayout, R.id.spgshiLayout, R.id.dzdaLayout2, R.id.lxsjhiLayout2,
+            R.id.dzdaLayout3
     })
     public void doClick(View v) {
         Intent intent;
@@ -44,22 +77,36 @@ public class FragmentJob extends BaseFragment {
                 intent = new Intent(getActivity(), ActShgs.class);
                 startActivity(intent);
                 break;
-            case R.id.rhccLayout:
-                intent = new Intent(getActivity(), ActRhcc.class);
+            case R.id.dzdaLayout1:
+                intent = new Intent(getActivity(), ActYwbl_dzda_person.class);
                 startActivity(intent);
                 break;
-            case R.id.dzdaLayout:
-                intent = new Intent(getActivity(), ActYwbl_dzda_person.class);
+            case R.id.lxsjhiLayout1:
+                intent = new Intent(getActivity(), ActLxsj.class);
+                startActivity(intent);
+                break;
+            case R.id.rhccLayout:
+                intent = new Intent(getActivity(), ActRhcc.class);
                 startActivity(intent);
                 break;
             case R.id.spgshiLayout:
                 intent = new Intent(getActivity(), ActSpgs.class);
                 startActivity(intent);
                 break;
-            case R.id.lxsjhiLayout:
+            case R.id.dzdaLayout2:
+                intent = new Intent(getActivity(), ActYwbl_dzda_person.class);
+                startActivity(intent);
+                break;
+            case R.id.lxsjhiLayout2:
                 intent = new Intent(getActivity(), ActLxsj.class);
                 startActivity(intent);
                 break;
+            case R.id.dzdaLayout3:
+                intent = new Intent(getActivity(), ActYwbl_dzda_person.class);
+                startActivity(intent);
+                break;
+
+
         }
     }
 

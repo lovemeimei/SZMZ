@@ -23,6 +23,42 @@ public class JZ_GetUserInfo extends BaseResponse<JZ_GetUserInfo.ResultBean>{
         private String departName;
         private String address;
         private String realName;
+        private String email;
+        private String mobilePhone;
+        private String disCode;
+        private String regionLevel;
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getMobilePhone() {
+            return mobilePhone;
+        }
+
+        public void setMobilePhone(String mobilePhone) {
+            this.mobilePhone = mobilePhone;
+        }
+
+        public String getDisCode() {
+            return disCode;
+        }
+
+        public void setDisCode(String disCode) {
+            this.disCode = disCode;
+        }
+
+        public String getRegionLevel() {
+            return regionLevel;
+        }
+
+        public void setRegionLevel(String regionLevel) {
+            this.regionLevel = regionLevel;
+        }
 
         public String getId() {
             return id;
