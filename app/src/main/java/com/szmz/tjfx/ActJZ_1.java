@@ -23,23 +23,15 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
-import com.szmz.SystemEnv;
-import com.szmz.ahdxt.tjfx.TreeItemHolder;
-import com.szmz.entity.YwblDzdaSalvation;
-import com.szmz.entity.YwblDzdaXzqh;
 import com.szmz.entity.YwblDzdaXzqh;
 import com.szmz.entity.request.JZ_Tj1_Req;
-import com.szmz.entity.request.JZ_YWBL_DZDA_SALVATION_RE;
 import com.szmz.entity.request.JZ_YWBL_DZDA_XZQH_RE;
-import com.szmz.entity.response.HD_TJ_HDDX;
-import com.szmz.entity.response.JZ_YWBL_DZDA_Salvation;
 import com.szmz.entity.response.JZ_YWBL_DZDA_XZQH;
 import com.szmz.entity.response.JZ_tj1;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
 import com.szmz.utils.DateUtil;
-import com.szmz.utils.Md5Util;
 import com.szmz.ywbl.dzda.JzTreeItemHolder;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
@@ -53,8 +45,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 
 /**
@@ -255,22 +245,22 @@ public class ActJZ_1 extends ActBase {
 
         String time1 = tvStartTime.getText().toString().trim();
         String time2 = tvEndTime.getText().toString().trim();
-        if (TextUtils.isEmpty(time1)){
+        if (TextUtils.isEmpty(time1)) {
             doToast("请选择开始时间");
             return;
         }
 
-        if (TextUtils.isEmpty(time2)){
+        if (TextUtils.isEmpty(time2)) {
             doToast("请选择截至时间");
             return;
         }
 
-        if (!TextUtils.isEmpty(time1) && !TextUtils.isEmpty(time2)){
+        if (!TextUtils.isEmpty(time1) && !TextUtils.isEmpty(time2)) {
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             try {
-                Date date1 =format.parse(time1);
-                Date date2 =format.parse(time2);
-                if (date1.after(date2)){
+                Date date1 = format.parse(time1);
+                Date date2 = format.parse(time2);
+                if (date1.after(date2)) {
                     doToast("截至日期不能早于起始日期");
                     return;
                 }
@@ -278,7 +268,7 @@ public class ActJZ_1 extends ActBase {
                 e.printStackTrace();
             }
         }
-        JZ_Tj1_Req req = new JZ_Tj1_Req(areaId,time1,time2);
+        JZ_Tj1_Req req = new JZ_Tj1_Req(areaId, time1, time2);
 
         Call<JZ_tj1> call = App.getApiProxyJZ().getJZ_tj1(req);
 
@@ -293,7 +283,7 @@ public class ActJZ_1 extends ActBase {
             public void doSuccess(JZ_tj1 result) {
 
 
-                 items = result.Result;
+                items = result.Result;
 
                 mChart.setData(null);
                 mChart.invalidate();
@@ -346,7 +336,7 @@ public class ActJZ_1 extends ActBase {
                 myList.add(list.get(i));
             }
         }
-        if (myList!=null && myList.size()>0){
+        if (myList != null && myList.size() > 0) {
             xzqh = myList.get(0);
             tvXZQH.setText(xzqh.getRegionname());
         }
