@@ -238,7 +238,13 @@ public class ActJZ_3 extends ActBase {
                 yVals.add(new BarEntry(j, getValueByCity(items, citys.get(j), types.get(i))));
             }
             BarDataSet barDataSet = new BarDataSet(yVals, types.get(i));
-            barDataSet.setColor(PIE_COLORS[i]);
+            if (i>7){
+                barDataSet.setColor(PIE_COLORS[7]);
+
+            }else {
+                barDataSet.setColor(PIE_COLORS[i]);
+
+            }
             barDataSet.setValueFormatter(new IValueFormatter() {
                 @Override
                 public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
@@ -280,6 +286,10 @@ public class ActJZ_3 extends ActBase {
     private void setmChartWidth(int size,float xs){
         if (size<5){
             mChart.getXAxis().setAxisMaximum(5);
+            Matrix m=new Matrix();
+            m.postScale(2f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
 
         }else if (size<10){
             Matrix m=new Matrix();
