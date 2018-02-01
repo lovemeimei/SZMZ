@@ -236,11 +236,34 @@ public class ActYZS_tj1 extends ActBase {
         barDataSet.setStackLabels(yValueType);
         BarData data = new BarData(barDataSet);
 
+        data.setHighlightEnabled(false);
+
         mChart.setData(data);
+
+        setmChartWidth(xValues.size(),1.0f);
 
         mChart.setFitBars(true);
         mChart.animateXY(1500, 1500);
         mChart.invalidate();
+    }
+
+    private void setmChartWidth(int size,float xs){
+        if (size<5){
+            mChart.getXAxis().setAxisMaximum(4);
+
+        }else if (size<10){
+            Matrix m=new Matrix();
+            m.postScale(1.5f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
+        }else {
+            Matrix m=new Matrix();
+            m.postScale(2.1f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
+        }
     }
 
     private int[] getColors() {
@@ -300,7 +323,7 @@ public class ActYZS_tj1 extends ActBase {
         xAxis.setTextSize(10f);
 //        xAxis.setLabelRotationAngle(25f);
         xAxis.setDrawGridLines(false);
-        xAxis.setAxisMaximum(6);
+//        xAxis.setAxisMaximum(6);
 
 //        xAxis.setCenterAxisLabels(true);//标签居中显示
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -317,15 +340,7 @@ public class ActYZS_tj1 extends ActBase {
 
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTypeface(mTfLight);
-//        leftAxis.setValueFormatter(new LargeValueFormatter());
-//        leftAxis.setValueFormatter(new IAxisValueFormatter() {
-//            @Override
-//            public String getFormattedValue(float value, AxisBase axis) {
-//                if (value==(int)value)
-//                    return (int)value+"";
-//                return "";
-//            }
-//        });
+
         leftAxis.setDrawGridLines(false);
         leftAxis.setSpaceTop(35f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)

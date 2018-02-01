@@ -147,7 +147,7 @@ public class ActTJ_YEQS extends ActBase {
 //        xAxis.setGranularity(1f);
         xAxis.setTextSize(10f);
         xAxis.setDrawGridLines(false);
-        xAxis.setAxisMaximum(6);
+//        xAxis.setAxisMaximum(6);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawLabels(true);
 //        if (times.size()>3){
@@ -236,6 +236,7 @@ public class ActTJ_YEQS extends ActBase {
         barDataSet.setColor(PIE_COLORS[3]);
         data.addDataSet(barDataSet);
 
+        data.setHighlightEnabled(false);
 
         data.setValueFormatter(new IValueFormatter() {
             @Override
@@ -252,9 +253,33 @@ public class ActTJ_YEQS extends ActBase {
         combinedData.setData(lineData);
         mChart.setData(combinedData);
 
+
+
         mChart.getBarData().setBarWidth(barWidth);
+
+        setmChartWidth(times.size(),1.0f);
+
         mChart.invalidate();
 
+    }
+
+    private void setmChartWidth(int size,float xs){
+        if (size<5){
+            mChart.getXAxis().setAxisMaximum(4);
+
+        }else if (size<10){
+            Matrix m=new Matrix();
+            m.postScale(1.5f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
+        }else {
+            Matrix m=new Matrix();
+            m.postScale(2.1f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
+        }
     }
 
 

@@ -9,6 +9,7 @@ import com.szmz.R;
 import com.szmz.more.ActBindPhone;
 import com.szmz.more.ActBindPhone_Worker;
 import com.szmz.more.ActModifyPW;
+import com.szmz.more.ActModifyPhone;
 import com.szmz.more.ActModifyUserInfo;
 import com.szmz.more.ActModifyUserInfo_SQR;
 import com.szmz.more.ActMsgSet;
@@ -50,8 +51,10 @@ public class FragmentUse_C extends BaseFragment {
                 trans(ActModifyPW.class);
                 break;
             case R.id.miv_bindphone:
-                if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone())){
+                if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone()) && App.getInstance().getLoginUser().getType()==1){
                     trans(ActBindPhone_Worker.class);
+                }else if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone()) && App.getInstance().getLoginUser().getType()==1){
+                    trans(ActModifyPhone.class);
                 }else {
                     trans(ActBindPhone.class);
                 }

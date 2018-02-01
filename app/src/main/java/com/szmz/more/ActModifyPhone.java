@@ -61,14 +61,29 @@ public class ActModifyPhone extends ActBase {
         }
         Comm_getCode_Req req = new Comm_getCode_Req(phone);
 
+//        Call<CommResponse> call = App.getApiProxyComSQR().getCodeSQR_XJ(req);
         Call<CommResponse> call = App.getApiProxyComSQR().getCodeSQR(req);
 
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
             @Override
             public void doSuccess(CommResponse result) {
                 doToast("验证码已发送");
+                String  msg = result.Error.getErrorMessage();
+//                发送成功！验证码为：121246
+//              String code = msg.split(":")[1];
+                String code = "";
+                try{
+                     code = msg.split("：")[1];
+                    //String code = msg.split(":")[1];
+                }catch (Exception e){
+
+                }
+
+
                 Intent intent =new Intent(context,ActModifyPhone2.class);
                 intent.putExtra("num",etPhone.getText().toString().trim());
+                intent.putExtra("code",etPhone.getText().toString().trim());
+
                 startActivity(intent);
                 myAnimFinish();
             }

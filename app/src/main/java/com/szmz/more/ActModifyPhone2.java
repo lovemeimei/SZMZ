@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.entity.request.Comm_SQRXJ_bingphone_Req;
 import com.szmz.entity.request.Comm_SQR_bingphone_Req;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
 import com.szmz.entity.response.CommResponse;
@@ -29,6 +30,7 @@ public class ActModifyPhone2 extends ActBase {
     TextView tvNum;
     private String phoneNum;
     private String code;
+    private String codeSQR;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_act_modify_phone2;
@@ -43,6 +45,10 @@ public class ActModifyPhone2 extends ActBase {
         setRightShow("完成");
 
         phoneNum = getIntent().getStringExtra("num");
+        codeSQR = getIntent().getStringExtra("code");
+
+        if (!TextUtils.isEmpty(code))
+
 
         if (!TextUtils.isEmpty(phoneNum))
             tvNum.setText(phoneNum);
@@ -70,9 +76,17 @@ public class ActModifyPhone2 extends ActBase {
     private void doSubSQR(){
         if (!doCheck())
             return;
+//申请人本地校验
+//        if (!code.equals(codeSQR)){
+//            doToast("验证码不正确");
+//            return;
+//        }
 
         Comm_SQR_bingphone_Req req = new Comm_SQR_bingphone_Req(getUser().getUserName(),getUser().getPw(),phoneNum);
         Call<CommResponse> call = App.getApiProxyComSQR().bindingPhoneSQR(req);
+
+//        Comm_SQRXJ_bingphone_Req req = new Comm_SQRXJ_bingphone_Req(getUser().getUserName(),getUser().getPw(),phoneNum);
+//        Call<CommResponse> call = App.getApiProxyComSQR().bindingPhoneSQR_XJ(req);
 
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
             @Override

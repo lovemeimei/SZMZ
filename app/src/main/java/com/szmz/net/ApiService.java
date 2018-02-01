@@ -2,6 +2,7 @@ package com.szmz.net;
 
 import com.szmz.entity.HD_JG_BGDY_RES;
 import com.szmz.entity.request.BaseRequest;
+import com.szmz.entity.request.Comm_SQRXJ_bingphone_Req;
 import com.szmz.entity.request.Comm_SQR_bingphone_Req;
 import com.szmz.entity.request.Comm_SQR_findPW;
 import com.szmz.entity.request.Comm_SQR_modifyPW_Req;
@@ -153,8 +154,7 @@ public interface ApiService {
     //修改资料
     @POST("SalvationPlatform/phoneLoginController.do?modifyPersonalMsg")
     Call<CommResponse> modifyInfo(@Body JZ_Comm_modifyInfo request);
-
-    /**************************救助系统申请人员*********************************/
+    /**************************申请人员公共*********************************/
     //登录申请人员
     @POST("api/Login/phoneLogin")
     Call<LoginSQR_Res> loginSQR(@Body LoginSQR_Req request);
@@ -179,7 +179,33 @@ public interface ApiService {
 
     @POST("api/Login/findPassword")
     Call<CommResponse> findPWSQR(@Body Comm_SQR_findPW request);
+    /**************************申请人员公共新疆*********************************/
+    //登录申请人员
+    @POST("jeecg-bpm/api/login.do?wxLogin")
+    Call<LoginSQR_Res> loginSQR_XJ(@Body LoginSQR_Req request);
 
+    @POST("api/Register/RegisterUser")
+    Call<CommResponse> registerSQR_XJ(@Body Register_Req request);
+
+    @POST("jeecg-bpm/api/login.do?checkSmsCode")
+    Call<CommResponse> getCheckCodeSQR_XJ(@Body Comm_checkCode_sqr_Req request);
+
+    @POST("jeecg-bpm/api/login.do?requestMobileCode")
+    Call<CommResponse> getCodeSQR_XJ(@Body Comm_getCode_Req request);
+
+    @POST("api/UserCenter/modifyUserInformethon")
+    Call<CommResponse> modifyUserInfoSQR_XJ(@Body Comm_modifyUserInfoSQR_Req request);
+
+    @POST("jeecg-bpm/api/login.do?modifyPhone")
+    Call<CommResponse> bindingPhoneSQR_XJ(@Body Comm_SQRXJ_bingphone_Req request);
+
+    @POST("jeecg-bpm/api/login.do?modifyPassword")
+    Call<CommResponse> modifyPWSQR_XJ(@Body Comm_SQR_modifyPW_Req request);
+
+    @POST("jeecg-bpm/api/login.do?findPassword")
+    Call<CommResponse> findPWSQR_XJ(@Body Comm_SQR_findPW request);
+
+    /**************************救助系统申请人员*********************************/
 
 
     @POST("SocietySalvation/api/appDataqueryController.do?getHistoryListByUser")

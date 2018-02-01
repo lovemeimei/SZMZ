@@ -76,6 +76,10 @@ public class ActMain extends ActBase {
                 switch (item) {
                     case 0:
                         if (type == 1) {
+                            if (TextUtils.isEmpty(getUser().getAccountJZ())){
+                                doToast("请联系管理员绑定账号");
+                                return;
+                            }
                             loginJZXT();
                         } else {
                             App.getGetMsgTask().excute();
@@ -85,6 +89,10 @@ public class ActMain extends ActBase {
                         break;
                     case 1:
                         if (type == 1) {
+                            if (TextUtils.isEmpty(getUser().getAccountYZS())){
+                                doToast("请联系管理员绑定账号");
+                                return;
+                            }
                             trans(ActMainYLJZ.class);
                         } else {
                             trans(ActMainYLJZ2.class);
@@ -92,6 +100,10 @@ public class ActMain extends ActBase {
                         break;
                     case 2:
                         if (type == 1) {
+                            if (TextUtils.isEmpty(getUser().getAccountHD())){
+                                doToast("请联系管理员绑定账号");
+                                return;
+                            }
                             trans(ActHdxtMain.class);
                         } else {
                             trans(ActHdxtMainSQR.class);
@@ -102,7 +114,7 @@ public class ActMain extends ActBase {
             }
         });
 
-        if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone())) {
+        if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone()) && type==1) {
             trans(ActBindPhone_Worker.class);
         }
     }
@@ -123,6 +135,10 @@ public class ActMain extends ActBase {
         ApiUtil<JZ_GetUserInfo> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<JZ_GetUserInfo>() {
             @Override
             public void doSuccess(JZ_GetUserInfo result) {
+                if (result.Result==null || result.Result.size()==0){
+                    doToast("服务器发生错误");
+                    return;
+                }
                 String id = result.Result.get(0).getId();
                 if (TextUtils.isEmpty(id)) {
                     doToast("服务器发生错误");

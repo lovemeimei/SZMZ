@@ -86,7 +86,7 @@ public class ActFindPW extends ActBase {
 
         Comm_getCode_Req req = new Comm_getCode_Req(phone);
 
-        Call<CommResponse> call = App.getApiProxyComSQR().getCodeSQR(req);
+        Call<CommResponse> call = App.getApiProxyComSQR().getCodeSQR_XJ(req);
 
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
             @Override
@@ -94,6 +94,7 @@ public class ActFindPW extends ActBase {
                 doToast("验证码已发送");
                 String  msg = result.Error.getErrorMessage();
 //                发送成功！验证码为：121246
+//                code = msg.split(":")[1];新疆
                 code = msg.split("：")[1];
                 etCode.setText(code);
             }

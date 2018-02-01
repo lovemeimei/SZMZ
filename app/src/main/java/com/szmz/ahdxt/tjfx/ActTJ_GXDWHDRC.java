@@ -133,7 +133,7 @@ public class ActTJ_GXDWHDRC extends ActBase {
         xAxis.setCenterAxisLabels(false);//标签居中显示
 
 
-        xAxis.setAxisMaximum(6);
+//        xAxis.setAxisMaximum(6);
 //        xAxis.setLabelCount(4);//设置标签显示的个数
         xAxis.setLabelRotationAngle(20f);
         xAxis.setGranularity(1f);//设置最小间隔，防止当放大时，出现重复标签。
@@ -183,8 +183,32 @@ public class ActTJ_GXDWHDRC extends ActBase {
         dataSet.setColor(PIE_COLORS[2]);
         BarData barData = new BarData(dataSet);
 
-        barChart.setData(barData);
+        barData.setHighlightEnabled(false);
 
+        setmChartWidth(items.size(),1.0f);
+
+        barChart.setData(barData);
+        barChart.invalidate();
+
+    }
+
+    private void setmChartWidth(int size,float xs){
+        if (size<5){
+            barChart.getXAxis().setAxisMaximum(4);
+
+        }else if (size<10){
+            Matrix m=new Matrix();
+            m.postScale(1.5f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            barChart.getViewPortHandler().refresh(m, barChart, false);//将图表动画显示之前进行缩放
+            barChart.animateX(1000); // 立即执行的动画,x轴
+
+        }else {
+            Matrix m=new Matrix();
+            m.postScale(2.1f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            barChart.getViewPortHandler().refresh(m, barChart, false);//将图表动画显示之前进行缩放
+            barChart.animateX(1000); // 立即执行的动画,x轴
+
+        }
     }
 
     @OnClick({R.id.et_tj_time2, R.id.et_tj_time, R.id.et_tj_xzqh, R.id.tv_title_right})

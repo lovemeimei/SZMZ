@@ -147,7 +147,7 @@ public class ActTjfx_HDBGZS extends ActBase {
         xAxis.setTypeface(mTfLight);
         xAxis.setGranularity(1f);
         xAxis.setTextSize(10f);
-        xAxis.setAxisMaximum(6);
+//        xAxis.setAxisMaximum(6);
 //        xAxis.setLabelRotationAngle(25f);
         xAxis.setDrawGridLines(false);
 
@@ -226,11 +226,7 @@ public class ActTjfx_HDBGZS extends ActBase {
         BarData data = null;
         if (types.size()==1){
 
-            Matrix m=new Matrix();
-            m.postScale(1.1f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
-            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
-            mChart.animateX(1000); // 立即执行的动画,x轴
-
+           setmChartWidth(citys.size(),1.0f);
 
             List<BarEntry> entries = new ArrayList<>();
             for (int i = 0; i < citys.size(); i++) {
@@ -250,18 +246,16 @@ public class ActTjfx_HDBGZS extends ActBase {
             });
 
             data = new BarData(dataSet);
+            data.setHighlightEnabled(false);
             mChart.setData(data);
 
             mChart.invalidate();
         }else {
 
-            Matrix m=new Matrix();
-            m.postScale(2.0f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
-            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
-            mChart.animateX(1000); // 立即执行的动画,x轴
-
+            setmChartWidth(citys.size(),2.0f);
 
             data = new BarData();
+
             for (int i = 0; i < types.size(); i++) {
                 ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
                 for (int j = 0; j < citys.size(); j++) {
@@ -285,6 +279,7 @@ public class ActTjfx_HDBGZS extends ActBase {
             data.setValueTypeface(mTfLight);
             mChart.getXAxis().setCenterAxisLabels(true);
             mChart.setData(data);
+            data.setHighlightEnabled(false);
 
             mChart.getBarData().setBarWidth(barWidth);
             mChart.groupBars(0, groupSpace, barSpace);
@@ -292,8 +287,25 @@ public class ActTjfx_HDBGZS extends ActBase {
         }
 
 
+    }
 
+    private void setmChartWidth(int size,float xs){
+        if (size<5){
+            mChart.getXAxis().setAxisMaximum(4);
 
+        }else if (size<10){
+            Matrix m=new Matrix();
+            m.postScale(1.5f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
+        }else {
+            Matrix m=new Matrix();
+            m.postScale(2.1f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
+        }
     }
 
     private float getValueByCity(List<HD_TJ_HDDX.ResultBean> items, String city, String type) {

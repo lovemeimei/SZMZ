@@ -211,6 +211,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
     private void loginSQR() {
         LoginSQR_Req sqr_req = new LoginSQR_Req(etUser.getText().toString().trim(), etPW.getText().toString().trim());
+//        Call<LoginSQR_Res> call = App.getApiProxyComSQR().loginSQR_XJ(sqr_req);
         Call<LoginSQR_Res> call = App.getApiProxyComSQR().loginSQR(sqr_req);
         ApiUtil<LoginSQR_Res> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<LoginSQR_Res>() {
 

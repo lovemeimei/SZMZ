@@ -152,7 +152,7 @@ public class ActTjfx_HDDXZRS extends ActBase {
         xAxis.setTextSize(10f);
 //        xAxis.setLabelRotationAngle(25f);
 
-        xAxis.setAxisMaximum(6);
+//        xAxis.setAxisMaximum(6);
         xAxis.setDrawGridLines(false);
         xAxis.setCenterAxisLabels(false);//标签居中显示
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -228,10 +228,8 @@ public class ActTjfx_HDDXZRS extends ActBase {
         BarData data = new BarData();
         if (types.size()==1){
 
-            Matrix m=new Matrix();
-            m.postScale(1.1f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
-            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
-            mChart.animateX(1000); // 立即执行的动画,x轴
+            setmChartWidth(citys.size(),1.0f);
+
 
             List<BarEntry> entries = new ArrayList<>();
             for (int i = 0; i < citys.size(); i++) {
@@ -253,11 +251,8 @@ public class ActTjfx_HDDXZRS extends ActBase {
 
             mChart.invalidate();
         }else {
-            Matrix m=new Matrix();
-            m.postScale(2.1f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
-            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
-            mChart.animateX(1000); // 立即执行的动画,x轴
 
+            setmChartWidth(citys.size(),2.0f);
             for (int i = 0; i < types.size(); i++) {
                 ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
                 for (int j = 0; j < citys.size(); j++) {
@@ -279,7 +274,7 @@ public class ActTjfx_HDDXZRS extends ActBase {
 
 
             data.setValueTypeface(mTfLight);
-
+data.setHighlightEnabled(false);
             mChart.getXAxis().setCenterAxisLabels(true);
             mChart.setData(data);
 
@@ -288,6 +283,25 @@ public class ActTjfx_HDDXZRS extends ActBase {
             mChart.invalidate();
         }
 
+    }
+
+    private void setmChartWidth(int size,float xs){
+        if (size<5){
+            mChart.getXAxis().setAxisMaximum(4);
+
+        }else if (size<10){
+            Matrix m=new Matrix();
+            m.postScale(1.5f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
+        }else {
+            Matrix m=new Matrix();
+            m.postScale(2.1f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
+        }
     }
 
     private float getValueByCity(List<HD_TJ_HDDX.ResultBean> items, String city, String type) {

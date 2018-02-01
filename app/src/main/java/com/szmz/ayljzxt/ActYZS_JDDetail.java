@@ -59,11 +59,9 @@ public class ActYZS_JDDetail extends ActBase {
         super.initUI();
         id = getIntent().getStringExtra("id");
         type = getIntent().getStringExtra("type");
-//        stepView.setStepDesc(new String[]{"审批中"})
         setLeftVisible(true);
         setTitle("进度信息");
-        ;
-//        view1.doSetContent();
+
         getInfo();
     }
 
@@ -90,7 +88,7 @@ public class ActYZS_JDDetail extends ActBase {
 
     private void setInfo() {
         String all = item.getAllNode();
-        if (TextUtils.isEmpty(all) || all == null) {
+        if (TextUtils.isEmpty(all) || all == null || all.equals("null")) {
             llStepView.setVisibility(View.GONE);
         } else {
             llStepView.setVisibility(View.VISIBLE);
@@ -105,8 +103,9 @@ public class ActYZS_JDDetail extends ActBase {
                     stepView.setCurStepIndex(i);
                 }
             }
+            stepView.invalidate();
         }
-        stepView.invalidate();
+
         view1.doSetContent(item.getNAME());
         view2.doSetContent(item.getCardID());
         view3.doSetContent(item.getTypeName());

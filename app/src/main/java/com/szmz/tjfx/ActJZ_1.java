@@ -135,16 +135,8 @@ public class ActJZ_1 extends ActBase {
         mChart.setHorizontalScrollBarEnabled(false);
         mChart.setVerticalScrollBarEnabled(false);
         mChart.setDrawGridBackground(false);
-//        mChart.setTouchEnabled(false);
         mChart.animateY(1500);
         mChart.setExtraBottomOffset(20f);
-//        mChart.setExtraRightOffset(20f);
-//        mChart.setClickable(false);
-
-        Matrix m=new Matrix();
-        m.postScale(1.1f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
-        mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
-        mChart.animateX(1000); // 立即执行的动画,x轴
 
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
@@ -161,11 +153,8 @@ public class ActJZ_1 extends ActBase {
         xAxis.setTypeface(mTfLight);
         xAxis.setGranularity(1f);
         xAxis.setTextSize(10f);
-//        xAxis.setXOffset(20f);
 //        xAxis.setLabelRotationAngle(25f);
         xAxis.setDrawGridLines(false);
-//        xAxis.setAxisMinimum(2);
-        xAxis.setAxisMaximum(6);
 //        xAxis.setCenterAxisLabels(true);//标签居中显示
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
@@ -180,7 +169,6 @@ public class ActJZ_1 extends ActBase {
 
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTypeface(mTfLight);
-//        leftAxis.setValueFormatter(new IndexAxisValueFormatter());
         leftAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
@@ -242,7 +230,26 @@ public class ActJZ_1 extends ActBase {
 
 
 
+        if (items.size()<5){
+            mChart.getXAxis().setAxisMaximum(5);
+
+        }else if (items.size()<10){
+            Matrix m=new Matrix();
+            m.postScale(1.5f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
+        }else {
+            Matrix m=new Matrix();
+            m.postScale(2.1f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+            mChart.animateX(1000); // 立即执行的动画,x轴
+
+        }
         mChart.setData(data);
+
+        mChart.getData().setHighlightEnabled(false);
+
 
         mChart.invalidate();
     }

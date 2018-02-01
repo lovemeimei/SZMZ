@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.ViewUtils;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -28,6 +29,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.szmz.R;
+import com.szmz.utils.UIUtil;
 
 
 public class VerificationCodeInput extends ViewGroup {
@@ -39,10 +41,10 @@ public class VerificationCodeInput extends ViewGroup {
 
     private static final String TAG = "VerificationCodeInput";
     private int box = 4;
-    private int boxWidth = 120;
-    private int boxHeight = 120;
-    private int childHPadding = 12;
-    private int childVPadding = 12;
+    private int boxWidth = 45;
+    private int boxHeight = 45;
+    private int childHPadding = 3;
+    private int childVPadding = 3;
     private String inputType = TYPE_PASSWORD;
     private Drawable boxBgFocus = null;
     private Drawable boxBgNormal = null;
@@ -61,6 +63,12 @@ public class VerificationCodeInput extends ViewGroup {
         inputType = a.getString(R.styleable.vericationCodeInput_inputType);
         boxWidth = (int) a.getDimension(R.styleable.vericationCodeInput_child_width, boxWidth);
         boxHeight = (int) a.getDimension(R.styleable.vericationCodeInput_child_height, boxHeight);
+
+        childHPadding = UIUtil.dip2px(context,childHPadding);
+        childVPadding = UIUtil.dip2px(context,childVPadding);
+
+        boxHeight = UIUtil.dip2px(context,boxHeight);
+        boxWidth = UIUtil.dip2px(context,boxWidth);
         initViews();
 
     }
