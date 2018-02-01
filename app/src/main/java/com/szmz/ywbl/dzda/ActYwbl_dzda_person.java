@@ -163,12 +163,16 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         db = x.getDb(App.getDaoConfig());
         if (isOnline) {
             doGetXzqh();
-
+            dsLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    doGetXzqh();
+                }
+            });
         } else {
             if (isFromJZXX) {
                 return;
             }
-
             doGetOutlineData("");
         }
 

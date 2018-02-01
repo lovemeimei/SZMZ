@@ -58,6 +58,9 @@ public class ActYwbl_dzda_jtcyxx_detail extends ActBase {
     ListViewInScrollView cycbxxListView;
     @BindView(R.id.cycbxxLayout)
     LinearLayout cycbxxLayout;
+    @BindView(R.id.ryztView)
+    MyLayoutView ryztView;
+
     private YwblDzdaFamilyMember jtcy;
     private MyListPageAdapter<YwblDzdaMemberIncomeInfo> adapterIncomeInfo;
     private MyListPageAdapter<YwblDzdaMemberSalaryInfo> adapterSalaryInfo;
@@ -85,6 +88,7 @@ public class ActYwbl_dzda_jtcyxx_detail extends ActBase {
         ysrView.doSetContent(jtcy.getPincome());
         mzView.doSetContent(jtcy.getPnation());
         hyzkView.doSetContent(jtcy.getPismarry());
+        ryztView.doSetContent(jtcy.getStatus());
         if (jtcy.getPerIncomeInfo() != null && jtcy.getPerIncomeInfo().size() > 0) {
             cysrxxLayout.setVisibility(View.VISIBLE);
             adapterIncomeInfo = new MyListPageAdapter<YwblDzdaMemberIncomeInfo>(this, R.layout.list_item_ywbl_cysrxx) {

@@ -88,6 +88,13 @@
                 android:layout_marginTop="10dp"
                 app:titleText="婚姻状况" />
 
+            <com.szmz.widget.MyLayoutView
+                android:id="@+id/ryztView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="人员状态" />
+
             <LinearLayout
                 android:id="@+id/cysrxxLayout"
                 android:layout_width="match_parent"

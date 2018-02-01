@@ -12,10 +12,6 @@ import com.szmz.App;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.entity.request.YZSSQR_HomeList_Req;
-import com.szmz.entity.request.YZSSQR_history_req;
-import com.szmz.entity.request.YZS_SQR_jdlist_req;
-import com.szmz.entity.request.YZS_todoList_Req;
-import com.szmz.entity.response.YZSSQR_HomeList_Res;
 import com.szmz.entity.response.YZSSQR_HomeList_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
@@ -46,50 +42,55 @@ public class FragmentHomeYL_C2 extends BaseFragment {
     protected LinearLayout noDataLayout;
     protected TextView textView;
 
-    private BaseListAdapter<YZSSQR_HomeList_Res.ResultBean,MViewHolder> adapter;
+    private BaseListAdapter<YZSSQR_HomeList_Res.ResultBean, MViewHolder> adapter;
 
     class MViewHolder {
 
         TextView tvName;
     }
-    public  void doRefresh(MaterialRefreshLayout materialRefreshLayout){
-        currentPage=1;
-        getList();
-    };
 
-    public  void doRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout){
+    public void doRefresh(MaterialRefreshLayout materialRefreshLayout) {
+        currentPage = 1;
+        getList();
+    }
+
+    ;
+
+    public void doRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
 
         currentPage++;
         getList();
-    };
+    }
 
-    private void getList(){
+    ;
 
-        YZSSQR_HomeList_Req req = new YZSSQR_HomeList_Req(App.getInstance().getLoginUser().getIdCode(),currentPage);
+    private void getList() {
+
+        YZSSQR_HomeList_Req req = new YZSSQR_HomeList_Req(App.getInstance().getLoginUser().getIdCode(), currentPage);
 
         Call<YZSSQR_HomeList_Res> call = App.getApiProxyYZS().getYZS_homelist_SQR(req);
 
-        ApiUtil<YZSSQR_HomeList_Res> apiUtil = new ApiUtil<>(getContext(),call,new SimpleApiListener<YZSSQR_HomeList_Res>(){
+        ApiUtil<YZSSQR_HomeList_Res> apiUtil = new ApiUtil<>(getContext(), call, new SimpleApiListener<YZSSQR_HomeList_Res>() {
 
             @Override
             public void doSuccess(YZSSQR_HomeList_Res result) {
 
                 items = result.Result;
-                if (items!=null && items.size()>0){
-                    if (currentPage==1){
+                if (items != null && items.size() > 0) {
+                    if (currentPage == 1) {
                         adapter.clearListData();
                     }
                     adapter.setItems(items);
                     adapter.notifyDataSetChanged();
-                }else {
+                } else {
                     adapter.clearListData();
                     noDataLayout.setVisibility(View.VISIBLE);
                     adapter.notifyDataSetChanged();
                 }
 
-                if (isHasNextPage(currentPage,20,result.TotalNum)){
+                if (isHasNextPage(currentPage, 20, result.TotalNum)) {
                     refresh.setLoadMore(true);
-                }else {
+                } else {
                     refresh.setLoadMore(false);
                 }
             }
@@ -100,7 +101,7 @@ public class FragmentHomeYL_C2 extends BaseFragment {
                 refresh.finishRefresh();
                 refresh.finishRefreshLoadMore();
             }
-        },false);
+        }, false);
 
         apiUtil.excute();
 
@@ -114,8 +115,8 @@ public class FragmentHomeYL_C2 extends BaseFragment {
     @Override
     protected void bindDates(View v) {
         super.bindDates(v);
-        noDataLayout = (LinearLayout)v.findViewById(R.id.noDataLayout);
-        textView = (TextView)v.findViewById(R.id.textView);
+        noDataLayout = (LinearLayout) v.findViewById(R.id.noDataLayout);
+        textView = (TextView) v.findViewById(R.id.textView);
 
     }
 
@@ -138,7 +139,7 @@ public class FragmentHomeYL_C2 extends BaseFragment {
         });
 
 
-        adapter = new BaseListAdapter<YZSSQR_HomeList_Res.ResultBean, MViewHolder>(getContext(),R.layout.comm_list_item) {
+        adapter = new BaseListAdapter<YZSSQR_HomeList_Res.ResultBean, MViewHolder>(getContext(), R.layout.comm_list_item) {
             @Override
             protected void refreshView(int postion, final YZSSQR_HomeList_Res.ResultBean item, MViewHolder holer) {
 
@@ -146,8 +147,8 @@ public class FragmentHomeYL_C2 extends BaseFragment {
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(getContext(),ActHomeDetail.class);
-                        intent.putExtra("item",item);
+                        Intent intent = new Intent(getContext(), ActHomeDetail_sqr.class);
+                        intent.putExtra("item", item);
                         startActivity(intent);
                     }
                 });
@@ -158,7 +159,7 @@ public class FragmentHomeYL_C2 extends BaseFragment {
             protected MViewHolder getHolder(View converView) {
 
                 MViewHolder holder = new MViewHolder();
-                holder.tvName =(TextView) converView.findViewById(R.id.tv_name);
+                holder.tvName = (TextView) converView.findViewById(R.id.tv_name);
 
                 return holder;
             }

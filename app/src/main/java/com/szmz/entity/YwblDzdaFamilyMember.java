@@ -20,10 +20,20 @@ public class YwblDzdaFamilyMember implements IEntity {
     private String pincome;//月收入
     private String pnation;//民族
     private String pismarry;//婚姻状况
+    private String status;//人员状态
     private List<YwblDzdaMemberDeformityInfo> PerDeformityInfo;//成员残疾信息
     private List<YwblDzdaMemberIncomeInfo> PerIncomeInfo;//成员收入信息
     private List<YwblDzdaMemberInsureInfo> PerInsureInfo;//成员参保信息
     private List<YwblDzdaMemberSalaryInfo> PerSalaryInfo;//成员待遇信息
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getId() {
         return id;
