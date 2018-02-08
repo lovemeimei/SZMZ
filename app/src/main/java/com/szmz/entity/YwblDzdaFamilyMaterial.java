@@ -10,6 +10,24 @@ public class YwblDzdaFamilyMaterial implements IEntity {
     private String materialType;//	资料类别
     private String filename;//文件名
     private String fileurl;//文件地址
+    private String nodeCode;
+    private String nodeName;
+
+    public String getNodeCode() {
+        return nodeCode;
+    }
+
+    public void setNodeCode(String nodeCode) {
+        this.nodeCode = nodeCode;
+    }
+
+    public String getNodeName() {
+        return nodeName;
+    }
+
+    public void setNodeName(String nodeName) {
+        this.nodeName = nodeName;
+    }
 
     public String getId() {
         return id;

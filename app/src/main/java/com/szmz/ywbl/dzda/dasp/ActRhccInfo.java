@@ -1,5 +1,6 @@
 package com.szmz.ywbl.dzda.dasp;
 
+import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -9,9 +10,13 @@ import android.widget.TextView;
 import com.bm.library.PhotoView;
 import com.szmz.ActBase;
 import com.szmz.R;
+import com.szmz.entity.MyNewPhoto;
 import com.szmz.entity.YwblDzdaFamilyApproveInfo;
 import com.szmz.widget.ClearEditText;
 import com.szmz.widget.GridViewInScrollView;
+import com.szmz.widget.ImageGridAdapter;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -45,15 +50,32 @@ public class ActRhccInfo extends ActBase {
     PhotoView img;
     @BindView(R.id.parent)
     FrameLayout parent;
+    @BindView(R.id.photoLayout)
+    LinearLayout photoLayout;
     private YwblDzdaFamilyApproveInfo info;
-
+    private List<MyNewPhoto> listPhoto;
     @Override
     protected void initUI() {
         super.initUI();
         setLeftVisible(true);
         setTitle("入户抽查");
         info = (YwblDzdaFamilyApproveInfo) getIntent().getSerializableExtra("YwblDzdaFamilyApproveInfo");
+        listPhoto = (List<MyNewPhoto>) getIntent().getSerializableExtra("ListPhoto");
+        if (listPhoto != null) {
+            ImageGridAdapter adapter = new ImageGridAdapter(this, R.layout.grid_image_item,
+                    9, false, new ImageGridAdapter.OnDeleteListener() {
+                @Override
+                public void doDelete(int p) {
 
+                }
+            });
+            adapter.setImgPaths(listPhoto);
+            mygridview.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+            photoLayout.setVisibility(View.VISIBLE);
+        } else {
+            photoLayout.setVisibility(View.GONE);
+        }
         sqrTv.setText(info.getHeadName());
         fzrTv.setText(info.getCountySpotCheckChargeUser());
         dcrTv.setText(info.getCountySpotCheckUser());

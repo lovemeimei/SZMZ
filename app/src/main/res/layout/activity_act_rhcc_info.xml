@@ -208,12 +208,14 @@
 
 
                     <LinearLayout
+                        android:id="@+id/photoLayout"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:background="@color/white"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:padding="10dp"
+                        android:visibility="gone">
 
                         <com.szmz.widget.ClearEditText
                             android:id="@+id/ed_wxms"
