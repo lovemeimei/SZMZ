@@ -16,10 +16,12 @@ import com.szmz.entity.response.JZ_DC_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
+import com.szmz.utils.DateUtil;
 import com.szmz.widget.MyLayoutView;
 import com.szmz.widget.MyLayoutView2;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -51,6 +53,7 @@ public class ActJZ_DC extends ActBase {
     @BindView(R.id.tv_jz_dc_5)
      MyLayoutView2 myLayoutView5;
 
+
     private void initTimePicker() {
         pvTime = DatePickerUtil.initPicker(this, DatePickerUtil.yyyyMMdd);
     }
@@ -67,8 +70,9 @@ public class ActJZ_DC extends ActBase {
         setLeftVisible(true);
         setRightShow("查询");
         setRightVisible(true);
-
-        initTimePicker();
+        tvTime2.setText(DateUtil.getCurrentDay());
+        tvTime1.setText(DateUtil.getDayBeforeMonth(1));
+        getInfo();
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,13 +81,19 @@ public class ActJZ_DC extends ActBase {
         });
     }
 
+
     @OnClick({R.id.et_tj_time2,R.id.et_tj_time})
     public void doClick(View view){
         switch (view.getId()){
             case R.id.et_tj_time:
+                initTimePicker();
+
+
                 pvTime.show(tvTime1);
                 break;
             case R.id.et_tj_time2:
+                initTimePicker();
+
                 pvTime.show(tvTime2);
                 break;
         }
@@ -142,14 +152,20 @@ public class ActJZ_DC extends ActBase {
 
         myLayoutView4.doSetContent2(getValue(item.getGradeHouseholdRandom()));
         myLayoutView4.doSetContent(item.getCountHouseholdRandom());
+
+//        String str5 = item.getGradeApprovalPublic();
         myLayoutView5.doSetContent2(getValue(item.getGradeApprovalPublic()));
         myLayoutView5.doSetContent(item.getCountApprovalPublic());
     }
 
     public String getValue(String val){
-        double temValue = Double.valueOf(val);
-        double aa =Math.round(temValue * 100*100) * 0.01d;
-        return aa+"";
+        if (val.equals("0"))
+            return "0";
+        double temValue = Double.valueOf(val)*100;
+        DecimalFormat df = new DecimalFormat(".00");
+//        double aa =Math.round(temValue * 100*100) * 0.01d;
+        String aa =df.format(temValue);
+        return aa;
     }
 
 }

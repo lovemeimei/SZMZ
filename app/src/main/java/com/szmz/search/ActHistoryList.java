@@ -157,7 +157,7 @@ public class ActHistoryList extends ActListBase {
 
                 items = result.Result;
                 if (items != null && items.size() > 0) {
-                    noDataLayout.setVerticalGravity(View.GONE);
+                    noDataLayout.setVisibility(View.GONE);
                     if (currentPage == 1) {
                         adapter.clearListData();
                     }

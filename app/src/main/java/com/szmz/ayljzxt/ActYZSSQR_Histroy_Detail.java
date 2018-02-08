@@ -1,5 +1,11 @@
 package com.szmz.ayljzxt;
 
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
@@ -43,6 +49,42 @@ public class ActYZSSQR_Histroy_Detail extends ActBase {
     @BindView(R.id.tv_yzs_history_11)
     MyLayoutView view11;
 
+
+
+    @BindView(R.id.tv_yzs_history_cblx)
+    MyLayoutView viewcblx;
+    @BindView(R.id.tv_yzs_history_zylx)
+    MyLayoutView viewzylx;
+    @BindView(R.id.tv_yzs_history_jzjb)
+    MyLayoutView viewjzjb;
+
+    @BindView(R.id.tv_yzs_history_bcje)
+    MyLayoutView viewbcje;
+    @BindView(R.id.tv_yzs_history_qfx)
+    MyLayoutView viewqfx;
+    @BindView(R.id.tv_yzs_history_dbzf)
+    MyLayoutView viewdbzf;
+    @BindView(R.id.tv_yzs_history_mzjzfy)
+    MyLayoutView viewmzjzfy;
+    @BindView(R.id.tv_yzs_history_jzbl)
+    MyLayoutView viewjzbl;
+    @BindView(R.id.tv_yzs_history_jzje)
+    MyLayoutView viewjzje;
+    @BindView(R.id.tv_yzs_history_brzf)
+    MyLayoutView viewbrzf;
+    @BindView(R.id.tv_yzs_history_ms)
+    MyLayoutView viewms;
+
+    @BindView(R.id.rb1)
+    RadioButton rb1;
+    @BindView(R.id.rb2)
+    RadioButton rb2;
+
+    @BindView(R.id.ll_rb1)
+    LinearLayout llRB1;
+    @BindView(R.id.ll_rb2)
+    LinearLayout llRB2;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_act_yzs__histroy__detail;
@@ -56,6 +98,28 @@ public class ActYZSSQR_Histroy_Detail extends ActBase {
         id = getIntent().getStringExtra("id");
         type = getIntent().getStringExtra("type");
         getInfo();
+
+        rb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    llRB1.setVisibility(View.VISIBLE);
+                    llRB2.setVisibility(View.GONE);
+                }
+
+            }
+        });
+        rb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    llRB1.setVisibility(View.GONE);
+                    llRB2.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+
     }
 
     private void  getInfo(){
@@ -89,5 +153,24 @@ public class ActYZSSQR_Histroy_Detail extends ActBase {
         view9.doSetContent(item.getLEAVE_HOSPITAL_DATE());
         view10.doSetContent(item.getEXPENSE_MONEY());
         view11.doSetContent(item.getMED_REPAYABLE_MONEY());
+
+        viewcblx.doSetContent(item.getINSURE_CATEGORY());
+        viewzylx.doSetContent(item.getINPATIENT_TYPE_NAME());
+        viewjzjb.doSetContent(item.getTREATMENT_LEAVEL());
+
+        viewbcje.doSetContent(item.getCOMPENCATE_MONEY()+"元");
+        viewqfx.doSetContent(item.getSTART_PAY_MONEY()+"元");
+        viewdbzf.doSetContent(item.getDISEASE_PAY_MONEY()+"元");
+        viewmzjzfy.doSetContent(item.getSALVATION_MONEY()+"元");
+        if (TextUtils.isEmpty(item.getRESCUE_PERCENT())){
+
+            viewjzbl.doSetContent("0%");
+        }else {
+
+            viewjzbl.doSetContent(Double.valueOf(item.getRESCUE_PERCENT())*100+"%");
+        }
+        viewjzje.doSetContent(item.getREAL_RESCUE_MONEY()+"元");
+        viewbrzf.doSetContent(item.getSELF_PAY_MONEY()+"元");
+        viewms.doSetContent(item.getREMARK());
     }
 }

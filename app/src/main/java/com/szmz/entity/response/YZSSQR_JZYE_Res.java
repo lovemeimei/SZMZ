@@ -22,6 +22,16 @@ public class YZSSQR_JZYE_Res extends BaseResponse<YZSSQR_JZYE_Res.ResultBean>{
         private String THIS_YEAR_BALANCE;
         private String id;
 
+        public String getTOTAL_EXPENSE() {
+            return TOTAL_EXPENSE;
+        }
+
+        public void setTOTAL_EXPENSE(String TOTAL_EXPENSE) {
+            this.TOTAL_EXPENSE = TOTAL_EXPENSE;
+        }
+
+        private String TOTAL_EXPENSE;
+
 
 
         public String getAdminstrative_NAME() {

@@ -87,6 +87,14 @@
                 app:contentText="3"/>
 
             <com.szmz.widget.MyLayoutView
+                android:id="@+id/tv_yzs_history_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:titleText="本年救助金额（元）"
+                app:contentText="3"/>
+
+            <com.szmz.widget.MyLayoutView
                 android:id="@+id/tv_yzs_history_9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

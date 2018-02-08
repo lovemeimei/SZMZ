@@ -44,7 +44,10 @@ public class ActYZSSQR_SYJZE_Detail extends ActBase {
     MyLayoutView view8;
     @BindView(R.id.tv_yzs_history_9)
     MyLayoutView view9;
+    @BindView(R.id.tv_yzs_history_10)
+    MyLayoutView view10;
    YZSSQR_JZYE_Res.ResultBean item = null;
+
 
     @Override
     protected int getLayoutId() {
@@ -75,5 +78,6 @@ public class ActYZSSQR_SYJZE_Detail extends ActBase {
         view7.doSetContent(item.getCATEGORY_NAME());
         view8.doSetContent(item.getTHIS_YEAR_BALANCE());
         view9.doSetContent(item.getId());
+        view10.doSetContent(item.getTOTAL_EXPENSE());
     }
 }

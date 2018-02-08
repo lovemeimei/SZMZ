@@ -159,7 +159,7 @@ public class ActMsgList extends ActListBase {
                 super.doSuccess(result);
                 List<JZ_Todolist.ResultBean> items = result.Result;
                 if (items != null && items.size() > 0) {
-                    noDataLayout.setVerticalGravity(View.GONE);
+                    noDataLayout.setVisibility(View.GONE);
                     if (currentPage == 1) {
                         adapter.clearListData();
                     }

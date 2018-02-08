@@ -199,6 +199,9 @@ public class ActMsgListNormal extends ActListBase {
                     noDataLayout.setVisibility(View.VISIBLE);
                     adapter.clearListData();
                     adapter.notifyDataSetChanged();
+                }else {
+                    noDataLayout.setVisibility(View.GONE);
+
                 }
             } catch (DbException e) {
                 e.printStackTrace();
