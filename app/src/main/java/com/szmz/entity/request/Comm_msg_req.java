@@ -22,6 +22,6 @@ public class Comm_msg_req extends BaseRequest{
         this.IDCard = IDCard;
         UserType = userType;
 
-        setMd5Key(Md5Util.getMd5(loginName+phone+IDCard+userType));
+        setMd5Key(Md5Util.getMd5(loginName+IDCard+phone+userType));
     }
 }

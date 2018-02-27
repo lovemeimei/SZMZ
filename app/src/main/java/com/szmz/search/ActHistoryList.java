@@ -15,6 +15,7 @@ import com.szmz.ActListBase;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.entity.request.BaseRequest;
+import com.szmz.entity.request.Comm_req;
 import com.szmz.entity.request.JZ_Search_worker_Req;
 import com.szmz.entity.response.JZ_Comm_JZLX_RES;
 import com.szmz.entity.response.JZ_Search_worker_Res;
@@ -198,7 +199,7 @@ public class ActHistoryList extends ActListBase {
      */
     private void getJZtype() {
 
-        final BaseRequest req = new BaseRequest();
+        final Comm_req req = new Comm_req(getUser().getIdJZ());
 
         Call<JZ_Comm_JZLX_RES> call = App.getApiProxyJZ().getJZLX(req);
 

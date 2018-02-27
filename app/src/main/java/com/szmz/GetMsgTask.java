@@ -74,7 +74,13 @@ public class GetMsgTask{
         String idCard =user.getIdCode();
         if (idCard==null)
             idCard="";
-        final Comm_msg_req req = new Comm_msg_req(user.getUserName(),user.getPhone(),idCard,"2");
+        String type = "1";
+        if (user.getType()==1){
+            type = "2";
+        }else {
+            type="1";
+        }
+        final Comm_msg_req req = new Comm_msg_req(user.getUserName(),user.getPhone(),idCard,type);
 
         Call<Comm_msg_Res> call = App.getApiProxyJZ().getMsg(req);
 

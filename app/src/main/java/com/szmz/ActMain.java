@@ -80,6 +80,7 @@ public class ActMain extends ActBase {
                                 doToast("请联系管理员绑定账号");
                                 return;
                             }
+                            App.getGetMsgTask().excute();
                             loginJZXT();
                         } else {
                             App.getGetMsgTask().excute();

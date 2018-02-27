@@ -67,7 +67,7 @@ public class ActCodeLogin extends ActBase {
 
     private void doLogin(){
 
-        account="admin";
+//        account=getUser().get;
 
         JZ_Login_Code_Req logReq;
 
