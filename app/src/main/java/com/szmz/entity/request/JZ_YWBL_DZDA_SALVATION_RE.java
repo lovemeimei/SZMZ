@@ -8,6 +8,7 @@ import com.szmz.utils.Md5Util;
 
 public class JZ_YWBL_DZDA_SALVATION_RE extends BaseListRequest {
 
+    private String userId;
     private String regionId;
     private String keyWords;
     private String type = "";
@@ -18,15 +19,16 @@ public class JZ_YWBL_DZDA_SALVATION_RE extends BaseListRequest {
     //20203032：查看可审批公示的人员
 
 
-    public JZ_YWBL_DZDA_SALVATION_RE(String type, String regionId, String keyWords, int CurrentPage, boolean isFromJZXX) {
+    public JZ_YWBL_DZDA_SALVATION_RE(String userId, String type, String regionId, String keyWords, int CurrentPage, boolean isFromJZXX) {
+        this.userId = userId;
         this.regionId = regionId;
         this.keyWords = keyWords;
-        this.CurrentPage=CurrentPage;
+        this.CurrentPage = CurrentPage;
         if (!isFromJZXX) {
             this.type = type;
-            setMd5Key(Md5Util.getMd5(regionId + keyWords + type + CurrentPage + PageSize));
+            setMd5Key(Md5Util.getMd5(userId + regionId + keyWords + type + CurrentPage + PageSize));
         } else {
-            setMd5Key(Md5Util.getMd5(regionId + keyWords + CurrentPage + PageSize));
+            setMd5Key(Md5Util.getMd5(userId + regionId + keyWords + CurrentPage + PageSize));
         }
     }
 

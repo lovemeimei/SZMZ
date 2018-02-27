@@ -22,8 +22,6 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IValueFormatter;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.szmz.ActBase;
 import com.szmz.App;
@@ -148,7 +146,6 @@ public class ActJZ_3 extends ActBase {
         l.setTextSize(12f);
 
 
-
         XAxis xAxis = mChart.getXAxis();
         xAxis.setTypeface(mTfLight);
         xAxis.setGranularity(1f);
@@ -177,8 +174,8 @@ public class ActJZ_3 extends ActBase {
         leftAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                if (value==(int)value)
-                    return (int)value+"";
+                if (value == (int) value)
+                    return (int) value + "";
                 return "";
             }
         });
@@ -238,10 +235,10 @@ public class ActJZ_3 extends ActBase {
                 yVals.add(new BarEntry(j, getValueByCity(items, citys.get(j), types.get(i))));
             }
             BarDataSet barDataSet = new BarDataSet(yVals, types.get(i));
-            if (i>7){
+            if (i > 7) {
                 barDataSet.setColor(PIE_COLORS[7]);
 
-            }else {
+            } else {
                 barDataSet.setColor(PIE_COLORS[i]);
 
             }
@@ -255,19 +252,19 @@ public class ActJZ_3 extends ActBase {
             data.addDataSet(barDataSet);
         }
 
-        if (types.size()==1){
+        if (types.size() == 1) {
 
 
-            setmChartWidth(citys.size(),1.0f);
+            setmChartWidth(citys.size(), 1.0f);
 
             data.setHighlightEnabled(false);
             mChart.setData(data);
 
             mChart.invalidate();
 
-        }else {
+        } else {
 
-            setmChartWidth(citys.size(),2.0f);
+            setmChartWidth(citys.size(), 2.0f);
 
             data.setHighlightEnabled(false);
 
@@ -276,30 +273,30 @@ public class ActJZ_3 extends ActBase {
             mChart.getXAxis().setCenterAxisLabels(true);//标签居中显示
 
 //            mChart.getXAxis().setAxisMaximum(items.size());
-             mChart.getBarData().setBarWidth(barWidth);
+            mChart.getBarData().setBarWidth(barWidth);
             mChart.groupBars(0, groupSpace, barSpace);
             mChart.invalidate();
         }
 
     }
 
-    private void setmChartWidth(int size,float xs){
-        if (size<5){
+    private void setmChartWidth(int size, float xs) {
+        if (size < 5) {
             mChart.getXAxis().setAxisMaximum(5);
-            Matrix m=new Matrix();
-            m.postScale(2f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+            Matrix m = new Matrix();
+            m.postScale(2f * xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
             mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
             mChart.animateX(1000); // 立即执行的动画,x轴
 
-        }else if (size<10){
-            Matrix m=new Matrix();
-            m.postScale(2f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+        } else if (size < 10) {
+            Matrix m = new Matrix();
+            m.postScale(2f * xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
             mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
             mChart.animateX(1000); // 立即执行的动画,x轴
 
-        }else {
-            Matrix m=new Matrix();
-            m.postScale(3.1f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+        } else {
+            Matrix m = new Matrix();
+            m.postScale(3.1f * xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
             mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
             mChart.animateX(1000); // 立即执行的动画,x轴
 
@@ -348,7 +345,7 @@ public class ActJZ_3 extends ActBase {
                 e.printStackTrace();
             }
         }
-        JZ_Tj1_Req req = new JZ_Tj1_Req(areaId, regionLevel, time1, time2);
+        JZ_Tj1_Req req = new JZ_Tj1_Req(App.getInstance().getLoginUser().getIdJZ(), areaId, regionLevel, time1, time2);
 
         Call<JZ_tj1> call = App.getApiProxyJZ().getJZ_tj3(req);
 

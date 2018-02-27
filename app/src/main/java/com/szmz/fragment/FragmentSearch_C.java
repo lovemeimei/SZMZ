@@ -17,7 +17,7 @@ import com.szmz.App;
 import com.szmz.BaseFragment;
 import com.szmz.R;
 import com.szmz.entity.Jz_sqr_jd;
-import com.szmz.entity.request.BaseRequest;
+import com.szmz.entity.request.Comm_req;
 import com.szmz.entity.request.JZ_SQR_JD_RE;
 import com.szmz.entity.response.JZ_Comm_JZLX_RES;
 import com.szmz.entity.response.JZ_SQR_JD_RES;
@@ -221,8 +221,7 @@ public class FragmentSearch_C extends BaseFragment {
      */
     private void getJZtype() {
 
-        final BaseRequest req = new BaseRequest();
-
+        Comm_req req = new Comm_req(App.getInstance().getLoginUser().getIdJZ());
         Call<JZ_Comm_JZLX_RES> call = App.getApiProxyJZ().getJZLX(req);
 
         ApiUtil<JZ_Comm_JZLX_RES> apiUtil = new ApiUtil<>(getActivity(), call, new SimpleApiListener<JZ_Comm_JZLX_RES>() {

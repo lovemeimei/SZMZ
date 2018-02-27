@@ -396,7 +396,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         }
 //        doGetData("510421100001", keyWords, CurrentPage);
 //        doGetData("620102001004", keyWords, CurrentPage);
-        doGetData(xzqh != null ? xzqh.getRegioncode() : "", keyWords, CurrentPage);
+        doGetData(App.getInstance().getLoginUser().getIdJZ(), xzqh != null ? xzqh.getRegioncode() : "", keyWords, CurrentPage);
     }
 
     private void doGetXzqh() {
@@ -419,29 +419,29 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         apiUtil.excute();
     }
 
-    private void doGetData(String regionId, String keyWords, final int CurrentPage) {
+    private void doGetData(String userId, String regionId, String keyWords, final int CurrentPage) {
         JZ_YWBL_DZDA_SALVATION_RE request;
         switch (type) {
             case 1:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203028", regionId, keyWords, CurrentPage, isFromJZXX);
+                request = new JZ_YWBL_DZDA_SALVATION_RE(userId, "20203028", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case 2:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203029", regionId, keyWords, CurrentPage, isFromJZXX);
+                request = new JZ_YWBL_DZDA_SALVATION_RE(userId, "20203029", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case 4:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203030", regionId, keyWords, CurrentPage, isFromJZXX);
+                request = new JZ_YWBL_DZDA_SALVATION_RE(userId, "20203030", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case 3:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203031", regionId, keyWords, CurrentPage, isFromJZXX);
+                request = new JZ_YWBL_DZDA_SALVATION_RE(userId, "20203031", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case 5:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("20203032", regionId, keyWords, CurrentPage, isFromJZXX);
+                request = new JZ_YWBL_DZDA_SALVATION_RE(userId, "20203032", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             case -1:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("", regionId, keyWords, CurrentPage, isFromJZXX);
+                request = new JZ_YWBL_DZDA_SALVATION_RE(userId, "", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
             default:
-                request = new JZ_YWBL_DZDA_SALVATION_RE("", regionId, keyWords, CurrentPage, isFromJZXX);
+                request = new JZ_YWBL_DZDA_SALVATION_RE(userId, "", regionId, keyWords, CurrentPage, isFromJZXX);
                 break;
 
 

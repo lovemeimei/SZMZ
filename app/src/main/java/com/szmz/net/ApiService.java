@@ -1,7 +1,6 @@
 package com.szmz.net;
 
 import com.szmz.entity.HD_JG_BGDY_RES;
-import com.szmz.entity.request.BaseRequest;
 import com.szmz.entity.request.Comm_SQRXJ_bingphone_Req;
 import com.szmz.entity.request.Comm_SQR_bingphone_Req;
 import com.szmz.entity.request.Comm_SQR_findPW;
@@ -11,6 +10,7 @@ import com.szmz.entity.request.Comm_getCode_Req;
 import com.szmz.entity.request.Comm_ipid_req;
 import com.szmz.entity.request.Comm_modifyUserInfoSQR_Req;
 import com.szmz.entity.request.Comm_msg_req;
+import com.szmz.entity.request.Comm_req;
 import com.szmz.entity.request.JZSQR_zjfflist_req;
 import com.szmz.entity.request.JZ_Comm_Req;
 import com.szmz.entity.request.JZ_Comm_bindphone;
@@ -218,7 +218,7 @@ public interface ApiService {
     /**************************救助系统工作人员*********************************/
     //得到救助类型列表
     @POST("SocietySalvation/api/appDataqueryController.do?getSalvationType")
-    Call<JZ_Comm_JZLX_RES> getJZLX(@Body BaseRequest request);
+    Call<JZ_Comm_JZLX_RES> getJZLX(@Body Comm_req request);
 
     @POST("SocietySalvation/api/appCommonController.do?getUserInfo")
     Call<JZ_GetUserInfo> loginJZ(@Body JZ_Comm_Req request);

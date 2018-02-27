@@ -99,7 +99,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                 }
                 break;
             case R.id.btn_submit:
-
+                App.setIsOnline(true);
                 if (type == 1) {
                     login();
                 } else {
@@ -109,6 +109,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                 break;
             case R.id.btn_submit_outline:
                 if (type == 1) {
+                    App.setIsOnline(false);
                     doOutLineLogin();
                 } else {
                     doToast("该功能不对社会人员开放!");
@@ -129,10 +130,14 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                     ("userName", "=", etUser.getText().toString().trim()).findAll();
             if (all != null && all.size() > 0) {
                 if (etPW.getText().toString().trim().equals(all.get(0).getPw())) {
-                    doToast("登录成功!");
-                    App.getInstance().login(all.get(0));
-                    App.setIsOnline(false);
-                    trans(ActMainJZ.class);
+                    if (all.get(0).getIdJZ() == null || all.get(0).getIdJZ().equals("")) {
+                        doToast("离线登录失败");
+                        return;
+                    } else {
+                        doToast("登录成功!");
+                        App.getInstance().login(all.get(0));
+                        trans(ActMainJZ.class);
+                    }
                 } else {
                     doToast("请输入正确的用户名密码!");
                     return;
