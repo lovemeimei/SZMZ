@@ -1,9 +1,6 @@
 package com.szmz.user.check;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,7 +14,6 @@ import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
 import com.szmz.utils.DateUtil;
-import com.szmz.widget.MyLayoutView;
 import com.szmz.widget.MyLayoutView2;
 
 import java.text.DateFormat;
@@ -34,9 +30,9 @@ import retrofit2.Call;
 public class ActJZ_DC extends ActBase {
 
     @BindView(R.id.et_tj_time)
-     TextView tvTime1;
+    TextView tvTime1;
     @BindView(R.id.et_tj_time2)
-     TextView tvTime2;
+    TextView tvTime2;
 
     private String time1;
     private String time2;
@@ -45,13 +41,13 @@ public class ActJZ_DC extends ActBase {
     @BindView(R.id.tv_jz_dc_1)
     MyLayoutView2 myLayoutView1;
     @BindView(R.id.tv_jz_dc_2)
-     MyLayoutView2 myLayoutView2;
+    MyLayoutView2 myLayoutView2;
     @BindView(R.id.tv_jz_dc_3)
-     MyLayoutView2 myLayoutView3;
+    MyLayoutView2 myLayoutView3;
     @BindView(R.id.tv_jz_dc_4)
-     MyLayoutView2 myLayoutView4;
+    MyLayoutView2 myLayoutView4;
     @BindView(R.id.tv_jz_dc_5)
-     MyLayoutView2 myLayoutView5;
+    MyLayoutView2 myLayoutView5;
 
 
     private void initTimePicker() {
@@ -82,9 +78,9 @@ public class ActJZ_DC extends ActBase {
     }
 
 
-    @OnClick({R.id.et_tj_time2,R.id.et_tj_time})
-    public void doClick(View view){
-        switch (view.getId()){
+    @OnClick({R.id.et_tj_time2, R.id.et_tj_time})
+    public void doClick(View view) {
+        switch (view.getId()) {
             case R.id.et_tj_time:
                 initTimePicker();
 
@@ -99,22 +95,20 @@ public class ActJZ_DC extends ActBase {
         }
     }
 
-    private void getInfo(){
+    private void getInfo() {
 
         time1 = tvTime1.getText().toString().trim();
         time2 = tvTime2.getText().toString().trim();
 
 
+        if (TextUtils.isEmpty(time1) || TextUtils.isEmpty(time2)) {
 
-
-        if (TextUtils.isEmpty(time1)||TextUtils.isEmpty(time2)){
-
-       }
+        }
         DateFormat format = new SimpleDateFormat("yyyy-MM");
-       try {
+        try {
             Date date1 = format.parse(time1);
             Date date2 = format.parse(time2);
-            if (date1.after(date2)){
+            if (date1.after(date2)) {
                 doToast("起始月份不能大于终止月份");
                 return;
             }
@@ -122,27 +116,27 @@ public class ActJZ_DC extends ActBase {
             e.printStackTrace();
         }
 
-        final JZ_DC_req req = new JZ_DC_req(getUser().getIdJZ(),time1,time2);
+        final JZ_DC_req req = new JZ_DC_req(getUser().getIdJZ(), time1, time2);
 
         Call<JZ_DC_Res> call = App.getApiProxyJZ().getJZ_dc(req);
 
-        ApiUtil<JZ_DC_Res> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<JZ_DC_Res>(){
+        ApiUtil<JZ_DC_Res> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<JZ_DC_Res>() {
             @Override
             public void doSuccess(JZ_DC_Res result) {
                 super.doSuccess(result);
                 List<JZ_DC_Res.ResultBean> items = result.Result;
-                if (items!=null && items.size()>0){
-                    JZ_DC_Res.ResultBean item= items.get(0);
+                if (items != null && items.size() > 0) {
+                    JZ_DC_Res.ResultBean item = items.get(0);
                     initInfo(item);
                 }
 
             }
-        },true);
+        }, true);
 
         apiUtil.excute();
     }
 
-    private void initInfo(JZ_DC_Res.ResultBean item){
+    private void initInfo(JZ_DC_Res.ResultBean item) {
         myLayoutView1.doSetContent(item.getCountHousehold());
         myLayoutView1.doSetContent2(getValue(item.getGradeHousehold()));
         myLayoutView2.doSetContent2(getValue(item.getGradeDemocratic()));
@@ -158,13 +152,13 @@ public class ActJZ_DC extends ActBase {
         myLayoutView5.doSetContent(item.getCountApprovalPublic());
     }
 
-    public String getValue(String val){
-        if (val.equals("0"))
+    public String getValue(String val) {
+        if (val == null || val.equals("0"))
             return "0";
-        double temValue = Double.valueOf(val)*100;
+        double temValue = Double.valueOf(val) * 100;
         DecimalFormat df = new DecimalFormat(".00");
 //        double aa =Math.round(temValue * 100*100) * 0.01d;
-        String aa =df.format(temValue);
+        String aa = df.format(temValue);
         return aa;
     }
 
