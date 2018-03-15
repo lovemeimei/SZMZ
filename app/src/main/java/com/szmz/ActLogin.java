@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.szmz.entity.User;
 import com.szmz.entity.UserSQR;
@@ -46,6 +47,8 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
     @BindView(R.id.rb_user)
     RadioButton rbUser;
 
+    @BindView(R.id.tv_zc)
+    TextView tvZC;
     private int type = 1;
 
     @Override
@@ -79,6 +82,11 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
         if (!TextUtils.isEmpty(name)) {
             etUser.setText(name);
             etPW.setText(pw);
+        }
+
+        if (SystemConst.systemID==1){
+            //新疆社会人员没有注册功能
+            tvZC.setVisibility(View.GONE);
         }
 
         getIPID();
@@ -216,8 +224,14 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
     private void loginSQR() {
         LoginSQR_Req sqr_req = new LoginSQR_Req(etUser.getText().toString().trim(), etPW.getText().toString().trim());
-//        Call<LoginSQR_Res> call = App.getApiProxyComSQR().loginSQR_XJ(sqr_req);
-        Call<LoginSQR_Res> call = App.getApiProxyComSQR().loginSQR(sqr_req);
+        Call<LoginSQR_Res> call;
+        if (SystemConst.systemID==1){
+            call = App.getApiProxyComSQR().loginSQR_XJ(sqr_req);
+
+        }else {
+            call = App.getApiProxyComSQR().loginSQR(sqr_req);
+        }
+
         ApiUtil<LoginSQR_Res> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<LoginSQR_Res>() {
 
             @Override
@@ -297,7 +311,8 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
     private void getIPID() {
         final String ipJZ = "222.222.49.34:9095";
-        final String ipYZS = "222.222.49.34:8189";
+        final String ipYZS = "222.222.49.34:8088";
+//        final String ipYZS = "222.222.49.34:8189";
         final String ipHD = "222.222.49.34:8099";
         String ips = ipJZ + "," + ipYZS + "," + ipHD;
         final Comm_ipid_req req = new Comm_ipid_req(ips);

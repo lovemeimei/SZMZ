@@ -15,13 +15,13 @@ import butterknife.BindView;
 
 public class ActMsgDetail extends ActBase{
 
-    @BindView(R.id.tv_yzs_home_1)
+    @BindView(R.id.tv_yzs_history_1)
     MyLayoutView view1;
-    @BindView(R.id.tv_yzs_home_2)
+    @BindView(R.id.tv_yzs_history_2)
     MyLayoutView view2;
-    @BindView(R.id.tv_yzs_home_3)
+    @BindView(R.id.tv_yzs_history_3)
     MyLayoutView view3;
-    @BindView(R.id.tv_yzs_home_4)
+    @BindView(R.id.tv_yzs_history_4)
     MyLayoutView view4;
 
     CommMsgSave item = null;
@@ -34,6 +34,8 @@ public class ActMsgDetail extends ActBase{
     @Override
     protected void initUI() {
         super.initUI();
+        setTitle("消息");
+        setLeftVisible(true);
 
         item =(CommMsgSave)getIntent().getSerializableExtra("item");
         setTitle(item.getType());

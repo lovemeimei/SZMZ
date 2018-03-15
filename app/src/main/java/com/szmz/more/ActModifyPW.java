@@ -7,6 +7,7 @@ import android.widget.EditText;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.SystemConst;
 import com.szmz.entity.request.Comm_SQR_modifyPW_Req;
 import com.szmz.entity.request.ModifyPW;
 import com.szmz.entity.response.CommResponse;
@@ -74,9 +75,12 @@ public class ActModifyPW extends ActBase {
 
             Comm_SQR_modifyPW_Req request = new Comm_SQR_modifyPW_Req(getUser().getUserName(),etOld.getText().toString().trim(),etNew.getText().toString().trim());
 
-
-//            Call<CommResponse> commResponseCall = App.getApiProxyComSQR().modifyPWSQR_XJ(request);
-            Call<CommResponse> commResponseCall = App.getApiProxyComSQR().modifyPWSQR(request);
+            Call<CommResponse> commResponseCall;
+            if (SystemConst.systemID==1){
+                commResponseCall = App.getApiProxyComSQR().modifyPWSQR_XJ(request);
+            }else {
+                commResponseCall = App.getApiProxyComSQR().modifyPWSQR(request);
+            }
 
             ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this, commResponseCall,new SimpleApiListener<CommResponse>(){
                 @Override

@@ -10,6 +10,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.SystemConst;
 import com.szmz.entity.User;
 import com.szmz.entity.request.Comm_modifyUserInfoSQR_Req;
 import com.szmz.entity.request.JZ_Comm_modifyInfo;
@@ -53,10 +54,18 @@ public class ActModifyUserInfo_SQR extends ActBase{
     @Override
     protected void initUI() {
         super.initUI();
+
         setLeftVisible(true);
-        setRightVisible(true);
-        setRightShow("编辑");
+        if (SystemConst.systemID==1){
+            //新疆用户不可编辑
+            setRightVisible(false);
+        }else {
+            setRightVisible(true);
+            setRightShow("编辑") ;
+        }
+
         setTitle("个人资料");
+
         btnSub.setVisibility(View.GONE);
         createDialog();
 

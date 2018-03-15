@@ -53,10 +53,12 @@ public class FragmentUse_C extends BaseFragment {
             case R.id.miv_bindphone:
                 if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone()) && App.getInstance().getLoginUser().getType()==1){
                     trans(ActBindPhone_Worker.class);
-                }else if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone()) && App.getInstance().getLoginUser().getType()==1){
-                    trans(ActModifyPhone.class);
                 }else {
-                    trans(ActBindPhone.class);
+                    if (TextUtils.isEmpty(App.getInstance().getLoginUser().getPhone())){
+                        trans(ActModifyPhone.class);
+                    }else {
+                        trans(ActBindPhone.class);
+                    }
                 }
                 break;
             case R.id.miv_msg:

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.SystemConst;
 import com.szmz.entity.request.Comm_getCode_Req;
 import com.szmz.entity.response.CommResponse;
 import com.szmz.net.ApiUtil;
@@ -94,8 +95,12 @@ public class ActFindPW extends ActBase {
                 doToast("验证码已发送");
                 String  msg = result.Error.getErrorMessage();
 //                发送成功！验证码为：121246
-//                code = msg.split(":")[1];新疆
-                code = msg.split("：")[1];
+                if (SystemConst.systemID==1){
+                    code = msg.split(":")[1];//新疆
+                }else {
+
+                    code = msg.split("：")[1];
+                }
                 etCode.setText(code);
             }
         },true);

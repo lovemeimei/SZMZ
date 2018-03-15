@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
+import com.szmz.entity.User;
 import com.szmz.entity.request.Comm_SQRXJ_bingphone_Req;
 import com.szmz.entity.request.Comm_SQR_bingphone_Req;
 import com.szmz.entity.request.JZ_Comm_modifyPhone;
@@ -85,13 +86,14 @@ public class ActModifyPhone2 extends ActBase {
         Comm_SQR_bingphone_Req req = new Comm_SQR_bingphone_Req(getUser().getUserName(),getUser().getPw(),phoneNum);
         Call<CommResponse> call = App.getApiProxyComSQR().bindingPhoneSQR(req);
 
-//        Comm_SQRXJ_bingphone_Req req = new Comm_SQRXJ_bingphone_Req(getUser().getUserName(),getUser().getPw(),phoneNum);
-//        Call<CommResponse> call = App.getApiProxyComSQR().bindingPhoneSQR_XJ(req);
 
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
             @Override
             public void doSuccess(CommResponse result) {
                 doToast("修改成功");
+                User user= App.getInstance().getLoginUser();
+                user.setPhone(phoneNum);
+                App.getInstance().login(user);
                 myAnimFinish();
             }
         },true);
@@ -111,6 +113,9 @@ public class ActModifyPhone2 extends ActBase {
             @Override
             public void doSuccess(CommResponse result) {
                doToast("修改成功");
+                User user= App.getInstance().getLoginUser();
+                user.setPhone(phoneNum);
+                App.getInstance().login(user);
                 myAnimFinish();
             }
         },true);

@@ -12,7 +12,19 @@ import org.xutils.db.annotation.Table;
 @Table(name = "commMsg")
 public class CommMsgSave implements IEntity{
 
-    @Column(name = "id",isId = true)
+
+    public int getRid() {
+        return rid;
+    }
+
+    public void setRid(int rid) {
+        this.rid = rid;
+    }
+
+    @Column(name = "id", isId = true,autoGen = true)
+    private int rid;
+
+    @Column(name = "item_id")
     private String id;
     @Column(name = "content")
     private String content;

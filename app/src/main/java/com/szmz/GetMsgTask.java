@@ -38,7 +38,7 @@ public class GetMsgTask{
 
      Timer timer = null;
      TimerTask task =null;
-     long delay = 0;
+     long delay = 10*1000;
      long intevalPeriod = 2*60 * 1000;
      Context context = App.getInstance().getApplicationContext();
     NotificationManager notificationManager;
@@ -92,10 +92,12 @@ public class GetMsgTask{
                 items =result.Result;
                 if (items!=null && items.size()>0){
                     DbManager dbManager = x.getDb(App.getDaoConfig());
+                    int id=0;
                     for (CommMsgSave item:items){
                         try {
                             dbManager.save(item);
-                            notificaitonMsg(item);
+                            notificaitonMsg(item,id);
+                            id++;
                         } catch (DbException e) {
                             e.printStackTrace();
                         }
@@ -114,7 +116,7 @@ public class GetMsgTask{
         }
     }
 
-    private void notificaitonMsg(CommMsgSave item){
+    private void notificaitonMsg(CommMsgSave item,int id){
 
         initNotificaiton();
         Intent mainIntent = new Intent(context, com.szmz.home.ActMsgDetail.class);
@@ -127,7 +129,7 @@ public class GetMsgTask{
                 .setContentIntent(mainPendingIntent);
 
         Notification notification = notificationCompat.build();
-        notificationManager.notify(0, notification);
+        notificationManager.notify(id, notification);
     }
 
 }

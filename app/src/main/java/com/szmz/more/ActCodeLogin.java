@@ -79,6 +79,8 @@ public class ActCodeLogin extends ActBase {
             @Override
             public void doSuccess(CommResponse result) {
                 super.doSuccess(result);
+                doToast("确认成功！");
+                myAnimFinish();
             }
         },true);
 
