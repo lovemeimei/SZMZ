@@ -14,13 +14,13 @@ public class JZ_TODO_List extends BaseListRequest {
     private String functionid;
     private String keyWords;
 
-    public JZ_TODO_List(String username,  String functionid,String keyWords,int currentPage) {
+    public JZ_TODO_List(String userid, String username, String functionid, String keyWords, int currentPage) {
         this.username = username;
-        this.userid = "";
+        this.userid = userid;
         this.functionid = functionid;
         this.keyWords = keyWords;
         this.CurrentPage = currentPage;
 
-        setMd5Key(Md5Util.getMd5(username+userid+functionid+keyWords+CurrentPage+PageSize));
+        setMd5Key(Md5Util.getMd5(username + userid + functionid + keyWords + CurrentPage + PageSize));
     }
 }

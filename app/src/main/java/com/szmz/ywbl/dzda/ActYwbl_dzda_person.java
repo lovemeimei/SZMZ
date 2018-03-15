@@ -267,7 +267,9 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                         public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                             try {
                                 db.deleteById(YwblDzdaSalvation.class, item.getFamilyId());
+                                item.setSave(false);
                                 doToast("删除成功!");
+                                adapter.notifyDataSetChanged();
                             } catch (DbException e) {
                                 doToast("删除失败!");
                                 e.printStackTrace();
@@ -621,6 +623,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                         value.setJsonStr(GsonUtil.ser(myFamily));
                         try {
                             db.save(value);
+                            value.setSave(true);
                             myMap.remove(next.getKey());
                             if (myMap != null && myMap.size() > 0) {
                                 doSaveData(myMap);
@@ -635,7 +638,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
 
                 }
 
-            }, true);
+            }, false);
 
             apiUtil.excute();
 

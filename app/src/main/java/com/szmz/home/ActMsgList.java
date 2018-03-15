@@ -13,7 +13,6 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.materiallistview.MaterialRefreshLayout;
 import com.szmz.ActListBase;
-import com.szmz.ActMsgDetail;
 import com.szmz.App;
 import com.szmz.R;
 import com.szmz.ahdxt.tjfx.TreeItemHolder;
@@ -25,7 +24,6 @@ import com.szmz.entity.response.JZ_Todolist;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
-import com.szmz.utils.UIUtil;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
@@ -38,13 +36,13 @@ import retrofit2.Call;
 public class ActMsgList extends ActListBase {
 
     private String title;
-    private String keyWords="";
+    private String keyWords = "";
     @BindView(R.id.lv)
     ListView lv;
     BaseListAdapter<JZ_Todolist.ResultBean, ActMsgList.MViewHolder> adapter;
 
     int type = 0;
-//    private String funtionID = "245A8F94567E4368ADFD680824851F27";
+    //    private String funtionID = "245A8F94567E4368ADFD680824851F27";
     private String funtionID = "0";//默认传0
 
     @BindView(R.id.tv_search_title)
@@ -73,8 +71,8 @@ public class ActMsgList extends ActListBase {
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(context,ActMsgDetail_JZ.class);
-                        intent.putExtra("item",item);
+                        Intent intent = new Intent(context, ActMsgDetail_JZ.class);
+                        intent.putExtra("item", item);
                         startActivity(intent);
                     }
                 });
@@ -119,7 +117,7 @@ public class ActMsgList extends ActListBase {
     @Override
     public void doRefresh(MaterialRefreshLayout materialRefreshLayout) {
 
-        currentPage=1;
+        currentPage = 1;
         getTodoList();
     }
 
@@ -138,10 +136,10 @@ public class ActMsgList extends ActListBase {
     private void getTodoList() {
         keyWords = searchEd.getText().toString();
         if (TextUtils.isEmpty(keyWords))
-            keyWords ="";
+            keyWords = "";
         if (TextUtils.isEmpty(funtionID))
-            funtionID ="";
-        JZ_TODO_List req = new JZ_TODO_List(getUser().getAccountJZ(), funtionID,keyWords, currentPage);
+            funtionID = "";
+        JZ_TODO_List req = new JZ_TODO_List(getUser().getIdJZ(), getUser().getAccountJZ(), funtionID, keyWords, currentPage);
 
         Call<JZ_Todolist> call = App.getApiProxyJZ().getJZ_TodoList(req);
 
@@ -285,7 +283,7 @@ public class ActMsgList extends ActListBase {
 
                         //
                         funtionID = hd_xzqh.getAreaId();
-                      doLoadData();
+                        doLoadData();
                     }
                 })), list));
             }

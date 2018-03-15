@@ -1,7 +1,5 @@
 package com.szmz.ayljzxt;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -11,12 +9,10 @@ import android.widget.RadioButton;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
-import com.szmz.entity.request.YZS_History_Detail_Req;
 import com.szmz.entity.request.YZSgzry_History_Detail_Req;
 import com.szmz.entity.response.YZS_history_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
-import com.szmz.utils.GsonUtil;
 import com.szmz.widget.MyLayoutView;
 
 import butterknife.BindView;
@@ -149,16 +145,16 @@ public class ActYZS_Histroy_Detail extends ActBase {
         view7.doSetContent(item.getDESEASE_NAME());
         view8.doSetContent(item.getIN_HOSPITAL_DATE());
         view9.doSetContent(item.getLEAVE_HOSPITAL_DATE());
-        view10.doSetContent(item.getEXPENSE_MONEY()+"元");
-        view11.doSetContent(item.getMED_REPAYABLE_MONEY()+"元");
+        view10.doSetContent(item.getEXPENSE_MONEY());
+        view11.doSetContent(item.getMED_REPAYABLE_MONEY());
         viewcblx.doSetContent(item.getINSURE_CATEGORY());
         viewzylx.doSetContent(item.getINPATIENT_TYPE_NAME());
         viewjzjb.doSetContent(item.getTREATMENT_LEAVEL());
 
-        viewbcje.doSetContent(item.getCOMPENCATE_MONEY()+"元");
-        viewqfx.doSetContent(item.getSTART_PAY_MONEY()+"元");
-        viewdbzf.doSetContent(item.getDISEASE_PAY_MONEY()+"元");
-        viewmzjzfy.doSetContent(item.getSALVATION_MONEY()+"元");
+        viewbcje.doSetContent(item.getCOMPENCATE_MONEY());
+        viewqfx.doSetContent(item.getSTART_PAY_MONEY());
+        viewdbzf.doSetContent(item.getDISEASE_PAY_MONEY());
+        viewmzjzfy.doSetContent(item.getSALVATION_MONEY());
         if (TextUtils.isEmpty(item.getRESCUE_PERCENT())){
 
             viewjzbl.doSetContent("0%");
@@ -166,8 +162,8 @@ public class ActYZS_Histroy_Detail extends ActBase {
 
             viewjzbl.doSetContent(Double.valueOf(item.getRESCUE_PERCENT())*100+"%");
         }
-        viewjzje.doSetContent(item.getREAL_RESCUE_MONEY()+"元");
-        viewbrzf.doSetContent(item.getSELF_PAY_MONEY()+"元");
+        viewjzje.doSetContent(item.getREAL_RESCUE_MONEY());
+        viewbrzf.doSetContent(item.getSELF_PAY_MONEY());
         viewms.doSetContent(item.getREMARK());
 
     }

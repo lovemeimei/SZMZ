@@ -14,7 +14,6 @@ import com.szmz.entity.response.YZSSQR_jd_Res;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.widget.MyLayoutView;
-import com.szmz.widget.StepProgressView;
 import com.szmz.widget.StepProgressView2;
 
 import butterknife.BindView;
@@ -115,7 +114,7 @@ public class ActYZS_JDDetail extends ActBase {
         rb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     llRB1.setVisibility(View.VISIBLE);
                     llRB2.setVisibility(View.GONE);
                 }
@@ -125,7 +124,7 @@ public class ActYZS_JDDetail extends ActBase {
         rb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     llRB1.setVisibility(View.GONE);
                     llRB2.setVisibility(View.VISIBLE);
                 }
@@ -144,7 +143,7 @@ public class ActYZS_JDDetail extends ActBase {
             @Override
             public void doSuccess(YZSSQR_jd_Res result) {
                 super.doSuccess(result);
-                if (result != null&& result.Result!=null && result.Result.size()>0)
+                if (result != null && result.Result != null && result.Result.size() > 0)
                     item = result.Result.get(0);
                 if (item != null)
                     setInfo();
@@ -172,9 +171,9 @@ public class ActYZS_JDDetail extends ActBase {
                     stepView.setCurStepIndex(i);
                 }
             }
-            if (item.getFLOW_RESULT().equals("1")){
+            if (item.getFLOW_RESULT().equals("1")) {
                 stepView.setCurStaus(true);
-            }else {
+            } else {
                 stepView.setCurStaus(false);
             }
             stepView.invalidate();
@@ -196,19 +195,19 @@ public class ActYZS_JDDetail extends ActBase {
         viewzylx.doSetContent(item.getINPATIENT_TYPE_NAME());
         viewjzjb.doSetContent(item.getTREATMENT_LEAVEL());
 
-        viewbcje.doSetContent(item.getCOMPENCATE_MONEY()+"元");
-        viewqfx.doSetContent(item.getSTART_PAY_MONEY()+"元");
-        viewdbzf.doSetContent(item.getDISEASE_PAY_MONEY()+"元");
-        viewmzjzfy.doSetContent(item.getSALVATION_MONEY()+"元");
-        if (TextUtils.isEmpty(item.getRESCUE_PERCENT())){
+        viewbcje.doSetContent(item.getCOMPENCATE_MONEY());
+        viewqfx.doSetContent(item.getSTART_PAY_MONEY());
+        viewdbzf.doSetContent(item.getDISEASE_PAY_MONEY());
+        viewmzjzfy.doSetContent(item.getSALVATION_MONEY());
+        if (TextUtils.isEmpty(item.getRESCUE_PERCENT())) {
 
             viewjzbl.doSetContent("0%");
-        }else {
+        } else {
 
-            viewjzbl.doSetContent(Double.valueOf(item.getRESCUE_PERCENT())*100+"%");
+            viewjzbl.doSetContent(Double.valueOf(item.getRESCUE_PERCENT()) * 100 + "%");
         }
-        viewjzje.doSetContent(item.getREAL_RESCUE_MONEY()+"元");
-        viewbrzf.doSetContent(item.getSELF_PAY_MONEY()+"元");
+        viewjzje.doSetContent(item.getREAL_RESCUE_MONEY());
+        viewbrzf.doSetContent(item.getSELF_PAY_MONEY());
         viewms.doSetContent(item.getREMARK());
 
 
