@@ -100,7 +100,7 @@ public class ActJZ_SQR_JD_Detail extends ActBase {
         stepView.setStepDesc(totalNode);
         if (info != null) {
             if (info.getBpmStatus() != null) {
-                if ("审批中".equals(info.getBpmStatus())) {
+                if ("审批中".equals(info.getBpmStatus())||"审核中".equals(info.getBpmStatus())) {
                     stepView.setCurStepIndex(0);
                 } else {
                     stepView.setCurStepIndex(1);

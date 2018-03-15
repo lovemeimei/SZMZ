@@ -171,6 +171,7 @@ public class ActYZS_JDDetail extends ActBase {
                     stepView.setCurStepIndex(i);
                 }
             }
+
             if (item.getFLOW_RESULT().equals("1")) {
                 stepView.setCurStaus(true);
             } else {
