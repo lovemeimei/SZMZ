@@ -38,7 +38,9 @@ public class ActMsgDetail extends ActBase{
         setLeftVisible(true);
 
         item =(CommMsgSave)getIntent().getSerializableExtra("item");
-        setTitle(item.getType());
+        if (item==null)
+            return;
+//        setTitle(item.getType());
 
         view1.doSetContent(item.getTitle());
         view2.doSetContent(item.getSender());

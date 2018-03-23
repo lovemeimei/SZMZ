@@ -1,8 +1,15 @@
 package com.szmz;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -10,6 +17,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.szmz.entity.CommMsgSave;
 import com.szmz.entity.User;
 import com.szmz.entity.UserSQR;
 import com.szmz.entity.request.Comm_ipid_req;
@@ -19,19 +27,26 @@ import com.szmz.entity.response.Comm_ipid_res;
 import com.szmz.entity.response.LoginSQR_Res;
 import com.szmz.entity.response.phoneLoginR;
 import com.szmz.more.ActFindPW;
+import com.szmz.more.ActFindPW_XJ;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 
+import org.xutils.DbManager;
 import org.xutils.ex.DbException;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Logger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import retrofit2.Call;
+
+import static android.support.v4.app.NotificationCompat.PRIORITY_HIGH;
+import static android.support.v4.app.NotificationCompat.PRIORITY_MAX;
 
 /**
  * 登录
@@ -98,12 +113,20 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
         switch (v.getId()) {
             case R.id.tv_zc:
                 trans(ActRegist.class);
+//                notificaitonMsg();
                 break;
             case R.id.tv_wjmm:
                 if (type == 1) {
                     doToast("联系系统管理员重置密码!");
                 } else {
-                    trans(ActFindPW.class);
+                    if (SystemConst.systemID==1){
+                        //新疆
+                        trans(ActFindPW_XJ.class);
+
+                    }else {
+                        trans(ActFindPW.class);
+
+                    }
                 }
                 break;
             case R.id.btn_submit:
@@ -126,6 +149,54 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
         }
 
 
+    }
+        int id=0;
+
+    NotificationManager notificationManager;
+    private void notificaitonMsg(){
+
+
+        DbManager dbManager = x.getDb(App.getDaoConfig());
+
+
+        for (int i=0;i<10;i++){
+
+            CommMsgSave item =new CommMsgSave();
+            item.setContent("content"+i);
+            item.setSender("sender"+i);
+            item.setTitle("title"+i);
+            try {
+                dbManager.save(item);
+            } catch (DbException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            List<CommMsgSave> items =dbManager.findAll(CommMsgSave.class);
+            com.orhanobut.logger.Logger.d("查到的数据"+items.size());
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+        if (notificationManager==null){
+            notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        }
+        Intent mainIntent = new Intent(context, com.szmz.home.ActMsgDetail.class);
+       PendingIntent mainPendingIntent = PendingIntent.getActivity(context, 0, mainIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(App.getInstance().getApplicationContext())
+//                .setSmallIcon(R.drawable.logo_s)
+                .setContentText("aaa" +
+                        "")
+                .setContentTitle("title")
+                .setAutoCancel(true)
+                .setContentIntent(mainPendingIntent)
+                .setGroup("zhmz_qyx")
+                .setGroupSummary(true);
+
+
+        Notification notification = notificationCompat.build();
+        notificationManager.notify(id, notification);
+        id++;
     }
 
     private void doOutLineLogin() {
@@ -295,6 +366,8 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
             };
             mTimer.schedule(mTimerTask, 3000, 10000);
         } else {
+            if (notificationManager!=null)
+                notificationManager.cancelAll();
             App.exit();
         }
     }

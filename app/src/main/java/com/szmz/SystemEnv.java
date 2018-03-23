@@ -260,7 +260,7 @@ public final class SystemEnv {
     }
 
     public static boolean getSetSound() {
-        return pref.getBoolean(SET_SOUND,true);
+        return pref.getBoolean(SET_SOUND,false);
     }
     public static void saveSetShake(boolean shake){
         SharedPreferences.Editor editor = pref.edit();
@@ -270,7 +270,7 @@ public final class SystemEnv {
 
 
     public static boolean getSetShake() {
-        return pref.getBoolean(SET_SHAKE,true);
+        return pref.getBoolean(SET_SHAKE,false);
     }
     public static void saveSetMDR(boolean mdr){
         SharedPreferences.Editor editor = pref.edit();

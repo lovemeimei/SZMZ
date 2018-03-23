@@ -87,7 +87,7 @@ public class ActFindPW extends ActBase {
 
         Comm_getCode_Req req = new Comm_getCode_Req(phone);
 
-        Call<CommResponse> call = App.getApiProxyComSQR().getCodeSQR_XJ(req);
+        Call<CommResponse> call = App.getApiProxyComSQR().getCodeSQR(req);
 
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
             @Override

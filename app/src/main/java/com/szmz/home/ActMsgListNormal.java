@@ -194,11 +194,11 @@ public class ActMsgListNormal extends ActListBase {
 //                        .offset(2) //偏移两个,从第三个记录开始返回,limit配合offset达到sqlite的limit m,n的查询
 //                        .findAll();
 
-              items=  dbManager.selector(CommMsgSave.class)
-                        .where("type","=",type)
-                        .findAll();
+//              items=  dbManager.selector(CommMsgSave.class)
+//                        .where("type","=",type)
+//                        .findAll();
 
-//                items =dbManager.findAll(CommMsgSave.class);
+                items =dbManager.findAll(CommMsgSave.class);
 
                 if (items==null || items.size()==0){
                     noDataLayout.setVisibility(View.VISIBLE);

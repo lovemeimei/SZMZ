@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 
 import com.szmz.ayljzxt.ActHomeDetail;
 import com.szmz.entity.CommMsgSave;
@@ -14,6 +15,7 @@ import com.szmz.entity.User;
 import com.szmz.entity.request.Comm_msg_req;
 import com.szmz.entity.response.Comm_msg_Res;
 import com.szmz.home.*;
+import com.szmz.home.ActMsgDetail;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 
@@ -27,6 +29,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import retrofit2.Call;
+
+import static android.support.v4.app.NotificationCompat.PRIORITY_MAX;
 
 /**
  * 中移全通集成公司 版本所有
@@ -65,6 +69,7 @@ public class GetMsgTask{
     }
 
     public void cancle(){
+        notificationManager.cancelAll();
         timer.cancel();
     }
 
@@ -92,7 +97,7 @@ public class GetMsgTask{
                 items =result.Result;
                 if (items!=null && items.size()>0){
                     DbManager dbManager = x.getDb(App.getDaoConfig());
-                    int id=0;
+                    int id=100;
                     for (CommMsgSave item:items){
                         try {
                             dbManager.save(item);
@@ -118,18 +123,36 @@ public class GetMsgTask{
 
     private void notificaitonMsg(CommMsgSave item,int id){
 
+        if (!SystemEnv.getSetNewMsg()){
+            return;
+        }
         initNotificaiton();
         Intent mainIntent = new Intent(context, com.szmz.home.ActMsgDetail.class);
         mainIntent.putExtra("item",item);
         mainPendingIntent = PendingIntent.getActivity(context, 0, mainIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(App.getInstance().getApplicationContext())
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.logo_s)
                 .setContentText(item.getContent())
                 .setContentTitle(item.getTitle())
-                .setContentIntent(mainPendingIntent);
+                .setAutoCancel(true)
+                .setContentIntent(mainPendingIntent)
+                .setGroup("zhmz_qyx")
+                .setGroupSummary(true);
 
-        Notification notification = notificationCompat.build();
-        notificationManager.notify(id, notification);
+        if (SystemEnv.getSetShake()&&SystemEnv.getSetSound()){
+
+            notificationCompat.setDefaults(Notification.DEFAULT_VIBRATE|Notification.DEFAULT_SOUND);
+
+        }else if (SystemEnv.getSetShake()){
+
+            notificationCompat.setDefaults(Notification.DEFAULT_VIBRATE);
+
+        }else if (SystemEnv.getSetSound()){
+            //
+            notificationCompat.setDefaults(Notification.DEFAULT_SOUND);
+        }
+
+        notificationManager.notify(id, notificationCompat.build());
     }
 
 }
