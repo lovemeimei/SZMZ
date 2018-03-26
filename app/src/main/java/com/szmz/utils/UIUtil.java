@@ -1,18 +1,22 @@
 package com.szmz.utils;
 
 import android.app.Activity;
-import android.app.KeyguardManager;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.PowerManager;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.szmz.App;
+import com.szmz.R;
 
 
 /**
@@ -88,7 +92,6 @@ public class UIUtil {
 
     /**
      * 弹出键盘
-     *
      */
     public static void showPan(Context contextt) {
         InputMethodManager manager = (InputMethodManager) contextt.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -150,6 +153,50 @@ public class UIUtil {
     public static int dip2px(Context context, float dipValue) {
         float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
+    }
+
+    public static void showUpdateDialog(Context context, String content, final ClickListener listener) {
+
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
+                .customView(R.layout.dialog_update, false);
+        final MaterialDialog dialog = builder.show();
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        View customView = dialog.getCustomView();
+        final LinearLayout layoutShow = (LinearLayout) customView.findViewById(R.id.layoutShow);
+        final LinearLayout layoutProgress = (LinearLayout) customView.findViewById(R.id.layoutProgress);
+        final ProgressBar progressBar = (ProgressBar) customView.findViewById(R.id.progressBar);
+        final TextView textSize = (TextView) customView.findViewById(R.id.tv_size);
+        TextView contentTv = (TextView) customView.findViewById(R.id.content);
+        contentTv.setText(content);
+        TextView yesButton = (TextView) customView.findViewById(R.id.yesButton);
+        TextView noButton = (TextView) customView.findViewById(R.id.noButton);
+
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layoutProgress.setVisibility(View.VISIBLE);
+                layoutShow.setVisibility(View.GONE);
+                listener.updateClick(progressBar, textSize, dialog);
+
+            }
+        });
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                listener.closeClick();
+            }
+        });
+
+
+    }
+
+
+    public interface ClickListener {
+        void closeClick();
+
+        void updateClick(ProgressBar pb, TextView tvProgress, Dialog dialog);
     }
 
 }

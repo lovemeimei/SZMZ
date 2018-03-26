@@ -1,6 +1,7 @@
 package com.szmz.net;
 
 import com.szmz.entity.HD_JG_BGDY_RES;
+import com.szmz.entity.request.BaseRequest;
 import com.szmz.entity.request.Comm_SQRXJ_bingphone_Req;
 import com.szmz.entity.request.Comm_SQR_bingphone_Req;
 import com.szmz.entity.request.Comm_SQR_findPW;
@@ -75,6 +76,7 @@ import com.szmz.entity.response.HD_XZQH_Response;
 import com.szmz.entity.response.HD_dict;
 import com.szmz.entity.response.HD_hdzc;
 import com.szmz.entity.response.JZSQR_zjff_res;
+import com.szmz.entity.response.JZ_APPInfo_Res;
 import com.szmz.entity.response.JZ_Comm_JZLX_RES;
 import com.szmz.entity.response.JZ_DC_Res;
 import com.szmz.entity.response.JZ_GetUserInfo;
@@ -155,6 +157,7 @@ public interface ApiService {
     //修改资料
     @POST("SalvationPlatform/phoneLoginController.do?modifyPersonalMsg")
     Call<CommResponse> modifyInfo(@Body JZ_Comm_modifyInfo request);
+
     /**************************申请人员公共*********************************/
     //登录申请人员
     @POST("api/Login/phoneLogin")
@@ -180,6 +183,7 @@ public interface ApiService {
 
     @POST("api/Login/findPassword")
     Call<CommResponse> findPWSQR(@Body Comm_SQR_findPW request);
+
     /**************************申请人员公共新疆*********************************/
     //登录申请人员
     @POST("weixin/api/login.do?wxLogin")
@@ -211,11 +215,13 @@ public interface ApiService {
 
     @POST("SocietySalvation/api/appDataqueryController.do?getHistoryListByUser")
     Call<JZ_SQR_histroy_res> JZSQR_historyList(@Body JZ_SQR_historyList_req request);
+
     @POST("SocietySalvation/api/appDataqueryController.do?getHistoryInfoByUser")
     Call<JZ_SQR_histroy_res> JZSQR_historyDetail(@Body JZ_SQR_HistoryDetailReq request);
 
     @POST("SocietySalvation/api/appDataqueryController.do?getGrantMoneyList")
     Call<JZSQR_zjff_res> JZSQR_zjff(@Body JZSQR_zjfflist_req request);
+
     /**************************救助系统工作人员*********************************/
     //得到救助类型列表
     @POST("SocietySalvation/api/appDataqueryController.do?getSalvationType")
@@ -327,6 +333,8 @@ public interface ApiService {
     @POST("SocietySalvation/api/appDataqueryController.do?getSalvationPernum")
     Call<JZ_tj1> getJZ_tj1(@Body JZ_Tj1_Req body);
 
+    @POST("SocietySalvation/api/appCommonController.do?getAppInfo")
+    Call<JZ_APPInfo_Res> getJZ_APPInfo(@Body BaseRequest req);
 
     /**************************医疗一站式*********************************/
     @POST("SocietySalvation/api/appDataqueryController.do?getSalvationPernumByDisId")
@@ -379,6 +387,7 @@ public interface ApiService {
     //进度查询
     @POST("ActionControler/AppSalvationProgressList.ashx")
     Call<YZSSQR_jd_Res> getYZS_jdlist_SQR(@Body YZS_SQR_jdlist_req req);
+
     @POST("ActionControler/AppSalvationProgressInfo.ashx")
     Call<YZSSQR_jd_Res> getYZS_jdDetail_SQR(@Body YZSSQR_JD_Detail_Req req);
 
@@ -391,6 +400,7 @@ public interface ApiService {
 
     @POST("ActionControler/appSalvationHistoryInfo.ashx")
     Call<YZS_history_Res> getYZS_History_detail_SQR(@Body YZSgzry_History_Detail_Req req);
+
 
     /**************************核对系统*********************************/
     //字典业务类型

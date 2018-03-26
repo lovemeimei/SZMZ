@@ -6,7 +6,7 @@ import com.szmz.utils.Md5Util;
  * Created by bz on 2017/11/28.
  */
 
-public class JZ_YWBL_MZPY_RE extends BaseListRequest {
+public class JZ_YWBL_MZPY_RE extends BaseRequest {
 
     public String familyIds;//家庭ID
     public String streetCommentTime;//民主评议时间

@@ -6,9 +6,9 @@ import com.szmz.utils.Md5Util;
  * Created by bz on 2017/11/28.
  */
 
-public class JZ_YWBL_ADDDATA_RE extends BaseListRequest {
+public class JZ_YWBL_ADDDATA_RE extends BaseRequest {
 
-    private String familyIds;//家庭ID
+    private String familyId;//家庭ID
     private String dicId;//资料分类：
 //            20203028:入户调查资料，
 //            20203029：民主评议资料，
@@ -22,7 +22,7 @@ public class JZ_YWBL_ADDDATA_RE extends BaseListRequest {
 
     public JZ_YWBL_ADDDATA_RE(String familyIds, String dicId, String pic,
                               String address) {
-        this.familyIds = familyIds;
+        this.familyId = familyIds;
         this.dicId = dicId;
         this.pic = pic;
         this.address = address;
