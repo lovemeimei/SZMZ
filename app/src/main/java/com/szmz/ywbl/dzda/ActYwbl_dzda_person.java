@@ -71,6 +71,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
     private boolean isMore = true;//是否多选
     private boolean isChose = false;
     private Map<String, YwblDzdaSalvation> maps;
+    private boolean isFromLocal = false;
 
     private boolean isFromJZXX = false;//是否从救助对象信息模块跳转过来的
 
@@ -229,6 +230,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                 }
             }
             if (items != null && items.size() > 0) {
+                isFromLocal = false;
                 adapter.clearListData();
                 adapter.setListData(items);
                 adapter.notifyDataSetChanged();
@@ -381,6 +383,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         Intent intent = new Intent(this, ActYwbl_dzda_main.class);
         intent.putExtra("YwblPerson", item);
         intent.putExtra("isFromJZXX", isFromJZXX);
+        intent.putExtra("isFromLocal", isFromLocal);
         startActivity(intent);
     }
 
@@ -421,7 +424,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
         apiUtil.excute();
     }
 
-    private void doGetData(String userId, String regionId, String keyWords, final int CurrentPage) {
+    private void doGetData(String userId, String regionId, final String keyWords, final int CurrentPage) {
         JZ_YWBL_DZDA_SALVATION_RE request;
         switch (type) {
             case 1:
@@ -463,6 +466,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                 List<YwblDzdaSalvation> items = result.Result;
 
                 if (items != null && items.size() > 0) {
+                    isFromLocal = true;
                     for (YwblDzdaSalvation item : items) {
                         YwblDzdaSalvation byId = null;
                         try {
@@ -493,6 +497,11 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                     noDataLayout.setVisibility(View.VISIBLE);
                 }
 
+            }
+
+            @Override
+            public void netError() {
+                doGetOutlineData(keyWords);
             }
 
             @Override

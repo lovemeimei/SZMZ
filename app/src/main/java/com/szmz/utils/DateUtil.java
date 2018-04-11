@@ -49,7 +49,7 @@ public final class DateUtil {
     private static void resetFormats() {
 
         formats = new HashMap<String, DateFormat>();
-        formats.put(yyyyMMddHHmm,new SimpleDateFormat(yyyyMMddHHmm));
+        formats.put(yyyyMMddHHmm, new SimpleDateFormat(yyyyMMddHHmm));
         formats.put(yyyyMMddTHHmmss, new SimpleDateFormat(yyyyMMddTHHmmss));
         formats.put(yyyyMMddHHmmssNotSplit, new SimpleDateFormat(
                 yyyyMMddHHmmssNotSplit));
@@ -59,7 +59,7 @@ public final class DateUtil {
         formats.put(yyyyMMddHHmmss, new SimpleDateFormat(yyyyMMddHHmmss));
         formats.put(yyyyMMddTHHmmssSSSZ, new SimpleDateFormat(
                 yyyyMMddTHHmmssSSSZ));
-        formats.put(yyyyMMddTHHmmssSSS,new SimpleDateFormat(yyyyMMddTHHmmssSSS));
+        formats.put(yyyyMMddTHHmmssSSS, new SimpleDateFormat(yyyyMMddTHHmmssSSS));
 
         formats.put("MM/dd/yyyy HH:mm:ss a", new SimpleDateFormat(
                 "MM/dd/yyyy HH:mm:ss a"));
@@ -91,6 +91,7 @@ public final class DateUtil {
 
         return format.format(date);
     }
+
     public static Calendar getCalendarFromDate(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -110,6 +111,7 @@ public final class DateUtil {
     public static Date getDateFromCalendar(Calendar c) {
         return new Date(c.getTimeInMillis());
     }
+
     public Date parse(String date, String pattern) throws ParseException {
         DateFormat format = formats.get(pattern);
         if (format == null) {
@@ -178,6 +180,7 @@ public final class DateUtil {
         return date;
 
     }
+
     public static final long SECOND = 1000;
     public static final long MINUTE = SECOND * 60;
     public static final long HOUR = MINUTE * 60;
@@ -187,6 +190,7 @@ public final class DateUtil {
 
     /**
      * 获取当前时间戳
+     *
      * @return
      */
     public static Timestamp getCurrentTimestamp() {
@@ -214,7 +218,7 @@ public final class DateUtil {
                 yyyyMMddTHHmmssSSS);
     }
 
-    public static String getDayBeforeMonth(int month){
+    public static String getDayBeforeMonth(int month) {
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MONTH, -month);
         return DateUtil.getInstance().format(now.getTime().getTime(),
@@ -316,10 +320,8 @@ public final class DateUtil {
     /**
      * 将WS返回的“yyyyMMTddHHmmss”格式日期,转换成“yyyy-MM-dd HH:mm”格式日期字符串
      *
-     * @param date
-     *            WS返回的“yyyyMMddHHmmss”格式日期
-     * @param format
-     *            格式化字符串,如：yyyyMMddHHmm,具体参考DateUtil定义类型
+     * @param date   WS返回的“yyyyMMddHHmmss”格式日期
+     * @param format 格式化字符串,如：yyyyMMddHHmm,具体参考DateUtil定义类型
      * @return
      */
     public static String getCommonFormatDate2(String date, String format) {
@@ -356,7 +358,7 @@ public final class DateUtil {
             } catch (ParseException e) {
                 d = new Date();
             }
-        }else if (isFormatNoSplit(date)) {
+        } else if (isFormatNoSplit(date)) {
             try {
                 d = DateUtil.getInstance().parse(date, yyyyMMddTHHmmssWithNoSplit);
             } catch (ParseException e) {
@@ -411,4 +413,9 @@ public final class DateUtil {
 
     }
 
+    public static String getCurrentTime2() {
+
+        return DateUtil.getInstance().format(new Date(), DateUtil.yyyyMMddHHmm);
+
+    }
 }

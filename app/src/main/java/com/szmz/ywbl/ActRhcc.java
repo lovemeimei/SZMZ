@@ -33,6 +33,7 @@ import com.szmz.entity.response.CommResponse;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
+import com.szmz.utils.DateUtil;
 import com.szmz.utils.FileUtil;
 import com.szmz.utils.GsonUtil;
 import com.szmz.utils.ImageUtil;
@@ -93,6 +94,8 @@ public class ActRhcc extends ActLocationBase {
     TextView rhccjgEd;
     @BindView(R.id.timeTv)
     TextView timeTv;
+    @BindView(R.id.qdTv)
+    TextView qdTv;
     private YwblDict rhccjgDict = null;
     private List<YwblDict> listRhccjg = new ArrayList<>();
     private ImageGridAdapter adapter;
@@ -120,6 +123,12 @@ public class ActRhcc extends ActLocationBase {
     @Override
     protected void initUI() {
         super.initUI();
+        qdTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                trans(ActMap.class);
+            }
+        });
         listRhccjg.add(new YwblDict("30600201", "情况属实"));
         listRhccjg.add(new YwblDict("30600202", "情况不属实"));
         rhccjgEd.setOnClickListener(new View.OnClickListener() {
@@ -277,7 +286,9 @@ public class ActRhcc extends ActLocationBase {
     @Override
     public void takeSuccess(TResult result) {
         super.takeSuccess(result);
-        imagePath = result.getImage().getOriginalPath();
+        String str = "经纬度：" + location.getLongitude() + "," + location.getLatitude();
+        String[] waterWord = {"拍照人：" + getUser().getUserName(), str, "地址：" + location.getAddrStr(), "时间：" + DateUtil.getCurrentTime2()};
+        imagePath = ImageUtil.getWaterImagePath(this, result.getImage().getOriginalPath(), null, waterWord);
         if (FileUtil.isExist(imagePath)) {
             path.add(new MyNewPhoto(imagePath));
             paths.clear();
@@ -416,5 +427,6 @@ public class ActRhcc extends ActLocationBase {
         }, false);
         apiUtil.excute();
     }
+
 
 }

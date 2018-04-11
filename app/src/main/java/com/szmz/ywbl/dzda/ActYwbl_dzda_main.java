@@ -27,6 +27,7 @@ public class ActYwbl_dzda_main extends ActBase {
     private YwblDzdaSalvation person;
     private YwblDzdaFamily myFamily;
     private boolean isFromJZXX = false;
+    private boolean isFromLocal = false;
 
     @OnClick({
             R.id.jtjbxxLayout, R.id.jtcyxxLayout, R.id.jtccxxLayout, R.id.jtfcxxLayout, R.id.syrsrLayout, R.id.jtzlxxLayout, R.id.gzryjqbaLayout, R.id.daspxxLayout
@@ -87,14 +88,19 @@ public class ActYwbl_dzda_main extends ActBase {
         super.initUI();
         setLeftVisible(true);
         setTitle("电子档案");
+        isFromLocal = getIntent().getBooleanExtra("isFromLocal", false);
         isFromJZXX = getIntent().getBooleanExtra("isFromJZXX", false);
         person = (YwblDzdaSalvation) getIntent().getSerializableExtra("YwblPerson");
         if (person != null) {
             if (isOnline) {
-                if (isFromJZXX) {
-                    doGetData(person.getId() + "");
+                if (isFromLocal) {
+                    if (!isFromJZXX) {
+                        doGetData(person.getId() + "");
+                    } else {
+                        doGetData(person.getFamilyId() + "");
+                    }
                 } else {
-                    doGetData(person.getFamilyId() + "");
+                    myFamily = GsonUtil.deser(person.getJsonStr(), YwblDzdaFamily.class);
                 }
 
 //                doGetData("f6a4a2883bef4411a6913140616c7c62");

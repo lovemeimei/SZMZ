@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.util.Log;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.szmz.entity.User;
@@ -192,7 +193,7 @@ public class App extends Application {
                         // ...
                     }
                 });//数据库更新操作
-
+        SDKInitializer.initialize(this);
     }
 
     private static ApiService initRetorfit(String url) {

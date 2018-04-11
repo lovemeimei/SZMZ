@@ -33,6 +33,7 @@ import com.szmz.entity.response.CommResponse;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
+import com.szmz.utils.DateUtil;
 import com.szmz.utils.FileUtil;
 import com.szmz.utils.GsonUtil;
 import com.szmz.utils.ImageUtil;
@@ -288,7 +289,9 @@ public class ActSpgs extends ActLocationBase {
     @Override
     public void takeSuccess(TResult result) {
         super.takeSuccess(result);
-        imagePath = result.getImage().getOriginalPath();
+        String str = "经纬度：" + location.getLongitude() + "," + location.getLatitude();
+        String[] waterWord = {"拍照人：" + getUser().getUserName(), str, "地址：" + location.getAddrStr(), "时间：" + DateUtil.getCurrentTime2()};
+        imagePath = ImageUtil.getWaterImagePath(this, result.getImage().getOriginalPath(), null, waterWord);
         if (FileUtil.isExist(imagePath)) {
             path.add(new MyNewPhoto(imagePath));
             paths.clear();

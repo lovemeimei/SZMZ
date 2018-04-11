@@ -33,6 +33,7 @@ import com.szmz.entity.response.CommResponse;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
+import com.szmz.utils.DateUtil;
 import com.szmz.utils.FileUtil;
 import com.szmz.utils.GsonUtil;
 import com.szmz.utils.ImageUtil;
@@ -230,6 +231,9 @@ public class ActDchs extends ActLocationBase {
                 if (!"TakePhoto".equals(item.getFileUrl())) {
                     PhotoView photoView = (PhotoView) v.findViewById(R.id.img_item);
                     mInfo = photoView.getInfo();
+//                    ImageOptions options = new ImageOptions.Builder()
+//                            .setSize(DensityUtil.dip2px(240), DensityUtil.dip2px(240)).build();
+//                    x.image().bind(img, item.getFileUrl(), options);
                     x.image().bind(img, item.getFileUrl());
                     bg.startAnimation(in);
                     bg.setVisibility(View.VISIBLE);
@@ -294,7 +298,9 @@ public class ActDchs extends ActLocationBase {
     @Override
     public void takeSuccess(TResult result) {
         super.takeSuccess(result);
-        imagePath = result.getImage().getOriginalPath();
+        String str = "经纬度：" + location.getLongitude() + "," + location.getLatitude();
+        String[] waterWord = {"拍照人：" + getUser().getUserName(), str, "地址：" + location.getAddrStr(), "时间：" + DateUtil.getCurrentTime2()};
+        imagePath = ImageUtil.getWaterImagePath(this, result.getImage().getOriginalPath(), null, waterWord);
         if (FileUtil.isExist(imagePath)) {
             path.add(new MyNewPhoto(imagePath));
             paths.clear();
@@ -303,6 +309,7 @@ public class ActDchs extends ActLocationBase {
             adapter.notifyDataSetChanged();
 
         }
+
     }
 
     @Override
