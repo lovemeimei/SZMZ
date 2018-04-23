@@ -418,4 +418,10 @@ public final class DateUtil {
         return DateUtil.getInstance().format(new Date(), DateUtil.yyyyMMddHHmm);
 
     }
+
+    public static String getCurrentTime3() {
+
+        return DateUtil.getInstance().format(new Date(), DateUtil.yyyyMMddHHmmss);
+
+    }
 }

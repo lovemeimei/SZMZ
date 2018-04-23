@@ -33,6 +33,7 @@ import com.szmz.entity.request.JZ_TODO_FuntionTree;
 import com.szmz.entity.request.JZ_TODO_List;
 import com.szmz.entity.request.JZ_Tj1_Req;
 import com.szmz.entity.request.JZ_YWBL_ADDDATA_RE;
+import com.szmz.entity.request.JZ_YWBL_APPSIGN_RE;
 import com.szmz.entity.request.JZ_YWBL_DCHS_RE;
 import com.szmz.entity.request.JZ_YWBL_DZDA_FAMILY_RE;
 import com.szmz.entity.request.JZ_YWBL_DZDA_SALVATION_RE;
@@ -315,6 +316,9 @@ public interface ApiService {
     @POST("SocietySalvation/api/appCommentController.do?appAddData")
     Call<CommResponse> getJZ_AddData(@Body JZ_YWBL_ADDDATA_RE req);
 
+    //签到接口
+    @POST("SocietySalvation/api/appPositionController.do?appSign")
+    Call<CommResponse> getJZ_AppSign(@Body JZ_YWBL_APPSIGN_RE req);
 
     //申请人获取申请进度列表
     @POST("SocietySalvation/api/appTempDataqueryController.do?getApplicationList")

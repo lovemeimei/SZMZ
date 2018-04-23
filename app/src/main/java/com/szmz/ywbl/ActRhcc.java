@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.baidu.location.BDLocation;
+import com.baidu.location.Poi;
 import com.bigkoo.pickerview.TimePickerView;
 import com.bm.library.Info;
 import com.bm.library.PhotoView;
@@ -126,7 +127,14 @@ public class ActRhcc extends ActLocationBase {
         qdTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                trans(ActMap.class);
+                if (checkSalvation == null) {
+                    doToast("请先选择申请人!");
+                    return;
+                }
+                Intent intent = new Intent(context, ActMap.class);
+                intent.putExtra("familyId", checkSalvation.getFamilyId());
+                intent.putExtra("dicId", "20203031");
+                startActivity(intent);
             }
         });
         listRhccjg.add(new YwblDict("30600201", "情况属实"));
@@ -318,7 +326,14 @@ public class ActRhcc extends ActLocationBase {
     protected void receivedLocation(double lng, double lat, BDLocation loc) {
         super.receivedLocation(lng, lat, loc);
         if (loc != null) {
-            addressTv.setText(loc.getAddress().address);
+            List<Poi> poiList = loc.getPoiList();
+            if (poiList != null && poiList.size() > 0) {
+                addressTv.setText(loc.getAddress().address + "(" + poiList.get(0).getName() + ")");
+            } else {
+                addressTv.setText(loc.getAddress().address);
+            }
+
+
         }
     }
 

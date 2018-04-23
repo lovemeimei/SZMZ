@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.baidu.location.BDLocation;
+import com.baidu.location.Poi;
 import com.bigkoo.pickerview.TimePickerView;
 import com.bm.library.Info;
 import com.bm.library.PhotoView;
@@ -46,7 +47,9 @@ import org.xutils.ex.DbException;
 import org.xutils.x;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -82,6 +85,16 @@ public class ActMzpy extends ActLocationBase {
     LinearLayout timeLayout;
     @BindView(R.id.pyjlEd)
     TextView pyjlEd;
+    @BindView(R.id.timeTv)
+    TextView timeTv;
+    @BindView(R.id.qdTv)
+    TextView qdTv;
+    @BindView(R.id.addressTv)
+    TextView addressTv;
+    @BindView(R.id.addressLayout)
+    LinearLayout addressLayout;
+    @BindView(R.id.refreshAddressLayout)
+    LinearLayout refreshAddressLayout;
     private List<YwblDict> listPyjl = new ArrayList<>();
     private YwblDict pyjlDict = null;
     private ImageGridAdapter adapter;
@@ -103,6 +116,27 @@ public class ActMzpy extends ActLocationBase {
     @Override
     protected void initUI() {
         super.initUI();
+        timeTv.setText(new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss").format(new Date()));
+        refreshAddressLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeTv.setText(new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss").format(new Date()));
+                refreshLocation();
+            }
+        });
+        qdTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listSalvation == null) {
+                    doToast("请先选择申请人!");
+                    return;
+                }
+                Intent intent = new Intent(context, ActMap.class);
+                intent.putExtra("familyId", getIDS(listSalvation));
+                intent.putExtra("dicId", "20203029");
+                startActivity(intent);
+            }
+        });
         listPyjl.add(new YwblDict("30600501", "符合"));
         listPyjl.add(new YwblDict("30600502", "不符合"));
         pyjlEd.setOnClickListener(new View.OnClickListener() {
@@ -429,5 +463,18 @@ public class ActMzpy extends ActLocationBase {
         apiUtil.excute();
     }
 
+    @Override
+    protected void receivedLocation(double lng, double lat, BDLocation loc) {
+        super.receivedLocation(lng, lat, loc);
+        if (loc != null) {
+            List<Poi> poiList = loc.getPoiList();
+            if (poiList != null && poiList.size() > 0) {
+                addressTv.setText(loc.getAddress().address + "(" + poiList.get(0).getName() + ")");
+            } else {
+                addressTv.setText(loc.getAddress().address);
+            }
 
+
+        }
+    }
 }
