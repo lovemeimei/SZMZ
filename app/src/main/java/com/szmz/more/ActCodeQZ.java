@@ -1,10 +1,12 @@
 package com.szmz.more;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
@@ -17,61 +19,75 @@ import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.GsonUtil;
 
-import org.json.JSONObject;
-
 import butterknife.OnClick;
 import retrofit2.Call;
 
-public class ActCodeLogin extends ActBase {
+public class ActCodeQZ extends ActBase {
+
 
     private String account;
     private String msg;
-    private String type="A001";
-
+    private String type="A003";
+    private String sealid="";
     ScanCode code;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_act_code_login;
+        return R.layout.activity_act_code_qz;
     }
 
     @Override
     protected void initUI() {
         super.initUI();
 
+        setTitle("电子签章");
+        setLeftVisible(true);
+
         msg = getIntent().getStringExtra("msg");
-//        type = getIntent().getStringExtra("type");
 
 //        {"instanceId":"927862","SealId":"8a8a80235f0e590e015f0e6ad6010024","systemId":"c2hqenh4Z2x4dDE1MDk1MjU1OTM2Mzg=","url":"http://10.10.0.169:8080/jeecg/loginController.do?appQuest"}
 
         code = GsonUtil.deser(msg,ScanCode.class);
         if (SystemConst.SystemID_JZ.equals(code.getSystemId())){
-//            account=App.getInstance().getLoginUser().getAccountJZ();
+//            account= App.getInstance().getLoginUser().getAccountJZ();
             account=App.getInstance().getLoginUser().getIdJZ();
+
         }else if (SystemConst.SystemID_YZS.equals(code.getSystemId())){
             account=App.getInstance().getLoginUser().getAccountYZS();
         }
     }
 
-    @OnClick({R.id.tv_close,R.id.btn_submit})
+    @OnClick({R.id.btn_cancel,R.id.btn_submit})
     public void doClick(View view){
-            switch (view.getId()){
-                case R.id.tv_close:
-                    myAnimFinish();
-                    break;
-                case R.id.btn_submit:
-                    doLogin();
-                    break;
-            }
+        switch (view.getId()){
+            case R.id.btn_cancel:
+                MaterialDialog dialog = new MaterialDialog.Builder(context)
+                        .title("提示")
+                        .content("确定要取消吗？")
+                        .positiveText("确定")
+                        .cancelable(false)
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                ActCodeQZ.this.finish();
+                            }
+                        })
+                        .negativeText("取消")
+                        .show();
+                break;
+            case R.id.btn_submit:
+                doLogin();
+                break;
+        }
     }
 
     private void doLogin(){
 
-//        account=getUser().get;
 
         JZ_Login_Code_Req logReq;
+        sealid  = code.getSealId();
 
-        logReq = new JZ_Login_Code_Req(code.getUuid(),account,code.getSystemId(),type,"");
+        logReq = new JZ_Login_Code_Req(code.getUuid(),account,code.getSystemId(),type,sealid);
 
         Call<CommResponse> call = App.getApiProxyJZ().loginCode(logReq);
 

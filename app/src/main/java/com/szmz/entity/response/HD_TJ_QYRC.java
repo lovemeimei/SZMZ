@@ -15,7 +15,7 @@ public class HD_TJ_QYRC extends BaseResponse<HD_TJ_QYRC.ResultBean>{
          */
 
         private String areaName;
-        private int percent;
+        private double percent;
 
         public String getAreaName() {
             return areaName;
@@ -25,7 +25,7 @@ public class HD_TJ_QYRC extends BaseResponse<HD_TJ_QYRC.ResultBean>{
             this.areaName = areaName;
         }
 
-        public int getPercent() {
+        public double getPercent() {
             return percent;
         }
 

@@ -13,16 +13,34 @@ public class JZ_Login_Code_Req extends BaseRequest{
     private String uuid;
     private String account;
     private String SystemId;
+    private String SealId;
     private String type;
 
-    public JZ_Login_Code_Req(String uuid, String account, String systemId) {
+    public JZ_Login_Code_Req(String uuid, String account, String systemId,String type,String sealid) {
 
         this.uuid = uuid;
         this.account = account;
         SystemId = systemId;
-        type="A001";
+        this.type=type;
+        SealId = sealid;
 
-        setMd5Key(Md5Util.getMd5(uuid+account+systemId));
+        setMd5Key(Md5Util.getMd5(uuid+account+type+systemId+sealid));
+    }
+
+    public String getSealId() {
+        return SealId;
+    }
+
+    public void setSealId(String sealId) {
+        SealId = sealId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getUuid() {

@@ -16,12 +16,17 @@ import android.widget.TextView;
 
 import com.barcode.decoding.Intents;
 import com.szmz.ActBase;
+import com.szmz.ActWebView;
 import com.szmz.R;
+import com.szmz.entity.ScanCode;
 import com.szmz.fragment.FragmentHome;
 import com.szmz.fragment.FragmentJob;
 import com.szmz.fragment.FragmentSearch;
 import com.szmz.fragment.FragmentStatistical;
 import com.szmz.fragment.FragmentUser;
+import com.szmz.more.ActCodeLogin;
+import com.szmz.more.ActCodeQZ;
+import com.szmz.utils.GsonUtil;
 import com.szmz.utils.UIUtil;
 
 import java.util.ArrayList;
@@ -163,6 +168,27 @@ public class ActMainYLJZ extends ActBase {
         if (requestCode==REQUEST_CAPTURE){
             if (resultCode ==RESULT_OK){
 
+                String resultStr = data.getStringExtra(Intents.Scan.RESULT);
+
+                if (resultStr.startsWith("http://")){
+                    //证件验证
+                    Intent intent = new Intent(context,ActWebView.class);
+                    intent.putExtra("url",resultStr);
+                    startActivity(intent);
+                }else{
+                    ScanCode code = GsonUtil.deser(resultStr,ScanCode.class);
+                    if (code!=null && code.getAction().equals("login")){
+                        //登录
+                        Intent intent = new Intent(context, ActCodeLogin.class);
+                        intent.putExtra("msg",resultStr);
+                        startActivity(intent);
+                    }else if (code!=null && code.getAction().equals("seal")){
+                        //签章
+                        Intent intent = new Intent(context, ActCodeQZ.class);
+                        intent.putExtra("msg",resultStr);
+                        startActivity(intent);
+                    }
+                }
             }
         }
     }

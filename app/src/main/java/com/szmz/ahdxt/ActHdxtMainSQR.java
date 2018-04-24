@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.barcode.decoding.Intents;
 import com.szmz.ActBase;
+import com.szmz.ActWebView;
 import com.szmz.R;
 import com.szmz.utils.UIUtil;
 
@@ -152,7 +153,12 @@ public class ActHdxtMainSQR extends ActBase {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode==REQUEST_CAPTURE){
             if (resultCode ==RESULT_OK){
-
+                String resultStr = data.getStringExtra(Intents.Scan.RESULT);
+                if (resultStr.startsWith("http://")){
+                    Intent intent = new Intent(context,ActWebView.class);
+                    intent.putExtra("url",resultStr);
+                    startActivity(intent);
+                }
             }
         }
     }

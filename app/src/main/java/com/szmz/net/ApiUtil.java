@@ -37,9 +37,7 @@ public class ApiUtil<T extends BaseResponse> {
             protected void doSuccess(T result) {
                 super.doSuccess(result);
 
-
                 listener.doSuccess(result);
-
 
             }
 
@@ -54,6 +52,7 @@ public class ApiUtil<T extends BaseResponse> {
                         Logger.e("dissmiss报错");
                     }
                 }
+
                 listener.doAfter();
             }
 

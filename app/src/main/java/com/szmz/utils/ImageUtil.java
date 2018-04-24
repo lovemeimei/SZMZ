@@ -887,7 +887,7 @@ public final class ImageUtil {
     }
 
     /**
-     * 郄益轩3月27号修改，添加图片后缀
+     * 郄益轩3月27号
      *
      * @param oPath
      * @return

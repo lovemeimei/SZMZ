@@ -100,6 +100,7 @@ import com.szmz.entity.response.JZ_YWBL_DZDA_SupportIncome;
 import com.szmz.entity.response.JZ_YWBL_DZDA_XZQH;
 import com.szmz.entity.response.JZ_tj1;
 import com.szmz.entity.response.LoginSQR_Res;
+import com.szmz.entity.response.LoginSQR_XJ_Res;
 import com.szmz.entity.response.YZSSQR_HomeList_Res;
 import com.szmz.entity.response.YZSSQR_JZYE_Res;
 import com.szmz.entity.response.YZSSQR_jd_Res;
@@ -188,7 +189,7 @@ public interface ApiService {
     /**************************申请人员公共新疆*********************************/
     //登录申请人员
     @POST("weixin/api/login.do?wxLogin")
-    Call<LoginSQR_Res> loginSQR_XJ(@Body LoginSQR_Req request);
+    Call<LoginSQR_XJ_Res> loginSQR_XJ(@Body LoginSQR_Req request);
 
     @POST("api/Register/RegisterUser")
     Call<CommResponse> registerSQR_XJ(@Body Register_Req request);

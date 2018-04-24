@@ -14,6 +14,15 @@ public class ScanCode {
     private String url;
     private String instanceId;
     private String SealId;
+    private String action;
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
 
     public String getInstanceId() {
         return instanceId;

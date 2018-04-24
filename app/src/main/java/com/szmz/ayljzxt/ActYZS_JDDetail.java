@@ -49,6 +49,13 @@ public class ActYZS_JDDetail extends ActBase {
 
     @BindView(R.id.tv_yzs_history_9)
     MyLayoutView view9;
+
+    @BindView(R.id.tv_yzs_history_10)
+    MyLayoutView view10;
+    @BindView(R.id.tv_yzs_history_11)
+    MyLayoutView view11;
+
+
     private String id;
     private String type;
     private YZSSQR_jd_Res.ResultBean item;
@@ -188,6 +195,9 @@ public class ActYZS_JDDetail extends ActBase {
         view6.doSetContent(item.getApplicationNo());
         view8.doSetContent(item.getIN_HOSPITAL_DATE());
         view9.doSetContent(item.getLEAVE_HOSPITAL_DATE());
+        view10.doSetContent(item.getEXPENSE_MONEY());
+        view11.doSetContent(item.getMED_REPAYABLE_MONEY());
+
         viewsex.doSetContent(item.getSexName());
         viewjzjg.doSetContent(item.getTREATMENT_NAME());
         viewjbmc.doSetContent(item.getDESEASE_NAME());

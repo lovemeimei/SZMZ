@@ -101,7 +101,11 @@ public class GetMsgTask{
                     for (CommMsgSave item:items){
                         try {
                             dbManager.save(item);
-                            notificaitonMsg(item,id);
+
+                            if (SystemEnv.getSetNewMsg()){
+                                notificaitonMsg(item,id);
+
+                            }
                             id++;
                         } catch (DbException e) {
                             e.printStackTrace();
@@ -139,15 +143,15 @@ public class GetMsgTask{
                 .setGroup("zhmz_qyx")
                 .setGroupSummary(true);
 
-        if (SystemEnv.getSetShake()&&SystemEnv.getSetSound()){
+        if (SystemEnv.getSetShake()&&SystemEnv.getSetSound()&&!SystemEnv.getSetMdr()){
 
             notificationCompat.setDefaults(Notification.DEFAULT_VIBRATE|Notification.DEFAULT_SOUND);
 
-        }else if (SystemEnv.getSetShake()){
+        }else if (SystemEnv.getSetShake()&&!SystemEnv.getSetMdr()){
 
             notificationCompat.setDefaults(Notification.DEFAULT_VIBRATE);
 
-        }else if (SystemEnv.getSetSound()){
+        }else if (SystemEnv.getSetSound()&&!SystemEnv.getSetMdr()){
             //
             notificationCompat.setDefaults(Notification.DEFAULT_SOUND);
         }

@@ -15,6 +15,7 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.barcode.decoding.Intents;
+import com.orhanobut.logger.Logger;
 import com.szmz.fragment.FragmentHome;
 import com.szmz.fragment.FragmentHome_C;
 import com.szmz.fragment.FragmentJob;
@@ -154,12 +155,19 @@ public class ActMainJZ2 extends ActBase {
         }
     }
 
-    private static final int REQUEST_CAPTURE = 1024;
+    private static final int REQUEST_CAPTURE = 1025;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode==REQUEST_CAPTURE){
             if (resultCode ==RESULT_OK){
+                String resultStr = data.getStringExtra(Intents.Scan.RESULT);
+
+               if (resultStr.startsWith("http://")){
+                   Intent intent = new Intent(context,ActWebView.class);
+                   intent.putExtra("url",resultStr);
+                   startActivity(intent);
+               }
 
             }
         }

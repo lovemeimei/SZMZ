@@ -17,10 +17,12 @@ import android.widget.TextView;
 import com.barcode.decoding.Intents;
 import com.orhanobut.logger.Logger;
 import com.szmz.ActBase;
+import com.szmz.ActWebView;
 import com.szmz.R;
 import com.szmz.SystemConst;
 import com.szmz.entity.ScanCode;
 import com.szmz.more.ActCodeLogin;
+import com.szmz.more.ActCodeQZ;
 import com.szmz.utils.GsonUtil;
 import com.szmz.utils.UIUtil;
 
@@ -154,30 +156,27 @@ public class ActHdxtMain extends ActBase {
 
         if (requestCode==REQUEST_CAPTURE){
             if (resultCode ==RESULT_OK){
-//                http://10.10.0.169:8080/jeecg/loginController.do?appQuest&uuid=75823&type=A001&SystemId=emRzaGJ6MTUwNzk2MTQyNjE1Nw==
                 String resultStr = data.getStringExtra(Intents.Scan.RESULT);
 
-                ScanCode code = GsonUtil.deser(resultStr,ScanCode.class);
-
-                String account="";
-                if (code.getSystemId().equals(SystemConst.SystemID_JZ)) {
-                    account = getUser().getAccountJZ();
+                if (resultStr.startsWith("http://")){
+                    //证件验证
+                    Intent intent = new Intent(context,ActWebView.class);
+                    intent.putExtra("url",resultStr);
+                    startActivity(intent);
+                }else{
+                    ScanCode code = GsonUtil.deser(resultStr,ScanCode.class);
+                    if (code!=null && code.getAction().equals("login")){
+                        //登录
+                        Intent intent = new Intent(context, ActCodeLogin.class);
+                        intent.putExtra("msg",resultStr);
+                        startActivity(intent);
+                    }else if (code!=null && code.getAction().equals("seal")){
+                        //签章
+                        Intent intent = new Intent(context, ActCodeQZ.class);
+                        intent.putExtra("msg",resultStr);
+                        startActivity(intent);
+                    }
                 }
-                if (code.getSystemId().equals(SystemConst.SystemID_YZS)) {
-                    account = getUser().getAccountYZS();
-
-                }
-                if (code.getSystemId().equals(SystemConst.SystemID_SH)) {
-                    account = getUser().getAccountHD();
-
-                }
-
-                Intent intent = new Intent(context, ActCodeLogin.class);
-//                intent.putExtra("uuid",code.getUuid());
-                intent.putExtra("type","A001");
-//                intent.putExtra("account",account);
-                intent.putExtra("msg",resultStr);
-                startActivity(intent);
             }
         }
 

@@ -37,9 +37,9 @@
         android:layout_below="@+id/iv_user"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/spacing_small"
-        android:textSize="@dimen/font_large"
+        android:text="新疆救助信息平台"
         android:textColor="@color/white"
-        android:text="智慧民政信息平台"/>
+        android:textSize="@dimen/font_large" />
 
     <LinearLayout
         android:id="@+id/ll_pager"

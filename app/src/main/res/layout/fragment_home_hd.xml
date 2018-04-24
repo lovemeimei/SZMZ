@@ -30,11 +30,13 @@
             android:layout_height="wrap_content"
             app:layout_cionSrc="@drawable/home_icon_dbtz"
             app:layout_content="点击查看复核待处理"
+            android:visibility="gone"
             app:layout_title="复核待处理" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
+            android:visibility="gone"
             android:background="@color/gray" />
 
         <com.szmz.widget.MyImageLayoutView
@@ -56,11 +58,13 @@
             android:layout_height="wrap_content"
             app:layout_cionSrc="@drawable/icon_hd_mgryjg"
             app:layout_content="点击查看敏感名单审核提醒"
+            android:visibility="gone"
             app:layout_title="敏感名单审核提醒" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
+            android:visibility="gone"
             android:background="@color/gray" />
     </LinearLayout>
 

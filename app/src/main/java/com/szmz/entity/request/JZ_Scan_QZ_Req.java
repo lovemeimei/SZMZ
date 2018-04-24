@@ -14,17 +14,26 @@ public class JZ_Scan_QZ_Req extends BaseRequest{
     private String account;
     private String SystemId;
     private String instanceId;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     private String SealId;
     private String type;
 
 
-    public JZ_Scan_QZ_Req(String uuid, String account, String systemId, String instanceId, String sealId) {
+    public JZ_Scan_QZ_Req(String uuid, String account, String systemId, String instanceId, String sealId,String type) {
         this.uuid = uuid;
         this.account = account;
         SystemId = systemId;
         this.instanceId = instanceId;
         SealId = sealId;
-        type="A003";
+        this.type=type;
     }
 
     public String getUuid() {
@@ -67,12 +76,4 @@ public class JZ_Scan_QZ_Req extends BaseRequest{
         SealId = sealId;
     }
 
-//    public JZ_Scan_QZ_Req(String uuid, String account, String systemId) {
-//
-//        this.uuid = uuid;
-//        this.account = account;
-//        SystemId = systemId;
-//
-//        setMd5Key(Md5Util.getMd5(uuid+account+systemId));
-//    }
 }

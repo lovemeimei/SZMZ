@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.barcode.decoding.Intents;
 import com.szmz.ActBase;
+import com.szmz.ActWebView;
 import com.szmz.R;
 import com.szmz.fragment.FragmentHome_C;
 import com.szmz.fragment.FragmentSearchXX_C;
@@ -160,6 +161,14 @@ public class ActMainYLJZ2 extends ActBase {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode==REQUEST_CAPTURE){
             if (resultCode ==RESULT_OK){
+                String resultStr = data.getStringExtra(Intents.Scan.RESULT);
+
+
+                if (resultStr.startsWith("http://")){
+                    Intent intent = new Intent(context,ActWebView.class);
+                    intent.putExtra("url",resultStr);
+                    startActivity(intent);
+                }
 
             }
         }

@@ -1,5 +1,6 @@
 package com.szmz.ayljzxt;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -84,6 +85,18 @@ public class ActYZS_tj2 extends ActBase{
                 getInfo();
             }
         });
+        dialogLoading = new MaterialDialog.Builder(context)
+                .content("请稍后···")
+                .progress(true, 100)
+                .cancelable(true)
+                .canceledOnTouchOutside(false)
+                .cancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+
+                    }
+                })
+                .build();
         getQHlist();
         initChart();
         tvEndTime.setText(DateUtil.getCurrentDay());
@@ -262,6 +275,7 @@ public class ActYZS_tj2 extends ActBase{
     //***********************************区划*****************************************?//
     private YZS_xzqh xzqh;
     private MaterialDialog dialog;
+    private MaterialDialog dialogLoading;
     private AndroidTreeView tView;
     private MaterialDialog.Builder builder;
 
@@ -276,15 +290,25 @@ public class ActYZS_tj2 extends ActBase{
 
 
             @Override
+            public void doAfter() {
+                super.doAfter();
+                dialogLoading.show();
+            }
+
+            @Override
             public void doSuccess(YZS_qh_res result) {
                 super.doSuccess(result);
 
                 List<YZS_xzqh> xzqhs = result.Result;
-                if (xzqhs!=null && xzqhs.size()>0)
+                if (xzqhs != null && xzqhs.size() > 0){
+
                     initData(xzqhs);
+                }
+                dialogLoading.dismiss();
+
                 getInfo();
             }
-        },false);
+        },true);
 
         apiUtil.excute();
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgrounColor"
+    android:orientation="vertical"
+    tools:context="com.szmz.more.ActModifyPhone">
+
+    <include layout="@layout/comm_title" />
+
+
+
+    <ImageView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_huge"
+        android:scaleType="centerInside"
+        android:src="@drawable/scan_qz"/>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_huge"
+        android:background="@drawable/slt_orange_btn"
+        android:text="确定"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_normal" />
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:background="@color/black_light"
+        android:text="取消"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_normal" />
+</LinearLayout>
