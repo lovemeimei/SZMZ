@@ -145,7 +145,7 @@ public class ActDchs extends ActLocationBase {
     @Override
     protected void initUI() {
         super.initUI();
-        timeTv.setText(new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss").format(new Date()));
+
         refreshAddressLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -202,8 +202,6 @@ public class ActDchs extends ActLocationBase {
                 startActivityForResult(intent, 1000);
             }
         });
-
-
         setLeftVisible(true);
         setTitle("调查核实");
         if (isOnline) {
@@ -213,7 +211,7 @@ public class ActDchs extends ActLocationBase {
             setRightShow("保存");
             setRightVisible(true);
         }
-
+        timeTv.setText(new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss").format(new Date()));
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

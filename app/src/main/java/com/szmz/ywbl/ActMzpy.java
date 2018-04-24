@@ -116,7 +116,7 @@ public class ActMzpy extends ActLocationBase {
     @Override
     protected void initUI() {
         super.initUI();
-        timeTv.setText(new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss").format(new Date()));
+
         refreshAddressLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,6 +156,7 @@ public class ActMzpy extends ActLocationBase {
         });
         setLeftVisible(true);
         setTitle("民主评议");
+        timeTv.setText(new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss").format(new Date()));
         if (isOnline) {
             setRightShow("提交");
             setRightVisible(true);
