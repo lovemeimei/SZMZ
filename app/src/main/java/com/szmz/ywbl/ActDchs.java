@@ -103,6 +103,7 @@ public class ActDchs extends ActLocationBase {
     @BindView(R.id.refreshAddressLayout)
     LinearLayout refreshAddressLayout;
 
+
     private ImageGridAdapter adapter;
     private List<MyNewPhoto> paths = new ArrayList<MyNewPhoto>();
     private List<MyNewPhoto> path = new ArrayList<MyNewPhoto>();
@@ -487,8 +488,6 @@ public class ActDchs extends ActLocationBase {
             } else {
                 addressTv.setText(loc.getAddress().address);
             }
-
-
         }
     }
 }

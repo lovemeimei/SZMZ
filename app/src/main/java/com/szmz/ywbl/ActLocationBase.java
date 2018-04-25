@@ -40,11 +40,9 @@ public abstract class ActLocationBase extends ActTakePhotoBase {
         @Override
         public void onReceiveLocation(BDLocation loc) {
             if (loc == null) {
-                location = null;
                 return;
             }
             if (loc.getLongitude() < 0.1 || loc.getLatitude() < 0.1) {
-                location = null;
                 return;
             }
             location = loc;
