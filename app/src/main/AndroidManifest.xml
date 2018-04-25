@@ -247,7 +247,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ywbl.ActShgs"
+             android:name=".ywbl.ActShgs"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />

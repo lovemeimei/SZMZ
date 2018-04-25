@@ -139,7 +139,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                                     case 1:
                                         intent.setClass(ActYwbl_dzda_person.this, ActDchs.class);
                                         intent.putExtra("YwblDzdaSalvation", checkSalvation);
-                                        setResult(1001, intent);
+                                        setResult(10001, intent);
                                         finish();
                                         break;
                                     case 3:

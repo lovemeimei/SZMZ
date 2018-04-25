@@ -199,7 +199,7 @@ public class ActDchs extends ActLocationBase {
                 intent.putExtra("Type", 1);
                 intent.putExtra("isMore", false);
                 intent.putExtra("isChose", true);
-                startActivityForResult(intent, 1000);
+                startActivityForResult(intent, 10000);
             }
         });
         setLeftVisible(true);
@@ -368,7 +368,7 @@ public class ActDchs extends ActLocationBase {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1000 && resultCode == 1001) {
+        if (requestCode == 10000 && resultCode == 10001) {
             if (data != null) {
                 checkSalvation = (YwblDzdaSalvation) data.getSerializableExtra("YwblDzdaSalvation");
                 if (checkSalvation != null) {
