@@ -230,7 +230,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                 }
             }
             if (items != null && items.size() > 0) {
-                isFromLocal = false;
+                isFromLocal = true;
                 adapter.clearListData();
                 adapter.setListData(items);
                 adapter.notifyDataSetChanged();
@@ -466,7 +466,7 @@ public class ActYwbl_dzda_person extends ActBaseList<YwblDzdaSalvation> {
                 List<YwblDzdaSalvation> items = result.Result;
 
                 if (items != null && items.size() > 0) {
-                    isFromLocal = true;
+                    isFromLocal = false;
                     for (YwblDzdaSalvation item : items) {
                         YwblDzdaSalvation byId = null;
                         try {
