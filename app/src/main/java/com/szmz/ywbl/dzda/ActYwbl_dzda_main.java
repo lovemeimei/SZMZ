@@ -93,8 +93,8 @@ public class ActYwbl_dzda_main extends ActBase {
         person = (YwblDzdaSalvation) getIntent().getSerializableExtra("YwblPerson");
         if (person != null) {
             if (isOnline) {
-                if (isFromLocal) {
-                    if (!isFromJZXX) {
+                if (!isFromLocal) {
+                    if (isFromJZXX) {
                         doGetData(person.getId() + "");
                     } else {
                         doGetData(person.getFamilyId() + "");
