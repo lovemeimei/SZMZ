@@ -134,6 +134,8 @@ public class ImageGridAdapter extends BaseAdapter {
         if (!"TakePhoto".equals(imgPath.getFileUrl())) {
             if (isShowDelete) {
                 iv3.setVisibility(View.VISIBLE);
+            } else {
+                iv3.setVisibility(View.GONE);
             }
 //            x.image().bind(iv, imgPath.getFileUrl(), new ImageOptions.Builder()
 //                    .setSize(ImageUtil.dip2px(context, 250), ImageUtil.dip2px(context, 250))
