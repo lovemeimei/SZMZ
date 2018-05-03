@@ -187,6 +187,16 @@ public class ActYZS_JDDetail extends ActBase {
             stepView.invalidate();
         }
 
+        if ("1".equals(item.getType())){
+            //住院救助
+
+        }else{
+            view8.doSetTitle("门诊日期");
+            view9.setVisibility(View.GONE);
+            //门诊救助
+
+        }
+
         view1.doSetContent(item.getNAME());
         view2.doSetContent(item.getCardID());
         view3.doSetContent(item.getTypeName());

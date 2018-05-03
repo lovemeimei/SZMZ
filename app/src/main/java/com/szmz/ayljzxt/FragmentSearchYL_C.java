@@ -108,7 +108,8 @@ public class FragmentSearchYL_C extends BaseFragment {
 
             @Override
             protected void refreshView(int postion, final YZSSQR_jd_Res.ResultBean item, final MViewHolder holer) {
-                holer.tvName.setText(item.getTypeName()+"\t\t\t\t"+item.getFLOW_RESULT_NAME()+"\t\t"+item.getADD_TIME());
+                holer.tvName.setText(item.getTypeName()+"\t\t\t\t"+item.getFLOW_RESULT_NAME()+"\t\t\n"+item.getADD_TIME());
+
                 holer.tvBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

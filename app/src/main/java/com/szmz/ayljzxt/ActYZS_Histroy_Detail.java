@@ -136,6 +136,16 @@ public class ActYZS_Histroy_Detail extends ActBase {
 
     private void setInfo(){
 
+        if ("1".equals(item.getTYPE())){
+            //住院救助
+
+        }else{
+            view8.doSetTitle("门诊日期");
+            view9.setVisibility(View.GONE);
+            //门诊救助
+
+        }
+
         view1.doSetContent(item.getNAME());
         view2.doSetContent(item.getSEX_NAME());
         view3.doSetContent(item.getIDCARD());

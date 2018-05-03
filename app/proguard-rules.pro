@@ -70,6 +70,9 @@
    public void *(android.view.View);
 }
 
+-keep class com.szmz.entity.**{ *;}
+-keep class com.szmz.widget.**{ *;}
+
 #support
 -keep class android.support.** { *; }
 -keep interface android.support.** { *; }

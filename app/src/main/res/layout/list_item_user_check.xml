@@ -9,15 +9,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/font_normal"
+        android:lineSpacingExtra="@dimen/spacing_small"
         android:textColor="@color/black_light"
-        android:layout_alignBottom="@+id/tv_btn"
-        android:text="低保救助申请事项"/>
+        android:layout_centerVertical="true"
+        android:text="低保救助申请事项 \n 你好"/>
+
+
 
     <TextView
         android:id="@+id/tv_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/slt_text_bg_red"
+        android:layout_centerVertical="true"
         android:text="查看进度"
         android:textSize="@dimen/font_small"
         android:padding="@dimen/spacing_tiny"
