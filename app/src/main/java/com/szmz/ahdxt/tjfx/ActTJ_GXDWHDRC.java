@@ -18,9 +18,12 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.szmz.ActBase;
 import com.szmz.App;
 import com.szmz.R;
@@ -86,8 +89,11 @@ public class ActTJ_GXDWHDRC extends ActBase {
         setTitle("共享单位核对人数");
         setRightVisible(true);
         setRightShow("搜索");
-        tvEndTime.setText(DateUtil.getCurrentDay());
-        tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
+
+
+        tvEndTime.setText(DateUtil.getCurrentMothLastDay());
+        tvStartTime.setText(DateUtil.getCurrentMothFirstDay());
+
         getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,6 +187,14 @@ public class ActTJ_GXDWHDRC extends ActBase {
         }
         BarDataSet dataSet = new BarDataSet(entries, "共享单位");
         dataSet.setColor(PIE_COLORS[2]);
+        dataSet.setValueFormatter(new IValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+
+                int mvalue = (int)value;
+                return mvalue+"";
+            }
+        });
         BarData barData = new BarData(dataSet);
 
         barData.setHighlightEnabled(false);

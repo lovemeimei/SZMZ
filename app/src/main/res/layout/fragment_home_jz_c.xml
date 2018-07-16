@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <include layout="@layout/fragment_home_top_c"/>
 
         <RelativeLayout
             android:id="@+id/ll_SPJD"
@@ -46,12 +47,6 @@
                 android:text="点击查看审批进度"
                 android:textSize="@dimen/font_small" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/arrow_right" />
         </RelativeLayout>
 
         <View
@@ -95,12 +90,6 @@
                 android:text="点击资金发放消息"
                 android:textSize="@dimen/font_small" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/arrow_right" />
         </RelativeLayout>
 
         <View
@@ -144,12 +133,7 @@
                 android:text="点击查看复查通知消息"
                 android:textSize="@dimen/font_small" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/arrow_right" />
+
         </RelativeLayout>
 
         <View
@@ -193,12 +177,6 @@
                 android:text="点击查看信访通知消息"
                 android:textSize="@dimen/font_small" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/arrow_right" />
         </RelativeLayout>
 
 
@@ -243,12 +221,7 @@
                 android:text="点击查看系统通知消息"
                 android:textSize="@dimen/font_small" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/arrow_right" />
+
         </RelativeLayout>
 
         <View

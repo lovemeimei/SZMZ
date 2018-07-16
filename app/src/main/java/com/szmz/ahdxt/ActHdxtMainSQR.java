@@ -50,7 +50,7 @@ public class ActHdxtMainSQR extends ActBase {
         mFragmentList = new ArrayList<>();
         setTitle(mTitles[0]);
 
-        tvTitleRight.setVisibility(View.VISIBLE);
+        tvTitleRight.setVisibility(View.GONE);
         tvTitleRight.setTextSize(30);
 
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
@@ -94,7 +94,7 @@ public class ActHdxtMainSQR extends ActBase {
                 tabhost.setCurrentTab(position);
                 if (position==0){
 
-                    tvTitleRight.setVisibility(View.VISIBLE);
+                    tvTitleRight.setVisibility(View.GONE);
 //                    tvTitleRight.setTextSize(getResources().getDimension(R.dimen.font_larger));
                 }else {
                     tvTitleRight.setVisibility(View.GONE

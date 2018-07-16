@@ -36,7 +36,7 @@ public class FragmentUse_C extends BaseFragment {
     }
 
     @OnClick({
-            R.id.miv_grzl, R.id.miv_xgmm,R.id.miv_bindphone,R.id.miv_msg
+            R.id.miv_grzl, R.id.miv_xgmm,R.id.miv_bindphone,R.id.miv_msg,R.id.miv_tsjb
     })
     public void doClick(View v) {
         switch (v.getId()) {
@@ -63,6 +63,9 @@ public class FragmentUse_C extends BaseFragment {
                 break;
             case R.id.miv_msg:
                 trans(ActMsgSet.class);
+                break;
+            case R.id.miv_tsjb:
+
                 break;
         }
     }

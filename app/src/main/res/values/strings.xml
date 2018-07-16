@@ -1,6 +1,7 @@
 <resources>
+    <string name="app_name">社会救助</string>
     <!--<string name="app_name">智慧民政</string>-->
-    <string name="app_name">新疆救助</string>
+    <!--<string name="app_name">新疆救助</string>-->
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

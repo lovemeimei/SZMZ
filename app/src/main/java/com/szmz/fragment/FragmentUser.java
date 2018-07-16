@@ -9,6 +9,7 @@ import com.szmz.more.ActModifyPW;
 import com.szmz.more.ActModifyUserInfo;
 import com.szmz.user.check.ActCheckList;
 import com.szmz.user.check.ActJZ_DC;
+import com.szmz.user.check.ActLocationInfo;
 import com.szmz.user.job.ActMyJob;
 import com.szmz.utils.UIUtil;
 
@@ -50,8 +51,7 @@ public class FragmentUser extends BaseFragment {
                 trans(ActJZ_DC.class);
                 break;
             case R.id.ll_user_job:
-//                trans(ActMyJob.class);
-                UIUtil.doToast("开发中···");
+                trans(ActLocationInfo.class);
                 break;
         }
     }

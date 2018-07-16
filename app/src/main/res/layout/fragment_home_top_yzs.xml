@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="270dp"
+    tools:context=".fragment.FragmentHomeTop"
+    android:background="@color/backgrounColor">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/home_top_bg">
+    <TextView
+        android:id="@+id/tv_home_title"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="医疗救助"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="@dimen/font_big"
+        android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/iv_scan_top"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:scaleType="centerInside"
+            android:src="@drawable/saoma" />
+    <ImageView
+        android:id="@+id/iv_header"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_below="@+id/tv_home_title"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_head"/>
+    <TextView
+        android:id="@+id/tv_name_gs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@+id/iv_header"
+        android:layout_below="@+id/tv_home_title"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:text="张天"/>
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/white"
+        android:layout_toRightOf="@+id/iv_header"
+        android:layout_below="@+id/tv_name_gs"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:text="18631172264"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_header"
+        android:padding="@dimen/spacing_normal"
+        android:orientation="horizontal"
+        android:weightSum="2.0">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_home_num_zyh"
+                android:layout_width="wrap_content"
+                android:textColor="@color/gold"
+                android:textSize="@dimen/font_normal"
+                android:layout_height="wrap_content"
+                android:text="245人次"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:textSize="@dimen/font_normal"
+                android:layout_height="wrap_content"
+                android:text="累计救助人次"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_home_num_xzhs"
+                android:layout_width="wrap_content"
+                android:textColor="@color/gold"
+                android:textSize="@dimen/font_normal"
+                android:layout_height="wrap_content"
+                android:text="145.20万元"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:textSize="@dimen/font_normal"
+                android:layout_height="wrap_content"
+                android:text="累计救助金额"/>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:weightSum="2.0"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_large"
+        android:background="@drawable/shape_bg_yzs_top"
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        android:padding="@dimen/spacing_small"
+        >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_ndjzcs"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font_small"
+                android:layout_height="wrap_content"
+                android:text="本年度累计救助次数"/>
+            <TextView
+                android:id="@+id/tv_ndjzcs_sl"
+                android:layout_width="wrap_content"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font_larger"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:layout_below="@+id/tv_ndjzcs"
+                android:layout_centerHorizontal="true"
+                android:text="3 "/>
+            <TextView
+                android:id="@+id/tv_ndjzcs_c"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black_light"
+                android:textSize="@dimen/font_small"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_ndjzcs_sl"
+                android:layout_toRightOf="@+id/tv_ndjzcs_sl"
+                android:text="次"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray"
+            android:layout_marginTop="@dimen/spacing_tiny"
+            android:layout_marginBottom="@dimen/spacing_tiny"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_ndjzje"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font_small"
+                android:layout_height="wrap_content"
+                android:text="本年度累计救助金额"/>
+            <TextView
+                android:id="@+id/tv_ndjzje_sl"
+                android:layout_width="wrap_content"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/font_larger"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:layout_below="@+id/tv_ndjzje"
+                android:layout_centerHorizontal="true"
+                android:text="1526"/>
+            <TextView
+                android:id="@+id/tv_ndjzje_c"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black_light"
+                android:textSize="@dimen/font_small"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_ndjzje_sl"
+                android:layout_toRightOf="@+id/tv_ndjzje_sl"
+                android:text="元"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -27,6 +27,7 @@ import com.szmz.entity.response.HD_XZQH_Response;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.DatePickerUtil;
+import com.szmz.utils.DateUtil;
 import com.szmz.utils.Md5Util;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
@@ -97,6 +98,7 @@ public class ActTJ_QYTJ extends ActBase {
         pieChart.setDrawCenterText(true);//设置绘制环中文字
         pieChart.setRotationAngle(120f);//设置旋转角度
 
+        pieChart.setNoDataText("暂无数据");
         //图例设置
         Legend legend = pieChart.getLegend();
 
@@ -163,9 +165,9 @@ public class ActTJ_QYTJ extends ActBase {
 
         String sqtime = tvXZQH.getText().toString();
         if (TextUtils.isEmpty(sqtime)) {
-            Calendar cal = Calendar.getInstance();
 
-            sqtime = cal.get(Calendar.YEAR) + "-" + (cal.get(Calendar.MONTH) + 1);
+           sqtime= DateUtil.getCurrentMonth();
+            tvXZQH.setText(sqtime);
         }
 
         //sysadmin 510401

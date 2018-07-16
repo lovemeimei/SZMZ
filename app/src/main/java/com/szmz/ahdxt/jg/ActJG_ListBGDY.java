@@ -18,9 +18,12 @@ import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
 import com.szmz.utils.DatePickerUtil;
+import com.szmz.utils.DateUtil;
 import com.szmz.utils.Md5Util;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -145,6 +148,18 @@ public class ActJG_ListBGDY extends ActListBase {
         code = etSearch1.getText().toString().trim();
         startTime = etSearch2.getText().toString().trim();
         endTime = etSearch3.getText().toString().trim();
+
+        try {
+            Date dateStart = DateUtil.getInstance().parseSimple(startTime);
+            Date dateEnd = DateUtil.getInstance().parseSimple(endTime);
+            if (dateEnd.before(dateStart)){
+                doToast("终止时间必须大于开始时间");
+                return;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         String params = "";
         if (isMore) {
             currentPage++;

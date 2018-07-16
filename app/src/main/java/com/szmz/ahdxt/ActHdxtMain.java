@@ -56,7 +56,7 @@ public class ActHdxtMain extends ActBase {
         super.initUI();
         setTitle("核对系统");
         mFragmentList = new ArrayList<>();
-        tvTitleRightScan.setVisibility(View.VISIBLE);
+        tvTitleRightScan.setVisibility(View.GONE);
         
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
         tabhost.getTabWidget().setDividerDrawable(null);
@@ -102,7 +102,7 @@ public class ActHdxtMain extends ActBase {
                 }
                 tabhost.setCurrentTab(position);
                 if (position == 0) {
-                    tvTitleRightScan.setVisibility(View.VISIBLE);
+                    tvTitleRightScan.setVisibility(View.GONE);
                 } else {
                     tvTitleRightScan.setVisibility(View.GONE);
                 }

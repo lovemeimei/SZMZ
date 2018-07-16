@@ -9,7 +9,7 @@
 
     <include layout="@layout/comm_title"/>
 
-    <fragment android:name="com.szmz.fragment.FragmentUse_C"
+    <fragment android:name="com.szmz.fragment.FragmentUse_C_Comm"
         android:id="@+id/fragment_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"

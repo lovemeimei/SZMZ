@@ -34,6 +34,7 @@ import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 
 import org.xutils.DbManager;
+import org.xutils.db.sqlite.WhereBuilder;
 import org.xutils.ex.DbException;
 import org.xutils.x;
 
@@ -151,6 +152,10 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                 if (type == 1) {
                     App.setIsOnline(false);
                     doOutLineLogin();
+
+//                    Intent intent = new Intent(context,ActWebView.class);
+//                    intent.putExtra("url","http://222.222.49.34:6677/");
+//                    startActivity(intent);
                 } else {
                     doToast("该功能不对社会人员开放!");
                 }
@@ -213,9 +218,12 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
             return;
         }
         try {
-            List<User> all1 = dbManager.selector(User.class).findAll();
+//            List<User> all1 = dbManager.selector(User.class).findAll();
+            WhereBuilder builder =  WhereBuilder.b();
+            builder.and("userName", "=", etUser.getText().toString().trim());
+            builder.and("accountJZ","!=",null);
             List<User> all = dbManager.selector(User.class).where
-                    ("userName", "=", etUser.getText().toString().trim()).findAll();
+                    (builder).findAll();
             if (all != null && all.size() > 0) {
                 if (etPW.getText().toString().trim().equals(all.get(0).getPw())) {
                     if (all.get(0).getIdJZ() == null || all.get(0).getIdJZ().equals("")) {
@@ -346,7 +354,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
     private void loginSQR_XJ() {
         LoginSQR_Req sqr_req = new LoginSQR_Req(etUser.getText().toString().trim(), etPW.getText().toString().trim());
         Call<LoginSQR_XJ_Res> call;
-            call = App.getApiProxyComSQR().loginSQR_XJ(sqr_req);
+            call = App.getApiProxyJZ().loginSQR_XJ(sqr_req);
 
 
         ApiUtil<LoginSQR_XJ_Res> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<LoginSQR_XJ_Res>() {
@@ -430,7 +438,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
     private void getIPID() {
 
-        String ips =SystemConst.IP_JZ + "," + SystemConst.IP_YZS + "," + SystemConst.IP_HD;
+        String ips =SystemConst.IP_JZ + "," + SystemConst.IP_YZS + "," + SystemConst.IP_HD+","+SystemConst.IP_SM;
         final Comm_ipid_req req = new Comm_ipid_req(ips);
 
         Call<Comm_ipid_res> call = App.getApiProxyCom().getIPSID(req);
@@ -453,6 +461,9 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                             SystemConst.SystemID_YZS = item.getResult();
                         } else if (item.getIp().equals(SystemConst.IP_HD)) {
                             SystemConst.SystemID_SH = item.getResult();
+                        }else if (item.getIp().equals(SystemConst.IP_SM)){
+                            SystemConst.SystemID_SM = item.getResult();
+
                         }
                     }
                 }

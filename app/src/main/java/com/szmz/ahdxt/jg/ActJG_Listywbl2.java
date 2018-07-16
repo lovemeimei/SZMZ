@@ -67,6 +67,13 @@ public class ActJG_Listywbl2 extends ActListBase {
         id = getIntent().getStringExtra("id");
 
 
+        tvTitleRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadInfo(false);
+            }
+        });
+
         adapter = new BaseListAdapter<HD_JG_YWBL2.ResultBean, MViewHolder>(this, R.layout.list_item_jg_dybg) {
             @Override
             protected void refreshView(int postion, final HD_JG_YWBL2.ResultBean item, MViewHolder holer) {
@@ -180,7 +187,7 @@ public class ActJG_Listywbl2 extends ActListBase {
 
     String getParams(String userid, String batchId, String applyName, String idCardNo) {
 
-        String md5key = Md5Util.getMd5(userid + batchId + applyName + currentPage + "20");
+        String md5key = Md5Util.getMd5(userid + batchId + applyName +idCardNo+ currentPage + "20");
         StringBuilder sb = new StringBuilder();
         sb.append("userId=");
         sb.append(userid);

@@ -15,6 +15,15 @@ public class ScanCode {
     private String instanceId;
     private String SealId;
     private String action;
+    private int siteType;
+
+    public int getSiteType() {
+        return siteType;
+    }
+
+    public void setSiteType(int siteType) {
+        this.siteType = siteType;
+    }
 
     public String getAction() {
         return action;

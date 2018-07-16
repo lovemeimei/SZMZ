@@ -98,8 +98,8 @@ public class ActTjfx_HDDXZRS extends ActBase {
         setRightShow("搜索");
         setTitle("核对对象总人次数");
         initBarChart();
-        tvEndTime.setText(DateUtil.getCurrentDay());
-        tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
+        tvEndTime.setText(DateUtil.getCurrentMothLastDay());
+        tvStartTime.setText(DateUtil.getCurrentMothFirstDay());
         getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
 
 
@@ -120,6 +120,7 @@ public class ActTjfx_HDDXZRS extends ActBase {
         mTfRegular = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
         mTfLight = Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf");
 
+        mChart.setNoDataText("暂无数据");
         mChart.getDescription().setEnabled(false);
         mChart.setPinchZoom(false);
         mChart.setDrawBarShadow(false);
@@ -236,7 +237,7 @@ public class ActTjfx_HDDXZRS extends ActBase {
                 BarEntry entry = new BarEntry(i,getValueByCity(items, citys.get(i),types.get(0)));
                 entries.add(entry);
             }
-            BarDataSet dataSet = new BarDataSet(entries, "共享单位");
+            BarDataSet dataSet = new BarDataSet(entries, "行政区划");
             dataSet.setColor(PIE_COLORS[2]);
             dataSet.setValueFormatter(new IValueFormatter() {
                 @Override

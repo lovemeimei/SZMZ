@@ -109,7 +109,7 @@ public class FragmentHomeYL_C2 extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_comm_list;
+        return R.layout.fragment_yzs_home_gs_c;
     }
 
     @Override

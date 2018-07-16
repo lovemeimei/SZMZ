@@ -126,6 +126,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:weightSum="2">
 
             <LinearLayout
@@ -136,7 +137,7 @@
                 android:layout_weight="1.0"
                 android:background="@drawable/shape_bg_color"
                 android:gravity="center"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:padding="@dimen/spacing_normal">
 
                 <ImageView
@@ -149,7 +150,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="我的业务"
+                    android:text="定位信息"
                     android:textColor="@color/black_light"
                     android:textSize="@dimen/font_normal" />
             </LinearLayout>

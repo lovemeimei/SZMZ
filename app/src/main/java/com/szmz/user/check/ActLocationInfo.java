@@ -22,7 +22,6 @@ public class ActLocationInfo extends ActBase {
     ViewPager viewPager;
 
     private String[] titles = {"工作人员","业务办理"};
-    private Fragment[] fragments= new Fragment[2];
 
     @Override
     protected int getLayoutId() {
@@ -34,6 +33,7 @@ public class ActLocationInfo extends ActBase {
         super.initUI();
 
         setTitle("定位信息");
+        setLeftVisible(true);
 
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(new MyViewPagerAdatper(getSupportFragmentManager()));
@@ -50,6 +50,11 @@ public class ActLocationInfo extends ActBase {
         public Fragment getItem(int position) {
 
             return LocationListFragment.newInstance(position);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titles[position];
         }
 
         @Override

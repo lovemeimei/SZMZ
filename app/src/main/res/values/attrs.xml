@@ -11,6 +11,10 @@
         <attr name="imgSrc" format="reference"/>
         <attr name="tvContent" format="string"/>
     </declare-styleable>
+    <declare-styleable name="MyImageViewV">
+        <attr name="imgSrcV" format="reference"/>
+        <attr name="tvContentV" format="string"/>
+    </declare-styleable>
 
     <declare-styleable name="LoopRotarySwitchView">
         <attr name="orientation">

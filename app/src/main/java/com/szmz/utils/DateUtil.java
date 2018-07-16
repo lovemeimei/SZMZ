@@ -24,6 +24,7 @@ public final class DateUtil {
 
     private static DateUtil instance = null;
     public static final String yyyyMMdd = "yyyy-MM-dd";
+    public static final String yyyyMM = "yyyy-MM";
     public static final String yyyyMMddHHmmss = "yyyy-MM-dd HH:mm:ss";
     public static final String yyyyMMddHHmm = "yyyy-MM-dd HH:mm";
     public static final String yyyyMMddHHmmssNotSplit = "yyyyMMddHHmmss";
@@ -56,6 +57,7 @@ public final class DateUtil {
         formats.put(yyyyMMddTHHmmssWithNoSplit, new SimpleDateFormat(
                 yyyyMMddTHHmmssWithNoSplit));
         formats.put(yyyyMMdd, new SimpleDateFormat(yyyyMMdd));
+        formats.put(yyyyMM, new SimpleDateFormat(yyyyMM));
         formats.put(yyyyMMddHHmmss, new SimpleDateFormat(yyyyMMddHHmmss));
         formats.put(yyyyMMddTHHmmssSSSZ, new SimpleDateFormat(
                 yyyyMMddTHHmmssSSSZ));
@@ -274,9 +276,29 @@ public final class DateUtil {
         return new Timestamp(date.getTime().getTime());
     }
 
+    public static String getCurrentMonth(){
+        return  DateUtil.getInstance().format(new Date(),yyyyMM);
+    }
+
     public static String getCurrentDay() {
 
         return DateUtil.getInstance().format(new Date(), yyyyMMdd);
+
+    }
+
+    public static String getCurrentMothFirstDay(){
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.MONTH, 0);
+        c.set(Calendar.DAY_OF_MONTH,1);//设置为1号,当前日期既为本月第一天
+        return DateUtil.getInstance().format(c.getTime(), yyyyMMdd);
+
+    }
+    public static String getCurrentMothLastDay(){
+
+        //获取当前月最后一天
+        Calendar ca = Calendar.getInstance();
+        ca.set(Calendar.DAY_OF_MONTH, ca.getActualMaximum(Calendar.DAY_OF_MONTH));
+        return DateUtil.getInstance().format(ca.getTime(), yyyyMMdd);
 
     }
 

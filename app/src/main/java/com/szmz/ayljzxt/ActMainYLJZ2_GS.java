@@ -1,4 +1,4 @@
-package com.szmz;
+package com.szmz.ayljzxt;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,21 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.barcode.decoding.Intents;
-import com.orhanobut.logger.Logger;
-import com.szmz.fragment.FragmentHome;
-import com.szmz.fragment.FragmentHome_C;
-import com.szmz.fragment.FragmentJob;
-import com.szmz.fragment.FragmentSearch;
-import com.szmz.fragment.FragmentSearchXX_C;
-import com.szmz.fragment.FragmentSearch_C;
-import com.szmz.fragment.FragmentStatistical;
-import com.szmz.fragment.FragmentUse_C;
-import com.szmz.fragment.FragmentUser;
+import com.szmz.ActBase;
+import com.szmz.ActWebView;
+import com.szmz.R;
+import com.szmz.fragment.FragmentUse_C_Comm;
 import com.szmz.utils.UIUtil;
 
 import java.util.ArrayList;
@@ -38,9 +33,10 @@ import butterknife.BindView;
  * 创建时间：2017/9/5 0005上午 11:38
  */
 
-public class ActMainJZ2 extends ActBase {
+public class ActMainYLJZ2_GS extends ActBase {
 
-
+    @BindView(R.id.layout_title)
+    RelativeLayout titleLayout;
     @BindView(android.R.id.tabcontent)
     FrameLayout tabcontent;
     @BindView(R.id.view_pager)
@@ -51,8 +47,8 @@ public class ActMainJZ2 extends ActBase {
     FragmentTabHost tabhost;
     private List<Fragment> mFragmentList;
     private String mTextArray[] = {"tab1", "tab2", "tab3", "tab4"};
-    private Class[] mClass = {FragmentHome_C.class, FragmentSearchXX_C.class, FragmentSearch_C.class,  FragmentUse_C.class};
-    private Fragment mFragment[] = {new FragmentHome_C(), new FragmentSearchXX_C(), new FragmentSearch_C(), new FragmentUse_C()};
+    private Class[] mClass = {FragmentHomeYL_C2.class, FragmentSearchXXYL_C.class, FragmentSearchYL_C.class,  FragmentUse_C_Comm.class};
+    private Fragment mFragment[] = {new FragmentHomeYL_C2(), new FragmentSearchXXYL_C(), new FragmentSearchYL_C(), new FragmentUse_C_Comm()};
     int[] mDrawable = {R.drawable.slt_main_home_jz, R.drawable.slt_nav_xxcx, R.drawable.slt_main_search_jz, R.drawable.slt_main_user_jz};
     private String[] mTitles = {"首页", "信息查询", "进度查询",  "我的"};
 
@@ -63,6 +59,7 @@ public class ActMainJZ2 extends ActBase {
         setTitle(mTitles[0]);
 
         tvTitleRightScan.setVisibility(View.VISIBLE);
+        titleLayout.setVisibility(View.GONE);
 
         tabhost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
         tabhost.getTabWidget().setDividerDrawable(null);
@@ -106,10 +103,12 @@ public class ActMainJZ2 extends ActBase {
                 if (position==0){
 
                     tvTitleRightScan.setVisibility(View.VISIBLE);
+                    titleLayout.setVisibility(View.GONE);
+
 //                    tvTitleRightScan.setTextSize(getResources().getDimension(R.dimen.font_larger));
                 }else {
-                    tvTitleRightScan.setVisibility(View.GONE
-                    );
+                    tvTitleRightScan.setVisibility(View.GONE);
+                    titleLayout.setVisibility(View.VISIBLE);
 
 
                 }
@@ -142,7 +141,10 @@ public class ActMainJZ2 extends ActBase {
     protected int getLayoutId() {
         return R.layout.activity_main_jz;
     }
-    
+
+
+
+
     private void scan(){
         try{
             Intent intent = new Intent(Intents.Scan.ACTION);
@@ -155,7 +157,7 @@ public class ActMainJZ2 extends ActBase {
         }
     }
 
-    private static final int REQUEST_CAPTURE = 1025;
+    private static final int REQUEST_CAPTURE = 1024;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -163,11 +165,12 @@ public class ActMainJZ2 extends ActBase {
             if (resultCode ==RESULT_OK){
                 String resultStr = data.getStringExtra(Intents.Scan.RESULT);
 
-               if (resultStr.startsWith("http://")){
-                   Intent intent = new Intent(context,ActWebView.class);
-                   intent.putExtra("url",resultStr);
-                   startActivity(intent);
-               }
+
+                if (resultStr.startsWith("http://")){
+                    Intent intent = new Intent(context,ActWebView.class);
+                    intent.putExtra("url",resultStr);
+                    startActivity(intent);
+                }
 
             }
         }

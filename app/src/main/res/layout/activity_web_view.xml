@@ -8,6 +8,7 @@
 
     <include
         android:id="@+id/title"
+        android:visibility="gone"
         layout="@layout/comm_title"/>
     <WebView
         android:id="@+id/webview"

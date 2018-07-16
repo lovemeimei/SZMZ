@@ -31,5 +31,6 @@ public class ActMsgDetail extends ActBase {
        String title= intent.getStringExtra("title");
        String content = intent.getStringExtra("content");
         setTitle(title);
+        tvContent.setText(content);
     }
 }

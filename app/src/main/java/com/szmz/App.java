@@ -183,7 +183,7 @@ public class App extends Application {
         apiProxy = initRetorfit(SystemConst.DEFAULT_SERVER);
         daoConfig = new DbManager.DaoConfig()
                 .setDbName("szmz")//创建数据库的名称
-                .setDbVersion(2)//数据库版本号
+                .setDbVersion(3)//数据库版本号
                 .setDbUpgradeListener(new DbManager.DbUpgradeListener() {
                     @Override
                     public void onUpgrade(DbManager db, int oldVersion, int newVersion) {
@@ -224,6 +224,8 @@ public class App extends Application {
                 .build();
 
         ApiService apiService = retrofit.create(ApiService.class);
+
+
         return apiService;
     }
 

@@ -5,23 +5,33 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.barcode.decoding.Intents;
 import com.materiallistview.MaterialRefreshLayout;
 import com.materiallistview.MaterialRefreshListener;
+import com.orhanobut.logger.Logger;
 import com.szmz.ActMsgDetail;
+import com.szmz.ActWebView;
 import com.szmz.App;
+import com.szmz.entity.ScanCode;
+import com.szmz.entity.User;
 import com.szmz.entity.request.YZS_todoList_Req;
 import com.szmz.entity.response.YZS_todoList_Res;
 import com.szmz.home.ActMsgList;
 import com.szmz.BaseFragment;
 import com.szmz.R;
+import com.szmz.more.ActCodeLogin;
+import com.szmz.more.ActCodeQZ;
 import com.szmz.net.ApiUtil;
 import com.szmz.net.SimpleApiListener;
 import com.szmz.utils.BaseListAdapter;
+import com.szmz.utils.GsonUtil;
 import com.szmz.utils.MyBaseListAdapter;
+import com.szmz.utils.UIUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +40,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import retrofit2.Call;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * 中移全通集成公司 版本所有
  * 创建人： 郄益轩
@@ -37,6 +49,12 @@ import retrofit2.Call;
  */
 
 public class FragmentHomeYL extends BaseFragment {
+
+    @BindView(R.id.tv_name_gs)
+    TextView tvName;
+
+    @BindView(R.id.iv_scan_top)
+    ImageView ivScan;
 
     @BindView(R.id.refresh)
     public MaterialRefreshLayout refresh;
@@ -111,7 +129,7 @@ public class FragmentHomeYL extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_comm_list;
+        return R.layout.fragment_yzs_home_gs;
     }
 
     @Override
@@ -120,6 +138,15 @@ public class FragmentHomeYL extends BaseFragment {
         noDataLayout = (LinearLayout)v.findViewById(R.id.noDataLayout);
         textView = (TextView)v.findViewById(R.id.textView);
 
+        User loginUser = App.getInstance().getLoginUser();
+        tvName.setText(loginUser.getRealName());
+
+        ivScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                scan();
+            }
+        });
     }
 
     @Override
@@ -181,4 +208,52 @@ public class FragmentHomeYL extends BaseFragment {
         return true;
     }
 
+    private void scan(){
+        try{
+            Intent intent = new Intent(Intents.Scan.ACTION);
+            intent.putExtra(Intents.Scan.MODE, "QR_CODE_MODE");
+            intent.putExtra(Intents.Scan.CHARACTER_SET, "GB2312");
+            startActivityForResult(intent, REQUEST_CAPTURE);
+        }catch (Exception e){
+            e.printStackTrace();
+            UIUtil.doToast("打开摄像头失败");
+        }
+    }
+
+    private static final int REQUEST_CAPTURE = 1025;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode==REQUEST_CAPTURE){
+            if (resultCode ==RESULT_OK){
+                String resultStr = data.getStringExtra(Intents.Scan.RESULT);
+
+                if (resultStr.startsWith("http://")){
+                    //证件验证
+                    Intent intent = new Intent(getContext(),ActWebView.class);
+                    intent.putExtra("url",resultStr);
+                    startActivity(intent);
+                }else {
+                    ScanCode code = GsonUtil.deser(resultStr,ScanCode.class);
+                    if (code!=null && code.getAction().equals("login")){
+                        //登录
+                        Intent intent = new Intent(getContext(), ActCodeLogin.class);
+                        intent.putExtra("msg",resultStr);
+                        startActivity(intent);
+                    }else if (code!=null && code.getAction().equals("seal")){
+                        //签章
+                        Intent intent = new Intent(getContext(), ActCodeQZ.class);
+                        intent.putExtra("msg",resultStr);
+                        startActivity(intent);
+                    }
+                }
+
+            }
+        }
+
+        super.onActivityResult(requestCode,resultCode,data);
+
+
+    }
 }

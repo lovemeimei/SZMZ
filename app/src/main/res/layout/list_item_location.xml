@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/spacing_normal">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/black_light"
+        android:textSize="@dimen/font_normal"
+        />
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/black_light"
+        android:textSize="@dimen/font_small"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_light"
+        android:textSize="@dimen/font_normal"
+        android:gravity="center_vertical"
+        android:drawableLeft="@drawable/icon_time"
+        android:drawablePadding="@dimen/spacing_small"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        app:layout_constraintTop_toBottomOf="@+id/tv_time"
+        />
+</android.support.constraint.ConstraintLayout>

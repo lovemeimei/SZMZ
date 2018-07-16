@@ -4,26 +4,34 @@
     android:layout_height="match_parent">
 
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgrounColor"
         android:orientation="vertical">
+        <!--<fragment android:name="com.szmz.fragment.FragmentHomeTop"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"/>-->
+<include layout="@layout/fragment_home_top"/>
 
         <RelativeLayout
             android:id="@+id/ll_dbywtz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:background="@drawable/slt_list_item"
             android:orientation="horizontal"
             android:padding="@dimen/spacing_small">
 
             <ImageView
                 android:id="@+id/iv_dbywtz"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/home_icon_dbtz" />
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:src="@drawable/icon_home_dbywtz" />
 
             <TextView
                 android:id="@+id/tv_dbywtz"
@@ -51,28 +59,33 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/arrow_right" />
+                android:src="@drawable/arrow_right"
+                android:visibility="gone"
+                />
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
+            android:visibility="gone"
             android:background="@color/gray" />
 
         <RelativeLayout
             android:id="@+id/ll_spyj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:background="@drawable/slt_list_item"
             android:orientation="horizontal"
             android:padding="@dimen/spacing_small">
 
             <ImageView
                 android:id="@+id/iv_spyj"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/home_icon_spyj" />
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:src="@drawable/home_02" />
 
             <TextView
                 android:id="@+id/tv_spyj"
@@ -100,12 +113,15 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/arrow_right" />
+                android:src="@drawable/arrow_right"
+                android:visibility="gone"
+                />
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
+            android:visibility="gone"
             android:background="@color/gray" />
 
         <RelativeLayout
@@ -113,15 +129,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/slt_list_item"
+            android:layout_marginTop="@dimen/spacing_normal"
             android:orientation="horizontal"
             android:padding="@dimen/spacing_small">
 
             <ImageView
                 android:id="@+id/iv_fcsx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/home_icon_fctt" />
+                android:layout_marginLeft="@dimen/spacing_normal"
+                android:src="@drawable/home_03" />
 
             <TextView
                 android:id="@+id/tv_fcsx"
@@ -149,13 +167,17 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/arrow_right" />
+                android:src="@drawable/arrow_right"
+                android:visibility="gone"
+                />
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/gray" />
+            android:background="@color/gray"
+            android:visibility="gone"
+            />
     </LinearLayout>
 
 </FrameLayout>

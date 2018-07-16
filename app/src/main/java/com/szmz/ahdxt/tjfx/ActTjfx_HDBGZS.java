@@ -43,6 +43,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -97,8 +98,10 @@ public class ActTjfx_HDBGZS extends ActBase {
         setRightShow("搜索");
         setTitle("核对报告总数");
         initBarChart();
-        tvEndTime.setText(DateUtil.getCurrentDay());
-        tvStartTime.setText(DateUtil.getDayBeforeMonth(1));
+
+
+        tvEndTime.setText(DateUtil.getCurrentMothLastDay());
+        tvStartTime.setText(DateUtil.getCurrentMothFirstDay());
         getXzqhData(App.getInstance().getLoginUser().getAccountHD(), "");
 
 
@@ -120,6 +123,7 @@ public class ActTjfx_HDBGZS extends ActBase {
     private void initBarChart() {
         mTfRegular = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
         mTfLight = Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf");
+        mChart.setNoDataText("暂无数据");
 
         mChart.getDescription().setEnabled(false);
         mChart.setPinchZoom(false);
@@ -233,7 +237,7 @@ public class ActTjfx_HDBGZS extends ActBase {
                 BarEntry entry = new BarEntry(i,getValueByCity(items, citys.get(i),types.get(0)));
                 entries.add(entry);
             }
-            BarDataSet dataSet = new BarDataSet(entries, "共享单位");
+            BarDataSet dataSet = new BarDataSet(entries, "城乡低保");
             dataSet.setColor(PIE_COLORS[2]);
 
             dataSet.setValueFormatter(new IValueFormatter() {

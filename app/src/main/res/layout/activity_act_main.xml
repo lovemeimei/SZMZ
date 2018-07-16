@@ -37,7 +37,7 @@
         android:layout_below="@+id/iv_user"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/spacing_small"
-        android:text="新疆救助信息平台"
+        android:text="社会救助信息平台"
         android:textColor="@color/white"
         android:textSize="@dimen/font_large" />
 

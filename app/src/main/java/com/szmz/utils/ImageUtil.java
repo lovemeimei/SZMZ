@@ -19,6 +19,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.text.TextUtils;
@@ -31,6 +32,7 @@ import com.szmz.App;
 import com.szmz.SystemEnv;
 
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileDescriptor;
@@ -379,6 +381,11 @@ public final class ImageUtil {
     private static int MAX_IMAGE_DIMENSION = 1280;
     private static final String TAG = "ImageUtil";
 
+    /**
+     * 像素压缩
+     * @param fileName
+     * @return
+     */
     public static Bitmap getImage(String fileName) {
 
         FileInputStream stream = null;
@@ -455,6 +462,24 @@ public final class ImageUtil {
 
     }
 
+    //质量压缩
+    public static Bitmap mCompressImage(Bitmap image){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        int options = 80;
+        while ((baos.toByteArray().length / 1024) > 500) {	//循环判断如果压缩后图片是否大于500kb,大于继续压缩
+            baos.reset();
+            image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options%，把压缩后的数据存放到baos中
+            Log.i("ImageUtil2s", "baos.toByteArray().length / 1024=" + (baos.toByteArray().length / 1024));
+            Log.i("ImageUtil2s", "options=" + options);
+            options -= 10;
+        }
+        Log.i("ImageUtil2s", "final1024=" + (baos.toByteArray().length / 1024));
+        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());//把压缩后的数据baos存放到ByteArrayInputStream中
+        return BitmapFactory.decodeStream(isBm, null, null);
+    }
+
+
     public static Bitmap getImage(String fileName, int maxWidth, int maxHeight) {
 
         try {
@@ -477,6 +502,75 @@ public final class ImageUtil {
             return null;
         }
 
+    }
+
+     /* 旋转图片
+     * @param angle
+     * @param bitmap
+     * @return Bitmap
+     */
+    public static Bitmap rotaingImageView(int angle , Bitmap bitmap) {
+        //旋转图片 动作
+        Matrix matrix = new Matrix();;
+        matrix.postRotate(angle);
+        System.out.println("angle2=" + angle);
+        // 创建新的图片
+        Bitmap resizedBitmap = Bitmap.createBitmap(bitmap, 0, 0,
+                bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        return resizedBitmap;
+    }
+
+    /**
+     * 读取图片属性：旋转的角度
+     * @param path 图片绝对路径
+     * @return degree旋转的角度
+     */
+    public static int readPictureDegree(String path) {
+        int degree  = 0;
+        try {
+            ExifInterface exifInterface = new ExifInterface(path);
+            int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            switch (orientation) {
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    degree = 90;
+                    break;
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    degree = 180;
+                    break;
+                case ExifInterface.ORIENTATION_ROTATE_270:
+                    degree = 270;
+                    break;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return degree;
+    }
+
+    /**
+     * 图片水印
+     */
+    public static Bitmap waterMark(Bitmap src, Bitmap watermark) {
+        if (src == null) {
+            return null;
+        }
+        int width = src.getWidth();
+        int height = src.getHeight();
+        int startx = (int)(width - watermark.getWidth())/2;
+        int starY = (int)(height-watermark.getHeight())/2;
+        //创建一个bitmap
+        Bitmap newb = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);// 创建一个新的和SRC长度宽度一样的位图
+        //将该图片作为画布
+        Canvas canvas = new Canvas(newb);
+        //在画布 0，0坐标上开始绘制原始图片
+        canvas.drawBitmap(src, 0, 0, null);
+        //在画布上绘制水印图片
+        canvas.drawBitmap(watermark, startx, starY, null);
+        // 保存
+        canvas.save(Canvas.ALL_SAVE_FLAG);
+        // 存储
+        canvas.restore();
+        return newb;
     }
 
     public static Drawable getImage(String fileName, int maxWidth,
@@ -676,6 +770,7 @@ public final class ImageUtil {
 
     }
 
+
     public static final int CAPTUR_FROM_CAMERA = 99;
     protected static final int REQUEST_CODE_CROPIMAGE = 999;
 
@@ -756,29 +851,6 @@ public final class ImageUtil {
         return bitmap;
     }
 
-    /**
-     * 图片去色,返回灰度图片 2013-3-14王磊杰(暂用)
-     *
-     * @param bmpOriginal
-     *            传入的图片
-     * @return 去色后的图片
-     */
-    // public static Bitmap toGrayscale(Bitmap bmpOriginal) {
-    // int width, height;
-    // height = bmpOriginal.getHeight();
-    // width = bmpOriginal.getWidth();
-    //
-    // Bitmap bmpGrayscale = Bitmap.createBitmap(width, height,
-    // Bitmap.Config.RGB_565);
-    // Canvas c = new Canvas(bmpGrayscale);
-    // Paint paint = new Paint();
-    // ColorMatrix cm = new ColorMatrix();
-    // cm.setSaturation(0);
-    // ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
-    // paint.setColorFilter(f);
-    // c.drawBitmap(bmpOriginal, 0, 0, paint);
-    // return bmpGrayscale;
-    // }
 
     /**
      * Dip to Px
@@ -805,7 +877,7 @@ public final class ImageUtil {
     }
 
     /**
-     * 矩形2圆形 2013-3-26 王磊杰
+     * 矩形2圆形
      *
      * @param bitmap
      * @return
@@ -858,8 +930,6 @@ public final class ImageUtil {
     }
 
     /**
-     * Uri2Bitmap 2013-3-29 王磊杰
-     *
      * @param uri
      * @return
      */
@@ -887,8 +957,6 @@ public final class ImageUtil {
     }
 
     /**
-     * 郄益轩3月27号
-     *
      * @param oPath
      * @return
      */

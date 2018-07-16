@@ -27,7 +27,7 @@
 
 
             <ListView
-                android:id="@+id/lv"
+                android:id="@+id/listView"
                 style="@style/listStyle"
                 android:layout_weight="1.0" />
 

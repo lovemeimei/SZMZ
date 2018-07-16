@@ -24,6 +24,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IFillFormatter;
 import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
@@ -88,6 +89,7 @@ public class ActTJ_YEQS extends ActBase {
         setTitle("核对业务趋势");
         setRightVisible(true);
         setRightShow("搜索");
+
         initBarChart();
         getInfo();
         tvTitleRight.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +106,7 @@ public class ActTJ_YEQS extends ActBase {
     }
 
     private void initBarChart() {
+        mChart.setNoDataText("暂无数据");
 
         //设置绘制顺序，让线在柱的上层
         mChart.setDrawOrder(new CombinedChart.DrawOrder[]{
@@ -116,8 +119,6 @@ public class ActTJ_YEQS extends ActBase {
         mChart.setPinchZoom(false);
         mChart.setDrawBarShadow(false);
         mChart.setHorizontalScrollBarEnabled(true);
-//        mChart.setHorizontalFadingEdgeEnabled(true);
-//        mChart.setVerticalScrollBarEnabled(false);
         mChart.setScaleEnabled(true);
         mChart.setDrawGridBackground(false);
         mChart.setTouchEnabled(true);
@@ -125,9 +126,9 @@ public class ActTJ_YEQS extends ActBase {
         mChart.animateX(1500);
         mChart.setExtraBottomOffset(20f);
 
-        Matrix m=new Matrix();
-        m.postScale(1.2f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
-        mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
+//        Matrix m=new Matrix();
+//        m.postScale(1.2f, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
+//        mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
         mChart.animateX(1000); // 立即执行的动画,x轴
 
 
@@ -144,25 +145,25 @@ public class ActTJ_YEQS extends ActBase {
 
         XAxis xAxis = mChart.getXAxis();
         xAxis.setTypeface(mTfLight);
-//        xAxis.setGranularity(1f);
         xAxis.setTextSize(10f);
         xAxis.setDrawGridLines(false);
-//        xAxis.setAxisMaximum(6);
+        mChart.getXAxis().setAxisMinimum(-0.5f);
+//        xAxis.setLabelRotationAngle(30);
+//        xAxis.setCenterAxisLabels(false);
+
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawLabels(true);
-//        if (times.size()>3){
-//            xAxis.setAxisMaximum(times.size());
-//            xAxis.setLabelCount(times.size());//设置标签显示的个数
-//        }else {
-//            xAxis.setAxisMaximum(4);
-//            xAxis.setLabelCount(4);//设置标签显示的个数
-//        }
+
+        xAxis.setLabelCount(6);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
 
-                if (value > 0 && value < times.size())
-                    return times.get((int) value);
+                if (value==(int)value){
+                    if (value >= 0 && value < times.size())
+                        return times.get((int) value);
+                }
+
                 return "";
             }
         });
@@ -171,15 +172,17 @@ public class ActTJ_YEQS extends ActBase {
         leftAxis.setTypeface(mTfLight);
         leftAxis.setDrawGridLines(false);
         leftAxis.setSpaceTop(35f);
+
         leftAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
+
                 if (value==(int)value)
                     return (int)value+"";
+
                 return "";
             }
         });
-//        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
         mChart.getAxisRight().setEnabled(false);
     }
@@ -215,8 +218,7 @@ public class ActTJ_YEQS extends ActBase {
         float groupSpace = 0.1f;
         float barSpace = 0.05f; // x3 DataSet
         float barWidth = 0.25f; // x3 DataSet
-        barWidth = (float) (0.9f - 0.05);
-        // (0.25 + 0.05) * 3 + 0.1 = 1.00 -> interval per "group"
+        barWidth = (float) (0.9f - 0.15);
 
         BarData data = new BarData();
         ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
@@ -224,13 +226,28 @@ public class ActTJ_YEQS extends ActBase {
 
         for (int j = 0; j < times.size(); j++) {
             yVals.add(new BarEntry(j, getValueByCity(items, times.get(j))));
-            lineValues.add(new Entry(j,getValueLine(items,times.get(j))));
+
+            Entry entry =new Entry(j,getValueLine(items,times.get(j)));
+            lineValues.add(entry);
         }
 
 
         LineDataSet lineDataSet = new LineDataSet(lineValues,"趋势");
         lineDataSet.setColor(PIE_COLORS[4]);
         LineData lineData = new LineData(lineDataSet);
+//        lineData.setDrawValues(false);
+        lineData.setValueFormatter(new IValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+
+
+                if (value==0){
+                    return "";
+                }
+                return value+"";
+            }
+        });
+
 
         BarDataSet barDataSet = new BarDataSet(yVals, "总数");
         barDataSet.setColor(PIE_COLORS[3]);
@@ -243,6 +260,9 @@ public class ActTJ_YEQS extends ActBase {
             public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
 
                 int mvalue = (int)value;
+                if (mvalue==0){
+                    return "";
+                }
                 return mvalue+"";
             }
         });
@@ -254,32 +274,23 @@ public class ActTJ_YEQS extends ActBase {
         mChart.setData(combinedData);
 
 
-
         mChart.getBarData().setBarWidth(barWidth);
 
-        setmChartWidth(times.size(),1.0f);
+//        setmChartWidth(times.size(),1.0f);
+
 
         mChart.invalidate();
 
     }
 
     private void setmChartWidth(int size,float xs){
-        if (size<5){
-            mChart.getXAxis().setAxisMaximum(4);
 
-        }else if (size<10){
-            Matrix m=new Matrix();
-            m.postScale(1.5f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
-            mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
-            mChart.animateX(1000); // 立即执行的动画,x轴
-
-        }else {
             Matrix m=new Matrix();
             m.postScale(2.1f*xs, 1f);//两个参数分别是x,y轴的缩放比例。例如：将x轴的数据放大为之前的1.5倍
             mChart.getViewPortHandler().refresh(m, mChart, false);//将图表动画显示之前进行缩放
             mChart.animateX(1000); // 立即执行的动画,x轴
 
-        }
+
     }
 
 
@@ -307,9 +318,10 @@ public class ActTJ_YEQS extends ActBase {
         String sqtime = tvXZQH.getText().toString();
 
         if (TextUtils.isEmpty(sqtime)){
-            Calendar cal = Calendar.getInstance();
 
-            sqtime = cal.get(Calendar.YEAR)+"-"+ (cal.get(Calendar.MONTH)+1);
+            sqtime = DateUtil.getCurrentMonth();
+            tvXZQH.setText(sqtime);
+
         }
 
         //sysadmin 510401

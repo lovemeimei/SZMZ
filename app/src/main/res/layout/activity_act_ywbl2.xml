@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/backgrounColor"
+    tools:context="com.szmz.ywbl.ActYwbl">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/xzLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="1dp">
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/dchsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1.0"
+                    app:imgSrcV="@drawable/icon_rhdc2"
+                    app:tvContentV="调查核实" />
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/layout_jzfx"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1.0"
+                    app:imgSrcV="@drawable/icon_jzfx"
+                    app:tvContentV="救助发现" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="1dp">
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/dbpc_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1.0"
+
+                    app:imgSrcV="@drawable/icon_dbpc2"
+                    app:tvContentV="低保评测" />
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/mzpyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1.0"
+
+                    app:imgSrcV="@drawable/icon_mzpy"
+                    app:tvContentV="民主评议" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="1dp">
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/shgsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1.0"
+
+                    app:imgSrcV="@drawable/icon_spgs2"
+                    app:tvContentV="审核公示" />
+
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/dzdaLayout1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1.0"
+
+                    app:imgSrcV="@drawable/icon_lsda"
+                    app:tvContentV="电子档案">
+
+
+                </com.szmz.widget.MyImageViewV>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="1dp"
+                android:weightSum="2.0">
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/lxsjhiLayout1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1.0"
+
+                    app:imgSrcV="@drawable/icon_lxsj2"
+                    app:tvContentV="离线数据" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/qxLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="1dp">
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/rhccLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    
+                    android:layout_weight="1.0"
+                    app:imgSrcV="@drawable/icon_rhdc2"
+                    app:tvContentV="入户抽查" />
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/spgshiLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    
+                    android:layout_weight="1.0"
+                    
+                    app:imgSrcV="@drawable/icon_spgs2"
+                    app:tvContentV="审批公示" />
+
+
+
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="1dp">
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/dbpc_layout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    
+                    android:layout_weight="1.0"
+                    
+                    app:imgSrcV="@drawable/icon_dbpc2"
+                    app:tvContentV="低保评测" />
+
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/dzdaLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    
+                    android:layout_weight="1.0"
+                    app:imgSrcV="@drawable/icon_lsda"
+                    app:tvContentV="电子档案"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:weightSum="2.0"
+                android:paddingTop="1dp">
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/lxsjhiLayout2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    
+                    android:layout_weight="1.0"
+                    app:imgSrcV="@drawable/icon_lxsj2"
+                    app:tvContentV="离线数据"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/qtLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2.0"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="1dp">
+
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/dzdaLayout3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    
+                    android:layout_weight="1.0"
+                    
+                    app:imgSrcV="@drawable/icon_lsda"
+                    app:tvContentV="电子档案"/>
+
+                <com.szmz.widget.MyImageViewV
+                    android:id="@+id/lxsjhiLayout3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    
+                    android:layout_weight="1.0"
+                    app:imgSrcV="@drawable/icon_lxsj2"
+                    app:tvContentV="离线数据"
+                    android:visibility="invisible" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+</FrameLayout>
