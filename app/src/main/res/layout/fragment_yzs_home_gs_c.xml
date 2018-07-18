@@ -4,6 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/fragment_home_top_c_yzs"/>
+    <include layout="@layout/fragment_home_top_c_yzs" android:visibility="gone"/>
     <include layout="@layout/fragment_comm_list"/>
 </LinearLayout>

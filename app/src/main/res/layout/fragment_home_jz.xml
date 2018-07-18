@@ -14,7 +14,7 @@
         <!--<fragment android:name="com.szmz.fragment.FragmentHomeTop"-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="wrap_content"/>-->
-<include layout="@layout/fragment_home_top"/>
+<include layout="@layout/fragment_home_top" android:visibility="gone"/>
 
         <RelativeLayout
             android:id="@+id/ll_dbywtz"

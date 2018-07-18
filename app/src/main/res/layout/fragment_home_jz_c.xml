@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <include layout="@layout/fragment_home_top_c"/>
+
+        <include layout="@layout/fragment_home_top_c" android:visibility="gone"/>
 
         <RelativeLayout
             android:id="@+id/ll_SPJD"

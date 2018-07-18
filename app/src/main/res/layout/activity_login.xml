@@ -41,7 +41,7 @@
             android:layout_height="120dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/spacing_huge"
-            android:src="@drawable/login_logo3" />
+            android:src="@drawable/login_logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
