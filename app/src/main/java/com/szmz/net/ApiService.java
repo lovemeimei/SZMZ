@@ -422,124 +422,124 @@ public interface ApiService {
 
     /**************************核对系统*********************************/
     //字典业务类型
-    @POST("XJApp/worker/getDict.do?getDictList")
+    @POST("appCheck/worker/getDict.do?getDictList")
     Call<HD_dict> getDictYWLX(@Body RequestBody body);
 
     //我的待办
-    @POST("XJApp/worker/todo.do?getBatchList")
+    @POST("appCheck/worker/todo.do?getBatchList")
     Call<HD_SearchDB_RES> getDBlist3(@Body RequestBody body);
 
     //我的已办
-    @POST("XJApp/worker/done.do?getBatchList")
+    @POST("appCheck/worker/done.do?getBatchList")
     Call<HD_SearchDB_RES> getYBlist(@Body RequestBody body);
 
     //我的退回
-    @POST("XJApp/worker/back.do?getBatchList")
+    @POST("appCheck/worker/back.do?getBatchList")
     Call<HD_SearchDB_RES> getTHlist(@Body RequestBody body);
 
     //终止退回
-    @POST("XJApp/worker/endBack.do?getBatchList")
+    @POST("appCheck/worker/endBack.do?getBatchList")
     Call<HD_SearchDB_RES> getZZTHlist(@Body RequestBody body);
 
     //监管 报告打印监管
-    @POST("XJApp/worker/print.do?getReportPrintList")
+    @POST("appCheck/worker/print.do?getReportPrintList")
     Call<HD_JG_BGDY_RES> getJG_BGDYlist(@Body RequestBody body);
 
     //	查询业务办理监管主页信息
-    @POST("XJApp/worker/bussiness.do?getBussinessBatchList")
+    @POST("appCheck/worker/bussiness.do?getBussinessBatchList")
     Call<HD_JG_YWBL1> getJG_ywblList1(@Body RequestBody body);
 
     //查询批次对应申请信息
-    @POST("XJApp/worker/applyBussiness.do?getApplyBussinessList")
+    @POST("appCheck/worker/applyBussiness.do?getApplyBussinessList")
     Call<HD_JG_YWBL2> getJG_ywblList2(@Body RequestBody body);
 
 
     //申请人-个人查询-进度查看
-    @POST("XJApp/person/applyProgress.do?getApplyProgressList")
+    @POST("appCheck/person/applyProgress.do?getApplyProgressList")
     Call<HD_SQR_GRCX_JDCK_RES> getApplyProgressList(@Body RequestBody body);
 
 
     //申请人-个人查询-申请信息查看
-    @POST("XJApp/person/applyInfo.do?getApplyInfoList")
+    @POST("appCheck/person/applyInfo.do?getApplyInfoList")
     Call<HD_SQR_GRCX_JDCK_RES> getApplyInfoList(@Body RequestBody body);
 
     //申请人-个人查询-申请信息查看-附件下载
-    @POST("XJApp/person/downEnclosure.do?downEnclosure")
+    @POST("appCheck/person/downEnclosure.do?downEnclosure")
     Call<HD_SQR_GRCX_JDCK_RES> getDownEnclosureInfo(@Body RequestBody body);
 
     //申请人-个人查询-申请信息查看-报告下载
-    @POST("XJApp/person/downReport.do?downReport")
+    @POST("appCheck/person/downReport.do?downReport")
     Call<HD_SQR_GRCX_JDCK_RES> getDownReport(@Body RequestBody body);
 
     //申请人-核对政策-核对政策
-    @POST("XJApp/person/applyCheckPolityMaterial.do?getPolityMaterial")
+    @POST("appCheck/person/applyCheckPolityMaterial.do?getPolityMaterial")
     Call<HD_hdzc> getHDZCList(@Body RequestBody body);
 
     //申请人-消息通知-申请状态
-    @POST("XJApp/person/applyStateTip.do?getApplyStateTipList")
+    @POST("appCheck/person/applyStateTip.do?getApplyStateTipList")
     Call<HD_XXTZ> getXXTZList1(@Body RequestBody body);
 
     //申请人-消息通知-报告明细
-    @POST("XJApp/person/applyReportTip.do?getApplyReportTipList")
+    @POST("appCheck/person/applyReportTip.do?getApplyReportTipList")
     Call<HD_XXTZ> getXXTZList2(@Body RequestBody body);
 
 
     //监管查询异常
-    @POST("XJApp/worker/operation.do?getOperationList")
+    @POST("appCheck/worker/operation.do?getOperationList")
     Call<HD_JG_YCCL> getJG_ycclList(@Body RequestBody body);
 
     //监管敏感人员
-    @POST("XJApp/worker/sensitive.do?getSensitiveBatchList")
+    @POST("appCheck/worker/sensitive.do?getSensitiveBatchList")
     Call<HD_JG_MGRY> getJG_MGRY_List(@Body RequestBody body);
 
-    @POST("XJApp/worker/sensitiveApply.do?getSensitiveApplyList")
+    @POST("appCheck/worker/sensitiveApply.do?getSensitiveApplyList")
     Call<HD_JG_MGRY2> getJG_MGRY_List2(@Body RequestBody body);
 
-    @POST("XJApp/worker/senitiveAudit.do?auditApply")
+    @POST("appCheck/worker/senitiveAudit.do?auditApply")
     Call<CommResponse> getJG_MGRY_SH(@Body RequestBody body);
 
     //统计分析
-    @POST("XJApp/worker/checkApply.do?getApplyStatistics")
+    @POST("appCheck/worker/checkApply.do?getApplyStatistics")
     Call<HD_TJ_HDDX> getTJ_HDDX(@Body RequestBody body);
 
-    @POST("XJApp/worker/checkReport.do?getReportStatistics")
+    @POST("appCheck/worker/checkReport.do?getReportStatistics")
     Call<HD_TJ_HDDX> getTJ_HDbgzs(@Body RequestBody body);
 
-    @POST("XJApp/worker/bussinessTrends.do?getBussinessTrendsStatistics")
+    @POST("appCheck/worker/bussinessTrends.do?getBussinessTrendsStatistics")
     Call<HD_TJ_YWQS> getTJ_HDywqs(@Body RequestBody body);
 
-    @POST("XJApp/worker/areaPersonTime.do?getAreaPersonStatistics")
+    @POST("appCheck/worker/areaPersonTime.do?getAreaPersonStatistics")
     Call<HD_TJ_QYRC> getTJ_HDqyrc(@Body RequestBody body);
 
-    @POST("XJApp/worker/sharedUnits.do?getSharedUnitsStatistics")
+    @POST("appCheck/worker/sharedUnits.do?getSharedUnitsStatistics")
     Call<HD_TJ_GX> getTJ_HDgx(@Body RequestBody body);
 
     //核对资料
-    @POST("XJApp/worker/checkPolicyMaterial.do?getPolicyMaterialList")
+    @POST("appCheck/worker/checkPolicyMaterial.do?getPolicyMaterialList")
     Call<HD_hdzc> getHDZL1(@Body RequestBody body);
 
-    @POST("XJApp/worker/confidentialMaterial.do?getConfidentialMaterial")
+    @POST("appCheck/worker/confidentialMaterial.do?getConfidentialMaterial")
     Call<HD_hdzc> getHDZL2(@Body RequestBody body);
 
 
-    @POST("XJApp/worker/checkBussinessMaterial.do?getBussinessMaterial")
+    @POST("appCheck/worker/checkBussinessMaterial.do?getBussinessMaterial")
     Call<HD_hdzc> getHDZL3(@Body RequestBody body);
 
     //消息通知
-    @POST("XJApp/worker/todoTip.do?getTodoTipList")
+    @POST("appCheck/worker/todoTip.do?getTodoTipList")
     Call<HD_XXTZ> getHD_XXTZ1(@Body RequestBody body);
 
-    @POST("XJApp/worker/reCheckTip.do?getRecheckTipList")
+    @POST("appCheck/worker/reCheckTip.do?getRecheckTipList")
     Call<HD_XXTZ> getHD_XXTZ2(@Body RequestBody body);
 
-    @POST("XJApp/worker/timeoutTip.do?getTimeoutTipList")
+    @POST("appCheck/worker/timeoutTip.do?getTimeoutTipList")
     Call<HD_XXTZ> getHD_XXTZ3(@Body RequestBody body);
 
-    @POST("XJApp/worker/sensitiveTip.do?getSensitiveTipList")
+    @POST("appCheck/worker/sensitiveTip.do?getSensitiveTipList")
     Call<HD_XXTZ> getHD_XXTZ4(@Body RequestBody body);
 
     //行政区划
-    @POST("XJApp/worker/getOrgArea.do?getOrgArea")
+    @POST("appCheck/worker/getOrgArea.do?getOrgArea")
     Call<HD_XZQH_Response> getHD_XZQHList(@Body RequestBody body);
 
 
