@@ -1,0 +1,156 @@
+@charset "UTF-8";
+html .page{
+    background:#f7f7f7;
+}
+.title{
+    color:#fff;
+}
+.bar .button-link{
+    color:#fff;
+}
+.wrapper{
+    margin:1rem 0.5rem 0 0.5rem;
+    padding:0.8rem 0.5rem;
+    min-height:3rem;
+    font-size:0;
+    vertical-align:top;
+    background:#fff;
+    border-bottom: solid 1px #e0e0e0;
+}
+.location-time{
+    color:#898989;
+    font-size:0.7rem;
+}
+.icons{
+    display:inline-block;
+    width:10%;
+}
+.fonts{
+    display:inline-block;
+    width:80%;
+    height:2rem;
+    font-size:0.75rem;
+    line-height:2rem;
+    vertical-align:top;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+.icon-rights{
+    margin:0.5rem 0;
+    display:inline-block;
+    width:10%;
+    text-align:right;
+    font-size:0.7rem;
+    vertical-align:top;
+}
+.renovate{
+    margin-top:0.2rem;
+    width:4.2rem;
+    height:1.4rem;
+    font-size:0.6rem;
+    color:#fff;
+    background:#b0c3ed;
+    border-radius:500px;
+    text-align:center;
+    line-height:1.4rem;
+}
+.icon-refresh{
+    margin-top:-0.2rem;
+}
+.icons img{
+    margin:0.5rem 0.3rem;
+    height:1rem;
+    width:auto;
+}
+.wrappers{
+    margin:1rem 0;
+    padding:0rem 0.5rem;
+    width:100%;
+    min-height:2rem;
+    font-size:0;
+    vertical-align:top;
+    background:#fff;
+    border-bottom: solid 1px #e0e0e0;
+}
+.imgs{
+    margin:0.5rem 0;
+    min-height:2.5rem;
+    width:100%;
+}
+.imgs img{
+    margin-right:0.5rem;
+    height:2.5rem;
+    width:2.5rem;
+}
+a.input {
+    width:70px;
+    height:30px;
+    font-size:0.7rem;
+    line-height:30px;
+    display:inline-block;/*具有行内元素的视觉，块级元素的属性 宽高*/
+    overflow:hidden;/*去掉的话，输入框也可以点击*/
+    position:relative;/*相对定位，为 #file 的绝对定位准备*/
+    top:10px;
+    border-radius:4px;
+}
+a{
+    margin-top:-0.2rem;
+    text-decoration:none;
+    vertical-align:top;
+    color:#3d4145;
+}
+#file,#files {
+    opacity:0;/*设置此控件透明度为零，即完全透明*/
+    filter:alpha(opacity=0);/*设置此控件透明度为零，即完全透明针对IE*/
+    font-size:100px;
+    position:absolute;/*绝对定位，相对于 .input */
+    top:0;
+    right:0;
+}
+a.inputs {
+    width:2.5rem;
+    height:2.5rem;
+    font-size:0.7rem;
+    line-height:30px;
+    display:inline-block;/*具有行内元素的视觉，块级元素的属性 宽高*/
+    overflow:hidden;/*去掉的话，输入框也可以点击*/
+    position:relative;/*相对定位，为 #file 的绝对定位准备*/
+    top:5px;
+    border-radius:4px;
+}
+a.inputs img{
+    width:2.5rem;
+    height:auto;
+}
+.btn-row{
+    overflow:hidden;
+    margin:2rem auto;
+    width:10rem;
+}
+.btns{
+    width:4rem;
+    height:1.35rem;
+    text-align:center;
+    line-height:1.35rem;
+    background:#319edf;
+    color:#fff;
+    border-radius:5px;
+}
+.helpFindlist{margin:0;}
+.helpFindlist .listWrap .item{border-bottom: 1px solid #b4b4b4;}
+.helpFindlist .item-title{font-size: 0.7rem;text-align: right;}
+.helpFindlist .item-after{font-size: 0.7rem;text-align:left;}
+.helpFindlist .item-after.processed-failed{color: #ff7766;}
+.helpFindlist .item-after.processed-success{color: #009999;}
+.cardDetaillist{padding:0.5rem;}
+.cardDetaillist .item{background-color:#fff;}
+.cardDetaillist .item,.cardDetaillist .picture-content-inner{display:-webkit-box!important;display:-moz-box!important;display:-ms-flexbox!important;display:-webkit-flex!important;display:flex!important;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-moz-box-orient:horizontal;-moz-box-direction:normal;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row}
+.cardDetaillist .item-name{color:inherit;height:2rem;line-height:2rem;font-size:0.7rem;-webkit-box-flex:5!important;-moz-box-flex:5!important;-webkit-flex:5!important;-ms-flex:5!important;flex:5!important;padding-left:0.25rem;}
+.cardDetaillist .cnt-wrap{height:2rem;line-height:2rem;-webkit-box-flex:8!important;-moz-box-flex:8!important;-webkit-flex:8!important;-ms-flex:8!important;flex:8!important;font-size:0.7rem}
+.cardDetaillist .cnt-wrap .cnt-txt{display:block;width:100%;height:2rem;line-height:2rem;padding-right:0.8rem;color:#000;font-size:.7rem;border-radius:.066667rem;text-align:right;}
+.cardDetaillist .picture-header,.cardDetaillist .textarea-header{height:2rem;line-height:2rem;font-size:0.7rem}
+.cardDetaillist .picture-content-inner .picture-left,.cardDetaillist .picture-content-inner .picture-right{-webkit-box-flex:1!important;-moz-box-flex:1!important;-webkit-flex:1!important;-ms-flex:1!important;flex:1!important;}
+.cardDetaillist .picture-content-inner .picture-left{padding-right:0.5rem;}
+.cardDetaillist .picture-content-inner .picture-right{padding-left:0.5rem;}
+.picture-content-inner .img{width: 100%;}

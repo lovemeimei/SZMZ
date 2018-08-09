@@ -1,0 +1,162 @@
+@charset "UTF-8";
+html .page {
+    background: #f7f7f7;
+}
+
+.title {
+    color: #fff;
+}
+
+.bar .button-link {
+    color: #fff;
+}
+
+.content {
+    /*padding:0.5rem;*/
+}
+
+.msg {
+    padding: 0.2rem .5rem;
+    padding-right: 0;
+    width: 100%;
+    font-size: 0;
+    background: #fff;
+    border-bottom: 1px solid #c9c9c9;
+}
+
+.msg-left {
+    display: inline-block;
+    padding: 0 0.5rem;
+    width: 14%;
+    height: 100%;
+    font-size: 0.85rem;
+    border-right: 1px dashed #e0e0e0;
+}
+
+.msg-left img {
+    width: 1rem;
+    height: auto;
+}
+
+.msg-right {
+    display: inline-block;
+    width: 86%;
+}
+
+.msg-row {
+    margin: 0.65rem 0;
+    width: 100%;
+    font-size: 0;
+}
+
+.msg-row-left {
+    display: inline-block;
+    width: 25%;
+    height: 1rem;
+    font-size: 0.75rem;
+    text-align: right;
+}
+
+.msg-row-right {
+    padding-left: 0.8rem;
+    display: inline-block;
+    width: 75%;
+    height: 1rem;
+    color: #999;
+    font-size: 0.75rem;
+}
+
+.evaluation {
+    overflow:hidden;
+    margin: 0.5rem 0 0.35rem;
+}
+
+.item {
+    display:block;
+    margin-bottom: 0.5rem;
+    padding: 0.55rem .4rem 0 1rem;
+    width: 100%;
+    height: 2.5rem;
+    line-height: 1.5rem;
+    font-size: 0;
+    color: #666;
+    background: #fff;
+    border-bottom: 1px solid #c9c9c9;
+}
+
+.item-left {
+    width: 78%;
+    display: inline-block;
+    font-size: 0.75rem;
+    color:#999;
+}
+
+.item-right {
+    width: 22%;
+    display: inline-block;
+    font-size: 0.75rem;
+}
+
+.eval {
+    display: block;
+    width: 100%;
+    height: 1.2rem;
+    font-size: 0.65rem;
+    text-align: center;
+    color: #666;
+    line-height: 1.3rem;
+    background: #fbebec;
+    border-radius: 2px;
+}
+.eval.totalEval{
+    color: #ff7766;
+}
+
+.score {
+    margin: 1rem auto;
+    width: 7.5rem;
+    height: 1.5rem;
+    text-align: center;
+    color: #d83538;
+    line-height: 1.5rem;
+    font-size: 0.7rem;
+    background: #fbebec;
+    border-radius: 500px;
+    border: 2px solid #d83538;
+}
+
+.evaluation-income .item-header {
+    overflow:hidden;
+    color: #666;
+    font-size: 0.75rem;
+}
+
+.hs{
+    border-bottom: 1px solid #e0e0e0;
+}
+.hs .item-left{
+    color:#999!important;
+}
+
+.evaluation-income .item-cell {
+    background: #fff;
+    padding: 0 0.5rem;
+    border-top: 1px solid #c9c9c9;
+}
+
+.evaluation-income .item-cell .item-header .item-left{
+    font-size: 0.8rem;
+    /*font-weight: 600;*/
+    height: 2rem;
+    line-height: 2rem;
+    color:#333;
+}
+
+.evaluation-income .item-cell .item-header .item-right {
+    padding: 0.4rem 0;
+}
+
+.evaluation-income .item-cell .item-content {
+    border-bottom: 1px solid #c9c9c9;
+    padding: 0.5rem 0;
+}

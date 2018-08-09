@@ -1,0 +1,42 @@
+@charset "UTF-8";
+html .page{
+    background:#f7f7f7;
+}
+.title{
+    color:#fff;
+}
+.bar .button-link{
+    color:#fff;
+}
+ul,p{
+    margin:0;
+    padding:0;
+}
+.historyul li {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    background-color: white;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    border-bottom: solid 1px #e0e0e0;
+}
+.historyul li .page {
+    width: 0.8rem;
+    margin-top: 0.2rem;
+    margin-right: 0.3rem;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.historyul li p {
+    margin-top: 0.3rem;
+    font-size: 0.75rem;
+    color: #666666;
+}
+.historyul li .arrowright {
+    width: 0.5rem;
+    margin-top: 0.3rem;
+}

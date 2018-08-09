@@ -1,0 +1,30 @@
+/*政策咨询*/
+.policy .tabs{
+    padding:0.75rem;
+    background:#fff;
+}
+.policy .arts{
+    font-size:0.7rem;
+    color:#666;
+}
+.policy .wenzhang{
+    font-size:.7rem;
+}
+.policy .wenzhang img{
+    width:100%;
+}
+.policy .wenzhang p{
+    text-indent:2em;
+    padding:0.5rem 0;
+}
+/*救助申请*/
+.apply2 .content li:nth-child(10) .item-inp {
+    background: url(../img/icon_up.png) no-repeat;
+    background-size: 1rem auto;
+    background-position: 0.5rem center;
+}
+.apply2 .content li:nth-child(8) .item-inp {
+    background: url(../img/sal_03.png) no-repeat;
+    background-size: 1rem auto;
+    background-position: 0.5rem center;
+}

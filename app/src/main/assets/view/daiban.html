@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>待办业务</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../static/css/sm.min.css">
+    <link rel="stylesheet" href="../static/css/sm-extend.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+
+<body>
+<div class="page-group">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left backhistory" href="../index.html" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">待办业务</h1>
+        </header>
+        <nav class="bar bar-tab">
+                <a class="tab-item active" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">首页</span>
+                </a>
+                <a class="tab-item" href="views/dealHome.html">
+                    <span class="icon icon-menu"></span>
+                    <span class="tab-label">查询</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">办理</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">统计</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">我的</span>
+                </a>
+            </nav>
+        <div class="content">
+            <div class="modmenu">
+                <ul class="mui-flex">
+                    <li class="cell">
+                        <a href="hard_save.html" class="component help-type clear">
+                                <span class="help-photo fl">
+                                    <img src="../static/img/ned_01.png"></span>
+                            <span class="help-name fl" style="line-height:1rem;text-align:left;padding-top:0.8rem;">救急难救助申请业务</span>
+                        </a>
+                        <span class="notice">2</span>
+                    </li>
+                    <li class="cell">
+                        <a href="find_save.html" class="component help-type clear">
+                                <span class="help-photo fl">
+                                    <img src="../static/img/ned_02.png"></span>
+                            <span class="help-name fl" style="line-height:1rem;text-align:left;padding-top:0.8rem;">救助主动发现业务</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="mui-flex">
+                    <li class="cell">
+                        <a href="apply_save.html" class="component help-type clear">
+                                <span class="help-photo fl">
+                                    <img src="../static/img/ned_03.png"></span>
+                            <span class="help-name fl">救助申请业务</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='../static/js/zepto.min.js' charset='utf-8'></script>
+<script type="text/javascript">
+    $.config = { router: false }
+</script>
+<script type='text/javascript' src='../static/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../static/js/sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src="../static/js/global.js"></script>
+<script type="text/javascript">
+    $(function(argument) {
+        $.init();
+    })
+</script>
+</body>
+
+</html>

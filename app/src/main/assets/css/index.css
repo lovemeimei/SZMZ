@@ -1,0 +1,116 @@
+.mainul li{padding-left:.5rem;padding-top:.5rem;padding-bottom:.5rem;border-bottom:solid 1px #e0e0e0;cursor:pointer}
+.mainul .licurrent{background-color:#efefef}
+.iconbg{width:2rem;margin-right:.4rem}
+.iconbg-text span{color:#333;font-size:.7rem;display:block;height: 1.0rem;}
+.iconbg-text p{color:#999;font-size:.6rem;height: 1.0rem;line-height: 1.0rem;}
+.iconbgdiv{position:relative}
+.iconbgdiv span.redcircle{position:absolute;width:.5rem;height:.5rem;border-radius:50%;background-color:#ff3b30;right:.2rem;top:-.2rem}
+
+/* 代办业务 */
+.modmenu{padding:0.8rem 0.5rem;width: auto;}
+.mui-flex,.mui-flex .cell{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}
+.mui-flex{display:-webkit-box!important;display:-webkit-flex!important;display:-ms-flexbox!important;display:flex!important;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin:0 0;}
+.mui-flex .cell{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;width:0;-webkit-flex-basis:0;-ms-flex-preferred-size:0;flex-basis:0;max-width:50%;display:block;padding:0!important;position:relative;}
+.component{background-clip:content-box;overflow:hidden;display:block}
+.component.help-type{display:block;color:#051B28;font-size:12px;line-height:normal;height:auto;text-align:left;margin:0.5rem;background-color: #fff;position: relative;}
+.component .help-photo{width:30%;}
+.component .help-photo img{width:70%;display:block;margin:0.9rem auto;}
+.component .help-name{color: #666;display: block;font-weight: 500;font-size:0.7rem;height: 3.3rem;line-height: 3.3rem;width:70%;}
+.componentLast{margin: 0.5rem;}
+.componentLast .components.help-types{display:block;color:#051B28;font-size:12px;line-height:normal;height:auto;text-align:center;background-color: #fff;padding-left: 0.625rem;position: relative;}
+.componentLast .help-photo img{width:1.2rem;display:block;margin:.15rem .4rem 0 0;}
+.componentLast .help-name{color: #666;display: block;font-weight: 500;font-size:0.7rem;height: 1.3rem;line-height: 1.3rem;}
+.componentLast .realvoid{margin-top:0.4rem;}
+.componentLast .realvoid .name{width:50%;}
+.componentLast .real-name,.componentLast .void-name{display:block;color: #666;font-weight: 500;font-size:0.7rem;height: 1.3rem;line-height: 1.3rem;background-color: #fff;text-align: center;}
+.componentLast .real-name{margin-right: 0.25rem;}
+.componentLast .void-name{margin-left: 0.25rem;}
+.modmenu .notice{height: 0.75rem;width: 0.75rem;border-radius: 50%;background-color: #ff7766;position: absolute;top:0.125rem;right: 0.125rem;color: #fff;font-size: 0.6rem;line-height: 0.75rem;text-align:center;}
+
+/* 表单样式 */
+.inplistWrap{padding:0 .4rem}
+.inpGroup{display:-webkit-box!important;display:-moz-box!important;display:-ms-flexbox!important;display:-webkit-flex!important;display:flex!important;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-moz-box-orient:horizontal;-moz-box-direction:normal;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row}
+.inpGroup .ttname{color:inherit;height:2rem;line-height:2rem;font-size:0.7rem;-webkit-box-flex:2!important;-moz-box-flex:2!important;-webkit-flex:2!important;-ms-flex:2!important;flex:2!important}
+.inpGroup .inpWrap{height:2rem;line-height:2rem;-webkit-box-flex:8!important;-moz-box-flex:8!important;-webkit-flex:8!important;-ms-flex:8!important;flex:8!important;font-size:0.7rem}
+.inpGroup .inpWrap .inptxt{display:block;width:100%;height:1rem;line-height:1rem;padding:0 .266667rem;color:#000;font-size:.4rem;border:.013333rem solid #a3a3a3;border-radius:.066667rem}
+::-webkit-input-placeholder{color:#bbb9b9}
+:-moz-placeholder{color:#bbb9b9}
+::-moz-placeholder{color:#bbb9b9}
+:-ms-input-placeholder{color:#999}
+
+/* 救助业务办理列表 */
+.blhelplist{margin:0;}
+.blhelplist .item-content{border-top:1px solid #b4b4b4;font-size: 0.7rem;}
+.blhelplist .item-content .item-title{color: #000;}
+
+/* 救助发现业务 */
+.helpFindlist{margin:0;}
+.helpFindlist .listWrap .item{border-bottom: 1px solid #b4b4b4;}
+.helpFindlist .item-title{font-size: 0.7rem;text-align: right;}
+.helpFindlist .item-after{font-size: 0.7rem;text-align:left;}
+.helpFindlist .item-after.processed-failed{color: #ff7766;}
+.helpFindlist .item-after.processed-success{color: #009999;}
+.cardDetaillist{padding:0.5rem;}
+.cardDetaillist .item{background-color:#eeeeee;}
+.cardDetaillist .item,.cardDetaillist .picture-content-inner{display:-webkit-box!important;display:-moz-box!important;display:-ms-flexbox!important;display:-webkit-flex!important;display:flex!important;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-moz-box-orient:horizontal;-moz-box-direction:normal;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row}
+.cardDetaillist .item-name{color:inherit;height:2rem;line-height:2rem;font-size:0.7rem;-webkit-box-flex:2!important;-moz-box-flex:2!important;-webkit-flex:2!important;-ms-flex:2!important;flex:2!important;padding-left:0.25rem;}
+.cardDetaillist .cnt-wrap{height:2rem;line-height:2rem;-webkit-box-flex:8!important;-moz-box-flex:8!important;-webkit-flex:8!important;-ms-flex:8!important;flex:8!important;font-size:0.7rem}
+.cardDetaillist .cnt-wrap .cnt-txt{display:block;width:100%;height:2rem;line-height:2rem;padding:0 .266667rem;color:#000;font-size:.7rem;border-radius:.066667rem}
+.cardDetaillist .picture-header,.cardDetaillist .textarea-header{height:2rem;line-height:2rem;font-size:0.7rem}
+.cardDetaillist .picture-content-inner .picture-left,.cardDetaillist .picture-content-inner .picture-right{-webkit-box-flex:1!important;-moz-box-flex:1!important;-webkit-flex:1!important;-ms-flex:1!important;flex:1!important;}
+.cardDetaillist .picture-content-inner .picture-left{padding-right:0.5rem;}
+.cardDetaillist .picture-content-inner .picture-right{padding-left:0.5rem;}
+.picture-content-inner .img{width: 100%;}
+
+/* 我要救助业务 */
+.mehelpDetaillist{padding:0.5rem 0;}
+.mehelpDetaillist .item{display:-webkit-box!important;display:-moz-box!important;display:-ms-flexbox!important;display:-webkit-flex!important;display:flex!important;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-moz-box-orient:horizontal;-moz-box-direction:normal;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;padding-left:0.4rem;border-bottom: 1px solid #b4b4b4;}
+.mehelpDetaillist .item-name{color:#999;height:2rem;line-height:2rem;font-size:0.7rem;-webkit-box-flex:4!important;-moz-box-flex:4!important;-webkit-flex:4!important;-ms-flex:4!important;flex:4!important;padding-left:0.25rem;}
+.mehelpDetaillist .cnt-wrap{color:#333;height:2rem;line-height:2rem;-webkit-box-flex:8!important;-moz-box-flex:8!important;-webkit-flex:8!important;-ms-flex:8!important;flex:8!important;font-size:0.7rem}
+.mehelpDetaillist .cnt-wrap .cnt-txt{display:block;width:100%;height:2rem;line-height:2rem;padding:0 .266667rem;color:#333;font-size:.7rem;border-radius:.066667rem;/*background-color: #f7f7f7;*/}
+
+/* 举报投诉-实名 */
+.reportReallist{padding:0.5rem 0;}
+.reportReallist .item{display:-webkit-box!important;display:-moz-box!important;display:-ms-flexbox!important;display:-webkit-flex!important;display:flex!important;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-moz-box-orient:horizontal;-moz-box-direction:normal;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;background-color: #fff;}
+.reportReallist .item-name{color:#999;height:2rem;line-height:2rem;font-size:0.7rem;-webkit-box-flex:4!important;-moz-box-flex:4!important;-webkit-flex:4!important;-ms-flex:4!important;flex:4!important;padding-left:1.5rem;}
+.reportReallist .item-name.object{background:url(../img/sal_02.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;}
+.reportReallist .item-name.type{background:url(../img/sal_04.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;}
+.reportReallist .item-name.informant{background:url(../img/sal_02.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;}
+.reportReallist .item-name.informantIdCard{background:url(../img/sal_01.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;}
+.reportReallist .item-name.informantIphone{background:url(../img/sal_01.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;}
+.reportReallist .item-name.informantAddress{background:url(../img/sal_01.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;}
+.reportReallist .item-name.informantTime{background:url(../img/sal_07.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;}
+.reportReallist .item-name.status{background:url(../img/sal_08.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;}
+.reportReallist .cnt-wrap{height:2rem;line-height:2rem;-webkit-box-flex:8!important;-moz-box-flex:8!important;-webkit-flex:8!important;-ms-flex:8!important;flex:8!important;font-size:0.7rem;position: relative;}
+.reportReallist .cnt-wrap .cnt-txt{display:block;width:100%;height:2rem;line-height:2rem;padding:0 .3rem;color:#333;font-size:.7rem;border-radius:.066667rem;background-color: transparent;}
+.reportReallist .cnt-wrap .icon{position: absolute;right: .25rem;top:50%;margin-top:-0.5rem;line-height: 1rem;}
+.reportReallist .textarea-header{height:2rem;line-height:2rem;font-size:0.7rem;background-color: #fff;}
+.reportReallist .textarea-header .textarea-name{float:left;padding-left:1.5rem;}
+.reportReallist .textarea-header .textarea-name.specific{background:url(../img/sal_05.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;}
+.reportReallist .textarea-header .textarea-name.remark{background:url(../img/sal_06.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;}
+.reportReallist .textarea-content .textarea-content-inner{width: 100%;height: 4rem;}
+.reportReallist .textarea-content .textarea-content-inner textarea{width: 100%;height: 4rem;padding:0rem 0.5rem; font-size: 0.75rem; color: #333;}
+.reportReallist .submit-btn{margin: 1rem auto;width: 16rem;height: 1.85rem;text-align: center;line-height: 1.85rem;background: #319edf;color: #fff;border-radius: 5px;}
+.txt-left{padding-left:1.5rem;}
+/*评测救了*/
+.dealevalutionrecord .helpFindlist .item-title{  color:#999;  }
+.dealevalutionrecord .helpFindlist .item-after{  color:#333;  }
+.dealevalutionrecord .helpFindlist .processed-failed{  color:#ff7766;  }
+.dealevalutionrecord .helpFindlist .processed-success{  color:#009999;  }
+
+
+/*按钮*/
+.btn-row{
+    overflow:hidden;
+    margin:2rem auto;
+    width:10rem;
+}
+.btns{
+    width:4rem;
+    height:1.35rem;
+    text-align:center;
+    line-height:1.35rem;
+    background:#319edf;
+    color:#fff;
+    border-radius:5px;
+}

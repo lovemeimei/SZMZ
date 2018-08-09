@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>救急难业务</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../static/css/sm.min.css">
+    <link rel="stylesheet" href="../static/css/sm-extend.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/dealHelpFind.css">
+
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back backhistory" href="javascript:;" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">详情</h1>
+            <!--<a class="button button-link button-nav pull-right" href="dealHistory.html" data-transition='slide-out'>-->
+                <!--历史记录-->
+            <!--</a>-->
+        </header>
+        <nav class="bar bar-tab">
+                <a class="tab-item active" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">首页</span>
+                </a>
+                <a class="tab-item" href="views/dealHome.html">
+                    <span class="icon icon-menu"></span>
+                    <span class="tab-label">查询</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">办理</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">统计</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">我的</span>
+                </a>
+            </nav>
+        <div class="content">
+            <div class="wrapper">
+                <div class="location-time">2017年7月17日 17:00</div>
+                <div class="icons">
+                    <img src="../static/img/location.png" alt="">
+                </div>
+                <a href="javascript:;">
+                    <div class="fonts">中国河北省石家庄市桥西区新石中路物联网大厦</div>
+                    <div class="icon-rights"></div>
+                </a>
+            </div>
+            <div class="cardDetaillist">
+                <ul class="listWrap">
+                    <li class="item mt10">
+                        <span class="item-name">姓名</span>
+                        <div class="cnt-wrap clear">
+                            <span class="cnt-txt">王志</span>
+                        </div>
+                    </li>
+                    <li class="item mt10">
+                        <span class="item-name">性别</span>
+                        <div class="cnt-wrap clear">
+                            <span class="cnt-txt">男</span>
+                        </div>
+                    </li>
+                    <li class="item mt10">
+                        <span class="item-name">身份证号</span>
+                        <div class="cnt-wrap clear">
+                            <span class="cnt-txt">152213198512355456</span>
+                        </div>
+                    </li>
+                    <li class="item mt10">
+                        <span class="item-name">联系电话</span>
+                        <div class="cnt-wrap clear">
+                            <span class="cnt-txt">15665452365</span>
+                        </div>
+                    </li>
+                    <li class="item mt10">
+                        <span class="item-name">救助原因</span>
+                        <div class="cnt-wrap clear">
+                            <span class="cnt-txt">火灾</span>
+                        </div>
+                    </li>
+                    <li class="item mt10">
+                        <span class="item-name">申请救助方式</span>
+                        <div class="cnt-wrap clear">
+                            <span class="cnt-txt">发放救助资金</span>
+                        </div>
+                    </li>
+                    <li class="item-card mt10">
+                        <div class="picture-header">上传照片</div>
+                        <div class="picture-content">
+                            <div class="picture-content-inner">
+                                <div class="picture-left">
+                                    <img class="img" src="../static/img/res_01.png" alt="">
+                                </div>
+                                <div class="picture-right">
+                                    <img class="img" src="../static/img/res_02.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item mt10">
+                        <span class="item-name">上报时间</span>
+                        <div class="cnt-wrap clear">
+                            <span class="cnt-txt">2018-4-28   15:24:45</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn-row">
+                <div class="btns fl s">受理</div>
+                <div class="btns fr j">拒绝</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type='text/javascript' src='../static/js/zepto.min.js' charset='utf-8'></script>
+<script type="text/javascript">
+    $.config = { router: false }
+</script>
+<script type='text/javascript' src='../static/js/sm.min.js' charset='utf-8'></script>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/layer/layer.min.js"></script>
+<script type='text/javascript' src='../static/js/sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src="../static/js/global.js"></script>
+<script>
+    $('.s').on('click', function() {
+        layer.msg('救急难业务已受理', {icon: 1,shade:0.3});
+    });
+    $('.j').on('click', function() {
+        layer.msg('救急难业务已拒绝', {icon: 1,shade:0.3});
+    });
+</script>
+</body>
+</html>

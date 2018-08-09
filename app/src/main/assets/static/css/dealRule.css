@@ -1,0 +1,23 @@
+@charset "UTF-8";
+.content{
+    padding:0 1rem;
+    background:#fff;
+}
+.rule-title{
+    margin-top:1rem;
+    padding:0 0.5rem;
+    width:100%;
+    height:1.5rem;
+    color:#676767;
+    line-height:1.5rem;
+    background:#fcedd8;
+}
+.paragraph{
+    margin:0.5rem 0;
+}
+p{
+    padding:0.15rem 0;
+    font-size:0.7rem;
+    line-height:1.1rem;
+    text-indent:1rem;
+}

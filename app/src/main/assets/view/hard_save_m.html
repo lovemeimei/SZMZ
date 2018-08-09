@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>救急难救助申请</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="../static/css/sm.min.css">
+    <link rel="stylesheet" href="../static/css/sm-extend.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <link rel="stylesheet" href="../static/css/dealHelpFind.css">
+    <link rel="stylesheet" href="../static/css/shjz.css">
+    <link rel="stylesheet" href="../static/css/dealHelp.css">
+    <style>
+        .ul{
+            margin:0.5rem;
+        }
+        .item a{
+            margin-top:0;
+        }
+    </style>
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back backhistory" href="javascript:;" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">救急难救助申请</h1>
+            <a class="button button-link button-nav pull-right" href="historical_records.html" data-transition='slide-out'>
+                历史记录
+            </a>
+        </header>
+        <nav class="bar bar-tab">
+                <a class="tab-item active" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">首页</span>
+                </a>
+                <a class="tab-item" href="views/dealHome.html">
+                    <span class="icon icon-menu"></span>
+                    <span class="tab-label">查询</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">办理</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">统计</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">我的</span>
+                </a>
+            </nav>
+        <div class="content">
+            <div class="wrapper">
+                <div class="location-time">2017年7月17日 17:00</div>
+                <div class="icons">
+                    <img src="../static/img/location.png" alt="">
+                </div>
+                <a href="javascript:;">
+                    <div class="fonts">中国河北省石家庄市桥西区新石中路物联网大厦</div>
+                    <!--<div class="icon-rights"><span class="icon icon-right"></span></div>-->
+                </a>
+                <div class="renovate"><span class="icon icon-refresh"></span> 刷新地址</div>
+            </div>
+            <ul class="ul">
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <input class="inptxt" type="text" name="username" placeholder="户主姓名" />
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <span class="fl ttname mr20">性别</span>
+                        <ul class="radio-list fl">
+                            <li class="item-radio fl mr25">
+                                    <span class="inp-radio on">
+                                    <input id="sexMale" type="radio" checked="checked" name="sex" value="1" class="radioclass">
+                                </span>
+                                <label class="label" for="sexMale">男</label>
+                            </li>
+                            <li class="item-radio fl">
+                                    <span class="inp-radio">
+                                    <input id="sexFemale" type="radio" name="sex" value="2" class="radioclass">
+                                </span>
+                                <label class="label" for="sexFemale">女</label>
+                            </li>
+                        </ul>
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <input class="inptxt" type="text" name="idCard" placeholder="身份证号" />
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <input class="inptxt" type="text" name="idCard" placeholder="联系电话" />
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <input id="helpType" class="icons inptxt" type="text" name="helpType" placeholder="救助原因" />
+                    </a>
+                </li>
+                <li class="item" style="border-bottom:1px;">
+                    <a class="item-inp flex-block">
+                        <input id="helps" class="icons inptxt" type="text" name="helps" placeholder="申请救助方式" />
+                    </a>
+                </li>
+            </ul>
+            <div class="wrappers" style="margin:0 0.5rem;width:auto;">
+                <div class="icons">
+                    <img src="../static/img/icon_up.png" alt="">
+                </div>
+                <div class="fonts">
+                    <a href="javascript:void(0);" class="input">
+                        上传照片
+                        <input type="file" id="files" name="document[file]">
+                    </a>
+                </div>
+                <div class="imgs">
+                    <img src="../static/img/res_01.png" alt="">
+                    <a href="javascript:void(0);" class="inputs">
+                        <img src="../static/img/res001.png" alt="">
+                        <input type="file" id="files" name="document[file]">
+                    </a>
+                </div>
+            </div>
+            <div class="btns">提交</div>
+        </div>
+    </div>
+</div>
+
+<script type='text/javascript' src='../static/js/zepto.min.js' charset='utf-8'></script>
+<script type="text/javascript">
+    $.config = { router: false }
+</script>
+<script type='text/javascript' src='../static/js/sm.min.js' charset='utf-8'></script>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/layer/layer.min.js"></script>
+<script type='text/javascript' src='../static/js/sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src="../static/js/global.js"></script>
+<script>
+    $('.btns').on('click', function() {
+//            $.toast("救助信息提交成功！");
+        layer.msg('救助信息提交成功', {icon: 1,shade:0.3});
+    });
+    Zepto("#helpType").picker({
+        toolbarTemplate: '<header class="bar bar-nav">\
+          <button class="button button-link pull-right close-picker">确定</button>\
+          <h1 class="title">救助原因</h1>\
+          </header>',
+        cols: [{
+            textAlign: 'center',
+            values: ['火灾', '交通事故', '家庭成员突发重大疾病', '其他困难']
+        }]
+    });
+    Zepto("#helps").picker({
+        toolbarTemplate: '<header class="bar bar-nav">\
+          <button class="button button-link pull-right close-picker">确定</button>\
+          <h1 class="title">申请救助方式</h1>\
+          </header>',
+        cols: [{
+            textAlign: 'center',
+            values: ['发放实物', '发放救助资金']
+        }]
+    });
+</script>
+</body>
+</html>

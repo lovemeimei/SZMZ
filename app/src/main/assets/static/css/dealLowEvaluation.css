@@ -1,0 +1,86 @@
+@charset "UTF-8";
+html .page{
+    color:#666;
+    background:#f7f7f7;
+}
+.title{
+    /*background:#018ada;*/
+    color:#fff;
+}
+.bar .button-link{
+    color:#fff;
+}
+.content{
+    padding:1rem 0.5rem 0;
+}
+.wrapper{
+    background:#fff;
+}
+.wrapper-row{
+    padding:0.4rem 0;
+    width:100%;
+    font-size:0;
+    border-bottom:1px solid #e0e0e0;
+}
+.wrapper-row-left{
+    padding-left:1.5rem;
+    display:inline-block;
+    margin-top:0.2rem;
+    width:35%;
+    font-size:0.75rem;
+    text-align:left;
+    color:#999;
+    vertical-align:top;
+}
+.icon-name{
+    background:url(../img/sal_02.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;
+}
+.icon-names{
+    background:url(../img/sal_03.png) no-repeat;background-position: .4rem center;background-size:.8rem auto;
+}
+.wrapper-row-right{
+    margin-top:0.2rem;
+    display:inline-block;
+    padding-left:0.4rem;
+    width:60%;
+    font-size:0.75rem;
+    color:#333;
+}
+.wrapper-row-right input{
+    padding-left:0.2rem;
+    width:95%;
+    height:1.5rem;
+    border:0;
+}
+.wrapper-row-right select{
+    padding-left:0.2rem;
+    width:45%;
+    height:1.5rem;
+}
+.evalution{
+    margin-top:0.4rem;
+    display:block;
+    width:100%;
+    font-size:0.7rem;
+    text-align:right;
+    vertical-align:middle;
+    color:#3d4145;
+}
+.evalution img{
+    width:0.9rem;
+    vertical-align:middle;
+}
+.content-block {
+    margin: 2.5rem 0;
+}
+.btns{
+    display:block;
+    margin:4rem auto;
+    width:16rem;
+    height:1.85rem;
+    text-align:center;
+    line-height:1.85rem;
+    background:#319edf;
+    color:#fff;
+    border-radius:5px;
+}

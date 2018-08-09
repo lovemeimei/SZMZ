@@ -1,0 +1,162 @@
+@charset "UTF-8";
+.item {
+    height: 2.6rem;
+    width: 100%;
+    color: #656565;
+    font-size:0.7rem;
+    border-bottom: 1px solid #e0e0e0;
+    background: #fff;
+}
+
+.flex-block {
+    display: -webkit-box!important;
+    display: -webkit-flex!important;
+    display: -ms-flexbox!important;
+    display: flex!important;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.item-inp {
+    display: block;
+    padding: 0.2rem 0 0.2rem 2rem;
+    width: 100%;
+    height: 2.6rem;
+    background: url(../img/sal_01.png) no-repeat;
+    background-size: 1rem auto;
+    background-position: 0.5rem center;
+}
+.content li:nth-child(2) .item-inp,.content li:nth-child(3) .item-inp,.content li:nth-child(4) .item-inp,.content li:nth-child(5) .item-inp{
+    background: url(../img/sal_02.png) no-repeat;
+    background-size: 1rem auto;
+    background-position: 0.5rem center;
+}
+.content li:nth-child(6) .item-inp,.content li:nth-child(7) .item-inp{
+    background: url(../img/sal_03.png) no-repeat;
+    background-size: 1rem auto;
+    background-position: 0.5rem center;
+}
+.content li:nth-child(8) .item-inp{
+    background: url(../img/icon_up.png) no-repeat;
+    background-size: 1rem auto;
+    background-position: 0.5rem center;
+}
+
+.item-inp .ttname{
+    color: #656565;
+    height: 2.2rem;
+    line-height: 2.2rem;
+}
+
+.item-inp .inptxt {
+    width: 100%;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    color: #656565;
+    padding-right:1.5rem;
+    /*-webkit-box-flex: 2;
+    -webkit-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+    width: 0;
+    -webkit-flex-basis: 0;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    max-width: 100%;
+    display: block;
+    padding: 0!important;
+    position: relative;*/
+}
+.item-inp .inptxt.icons{
+    background:url(../img/arrowright.png) no-repeat;
+    background-position: 95% center;
+    background-size: .5rem auto;
+}
+
+.item-inp .icon {
+    /*-webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 0;
+    -webkit-flex-basis: 0;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    max-width: 10%;
+    display: block;
+    padding: 0!important;
+    position: relative;
+    color: #656565;
+    line-height: 2.2rem;*/
+}
+
+.inp-radio {
+    width: 1.2rem;
+    height: 2rem;
+    float: left;
+    /*padding-left: 1.2rem;*/
+    margin-right: 0.25rem;
+    cursor: pointer;
+    text-align: center;
+    background-image: url(../img/inputradio.gif);
+    background-repeat: no-repeat;
+    background-position: -1.2rem .6rem;
+}
+.item-radio .label{
+    float: left;
+    font-size: .7rem;
+    height: 2rem;
+    line-height: 2rem;
+    color: #656565;
+}
+
+.radioclass {
+    display: none;
+    opacity: 0;
+    cursor: pointer;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+}
+
+.inp-radio.on{
+    background-position: 0 .6rem;
+}
+
+.file_upload {
+    position: relative;
+    display: inline-block;
+    background: transparent;
+    /*border: 0.013333rem solid #a3a3a3;*/
+    border-radius: 0.066667rem;
+    overflow: hidden;
+    color: #656565;
+    text-decoration: none;
+    text-indent: 0;
+    font-size: 0.7rem;
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0 0.266667rem;
+}
+.file_upload .info-army-hide {
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    border:0;
+}
+
+.btns {
+    margin: 2rem auto;
+    width: 16rem;
+    height: 1.85rem;
+    text-align: center;
+    line-height: 1.85rem;
+    background: #319edf;
+    color: #fff;
+    border-radius: 5px;
+}

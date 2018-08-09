@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>行政区域</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../static/css/sm.min.css">
+    <link rel="stylesheet" href="../static/css/sm-extend.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/dealArea.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <div class="page page-current">
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back backhistory" href="javascript:;" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+            </a>
+                <h1 class="title">行政区域</h1>
+            </header>
+            <nav class="bar bar-tab">
+                <a class="tab-item active" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">首页</span>
+                </a>
+                <a class="tab-item" href="views/dealHome.html">
+                    <span class="icon icon-menu"></span>
+                    <span class="tab-label">查询</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">办理</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">统计</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">我的</span>
+                </a>
+            </nav>
+            <div class="content">
+                <div class="search-wrapper">
+                    <input type="text" placeholder="输入名称或拼音查询">
+                </div>
+                <div class="area z-area">
+                    当前：攀枝花
+                </div>
+                <div class="area-city">
+                    <div class="now-area">
+                        <p>定位城市</p>
+                        <p class="citys">攀枝花市</p>
+                    </div>
+                    <div class="area cy">
+                        东区
+                    </div>
+                    <div class="area cy">
+                        西区
+                    </div>
+                    <div class="area cy">
+                        仁和区
+                    </div>
+                    <div class="area cy">
+                        米易区
+                    </div>
+                    <div class="area cy">
+                        盐边区
+                    </div>
+                </div>
+                <div class="county">
+                    <div class="area cs">
+                        <div class="area-title">大渡口街道</div>
+                        <ul class="county-deal">
+                            <li class="item">江边社区</li>
+                            <li class="item">大渡口社区</li>
+                            <li class="item">华山社区</li>
+                            <li class="item">江边社区</li>
+                            <li class="item">江边社区</li>
+                            <li class="item">江边社区</li>
+                        </ul>
+                    </div>
+                    <div class="area cs">
+                        <div class="area-title">大渡口街道</div>
+                        <ul class="county-deal">
+                            <li class="item">江边社区</li>
+                            <li class="item">大渡口社区</li>
+                            <li class="item">华山社区</li>
+                            <li class="item">江边社区</li>
+                            <li class="item">江边社区</li>
+                            <li class="item">江边社区</li>
+                        </ul>
+                    </div>
+                    <div class="area cs">
+                        <div class="area-title">大渡口街道</div>
+                        <ul class="county-deal">
+                            <li class="item">江边社区</li>
+                            <li class="item">大渡口社区</li>
+                            <li class="item">华山社区</li>
+                            <li class="item">江边社区</li>
+                            <li class="item">江边社区</li>
+                            <li class="item">江边社区</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src='../static/js/zepto.min.js' charset='utf-8'></script>
+    <script type="text/javascript">
+    $.config = { router: false }
+    </script>
+    <script type='text/javascript' src='../static/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='../static/js/sm-extend.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src="../static/js/global.js"></script>
+    <script>
+    $(function() {
+        $('.cy').on('click', function() {
+            $('.area-city').hide();
+            $('.county').show();
+            $('.z-area').text('当前：攀枝花：大渡口街道');
+        });
+        $('.cs').on('click', function() {
+            $('.county-deal').hide();
+            $('.cs').css('background', 'none');
+            $(this).css({ 'background': 'url(../static/img/ar-up.png) 0 0 no-repeat', 'background-size': '1rem 1rem', 'background-position': '90% 0.5rem' });
+            $(this).children('.county-deal').css("display", "flex");
+        });
+        $('.item').on('click', function() {
+            $('.z-area').text('当前：攀枝花：大渡口街道：江边街社区');
+            var city = encodeURIComponent('攀枝花');
+            var road = encodeURIComponent('大渡口街道');
+            var community = encodeURIComponent('江边街社区');
+            window.location.href = "apply_save_m.html?city=" + city + '&road=' + road + '&community=' + community;
+        });
+    })
+    </script>
+</body>
+
+</html>

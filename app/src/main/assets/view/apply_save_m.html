@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>救助申请</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../static/css/sm.min.css">
+    <link rel="stylesheet" href="../static/css/sm-extend.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/dealHelp.css">
+    <link rel="stylesheet" href="../static/css/shjz.css">
+</head>
+<!--<style>-->
+<!--.popwindow{-->
+<!--display:none;-->
+<!--position:absolute;-->
+<!--top:0;-->
+<!--left:0;-->
+<!--right:0;-->
+<!--bottom:0;-->
+<!--background: rgba(0, 0, 0, .3);-->
+<!--}-->
+<!--.pop-con{-->
+<!--position:absolute;-->
+<!--left:50%;-->
+<!--top:45%;-->
+<!--width:70%;-->
+<!--height:4rem;-->
+<!--background:#fff;-->
+<!--line-height:4rem;-->
+<!--text-align:center;-->
+<!--transition: all 1s;-->
+<!-- -webkit-transform: translate(-50%, -50%) scale(0);-->
+<!--　　　　-moz-transform: translate(-50%, -50%);-->
+<!--　　　　-ms-transform: translate(-50%, -50%);-->
+<!--　　　　-o-transform: translate(-50%, -50%);-->
+<!--　　　　transform: translate(-50%, -50%) scale(0);-->
+<!--/*transform: ;*/-->
+<!--z-index:999;-->
+<!--}-->
+<!--.pop1{-->
+<!--transform:  translate(-50%, -50%) scale(1);-->
+<!--}-->
+<!--.pop-con img{-->
+<!--width:1rem;height:auto;-->
+<!--}-->
+<!--i{-->
+<!--display:inline-block;-->
+<!--margin:0.3rem;-->
+<!--width:33px;-->
+<!--height:33px;-->
+<!--background:url(../static/js/layer/skin/moon/default.png) 0 0 no-repeat;-->
+<!--background-position:-224px 0;-->
+<!--vertical-align:middle;-->
+<!--}-->
+<!--</style>-->
+<body class="apply2">
+<div class="page-group">
+    <div class="page page-current">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back backhistory" href="javascript:;" data-transition='slide-out'>
+                <span class="icon icon-left"></span>
+            </a>
+            <h1 class="title">救助申请</h1>
+            <a class="button button-link button-nav pull-right" href="historical_records.html" data-transition="slide-out">
+                历史记录
+            </a>
+        </header>
+        <nav class="bar bar-tab">
+                <a class="tab-item active" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">首页</span>
+                </a>
+                <a class="tab-item" href="views/dealHome.html">
+                    <span class="icon icon-menu"></span>
+                    <span class="tab-label">查询</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">办理</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">统计</span>
+                </a>
+                <a class="tab-item" href="index.html">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">我的</span>
+                </a>
+            </nav>
+        <div class="content">
+            <!--<div class="popwindow">-->
+            <!--<div class="pop-con"><i></i>救助信息提交成功</div>-->
+            <!--</div>-->
+            <ul>
+                <li class="item">
+                    <a class="item-inp flex-block" href="dealArea.html">
+                        <span id="areaAddress" class="icons inptxt">行政区域</span>
+                    </a>
+                </li>
+                <!-- <li class="item">
+                    <a class="item-inp flex-block">
+                        <input class="inptxt" type="text" name="address" placeholder="村居委会、社区" />
+                    </a>
+                </li> -->
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <input class="inptxt" type="text" name="username" placeholder="户主姓名" />
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <span class="fl ttname mr20">性别</span>
+                        <ul class="radio-list fl">
+                            <li class="item-radio fl mr25">
+                                    <span class="inp-radio on">
+                                    <input id="sexMale" type="radio" checked="checked" name="sex" value="1" class="radioclass">
+                                </span>
+                                <label class="label" for="sexMale">男</label>
+                            </li>
+                            <li class="item-radio fl">
+                                    <span class="inp-radio">
+                                    <input id="sexFemale" type="radio" name="sex" value="2" class="radioclass">
+                                </span>
+                                <label class="label" for="sexFemale">女</label>
+                            </li>
+                        </ul>
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <input class="inptxt" type="text" name="familyNumber" placeholder="家庭人口数" />
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <input class="inptxt" type="text" name="idCard" placeholder="身份证号" />
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <input class="inptxt" type="text" name="idCard" placeholder="家庭人口数" />
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <input class="inptxt" type="text" name="idCard" placeholder="家庭月人均收入（元）" />
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <input id="helpType" class="icons inptxt" type="text" name="helpType" placeholder="申请救助类别" />
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block">
+                        <input id="helpReson" class="icons inptxt" type="text" name="helpType" placeholder="主要致贫原因" />
+                        <!-- <input class="inptxt" type="text" name="res" placeholder="主要致贫原因" /> -->
+                    </a>
+                </li>
+                <li class="item">
+                    <a class="item-inp flex-block" href="javascipt:;">
+                        <div class="file_upload" id="file_upload_img">点击这里上传文件
+                            <input id="file" type="file" class="info-army-hide" name="carPiture">
+                            <span></span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+            <div class="btns">提交</div>
+        </div>
+    </div>
+</div>
+
+<script type='text/javascript' src='../static/js/zepto.min.js' charset='utf-8'></script>
+<script type="text/javascript">
+    $.config = { router: false }
+</script>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/layer/layer.min.js"></script>
+<script type='text/javascript' src='../static/js/sm.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='../static/js/sm-extend.min.js' charset='utf-8'></script>
+<script type='text/javascript' src="../static/js/global.js"></script>
+<script>
+    Zepto(function() {
+        $('.btns').on('click', function() {
+//            $('.popwindow').show();
+//            $('.pop-con').show();
+//            $('.pop-con').addClass('pop1');
+//            setTimeout(function(){
+//                $('.pop-con').removeClass('pop1');
+//                $('.popwindow').hide();
+//            },1500);
+            layer.msg('救助信息提交成功', {icon: 1,shade:0.3});
+        });
+
+        Zepto("#helpType").picker({
+            toolbarTemplate: '<header class="bar bar-nav">\
+          <button class="button button-link pull-right close-picker">确定</button>\
+          <h1 class="title">申请救助类别</h1>\
+          </header>',
+            cols: [{
+                textAlign: 'center',
+                values: ['城市低保', '农村低保', '城市贫困', '农村贫困', '临时救助']
+            }]
+        });
+        Zepto("#helpReson").picker({
+            toolbarTemplate: '<header class="bar bar-nav">\
+          <button class="button button-link pull-right close-picker">确定</button>\
+          <h1 class="title">主要致贫原因</h1>\
+          </header>',
+            cols: [{
+                textAlign: 'center',
+                values: ['残疾', '疾病']
+            }]
+        });
+
+        var city = decodeURIComponent(getQueryUrl('city'))
+        var road = decodeURIComponent(getQueryUrl('road'))
+        var community = decodeURIComponent(getQueryUrl('community'))
+
+        if (city || road || community) {
+            Zepto('#areaAddress').html(city+'-' + road+'-' + community);
+        }
+    })
+</script>
+</body>
+
+</html>
