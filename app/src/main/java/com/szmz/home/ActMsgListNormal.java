@@ -1,5 +1,6 @@
 package com.szmz.home;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
@@ -59,6 +60,7 @@ public class ActMsgListNormal extends ActListBase {
     protected void initUI() {
         super.initUI();
         title = getIntent().getStringExtra("title");
+        initAdapter();
         dbManager = x.getDb(App.getDaoConfig());
         if (title.equals("信访提醒")) {
 
@@ -80,8 +82,6 @@ public class ActMsgListNormal extends ActListBase {
         }
         setTitle(title);
         setLeftVisible(true);
-        initAdapter();
-
 
     }
 
@@ -139,7 +139,11 @@ public class ActMsgListNormal extends ActListBase {
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        trans(ActMsgDetail.class, title, item.getContent());
+                        Intent intent = new Intent(context, com.szmz.home.ActMsgDetail.class);
+                        intent.putExtra("title",title);
+                        intent.putExtra("item",item);
+                        startActivity(intent);
+//                        trans(com.szmz.home.ActMsgDetail.class, title, "");
                     }
                 });
             }
@@ -186,7 +190,7 @@ public class ActMsgListNormal extends ActListBase {
 
     private void getInfo() {
 
-            try {
+        try {
 //                List<User> users = db.selector(User.class)
 //                        .where("name","like","%kevin%")
 //                        .and("email", "=", "caolbmail@gmail.com")
@@ -195,27 +199,27 @@ public class ActMsgListNormal extends ActListBase {
 //                        .offset(2) //偏移两个,从第三个记录开始返回,limit配合offset达到sqlite的limit m,n的查询
 //                        .findAll();
 
-              items=  dbManager.selector(CommMsgSave.class)
-                        .where("type","=",type)
-                        .findAll();
+            items=  dbManager.selector(CommMsgSave.class)
+                    .where("type","=",type)
+                    .findAll();
 
 //                items =dbManager.findAll(CommMsgSave.class);
 
-                if (items==null || items.size()==0){
-                    noDataLayout.setVisibility(View.VISIBLE);
-                    adapter.clearListData();
-                    adapter.notifyDataSetChanged();
-                }else {
-                    noDataLayout.setVisibility(View.GONE);
-                    adapter.setItems(items);
-                    adapter.notifyDataSetChanged();
+            if (items==null || items.size()==0){
+                noDataLayout.setVisibility(View.VISIBLE);
+                adapter.clearListData();
+                adapter.notifyDataSetChanged();
+            }else {
+                noDataLayout.setVisibility(View.GONE);
+                adapter.setItems(items);
+                adapter.notifyDataSetChanged();
 
-                }
-            } catch (DbException e) {
-                e.printStackTrace();
             }
-
+        } catch (DbException e) {
+            e.printStackTrace();
         }
+
+    }
 
 
 }

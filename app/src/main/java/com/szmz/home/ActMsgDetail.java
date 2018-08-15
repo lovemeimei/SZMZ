@@ -1,5 +1,7 @@
 package com.szmz.home;
 
+import android.text.TextUtils;
+
 import com.szmz.ActBase;
 import com.szmz.R;
 import com.szmz.entity.CommMsgSave;
@@ -35,6 +37,14 @@ public class ActMsgDetail extends ActBase{
     protected void initUI() {
         super.initUI();
         setTitle("消息");
+        String title = getIntent().getStringExtra("title");
+        if (TextUtils.isEmpty(title)){
+            setTitle("消息");
+
+        }else {
+            setTitle(title);
+
+        }
         setLeftVisible(true);
 
         item =(CommMsgSave)getIntent().getSerializableExtra("item");
