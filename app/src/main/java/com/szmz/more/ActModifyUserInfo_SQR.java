@@ -29,9 +29,9 @@ import retrofit2.Call;
  * 创建时间：2017/9/8 0008上午 9:46
  */
 
-public class ActModifyUserInfo_SQR extends ActBase{
+public class ActModifyUserInfo_SQR extends ActBase {
 
-    MaterialDialog sexDialog=null;
+    MaterialDialog sexDialog = null;
     @BindView(R.id.btn_submit)
     Button btnSub;
     @BindView(R.id.et_user_name)
@@ -56,13 +56,10 @@ public class ActModifyUserInfo_SQR extends ActBase{
         super.initUI();
 
         setLeftVisible(true);
-        if (SystemConst.systemID==1){
-            //新疆用户不可编辑
-            setRightVisible(false);
-        }else {
-            setRightVisible(true);
-            setRightShow("编辑") ;
-        }
+
+        setRightVisible(true);
+        setRightShow("编辑");
+
 
         setTitle("个人资料");
 
@@ -80,9 +77,9 @@ public class ActModifyUserInfo_SQR extends ActBase{
         etPhone.setText(getUser().getPhone());
         etCard.setText(getUser().getIdCode());
         sex = getUser().getSex();
-        if (sex.equals("1")){
+        if (sex.equals("1")) {
             etSex.setText("男");
-        }else {
+        } else {
             etSex.setText("女");
         }
 
@@ -100,9 +97,10 @@ public class ActModifyUserInfo_SQR extends ActBase{
             }
         });
     }
-    @OnClick({R.id.btn_submit,R.id.tv_user_sex})
-    public void doClick(View v){
-        switch (v.getId()){
+
+    @OnClick({R.id.btn_submit, R.id.tv_user_sex})
+    public void doClick(View v) {
+        switch (v.getId()) {
             case R.id.btn_submit:
                 modifyUserInfo();
                 break;
@@ -112,61 +110,61 @@ public class ActModifyUserInfo_SQR extends ActBase{
         }
     }
 
-    private void createDialog(){
+    private void createDialog() {
         sexDialog = new MaterialDialog.Builder(this)
                 .alwaysCallSingleChoiceCallback()
-                .items("男","女")
+                .items("男", "女")
                 .itemsCallbackSingleChoice(-1, new MaterialDialog.ListCallbackSingleChoice() {
                     @Override
                     public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
                         etSex.setText(text);
-                        if (which==0){
-                            sex="1";
-                        }else {
-                            sex="0";
+                        if (which == 0) {
+                            sex = "1";
+                        } else {
+                            sex = "0";
                         }
                         return true;
                     }
                 }).build();
     }
 
-    private void modifyUserInfo(){
+    private void modifyUserInfo() {
 
         String name = etName.getText().toString().trim();
         final String address = etAddress.getText().toString().trim();
         final String idCard = etCard.getText().toString().trim();
         final String phone = etPhone.getText().toString().trim();
-        if (TextUtils.isEmpty(name)){
+        if (TextUtils.isEmpty(name)) {
             doToast("请输入姓名");
             return;
         }
-        if (TextUtils.isEmpty(address)){
+        if (TextUtils.isEmpty(address)) {
             doToast("请输入家庭住址");
             return;
         }
-        if (TextUtils.isEmpty(phone)){
+        if (TextUtils.isEmpty(phone)) {
             doToast("请输入手机号");
             return;
         }
-        if (!TextUtil.isMobileNumber(phone)){
+        if (!TextUtil.isMobileNumber(phone)) {
             doToast("请输入正确的手机号");
             return;
         }
 
-        if (TextUtils.isEmpty(idCard)){
+        if (TextUtils.isEmpty(idCard)) {
             doToast("请输入身份证号码");
             return;
         }
-        if (!TextUtil.isPersonCode(idCard)){
+        if (!TextUtil.isPersonCode(idCard)) {
             doToast("请输入正确的身份证号码");
             return;
         }
 
-        Comm_modifyUserInfoSQR_Req req = new Comm_modifyUserInfoSQR_Req(getUser().getUserName(),getUser().getPw(),name,sex,idCard,"",address);
+        Comm_modifyUserInfoSQR_Req req = new Comm_modifyUserInfoSQR_Req(getUser().getUserName(), getUser().getPw(), name, sex, idCard, "", address);
 
         Call<CommResponse> call = App.getApiProxyComSQR().modifyUserInfoSQR(req);
 
-        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
+        ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context, call, new SimpleApiListener<CommResponse>() {
             @Override
             public void doSuccess(CommResponse result) {
                 super.doSuccess(result);
@@ -180,7 +178,7 @@ public class ActModifyUserInfo_SQR extends ActBase{
                 App.getInstance().login(user);
                 myAnimFinish();
             }
-        },true);
+        }, true);
 
         apiUtil.excute();
 

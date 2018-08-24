@@ -101,12 +101,6 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
             etUser.setText(name);
             etPW.setText(pw);
         }
-
-        if (SystemConst.systemID==1){
-            //新疆社会人员没有注册功能
-            tvZC.setVisibility(View.GONE);
-        }
-
         getIPID();
     }
 
@@ -438,7 +432,7 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
 
     private void getIPID() {
 
-        String ips =SystemConst.IP_JZ + "," + SystemConst.IP_YZS + "," + SystemConst.IP_HD+","+SystemConst.IP_SM;
+        String ips =SystemConst.IP_JZ + "," + SystemConst.IP_YZS + "," + SystemConst.IP_HD;
         final Comm_ipid_req req = new Comm_ipid_req(ips);
 
         Call<Comm_ipid_res> call = App.getApiProxyCom().getIPSID(req);
@@ -461,9 +455,6 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
                             SystemConst.SystemID_YZS = item.getResult();
                         } else if (item.getIp().equals(SystemConst.IP_HD)) {
                             SystemConst.SystemID_SH = item.getResult();
-                        }else if (item.getIp().equals(SystemConst.IP_SM)){
-                            SystemConst.SystemID_SM = item.getResult();
-
                         }
                     }
                 }

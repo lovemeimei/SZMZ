@@ -52,6 +52,7 @@ public class App extends Application {
     private static ApiService apiProxyCom = null;
     private static ApiService apiProxyComSQR = null;
     private static ApiService apiProxyJZ = null;
+    private static ApiService apiProxySM = null;
     private static ApiService apiProxyYZS = null;
 
     public static boolean isOnline = true;
@@ -150,6 +151,13 @@ public class App extends Application {
     public static ApiService getApiProxyJZ() {
         if (apiProxyJZ == null) {
             apiProxyJZ = initRetorfit(SystemConst.DEFAULT_SERVER_JZ);
+        }
+        return apiProxyJZ;
+    }
+
+    public static ApiService getApiProxySM() {
+        if (apiProxyJZ == null) {
+            apiProxyJZ = initRetorfit(SystemConst.DEFAULT_SERVER_SM);
         }
         return apiProxyJZ;
     }

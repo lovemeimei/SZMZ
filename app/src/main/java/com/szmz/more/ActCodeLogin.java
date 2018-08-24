@@ -94,7 +94,7 @@ public class ActCodeLogin extends ActBase {
 
         logReq = new JZ_Login_Code_Req(code.getUuid(),account,systemID,type,"");
 
-        Call<CommResponse> call = App.getApiProxyJZ().loginCode(logReq);
+        Call<CommResponse> call = App.getApiProxySM().loginCode(logReq);
 
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(context,call,new SimpleApiListener<CommResponse>(){
             @Override

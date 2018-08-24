@@ -203,8 +203,6 @@ public class ActMsgListNormal extends ActListBase {
                     .where("type","=",type)
                     .findAll();
 
-//                items =dbManager.findAll(CommMsgSave.class);
-
             if (items==null || items.size()==0){
                 noDataLayout.setVisibility(View.VISIBLE);
                 adapter.clearListData();
