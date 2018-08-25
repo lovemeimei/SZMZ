@@ -493,7 +493,7 @@ public class ActShgs extends ActLocationBase {
 
     private void doUpLoadImage(String familyId, String url, String address) {
         JZ_YWBL_ADDDATA_RE request = new JZ_YWBL_ADDDATA_RE(familyId, "20203030", ImageUtil.pictureToBase64(url), address);
-        Call<CommResponse> call = App.getApiProxyJZ().getJZ_AddData(request);
+        Call<CommResponse> call = App.getApiProxySM().getJZ_AddData(request);
         ApiUtil<CommResponse> apiUtil = new ApiUtil<>(this, call, new SimpleApiListener<CommResponse>() {
             @Override
             public void doSuccess(CommResponse result) {

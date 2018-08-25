@@ -101,10 +101,6 @@ public class ActLogin extends ActBase implements CompoundButton.OnCheckedChangeL
             etPW.setText(pw);
         }
 
-        if (SystemConst.systemID==1){
-            //新疆社会人员没有注册功能
-            tvZC.setVisibility(View.GONE);
-        }
 
         getIPID();
     }

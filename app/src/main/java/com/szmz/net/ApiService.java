@@ -128,8 +128,14 @@ public interface ApiService {
     @POST("SocietySalvation/loginController.do?appQuest")
     Call<CommResponse> loginCode(@Body JZ_Login_Code_Req request);
 
+
+    //图片上传接口
+    @POST("SocietySalvation/appCommentController.do?appAddData")
+    Call<CommResponse> getJZ_AddData(@Body JZ_YWBL_ADDDATA_RE req);
+
+
     //扫码签章
-    @POST("SocietySalvation/bsprFamTempController.do?scanSeal")
+    @POST("SSP_PORT/bsprFamTempController.do?scanSeal")
     Call<CommResponse> scanQZ(@Body JZ_Scan_QZ_Req request);
 
     //统一登录
@@ -140,9 +146,9 @@ public interface ApiService {
     @POST("SalvationPlatform/phoneLoginController.do?getSystemIdentifyAll")
     Call<Comm_ipid_res> getIPSID(@Body Comm_ipid_req body);
 
-    //    http://222.222.49.34:9095/SocietySalvation/api/appMessageController.do?appNotelist&LoginName=孔以丹&Phone=13233333333&IDCard=41022319730502258X&UserType=1&Md5Key=E393C8C925F5C0435D61A0ED232BE8B2
+    //    http://222.222.49.34:9095/SSP_PORT/api/appMessageController.do?appNotelist&LoginName=孔以丹&Phone=13233333333&IDCard=41022319730502258X&UserType=1&Md5Key=E393C8C925F5C0435D61A0ED232BE8B2
     //获取新消息
-    @POST("SocietySalvation/api/appMessageController.do?appNotelist")
+    @POST("SSP_PORT/api/appMessageController.do?appNotelist")
     Call<Comm_msg_Res> getMsg(@Body Comm_msg_req body);
 
     //工作人员绑定手机号
@@ -215,140 +221,135 @@ public interface ApiService {
     /**************************救助系统申请人员*********************************/
 
 
-    @POST("SocietySalvation/api/appDataqueryController.do?getHistoryListByUser")
+    @POST("SSP_PORT/api/appDataqueryController.do?getHistoryListByUser")
     Call<JZ_SQR_histroy_res> JZSQR_historyList(@Body JZ_SQR_historyList_req request);
 
-    @POST("SocietySalvation/api/appDataqueryController.do?getHistoryInfoByUser")
+    @POST("SSP_PORT/api/appDataqueryController.do?getHistoryInfoByUser")
     Call<JZ_SQR_histroy_res> JZSQR_historyDetail(@Body JZ_SQR_HistoryDetailReq request);
 
-    @POST("SocietySalvation/api/appDataqueryController.do?getGrantMoneyList")
+    @POST("SSP_PORT/api/appDataqueryController.do?getGrantMoneyList")
     Call<JZSQR_zjff_res> JZSQR_zjff(@Body JZSQR_zjfflist_req request);
 
     /**************************救助系统工作人员*********************************/
     //得到救助类型列表
-    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationType")
+    @POST("SSP_PORT/api/appDataqueryController.do?getSalvationType")
     Call<JZ_Comm_JZLX_RES> getJZLX(@Body Comm_req request);
 
-    @POST("SocietySalvation/api/appCommonController.do?getUserInfo")
+    @POST("SSP_PORT/api/appCommonController.do?getUserInfo")
     Call<JZ_GetUserInfo> loginJZ(@Body JZ_Comm_Req request);
 
-    @POST("SocietySalvation/api/appTodolistController.do?appGetTodoFunctionTree")
+    @POST("SSP_PORT/api/appTodolistController.do?appGetTodoFunctionTree")
     Call<JZ_Todo_MenuTree> getJZ_FuntionTree(@Body JZ_TODO_FuntionTree req);
 
-    @POST("SocietySalvation/api/appTodolistController.do?appGetTodolist")
+    @POST("SSP_PORT/api/appTodolistController.do?appGetTodolist")
     Call<JZ_Todolist> getJZ_TodoList(@Body JZ_TODO_List req);
 
-    @POST("SocietySalvation/api/appTodolistController.do?appGetApproval")
+    @POST("SSP_PORT/api/appTodolistController.do?appGetApproval")
     Call<JZ_MSG_SP_Res> getJZ_MSG_SP_List(@Body JZ_Comm_list_Req req);
 
-    @POST("SocietySalvation/api/appTodolistController.do?appGetRecheckInfos")
+    @POST("SSP_PORT/api/appTodolistController.do?appGetRecheckInfos")
     Call<JZ_MSG_FC_Res> getJZ_MSG_FC_List(@Body JZ_Comm_list_Req req);
 
 
-    @POST("SocietySalvation/api/appDataqueryController.do?getFamilyInfo")
+    @POST("SSP_PORT/api/appDataqueryController.do?getFamilyInfo")
     Call<JZ_YWBL_DZDA_Family> getJZ_Family(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
-    @POST("SocietySalvation/api/appDataqueryController?getFamilyproperty")
+    @POST("SSP_PORT/api/appDataqueryController?getFamilyproperty")
     Call<JZ_YWBL_DZDA_FamilyProperty> getJZ_Property(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
-    @POST("SocietySalvation/api/appDataqueryController?getFamilymember")
+    @POST("SSP_PORT/api/appDataqueryController?getFamilymember")
     Call<JZ_YWBL_DZDA_FamilyMember> getJZ_FamilyMember(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
-    @POST("SocietySalvation/api/appDataqueryController?getFamilyincome")
+    @POST("SSP_PORT/api/appDataqueryController?getFamilyincome")
     Call<JZ_YWBL_DZDA_FamilyIncome> getJZ_FamilyIncome(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
 
-    @POST("SocietySalvation/api/appDataqueryController?getFamilymaterialList")
+    @POST("SSP_PORT/api/appDataqueryController?getFamilymaterialList")
     Call<JZ_YWBL_DZDA_FamilyMaterial> getJZ_FamilyMaterial(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
-    @POST("SocietySalvation/api/appDataqueryController?getFamilymaterialList")
+    @POST("SSP_PORT/api/appDataqueryController?getFamilymaterialList")
     Call<JZ_YWBL_DZDA_SupportIncome> getJZ_SupportIncome(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
 
     //救助信息查询
-    @POST("SocietySalvation/api/appDataqueryController.do?getHistoryList")
+    @POST("SSP_PORT/api/appDataqueryController.do?getHistoryList")
     Call<JZ_Search_worker_Res> getJZ_SearchList(@Body JZ_Search_worker_Req req);
 
     //救助信息查询详细
-    @POST("SocietySalvation/api/appDataqueryController.do?getHistoryInfo")
+    @POST("SSP_PORT/api/appDataqueryController.do?getHistoryInfo")
     Call<JZ_Search_worker_Res> getJZ_SearchList_Detail(@Body JZ_Search_workerDetail_Req req);
 
     //获取行政区划
-    @POST("SocietySalvation/api/appDataqueryController.do?getRegion")
+    @POST("SSP_PORT/api/appDataqueryController.do?getRegion")
     Call<JZ_YWBL_DZDA_XZQH> getJZ_XZQHList(@Body JZ_YWBL_DZDA_XZQH_RE req);
 
     //救助对象信息-获取救助人列表
-    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationList")
+    @POST("SSP_PORT/api/appDataqueryController.do?getSalvationList")
     Call<JZ_YWBL_DZDA_Salvation> getJZ_SalvationList(@Body JZ_YWBL_DZDA_SALVATION_RE req);
 
     //救助对象信息-获取电子档案所有数据
-    @POST("SocietySalvation/api/appDataqueryController.do?getAllData")
+    @POST("SSP_PORT/api/appDataqueryController.do?getAllData")
     Call<JZ_YWBL_DZDA_Family> getJZ_GetAllData(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
     //获取救助人列表
-    @POST("SocietySalvation/api/appTempDataqueryController.do?getSalvationListTemp")
+    @POST("SSP_PORT/api/appTempDataqueryController.do?getSalvationListTemp")
     Call<JZ_YWBL_DZDA_Salvation> getJZ_SalvationTempList(@Body JZ_YWBL_DZDA_SALVATION_RE req);
 
     //获取电子档案所有数据
-    @POST("SocietySalvation/api/appTempDataqueryController.do?getAllTempData")
+    @POST("SSP_PORT/api/appTempDataqueryController.do?getAllTempData")
     Call<JZ_YWBL_DZDA_Family> getJZ_GetAllDataTemp(@Body JZ_YWBL_DZDA_FAMILY_RE req);
 
     //调查核实上报
-    @POST("SocietySalvation/api/appCommentController.do?appAddStreetCheck")
+    @POST("SSP_PORT/api/appCommentController.do?appAddStreetCheck")
     Call<CommResponse> getJZ_AddStreetCheck(@Body JZ_YWBL_DCHS_RE req);
 
     //民主评议
-    @POST("SocietySalvation/api/appCommentController.do?appAddStreetComment")
+    @POST("SSP_PORT/api/appCommentController.do?appAddStreetComment")
     Call<CommResponse> getJZ_AddStreetComment(@Body JZ_YWBL_MZPY_RE req);
 
     //审核公示
-    @POST("SocietySalvation/api/appCommentController.do?appAddStreetPublic")
+    @POST("SSP_PORT/api/appCommentController.do?appAddStreetPublic")
     Call<CommResponse> getJZ_AddStreetPublic(@Body JZ_YWBL_SHGS_RE req);
 
     //入户抽查
-    @POST("SocietySalvation/api/appCommentController.do?appAddCountySpot")
+    @POST("SSP_PORT/api/appCommentController.do?appAddCountySpot")
     Call<CommResponse> getJZ_AddCountySpot(@Body JZ_YWBL_RHCC_RE req);
 
     //审批公示
-    @POST("SocietySalvation/api/appCommentController.do?appAddCountyPublic")
+    @POST("SSP_PORT/api/appCommentController.do?appAddCountyPublic")
     Call<CommResponse> getJZ_AddCountyPublic(@Body JZ_YWBL_SPGS_RE req);
 
-    //图片上传接口
-    @POST("SocietySalvation/api/appCommentController.do?appAddData")
-    Call<CommResponse> getJZ_AddData(@Body JZ_YWBL_ADDDATA_RE req);
-
     //签到接口
-    @POST("SocietySalvation/api/appPositionController.do?appSign")
+    @POST("SSP_PORT/api/appPositionController.do?appSign")
     Call<CommResponse> getJZ_AppSign(@Body JZ_YWBL_APPSIGN_RE req);
 
     //申请人获取申请进度列表
-    @POST("SocietySalvation/api/appTempDataqueryController.do?getApplicationList")
+    @POST("SSP_PORT/api/appTempDataqueryController.do?getApplicationList")
     Call<JZ_SQR_JD_RES> get_JZ_SQR_JD_LIST(@Body JZ_SQR_JD_RE req);
 
     //申请人获取申请进度详细
-    @POST("SocietySalvation/api/appTempDataqueryController.do?getApplicationInfo")
+    @POST("SSP_PORT/api/appTempDataqueryController.do?getApplicationInfo")
     Call<JZ_SQR_JD_DETAIL_RES> get_JZ_SQR_JD_DETAIL(@Body JZ_SQR_JD_DETAIL_RE req);
 
     //申请人获取信访详细
-    @POST("SocietySalvation/api/appDataqueryController.do?getVisitInfo")
+    @POST("SSP_PORT/api/appDataqueryController.do?getVisitInfo")
     Call<JZ_SQR_JD_XF_DETAIL_RES> get_JZ_SQR_JD_XF_DETAIL(@Body JZ_SQR_JD_XF_DETAIL_RE req);
 
 
-    //http://222.222.49.34:9095/SocietySalvation/api/appDataqueryController?getSalvationPernum
-    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationPernum")
+    @POST("SSP_PORT/api/appDataqueryController.do?getSalvationPernum")
     Call<JZ_tj1> getJZ_tj1(@Body JZ_Tj1_Req body);
 
-    @POST("SocietySalvation/api/appCommonController.do?getAppInfo")
+    @POST("SSP_PORT/api/appCommonController.do?getAppInfo")
     Call<JZ_APPInfo_Res> getJZ_APPInfo(@Body BaseRequest req);
 
-    /**************************医疗一站式*********************************/
-    @POST("SocietySalvation/api/appDataqueryController.do?getSalvationPernumByDisId")
+    @POST("SSP_PORT/api/appDataqueryController.do?getSalvationPernumByDisId")
     Call<JZ_tj1> getJZ_tj3(@Body JZ_Tj1_Req body);
 
-    //    http://222.222.49.34:9095/SocietySalvation/api/appBusinessSuperviseController.do?appBusinessProgress
-    @POST("SocietySalvation/api/appBusinessSuperviseController.do?appBusinessProgress")
+    //    http://222.222.49.34:9095/SSP_PORT/api/appBusinessSuperviseController.do?appBusinessProgress
+    @POST("SSP_PORT/api/appBusinessSuperviseController.do?appBusinessProgress")
     Call<JZ_DC_Res> getJZ_dc(@Body JZ_DC_req body);
 
+    /**************************医疗一站式*********************************/
 
     /**************************医疗一站式工作人员*********************************/
 

@@ -34,6 +34,16 @@ public class CommMsgSave implements IEntity{
     private String sender;
     @Column(name = "type")
     private String type;
+    @Column(name = "typeName")
+    private String typeName;
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
 
     public String getId() {
         return id;

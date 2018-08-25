@@ -56,13 +56,9 @@ public class ActModifyUserInfo_SQR extends ActBase{
         super.initUI();
 
         setLeftVisible(true);
-        if (SystemConst.systemID==1){
-            //新疆用户不可编辑
-            setRightVisible(false);
-        }else {
+
             setRightVisible(true);
             setRightShow("编辑") ;
-        }
 
         setTitle("个人资料");
 

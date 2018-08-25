@@ -5,17 +5,29 @@ package com.szmz;
  */
 public class SystemConst {
 
-    public static final String DEFAULT_SERVER_COM = "http://222.222.49.34:8057/";//平台
-//    public static final String DEFAULT_SERVER_COM_SQR = "http://222.222.49.34:8081/";//平台
-    public static final String DEFAULT_SERVER_COM_SQR = "http://222.222.49.34:8050/";//新疆平台
+    /**
+     *
+     *
+     * 基础平台    http://125.66.246.2:9093/SalvationPlatform/
+     社会救助    http://125.66.246.2:9094/SocietySalvation/扫码和图片上传
+     核对系统APP接口   http://125.66.246.2:9004/appCheck
+     社会救助APP接口   http://125.66.246.2:9005/SSP_PORT/api
+     医疗救助APP接口   http://125.66.246.2:9006/ActionControler
+     */
 
-    public static final String IP_JZ="222.222.49.34:9095";
-    public static final String IP_YZS="222.222.49.34:8189";
+    public static final String DEFAULT_SERVER_COM = "http://125.66.246.2:9093/";//平台
+//    public static final String DEFAULT_SERVER_COM_SQR = "http://222.222.49.34:8081/";//平台
+    public static final String DEFAULT_SERVER_COM_SQR = "http://125.66.246.2:9005/";
+
+    public static final String IP_JZ="125.66.246.2:9005";
+    public static final String IP_SM="125.66.246.2:9094";
+    public static final String IP_YZS="125.66.246.2:9006";
 //    public static final String IP_YZS="222.222.49.34:9095";//甘肃演示一站式
 //    public static final String IP_HD="124.239.180.136:8088";
-public static final String IP_HD="222.222.49.34:8099";
+public static final String IP_HD="125.66.246.2:9004";
 
     public static final String DEFAULT_SERVER_JZ= "http://"+IP_JZ+"/";//救助
+    public static final String DEFAULT_SERVER_SM= "http://"+IP_JZ+"/";//SM
     public static final String DEFAULT_SERVER_YZS= "http://"+IP_YZS+"/";
     public static final String DEFAULT_SERVER = "http://"+IP_HD+"/";//核对
     public static final String PROJECT_DIR = "SZMZ";

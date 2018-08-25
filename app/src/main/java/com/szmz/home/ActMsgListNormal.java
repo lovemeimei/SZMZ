@@ -1,5 +1,6 @@
 package com.szmz.home;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
@@ -131,14 +132,17 @@ public class ActMsgListNormal extends ActListBase {
         });
         adapter = new BaseListAdapter<CommMsgSave, MViewHolder>(this, R.layout.comm_list_item) {
             @Override
-            protected void refreshView(int postion, CommMsgSave item, ActMsgListNormal.MViewHolder holer) {
+            protected void refreshView(int postion, final CommMsgSave item, ActMsgListNormal.MViewHolder holer) {
 
 
                 holer.tvName.setText(item.getTitle());
                 holer.tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        trans(ActMsgDetail.class, title, "");
+                        Intent intent = new Intent(context, com.szmz.home.ActMsgDetail.class);
+                        intent.putExtra("title",title);
+                        intent.putExtra("item",item);
+                        startActivity(intent);
                     }
                 });
             }
@@ -194,11 +198,11 @@ public class ActMsgListNormal extends ActListBase {
 //                        .offset(2) //偏移两个,从第三个记录开始返回,limit配合offset达到sqlite的limit m,n的查询
 //                        .findAll();
 
-//              items=  dbManager.selector(CommMsgSave.class)
-//                        .where("type","=",type)
-//                        .findAll();
+              items=  dbManager.selector(CommMsgSave.class)
+                        .where("type","=",type)
+                        .findAll();
 
-                items =dbManager.findAll(CommMsgSave.class);
+//                items =dbManager.findAll(CommMsgSave.class);
 
                 if (items==null || items.size()==0){
                     noDataLayout.setVisibility(View.VISIBLE);
@@ -206,7 +210,9 @@ public class ActMsgListNormal extends ActListBase {
                     adapter.notifyDataSetChanged();
                 }else {
                     noDataLayout.setVisibility(View.GONE);
-
+                    adapter.setItems(items);
+                    adapter.clearListData();
+                    adapter.notifyDataSetChanged();
                 }
             } catch (DbException e) {
                 e.printStackTrace();
